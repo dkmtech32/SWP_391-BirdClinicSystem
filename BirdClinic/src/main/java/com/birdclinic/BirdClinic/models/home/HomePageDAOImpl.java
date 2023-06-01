@@ -20,8 +20,8 @@ public class HomePageDAOImpl implements HomePageDAO {
 
     @Override
     public List<Map<Integer, String>> getPageHeaders() {
-        final String PAGE_HEADERS = "select HomePageID, HomePageHeader " +
-                "from Homepage";
+        final String PAGE_HEADERS = "select Home_PageID, Title " +
+                "from Home_Page";
         ArrayList<Map<Integer, String>> pageHeadArrayList = new ArrayList<>();
 
         try {
@@ -32,7 +32,7 @@ public class HomePageDAOImpl implements HomePageDAO {
                     (ResultSetExtractor<Object>) (rs) -> {
                         while (rs.next()) {
                             Map<Integer, String> pageHead = new HashMap<Integer, String>();
-                            pageHead.put(rs.getInt("HomePageID"), rs.getString("HomePageHeader"));
+                            pageHead.put(rs.getInt("Home_PageID"), rs.getString("Title"));
                             pageHeadArrayList.add(pageHead);
                         }
                         return new Object();
@@ -46,9 +46,9 @@ public class HomePageDAOImpl implements HomePageDAO {
 
     @Override
     public HomePageDTO getPage(int homePageID) {
-        final String PAGE_CONTENT = "select HomePageContent, HomePageID, HomePageHeader " +
-                "from Homepage " +
-                "where HomePageID = ?";
+        final String PAGE_CONTENT = "select Content , Home_PageID, Title " +
+                "from Home_Page " +
+                "where Home_PageID = ?";
 
         HomePageDTO homePage = null;
 
@@ -61,9 +61,9 @@ public class HomePageDAOImpl implements HomePageDAO {
                         HomePageDTO page = null;
                         while (rs.next()) {
                             page = new HomePageDTOImpl();
-                            page.setHomePageID(rs.getInt("HomePageID"));
-                            page.setHomePageContent(rs.getString("HomePageContent"));
-                            page.setHomePageHeader(rs.getString("HomePageHeader"));
+                            page.setHomePageID(rs.getInt("Home_PageID"));
+                            page.setHomePageContent(rs.getString("Content"));
+                            page.setHomePageHeader(rs.getString("Title"));
                         }
                         return page;
                     });
