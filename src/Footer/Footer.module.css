@@ -1,0 +1,86 @@
+.above-footer-conatainer{
+    display: flex;
+    justify-content: space-around;
+    margin-left: 10rem;
+    background-color: #181818;
+    margin-left: 0;
+    color: white;
+    padding: 4rem 0rem 4rem 11rem;
+}
+.description{
+    margin-top: 0;
+    font-size: 18px;
+}
+.description-intro{
+    display: flex;
+    font-size: 32px;
+}
+.description-column{
+    margin-right: 10rem;
+}
+.left-content-container{
+    display: flex;
+    justify-content: space-evenly;
+}
+.below-footer-container ul{
+    display: flex;
+    margin-left: 72.6%;
+}
+.below-footer-container ul li{
+    list-style: none;
+    margin-right: 4rem;
+}
+.left-footer-column{
+    margin-right: 13rem;
+}
+.left-footer-column ul{
+    padding-left: 0rem;
+}
+.left-footer-column:last-child ul{
+    display: flex;
+}
+.left-footer-column:last-child ul li{
+    margin-right: 0.9rem;
+    border: 1px solid white;
+    padding: 4px 4px 1px 4px;
+    border-radius: 50%;
+}
+.left-footer-column:last-child ul li a{
+    margin-bottom: 0;
+}
+.left-footer-column:first-child .imageIcon{
+    margin-right: 0.5rem;
+}
+.left-footer-column:nth-child(2) .imageIcon{
+    margin-right: 0.2rem;
+    font-size: 0.4px;
+    margin-top: 0.3rem;
+}
+.left-footer-column ul li{
+    list-style: none;
+}
+.left-footer-column ul li a{
+    color: white;
+    font-size: 18px;
+    margin-bottom: 1rem;
+    display: flex;
+}
+.title{
+    font-size: 25px;
+    color: #d95e33;
+}
+.bird, .lover{
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+}
+.bird{
+    color: #d95e33;
+}
+.below-footer-container{
+    background-color: #111111;
+    padding: 0.6rem 0rem;
+}
+.below-footer-container ul li a{
+    color: white;
+    font-size: 18px;
+}

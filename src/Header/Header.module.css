@@ -1,0 +1,90 @@
+.header-bar-div{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(101,193,120,255);
+}
+.header-bar-contact-information{
+    display: flex;
+    
+}
+.header-bar-contact-information li{
+    margin-right: 2rem;
+    list-style: none;
+    border-right: 1px solid white;
+    padding-right: 1.5rem;
+    padding-left: 0.5rem;
+    padding-bottom: 0.3rem;
+}
+.header-bar-contact-information li:last-child{
+    border-right: none;
+}
+.header-bar-contact-information li a:hover{
+    color: rgb(205, 198, 198);
+    transition: all 0.1s linear;;
+}
+.header-bar-contact-information li a{
+    text-decoration: none;
+    color: white;
+    font-size: 19px;
+    padding-right: 1rem;
+    font-weight: bold;
+}
+.imageLogo{
+    color: white;
+    margin-left: 2rem;
+}
+.header-social-plaform-logo{
+    justify-content: space-evenly;
+    margin: 1.2rem 3rem 1rem 0rem;
+}
+.header-social-plaform-logo :hover{
+    color: rgb(205, 198, 198);
+    transition: all 0.1s linear;
+}
+.under-footer{
+    display: flex;
+    justify-content: space-between;
+}
+.page-contact{
+    display: flex;
+    margin-right: 0.5rem;
+    margin-top: 0.2rem;
+}
+.information-categories{
+    margin-right: 0.5rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.2rem;
+    border-right: 1px solid grey;
+    padding-right: 2.4rem;
+}
+.page-contact ul:last-child{
+    border-right: none;
+}
+.page-contact ul:nth-child(1) .information{
+    margin-left: 3px;
+}
+.page-contact ul:nth-child(2) .information{
+    margin-left: 1.9rem;
+}
+.page-contact ul:nth-child(3) .information{
+    margin-left: 1.7rem;
+}
+.information{
+    font-weight: bold;
+    font-size: 15px;
+    list-style: none;
+}
+.information-content{
+    list-style: none;
+    font-size: 15px;
+    color: grey;
+}
+.main-logo-image{
+    width: 10rem;
+    height: 5rem;
+    margin-left: 2rem;
+}
+
+
+
+

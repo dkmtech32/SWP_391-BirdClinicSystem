@@ -1,0 +1,46 @@
+.table-container{
+    margin: 5rem 10rem;
+}
+.table-row{
+    padding: 2rem;
+}
+.doctor-avatar{
+    height: 90px;
+    width: 90px;
+    border-radius: 50px;
+    margin-right: 2rem;
+    margin-left: 1.5rem;
+    margin: 0 0.5rem;
+}
+.doctor-name{
+    margin-left: 1rem;
+    margin-top: 2.5rem;
+}
+.appoinment-info{
+    font-size: 20px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: grey;
+}
+.history-bar{
+    display: flex;
+    margin-bottom: 0rem;
+    border: 1px solid grey;
+    padding-top: 0.9rem;
+    background-color: rgba(101,193,120,255);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    color: white;
+    padding-left: 1rem;
+}
+.history-bar h1{
+    margin-bottom: 3rem;
+    margin-left: 1rem;
+}
+.table-container{
+    box-shadow: 10px 10px 5px lightblue;
+}
