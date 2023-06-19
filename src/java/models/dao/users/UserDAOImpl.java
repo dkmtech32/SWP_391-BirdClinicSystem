@@ -358,7 +358,7 @@ public class UserDAOImpl implements UserDAO {
                 result.setUserName(rs.getString("userName"));
 
                 if (userList == null) {
-                    userList = new ArrayList();
+                    userList = new ArrayList<UserDTO>();
                 }
                 userList.add(result);
             }
