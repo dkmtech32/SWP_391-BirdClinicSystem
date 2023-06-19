@@ -6,32 +6,34 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import utils.DBUtils;
-import java.sql.Statement;
 import java.util.List;
 import models.dao.bird.BirdDAO;
 import models.dao.users.doctor.DoctorDAO;
 import models.dao.timeslot.TimeslotDAO;
 import models.dao.speciality.SpecialityDAO;
+import models.dao.users.customer.CustomerDAO;
 import models.dto.appointment.AppointmentDTO;
 import models.dto.appointment.AppointmentDTOImpl;
+import models.dto.bird.BirdDTO;
+import models.dto.users.customer.CustomerDTO;
 
 public class AppointmentDAOImpl implements AppointmentDAO {
+
     private final BirdDAO BirdDAO;
     private final DoctorDAO DoctorDAO;
     private final SpecialityDAO SpecialityDAO;
-    private final TimeslotDAO  TimeslotDAO;
+    private final TimeslotDAO TimeslotDAO;
 
     private static final String READ_APPOINTMENT = "SELECT * FROM Appointment WHERE appointmentID = ?";
     private static final String READ_APPOINTMENT_BY_BIRD = "SELECT * FROM Appointment WHERE birdID = ?";
     private static final String READ_APPOINTMENT_BY_DOCTOR = "SELECT * FROM Appointment WHERE doctorID = ?";
-    private static final String READ_APPOINTMENT_BY_CUSTOMER = "SELECT * FROM Appointment WHERE customerID = ?";
     private static final String READ_APPOINTMENT_BY_TIMESLOT = "SELECT * FROM Appointment WHERE timeslotID = ?";
     private static final String DELETE_APPOINTMENT = "DELETE FROM Appointment WHERE appointmentID = ?";
     private static final String INSERT_APPOINTMENT = "INSERT INTO Appointment (appointmentID, birdID, doctorID, timeslotID, specialityID, appTime, notes, payment, appStatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String UPDATE_APPOINTMENT = "UPDATE Appointment SET birdID = ?, doctorID = ?, timeslotID = ?, specialityID = ?, appTime = ?, notes = ?, payment = ?, appStatus = ? WHERE appointmentID = ?";
 
-    public AppointmentDAOImpl(models.dao.bird.BirdDAO birdDAO, models.dao.users.doctor.DoctorDAO doctorDAO,
-            models.dao.speciality.SpecialityDAO specialityDAO, models.dao.timeslot.TimeslotDAO timeslotDAO) {
+    public AppointmentDAOImpl(BirdDAO birdDAO, DoctorDAO doctorDAO,
+            SpecialityDAO specialityDAO, TimeslotDAO timeslotDAO) {
         BirdDAO = birdDAO;
         DoctorDAO = doctorDAO;
         SpecialityDAO = specialityDAO;
@@ -246,16 +248,18 @@ public class AppointmentDAOImpl implements AppointmentDAO {
 
         try {
             con = DBUtils.getConnection();
-            stm = con.prepareStatement(READ_APPOINTMENT_BY_CUSTOMER);
-            stm.setString(1, customerID);
-            rs = stm.executeQuery();
-
-            while (rs.next()) {
-                AppointmentDTO appointment = mapAppointment(rs, con);
-                if (appointmentList == null) {
-                    appointmentList = new ArrayList<>();
+            List<BirdDTO> birds = BirdDAO.readAllBirdByCustomer(customerID, con);
+            for (BirdDTO bird : birds) {
+                stm = con.prepareStatement(READ_APPOINTMENT_BY_BIRD);
+                stm.setString(1, bird.getBirdID());
+                rs = stm.executeQuery();
+                while (rs.next()) {
+                    AppointmentDTO appointment = mapAppointment(rs, con);
+                    if (appointmentList == null) {
+                        appointmentList = new ArrayList<>();
+                    }
+                    appointmentList.add(appointment);
                 }
-                appointmentList.add(appointment);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -281,16 +285,18 @@ public class AppointmentDAOImpl implements AppointmentDAO {
         List<AppointmentDTO> appointmentList = null;
 
         try {
-            stm = con.prepareStatement(READ_APPOINTMENT_BY_CUSTOMER);
-            stm.setString(1, customerID);
-            rs = stm.executeQuery();
-
-            while (rs.next()) {
-                AppointmentDTO appointment = mapAppointment(rs, con);
-                if (appointmentList == null) {
-                    appointmentList = new ArrayList<>();
+            List<BirdDTO> birds = BirdDAO.readAllBirdByCustomer(customerID, con);
+            for (BirdDTO bird : birds) {
+                stm = con.prepareStatement(READ_APPOINTMENT_BY_BIRD);
+                stm.setString(1, bird.getBirdID());
+                rs = stm.executeQuery();
+                while (rs.next()) {
+                    AppointmentDTO appointment = mapAppointment(rs, con);
+                    if (appointmentList == null) {
+                        appointmentList = new ArrayList<>();
+                    }
+                    appointmentList.add(appointment);
                 }
-                appointmentList.add(appointment);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
