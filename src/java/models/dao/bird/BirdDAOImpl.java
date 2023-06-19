@@ -21,7 +21,7 @@ import utils.DBUtils;
  *
  * @author Admin
  */
-public class BirdDAOImpl {
+public class BirdDAOImpl implements BirdDAO {
     private final ImageDAO imageDAO;
     private final CustomerDAO customerDAO;
     
@@ -45,16 +45,13 @@ public class BirdDAOImpl {
             + "set customerID, imageID, birdFullname, birdGender, "
             + "breed, band, microchip, birdWeight, sexingMethod, medicalHistory, hatchingDate, featherColor "
             + "where birdID = ?";
-    
-    //each constant is one feature
-    //each feature is 2 functions: pass in args + get connection from DBUtils and pass in args + pass in Connection
-    //if args not ID, pass in DTO
 
     public BirdDAOImpl(ImageDAO imageDAO, CustomerDAO customerDAO) {
         this.imageDAO = imageDAO;
         this.customerDAO = customerDAO;
     }
     
+    @Override
     public BirdDTO readBird(String birdID) throws SQLException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -101,6 +98,7 @@ public class BirdDAOImpl {
         return result;
     }
     
+    @Override
     public BirdDTO readBird(String birdID, Connection con) throws SQLException {
         PreparedStatement stm = null;
         ResultSet rs = null;
@@ -142,6 +140,7 @@ public class BirdDAOImpl {
         return result;
     }
 
+    @Override
     public int insertBird(BirdDTO bird) throws SQLException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -159,10 +158,10 @@ public class BirdDAOImpl {
             stm.setString(7, bird.getBand());
             stm.setString(8, bird.getMicrochip());
             stm.setInt(9, bird.getBirdWeight());
-            stm.setString(8, bird.getSexingMethod());
-            stm.setString(10, bird.getMedicalHistory());
-            stm.setDate(11, bird.getHatchingDate());
-            stm.setString(8, bird.getMicrochip());  
+            stm.setString(10, bird.getSexingMethod());
+            stm.setString(11, bird.getMedicalHistory());
+            stm.setDate(12, bird.getHatchingDate());
+            stm.setString(13, bird.getMicrochip());  
             result = stm.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -178,7 +177,8 @@ public class BirdDAOImpl {
         return result;
     }
 
-    public int insertUser(BirdDTO bird, Connection con) throws SQLException {
+    @Override
+    public int insertBird(BirdDTO bird, Connection con) throws SQLException {
         PreparedStatement stm = null;
         int result = 0;
 
@@ -194,10 +194,10 @@ public class BirdDAOImpl {
             stm.setString(7, bird.getBand());
             stm.setString(8, bird.getMicrochip());
             stm.setInt(9, bird.getBirdWeight());
-            stm.setString(8, bird.getSexingMethod());
-            stm.setString(10, bird.getMedicalHistory());
-            stm.setDate(11, bird.getHatchingDate());
-            stm.setString(8, bird.getMicrochip());  
+            stm.setString(10, bird.getSexingMethod());
+            stm.setString(11, bird.getMedicalHistory());
+            stm.setDate(12, bird.getHatchingDate());
+            stm.setString(13, bird.getMicrochip());  
 
             result = stm.executeUpdate();
         } catch (SQLException ex) {
@@ -211,6 +211,7 @@ public class BirdDAOImpl {
         return result;
     }
 
+    @Override
     public int deleteBird(String BirdID) throws SQLException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -236,6 +237,7 @@ public class BirdDAOImpl {
         return result;
     }
 
+    @Override
     public int deleteBird(String birdID, Connection con) throws SQLException {
         PreparedStatement stm = null;
         int result = 0;
@@ -256,7 +258,8 @@ public class BirdDAOImpl {
         return result;
     }
 
-    public int updateUser(BirdDTO bird) throws SQLException {
+    @Override
+    public int updateBird(BirdDTO bird) throws SQLException {
         Connection con = null;
         PreparedStatement stm = null;
         int result = 0;
@@ -264,19 +267,19 @@ public class BirdDAOImpl {
         try {
             con = DBUtils.getConnection();
             stm = con.prepareStatement(INSERT_BIRD);
-            stm.setString(1, bird.getBirdID());
-            stm.setString(2, bird.getCustomer().getUserID());
-            stm.setString(3, bird.getImage().getImageID());
-            stm.setString(4, bird.getBirdFullname());
-            stm.setString(5, bird.getBirdGender());
-            stm.setString(6, bird.getBreed());
-            stm.setString(7, bird.getBand());
-            stm.setString(8, bird.getMicrochip());
-            stm.setInt(9, bird.getBirdWeight());
-            stm.setString(8, bird.getSexingMethod());
+            stm.setString(1, bird.getCustomer().getUserID());
+            stm.setString(2, bird.getImage().getImageID());
+            stm.setString(3, bird.getBirdFullname());
+            stm.setString(4, bird.getBirdGender());
+            stm.setString(5, bird.getBreed());
+            stm.setString(6, bird.getBand());
+            stm.setString(7, bird.getMicrochip());
+            stm.setInt(8, bird.getBirdWeight());
+            stm.setString(9, bird.getSexingMethod());
             stm.setString(10, bird.getMedicalHistory());
             stm.setDate(11, bird.getHatchingDate());
-            stm.setString(8, bird.getMicrochip());  
+            stm.setString(12, bird.getMicrochip()); 
+            stm.setString(13, bird.getBirdID());
 
             result = stm.executeUpdate();
         } catch (SQLException ex) {
@@ -293,25 +296,26 @@ public class BirdDAOImpl {
         return result;
     }
 
-    public int updateUser(BirdDTO bird, Connection con) throws SQLException {
+    @Override
+    public int updateBird(BirdDTO bird, Connection con) throws SQLException {
         PreparedStatement stm = null;
         int result = 0;
 
         try {
             stm = con.prepareStatement(UPDATE_BIRD);
-            stm.setString(1, bird.getBirdID());
-            stm.setString(2, bird.getCustomer().getUserID());
-            stm.setString(3, bird.getImage().getImageID());
-            stm.setString(4, bird.getBirdFullname());
-            stm.setString(5, bird.getBirdGender());
-            stm.setString(6, bird.getBreed());
-            stm.setString(7, bird.getBand());
-            stm.setString(8, bird.getMicrochip());
-            stm.setInt(9, bird.getBirdWeight());
-            stm.setString(8, bird.getSexingMethod());
+            stm.setString(1, bird.getCustomer().getUserID());
+            stm.setString(2, bird.getImage().getImageID());
+            stm.setString(3, bird.getBirdFullname());
+            stm.setString(4, bird.getBirdGender());
+            stm.setString(5, bird.getBreed());
+            stm.setString(6, bird.getBand());
+            stm.setString(7, bird.getMicrochip());
+            stm.setInt(8, bird.getBirdWeight());
+            stm.setString(9, bird.getSexingMethod());
             stm.setString(10, bird.getMedicalHistory());
             stm.setDate(11, bird.getHatchingDate());
-            stm.setString(8, bird.getMicrochip()); 
+            stm.setString(12, bird.getMicrochip()); 
+            stm.setString(13, bird.getBirdID());
 
             result = stm.executeUpdate();
         } catch (SQLException ex) {
@@ -325,6 +329,7 @@ public class BirdDAOImpl {
         return result;
     }
 
+    @Override
     public List<BirdDTO> readAllBird() throws SQLException {
         Connection con = null;
         Statement stm = null;
@@ -375,6 +380,7 @@ public class BirdDAOImpl {
         return userList;
     }
 
+    @Override
     public List<BirdDTO> readAllBird(Connection con) throws SQLException {
         Statement stm = null;
         ResultSet rs = null;
@@ -420,6 +426,7 @@ public class BirdDAOImpl {
         return userList;
     }
 
+    @Override
     public List<BirdDTO> readAllBirdByCustomer(String customerID) throws SQLException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -470,6 +477,7 @@ public class BirdDAOImpl {
         return birdList;
     }
     
+    @Override
     public List<BirdDTO> readAllBirdByCustomer(String customerID, Connection con) throws SQLException {
         PreparedStatement stm = null;
         ResultSet rs = null;

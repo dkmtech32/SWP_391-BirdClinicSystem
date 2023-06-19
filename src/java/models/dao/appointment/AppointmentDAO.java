@@ -9,10 +9,6 @@ import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
-import models.dto.bird.BirdDTO;
-import models.dto.speciality.SpecialityDTO;
-import models.dto.timeslot.TimeslotDTO;
-import models.dto.users.doctor.DoctorDTO;
 import models.dto.appointment.AppointmentDTO;
 /**
  *
