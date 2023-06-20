@@ -22,7 +22,9 @@
 
     <!-- Flaticon Font -->
     <link href="assets/plugins/flaticon/font/flaticon.css" rel="stylesheet" />
-
+    <!-- Slick CSS -->
+    <link rel="stylesheet" href="assets/css/slick.css" />
+    <link rel="stylesheet" href="assets/css/slick-theme.css" />
 
     <!-- Fontawesome CSS -->
     <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css" />		
