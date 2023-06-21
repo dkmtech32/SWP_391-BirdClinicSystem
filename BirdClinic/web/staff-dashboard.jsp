@@ -200,9 +200,9 @@
                                                                     <tr>
                                                                         <th>Customer Name</th>
                                                                         <th>Appt Date</th>
-                                                                        <th>Bird Name</th>
-                                                                        <th>Bird Breed</th>
+                                                                        <th>Bird Name</th>                                                                  
                                                                         <th class="text-center">Doctor</th>
+                                                                        <th>Status</th>
                                                                         <th></th>
                                                                     </tr>
                                                                 </thead>
@@ -222,10 +222,10 @@
                                                                                 <a href="patient-profile.html" class="avatar avatar-sm mr-2"
                                                                                    ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
                                                                                       /></a>
-                                                                                <a href="patient-profile.html">Bird123 <span>#PT0016</span></a>
+                                                                                <a href="patient-profile.html">Bird123 <span>Parrot african</span></a>
                                                                             </h2>
                                                                         </td>
-                                                                        <td>Parrot african</td>
+
                                                                         <td class="text-center">
                                                                             <div class="d-flex justify-content-center">
                                                                                 <select class="form-control select w-75">
@@ -236,6 +236,7 @@
                                                                             </div>
                                                                         </td>
 
+                                                                        <td><span class="badge badge-pill bg-warning-light">Processing</span></td>
                                                                         <td class="text-right">
                                                                             <div class="table-action">
                                                                                 <a href="" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
@@ -260,10 +261,10 @@
                                                                                 <a href="patient-profile.html" class="avatar avatar-sm mr-2"
                                                                                    ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-1.webp" alt="User Image"
                                                                                       /></a>
-                                                                                <a href="patient-profile.html">Bird123 <span>#PT0016</span></a>
+                                                                                <a href="patient-profile.html">Bird123 <span>Parrot african</span></a>
                                                                             </h2>
                                                                         </td>
-                                                                        <td>Parrot african</td>
+
                                                                         <td class="text-center">
                                                                             <div class="d-flex justify-content-center">
                                                                                 <select class="form-control select w-75">
@@ -273,6 +274,8 @@
                                                                                 </select>
                                                                             </div>
                                                                         </td>
+
+                                                                        <td><span class="badge badge-pill bg-warning-light">Processing</span></td>
 
                                                                         <td class="text-right">
                                                                             <div class="table-action">
@@ -298,10 +301,10 @@
                                                                                 <a href="patient-profile.html" class="avatar avatar-sm mr-2"
                                                                                    ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-3.jpg" alt="User Image"
                                                                                       /></a>
-                                                                                <a href="patient-profile.html">Bird123 <span>#PT0016</span></a>
+                                                                                <a href="patient-profile.html">Bird123 <span>Parrot african</span></a>
                                                                             </h2>
                                                                         </td>
-                                                                        <td>Parrot african</td>
+
                                                                         <td class="text-center">
                                                                             <div class="d-flex justify-content-center">
                                                                                 <select class="form-control select w-75">
@@ -311,6 +314,8 @@
                                                                                 </select>
                                                                             </div>
                                                                         </td>
+
+                                                                        <td><span class="badge badge-pill bg-warning-light">Processing</span></td>
 
                                                                         <td class="text-right">
                                                                             <div class="table-action">
@@ -336,10 +341,10 @@
                                                                                 <a href="patient-profile.html" class="avatar avatar-sm mr-2"
                                                                                    ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-4.jpg" alt="User Image"
                                                                                       /></a>
-                                                                                <a href="patient-profile.html">Bird123 <span>#PT0016</span></a>
+                                                                                <a href="patient-profile.html">Bird123 <span>Parrot african</span></a>
                                                                             </h2>
                                                                         </td>
-                                                                        <td>Parrot african</td>
+
                                                                         <td class="text-center">
                                                                             <div class="d-flex justify-content-center">
                                                                                 <select class="form-control select w-75">
@@ -349,6 +354,8 @@
                                                                                 </select>
                                                                             </div>
                                                                         </td>
+
+                                                                        <td><span class="badge badge-pill bg-warning-light">Processing</span></td>
 
                                                                         <td class="text-right">
                                                                             <div class="table-action">

@@ -114,23 +114,26 @@
                                         <!-- Notes section -->
                                         <div class="info-widget">
                                             <h4 class="card-title">Notes</h4>
-                                            <div class="col-md-12 col-sm-12">
-                                                <div class="form-group card-label">
-                                                    <label>Choose specialty</label>
-                                                    <select class="form-control" required >
-                                                        <option value="">--</option>
-                                                        <option value="general">General</option>
-                                                        <option value="surgery">Surgery</option>
-                                                        <option value="imaging">Imaging</option>
-                                                        <option value="nutrition">Nutrition</option>
-                                                        <option value="genetics">Genetics</option>
-                                                    </select>
-                                                    <div class="invalid-feedback">Example invalid custom select feedback</div>
+                                            <c:if test="${param.doctor == 'all'}">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <div class="form-group card-label">
+                                                        <label>Choose specialty</label>
+                                                        <select class="form-control" required >
+                                                            <option value="">--</option>
+                                                            <option value="general">General</option>
+                                                            <option value="surgery">Surgery</option>
+                                                            <option value="imaging">Imaging</option>
+                                                            <option value="nutrition">Nutrition</option>
+                                                            <option value="genetics">Genetics</option>
+                                                        </select>
+                                                        <div class="invalid-feedback">Example invalid custom select feedback</div>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </c:if>
                                             <div class="col-md-12 col-sm-12">
                                                 <div class="form-group">													
-                                                    <textarea class="form-control" rows="4" placeholder="Describe bird's symtoms" ></textarea>
+                                                    <textarea class="form-control" rows="4" placeholder="Describe bird's symtoms" required></textarea>
+                                                    <div class="invalid-feedback">Example invalid custom select feedback</div>
                                                 </div>
                                             </div>
 

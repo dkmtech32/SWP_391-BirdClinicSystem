@@ -45,44 +45,44 @@
                                     <nav class="dashboard-menu">
                                         <ul>
                                             <li class="active">
-                                                <a href="patient-dashboard.jsp">
+                                                <a href="patient-dashboard.html">
                                                     <i class="fas fa-columns"></i>
                                                     <span>Dashboard</span>
                                                 </a>
                                             </li>
                                             <!-- <li>
-                                                    <a href="favourites.jsp">
+                                                    <a href="favourites.html">
                                                             <i class="fas fa-bookmark"></i>
                                                             <span>Favourites</span>
                                                     </a>
                                             </li> -->
                                             <!-- <li>
-                                                    <a href="chat.jsp">
+                                                    <a href="chat.html">
                                                             <i class="fas fa-comments"></i>
                                                             <span>Message</span>
                                                             <small class="unread-msg">23</small>
                                                     </a>
                                             </li> -->
-                                            <li>
-                                                <a href="birdlist.jsp">
+                                            <li class="active">
+                                                <a href="birdlist.html">
                                                     <i class="fa fa-tasks"></i>
                                                     <span>Birds List</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="profile-settings.jsp">
+                                                <a href="profile-settings.html">
                                                     <i class="fas fa-user-cog"></i>
                                                     <span>Profile Settings</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="change-password.jsp">
+                                                <a href="change-password.html">
                                                     <i class="fas fa-lock"></i>
                                                     <span>Change Password</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="index.jsp">
+                                                <a href="index.html">
                                                     <i class="fas fa-sign-out-alt"></i>
                                                     <span>Logout</span>
                                                 </a>
@@ -139,10 +139,10 @@
                                                                 <!-- <tr>
                                                                         <td>
                                                                                 <h2 class="table-avatar">
-                                                                                        <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                                        <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-01.jpg" alt="User Image" />
                                                                                         </a>
-                                                                                        <a href="doctor-profile.jsp">Dr. Ruby Perrin <span>Dental</span></a>
+                                                                                        <a href="doctor-profile.html">Dr. Ruby Perrin <span>Dental</span></a>
                                                                                 </h2>
                                                                         </td>
                                                                         <td>14 Nov 2019 <span class="d-block text-info">10.00 AM</span></td>
@@ -160,10 +160,10 @@
                                                                 <tr>
                                                                         <td>
                                                                                 <h2 class="table-avatar">
-                                                                                        <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                                        <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image" />
                                                                                         </a>
-                                                                                        <a href="doctor-profile.jsp">Dr. Darren Elder <span>Dental</span></a>
+                                                                                        <a href="doctor-profile.html">Dr. Darren Elder <span>Dental</span></a>
                                                                                 </h2>
                                                                         </td>
                                                                         <td>12 Nov 2019 <span class="d-block text-info">8.00 PM</span></td>
@@ -181,10 +181,10 @@
                                                                 <tr>
                                                                         <td>
                                                                                 <h2 class="table-avatar">
-                                                                                        <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                                        <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-03.jpg" alt="User Image" />
                                                                                         </a>
-                                                                                        <a href="doctor-profile.jsp">Dr. Deborah Angel <span>Cardiology</span></a>
+                                                                                        <a href="doctor-profile.html">Dr. Deborah Angel <span>Cardiology</span></a>
                                                                                 </h2>
                                                                         </td>
                                                                         <td>11 Nov 2019 <span class="d-block text-info">11.00 AM</span></td>
@@ -202,10 +202,10 @@
                                                                 <tr>
                                                                         <td>
                                                                                 <h2 class="table-avatar">
-                                                                                        <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                                        <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-04.jpg" alt="User Image" />
                                                                                         </a>
-                                                                                        <a href="doctor-profile.jsp">Dr. Sofia Brient <span>Urology</span></a>
+                                                                                        <a href="doctor-profile.html">Dr. Sofia Brient <span>Urology</span></a>
                                                                                 </h2>
                                                                         </td>
                                                                         <td>10 Nov 2019 <span class="d-block text-info">3.00 PM</span></td>
@@ -223,10 +223,10 @@
                                                                 <tr>
                                                                         <td>
                                                                                 <h2 class="table-avatar">
-                                                                                        <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                                        <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-05.jpg" alt="User Image" />
                                                                                         </a>
-                                                                                        <a href="doctor-profile.jsp">Dr. Marvin Campbell <span>Ophthalmology</span></a>
+                                                                                        <a href="doctor-profile.html">Dr. Marvin Campbell <span>Ophthalmology</span></a>
                                                                                 </h2>
                                                                         </td>
                                                                         <td>9 Nov 2019 <span class="d-block text-info">7.00 PM</span></td>
@@ -244,10 +244,10 @@
                                                                 <tr>
                                                                         <td>
                                                                                 <h2 class="table-avatar">
-                                                                                        <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                                        <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-06.jpg" alt="User Image" />
                                                                                         </a>
-                                                                                        <a href="doctor-profile.jsp">Dr. Katharine Berthold <span>Orthopaedics</span></a>
+                                                                                        <a href="doctor-profile.html">Dr. Katharine Berthold <span>Orthopaedics</span></a>
                                                                                 </h2>
                                                                         </td>
                                                                         <td>8 Nov 2019 <span class="d-block text-info">9.00 AM</span></td>
@@ -265,10 +265,10 @@
                                                                 <tr>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-07.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. ABC <span>Grooming</span></a>
+                                                                            <a href="doctor-profile.html">Dr. ABC <span>Grooming</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td>8 Nov 2023 <span class="d-block text-info">6.00 PM</span></td>
@@ -287,10 +287,10 @@
                                                                 <tr>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-08.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. BBB<span>Genetic</span></a>
+                                                                            <a href="doctor-profile.html">Dr. BBB<span>Genetic</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td>7 Nov 2023 <span class="d-block text-info">9.00 PM</span></td>
@@ -308,10 +308,10 @@
                                                                 <tr>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. ABC <span>Surgery</span></a>
+                                                                            <a href="doctor-profile.html">Dr. ABC <span>Surgery</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td>6 Jun 2023 <span class="d-block text-info">10.00 AM</span></td>
@@ -323,17 +323,17 @@
                                                                         <div class="table-action">
                                                                             <a href="view-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescription </a>
                                                                             <a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>
-                                                                            <a href="invoice-view.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                            <a href="invoice-view.html" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-10.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. AAA <span>General</span></a>
+                                                                            <a href="doctor-profile.html">Dr. AAA <span>General</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td>5 Nov 2022 <span class="d-block text-info">5.00 PM</span></td>
@@ -376,10 +376,10 @@
                                                                                                 <td>Prescription 1</td>
                                                                                                 <td>
                                                                                                         <h2 class="table-avatar">
-                                                                                                                <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                                                                <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                                                         <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-01.jpg" alt="User Image" />
                                                                                                                 </a>
-                                                                                                                <a href="doctor-profile.jsp">Dr. Ruby Perrin <span>Dental</span></a>
+                                                                                                                <a href="doctor-profile.html">Dr. Ruby Perrin <span>Dental</span></a>
                                                                                                         </h2>
                                                                                                 </td>
                                                                                                 <td class="text-right">
@@ -394,10 +394,10 @@
                                                                                                 <td>Prescription 2</td>
                                                                                                 <td>
                                                                                                         <h2 class="table-avatar">
-                                                                                                                <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                                                                <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                                                         <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image" />
                                                                                                                 </a>
-                                                                                                                <a href="doctor-profile.jsp">Dr. Darren Elder <span>Dental</span></a>
+                                                                                                                <a href="doctor-profile.html">Dr. Darren Elder <span>Dental</span></a>
                                                                                                         </h2>
                                                                                                 </td>
                                                                                                 <td class="text-right">
@@ -412,10 +412,10 @@
                                                                                                 <td>Prescription 3</td>
                                                                                                 <td>
                                                                                                         <h2 class="table-avatar">
-                                                                                                                <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                                                                <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                                                         <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-03.jpg" alt="User Image" />
                                                                                                                 </a>
-                                                                                                                <a href="doctor-profile.jsp">Dr. Deborah Angel <span>Cardiology</span></a>
+                                                                                                                <a href="doctor-profile.html">Dr. Deborah Angel <span>Cardiology</span></a>
                                                                                                         </h2>
                                                                                                 </td>
                                                                                                 <td class="text-right">
@@ -430,10 +430,10 @@
                                                                                                 <td>Prescription 4</td>
                                                                                                 <td>
                                                                                                         <h2 class="table-avatar">
-                                                                                                                <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                                                                <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                                                         <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-04.jpg" alt="User Image" />
                                                                                                                 </a>
-                                                                                                                <a href="doctor-profile.jsp">Dr. Sofia Brient <span>Urology</span></a>
+                                                                                                                <a href="doctor-profile.html">Dr. Sofia Brient <span>Urology</span></a>
                                                                                                         </h2>
                                                                                                 </td>
                                                                                                 <td class="text-right">
@@ -448,10 +448,10 @@
                                                                                                 <td>Prescription 5</td>
                                                                                                 <td>
                                                                                                         <h2 class="table-avatar">
-                                                                                                                <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                                                                <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                                                         <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-05.jpg" alt="User Image" />
                                                                                                                 </a>
-                                                                                                                <a href="doctor-profile.jsp">Dr. Marvin Campbell <span>Dental</span></a>
+                                                                                                                <a href="doctor-profile.html">Dr. Marvin Campbell <span>Dental</span></a>
                                                                                                         </h2>
                                                                                                 </td>
                                                                                                 <td class="text-right">
@@ -466,10 +466,10 @@
                                                                                                 <td>Prescription 6</td>
                                                                                                 <td>
                                                                                                         <h2 class="table-avatar">
-                                                                                                                <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                                                                <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                                                         <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-06.jpg" alt="User Image" />
                                                                                                                 </a>
-                                                                                                                <a href="doctor-profile.jsp">Dr. Katharine Berthold <span>Orthopaedics</span></a>
+                                                                                                                <a href="doctor-profile.html">Dr. Katharine Berthold <span>Orthopaedics</span></a>
                                                                                                         </h2>
                                                                                                 </td>
                                                                                                 <td class="text-right">
@@ -484,10 +484,10 @@
                                                                                                 <td>Prescription 7</td>
                                                                                                 <td>
                                                                                                         <h2 class="table-avatar">
-                                                                                                                <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                                                                <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                                                         <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-07.jpg" alt="User Image" />
                                                                                                                 </a>
-                                                                                                                <a href="doctor-profile.jsp">Dr. Linda Tobin <span>Neurology</span></a>
+                                                                                                                <a href="doctor-profile.html">Dr. Linda Tobin <span>Neurology</span></a>
                                                                                                         </h2>
                                                                                                 </td>
                                                                                                 <td class="text-right">
@@ -502,10 +502,10 @@
                                                                                                 <td>Prescription 8</td>
                                                                                                 <td>
                                                                                                         <h2 class="table-avatar">
-                                                                                                                <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                                                                <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                                                         <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-08.jpg" alt="User Image" />
                                                                                                                 </a>
-                                                                                                                <a href="doctor-profile.jsp">Dr. Paul Richard <span>Dermatology</span></a>
+                                                                                                                <a href="doctor-profile.html">Dr. Paul Richard <span>Dermatology</span></a>
                                                                                                         </h2>
                                                                                                 </td>
                                                                                                 <td class="text-right">
@@ -520,10 +520,10 @@
                                                                                                 <td>Prescription 9</td>
                                                                                                 <td>
                                                                                                         <h2 class="table-avatar">
-                                                                                                                <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                                                                <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                                                         <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-09.jpg" alt="User Image" />
                                                                                                                 </a>
-                                                                                                                <a href="doctor-profile.jsp">Dr. John Gibbs <span>Dental</span></a>
+                                                                                                                <a href="doctor-profile.html">Dr. John Gibbs <span>Dental</span></a>
                                                                                                         </h2>
                                                                                                 </td>
                                                                                                 <td class="text-right">
@@ -538,10 +538,10 @@
                                                                                                 <td>Prescription 10</td>
                                                                                                 <td>
                                                                                                         <h2 class="table-avatar">
-                                                                                                                <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                                                                <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                                                         <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-10.jpg" alt="User Image" />
                                                                                                                 </a>
-                                                                                                                <a href="doctor-profile.jsp">Dr. Olga Barlow <span>Dental</span></a>
+                                                                                                                <a href="doctor-profile.html">Dr. Olga Barlow <span>Dental</span></a>
                                                                                                         </h2>
                                                                                                 </td>
                                                                                                 <td class="text-right">
@@ -583,10 +583,10 @@
                                                                     <td><a href="#">dental-test.pdf</a></td>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-01.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. Ruby Perrin <span>Dental</span></a>
+                                                                            <a href="doctor-profile.html">Dr. Ruby Perrin <span>Dental</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td class="text-right">
@@ -603,10 +603,10 @@
                                                                     <td><a href="#">dental-test.pdf</a></td>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. Darren Elder <span>Dental</span></a>
+                                                                            <a href="doctor-profile.html">Dr. Darren Elder <span>Dental</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td class="text-right">
@@ -623,10 +623,10 @@
                                                                     <td><a href="#">cardio-test.pdf</a></td>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-03.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. Deborah Angel <span>Cardiology</span></a>
+                                                                            <a href="doctor-profile.html">Dr. Deborah Angel <span>Cardiology</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td class="text-right">
@@ -643,10 +643,10 @@
                                                                     <td><a href="#">general-test.pdf</a></td>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-04.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. Sofia Brient <span>Urology</span></a>
+                                                                            <a href="doctor-profile.html">Dr. Sofia Brient <span>Urology</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td class="text-right">
@@ -663,10 +663,10 @@
                                                                     <td><a href="#">eye-test.pdf</a></td>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-05.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. Marvin Campbell <span>Ophthalmology</span></a>
+                                                                            <a href="doctor-profile.html">Dr. Marvin Campbell <span>Ophthalmology</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td class="text-right">
@@ -683,10 +683,10 @@
                                                                     <td><a href="#">ortho-test.pdf</a></td>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-06.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. Katharine Berthold <span>Orthopaedics</span></a>
+                                                                            <a href="doctor-profile.html">Dr. Katharine Berthold <span>Orthopaedics</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td class="text-right">
@@ -703,10 +703,10 @@
                                                                     <td><a href="#">neuro-test.pdf</a></td>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-07.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. Linda Tobin <span>Neurology</span></a>
+                                                                            <a href="doctor-profile.html">Dr. Linda Tobin <span>Neurology</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td class="text-right">
@@ -723,10 +723,10 @@
                                                                     <td><a href="#">alergy-test.pdf</a></td>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-08.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. Paul Richard <span>Dermatology</span></a>
+                                                                            <a href="doctor-profile.html">Dr. Paul Richard <span>Dermatology</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td class="text-right">
@@ -743,10 +743,10 @@
                                                                     <td><a href="#">dental-test.pdf</a></td>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-09.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. John Gibbs <span>Dental</span></a>
+                                                                            <a href="doctor-profile.html">Dr. John Gibbs <span>Dental</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td class="text-right">
@@ -763,10 +763,10 @@
                                                                     <td><a href="#">dental-test.pdf</a></td>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-10.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. Olga Barlow <span>Dental</span></a>
+                                                                            <a href="doctor-profile.html">Dr. Olga Barlow <span>Dental</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td class="text-right">
@@ -802,210 +802,210 @@
                                                             <tbody>
                                                                 <tr>
                                                                     <td>
-                                                                        <a href="invoice-view.jsp">#INV-0010</a>
+                                                                        <a href="invoice-view.html">#INV-0010</a>
                                                                     </td>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-01.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Ruby Perrin <span>Dental</span></a>
+                                                                            <a href="doctor-profile.html">Ruby Perrin <span>Dental</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td>$450</td>
                                                                     <td>14 Nov 2019</td>
                                                                     <td class="text-right">
                                                                         <div class="table-action">
-                                                                            <a href="invoice-view.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                            <a href="invoice-view.html" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                                             <a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        <a href="invoice-view.jsp">#INV-0009</a>
+                                                                        <a href="invoice-view.html">#INV-0009</a>
                                                                     </td>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. Darren Elder <span>Dental</span></a>
+                                                                            <a href="doctor-profile.html">Dr. Darren Elder <span>Dental</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td>$300</td>
                                                                     <td>13 Nov 2019</td>
                                                                     <td class="text-right">
                                                                         <div class="table-action">
-                                                                            <a href="invoice-view.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                            <a href="invoice-view.html" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                                             <a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        <a href="invoice-view.jsp">#INV-0008</a>
+                                                                        <a href="invoice-view.html">#INV-0008</a>
                                                                     </td>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-03.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. Deborah Angel <span>Cardiology</span></a>
+                                                                            <a href="doctor-profile.html">Dr. Deborah Angel <span>Cardiology</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td>$150</td>
                                                                     <td>12 Nov 2019</td>
                                                                     <td class="text-right">
                                                                         <div class="table-action">
-                                                                            <a href="invoice-view.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                            <a href="invoice-view.html" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                                             <a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        <a href="invoice-view.jsp">#INV-0007</a>
+                                                                        <a href="invoice-view.html">#INV-0007</a>
                                                                     </td>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-04.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. Sofia Brient <span>Urology</span></a>
+                                                                            <a href="doctor-profile.html">Dr. Sofia Brient <span>Urology</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td>$50</td>
                                                                     <td>11 Nov 2019</td>
                                                                     <td class="text-right">
                                                                         <div class="table-action">
-                                                                            <a href="invoice-view.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                            <a href="invoice-view.html" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                                             <a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        <a href="invoice-view.jsp">#INV-0006</a>
+                                                                        <a href="invoice-view.html">#INV-0006</a>
                                                                     </td>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-05.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. Marvin Campbell <span>Ophthalmology</span></a>
+                                                                            <a href="doctor-profile.html">Dr. Marvin Campbell <span>Ophthalmology</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td>$600</td>
                                                                     <td>10 Nov 2019</td>
                                                                     <td class="text-right">
                                                                         <div class="table-action">
-                                                                            <a href="invoice-view.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                            <a href="invoice-view.html" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                                             <a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        <a href="invoice-view.jsp">#INV-0005</a>
+                                                                        <a href="invoice-view.html">#INV-0005</a>
                                                                     </td>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-06.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. Katharine Berthold <span>Orthopaedics</span></a>
+                                                                            <a href="doctor-profile.html">Dr. Katharine Berthold <span>Orthopaedics</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td>$200</td>
                                                                     <td>9 Nov 2019</td>
                                                                     <td class="text-right">
                                                                         <div class="table-action">
-                                                                            <a href="invoice-view.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                            <a href="invoice-view.html" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                                             <a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        <a href="invoice-view.jsp">#INV-0004</a>
+                                                                        <a href="invoice-view.html">#INV-0004</a>
                                                                     </td>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-07.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. Linda Tobin <span>Neurology</span></a>
+                                                                            <a href="doctor-profile.html">Dr. Linda Tobin <span>Neurology</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td>$100</td>
                                                                     <td>8 Nov 2019</td>
                                                                     <td class="text-right">
                                                                         <div class="table-action">
-                                                                            <a href="invoice-view.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                            <a href="invoice-view.html" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                                             <a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        <a href="invoice-view.jsp">#INV-0003</a>
+                                                                        <a href="invoice-view.html">#INV-0003</a>
                                                                     </td>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-08.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. Paul Richard <span>Dermatology</span></a>
+                                                                            <a href="doctor-profile.html">Dr. Paul Richard <span>Dermatology</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td>$250</td>
                                                                     <td>7 Nov 2019</td>
                                                                     <td class="text-right">
                                                                         <div class="table-action">
-                                                                            <a href="invoice-view.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                            <a href="invoice-view.html" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                                             <a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        <a href="invoice-view.jsp">#INV-0002</a>
+                                                                        <a href="invoice-view.html">#INV-0002</a>
                                                                     </td>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-09.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. John Gibbs <span>Dental</span></a>
+                                                                            <a href="doctor-profile.html">Dr. John Gibbs <span>Dental</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td>$175</td>
                                                                     <td>6 Nov 2019</td>
                                                                     <td class="text-right">
                                                                         <div class="table-action">
-                                                                            <a href="invoice-view.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                            <a href="invoice-view.html" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                                             <a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        <a href="invoice-view.jsp">#INV-0001</a>
+                                                                        <a href="invoice-view.html">#INV-0001</a>
                                                                     </td>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                            <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
                                                                                 <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-10.jpg" alt="User Image" />
                                                                             </a>
-                                                                            <a href="doctor-profile.jsp">Dr. Olga Barlow <span>#0010</span></a>
+                                                                            <a href="doctor-profile.html">Dr. Olga Barlow <span>#0010</span></a>
                                                                         </h2>
                                                                     </td>
                                                                     <td>$550</td>
                                                                     <td>5 Nov 2019</td>
                                                                     <td class="text-right">
                                                                         <div class="table-action">
-                                                                            <a href="invoice-view.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                            <a href="invoice-view.html" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                                             <a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>
                                                                         </div>
                                                                     </td>

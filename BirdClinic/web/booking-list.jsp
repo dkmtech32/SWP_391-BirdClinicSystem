@@ -40,8 +40,8 @@
                                     'lorem ipsum' will uncover many web sites still
                                     in their infancy. Various versions have evolved over the years, sometimes
                                 </p>
-                                <a href="booking-all.jsp">Book All</a>
-                                <a href="javascript:;">Read More..</a>
+                                <a class="btn" onclick="location.href='booking.jsp?doctor=all'">Book All</a>
+                                <a class="btn" href="javascript:;">Read More..</a>
                             </div>
                         </div>
 
@@ -99,7 +99,7 @@
                                                     <a href="doctor-profile.jsp" class="btn view-btn">View Profile</a>
                                                 </div>
                                                 <div class="col-6">
-                                                    <a href="booking.jsp" class="btn book-btn">Book Now</a>
+                                                    <a onclick="location.href='booking.jsp?doctor=doc'" class="btn book-btn">Book Now</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -145,8 +145,7 @@
                                                     <a href="doctor-profile.jsp" class="btn view-btn">View Profile</a>
                                                 </div>
                                                 <div class="col-6">
-                                                    <a href="booking.jsp" class="btn book-btn">Book Now</a>
-                                                </div>
+<a onclick="location.href='booking.jsp?doctor=doc'" class="btn book-btn">Book Now</a>                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -191,7 +190,7 @@
                                                     <a href="doctor-profile.jsp" class="btn view-btn">View Profile</a>
                                                 </div>
                                                 <div class="col-6">
-                                                    <a href="booking.jsp" class="btn book-btn">Book Now</a>
+                                                    <a onclick="location.href='booking.jsp?doctor=doc'" class="btn book-btn">Book Now</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -237,7 +236,7 @@
                                                     <a href="doctor-profile.jsp" class="btn view-btn">View Profile</a>
                                                 </div>
                                                 <div class="col-6">
-                                                    <a href="booking.jsp" class="btn book-btn">Book Now</a>
+                                                    <a onclick="location.href='booking.jsp?doctor=doc'" class="btn book-btn">Book Now</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -283,7 +282,7 @@
                                                     <a href="doctor-profile.jsp" class="btn view-btn">View Profile</a>
                                                 </div>
                                                 <div class="col-6">
-                                                    <a href="booking.jsp" class="btn book-btn">Book Now</a>
+                                                    <a onclick="location.href='booking.jsp?doctor=doc'" class="btn book-btn">Book Now</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -329,7 +328,7 @@
                                                     <a href="doctor-profile.jsp" class="btn view-btn">View Profile</a>
                                                 </div>
                                                 <div class="col-6">
-                                                    <a href="booking.jsp" class="btn book-btn">Book Now</a>
+                                                    <a onclick="location.href='booking.jsp?doctor=doc'" class="btn book-btn">Book Now</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -375,7 +374,7 @@
                                                     <a href="doctor-profile.jsp" class="btn view-btn">View Profile</a>
                                                 </div>
                                                 <div class="col-6">
-                                                    <a href="booking.jsp" class="btn book-btn">Book Now</a>
+                                                    <a onclick="location.href='booking.jsp?doctor=doc'" class="btn book-btn">Book Now</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -421,7 +420,7 @@
                                                     <a href="doctor-profile.jsp" class="btn view-btn">View Profile</a>
                                                 </div>
                                                 <div class="col-6">
-                                                    <a href="booking.jsp" class="btn book-btn">Book Now</a>
+                                                    <a onclick="location.href='booking.jsp?doctor=doc'" class="btn book-btn">Book Now</a>
                                                 </div>
                                             </div>
                                         </div>

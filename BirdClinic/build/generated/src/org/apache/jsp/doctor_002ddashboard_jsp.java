@@ -107,7 +107,7 @@ public final class doctor_002ddashboard_jsp extends org.apache.jasper.runtime.Ht
       out.write("                                                    <span>My Patients</span>\n");
       out.write("                                                </a>\n");
       out.write("                                            </li>\n");
-      out.write("                                            <li>\n");
+      out.write("<!--                                            <li>\n");
       out.write("                                                <a href=\"schedule-timings.html\">\n");
       out.write("                                                    <i class=\"fas fa-hourglass-start\"></i>\n");
       out.write("                                                    <span>Schedule Timings</span>\n");
@@ -143,7 +143,7 @@ public final class doctor_002ddashboard_jsp extends org.apache.jasper.runtime.Ht
       out.write("                                                    <i class=\"fas fa-share-alt\"></i>\n");
       out.write("                                                    <span>Social Media</span>\n");
       out.write("                                                </a>\n");
-      out.write("                                            </li>\n");
+      out.write("                                            </li>-->\n");
       out.write("                                            <li>\n");
       out.write("                                                <a href=\"doctor-change-password.html\">\n");
       out.write("                                                    <i class=\"fas fa-lock\"></i>\n");
