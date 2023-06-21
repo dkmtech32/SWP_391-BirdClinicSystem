@@ -23,20 +23,26 @@ import utils.DBUtils;
  */
 public class UserDAOImpl implements UserDAO {
 
-    private static final String READ_USER = "select userID, imageID, userName, userPassword, fullName, gender, email, userRole "
+    private static final String READ_USER
+            = "select userID, imageID, userName, userPassword, fullName, gender, email, userRole, status_ "
             + "from Users "
             + "where userID = ?";
-    private static final String READ_ALL_USER = "select userID, imageID, userName, userPassword, fullName, gender, email, userRole "
+    private static final String READ_ALL_USER
+            = "select userID, imageID, userName, userPassword, fullName, gender, email, userRole, status_ "
             + "from Users ";
-    private static final String LOGIN_USER = "select userID, imageID, userName, userPassword, fullName, gender, email, userRole "
+    private static final String LOGIN_USER
+            = "select userID, imageID, userName, userPassword, fullName, gender, email, userRole, status_ "
             + "from Users "
             + "where userName = ? and userPassword = ?";
-    private static final String INSERT_USER = "insert into Users(userID, imageID, userName, userPassword, fullName, gender, email, userRole) "
-            + "values (?, ?, ?, ?, ?, ?, ?, ?)";
-    private static final String DELETE_USER = "delete from Users "
+    private static final String INSERT_USER
+            = "insert into Users(userID, imageID, userName, userPassword, fullName, gender, email, userRole, status_) "
+            + "values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String DELETE_USER
+            = "delete from Users "
             + "where userID = ?";
-    private static final String UPDATE_USER = "update Users "
-            + "set imageID = ?, userName = ?, userPassword = ?, fullName = ?, gender = ?, email = ?, userRole = ? "
+    private static final String UPDATE_USER
+            = "update Users "
+            + "set imageID = ?, userName = ?, userPassword = ?, fullName = ?, gender = ?, email = ?, userRole = ?, status_ = ? "
             + "where userID = ?";
     private final ImageDAO imageDAO;
 
@@ -67,11 +73,12 @@ public class UserDAOImpl implements UserDAO {
                 result.setGender(rs.getString("gender"));
                 result.setUserRole(rs.getString("userRole"));
                 result.setUserName(rs.getString("userName"));
+                result.setStatus_(rs.getBoolean("status_"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
-            if (rs.next()) {
+            if (rs != null) {
                 rs.close();
             }
             if (stm != null) {
@@ -87,14 +94,14 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public UserDTO readUser(String userID, Connection con) throws SQLException {
-       PreparedStatement stm = null;
-       ResultSet rs = null;
-       UserDTO result = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        UserDTO result = null;
         try {
             stm = con.prepareStatement(READ_USER);
             stm.setString(1, userID);
             rs = stm.executeQuery();
-            
+
             if (rs.next()) {
                 result = new UserDTOImpl();
                 result.setUserID(userID);
@@ -105,13 +112,12 @@ public class UserDAOImpl implements UserDAO {
                 result.setGender(rs.getString("gender"));
                 result.setUserRole(rs.getString("userRole"));
                 result.setUserName(rs.getString("userName"));
+                result.setStatus_(rs.getBoolean("status_"));
             }
-        }
-
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
-            if (rs.next()) {
+            if (rs != null) {
                 rs.close();
             }
             if (stm != null) {
@@ -140,6 +146,7 @@ public class UserDAOImpl implements UserDAO {
             stm.setString(6, user.getGender());
             stm.setString(7, user.getEmail());
             stm.setString(8, user.getUserRole());
+            stm.setBoolean(9, user.isStatus_());
 
             result = stm.executeUpdate();
         } catch (SQLException ex) {
@@ -155,7 +162,7 @@ public class UserDAOImpl implements UserDAO {
 
         return result;
     }
-    
+
     @Override
     public int insertUser(UserDTO user, Connection con) throws SQLException {
         PreparedStatement stm = null;
@@ -171,6 +178,7 @@ public class UserDAOImpl implements UserDAO {
             stm.setString(6, user.getGender());
             stm.setString(7, user.getEmail());
             stm.setString(8, user.getUserRole());
+            stm.setBoolean(9, user.isStatus_());
 
             result = stm.executeUpdate();
         } catch (SQLException ex) {
@@ -209,7 +217,7 @@ public class UserDAOImpl implements UserDAO {
 
         return result;
     }
-    
+
     @Override
     public int deleteUser(String userID, Connection con) throws SQLException {
         PreparedStatement stm = null;
@@ -247,7 +255,8 @@ public class UserDAOImpl implements UserDAO {
             stm.setString(5, user.getGender());
             stm.setString(6, user.getEmail());
             stm.setString(7, user.getUserRole());
-            stm.setString(8, user.getUserID());
+            stm.setBoolean(8, user.isStatus_());
+            stm.setString(9, user.getUserID());
 
             result = stm.executeUpdate();
         } catch (SQLException ex) {
@@ -263,7 +272,7 @@ public class UserDAOImpl implements UserDAO {
 
         return result;
     }
-    
+
     @Override
     public int updateUser(UserDTO user, Connection con) throws SQLException {
         PreparedStatement stm = null;
@@ -278,7 +287,8 @@ public class UserDAOImpl implements UserDAO {
             stm.setString(5, user.getGender());
             stm.setString(6, user.getEmail());
             stm.setString(7, user.getUserRole());
-            stm.setString(8, user.getUserID());
+            stm.setBoolean(8, user.isStatus_());
+            stm.setString(9, user.getUserID());
 
             result = stm.executeUpdate();
         } catch (SQLException ex) {
@@ -316,11 +326,12 @@ public class UserDAOImpl implements UserDAO {
                 result.setGender(rs.getString("gender"));
                 result.setUserRole(rs.getString("userRole"));
                 result.setUserName(rs.getString("userName"));
+                result.setStatus_(rs.getBoolean("status_"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
-            if (rs.next()) {
+            if (rs != null) {
                 rs.close();
             }
             if (stm != null) {
@@ -356,16 +367,17 @@ public class UserDAOImpl implements UserDAO {
                 result.setGender(rs.getString("gender"));
                 result.setUserRole(rs.getString("userRole"));
                 result.setUserName(rs.getString("userName"));
+                result.setStatus_(rs.getBoolean("status_"));
 
                 if (userList == null) {
-                    userList = new ArrayList<UserDTO>();
+                    userList = new ArrayList<>();
                 }
                 userList.add(result);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
-            if (rs.next()) {
+            if (rs != null) {
                 rs.close();
             }
             if (stm != null) {
@@ -378,7 +390,7 @@ public class UserDAOImpl implements UserDAO {
 
         return userList;
     }
-    
+
     @Override
     public List<UserDTO> readAllUsers(Connection con) throws SQLException {
         Statement stm = null;
@@ -399,6 +411,7 @@ public class UserDAOImpl implements UserDAO {
                 result.setGender(rs.getString("gender"));
                 result.setUserRole(rs.getString("userRole"));
                 result.setUserName(rs.getString("userName"));
+                result.setStatus_(rs.getBoolean("status_"));
 
                 if (userList == null) {
                     userList = new ArrayList();
@@ -408,7 +421,7 @@ public class UserDAOImpl implements UserDAO {
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
-            if (rs.next()) {
+            if (rs != null) {
                 rs.close();
             }
             if (stm != null) {

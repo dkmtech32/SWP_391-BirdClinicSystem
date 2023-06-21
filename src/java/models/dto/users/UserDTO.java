@@ -29,6 +29,8 @@ public interface UserDTO extends Serializable {
     String getUserPassword();
 
     String getUserRole();
+    
+    boolean isStatus_();
 
     void setEmail(String email);
 
@@ -45,4 +47,6 @@ public interface UserDTO extends Serializable {
     void setUserPassword(String userPassword);
 
     void setUserRole(String userRole);
+    
+    void setStatus_(boolean status_);
 }

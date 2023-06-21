@@ -11,11 +11,9 @@ import models.dao.bird.BirdDAO;
 import models.dao.users.doctor.DoctorDAO;
 import models.dao.timeslot.TimeslotDAO;
 import models.dao.speciality.SpecialityDAO;
-import models.dao.users.customer.CustomerDAO;
 import models.dto.appointment.AppointmentDTO;
 import models.dto.appointment.AppointmentDTOImpl;
 import models.dto.bird.BirdDTO;
-import models.dto.users.customer.CustomerDTO;
 
 public class AppointmentDAOImpl implements AppointmentDAO {
 
@@ -26,6 +24,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
 
     private static final String READ_APPOINTMENT = "SELECT * FROM Appointment WHERE appointmentID = ?";
     private static final String READ_APPOINTMENT_BY_BIRD = "SELECT * FROM Appointment WHERE birdID = ?";
+    private static final String READ_APPOINTMENT_BY_CUSTOMER = "SELECT * FROM Appointment WHERE birdID = ?";
     private static final String READ_APPOINTMENT_BY_DOCTOR = "SELECT * FROM Appointment WHERE doctorID = ?";
     private static final String READ_APPOINTMENT_BY_TIMESLOT = "SELECT * FROM Appointment WHERE timeslotID = ?";
     private static final String DELETE_APPOINTMENT = "DELETE FROM Appointment WHERE appointmentID = ?";
@@ -250,7 +249,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             con = DBUtils.getConnection();
             List<BirdDTO> birds = BirdDAO.readAllBirdByCustomer(customerID, con);
             for (BirdDTO bird : birds) {
-                stm = con.prepareStatement(READ_APPOINTMENT_BY_BIRD);
+                stm = con.prepareStatement(READ_APPOINTMENT_BY_CUSTOMER);
                 stm.setString(1, bird.getBirdID());
                 rs = stm.executeQuery();
                 while (rs.next()) {
@@ -287,7 +286,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
         try {
             List<BirdDTO> birds = BirdDAO.readAllBirdByCustomer(customerID, con);
             for (BirdDTO bird : birds) {
-                stm = con.prepareStatement(READ_APPOINTMENT_BY_BIRD);
+                stm = con.prepareStatement(READ_APPOINTMENT_BY_CUSTOMER);
                 stm.setString(1, bird.getBirdID());
                 rs = stm.executeQuery();
                 while (rs.next()) {

@@ -20,8 +20,11 @@ public class UserDTOImpl implements UserDTO {
     private String gender;
     private String email;
     private String userRole;
+    private boolean status_;
 
-    public UserDTOImpl(String userID, ImageDTO image, String userName, String userPassword, String fullName, String gender, String email, String userRole) {
+    public UserDTOImpl(
+            String userID, ImageDTO image, String userName, String userPassword, 
+            String fullName, String gender, String email, String userRole, boolean status_) {
         this.userID = userID;
         this.image = image;
         this.userName = userName;
@@ -30,6 +33,7 @@ public class UserDTOImpl implements UserDTO {
         this.gender = gender;
         this.email = email;
         this.userRole = userRole;
+        this.status_ = status_;
     }
 
     public UserDTOImpl() {
@@ -114,6 +118,18 @@ public class UserDTOImpl implements UserDTO {
     public void setUserRole(String userRole) {
         this.userRole = userRole;
     }
+
+    @Override
+    public boolean isStatus_() {
+        return status_;
+    }
+
+    @Override
+    public void setStatus_(boolean status_) {
+        this.status_ = status_;
+    }
+    
+    
     
     protected void copyUser(UserDTO user) {
         this.setUserID(user.getUserID());
