@@ -2,10 +2,9 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/src/java/models/dao/feedback/FeedbackDAOImpl.java</file>
-            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/src/java/models/dao/medicalRecord/MedicalRecordDAOImpl.java</file>
-            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/src/java/models/dao/appointment/AppointmentDAOImpl.java</file>
+        <group name="PE sample">
+            <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/Common/header.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/Common/footer.jsp</file>
         </group>
     </open-files>
 </project-private>
