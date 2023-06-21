@@ -26,8 +26,8 @@
                                 <h1 class="display-3 text-white mb-3">Keep Your Bird Happy</h1>
                                 <h5 class="text-white mb-3 d-none d-sm-block">Duo nonumy et dolor tempor no et. Diam sit
                                     diam sit diam erat</h5>
-                                <!-- <a href="booking.html" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Book Now</a> -->
-                                <a href="service-detail.jsp" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn
+                                <!-- <a href="booking.jsp" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Book Now</a> -->
+                                <a href="service-list.jsp" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn
                                     More</a>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                                 <h5 class="text-white mb-3 d-none d-sm-block">Duo nonumy et dolor tempor no et. Diam sit
                                     diam sit diam erat</h5>
                                 <!-- <a href="" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Book Now</a> -->
-                                <a href="service-detail.html" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn
+                                <a href="service-list.jsp" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn
                                     More</a>
                             </div>
                         </div>
@@ -90,7 +90,7 @@
                                 <h5><i class="fa fa-check-double text-secondary mr-3"></i>24/7 Customer Support</h5>
                             </li>
                         </ul>
-                        <a href="" class="btn btn-lg btn-primary mt-3 px-4">Learn More</a>
+                        <a href="service-list.jsp" class="btn btn-lg btn-primary mt-3 px-4">Learn More</a>
                     </div>
                     <div class="col-lg-5">
                         <div class="row px-3">

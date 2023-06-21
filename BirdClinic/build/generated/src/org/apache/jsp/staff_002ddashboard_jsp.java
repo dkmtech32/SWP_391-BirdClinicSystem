@@ -245,9 +245,9 @@ public final class staff_002ddashboard_jsp extends org.apache.jasper.runtime.Htt
       out.write("                                                                    <tr>\n");
       out.write("                                                                        <th>Customer Name</th>\n");
       out.write("                                                                        <th>Appt Date</th>\n");
-      out.write("                                                                        <th>Bird Name</th>\n");
-      out.write("                                                                        <th>Bird Breed</th>\n");
+      out.write("                                                                        <th>Bird Name</th>                                                                  \n");
       out.write("                                                                        <th class=\"text-center\">Doctor</th>\n");
+      out.write("                                                                        <th>Status</th>\n");
       out.write("                                                                        <th></th>\n");
       out.write("                                                                    </tr>\n");
       out.write("                                                                </thead>\n");
@@ -267,10 +267,10 @@ public final class staff_002ddashboard_jsp extends org.apache.jasper.runtime.Htt
       out.write("                                                                                <a href=\"patient-profile.html\" class=\"avatar avatar-sm mr-2\"\n");
       out.write("                                                                                   ><img class=\"avatar-img rounded-circle\" src=\"assets/img/bird/bird-2.webp\" alt=\"User Image\"\n");
       out.write("                                                                                      /></a>\n");
-      out.write("                                                                                <a href=\"patient-profile.html\">Bird123 <span>#PT0016</span></a>\n");
+      out.write("                                                                                <a href=\"patient-profile.html\">Bird123 <span>Parrot african</span></a>\n");
       out.write("                                                                            </h2>\n");
       out.write("                                                                        </td>\n");
-      out.write("                                                                        <td>Parrot african</td>\n");
+      out.write("                                                                       \n");
       out.write("                                                                        <td class=\"text-center\">\n");
       out.write("                                                                            <div class=\"d-flex justify-content-center\">\n");
       out.write("                                                                                <select class=\"form-control select w-75\">\n");
@@ -280,6 +280,8 @@ public final class staff_002ddashboard_jsp extends org.apache.jasper.runtime.Htt
       out.write("                                                                                </select>\n");
       out.write("                                                                            </div>\n");
       out.write("                                                                        </td>\n");
+      out.write("                                                                        \n");
+      out.write("                                                                        <td><span class=\"badge badge-pill bg-danger-light\">Cancelled</span></td>\n");
       out.write("\n");
       out.write("                                                                        <td class=\"text-right\">\n");
       out.write("                                                                            <div class=\"table-action\">\n");
@@ -305,7 +307,7 @@ public final class staff_002ddashboard_jsp extends org.apache.jasper.runtime.Htt
       out.write("                                                                                <a href=\"patient-profile.html\" class=\"avatar avatar-sm mr-2\"\n");
       out.write("                                                                                   ><img class=\"avatar-img rounded-circle\" src=\"assets/img/bird/bird-1.webp\" alt=\"User Image\"\n");
       out.write("                                                                                      /></a>\n");
-      out.write("                                                                                <a href=\"patient-profile.html\">Bird123 <span>#PT0016</span></a>\n");
+      out.write("                                                                                <a href=\"patient-profile.html\">Bird123 <span>Parrot african</span></a>\n");
       out.write("                                                                            </h2>\n");
       out.write("                                                                        </td>\n");
       out.write("                                                                        <td>Parrot african</td>\n");
@@ -343,7 +345,7 @@ public final class staff_002ddashboard_jsp extends org.apache.jasper.runtime.Htt
       out.write("                                                                                <a href=\"patient-profile.html\" class=\"avatar avatar-sm mr-2\"\n");
       out.write("                                                                                   ><img class=\"avatar-img rounded-circle\" src=\"assets/img/bird/bird-3.jpg\" alt=\"User Image\"\n");
       out.write("                                                                                      /></a>\n");
-      out.write("                                                                                <a href=\"patient-profile.html\">Bird123 <span>#PT0016</span></a>\n");
+      out.write("                                                                                <a href=\"patient-profile.html\">Bird123 <span>Parrot african</span></a>\n");
       out.write("                                                                            </h2>\n");
       out.write("                                                                        </td>\n");
       out.write("                                                                        <td>Parrot african</td>\n");
@@ -381,7 +383,7 @@ public final class staff_002ddashboard_jsp extends org.apache.jasper.runtime.Htt
       out.write("                                                                                <a href=\"patient-profile.html\" class=\"avatar avatar-sm mr-2\"\n");
       out.write("                                                                                   ><img class=\"avatar-img rounded-circle\" src=\"assets/img/bird/bird-4.jpg\" alt=\"User Image\"\n");
       out.write("                                                                                      /></a>\n");
-      out.write("                                                                                <a href=\"patient-profile.html\">Bird123 <span>#PT0016</span></a>\n");
+      out.write("                                                                                <a href=\"patient-profile.html\">Bird123 <span>Parrot african</span></a>\n");
       out.write("                                                                            </h2>\n");
       out.write("                                                                        </td>\n");
       out.write("                                                                        <td>Parrot african</td>\n");

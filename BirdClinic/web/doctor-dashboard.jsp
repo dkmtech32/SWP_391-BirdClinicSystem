@@ -45,68 +45,68 @@
                                     <nav class="dashboard-menu">
                                         <ul>
                                             <li class="active">
-                                                <a href="doctor-dashboard.html">
+                                                <a href="doctor-dashboard.jsp">
                                                     <i class="fas fa-columns"></i>
                                                     <span>Dashboard</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="appointments.html">
+                                                <a href="appointments.jsp">
                                                     <i class="fas fa-calendar-check"></i>
                                                     <span>Appointments</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="my-patients.html">
+                                                <a href="my-patients.jsp">
                                                     <i class="fas fa-user-injured"></i>
                                                     <span>My Patients</span>
                                                 </a>
                                             </li>
 <!--                                            <li>
-                                                <a href="schedule-timings.html">
+                                                <a href="schedule-timings.jsp">
                                                     <i class="fas fa-hourglass-start"></i>
                                                     <span>Schedule Timings</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="invoices.html">
+                                                <a href="invoices.jsp">
                                                     <i class="fas fa-file-invoice"></i>
                                                     <span>Invoices</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="reviews.html">
+                                                <a href="reviews.jsp">
                                                     <i class="fas fa-star"></i>
                                                     <span>Reviews</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="chat-doctor.html">
+                                                <a href="chat-doctor.jsp">
                                                     <i class="fas fa-comments"></i>
                                                     <span>Message</span>
                                                     <small class="unread-msg">23</small>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="doctor-profile-settings.html">
+                                                <a href="doctor-profile-settings.jsp">
                                                     <i class="fas fa-user-cog"></i>
                                                     <span>Profile Settings</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="social-media.html">
+                                                <a href="social-media.jsp">
                                                     <i class="fas fa-share-alt"></i>
                                                     <span>Social Media</span>
                                                 </a>
                                             </li>-->
                                             <li>
-                                                <a href="doctor-change-password.html">
+                                                <a href="doctor-change-password.jsp">
                                                     <i class="fas fa-lock"></i>
                                                     <span>Change Password</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="index.html">
+                                                <a href="index.jsp">
                                                     <i class="fas fa-sign-out-alt"></i>
                                                     <span>Logout</span>
                                                 </a>
@@ -210,19 +210,19 @@
                                                                     <tr>
                                                                         <td>
                                                                             <h2 class="table-avatar">
-                                                                                <a href="patient-profile.html" class="avatar avatar-sm mr-2"
+                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
                                                                                    ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
                                                                                       /></a>
-                                                                                <a href="patient-profile.html">Richard Wilson <span>#PT0016</span></a>
+                                                                                <a href="patient-profile.jsp">Richard Wilson <span>#PT0016</span></a>
                                                                             </h2>
                                                                         </td>
                                                                         <td>11 Nov 2019 <span class="d-block text-info">7.00 AM</span></td>
                                                                         <td>
                                                                             <h2 class="table-avatar">
-                                                                                <a href="patient-profile.html" class="avatar avatar-sm mr-2"
+                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
                                                                                    ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
                                                                                       /></a>
-                                                                                <a href="patient-profile.html">Bird123 <span>#PT0016</span></a>
+                                                                                <a href="patient-profile.jsp">Bird123 <span>#PT0016</span></a>
                                                                             </h2>
                                                                         </td>
                                                                         <td>Parrot african</td>
@@ -239,7 +239,7 @@
                                                                         <td class="text-right">
                                                                             <div class="table-action">
                                                                                 <a href="" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                <a href="add-prescription.html" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
+                                                                                <a href="add-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
 
                                                                             </div>
                                                                         </td>
@@ -247,19 +247,19 @@
                                                                     <tr>
                                                                         <td>
                                                                             <h2 class="table-avatar">
-                                                                                <a href="patient-profile.html" class="avatar avatar-sm mr-2"
+                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
                                                                                    ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
                                                                                       /></a>
-                                                                                <a href="patient-profile.html">Richard Wilson <span>#PT0016</span></a>
+                                                                                <a href="patient-profile.jsp">Richard Wilson <span>#PT0016</span></a>
                                                                             </h2>
                                                                         </td>
                                                                         <td>11 Nov 2019 <span class="d-block text-info">12.00 AM</span></td>
                                                                         <td>
                                                                             <h2 class="table-avatar">
-                                                                                <a href="patient-profile.html" class="avatar avatar-sm mr-2"
+                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
                                                                                    ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-1.webp" alt="User Image"
                                                                                       /></a>
-                                                                                <a href="patient-profile.html">Bird123 <span>#PT0016</span></a>
+                                                                                <a href="patient-profile.jsp">Bird123 <span>#PT0016</span></a>
                                                                             </h2>
                                                                         </td>
                                                                         <td>Parrot african</td>
@@ -276,7 +276,7 @@
                                                                         <td class="text-right">
                                                                             <div class="table-action">
                                                                                 <a href="javascript:void(0);" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                <a href="add-prescription.html" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
+                                                                                <a href="add-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
 
                                                                             </div>
                                                                         </td>
@@ -284,19 +284,19 @@
                                                                     <tr>
                                                                         <td>
                                                                             <h2 class="table-avatar">
-                                                                                <a href="patient-profile.html" class="avatar avatar-sm mr-2"
+                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
                                                                                    ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
                                                                                       /></a>
-                                                                                <a href="patient-profile.html">Richard Wilson <span>#PT0016</span></a>
+                                                                                <a href="patient-profile.jsp">Richard Wilson <span>#PT0016</span></a>
                                                                             </h2>
                                                                         </td>
                                                                         <td>11 Nov 2019 <span class="d-block text-info">1.00 PM</span></td>
                                                                         <td>
                                                                             <h2 class="table-avatar">
-                                                                                <a href="patient-profile.html" class="avatar avatar-sm mr-2"
+                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
                                                                                    ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-3.jpg" alt="User Image"
                                                                                       /></a>
-                                                                                <a href="patient-profile.html">Bird123 <span>#PT0016</span></a>
+                                                                                <a href="patient-profile.jsp">Bird123 <span>#PT0016</span></a>
                                                                             </h2>
                                                                         </td>
                                                                         <td>Parrot african</td>
@@ -313,7 +313,7 @@
                                                                         <td class="text-right">
                                                                             <div class="table-action">
                                                                                 <a href="javascript:void(0);" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                <a href="add-prescription.html" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
+                                                                                <a href="add-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
 
                                                                             </div>
                                                                         </td>
@@ -321,19 +321,19 @@
                                                                     <tr>
                                                                         <td>
                                                                             <h2 class="table-avatar">
-                                                                                <a href="patient-profile.html" class="avatar avatar-sm mr-2"
+                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
                                                                                    ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
                                                                                       /></a>
-                                                                                <a href="patient-profile.html">Richard Wilson <span>#PT0016</span></a>
+                                                                                <a href="patient-profile.jsp">Richard Wilson <span>#PT0016</span></a>
                                                                             </h2>
                                                                         </td>
                                                                         <td>11 Nov 2019 <span class="d-block text-info">3.00 PM</span></td>
                                                                         <td>
                                                                             <h2 class="table-avatar">
-                                                                                <a href="patient-profile.html" class="avatar avatar-sm mr-2"
+                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
                                                                                    ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-4.jpg" alt="User Image"
                                                                                       /></a>
-                                                                                <a href="patient-profile.html">Bird123 <span>#PT0016</span></a>
+                                                                                <a href="patient-profile.jsp">Bird123 <span>#PT0016</span></a>
                                                                             </h2>
                                                                         </td>
                                                                         <td>Parrot african</td>
@@ -350,7 +350,7 @@
                                                                         <td class="text-right">
                                                                             <div class="table-action">
                                                                                 <a href="javascript:void(0);" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                <a href="add-prescription.html;" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
+                                                                                <a href="add-prescription.jsp;" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
 
                                                                             </div>
                                                                         </td>
@@ -383,10 +383,10 @@
                                                                     <tr>
                                                                         <td>
                                                                             <h2 class="table-avatar">
-                                                                                <a href="patient-profile.html" class="avatar avatar-sm mr-2"
+                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
                                                                                    ><img class="avatar-img rounded-circle" src="assets/img/patients/patient6.jpg" alt="User Image"
                                                                                       /></a>
-                                                                                <a href="patient-profile.html">Elsie Gilley <span>#PT0006</span></a>
+                                                                                <a href="patient-profile.jsp">Elsie Gilley <span>#PT0006</span></a>
                                                                             </h2>
                                                                         </td>
                                                                         <td>14 Nov 2019 <span class="d-block text-info">6.00 PM</span></td>
@@ -396,7 +396,7 @@
                                                                         <td class="text-right">
                                                                             <div class="table-action">
                                                                                 <a href="javascript:void(0);" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                <a href="add-prescription.html" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
+                                                                                <a href="add-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
 
                                                                             </div>
                                                                         </td>
@@ -404,10 +404,10 @@
                                                                     <tr>
                                                                         <td>
                                                                             <h2 class="table-avatar">
-                                                                                <a href="patient-profile.html" class="avatar avatar-sm mr-2"
+                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
                                                                                    ><img class="avatar-img rounded-circle" src="assets/img/patients/patient7.jpg" alt="User Image"
                                                                                       /></a>
-                                                                                <a href="patient-profile.html">Joan Gardner <span>#PT0006</span></a>
+                                                                                <a href="patient-profile.jsp">Joan Gardner <span>#PT0006</span></a>
                                                                             </h2>
                                                                         </td>
                                                                         <td>14 Nov 2019 <span class="d-block text-info">5.00 PM</span></td>
@@ -417,7 +417,7 @@
                                                                         <td class="text-right">
                                                                             <div class="table-action">
                                                                                 <a href="javascript:void(0);" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                <a href="add-prescription.html" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
+                                                                                <a href="add-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
 
                                                                             </div>
                                                                         </td>
@@ -425,10 +425,10 @@
                                                                     <tr>
                                                                         <td>
                                                                             <h2 class="table-avatar">
-                                                                                <a href="patient-profile.html" class="avatar avatar-sm mr-2"
+                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
                                                                                    ><img class="avatar-img rounded-circle" src="assets/img/patients/patient8.jpg" alt="User Image"
                                                                                       /></a>
-                                                                                <a href="patient-profile.html">Daniel Griffing <span>#PT0007</span></a>
+                                                                                <a href="patient-profile.jsp">Daniel Griffing <span>#PT0007</span></a>
                                                                             </h2>
                                                                         </td>
                                                                         <td>14 Nov 2019 <span class="d-block text-info">3.00 PM</span></td>
@@ -438,7 +438,7 @@
                                                                         <td class="text-right">
                                                                             <div class="table-action">
                                                                                 <a href="javascript:void(0);" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                <a href="add-prescription.html" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>																			
+                                                                                <a href="add-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>																			
 
                                                                             </div>
                                                                         </td>
@@ -446,10 +446,10 @@
                                                                     <tr>
                                                                         <td>
                                                                             <h2 class="table-avatar">
-                                                                                <a href="patient-profile.html" class="avatar avatar-sm mr-2"
+                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
                                                                                    ><img class="avatar-img rounded-circle" src="assets/img/patients/patient9.jpg" alt="User Image"
                                                                                       /></a>
-                                                                                <a href="patient-profile.html">Walter Roberson <span>#PT0008</span></a>
+                                                                                <a href="patient-profile.jsp">Walter Roberson <span>#PT0008</span></a>
                                                                             </h2>
                                                                         </td>
                                                                         <td>14 Nov 2019 <span class="d-block text-info">1.00 PM</span></td>
@@ -459,7 +459,7 @@
                                                                         <td class="text-right">
                                                                             <div class="table-action">
                                                                                 <a href="javascript:void(0);" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                <a href="add-prescription.html" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>																				
+                                                                                <a href="add-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>																				
 
                                                                             </div>
                                                                         </td>
@@ -467,10 +467,10 @@
                                                                     <tr>
                                                                         <td>
                                                                             <h2 class="table-avatar">
-                                                                                <a href="patient-profile.html" class="avatar avatar-sm mr-2"
+                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
                                                                                    ><img class="avatar-img rounded-circle" src="assets/img/patients/patient10.jpg" alt="User Image"
                                                                                       /></a>
-                                                                                <a href="patient-profile.html">Robert Rhodes <span>#PT0010</span></a>
+                                                                                <a href="patient-profile.jsp">Robert Rhodes <span>#PT0010</span></a>
                                                                             </h2>
                                                                         </td>
                                                                         <td>14 Nov 2019 <span class="d-block text-info">5.00 PM</span></td>
@@ -480,7 +480,7 @@
                                                                         <td class="text-right">
                                                                             <div class="table-action">
                                                                                 <a href="javascript:void(0);" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                <a href="add-prescription.html" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>																			
+                                                                                <a href="add-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>																			
 
                                                                             </div>
                                                                         </td>
@@ -488,10 +488,10 @@
                                                                     <tr>
                                                                         <td>
                                                                             <h2 class="table-avatar">
-                                                                                <a href="patient-profile.html" class="avatar avatar-sm mr-2"
+                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
                                                                                    ><img class="avatar-img rounded-circle" src="assets/img/patients/patient11.jpg" alt="User Image"
                                                                                       /></a>
-                                                                                <a href="patient-profile.html">Harry Williams <span>#PT0011</span></a>
+                                                                                <a href="patient-profile.jsp">Harry Williams <span>#PT0011</span></a>
                                                                             </h2>
                                                                         </td>
                                                                         <td>14 Nov 2019 <span class="d-block text-info">11.00 AM</span></td>
@@ -501,7 +501,7 @@
                                                                         <td class="text-right">
                                                                             <div class="table-action">
                                                                                 <a href="javascript:void(0);" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                <a href="add-prescription.html" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
+                                                                                <a href="add-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
 
                                                                             </div>
                                                                         </td>

@@ -27,23 +27,30 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="booking-doc-info">
-                                        <a href="doctor-profile.jsp" class="booking-doc-img">
-                                            <img src="assets/img/logo2.png" alt="User Image" />
-                                        </a>
-                                        <div class="booking-info">
-                                            <h4><a href="doctor-profile.jsp">All doctor</a></h4>
-                                            <!-- <div class="rating">
-                                                    <i class="fas fa-star filled"></i>
-                                                    <i class="fas fa-star filled"></i>
-                                                    <i class="fas fa-star filled"></i>
-                                                    <i class="fas fa-star filled"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <span class="d-inline-block average-rating">35</span>
-                                            </div> -->
-                                            <p class="text-muted mb-0"><i class="fas fa-map-marker-alt"></i> Dong Da district, Hanoi city</p>
-                                        </div>
-                                    </div>
+                                    <c:choose>
+                                        <c:when test="${param.doctor == 'all'}">
+                                            <div class="booking-doc-info">
+                                                <a href="doctor-profile.jsp" class="booking-doc-img">
+                                                    <img src="assets/img/logo2.png" alt="User Image" />
+                                                </a>
+                                                <div class="booking-info">
+                                                    <h4><a href="doctor-profile.jsp">All doctor</a></h4>
+                                                    <p class="text-muted mb-0"><i class="fas fa-map-marker-alt"></i> Dong Da district, Hanoi city</p>
+                                                </div>
+                                            </div>
+                                        </c:when>
+                                        <c:when test="${param.doctor == 'doc'}">
+                                            <div class="booking-doc-info">
+                                                <a href="doctor-profile.html" class="booking-doc-img">
+                                                    <img src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image" />
+                                                </a>
+                                                <div class="booking-info">
+                                                    <h4><a href="doctor-profile.html">Dr. ABC</a></h4>
+                                                    <p class="text-muted mb-0"><i class="fas fa-map-marker-alt"></i> Dong Da district, Hanoi city</p>
+                                                </div>
+                                            </div>
+                                        </c:when>                                       
+                                    </c:choose>
                                 </div>
                             </div>
 
@@ -154,9 +161,19 @@
                             <!-- /Schedule Widget -->
 
                             <!-- Submit Section -->
-                            <div class="submit-section proceed-btn text-right">
-                                <a href="bookInfo-all.jsp" class="btn btn-primary submit-btn">Next</a>
-                            </div>
+                            <c:choose>
+                                <c:when test="${param.doctor == 'all'}">                                 
+                                    <div class="submit-section proceed-btn text-right">
+                                        <a onclick="location.href='bookInfo.jsp?doctor=all'" class="btn btn-primary submit-btn">Next</a>
+                                    </div>
+                                </c:when>
+                                <c:when test="${param.doctor == 'doc'}">
+                                   <div class="submit-section proceed-btn text-right">
+                                        <a onclick="location.href='bookInfo.jsp?doctor=doc'" class="btn btn-primary submit-btn">Next</a>
+                                    </div>
+                                </c:when>                                       
+                            </c:choose>
+
                             <!-- /Submit Section -->
                         </div>
                     </div>

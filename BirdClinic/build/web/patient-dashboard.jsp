@@ -63,7 +63,7 @@
                                                             <small class="unread-msg">23</small>
                                                     </a>
                                             </li> -->
-                                            <li class="active">
+                                            <li>
                                                 <a href="birdlist.jsp">
                                                     <i class="fa fa-tasks"></i>
                                                     <span>Birds List</span>

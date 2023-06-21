@@ -1572,8 +1572,8 @@ button.bg-danger:hover {
 	-moz-osx-font-smoothing: grayscale;
 }
 .slick-prev {
-	left: 0;
-	z-index: 1;
+	right: 0;
+        z-index: 1;
 }
 [dir='rtl'] .slick-prev {
 	right: -25px;
@@ -1586,7 +1586,8 @@ button.bg-danger:hover {
 	content: '→';
 }
 .slick-next {
-	right: 0;
+	left: 0;
+        z-index: 1;
 }
 [dir='rtl'] .slick-next {
 	right: auto;
@@ -6837,24 +6838,7 @@ html.menu-opened body {
 
 
 /* birdlist & assignbird (remove later) */
-.add-more{
-    background-color: #d95e33;
-    border: 1px solid #d95e33;
-    margin-top: 2rem;
-    padding: 1rem 2rem;
-    border-radius: 10px;
-}
-.add-more a{
-    color: white;
-    font-size: 20px;
-}
-.add-more a:hover{
-    color: grey;
-}
-.assign-pet-container{
-    margin: 5% 10%;
-}
-.input-boxes{
+/*.input-boxes{
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
@@ -6926,5 +6910,5 @@ html.menu-opened body {
 .assign-pet h2{
     color: #d95e33;
     font-size: 40px;
-}
+}*/
 /* birdlist & assignbird (remove later) */
