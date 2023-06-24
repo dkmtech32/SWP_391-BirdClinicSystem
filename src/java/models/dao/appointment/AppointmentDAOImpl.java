@@ -10,7 +10,7 @@ import java.util.List;
 import models.dao.bird.BirdDAO;
 import models.dao.users.doctor.DoctorDAO;
 import models.dao.timeslot.TimeslotDAO;
-import models.dao.speciality.SpecialityDAO;
+import models.dao.service_.Service_DAO;
 import models.dto.appointment.AppointmentDTO;
 import models.dto.appointment.AppointmentDTOImpl;
 import models.dto.bird.BirdDTO;
@@ -19,23 +19,22 @@ public class AppointmentDAOImpl implements AppointmentDAO {
 
     private final BirdDAO BirdDAO;
     private final DoctorDAO DoctorDAO;
-    private final SpecialityDAO SpecialityDAO;
+    private final Service_DAO Service_DAO;
     private final TimeslotDAO TimeslotDAO;
 
     private static final String READ_APPOINTMENT = "SELECT * FROM Appointment WHERE appointmentID = ?";
     private static final String READ_APPOINTMENT_BY_BIRD = "SELECT * FROM Appointment WHERE birdID = ?";
-    private static final String READ_APPOINTMENT_BY_CUSTOMER = "SELECT * FROM Appointment WHERE birdID = ?";
     private static final String READ_APPOINTMENT_BY_DOCTOR = "SELECT * FROM Appointment WHERE doctorID = ?";
     private static final String READ_APPOINTMENT_BY_TIMESLOT = "SELECT * FROM Appointment WHERE timeslotID = ?";
     private static final String DELETE_APPOINTMENT = "DELETE FROM Appointment WHERE appointmentID = ?";
-    private static final String INSERT_APPOINTMENT = "INSERT INTO Appointment (appointmentID, birdID, doctorID, timeslotID, specialityID, appTime, notes, payment, appStatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    private static final String UPDATE_APPOINTMENT = "UPDATE Appointment SET birdID = ?, doctorID = ?, timeslotID = ?, specialityID = ?, appTime = ?, notes = ?, payment = ?, appStatus = ? WHERE appointmentID = ?";
+    private static final String INSERT_APPOINTMENT = "INSERT INTO Appointment (appointmentID, birdID, doctorID, timeslotID, serviceID, appTime, notes, payment, appStatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String UPDATE_APPOINTMENT = "UPDATE Appointment SET birdID = ?, doctorID = ?, timeslotID = ?, serviceID = ?, appTime = ?, notes = ?, payment = ?, appStatus = ? WHERE appointmentID = ?";
 
     public AppointmentDAOImpl(BirdDAO birdDAO, DoctorDAO doctorDAO,
-            SpecialityDAO specialityDAO, TimeslotDAO timeslotDAO) {
+            Service_DAO service_DAO, TimeslotDAO timeslotDAO) {
         BirdDAO = birdDAO;
         DoctorDAO = doctorDAO;
-        SpecialityDAO = specialityDAO;
+        Service_DAO = service_DAO;
         TimeslotDAO = timeslotDAO;
     }
 
@@ -249,7 +248,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             con = DBUtils.getConnection();
             List<BirdDTO> birds = BirdDAO.readAllBirdByCustomer(customerID, con);
             for (BirdDTO bird : birds) {
-                stm = con.prepareStatement(READ_APPOINTMENT_BY_CUSTOMER);
+                stm = con.prepareStatement(READ_APPOINTMENT_BY_BIRD);
                 stm.setString(1, bird.getBirdID());
                 rs = stm.executeQuery();
                 while (rs.next()) {
@@ -286,7 +285,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
         try {
             List<BirdDTO> birds = BirdDAO.readAllBirdByCustomer(customerID, con);
             for (BirdDTO bird : birds) {
-                stm = con.prepareStatement(READ_APPOINTMENT_BY_CUSTOMER);
+                stm = con.prepareStatement(READ_APPOINTMENT_BY_BIRD);
                 stm.setString(1, bird.getBirdID());
                 rs = stm.executeQuery();
                 while (rs.next()) {
@@ -438,7 +437,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             stm.setString(2, appointment.getBird().getBirdID());
             stm.setString(3, appointment.getDoctor().getUserID());
             stm.setString(4, appointment.getTimeslot().getTimeSlotID());
-            stm.setString(5, appointment.getSpeciality().getSpecialityID());
+            stm.setString(5, appointment.getService_().getServiceID());
             stm.setTimestamp(6, appointment.getAppTime());
             stm.setString(7, appointment.getNotes());
             stm.setString(8, appointment.getPayment());
@@ -469,7 +468,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             stm.setString(2, appointment.getBird().getBirdID());
             stm.setString(3, appointment.getDoctor().getUserID());
             stm.setString(4, appointment.getTimeslot().getTimeSlotID());
-            stm.setString(5, appointment.getSpeciality().getSpecialityID());
+            stm.setString(5, appointment.getService_().getServiceID());
             stm.setTimestamp(6, appointment.getAppTime());
             stm.setString(7, appointment.getNotes());
             stm.setString(8, appointment.getPayment());
@@ -499,7 +498,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             stm.setString(2, appointment.getBird().getBirdID());
             stm.setString(3, appointment.getDoctor().getUserID());
             stm.setString(4, appointment.getTimeslot().getTimeSlotID());
-            stm.setString(5, appointment.getSpeciality().getSpecialityID());
+            stm.setString(5, appointment.getService_().getServiceID());
             stm.setTimestamp(6, appointment.getAppTime());
             stm.setString(7, appointment.getNotes());
             stm.setString(8, appointment.getPayment());
@@ -530,7 +529,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             stm.setString(2, appointment.getBird().getBirdID());
             stm.setString(3, appointment.getDoctor().getUserID());
             stm.setString(4, appointment.getTimeslot().getTimeSlotID());
-            stm.setString(5, appointment.getSpeciality().getSpecialityID());
+            stm.setString(5, appointment.getService_().getServiceID());
             stm.setTimestamp(6, appointment.getAppTime());
             stm.setString(7, appointment.getNotes());
             stm.setString(8, appointment.getPayment());
@@ -553,7 +552,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
         appointment.setBird(BirdDAO.readBird(rs.getString("birdID"), con));
         appointment.setDoctor(DoctorDAO.readDoctor("doctorID"));
         appointment.setTimeslot(TimeslotDAO.readTimeSlot("timeslotID"));
-        appointment.setSpeciality(SpecialityDAO.readSpeciality("specialityID"));
+        appointment.setService_(Service_DAO.readService_("serviceID"));
         appointment.setAppTime(rs.getTimestamp("appTime"));
         appointment.setNotes(rs.getString("notes"));
         appointment.setPayment(rs.getString("payment"));
