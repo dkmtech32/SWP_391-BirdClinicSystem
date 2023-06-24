@@ -7,14 +7,16 @@
             <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/Common/footer.jsp</file>
         </group>
         <group>
-            <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/index.jsp</file>
-            <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/Common/head.jsp</file>
-            <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/booking-list.jsp</file>
-            <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/booking.jsp</file>
-            <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/booking-success.jsp</file>
-            <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/customer-dashboard.jsp</file>
-            <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/bookInfo.jsp</file>
-            <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/doctor-dashboard.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/Customer/bookInfo.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/Customer/birdlist.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/Customer/assignBird.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/Customer/booking-success.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/Common/script.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/Staff/staff-dashboard.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/blog-detail.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/Doctor/doctor-dashboard.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/Doctor/add-prescription.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/Customer/customer-dashboard.jsp</file>
         </group>
     </open-files>
 </project-private>

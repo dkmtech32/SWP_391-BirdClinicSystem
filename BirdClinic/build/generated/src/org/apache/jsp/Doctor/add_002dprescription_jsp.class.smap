@@ -1,0 +1,20 @@
+SMAP
+add_002dprescription_jsp.java
+JSP
+*S JSP
+*F
++ 0 add-prescription.jsp
+Doctor/add-prescription.jsp
+*L
+5,6:44
+11:50,3
+12,4:53
+16:57,3
+17,3:60
+20:63,3
+21,224:66
+245:290,3
+246,5:293
+251:298,3
+252,4:301
+*E
