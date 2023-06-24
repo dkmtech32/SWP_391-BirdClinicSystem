@@ -8,7 +8,7 @@ package models.dto.appointment;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import models.dto.bird.BirdDTO;
-import models.dto.speciality.SpecialityDTO;
+import models.dto.service_.Service_DTO;
 import models.dto.timeslot.TimeslotDTO;
 import models.dto.users.doctor.DoctorDTO;
 
@@ -32,7 +32,7 @@ public interface AppointmentDTO extends Serializable {
 
     String getPayment();
 
-    SpecialityDTO getSpeciality();
+    Service_DTO getService_();
 
     TimeslotDTO getTimeslot();
 
@@ -50,7 +50,7 @@ public interface AppointmentDTO extends Serializable {
 
     void setPayment(String payment);
 
-    void setSpeciality(SpecialityDTO speciality);
+    void setService_(Service_DTO service_);
 
     void setTimeslot(TimeslotDTO timeslot);
     
