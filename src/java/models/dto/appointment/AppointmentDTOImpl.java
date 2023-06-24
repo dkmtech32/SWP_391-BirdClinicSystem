@@ -7,7 +7,7 @@ package models.dto.appointment;
 
 import java.sql.Timestamp;
 import models.dto.bird.BirdDTO;
-import models.dto.speciality.SpecialityDTO;
+import models.dto.service_.Service_DTO;
 import models.dto.timeslot.TimeslotDTO;
 import models.dto.users.doctor.DoctorDTO;
 
@@ -20,7 +20,7 @@ public class AppointmentDTOImpl implements AppointmentDTO {
     private BirdDTO bird;
     private DoctorDTO doctor;
     private TimeslotDTO timeslot;
-    private SpecialityDTO speciality;
+    private Service_DTO service_;
     private Timestamp appTime;
     private String notes;
     private String payment;
@@ -29,12 +29,12 @@ public class AppointmentDTOImpl implements AppointmentDTO {
     public AppointmentDTOImpl() {
     }
 
-    public AppointmentDTOImpl(String appointmentID, BirdDTO bird, DoctorDTO doctor, TimeslotDTO timeslot, SpecialityDTO speciality, Timestamp appTime, String notes, String payment, String appStatus) {
+    public AppointmentDTOImpl(String appointmentID, BirdDTO bird, DoctorDTO doctor, TimeslotDTO timeslot, Service_DTO service_, Timestamp appTime, String notes, String payment, String appStatus) {
         this.appointmentID = appointmentID;
         this.bird = bird;
         this.doctor = doctor;
         this.timeslot = timeslot;
-        this.speciality = speciality;
+        this.service_ = service_;
         this.appTime = appTime;
         this.notes = notes;
         this.payment = payment;
@@ -82,13 +82,13 @@ public class AppointmentDTOImpl implements AppointmentDTO {
     }
 
     @Override
-    public SpecialityDTO getSpeciality() {
-        return speciality;
+    public Service_DTO getService_() {
+        return service_;
     }
 
     @Override
-    public void setSpeciality(SpecialityDTO speciality) {
-        this.speciality = speciality;
+    public void setService_(Service_DTO service_) {
+        this.service_ = service_;
     }
 
     @Override
