@@ -1,4 +1,4 @@
-package org.apache.jsp;
+package org.apache.jsp.Common;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -48,20 +48,20 @@ public final class booking_002dlist_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("    ");
-      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "Common/head.jsp", out, false);
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "../Common/head.jsp", out, false);
       out.write("\r\n");
       out.write("    <body>\r\n");
       out.write("        <!-- Main Wrapper -->\r\n");
       out.write("        <div class=\"main-wrapper\">\r\n");
       out.write("            <!-- Header -->\r\n");
       out.write("            ");
-      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "Common/header-guest.jsp", out, false);
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "../Common/header-guest.jsp", out, false);
       out.write("\r\n");
       out.write("            <!--/Header -->\r\n");
       out.write("\r\n");
       out.write("            <!-- Breadcrumb -->\r\n");
       out.write("            ");
-      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "Common/breadcrumb.jsp", out, false);
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "../Common/breadcrumb.jsp", out, false);
       out.write("\r\n");
       out.write("            <!-- /Breadcrumb -->\r\n");
       out.write("\r\n");
@@ -110,7 +110,7 @@ public final class booking_002dlist_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("                                        <div class=\"doc-img\">\r\n");
       out.write("                                            <a href=\"doctor-profile.jsp\">\r\n");
       out.write("                                                <img class=\"img-fluid\" alt=\"User Image\"\r\n");
-      out.write("                                                     src=\"assets/img/doctors/doctor-01.jpg\" />\r\n");
+      out.write("                                                     src=\"../assets/img/doctors/doctor-01.jpg\" />\r\n");
       out.write("                                            </a>\r\n");
       out.write("                                            <a href=\"javascript:void(0)\" class=\"fav-btn\">\r\n");
       out.write("                                                <i class=\"far fa-bookmark\"></i>\r\n");
@@ -156,7 +156,7 @@ public final class booking_002dlist_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("                                        <div class=\"doc-img\">\r\n");
       out.write("                                            <a href=\"doctor-profile.jsp\">\r\n");
       out.write("                                                <img class=\"img-fluid\" alt=\"User Image\"\r\n");
-      out.write("                                                     src=\"assets/img/doctors/doctor-02.jpg\" />\r\n");
+      out.write("                                                     src=\"../assets/img/doctors/doctor-02.jpg\" />\r\n");
       out.write("                                            </a>\r\n");
       out.write("                                            <a href=\"javascript:void(0)\" class=\"fav-btn\">\r\n");
       out.write("                                                <i class=\"far fa-bookmark\"></i>\r\n");
@@ -201,7 +201,7 @@ public final class booking_002dlist_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("                                        <div class=\"doc-img\">\r\n");
       out.write("                                            <a href=\"doctor-profile.jsp\">\r\n");
       out.write("                                                <img class=\"img-fluid\" alt=\"User Image\"\r\n");
-      out.write("                                                     src=\"assets/img/doctors/doctor-03.jpg\" />\r\n");
+      out.write("                                                     src=\"../assets/img/doctors/doctor-03.jpg\" />\r\n");
       out.write("                                            </a>\r\n");
       out.write("                                            <a href=\"javascript:void(0)\" class=\"fav-btn\">\r\n");
       out.write("                                                <i class=\"far fa-bookmark\"></i>\r\n");
@@ -247,7 +247,7 @@ public final class booking_002dlist_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("                                        <div class=\"doc-img\">\r\n");
       out.write("                                            <a href=\"doctor-profile.jsp\">\r\n");
       out.write("                                                <img class=\"img-fluid\" alt=\"User Image\"\r\n");
-      out.write("                                                     src=\"assets/img/doctors/doctor-04.jpg\" />\r\n");
+      out.write("                                                     src=\"../assets/img/doctors/doctor-04.jpg\" />\r\n");
       out.write("                                            </a>\r\n");
       out.write("                                            <a href=\"javascript:void(0)\" class=\"fav-btn\">\r\n");
       out.write("                                                <i class=\"far fa-bookmark\"></i>\r\n");
@@ -293,7 +293,7 @@ public final class booking_002dlist_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("                                        <div class=\"doc-img\">\r\n");
       out.write("                                            <a href=\"doctor-profile.jsp\">\r\n");
       out.write("                                                <img class=\"img-fluid\" alt=\"User Image\"\r\n");
-      out.write("                                                     src=\"assets/img/doctors/doctor-05.jpg\" />\r\n");
+      out.write("                                                     src=\"../assets/img/doctors/doctor-05.jpg\" />\r\n");
       out.write("                                            </a>\r\n");
       out.write("                                            <a href=\"javascript:void(0)\" class=\"fav-btn\">\r\n");
       out.write("                                                <i class=\"far fa-bookmark\"></i>\r\n");
@@ -339,7 +339,7 @@ public final class booking_002dlist_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("                                        <div class=\"doc-img\">\r\n");
       out.write("                                            <a href=\"doctor-profile.jsp\">\r\n");
       out.write("                                                <img class=\"img-fluid\" alt=\"User Image\"\r\n");
-      out.write("                                                     src=\"assets/img/doctors/doctor-06.jpg\" />\r\n");
+      out.write("                                                     src=\"../assets/img/doctors/doctor-06.jpg\" />\r\n");
       out.write("                                            </a>\r\n");
       out.write("                                            <a href=\"javascript:void(0)\" class=\"fav-btn\">\r\n");
       out.write("                                                <i class=\"far fa-bookmark\"></i>\r\n");
@@ -385,7 +385,7 @@ public final class booking_002dlist_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("                                        <div class=\"doc-img\">\r\n");
       out.write("                                            <a href=\"doctor-profile.jsp\">\r\n");
       out.write("                                                <img class=\"img-fluid\" alt=\"User Image\"\r\n");
-      out.write("                                                     src=\"assets/img/doctors/doctor-07.jpg\" />\r\n");
+      out.write("                                                     src=\"../assets/img/doctors/doctor-07.jpg\" />\r\n");
       out.write("                                            </a>\r\n");
       out.write("                                            <a href=\"javascript:void(0)\" class=\"fav-btn\">\r\n");
       out.write("                                                <i class=\"far fa-bookmark\"></i>\r\n");
@@ -431,7 +431,7 @@ public final class booking_002dlist_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("                                        <div class=\"doc-img\">\r\n");
       out.write("                                            <a href=\"doctor-profile.jsp\">\r\n");
       out.write("                                                <img class=\"img-fluid\" alt=\"User Image\"\r\n");
-      out.write("                                                     src=\"assets/img/doctors/doctor-08.jpg\" />\r\n");
+      out.write("                                                     src=\"../assets/img/doctors/doctor-08.jpg\" />\r\n");
       out.write("                                            </a>\r\n");
       out.write("                                            <a href=\"javascript:void(0)\" class=\"fav-btn\">\r\n");
       out.write("                                                <i class=\"far fa-bookmark\"></i>\r\n");
@@ -481,7 +481,7 @@ public final class booking_002dlist_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("\r\n");
       out.write("            <!-- Footer -->\r\n");
       out.write("            ");
-      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "Common/footer.jsp", out, false);
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "../Common/footer.jsp", out, false);
       out.write("\r\n");
       out.write("            <!-- /Footer -->\r\n");
       out.write("        </div>\r\n");
@@ -489,7 +489,7 @@ public final class booking_002dlist_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("\r\n");
       out.write("        <!-- Script -->\r\n");
       out.write("        ");
-      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "Common/script.jsp", out, false);
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "../Common/script.jsp", out, false);
       out.write("\r\n");
       out.write("        <!-- /Script -->\r\n");
       out.write("    </body>\r\n");

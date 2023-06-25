@@ -8,16 +8,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <jsp:include page="Common/head.jsp"/>
+    <jsp:include page="../Common/head.jsp"/>
     <body>
         <!-- Main Wrapper -->
         <div class="main-wrapper">
             <!-- Header -->
-            <jsp:include page="Common/header-guest.jsp"/>
+            <jsp:include page="../Common/header-guest.jsp"/>
             <!--/Header -->
 
             <!-- Breadcrumb -->
-            <jsp:include page="Common/breadcrumb.jsp"/>
+            <jsp:include page="../Common/breadcrumb.jsp"/>
             <!-- /Breadcrumb -->
 
             <!-- Page Content -->
@@ -28,7 +28,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <!-- Checkout Form -->
-                                    <form action="booking-success.jsp">
+                                    <form action="../Customer/booking-success.jsp">
                                         <!-- Personal Information -->
                                         <div class="info-widget">
                                             <h4 class="card-title">Personal Information</h4>
@@ -157,26 +157,51 @@
                                     <h4 class="card-title">Booking Summary</h4>
                                 </div>
                                 <div class="card-body">
-                                    <!-- Booking Doctor Info -->
-                                    <div class="booking-doc-info">
-                                        <a href="doctor-profile.jsp" class="booking-doc-img">
-                                            <img src="../assets/img/logo.png" alt="User Image" />
-                                        </a>
-                                        <div class="booking-info">
-                                            <h4><a href="doctor-profile.jsp">BirdLover Clinic</a></h4>
-                                            <!-- <div class="rating">
-                                                    <i class="fas fa-star filled"></i>
-                                                    <i class="fas fa-star filled"></i>
-                                                    <i class="fas fa-star filled"></i>
-                                                    <i class="fas fa-star filled"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <span class="d-inline-block average-rating">35</span>
-                                            </div> -->
-                                            <div class="clinic-details">
-                                                <p class="doc-location"><i class="fas fa-map-marker-alt"></i> Long Bien, Hanoi</p>
+                                    <!-- Booking Doctor Info -->                                    
+                                    <c:choose>
+                                        <c:when test="${param.doctor == 'all'}">                                 
+                                            <div class="booking-doc-info">
+                                                <a href="doctor-profile.jsp" class="booking-doc-img">
+                                                    <img src="../assets/img/logo.png" alt="User Image" />
+                                                </a>
+                                                <div class="booking-info">
+                                                    <h4><a href="doctor-profile.jsp">BirdLover Clinic</a></h4>
+                                                    <!-- <div class="rating">
+                                                            <i class="fas fa-star filled"></i>
+                                                            <i class="fas fa-star filled"></i>
+                                                            <i class="fas fa-star filled"></i>
+                                                            <i class="fas fa-star filled"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <span class="d-inline-block average-rating">35</span>
+                                                    </div> -->
+                                                    <div class="clinic-details">
+                                                        <p class="doc-location"><i class="fas fa-map-marker-alt"></i> Long Bien, Hanoi</p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                        </c:when>
+                                        <c:when test="${param.doctor == 'doc'}">
+                                            <div class="booking-doc-info">
+                                                <a href="doctor-profile.jsp" class="booking-doc-img">
+                                                    <img src="../assets/img/doctors/doctor-02.jpg" alt="Docs Image" />
+                                                </a>
+                                                <div class="booking-info">
+                                                    <h4><a href="doctor-profile.jsp">Dr. ABC</a></h4>
+                                                    <!-- <div class="rating">
+                                                            <i class="fas fa-star filled"></i>
+                                                            <i class="fas fa-star filled"></i>
+                                                            <i class="fas fa-star filled"></i>
+                                                            <i class="fas fa-star filled"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <span class="d-inline-block average-rating">35</span>
+                                                    </div> -->
+                                                    <div class="clinic-details">
+                                                        <p class="doc-location"><i class="fas fa-map-marker-alt"></i> Long Bien, Hanoi</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </c:when>                                       
+                                    </c:choose>
                                     <!-- Booking Doctor Info -->
 
                                     <div class="booking-summary">
@@ -203,6 +228,15 @@
                                 </div>
                             </div>
                             <!-- /Booking Summary -->
+                            <form>
+                                <datetime-slot-picker 
+                                    placeholder="Pick a date and time slot" 
+                                    time-slots-text="Time Slot"
+                                    no-slots-text="No slots are available" 
+                                    >
+                                </datetime-slot-picker>
+                                <button class="btn-primary">submit</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -210,13 +244,86 @@
             <!-- /Page Content -->
 
             <!-- Footer -->
-            <jsp:include page="Common/footer.jsp"/>
+            <jsp:include page="../Common/footer.jsp"/>
             <!-- /Footer -->
         </div>
         <!-- /Main Wrapper -->
 
         <!-- Script -->
-        <jsp:include page="Common/script.jsp"/>
+        <jsp:include page="../Common/script.jsp"/>
+        <script>
+            const datetimeSlotPicker = document.querySelector('datetime-slot-picker');
+
+            /* LISTENER FOR DATE AND TIME SLOT CHANGES */
+            datetimeSlotPicker.addEventListener('slotUpdate', function (event) {
+                console.log('Updated Slot: ', event.detail)
+            });
+
+            /* INITIALIZING THE AVAILABLE SLOTS. TIME SLOTS IS OPTIONAL */
+            datetimeSlotPicker.slots = [
+                {
+                    "date": 'Thu, 26 Nov 2020',
+                    "timeSlots": [
+                        '6 AM - 7 AM',
+                        '7 AM - 8 AM',
+                        '8 AM - 9 AM',
+                        '9 AM - 10 AM',
+                        '10 AM - 11 AM',
+                        '11 AM - 12 PM',
+                        '12 PM - 1 PM',
+                        '1 PM - 2 PM',
+                        '2 PM - 3 PM',
+                        '3 PM - 4 PM',
+                        '4 PM - 5 PM',
+                        '5 PM - 6 PM',
+                        '6 PM - 7 PM',
+                        '7 PM - 8 PM',
+                        '8 PM - 9 PM',
+                        '9 PM - 10 PM',
+                        '10 PM - 11 PM',
+                        '11 PM - 12 AM'
+                    ]
+                },
+                {
+                    "date": 'Fri, 27 Nov 2020',
+                    "timeSlots": [
+                    ]
+                },
+                {
+                    "date": 'Mon, 30 Nov 2020',
+                    "timeSlots": [
+                        '10 AM - 11 AM',
+                        '11 AM - 12 PM',
+                        '4 PM - 5 PM',
+                        '5 PM - 6 PM'
+                    ]
+                },
+                {
+                    "date": 'Tue, 1 Dec 2020',
+                    "timeSlots": [
+                        '10 AM - 11 AM',
+                        '11 AM - 12 PM',
+                        '4 PM - 5 PM',
+                        '5 PM - 6 PM'
+                    ]
+                },
+                {
+                    date: 'Mon, 4 Jan 2021',
+                    timeSlots: [
+                        '6 AM',
+                        '7 AM',
+                        '8 AM',
+                        '1 PM - 2 PM',
+                        '2 PM - 3 PM',
+                        '4 PM - 5 PM',
+                        '5 PM - 6 PM',
+                        '6 PM - 7 PM',
+                        '7 PM - 8 PM',
+                        '8 PM - 9 PM'
+                    ]
+                }
+            ];
+        </script>
         <!-- /Script -->
     </body>
 </html>

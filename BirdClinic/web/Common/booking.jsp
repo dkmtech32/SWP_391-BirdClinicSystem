@@ -8,16 +8,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <jsp:include page="Common/head.jsp"/>
+    <jsp:include page="../Common/head.jsp"/>
     <body>
         <!-- Main Wrapper -->
         <div class="main-wrapper">
             <!-- Header -->
-            <jsp:include page="Common/header-guest.jsp"/>
+            <jsp:include page="../Common/header-guest.jsp"/>
             <!--/Header -->
 
             <!-- Breadcrumb -->
-            <jsp:include page="Common/breadcrumb.jsp"/>
+            <jsp:include page="../Common/breadcrumb.jsp"/>
             <!-- /Breadcrumb -->
 
             <!-- Page Content -->
@@ -31,7 +31,7 @@
                                         <c:when test="${param.doctor == 'all'}">
                                             <div class="booking-doc-info">
                                                 <a href="doctor-profile.jsp" class="booking-doc-img">
-                                                    <img src="assets/img/logo2.png" alt="User Image" />
+                                                    <img src="../assets/img/logo2.png" alt="User Image" />
                                                 </a>
                                                 <div class="booking-info">
                                                     <h4><a href="doctor-profile.jsp">All doctor</a></h4>
@@ -42,7 +42,7 @@
                                         <c:when test="${param.doctor == 'doc'}">
                                             <div class="booking-doc-info">
                                                 <a href="doctor-profile.html" class="booking-doc-img">
-                                                    <img src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image" />
+                                                    <img src="../assets/img/doctors/doctor-thumb-02.jpg" alt="User Image" />
                                                 </a>
                                                 <div class="booking-info">
                                                     <h4><a href="doctor-profile.html">Dr. ABC</a></h4>
@@ -164,12 +164,12 @@
                             <c:choose>
                                 <c:when test="${param.doctor == 'all'}">                                 
                                     <div class="submit-section proceed-btn text-right">
-                                        <a onclick="location.href='bookInfo.jsp?doctor=all'" class="btn btn-primary submit-btn">Next</a>
+                                        <a onclick="location.href='../Customer/bookInfo.jsp?doctor=all'" class="btn btn-primary submit-btn">Next</a>
                                     </div>
                                 </c:when>
                                 <c:when test="${param.doctor == 'doc'}">
                                    <div class="submit-section proceed-btn text-right">
-                                        <a onclick="location.href='bookInfo.jsp?doctor=doc'" class="btn btn-primary submit-btn">Next</a>
+                                        <a onclick="location.href='../Customer/bookInfo.jsp?doctor=doc'" class="btn btn-primary submit-btn">Next</a>
                                     </div>
                                 </c:when>                                       
                             </c:choose>
@@ -182,13 +182,13 @@
             <!-- /Page Content -->
 
             <!-- Footer -->
-            <jsp:include page="Common/footer.jsp"/>
+            <jsp:include page="../Common/footer.jsp"/>
             <!-- /Footer -->
         </div>
         <!-- /Main Wrapper -->
 
         <!-- Script -->
-        <jsp:include page="Common/script.jsp"/>
+        <jsp:include page="../Common/script.jsp"/>
         <!-- /Script -->
     </body>
 </html>

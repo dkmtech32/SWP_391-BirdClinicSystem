@@ -8,16 +8,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <jsp:include page="Common/head.jsp"/>
+    <jsp:include page="../Common/head.jsp"/>
     <body>
         <!-- Main Wrapper -->
         <div class="main-wrapper">
             <!-- Header -->
-            <jsp:include page="Common/header-guest.jsp"/>
+            <jsp:include page="../Common/header-guest.jsp"/>
             <!--/Header -->
 
             <!-- Breadcrumb -->
-            <jsp:include page="Common/breadcrumb.jsp"/>
+            <jsp:include page="../Common/breadcrumb.jsp"/>
             <!-- /Breadcrumb -->
 
             <!-- Page Content -->
@@ -65,7 +65,7 @@
                                         <div class="doc-img">
                                             <a href="doctor-profile.jsp">
                                                 <img class="img-fluid" alt="User Image"
-                                                     src="assets/img/doctors/doctor-01.jpg" />
+                                                     src="../assets/img/doctors/doctor-01.jpg" />
                                             </a>
                                             <a href="javascript:void(0)" class="fav-btn">
                                                 <i class="far fa-bookmark"></i>
@@ -111,7 +111,7 @@
                                         <div class="doc-img">
                                             <a href="doctor-profile.jsp">
                                                 <img class="img-fluid" alt="User Image"
-                                                     src="assets/img/doctors/doctor-02.jpg" />
+                                                     src="../assets/img/doctors/doctor-02.jpg" />
                                             </a>
                                             <a href="javascript:void(0)" class="fav-btn">
                                                 <i class="far fa-bookmark"></i>
@@ -156,7 +156,7 @@
                                         <div class="doc-img">
                                             <a href="doctor-profile.jsp">
                                                 <img class="img-fluid" alt="User Image"
-                                                     src="assets/img/doctors/doctor-03.jpg" />
+                                                     src="../assets/img/doctors/doctor-03.jpg" />
                                             </a>
                                             <a href="javascript:void(0)" class="fav-btn">
                                                 <i class="far fa-bookmark"></i>
@@ -202,7 +202,7 @@
                                         <div class="doc-img">
                                             <a href="doctor-profile.jsp">
                                                 <img class="img-fluid" alt="User Image"
-                                                     src="assets/img/doctors/doctor-04.jpg" />
+                                                     src="../assets/img/doctors/doctor-04.jpg" />
                                             </a>
                                             <a href="javascript:void(0)" class="fav-btn">
                                                 <i class="far fa-bookmark"></i>
@@ -248,7 +248,7 @@
                                         <div class="doc-img">
                                             <a href="doctor-profile.jsp">
                                                 <img class="img-fluid" alt="User Image"
-                                                     src="assets/img/doctors/doctor-05.jpg" />
+                                                     src="../assets/img/doctors/doctor-05.jpg" />
                                             </a>
                                             <a href="javascript:void(0)" class="fav-btn">
                                                 <i class="far fa-bookmark"></i>
@@ -294,7 +294,7 @@
                                         <div class="doc-img">
                                             <a href="doctor-profile.jsp">
                                                 <img class="img-fluid" alt="User Image"
-                                                     src="assets/img/doctors/doctor-06.jpg" />
+                                                     src="../assets/img/doctors/doctor-06.jpg" />
                                             </a>
                                             <a href="javascript:void(0)" class="fav-btn">
                                                 <i class="far fa-bookmark"></i>
@@ -340,7 +340,7 @@
                                         <div class="doc-img">
                                             <a href="doctor-profile.jsp">
                                                 <img class="img-fluid" alt="User Image"
-                                                     src="assets/img/doctors/doctor-07.jpg" />
+                                                     src="../assets/img/doctors/doctor-07.jpg" />
                                             </a>
                                             <a href="javascript:void(0)" class="fav-btn">
                                                 <i class="far fa-bookmark"></i>
@@ -386,7 +386,7 @@
                                         <div class="doc-img">
                                             <a href="doctor-profile.jsp">
                                                 <img class="img-fluid" alt="User Image"
-                                                     src="assets/img/doctors/doctor-08.jpg" />
+                                                     src="../assets/img/doctors/doctor-08.jpg" />
                                             </a>
                                             <a href="javascript:void(0)" class="fav-btn">
                                                 <i class="far fa-bookmark"></i>
@@ -435,13 +435,13 @@
             <!-- /Page Content -->
 
             <!-- Footer -->
-            <jsp:include page="Common/footer.jsp"/>
+            <jsp:include page="../Common/footer.jsp"/>
             <!-- /Footer -->
         </div>
         <!-- /Main Wrapper -->
 
         <!-- Script -->
-        <jsp:include page="Common/script.jsp"/>
+        <jsp:include page="../Common/script.jsp"/>
         <!-- /Script -->
     </body>
 </html>
