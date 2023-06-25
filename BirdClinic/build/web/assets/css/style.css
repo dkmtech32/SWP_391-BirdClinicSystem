@@ -439,11 +439,11 @@ button.bg-danger:hover {
 .text-muted {
 	color: #757575 !important;
 }
-.btn-primary {
+/*.btn-primary {
 	background-color: #ed6436;
 	border: 1px solid #ed6436;
 	margin: 1rem;
-}
+}*/
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary.active,
