@@ -6,6 +6,8 @@
 package services.account;
 
 import java.io.Serializable;
+import java.sql.SQLException;
+import java.util.Map;
 import models.dto.users.UserDTO;
 
 /**
@@ -15,12 +17,9 @@ import models.dto.users.UserDTO;
 public interface AccountServices extends Serializable {
 
     boolean accExist(UserDTO user);
-    //    public UserDTO register(Map<String, String> args) throws AccountAlreadyExistsException {
-    //        UserDTO user = null;
-    //    }
 
-    UserDTO login(String username, String password) throws AccountNotExistException;
-
-    boolean logout(UserDTO user) throws AccountNotExistException;
+    UserDTO login(String username, String password) throws AccountNotExistException, SQLException;
+    
+    UserDTO register(Map<String, String> args) throws AccountAlreadyExistsException, PasswordsNotEqualException, SQLException;
     
 }

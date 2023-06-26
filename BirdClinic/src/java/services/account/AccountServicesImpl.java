@@ -11,6 +11,7 @@ import models.dao.images.ImageDAOImpl;
 import models.dao.users.UserDAO;
 import models.dao.users.UserDAOImpl;
 import models.dto.users.UserDTO;
+import models.dto.users.UserDTOImpl;
 import utils.StringUtil;
 
 /**
@@ -26,41 +27,57 @@ public class AccountServicesImpl implements AccountServices {
     }
 
     @Override
-    public UserDTO login(String username, String password) throws AccountNotExistException {
+    public UserDTO login(String username, String password) throws AccountNotExistException, SQLException {
         password = StringUtil.hash(password);
         UserDTO user = null;
-        try {
-            user = userDAO.loginUser(username, password);
-        } catch (SQLException ex) {
+        user = userDAO.loginUser(username, password);
+        if (user == null) {
             throw new AccountNotExistException();
         }
-
         return user;
     }
 
     @Override
-    public boolean logout(UserDTO user) throws AccountNotExistException {
+    public boolean accExist(UserDTO user) {
         boolean result = false;
         try {
-            result = user != null && userDAO.readUser(user.getUserID())==null;
+            result = userDAO.readUser(user.getUserID()) != null;
         } catch (SQLException ex) {
-            throw new AccountNotExistException();
+        }
+        return result;
+    }
+
+    @Override
+    public UserDTO register(Map<String, String> args)
+            throws AccountAlreadyExistsException, PasswordsNotEqualException, SQLException {
+        //assumption: args have all 4 key-value pairs
+        UserDTO result = null;
+        String username = args.get("username");
+        String uPassword = args.get("password");
+        String cPassword = args.get("repeat-password");
+        String email = args.get("email");
+
+        if (!uPassword.equals(cPassword)) {
+            throw new PasswordsNotEqualException();
+        }
+
+        String rPassword = StringUtil.hash(cPassword);
+        String userID = StringUtil.hash(cPassword + username);
+
+        if (userDAO.readUser(userID) != null) {
+            result = new UserDTOImpl();
+            result.setUserID(userID);
+            result.setEmail(email);
+            result.setUserName(username);
+            result.setUserPassword(rPassword);
+            result.setGender("unknown");
+            result.setUserRole("customer");
+            result.setImage(null);
+            result.setStatus_(true);
+        } else {
+            throw new AccountAlreadyExistsException();
         }
 
         return result;
     }
-    
-    @Override
-    public boolean accExist(UserDTO user) {
-        boolean result = false;
-        try {
-            result = userDAO.readUser(user.getUserID())!=null;
-        } catch (SQLException ex) {
-        }
-        return result;
-    }
-    
-//    public UserDTO register(Map<String, String> args) throws AccountAlreadyExistsException {
-//        UserDTO user = null;
-//    }
 }
