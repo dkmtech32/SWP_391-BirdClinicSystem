@@ -26,14 +26,8 @@ public class TimeslotDAOImpl implements TimeslotDAO {
             + "where timeSlotID = ?";
     private static final String READ_ALL_TIMESLOT = "select timeSlotID, timeSlot, day_ "
             + "from TimeSlot ";
-    private List<TimeslotDTO> timeSlotList;
     
     public TimeslotDAOImpl() {
-    }
-
-    @Override
-    public List<TimeslotDTO> getTimeSlotList() {
-        return timeSlotList;
     }
 
     @Override
@@ -108,6 +102,7 @@ public class TimeslotDAOImpl implements TimeslotDAO {
         Connection con = null;
         Statement stm = null;
         ResultSet rs = null;
+        List<TimeslotDTO> timeSlotList = null;
 
         try {
             con = DBUtils.getConnection();
@@ -120,8 +115,8 @@ public class TimeslotDAOImpl implements TimeslotDAO {
                 result.setDay_(rs.getString("day_"));
                 result.setTimeSlot(rs.getTime("timeSlot"));
             
-                if (this.timeSlotList==null) 
-                    this.timeSlotList = new ArrayList();
+                if (timeSlotList==null) 
+                    timeSlotList = new ArrayList<>();
                 timeSlotList.add(result);
             }
         } catch (SQLException ex) {
@@ -138,6 +133,6 @@ public class TimeslotDAOImpl implements TimeslotDAO {
             }
         }
         
-        return this.timeSlotList;
+        return timeSlotList;
     }
 }

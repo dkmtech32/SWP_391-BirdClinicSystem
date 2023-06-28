@@ -18,11 +18,11 @@
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
-        <url-pattern>/staff/*</url-pattern>
+        <url-pattern>/Staff/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
-        <url-pattern>/admin/*</url-pattern>
+        <url-pattern>/Admin/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
@@ -30,39 +30,67 @@
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
-        <url-pattern>/doctor/*</url-pattern>
+        <url-pattern>/Doctor/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
-        <url-pattern>/customer/*</url-pattern>
+        <url-pattern>/Customer/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthorizationFilter</filter-name>
-        <url-pattern>/staff/*</url-pattern>
+        <url-pattern>/Staff/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthorizationFilter</filter-name>
-        <url-pattern>/admin/*</url-pattern>
+        <url-pattern>/Admin/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthorizationFilter</filter-name>
-        <url-pattern>/logout</url-pattern>
+        <url-pattern>/Doctor/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthorizationFilter</filter-name>
-        <url-pattern>/doctor/*</url-pattern>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>AuthorizationFilter</filter-name>
-        <url-pattern>/customer/*</url-pattern>
+        <url-pattern>/Customer/*</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>controllers.account.LoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CustomerAccountInformationServlet</servlet-name>
+        <servlet-class>controllers.account.CustomerAccountInformationServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CustomerDashboardInformationServlet</servlet-name>
+        <servlet-class>controllers.account.CustomerDashboardInformationServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BookAppointmentServlet</servlet-name>
+        <servlet-class>controllers.appointment.BookAppointmentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PrepareAppointmentBookServlet</servlet-name>
+        <servlet-class>controllers.appointment.PrepareAppointmentBookServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/login</url-pattern>
+        <url-pattern>/Common/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerAccountInformationServlet</servlet-name>
+        <url-pattern>/Customer/custAccountInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerDashboardInformationServlet</servlet-name>
+        <url-pattern>/Customer/custDashboard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BookAppointmentServlet</servlet-name>
+        <url-pattern>/Customer/bookAppointment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PrepareAppointmentBookServlet</servlet-name>
+        <url-pattern>/Customer/prepareBooking</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -70,10 +98,10 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>intro.jsp</welcome-file>
     </welcome-file-list>
     <error-page>
         <error-code>401</error-code>
-        <location>/unauthorized.html</location>
+        <location>/Common/login.jsp</location>
     </error-page>
 </web-app>
