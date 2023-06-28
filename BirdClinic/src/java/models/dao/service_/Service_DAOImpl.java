@@ -24,6 +24,9 @@ public class Service_DAOImpl implements Service_DAO {
     private static final String READ_SERVICE = "select serviceID, specialityID, serviceName, servicePrice "
             + "from Service_ "
             + "where serviceID = ?";
+    private static final String READ_SERVICE_BY_SPECIALITY = "select serviceID, specialityID, serviceName, servicePrice "
+            + "from Service_ "
+            + "where specialityID = ?";
     private static final String READ_ALL_SERVICE = "select serviceID, specialityID, serviceName, servicePrice "
             + "from Service_ ";
     private static final String SEARCH_SERVICE = "select serviceID, specialityID, serviceName, servicePrice "
@@ -52,7 +55,7 @@ public class Service_DAOImpl implements Service_DAO {
             stm.setString(1, serviceID);
             rs = stm.executeQuery();
 
-            if (rs != null) {
+            if (rs.next()) {
                 result = new Service_DTOImpl();
                 result.setServiceID(serviceID);
                 result.setSpeciality(specialityDAO.readSpeciality(rs.getString("specialityID")));
@@ -87,7 +90,7 @@ public class Service_DAOImpl implements Service_DAO {
             stm.setString(1, serviceID);
             rs = stm.executeQuery();
 
-            if (rs != null) {
+            if (rs.next()) {
                 result = new Service_DTOImpl();
                 result.setServiceID(serviceID);
                 result.setSpeciality(specialityDAO.readSpeciality(rs.getString("specialityID")));
@@ -122,7 +125,7 @@ public class Service_DAOImpl implements Service_DAO {
             stm.setString(1, "%" + serviceName + "%");
             rs = stm.executeQuery();
 
-            while (rs != null) {
+            while (rs.next()) {
                 Service_DTO result = new Service_DTOImpl();
                 result.setServiceID(rs.getString("serviceID"));
                 result.setSpeciality(specialityDAO.readSpeciality(rs.getString("specialityID")));
@@ -161,7 +164,7 @@ public class Service_DAOImpl implements Service_DAO {
             stm = con.createStatement();
             rs = stm.executeQuery(READ_ALL_SERVICE);
 
-            while (rs != null) {
+            while (rs.next()) {
                 Service_DTO result = new Service_DTOImpl();
                 result.setServiceID(rs.getString("serviceID"));
                 result.setSpeciality(specialityDAO.readSpeciality(rs.getString("specialityID")));
@@ -174,6 +177,47 @@ public class Service_DAOImpl implements Service_DAO {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        
+        return serviceList;
+    }
+    
+    @Override
+    public List<Service_DTO> readServiceBySpeciality(String specialityID) throws SQLException{
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        List<Service_DTO> serviceList = null;
+
+        try {
+            con = DBUtils.getConnection();
+            stm = con.prepareStatement(READ_SERVICE_BY_SPECIALITY);
+            stm.setString(1, specialityID);
+            rs = stm.executeQuery();
+
+            while (rs.next()) {
+                Service_DTO result = new Service_DTOImpl();
+                result.setServiceID(rs.getString("serviceID"));
+                result.setSpeciality(specialityDAO.readSpeciality(specialityID));
+                result.setServiceName(rs.getString("serviceName"));
+                result.setServicePrice(rs.getInt("servicePrice"));
+                if (serviceList==null) 
+                    serviceList = new ArrayList();
+                serviceList.add(result);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
         } finally {
             if (rs != null) {
                 rs.close();

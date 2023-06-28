@@ -6,19 +6,15 @@ CREATE TABLE Images (
   CONSTRAINT PK_Images PRIMARY KEY CLUSTERED 
 (
 	imageID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] 
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
 
 CREATE TABLE Users (
   userID CHAR(32) NOT NULL,
   imageID CHAR(32) NOT NULL,
   userName VARCHAR(30) NOT NULL,
-  userPassword CHAR(30) NOT NULL,
+  userPassword CHAR(32) NOT NULL,
   fullName NVARCHAR(50) NOT NULL,
   phoneNumber CHAR(10) NOT NULL,
   gender VARCHAR(7) NOT NULL,
@@ -29,37 +25,30 @@ CREATE TABLE Users (
   CONSTRAINT PK_Users PRIMARY KEY CLUSTERED 
 (
 	userID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] 
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
+
 
 CREATE TABLE Customer (
   customerID CHAR(32) NOT NULL,
   dob DATE NOT NULL,
   customerAddress VARCHAR(70) NOT NULL, 
   CONSTRAINT PK_Customer PRIMARY KEY CLUSTERED 
-  (
-    customerID ASC
-  ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
-  CONSTRAINT FK_Customer_Users FOREIGN KEY (customerID) REFERENCES Users(userID)
+(
+	customerID ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+GO
 
 CREATE TABLE Speciality (
   specialityID CHAR(32) NOT NULL,
   specialityName VARCHAR(30) NOT NULL,
   CONSTRAINT PK_Speciality PRIMARY KEY CLUSTERED 
 (
-	specialityID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] 
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+	SpecialityID ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
 
 CREATE TABLE Doctor (
@@ -73,13 +62,8 @@ CREATE TABLE Doctor (
   CONSTRAINT PK_Doctor PRIMARY KEY CLUSTERED 
 (
 	doctorID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
-CONSTRAINT FK_Doctor_Users FOREIGN KEY (doctorID) REFERENCES Users(userID)
-) ON [PRIMARY] 
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
 
 CREATE TABLE TimeSlot (
@@ -89,12 +73,8 @@ CREATE TABLE TimeSlot (
   CONSTRAINT PK_TimeSlot PRIMARY KEY CLUSTERED 
 (
 	timeSlotID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] 
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
 
 CREATE TABLE DoctorTimeSlot (
@@ -111,12 +91,8 @@ CREATE TABLE Medicine (
   CONSTRAINT PK_Medicine PRIMARY KEY CLUSTERED 
 (
 	medicineID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] 
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
 
 CREATE TABLE Service_ (
@@ -128,12 +104,8 @@ CREATE TABLE Service_ (
   CONSTRAINT PK_Service_ PRIMARY KEY CLUSTERED 
 (
 	serviceID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] 
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
 
 CREATE TABLE Bird (
@@ -154,18 +126,15 @@ CREATE TABLE Bird (
   CONSTRAINT PK_Bird PRIMARY KEY CLUSTERED 
 (
 	birdID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
+
 
 CREATE TABLE Appointment (
   appointmentID CHAR(32) NOT NULL,
   birdID CHAR(32) NOT NULL,
-  doctorID CHAR(32) NOT NULL,
+  doctorID CHAR(32),
   timeSlotID CHAR(32) NOT NULL,
   serviceID CHAR(32) NOT NULL,
   appTime DATETIME NOT NULL,
@@ -176,15 +145,11 @@ CREATE TABLE Appointment (
   FOREIGN KEY (doctorID) REFERENCES Doctor(doctorID),
   FOREIGN KEY (timeSlotID) REFERENCES TimeSlot(timeSlotID),
   FOREIGN KEY (serviceID) REFERENCES Service_(serviceID),
-  CONSTRAINT PK_Appointment PRIMARY KEY CLUSTERED
+  CONSTRAINT PK_Appointment PRIMARY KEY CLUSTERED 
 (
 	appointmentID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE MedicalRecord (
@@ -199,13 +164,9 @@ CREATE TABLE MedicalRecord (
   FOREIGN KEY (doctorID) REFERENCES Doctor(doctorID),
   CONSTRAINT PK_MedicalRecord PRIMARY KEY CLUSTERED 
 (
-	medicalRecordID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+	medicalrecordID ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE RecordServices (
@@ -234,12 +195,8 @@ CREATE TABLE Feedback (
   CONSTRAINT PK_Feedback PRIMARY KEY CLUSTERED 
 (
 	feedbackID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE Blog (
@@ -251,13 +208,10 @@ CREATE TABLE Blog (
   CONSTRAINT PK_Blog PRIMARY KEY CLUSTERED 
 (
 	blogID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
+
 
 INSERT INTO Images(imageID, imageURLName)
 VALUES
@@ -265,6 +219,8 @@ VALUES
     ('janfuewhfnhfn3ga98h943ghafa92rhf', 'maleuser.png'),
     ('gha948ga489hra3r9fh32f32f9838r93', 'femaleuser.png'),
     ('fhawfbwa98fha98hf9na9uwbga9ubvg9', 'lgbtuser.png'),
+	('f7384hfw34f38wb4fw38h4f03h43f93f', 'malestaff.png'),
+	('ngseriug908hg93h4g934nf34f938f4h', 'femalestaff.jpg'),
 	('cjndsjkcfnzslkjvnawjefn8jfh38fu3', 'bs1.png'),
 	('vnaeojvner9gh39g4waofh28f28hfa93', 'bs2.png'),
 	('fhafgbyfg87gf83bfiwifhweufhwe5g5', 'bs3.png'),
@@ -275,81 +231,83 @@ VALUES
 	('rfhiarebfniuaerhnfuah9f48h34f843', 'bs8.png'),
 	('fherajfhriuehfraufha94hf98fh93hf', 'bs9.png'),
 	('fnerajfha974fhy4973haf9ha49hf338', 'bs10.png'),
-    ('fafnbuhfauhfweoufha8hfa9hfa48hf8', 'Chim yến.png'),
-    ('avewifbaiuwefnwajenfhiuahenf998f', 'Chim công xanh.jpg'),
-	('fewabf9qb439fufh9h438q9h34fq34t4', 'Chim én.jpg'),
-	('frheafiuewhf9hf983h3f4ha438f94f4', 'Chim trĩ.jpg'),
-	('4rt43t5y56y465t4r3e24r435y65u76i', 'Chim sẻ.jpg'),
-	('efrgtrytuiykjhmngfbvdfewr4567898', 'Chim hồng yến.jpg'),
-	('48c967910f7eb39ea5f7b7602a3df9ea', 'Chim hạc trắng.jpg'),
-	('3b94ace86063b245916a6e906221e6a8', 'Chim khuyên trắng.jpg'),
-	('249fb9cb11171ae6ab41794bee070a8f', 'Chim Yến Phụng.jpg'),
-	('b3b9752ec51a5433b44e27b8d9b81c76', 'Chim bồ câu.jpg'),
-	('ee38603c9cfdb54fb0a0ab4a197f92a3', 'Chim Vẹt.jpg'),
-	('ef94fe9d57eed266b24c3fc1203c1e17', 'Chim hoàng yến.jpg'),
-	('a8cf052632950deb5ab9c1f5ec36334d', 'Chim chích chòe lửa.png'),
-	('7b1bc65da7abbaceaaadc0ea9564c175', 'Chim chào mào.png'),
-	('95f7e5a8c051e6b60905912bd8aedf7d', 'Chim oanh cổ đỏ.png'),
-	('365c43bd856cf86e0e0b4cd4b7bc0462', 'Chim Khướu bạc má.png'),
-	('b51f1bb2e54d243e60e32563b2b1a7ed', 'Chim chích bông.png'),
-	('08eed66a05827e8dc02d6ff1392f9bf6', 'Chim diệc đầu đen.png'),
-	('ddfff0e1f9009fe5d621e2ed07348a51', 'Chim cúc cu.png'),
-	('cbe26c3a3f34407ed023e3f02399d2fa', 'Chim nhạn đen.png'),
-	('05b5b4345d8ac2f73ece3df15be03230', 'Chim họa mi đồng cỏ.png'),
-	('2bda592b2aada870747dd4366a3dff18', 'Chim nhạn trắng.png'),
-	('e28e1458f599f2391b91bfd61338483e', 'Chim bìm bịp Đông Dương.png'),
-	('84cb52eda2e4f0b66f8509c37e857e8c', 'Chim sáo bụng đen.png'),
-	('8721d5a5f3f44bd01529d24dcf519239', 'Chim Chìa Vôi họng trắng.png'),
-	('66a5473e01debb47bff7f215d6c4a228', 'Chim cắt Mindoro.png'),
-	('6d47ad177fb45c2d87e1b54fc363676b', 'Chim đớp ruồi cằm đen.png'),
-	('25abf9603856427e295b7bd1137fd04a', 'Chim thiên nga đen.png'),
-	('ed1ed3634186fc66ee692da3ba98272f' , 'Chim sơn ca.png'),
-	('e47ccaddaa9e2cd4c25e84cae624b077' , 'Chim Vàng Anh.png');
-
+    ('fafnbuhfauhfweoufha8hfa9hfa48hf8', 'Chim yen.png'),
+    ('avewifbaiuwefnwajenfhiuahenf998f', 'Chim cong xanh.jpg'),
+	('fewabf9qb439fufh9h438q9h34fq34t4', 'Chim en.jpg'),
+	('frheafiuewhf9hf983h3f4ha438f94f4', 'Chim tri.jpg'),
+	('4rt43t5y56y465t4r3e24r435y65u76i', 'Chim se.jpg'),
+	('efrgtrytuiykjhmngfbvdfewr4567898', 'Chim hong yen.jpg'),
+	('48c967910f7eb39ea5f7b7602a3df9ea', 'Chim hac trang.jpg'),
+	('3b94ace86063b245916a6e906221e6a8', 'Chim khuyen trang.jpg'),
+	('249fb9cb11171ae6ab41794bee070a8f', 'Chim Yen Phung.jpg'),
+	('b3b9752ec51a5433b44e27b8d9b81c76', 'Chim bo cau.jpg'),
+	('ee38603c9cfdb54fb0a0ab4a197f92a3', 'Chim Vet.jpg'),
+	('ef94fe9d57eed266b24c3fc1203c1e17', 'Chim hoang yen.jpg'),
+	('a8cf052632950deb5ab9c1f5ec36334d', 'Chim chich choe lua.png'),
+	('7b1bc65da7abbaceaaadc0ea9564c175', 'Chim chao mao.png'),
+	('95f7e5a8c051e6b60905912bd8aedf7d', 'Chim oanh co đo.png'),
+	('365c43bd856cf86e0e0b4cd4b7bc0462', 'Chim Khuou bac ma.png'),
+	('b51f1bb2e54d243e60e32563b2b1a7ed', 'Chim chich bong.png'),
+	('08eed66a05827e8dc02d6ff1392f9bf6', 'Chim diec dau den.png'),
+	('ddfff0e1f9009fe5d621e2ed07348a51', 'Chim cuc cu.png'),
+	('cbe26c3a3f34407ed023e3f02399d2fa', 'Chim nhan den.png'),
+	('05b5b4345d8ac2f73ece3df15be03230', 'Chim hoa mi dong co.png'),
+	('2bda592b2aada870747dd4366a3dff18', 'Chim nhan trang.png'),
+	('e28e1458f599f2391b91bfd61338483e', 'Chim bim bip Dong Duong.png'),
+	('84cb52eda2e4f0b66f8509c37e857e8c', 'Chim sao bung den.png'),
+	('8721d5a5f3f44bd01529d24dcf519239', 'Chim Chia Voi hong trang.png'),
+	('66a5473e01debb47bff7f215d6c4a228', 'Chim cat Mindoro.png'),
+	('6d47ad177fb45c2d87e1b54fc363676b', 'Chim dop ruoi cam den.png'),
+	('25abf9603856427e295b7bd1137fd04a', 'Chim thien nga den.png'),
+	('ed1ed3634186fc66ee692da3ba98272f' , 'Chim son ca.png'),
+	('e47ccaddaa9e2cd4c25e84cae624b077' , 'Chim Vang Anh.png');
+	
 -- Insert data into the Users table
 INSERT INTO Users (userID, imageID, userName, userPassword, fullName, phoneNumber, gender, email, userRole, status_)
 VALUES
-    ('df906a974056cd590d0b9fc4ddc37c22', '4twgbi3qw84bgqhorwoee83hf93jj30f', 'tiendkmSE172051', 'password', 'Nguyễn Kim Minh Tiến', '0987896754', 'male', 'tiendkmse172051@fpt.edu.vn', 'admin', 'active' ),
-    ('2c9320b8639fc9e1c784880bbecfdfa1', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'tuanntaSE140515', 'password', 'Nguyễn Thanh Anh Tuấn', '0748195317', 'male', 'tuanntase140515@fpt.edu.vn', 'user', 'active' ),
-    ('3ff56e23cc31e9c9a85bc037341a65ee', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'bachnhSE172021', 'password', 'Nguyễn Huy Bách', '0987656788', 'male', 'bachnhSE172021@fpt.edu.vn', 'user', 'active' ),
-	('3ff5njfnijhfdsf8845bc037341a65ee', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'minhdnaSE172977', 'password', 'Đặng Võ Anh Minh', '0876549456', 'male', 'minhdnaSE172977@fpt.edu.vn', 'user', 'active' ),
-	('82d5cf38dc655bd1722ac5d4d350bce3', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'PhuctqhSE171472', 'password', '	Trương Quang Hồng Phúc', '0897412324', 'male', 'PhuctqhSE171472@fpt.edu.vn', 'user', 'banned' ),
-	('1c4f04058f291642c159e27e1554ddf8', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'anptSE172048', 'password', 'Phan Thiên Ân', '0987656788', 'male', 'anptSE172048@fpt.edu.vn', 'user', 'active' ),
-	('c0637bb4f3d7531d936f2686b9672a66', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'nghoangphuc01', 'password', 'Nguyễn Hoàng Phúc', '1234567890', 'male', 'phucnh01@gmail.com', 'user', 'active' ),
-    ('11eee90acf45377f4cc3ca0758f2bf30', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'tuannt02', 'password', 'Nguyễn Thanh Tuấn', '0987654321', 'male', 'tuannt02@gmail.com', 'user', 'active' ),
-    ('48b31829bc7599f232d06a1e686534bd', 'fhawfbwa98fha98hf9na9uwbga9ubvg9', 'anhttl03', 'password', 'Trần Thị Lan Anh', '0123456789', 'unknown', 'anhttl03@gmail.com', 'user', 'active' ),
-    ('4e192dacb208ceb2413376e2ad3b3db8', 'gha948ga489hra3r9fh32f32f9838r93', 'rienglt01', 'password', 'Lê Thị Riêng', '9876543210', 'female', 'riengtl01@gmail.com', 'user', 'active' ),
-    ('6cb9c7dba65dd3d9e1946c5dd265dbcd', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'hungnm02', 'password', 'Nguyễn Mạnh Hùng', '5678901234', 'male', 'hungnm02@gmail.com', 'user', 'active' ),
-	('45b76de8eb0fd35e124955a2ff2473db', 'gha948ga489hra3r9fh32f32f9838r93', 'thaophy04', 'password', 'Phan Hồng Yến Thảo', '6565743635', 'female', 'thaophy04@gmail.com', 'user', 'banned' ),
-    ('ea03ec90c8836f413784ee96e50a4f11', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'toanhm07', 'password', 'Huỳnh Minh Toàn', '0976534156', 'male', 'toanmt07@gmail.com', 'user', 'active' ),
-    ('bc6c32dbbb8bd0660d158b08d7cad96f', 'fhawfbwa98fha98hf9na9uwbga9ubvg9', 'haileduc56', 'password', 'Lê Đức Hải', '0965783451', 'unknown', 'haild56@gmail.com', 'user', 'active' ),
-    ('7e55fcb3a457634cfa78b49bdb774b3a', 'gha948ga489hra3r9fh32f32f9838r93', 'yennth09', 'password', 'Nguyễn Thị Hải Yến', '0914135352', 'female', 'yennth09@gmail.com', 'user', 'active' ),
-    ('d8869200b4fbde66a3475d6e730e1b6d', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'minhngtr04', 'password', 'Nguyẽn Trần Minh', '0765678234', 'male', 'minhngtr04@gmail.com', 'user', 'banned' ),
-	('128ce6812392dce1ca5a6919f03a26a2', 'gha948ga489hra3r9fh32f32f9838r93', 'thuthitran06', 'password', 'Trần Thị Thu', '0908070605', 'female', 'thuthitran06@gmail.com', 'user', 'active' ),
-    ('87ccfc84f4eb846b5aeb0e04f6ea12ea', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'bayvanng08', 'password', 'Nguyễn Văn Bảy', '0990807067', 'male', 'bayvanng08@gmail.com', 'user', 'active' ),
-    ('715c43d86b98da2212d7a9c9ce9d3062', 'fhawfbwa98fha98hf9na9uwbga9ubvg9', 'phattrduc04', 'password', 'Trần Đức Phát', '0975432654', 'unknown', 'phattrduc04@gmail.com', 'user', 'banned' ),
-    ('a69b4087d281cb16efaa6bc91308f64d', 'gha948ga489hra3r9fh32f32f9838r93', 'giangngquy03', 'password', 'Nguyễn Quỳnh Giang', '0914153645', 'female', 'giangngquy03@gmail.com', 'user', 'active' ),
-    ('61dd2b9c89fdcc1dce9fb553bf29cd8d', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'minhngqua07', 'password', 'Nguyễn Quang Minh', '0998877665', 'male', 'minhngqua07@gmail.com', 'user', 'active' ),
-	('03b016eef369ef40bba639aa4f04341b', 'gha948ga489hra3r9fh32f32f9838r93', 'anhtrdan06', 'password', 'Đặng Trâm Anh', '0908866442', 'female', 'anhtrdan06@gmail.com', 'user', 'active' ),
-    ('f8b0ed4e38a71924a7d2bca97029778a', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'datquocle05', 'password', 'Lê Quốc Đạt', '0913254465', 'male', 'datqule05@gmail.com', 'user', 'active' ),
-    ('5cbae581d99c1c3d17b8c09b07c54892', 'fhawfbwa98fha98hf9na9uwbga9ubvg9', 'yenkinguy45', 'password', 'Nguyễn Kim Yến', '0914253647', 'unknown', 'yenkinguy45@gmail.com', 'user', 'active' ),
-    ('20e843f249d75ada67c1a2eef0dac92e', 'gha948ga489hra3r9fh32f32f9838r93', 'yenlethai35', 'password', 'Lê Thị Hải Yến', '0912233445', 'female', 'yenlethai35@gmail.com', 'user', 'banned' ),
-    ('712da4f1096f6ae70d0f3c091b84ae7c', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'phucngminh17', 'password', 'Nguyễn Minh Phúc', '0945566748', 'male', 'phucngminh17@gmail.com', 'user', 'active' ),
-	('b03c6f5a51ee06d3dbd17d0e38507ede', 'gha948ga489hra3r9fh32f32f9838r93', 'vyngphuo57', 'password', 'Nguyễn Phương Vy', '0908123452', 'female', 'vyngphuo57@gmail.com', 'user', 'active' ),
-    ('b83bb75b898592b75232c4816842d824', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'longngvu14', 'password', 'Nguyễn Vũ Long', '0987432456', 'male', 'longngvu14@gmail.com', 'user', 'active' ),
-    ('a68757602ea7419f0e2313a842be9abf', 'fhawfbwa98fha98hf9na9uwbga9ubvg9', 'ngocvanng45', 'password', 'Nguyễn Văn Ngọc', '0965478154', 'unknown', 'ngocvanng45@gmail.com', 'user', 'active' ),
-    ('2b1850783245c06d0b782a4c9cd6a0a0', 'gha948ga489hra3r9fh32f32f9838r93', 'tratrthihuo37', 'password', 'Trần Thị Hương Trà', '9876543210', 'female', 'tratrthihuo37@gmail.com', 'user', 'banned' ),
-    ('eb70ed9c4c32afea8f482dc873be4f6a', 'gha948ga489hra3r9fh32f32f9838r93', 'tranglethihuo75', 'password', 'Lê Thị Hương Trang', '0904534256', 'female', 'tranglethihuo75@gmail.com', 'user', 'active' ),
-	('ae114dac5897fbcfd25797bf4be08fd3', 'cjndsjkcfnzslkjvnawjefn8jfh38fu3', 'yentrthith87', 'password', 'Trần Thị Thanh Yến', '0789145356', 'female', 'yentrthith87@gmail.com', 'user', 'active' ),
-	('9eae70b054be6eba305323d8c9106cfb', 'vnaeojvner9gh39g4waofh28f28hfa93', 'anhdongtr09', 'password', 'Đỗ Nguyễn Trâm Anh', '0345762433', 'female', 'anhdongtr09@gmail.com', 'user', 'banned' ),
-	('c8aa14ffb7da0912c84635aa2ee0bb62', 'fhafgbyfg87gf83bfiwifhweufhwe5g5', 'anhdoquynh35', 'password', 'Đỗ Quỳnh Anh', '0543749273', 'female', 'anhdoquynh35@gmail.com', 'user', 'active' ),
-	('dd0e3f50648088bfecc501f809a06ca8', 'g73f93hf9bwfb3v384ub83bg3487fb43', 'tiennamtr36', 'password', 'Trần Nam Tiến', '0546328472', 'male', 'tiennamtr36@gmail.com', 'user', 'active' ),
-	('62fe46dae9470f311d52973a6eeb6a1a', 'biserhbf9473hf9b94gb49f93f38f984', 'anhquochoa67', 'password', 'Hoàng Quốc Anh', '0534732843', 'male', 'anhquochoa67@gmail.com', 'user', 'active' ),
-	('9c6189a20beb35a93df963e3b48eb9b0', 'gsbheirbfg7a843hgfa943bfu9fb3f93', 'sangkim16', 'password', 'Ngô Kim Sa', '0534254324', 'female', 'sangkim16@gmail.com', 'user', 'banned' ),
-	('1c38dd30f9e415b3a34879be077381ce', 'fbriehafbihfa7hfa3hf983hf98qff82', 'taileanh78', 'password', 'Lê Anh Tài', '0523423234', 'male', 'taileanh78@gmail.com', 'user', 'active' ),
-	('21fc9daf44e2637d7972bd248c83577d', 'rfhiarebfniuaerhnfuah9f48h34f843', 'nhiluoman19', 'password', 'Lương Mẫn Nhi', '0556475242', 'female', 'nhiluoman19@gmail.com', 'user', 'active' ),
-	('01c1fa1b81297a2de21056f35303ad84', 'fherajfhriuehfraufha94hf98fh93hf', 'kietnganhmin47', 'password', 'Nguyễn Minh Anh Kiệt', '0556253524', 'male', 'kietnganhmin47@gmail.com', 'user', 'active' ),
-	('fe30e1ff175e10b1c538613084ab2417', 'fnerajfha974fhy4973haf9ha49hf338', 'thaodothithu64', 'password', 'Đoàn Thị Thu Thảo', '0534719873', 'male', 'thaodothithu64@gmail.com', 'user', 'banned' );
+    ('df906a974056cd590d0b9fc4ddc37c22', '4twgbi3qw84bgqhorwoee83hf93jj30f', 'tiendkmSE172051', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nguyễn Kim Minh Tiến', '0987896754', 'male', 'tiendkmse172051@fpt.edu.vn', 'admin', 'active' ),
+    ('2c9320b8639fc9e1c784880bbecfdfa1', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'tuanntaSE140515', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nguyễn Thanh Anh Tuấn', '0748195317', 'male', 'tuanntase140515@fpt.edu.vn', 'customer', 'active' ),
+    ('3ff56e23cc31e9c9a85bc037341a65ee', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'bachnhSE172021', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nguyễn Huy Bách', '0987656788', 'male', 'bachnhSE172021@fpt.edu.vn', 'customer', 'active' ),
+	('3ff5njfnijhfdsf8845bc037341a65ee', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'minhdnaSE172977', '5f4dcc3b5aa765d61d8327deb882cf99', 'Đặng Võ Anh Minh', '0876549456', 'male', 'minhdnaSE172977@fpt.edu.vn', 'customer', 'active' ),
+	('82d5cf38dc655bd1722ac5d4d350bce3', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'PhuctqhSE171472', '5f4dcc3b5aa765d61d8327deb882cf99', '	Trương Quang Hồng Phúc', '0897412324', 'male', 'PhuctqhSE171472@fpt.edu.vn', 'customer', 'active' ),
+	('1c4f04058f291642c159e27e1554ddf8', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'anptSE172048', '5f4dcc3b5aa765d61d8327deb882cf99', 'Phan Thiên Ân', '0987656788', 'male', 'anptSE172048@fpt.edu.vn', 'customer', 'active' ),
+	('c0637bb4f3d7531d936f2686b9672a66', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'nghoangphuc01', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nguyễn Hoàng Phúc', '1234567890', 'male', 'phucnh01@gmail.com', 'customer', 'banned' ),
+    ('11eee90acf45377f4cc3ca0758f2bf30', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'tuannt02ert', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nguyễn Thanh Tuấn', '0987654321', 'male', 'tuannt02@gmail.com', 'customer', 'active' ),
+    ('48b31829bc7599f232d06a1e686534bd', 'fhawfbwa98fha98hf9na9uwbga9ubvg9', 'anhttl03edc', '5f4dcc3b5aa765d61d8327deb882cf99', 'Trần Thị Lan Anh', '0123456789', 'unknown', 'anhttl03@gmail.com', 'customer', 'active' ),
+    ('4e192dacb208ceb2413376e2ad3b3db8', 'gha948ga489hra3r9fh32f32f9838r93', 'rienglt01', '5f4dcc3b5aa765d61d8327deb882cf99', 'Lê Thị Riêng', '9876543210', 'female', 'riengtl01@gmail.com', 'customer', 'active' ),
+    ('6cb9c7dba65dd3d9e1946c5dd265dbcd', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'hungnm02nbv', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nguyễn Mạnh Hùng', '5678901234', 'male', 'hungnm02@gmail.com', 'customer', 'banned' ),
+	('45b76de8eb0fd35e124955a2ff2473db', 'gha948ga489hra3r9fh32f32f9838r93', 'thaophy04', '5f4dcc3b5aa765d61d8327deb882cf99', 'Phan Hồng Yến Thảo', '6565743635', 'female', 'thaophy04@gmail.com', 'customer', 'banned' ),
+    ('ea03ec90c8836f413784ee96e50a4f11', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'toanhm07cvb', '5f4dcc3b5aa765d61d8327deb882cf99', 'Huỳnh Minh Toàn', '0976534156', 'male', 'toanmt07@gmail.com', 'customer', 'active' ),
+    ('bc6c32dbbb8bd0660d158b08d7cad96f', 'fhawfbwa98fha98hf9na9uwbga9ubvg9', 'haileduc56', '5f4dcc3b5aa765d61d8327deb882cf99', 'Lê Đức Hải', '0965783451', 'unknown', 'haild56@gmail.com', 'customer', 'active' ),
+    ('7e55fcb3a457634cfa78b49bdb774b3a', 'gha948ga489hra3r9fh32f32f9838r93', 'yennth09jkl', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nguyễn Thị Hải Yến', '0914135352', 'female', 'yennth09@gmail.com', 'customer', 'active' ),
+    ('d8869200b4fbde66a3475d6e730e1b6d', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'minhngtr04', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nguyẽn Trần Minh', '0765678234', 'male', 'minhngtr04@gmail.com', 'customer', 'banned' ),
+	('128ce6812392dce1ca5a6919f03a26a2', 'gha948ga489hra3r9fh32f32f9838r93', 'thuthitran06', '5f4dcc3b5aa765d61d8327deb882cf99', 'Trần Thị Thu', '0908070605', 'female', 'thuthitran06@gmail.com', 'customer', 'banned' ),
+    ('87ccfc84f4eb846b5aeb0e04f6ea12ea', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'bayvanng08', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nguyễn Văn Bảy', '0990807067', 'male', 'bayvanng08@gmail.com', 'customer', 'active' ),
+    ('715c43d86b98da2212d7a9c9ce9d3062', 'fhawfbwa98fha98hf9na9uwbga9ubvg9', 'phattrduc04', '5f4dcc3b5aa765d61d8327deb882cf99', 'Trần Đức Phát', '0975432654', 'unknown', 'phattrduc04@gmail.com', 'customer', 'banned' ),
+    ('a69b4087d281cb16efaa6bc91308f64d', 'gha948ga489hra3r9fh32f32f9838r93', 'giangngquy03', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nguyễn Quỳnh Giang', '0914153645', 'female', 'giangngquy03@gmail.com', 'customer', 'active' ),
+    ('61dd2b9c89fdcc1dce9fb553bf29cd8d', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'minhngqua07', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nguyễn Quang Minh', '0998877665', 'male', 'minhngqua07@gmail.com', 'customer', 'active' ),
+	('03b016eef369ef40bba639aa4f04341b', 'gha948ga489hra3r9fh32f32f9838r93', 'anhtrdan06ewq', '5f4dcc3b5aa765d61d8327deb882cf99', 'Đặng Trâm Anh', '0908866442', 'female', 'anhtrdan06@gmail.com', 'customer', 'active' ),
+    ('f8b0ed4e38a71924a7d2bca97029778a', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'datquocle05', '5f4dcc3b5aa765d61d8327deb882cf99', 'Lê Quốc Đạt', '0913254465', 'male', 'datqule05@gmail.com', 'customer', 'banned' ),
+    ('5cbae581d99c1c3d17b8c09b07c54892', 'fhawfbwa98fha98hf9na9uwbga9ubvg9', 'yenkinguy45', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nguyễn Kim Yến', '0914253647', 'unknown', 'yenkinguy45@gmail.com', 'customer', 'active' ),
+    ('20e843f249d75ada67c1a2eef0dac92e', 'gha948ga489hra3r9fh32f32f9838r93', 'yenlethai35', '5f4dcc3b5aa765d61d8327deb882cf99', 'Lê Thị Hải Yến', '0912233445', 'female', 'yenlethai35@gmail.com', 'customer', 'banned' ),
+    ('712da4f1096f6ae70d0f3c091b84ae7c', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'phucngminh17', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nguyễn Minh Phúc', '0945566748', 'male', 'phucngminh17@gmail.com', 'customer', 'active' ),
+	('b03c6f5a51ee06d3dbd17d0e38507ede', 'gha948ga489hra3r9fh32f32f9838r93', 'vyngphuo57qwe', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nguyễn Phương Vy', '0908123452', 'female', 'vyngphuo57@gmail.com', 'customer', 'active' ),
+    ('b83bb75b898592b75232c4816842d824', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'longngvu14zxc', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nguyễn Vũ Long', '0987432456', 'male', 'longngvu14@gmail.com', 'customer', 'active' ),
+    ('a68757602ea7419f0e2313a842be9abf', 'fhawfbwa98fha98hf9na9uwbga9ubvg9', 'ngocvanng45', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nguyễn Văn Ngọc', '0965478154', 'unknown', 'ngocvanng45@gmail.com', 'customer', 'active' ),
+    ('2b1850783245c06d0b782a4c9cd6a0a0', 'gha948ga489hra3r9fh32f32f9838r93', 'tratrthihuo37', '5f4dcc3b5aa765d61d8327deb882cf99', 'Trần Thị Hương Trà', '9876543210', 'female', 'tratrthihuo37@gmail.com', 'customer', 'banned' ),
+    ('eb70ed9c4c32afea8f482dc873be4f6a', 'gha948ga489hra3r9fh32f32f9838r93', 'tranglethihuo75', '5f4dcc3b5aa765d61d8327deb882cf99', 'Lê Thị Hương Trang', '0904534256', 'female', 'tranglethihuo75@gmail.com', 'customer', 'active' ),
+	('ae114dac5897fbcfd25797bf4be08fd3', 'cjndsjkcfnzslkjvnawjefn8jfh38fu3', 'yentrthith87', '5f4dcc3b5aa765d61d8327deb882cf99', 'Trần Thị Thanh Yến', '0789145356', 'female', 'yentrthith87@gmail.com', 'doctor', 'active' ),
+	('9eae70b054be6eba305323d8c9106cfb', 'vnaeojvner9gh39g4waofh28f28hfa93', 'anhdongtr09', '5f4dcc3b5aa765d61d8327deb882cf99', 'Đỗ Nguyễn Trâm Anh', '0345762433', 'female', 'anhdongtr09@gmail.com', 'doctor', 'active' ),
+	('c8aa14ffb7da0912c84635aa2ee0bb62', 'fhafgbyfg87gf83bfiwifhweufhwe5g5', 'anhdoquynh35', '5f4dcc3b5aa765d61d8327deb882cf99', 'Đỗ Quỳnh Anh', '0543749273', 'female', 'anhdoquynh35@gmail.com', 'doctor', 'active' ),
+	('dd0e3f50648088bfecc501f809a06ca8', 'g73f93hf9bwfb3v384ub83bg3487fb43', 'tiennamtr36', '5f4dcc3b5aa765d61d8327deb882cf99', 'Trần Nam Tiến', '0546328472', 'male', 'tiennamtr36@gmail.com', 'doctor', 'active' ),
+	('62fe46dae9470f311d52973a6eeb6a1a', 'biserhbf9473hf9b94gb49f93f38f984', 'anhquochoa67', '5f4dcc3b5aa765d61d8327deb882cf99', 'Hoàng Quốc Anh', '0534732843', 'male', 'anhquochoa67@gmail.com', 'doctor', 'active' ),
+	('9c6189a20beb35a93df963e3b48eb9b0', 'gsbheirbfg7a843hgfa943bfu9fb3f93', 'sangkim16abcd', '5f4dcc3b5aa765d61d8327deb882cf99', 'Ngô Kim Sa', '0534254324', 'female', 'sangkim16@gmail.com', 'doctor', 'active' ),
+	('1c38dd30f9e415b3a34879be077381ce', 'fbriehafbihfa7hfa3hf983hf98qff82', 'taileanh78xyz', '5f4dcc3b5aa765d61d8327deb882cf99', 'Lê Anh Tài', '0523423234', 'male', 'taileanh78@gmail.com', 'doctor', 'active' ),
+	('21fc9daf44e2637d7972bd248c83577d', 'rfhiarebfniuaerhnfuah9f48h34f843', 'nhiluoman19rty', '5f4dcc3b5aa765d61d8327deb882cf99', 'Lương Mẫn Nhi', '0556475242', 'female', 'nhiluoman19@gmail.com', 'doctor', 'active' ),
+	('01c1fa1b81297a2de21056f35303ad84', 'fherajfhriuehfraufha94hf98fh93hf', 'kietnganhmin47', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nguyễn Minh Anh Kiệt', '0556253524', 'male', 'kietnganhmin47@gmail.com', 'doctor', 'active' ),
+	('fe30e1ff175e10b1c538613084ab2417', 'fnerajfha974fhy4973haf9ha49hf338', 'thaodothithu64', '5f4dcc3b5aa765d61d8327deb882cf99', 'Đoàn Thị Thu Thảo', '0534719873', 'male', 'thaodothithu64@gmail.com', 'doctor', 'active' ),
+	('hebrf38f7h348fb384fb38ybf38byfr3', 'f7384hfw34f38wb4fw38h4f03h43f93f', 'dongovan456qwer', '5f4dcc3b5aa765d61d8327deb882cf99', 'Ngô Văn Đô', '0512345469', 'male', 'dongovan456@gmail.com', 'staff', 'active' ),
+	('f7834yf8h3w9b93wfb943hf943f934hf', 'ngseriug908hg93h4g934nf34f938f4h', 'thaongthiphuong6969', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nguyễn Thị Phương Thảo', '0705536741', 'female', 'thaongthiphuong6969@gmail.com', 'staff', 'active' );
 
 -- Insert data into the Customer table
 INSERT INTO Customer (customerID, dob, customerAddress)

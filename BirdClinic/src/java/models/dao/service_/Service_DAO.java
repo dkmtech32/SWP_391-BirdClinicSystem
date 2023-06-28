@@ -25,4 +25,5 @@ public interface Service_DAO extends Serializable {
 
     List<Service_DTO> searchService_(String serviceName) throws SQLException;
     
+    List<Service_DTO> readServiceBySpeciality(String specialityID) throws SQLException;
 }

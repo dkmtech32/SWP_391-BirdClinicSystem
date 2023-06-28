@@ -28,17 +28,17 @@ public class CustomerDAOImpl extends UserDAOImpl implements CustomerDAO {
     public CustomerDAOImpl(ImageDAO imageDAO) {
         super(imageDAO);
     }
-    private static final String READ_CUSTOMER = "select customerID, dob, phoneNumber, customerAddress  "
+    private static final String READ_CUSTOMER = "select customerID, dob, customerAddress  "
             + "from Customer "
             + "where customerID = ?";
-    private static final String READ_ALL_CUSTOMER = "select customerID, dob, phoneNumber, customerAddress "
+    private static final String READ_ALL_CUSTOMER = "select customerID, dob, customerAddress "
             + "from Customer ";
-    private static final String INSERT_CUSTOMER = "insert into Customer(customerID, dob, phoneNumber, customerAddress) "
-            + "values (?, ?, ?, ?)";
+    private static final String INSERT_CUSTOMER = "insert into Customer(customerID, dob, customerAddress) "
+            + "values (?, ?, ?)";
     private static final String DELETE_CUSTOMER = "delete from Customer "
             + "where customerID = ?";
     private static final String UPDATE_CUSTOMER = "update Customer "
-            + "set dob = ?, phoneNumber = ?, customerAddress = ? "
+            + "set dob = ?, customerAddress = ? "
             + "where customerID = ?";
     
     
@@ -56,12 +56,11 @@ public class CustomerDAOImpl extends UserDAOImpl implements CustomerDAO {
             stm.setString(1, customerID);
             rs = stm.executeQuery();
 
-            if (rs != null) {
+            if (rs.next()) {
                 UserDTO user = this.readUser(customerID, con);
                 result = new CustomerDTOImpl(user);
                 result.setDob(rs.getDate("dob"));
                 result.setCustomerAddress(rs.getString("customerAddress"));
-                result.setPhoneNumber(rs.getString("phoneNumber"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -91,12 +90,11 @@ public class CustomerDAOImpl extends UserDAOImpl implements CustomerDAO {
             stm.setString(1, customerID);
             rs = stm.executeQuery();
 
-            if (rs != null) {
+            if (rs.next()) {
                 UserDTO user = this.readUser(customerID, con);
                 result = new CustomerDTOImpl(user);
                 result.setDob(rs.getDate("dob"));
                 result.setCustomerAddress(rs.getString("customerAddress"));
-                result.setPhoneNumber(rs.getString("phoneNumber"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -126,8 +124,7 @@ public class CustomerDAOImpl extends UserDAOImpl implements CustomerDAO {
             stm = con.prepareStatement(INSERT_CUSTOMER);
             stm.setString(1, customer.getUserID());
             stm.setDate(2, customer.getDob());
-            stm.setString(3, customer.getPhoneNumber());
-            stm.setString(4, customer.getCustomerAddress());
+            stm.setString(3, customer.getCustomerAddress());
             
             result = stm.executeUpdate();
         } catch (SQLException ex) {
@@ -187,9 +184,8 @@ public class CustomerDAOImpl extends UserDAOImpl implements CustomerDAO {
             con = DBUtils.getConnection();
             stm = con.prepareStatement(UPDATE_CUSTOMER);
             stm.setDate(1, customer.getDob());
-            stm.setString(2, customer.getPhoneNumber());
-            stm.setString(3, customer.getCustomerAddress());
-            stm.setString(4, customer.getUserID());
+            stm.setString(2, customer.getCustomerAddress());
+            stm.setString(3, customer.getUserID());
             
             result = stm.executeUpdate();
             super.insertUser(customer, con);
