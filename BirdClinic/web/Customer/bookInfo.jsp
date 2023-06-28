@@ -13,7 +13,7 @@
         <!-- Main Wrapper -->
         <div class="main-wrapper">
             <!-- Header -->
-            <jsp:include page="../Common/header-guest.jsp"/>
+            <jsp:include page="../Common/header.jsp"/>
             <!--/Header -->
 
             <!-- Breadcrumb -->
@@ -248,12 +248,11 @@
             <!-- /Footer -->
         </div>
         <!-- /Main Wrapper -->
-
+        
         <!-- Script -->
         <jsp:include page="../Common/script.jsp"/>
         <script>
             const datetimeSlotPicker = document.querySelector('datetime-slot-picker');
-
             /* LISTENER FOR DATE AND TIME SLOT CHANGES */
             datetimeSlotPicker.addEventListener('slotUpdate', function (event) {
                 console.log('Updated Slot: ', event.detail)

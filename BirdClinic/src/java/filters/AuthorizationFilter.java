@@ -54,31 +54,26 @@ public class AuthorizationFilter implements Filter {
             throws IOException, ServletException {
 
         HttpServletResponse res = (HttpServletResponse) response;
-        if (res.getStatus()!=401) {
+        if (res.getStatus() != 401) {
             HttpServletRequest req = (HttpServletRequest) request;
             String url = req.getRequestURI().split(req.getContextPath())[1];
-            String authPattern = url.split("/")[1];
+            String authPattern = url.split("/")[1].toLowerCase();
+
             HttpSession session = req.getSession();
             UserDTO user = (UserDTO) session.getAttribute("currentUser");
-            String role = user.getUserRole().trim();
-
-            if (!role.equals(authPattern)) {//if user is unauthorized
+            
+            //if user is unauthorized
+            if (!user.getUserRole().equals(authPattern)) {
                 if (session.getAttribute("tempURL") == null) {
-                    session.setAttribute("tempURL", req.getRequestURL()); //store url to go back to after user reauthorized
+                    String tempURL = req.getRequestURI().split(req.getContextPath())[1];
+                    //store url to go back to after user logs in
+                    session.setAttribute("tempURL", tempURL); 
                 }
                 res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Wrong role.");
                 return;
-            } else {//if user is authorized
-                String tempURL = (String) session.getAttribute("tempURL"); //get stored url
-
-                if (tempURL != null) {
-                    session.setAttribute("tempURL", null);
-                    req.getRequestDispatcher(tempURL).forward(request, response); //if user stored url then go to that url, else go default request url
-                    return;
-                }
             }
         }
-
+        //if user is authorized continue
         try {
             chain.doFilter(request, response);
         } catch (IOException | ServletException ex) {
