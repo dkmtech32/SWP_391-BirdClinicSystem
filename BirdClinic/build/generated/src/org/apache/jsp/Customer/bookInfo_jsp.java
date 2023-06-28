@@ -71,7 +71,7 @@ public final class bookInfo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <div class=\"main-wrapper\">\r\n");
       out.write("            <!-- Header -->\r\n");
       out.write("            ");
-      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "../Common/header-guest.jsp", out, false);
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "../Common/header.jsp", out, false);
       out.write("\r\n");
       out.write("            <!--/Header -->\r\n");
       out.write("\r\n");
@@ -259,14 +259,13 @@ public final class bookInfo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <!-- /Footer -->\r\n");
       out.write("        </div>\r\n");
       out.write("        <!-- /Main Wrapper -->\r\n");
-      out.write("\r\n");
+      out.write("        \r\n");
       out.write("        <!-- Script -->\r\n");
       out.write("        ");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "../Common/script.jsp", out, false);
       out.write("\r\n");
       out.write("        <script>\r\n");
       out.write("            const datetimeSlotPicker = document.querySelector('datetime-slot-picker');\r\n");
-      out.write("\r\n");
       out.write("            /* LISTENER FOR DATE AND TIME SLOT CHANGES */\r\n");
       out.write("            datetimeSlotPicker.addEventListener('slotUpdate', function (event) {\r\n");
       out.write("                console.log('Updated Slot: ', event.detail)\r\n");
