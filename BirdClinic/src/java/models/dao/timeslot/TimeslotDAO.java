@@ -17,8 +17,6 @@ import models.dto.timeslot.TimeslotDTO;
  */
 public interface TimeslotDAO extends Serializable{
 
-    List<TimeslotDTO> getTimeSlotList();
-
     List<TimeslotDTO> readAllTimeSlot() throws SQLException;
 
     TimeslotDTO readTimeSlot(String timeslotID) throws SQLException;

@@ -8,16 +8,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <jsp:include page="../Common/head.jsp"/>
+    <jsp:include page="Common/head.jsp"/>
     <body>
         <!-- Main Wrapper -->
         <div class="main-wrapper">
             <!-- Header -->
-            <jsp:include page="../Common/header-guest.jsp"/>
+            <jsp:include page="Common/header-guest.jsp"/>
             <!--/Header -->
 
             <!-- Breadcrumb -->
-            <jsp:include page="../Common/breadcrumb.jsp"/>
+            <jsp:include page="Common/breadcrumb.jsp"/>
             <!-- /Breadcrumb -->
 
             <!-- Page Content -->
@@ -28,37 +28,47 @@
                             <div class="card">
                                 <div class="card-body">
                                     <!-- Checkout Form -->
-                                    <form action="../Customer/booking-success.jsp">
+                                    <form action="booking-success.jsp">
                                         <!-- Personal Information -->
                                         <div class="info-widget">
                                             <h4 class="card-title">Personal Information</h4>
                                             <div class="row">
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="form-group card-label">
-                                                        <label>Full Name</label>
-                                                        <input class="form-control" type="text" value="Nguyen Van G" />
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-group">
+                                                        <label>First Name</label>
+                                                        <div class="form-control">${customer.firstName}</div>
                                                     </div>
-                                                </div>												
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="form-group card-label">
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Last Name</label>
+                                                        <div type="text" class="form-control">${customer.lastName}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Date of Birth</label>
+                                                        <div class="cal-icon">
+                                                            <div class="form-control datetimepicker">${customer.dob}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Address</label>
+                                                        <div class="form-control">${customer.phoneNumber}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-group">
                                                         <label>Email</label>
-                                                        <input class="form-control" type="email" value="test@gmail.com" />
+                                                        <div class="form-control">${customer.email}</div> <!-- email này chưa có nên tôi chế -->
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="form-group card-label">
-                                                        <label>Phone</label>
-                                                        <input class="form-control" type="text" value="0999999000"/>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12">
-                                                    <div class="form-group card-label">
-                                                        <label>Gender</label>
-                                                        <select class="form-control">
-                                                            <option value="Male">Male</option>
-                                                            <option value="Female">Female</option>
-                                                            <option value="Other">Other</option>
-                                                        </select>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Mobile</label>
+                                                        <div class="form-control">${customer.customerAddress}</div> 
                                                     </div>
                                                 </div>
                                             </div>
@@ -69,41 +79,11 @@
                                         <div class="info-widget">
                                             <h4 class="card-title">Bird Information</h4>
                                             <div class="row">
-                                                <!-- <div class="col-md-6 col-sm-12">
-                                                        <div class="form-group card-label">
-                                                                <label>Name</label>
-                                                                <input class="form-control" type="text" value="Chó" />
-                                                        </div>
-                                                </div>												
-                                                <div class="col-md-6 col-sm-12">
-                                                        <div class="form-group card-label">
-                                                                <label>Breed</label>
-                                                                <input class="form-control" type="text" value="Parrot" />
-                                                        </div>
-                                                </div>
-                                                <div class="col-md-6 col-sm-12">
-                                                        <div class="form-group card-label">
-                                                                <label>Date of Birth</label>
-                                                                <input class="form-control" type="date" value="2022-12-15" name="dob"/>
-                                                        </div>
-                                                </div> -->
-                                                <!-- <div class="col-md-6 col-sm-12">
-                                                        <div class="form-group card-label">
-                                                                <label>Gender</label>
-                                                                <select class="form-control">
-                                                                        <option value="Male">Male</option>
-                                                                        <option value="Female">Female</option>
-                                                                        <option value="Other">Other</option>
-                                                                </select>
-                                                        </div>
-                                                </div> -->
                                                 <div class="col-md-12 col-sm-12">
                                                     <div class="form-group card-label">
                                                         <label>Choose your bird</label>
                                                         <select class="form-control">
-                                                            <option value="dog">Chó</option>
-                                                            <option value="cat">Mèo</option>
-                                                            <option value="bird">Chim</option>
+                                                            <option value="dog">${bird.birdFullname}</option> <!--liệt kê tên mấy con chim của thằng customer ra-->
                                                         </select>
                                                     </div>
                                                 </div>
@@ -117,14 +97,10 @@
                                             <c:if test="${param.doctor == 'all'}">
                                                 <div class="col-md-12 col-sm-12">
                                                     <div class="form-group card-label">
-                                                        <label>Choose specialty</label>
+                                                        <label>Choose service</label>
                                                         <select class="form-control" required >
                                                             <option value="">--</option>
-                                                            <option value="general">General</option>
-                                                            <option value="surgery">Surgery</option>
-                                                            <option value="imaging">Imaging</option>
-                                                            <option value="nutrition">Nutrition</option>
-                                                            <option value="genetics">Genetics</option>
+                                                            <option value="general">${appoitment.service_}</option> <!--liệt kê services ra-->
                                                         </select>
                                                         <div class="invalid-feedback">Example invalid custom select feedback</div>
                                                     </div>
@@ -132,7 +108,7 @@
                                             </c:if>
                                             <div class="col-md-12 col-sm-12">
                                                 <div class="form-group">													
-                                                    <textarea class="form-control" rows="4" placeholder="Describe bird's symtoms" required></textarea>
+                                                    <textarea class="form-control" rows="4" placeholder="Describe bird's symtoms" required></textarea> <!--customer mô tả triệu chứng của con chim--> 
                                                     <div class="invalid-feedback">Example invalid custom select feedback</div>
                                                 </div>
                                             </div>
@@ -157,62 +133,29 @@
                                     <h4 class="card-title">Booking Summary</h4>
                                 </div>
                                 <div class="card-body">
-                                    <!-- Booking Doctor Info -->                                    
-                                    <c:choose>
-                                        <c:when test="${param.doctor == 'all'}">                                 
-                                            <div class="booking-doc-info">
-                                                <a href="doctor-profile.jsp" class="booking-doc-img">
-                                                    <img src="../assets/img/logo.png" alt="User Image" />
-                                                </a>
-                                                <div class="booking-info">
-                                                    <h4><a href="doctor-profile.jsp">BirdLover Clinic</a></h4>
-                                                    <!-- <div class="rating">
-                                                            <i class="fas fa-star filled"></i>
-                                                            <i class="fas fa-star filled"></i>
-                                                            <i class="fas fa-star filled"></i>
-                                                            <i class="fas fa-star filled"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <span class="d-inline-block average-rating">35</span>
-                                                    </div> -->
-                                                    <div class="clinic-details">
-                                                        <p class="doc-location"><i class="fas fa-map-marker-alt"></i> Long Bien, Hanoi</p>
-                                                    </div>
-                                                </div>
+                                    <!-- Booking Doctor Info -->
+                                    <div class="booking-doc-info">
+                                        <a href="doctor-profile.jsp" class="booking-doc-img">
+                                            <img src="assets/img/logo.png" alt="User Image" />
+                                        </a>
+                                        <div class="booking-info">
+                                            <h4><a href="doctor-profile.jsp">BirdLover Clinic</a></h4>
+                                            <div class="clinic-details">
+                                                <p class="doc-location"><i class="fas fa-map-marker-alt"></i> Long Bien, Hanoi</p>
                                             </div>
-                                        </c:when>
-                                        <c:when test="${param.doctor == 'doc'}">
-                                            <div class="booking-doc-info">
-                                                <a href="doctor-profile.jsp" class="booking-doc-img">
-                                                    <img src="../assets/img/doctors/doctor-02.jpg" alt="Docs Image" />
-                                                </a>
-                                                <div class="booking-info">
-                                                    <h4><a href="doctor-profile.jsp">Dr. ABC</a></h4>
-                                                    <!-- <div class="rating">
-                                                            <i class="fas fa-star filled"></i>
-                                                            <i class="fas fa-star filled"></i>
-                                                            <i class="fas fa-star filled"></i>
-                                                            <i class="fas fa-star filled"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <span class="d-inline-block average-rating">35</span>
-                                                    </div> -->
-                                                    <div class="clinic-details">
-                                                        <p class="doc-location"><i class="fas fa-map-marker-alt"></i> Long Bien, Hanoi</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </c:when>                                       
-                                    </c:choose>
+                                        </div>
+                                    </div>
                                     <!-- Booking Doctor Info -->
 
                                     <div class="booking-summary">
                                         <div class="booking-item-wrap">
                                             <ul class="booking-date">
-                                                <li>Date <span>16 Jun 2023</span></li>
-                                                <li>Time <span>10:00 AM</span></li>
+                                                <li>Date <span>${appoitment.service_}</span></li>
+                                                <li>Time <span>${appoitment.timeslot}</span></li>
                                             </ul>
                                             <ul class="booking-fee">
                                                 <!-- <li>Consulting Fee <span>$100</span></li> -->
-                                                <li>Booking Fee <span>$10</span></li>
+                                                <li>Booking Fee <span>${appoitment.bookingFee}/span></li> <!--biến này chế vì chưa có-->
                                                 <!-- <li>Video Call <span>$50</span></li> -->
                                             </ul>
                                             <!-- <div class="booking-total">
@@ -228,15 +171,6 @@
                                 </div>
                             </div>
                             <!-- /Booking Summary -->
-                            <form>
-                                <datetime-slot-picker 
-                                    placeholder="Pick a date and time slot" 
-                                    time-slots-text="Time Slot"
-                                    no-slots-text="No slots are available" 
-                                    >
-                                </datetime-slot-picker>
-                                <button class="btn-primary">submit</button>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -244,86 +178,13 @@
             <!-- /Page Content -->
 
             <!-- Footer -->
-            <jsp:include page="../Common/footer.jsp"/>
+            <jsp:include page="Common/footer.jsp"/>
             <!-- /Footer -->
         </div>
         <!-- /Main Wrapper -->
 
         <!-- Script -->
-        <jsp:include page="../Common/script.jsp"/>
-        <script>
-            const datetimeSlotPicker = document.querySelector('datetime-slot-picker');
-
-            /* LISTENER FOR DATE AND TIME SLOT CHANGES */
-            datetimeSlotPicker.addEventListener('slotUpdate', function (event) {
-                console.log('Updated Slot: ', event.detail)
-            });
-
-            /* INITIALIZING THE AVAILABLE SLOTS. TIME SLOTS IS OPTIONAL */
-            datetimeSlotPicker.slots = [
-                {
-                    "date": 'Thu, 26 Nov 2020',
-                    "timeSlots": [
-                        '6 AM - 7 AM',
-                        '7 AM - 8 AM',
-                        '8 AM - 9 AM',
-                        '9 AM - 10 AM',
-                        '10 AM - 11 AM',
-                        '11 AM - 12 PM',
-                        '12 PM - 1 PM',
-                        '1 PM - 2 PM',
-                        '2 PM - 3 PM',
-                        '3 PM - 4 PM',
-                        '4 PM - 5 PM',
-                        '5 PM - 6 PM',
-                        '6 PM - 7 PM',
-                        '7 PM - 8 PM',
-                        '8 PM - 9 PM',
-                        '9 PM - 10 PM',
-                        '10 PM - 11 PM',
-                        '11 PM - 12 AM'
-                    ]
-                },
-                {
-                    "date": 'Fri, 27 Nov 2020',
-                    "timeSlots": [
-                    ]
-                },
-                {
-                    "date": 'Mon, 30 Nov 2020',
-                    "timeSlots": [
-                        '10 AM - 11 AM',
-                        '11 AM - 12 PM',
-                        '4 PM - 5 PM',
-                        '5 PM - 6 PM'
-                    ]
-                },
-                {
-                    "date": 'Tue, 1 Dec 2020',
-                    "timeSlots": [
-                        '10 AM - 11 AM',
-                        '11 AM - 12 PM',
-                        '4 PM - 5 PM',
-                        '5 PM - 6 PM'
-                    ]
-                },
-                {
-                    date: 'Mon, 4 Jan 2021',
-                    timeSlots: [
-                        '6 AM',
-                        '7 AM',
-                        '8 AM',
-                        '1 PM - 2 PM',
-                        '2 PM - 3 PM',
-                        '4 PM - 5 PM',
-                        '5 PM - 6 PM',
-                        '6 PM - 7 PM',
-                        '7 PM - 8 PM',
-                        '8 PM - 9 PM'
-                    ]
-                }
-            ];
-        </script>
+        <jsp:include page="Common/script.jsp"/>
         <!-- /Script -->
     </body>
 </html>

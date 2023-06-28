@@ -58,30 +58,27 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String remember = request.getParameter("remember");
-        String url = "";
+        String url = request.getContextPath() + "/Common/login.jsp";
 
         try {
             if (!username.trim().equals("") && !password.trim().equals("")) {
                 UserDTO user = accountServices.login(username, password);
-                HttpSession session = request.getSession(true);
-                if (remember != null) {
-                    //set cookies
-                }
-                session.setAttribute("currentUserID", user.getUserID());
-                session.setAttribute("currentUser", username);
-
-                String tempURL = (String) session.getAttribute("tempURL");
-                if (tempURL != null) {
-                    session.setAttribute("tempURL", null);
-                    url = tempURL;
+//                System.out
+                if (user != null) {
+                    url = request.getContextPath() + "/Common/index.jsp";
+                    HttpSession session = request.getSession(true);
+                    if (remember != null) {
+                        //set cookies
+                    }
+                    session.setAttribute("currentUser", user);
                 }
             }
-        } catch (NullPointerException | SQLException ex1) {
+        } catch (NullPointerException ex1) {
             request.setAttribute("message", "Something went wrong. Please try again.");
-        } catch (AccountNotExistException ex2) {
-            request.setAttribute("message", ex2.getMessage());
+        } catch (AccountNotExistException | SQLException ex2) {
+            request.setAttribute("message", "No accounts with this username exists");
         } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+            response.sendRedirect(url);
         }
     }
 

@@ -4,6 +4,7 @@
     Author     : Legion
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -110,7 +111,7 @@
 						<li class="nav-item dropdown has-arrow logged-item">
 							<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
 								<span class="user-img">
-									<img class="rounded-circle" src="../assets/img/doctors/doctor-thumb-02.jpg" width="31" alt="Darren Elder" />
+									<img class="rounded-circle" src="${sessionScope.currentUser.image.imageInDisk}" width="31" alt="Darren Elder" />
 								</span>
 							</a>
 							<div class="dropdown-menu dropdown-menu-right">
@@ -124,7 +125,7 @@
 									</div>
 								</div>
 								<a class="dropdown-item" href="doctor-dashboard.html">Dashboard</a>
-								<a class="dropdown-item" href="doctor-profile-settings.html">Profile Settings</a>
+                                                                <a class="dropdown-item" href="<c:url value="/Customer/custAccountInfo"/>">Profile Settings</a>
 								<a class="dropdown-item" href="login.html">Logout</a>
 							</div>
 						</li>
