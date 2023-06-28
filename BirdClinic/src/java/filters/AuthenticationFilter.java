@@ -51,26 +51,24 @@ public class AuthenticationFilter implements Filter {
             throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
-//        System.out.println("authen" + res.getStatus() + "; value: " + (res.getStatus()!=401));
         if (res.getStatus() != 401) {
+            //get current user from session
             HttpSession session = req.getSession();
             UserDTO user = (UserDTO) session.getAttribute("currentUser");
+            
             if (user == null) { //user hasn't logged in
                 if (session.getAttribute("tempURL") == null) {
-                    session.setAttribute("tempURL", req.getRequestURL()); //store url to go back to after user logs in
+                    String tempURL = req.getRequestURI().split(req.getContextPath())[1];
+                    //store url to go back to after user logs in
+                    session.setAttribute("tempURL", tempURL); 
                 }
+                
                 res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "User haven't logged in.");
                 return;
             } else { //user has logged in
                 AccountServices accService = new AccountServicesImpl();
-                if (accService.accExist(user)) {
-                    String tempURL = (String) session.getAttribute("tempURL"); //get stored url
-                    if (tempURL != null) {
-                        session.setAttribute("tempURL", null);
-                        req.getRequestDispatcher(tempURL).forward(request, response); //if user stored url then go to that url, else go default request url
-                        return;
-                    }
-                } else {
+                
+                if (!accService.accExist(user)) {
                     res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "User doesn't exist.");
                     return;
                 }
@@ -80,7 +78,7 @@ public class AuthenticationFilter implements Filter {
         try {
             chain.doFilter(request, response);
         } catch (IOException | ServletException ex) {
-            ex.printStackTrace();
+            log(ex.getMessage());
         }
 
     }

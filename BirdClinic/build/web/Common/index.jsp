@@ -12,7 +12,7 @@
     <body>
         <!-- Main Wrapper -->
 
-        <jsp:include page="../Common/header-guest.jsp"/>
+        <jsp:include page="../Common/header.jsp"/>
 
         <!-- Home Banner -->
         <div class="container-fluid p-0">
@@ -235,11 +235,11 @@
         </div>
         <!-- blog Section -->
 
-        <jsp:include page="Common/footer.jsp"/>
+        <jsp:include page="../Common/footer.jsp"/>
 
         <!-- /Main Wrapper -->
 
-        <jsp:include page="Common/script.jsp"/>
+        <jsp:include page="../Common/script.jsp"/>
 
     </body>
 </html>

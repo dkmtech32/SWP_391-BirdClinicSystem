@@ -16,6 +16,8 @@ public interface ImageDTO extends Serializable {
     String getImageID();
 
     String getImageURLName();
+    
+    String getImageInDisk();
 
     void setImageID(String imageID);
 

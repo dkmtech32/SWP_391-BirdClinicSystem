@@ -313,7 +313,7 @@ public class UserDAOImpl implements UserDAO {
             con = DBUtils.getConnection();
             stm = con.prepareStatement(LOGIN_USER);
             stm.setString(1, userName);
-            stm.setString(1, userPassword);
+            stm.setString(2, userPassword);
             rs = stm.executeQuery();
 
             if (rs.next()) {
@@ -322,7 +322,7 @@ public class UserDAOImpl implements UserDAO {
                 result.setImage(imageDAO.readImageDb(rs.getString("imageID"), con));
                 result.setFullName(rs.getString("fullName"));
                 result.setEmail(rs.getString("email"));
-                result.setUserPassword(rs.getString("userPassword"));
+                result.setUserPassword(null);
                 result.setGender(rs.getString("gender"));
                 result.setUserRole(rs.getString("userRole"));
                 result.setUserName(rs.getString("userName"));
