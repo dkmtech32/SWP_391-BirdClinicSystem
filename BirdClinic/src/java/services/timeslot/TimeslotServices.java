@@ -21,6 +21,8 @@ public interface TimeslotServices extends Serializable {
     List<TimeslotDTO> getAllTimeslots() throws NoDoctorsAvailableException;
 
     List<TimeslotDTO> getDoctorTimeslot(String doctorID) throws NoSuchDoctorExistsException, NoDoctorsAvailableException;
+    
+//    List<List<TimeslotDTO>> getDoctorTimeslotGrouped(String doctorID) throws NoSuchDoctorExistsException, NoDoctorsAvailableException;
 
     boolean setNewDocTime(String doctorID, String timeslotID);
     

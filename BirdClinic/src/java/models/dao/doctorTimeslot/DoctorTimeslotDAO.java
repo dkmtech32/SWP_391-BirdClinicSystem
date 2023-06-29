@@ -8,6 +8,7 @@ package models.dao.doctorTimeslot;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import models.dto.timeslot.TimeslotDTO;
 import models.dto.users.doctor.DoctorDTO;
 
@@ -25,4 +26,5 @@ public interface DoctorTimeslotDAO extends Serializable {
 
     List<DoctorDTO> readDoctorTimeslotByTimeslot(String timeslotID) throws SQLException;
     
+    Map<String, List<TimeslotDTO>> readDoctorTimeslotByDoctorGrouped(String doctorID) throws SQLException;
 }
