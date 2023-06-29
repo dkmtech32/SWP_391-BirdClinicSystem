@@ -24,4 +24,6 @@ public interface TimeslotServices extends Serializable {
 
     boolean setNewDocTime(String doctorID, String timeslotID);
     
+    TimeslotDTO getTimeslot(String timeslotID) throws NoSuchTimeslotExistsException;
+    
 }

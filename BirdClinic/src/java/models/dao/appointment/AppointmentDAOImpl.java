@@ -25,10 +25,10 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     private static final String READ_APPOINTMENT = "SELECT * FROM Appointment WHERE appointmentID = ?";
     private static final String READ_APPOINTMENT_BY_BIRD = "SELECT * FROM Appointment WHERE birdID = ?";
     private static final String READ_APPOINTMENT_BY_DOCTOR = "SELECT * FROM Appointment WHERE doctorID = ?";
-    private static final String READ_APPOINTMENT_BY_TIMESLOT = "SELECT * FROM Appointment WHERE timeslotID = ?";
+    private static final String READ_APPOINTMENT_BY_TIMESLOT = "SELECT * FROM Appointment WHERE timeSlotID = ?";
     private static final String DELETE_APPOINTMENT = "DELETE FROM Appointment WHERE appointmentID = ?";
-    private static final String INSERT_APPOINTMENT = "INSERT INTO Appointment (appointmentID, birdID, doctorID, timeslotID, serviceID, appTime, notes, payment, appStatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    private static final String UPDATE_APPOINTMENT = "UPDATE Appointment SET birdID = ?, doctorID = ?, timeslotID = ?, serviceID = ?, appTime = ?, notes = ?, payment = ?, appStatus = ? WHERE appointmentID = ?";
+    private static final String INSERT_APPOINTMENT = "INSERT INTO Appointment (appointmentID, birdID, doctorID, timeSlotID, serviceID, appTime, notes, payment, appStatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String UPDATE_APPOINTMENT = "UPDATE Appointment SET birdID = ?, doctorID = ?, timeSlotID = ?, serviceID = ?, appTime = ?, notes = ?, payment = ?, appStatus = ? WHERE appointmentID = ?";
 
     public AppointmentDAOImpl(BirdDAO birdDAO, DoctorDAO doctorDAO,
             Service_DAO service_DAO, TimeslotDAO timeslotDAO) {
@@ -311,7 +311,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     }
 
     @Override
-    public List<AppointmentDTO> readAppointmentByTimeslot(String timeslotID) throws SQLException {
+    public List<AppointmentDTO> readAppointmentByTimeslot(String timeSlotID) throws SQLException {
         Connection con = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
@@ -320,7 +320,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
         try {
             con = DBUtils.getConnection();
             stm = con.prepareStatement(READ_APPOINTMENT_BY_TIMESLOT);
-            stm.setString(1, timeslotID);
+            stm.setString(1, timeSlotID);
             rs = stm.executeQuery();
 
             while (rs.next()) {
@@ -348,14 +348,14 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     }
 
     @Override
-    public List<AppointmentDTO> readAppointmentByTimeslot(String timeslotID, Connection con) throws SQLException {
+    public List<AppointmentDTO> readAppointmentByTimeslot(String timeSlotID, Connection con) throws SQLException {
         PreparedStatement stm = null;
         ResultSet rs = null;
         List<AppointmentDTO> appointmentList = null;
 
         try {
             stm = con.prepareStatement(READ_APPOINTMENT_BY_TIMESLOT);
-            stm.setString(1, timeslotID);
+            stm.setString(1, timeSlotID);
             rs = stm.executeQuery();
 
             while (rs.next()) {
@@ -447,9 +447,13 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             stm.setString(8, appointment.getPayment());
             stm.setString(9, appointment.getAppStatus());
             rowsInserted = stm.executeUpdate();
+            System.out.println(rowsInserted);
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
+            if (con != null) {
+                con.close();
+            }
             if (stm != null) {
                 stm.close();
             }
@@ -571,7 +575,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
         } else {
             appointment.setDoctor(null);
         }
-        appointment.setTimeslot(TimeslotDAO.readTimeSlot("timeslotID"));
+        appointment.setTimeslot(TimeslotDAO.readTimeSlot("timeSlotID"));
         appointment.setService_(Service_DAO.readService_("serviceID"));
         appointment.setAppTime(rs.getTimestamp("appTime"));
         appointment.setNotes(rs.getString("notes"));

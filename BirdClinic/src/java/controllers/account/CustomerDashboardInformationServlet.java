@@ -75,7 +75,26 @@ public class CustomerDashboardInformationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendError(405);
+        response.setContentType("text/html;charset=UTF-8");
+        String url = "/Common/index.jsp";
+        try {
+            HttpSession session = request.getSession();
+            if (session != null) {
+//                CustomerDTO customer = customerServices.getCustomerInformation("");
+//                if (customer != null) {
+//                    customer.setUserPassword(null);
+//                    session.setAttribute("currentUser", customer);
+//                    
+////                    System.out.println(customer.getCustomerAddress());
+//                }
+                url = "/Customer/customer-dashboard.jsp";
+            }
+//        } catch (NoSuchCustomerExistsException ex) {
+//            url = "/Common/login.jsp";
+//            log(ex.getMessage());
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
+        }
     }
 
     /**

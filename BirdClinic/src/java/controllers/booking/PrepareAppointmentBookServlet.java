@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.dto.bird.BirdDTO;
 import models.dto.service_.Service_DTO;
-import models.dto.timeslot.TimeslotDTO;
 import models.dto.users.UserDTO;
 import models.dto.users.doctor.DoctorDTO;
 import services.account.customer.NoSuchCustomerExistsException;
@@ -27,7 +26,7 @@ import services.service_.NoSuchService_ExistsException;
 import services.service_.NoSuchSpecialityExistsException;
 import services.service_.Service_Services;
 import services.service_.Service_ServicesImpl;
-import services.timeslot.NoDoctorsAvailableException;
+import services.timeslot.NoSuchTimeslotExistsException;
 import services.timeslot.TimeslotServices;
 import services.timeslot.TimeslotServicesImpl;
 
@@ -66,6 +65,8 @@ public class PrepareAppointmentBookServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         String doctorID = request.getParameter("doctorID");
+        String appDate = request.getParameter("appDate");
+        String timeslotID = request.getParameter("timeslotID");
         String url = "/Common/index.jsp";
 
         try {
@@ -79,20 +80,19 @@ public class PrepareAppointmentBookServlet extends HttpServlet {
                 if (doctorID != null) {
                     //book appointment by doctor
                     DoctorDTO doctor = doctorServices.getDoctor(doctorID);
-                    List<Service_DTO> services = serviceServices.getService_BySpeciality(doctor.getSpeciality().getSpecialityID());
-                    List<TimeslotDTO> timeslots = timeslotServices.getDoctorTimeslot(doctorID);
+                    List<Service_DTO> services
+                            = serviceServices.getService_BySpeciality(doctor.getSpeciality().getSpecialityID());
                     request.setAttribute("services", services);
-                    request.setAttribute("timeslots", timeslots);
                     request.setAttribute("doctorID", doctorID);
                 } else if (doctorID == null) {
                     //no doctors
                     List<Service_DTO> services = serviceServices.getAllService_();
-                    List<TimeslotDTO> timeslots = timeslotServices.getAllTimeslots();
                     request.setAttribute("services", services);
-                    request.setAttribute("timeslots", timeslots);
                 }
 
-                url = "Customer/bookInfo.jsp";
+                request.setAttribute("appDay", appDate);
+                request.setAttribute("timeslot", timeslotServices.getTimeslot(timeslotID));
+                url = "bookInfo.jsp";
 
             }
 
@@ -100,9 +100,9 @@ public class PrepareAppointmentBookServlet extends HttpServlet {
             log(ex.getMessage());
             url = "/Common/login.jsp";
         } catch (NoSuchService_ExistsException | NoSuchDoctorExistsException
-                | NoDoctorsAvailableException | NoSuchSpecialityExistsException ex) {
+                | NoSuchSpecialityExistsException | NoSuchTimeslotExistsException ex) {
             log(ex.getMessage());
-            url = "/Common/index.jsp";
+            url = "/Common/booking-list.jsp";
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
