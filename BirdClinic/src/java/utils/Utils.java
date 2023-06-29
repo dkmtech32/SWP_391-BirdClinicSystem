@@ -7,14 +7,18 @@ package utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Date;
 import java.text.Normalizer;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 import java.util.regex.Pattern;
 
 /**
  *
  * @author Thanh
  */
-public class StringUtil {
+public class Utils {
 
     public static String removeAccent(String s) {
 
@@ -69,5 +73,44 @@ public class StringUtil {
         }
 
         return sb.toString();
+    }
+    
+    public static List<Date> getDaysInWeek(java.sql.Date date) {
+        List<Date> daysInWeek = new ArrayList<>();
+
+        // Create a calendar instance and set the provided date
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+
+        // Find the first day of the week
+        int firstDayOfWeek = calendar.getFirstDayOfWeek();
+        calendar.set(Calendar.DAY_OF_WEEK, firstDayOfWeek);
+
+        // Add each day of the week to the list
+        for (int i = 0; i < 7; i++) {
+            daysInWeek.add(new Date(calendar.getTimeInMillis()));
+            calendar.add(Calendar.DAY_OF_MONTH, 1);
+        }
+
+        return daysInWeek;
+    }
+    
+    public static Date getNextWeekWeekday(java.sql.Date date) {
+         Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+
+        // Set the calendar to the next week
+        calendar.add(Calendar.WEEK_OF_YEAR, 1);
+
+        // Find the next Monday
+        int currentDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+        int daysUntilNextMonday = (Calendar.MONDAY - currentDayOfWeek + 7) % 7;
+        calendar.add(Calendar.DAY_OF_WEEK, daysUntilNextMonday);
+
+        // Get the date of the next Monday
+        java.util.Date nextMonday = calendar.getTime();
+
+        // Convert java.util.Date to java.sql.Date
+        return new java.sql.Date(nextMonday.getTime());
     }
 }
