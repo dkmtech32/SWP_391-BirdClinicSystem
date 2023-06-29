@@ -100,4 +100,17 @@ public class TimeslotServicesImpl implements TimeslotServices {
         
         return result;
     }
+    
+    @Override
+    public TimeslotDTO getTimeslot(String timeslotID) throws NoSuchTimeslotExistsException {
+        TimeslotDTO timeslot = null;
+        
+        try {
+            timeslot = timeslotDAO.readTimeSlot(timeslotID);
+        } catch (SQLException ex) {
+            throw new NoSuchTimeslotExistsException();
+        }
+        
+        return timeslot;
+    }
 }

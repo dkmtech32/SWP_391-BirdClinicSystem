@@ -107,9 +107,9 @@
                     </div>
                 </li>
                 <li class="nav-item">
-						<a href="booking-list.jsp" class="btn btn-lg btn-primary px-4">Book Now</a>
-						<!-- <a class="nav-link header-login" href="login.jsp">login / Signup </a> -->
-					</li>
+                    <a href="booking-list.jsp" class="btn btn-lg btn-primary px-4">Book Now</a>
+                    <!-- <a class="nav-link header-login" href="login.jsp">login / Signup </a> -->
+                </li>
                 <li class="nav-item">
                     <a class="nav-link header-login" href="login.jsp">login / Signup </a>
                 </li>

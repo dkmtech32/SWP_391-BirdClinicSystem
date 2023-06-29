@@ -28,7 +28,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <!-- Checkout Form -->
-                                    <form action="<c:url value="Customer/bookAppointment"/>" method="POST">
+                                    <form action="<c:url value="/Customer/bookAppointment"/>" method="POST">
                                         <c:if test="${not empty doctorID}">
                                             <input value="${doctorID}" name="doctorID" id="doctorID" hidden="hidden"/>
                                         </c:if>

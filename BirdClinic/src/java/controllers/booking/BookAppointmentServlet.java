@@ -6,6 +6,8 @@
 package controllers.booking;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.ServletException;
@@ -62,24 +64,23 @@ public class BookAppointmentServlet extends HttpServlet {
         String timeslotID = request.getParameter("timeslotID");
         String appDay = request.getParameter("appDay");
         String doctorID = request.getParameter("doctorID");
-        String url = "/Customer/bookInfo.jsp";
+        String url = "/Customer/prepareBooking";
 
         try {
             Map<String, String> map = new HashMap<>();
             testString("birdID", birdID, map);
             testString("serviceID", serviceID, map);
-            testString("timeslotID", timeslotID, map);
-            testString("appDay", appDay, map);
+            testString("timeslotID", "0227321c75909512447393796f173788", map);
+            testString("appDay", Date.valueOf(LocalDate.now()).toString(), map);
             if (doctorID != null) {
                 map.put("doctorID", doctorID);
             }
             if (notes != null) {
                 map.put("notes", notes);
             }
-
             if (!map.isEmpty()) {
                 appServices.bookAppointment(map);
-                url = "/Customer/customer-dashboard.jsp";
+                url = "/Customer/custDashboard";
             }
         } catch (Exception ex) {
             log(ex.getMessage());
