@@ -18,4 +18,5 @@ public interface CustomerServices extends Serializable {
 
     boolean updateCustomerInformation(CustomerDTO customer);
     
+    boolean isCustomer(String customerID) throws NoSuchCustomerExistsException;
 }

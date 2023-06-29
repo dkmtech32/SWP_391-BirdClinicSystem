@@ -37,7 +37,7 @@
 							<li>
 								<a href="index.html">Home</a>
 							</li>
-							<li class="has-submenu active">
+							<li class="has-submenu">
 								<a href="#">Doctors <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
 									<li><a href="doctor-dashboard.html">Doctor Dashboard</a></li>
@@ -52,12 +52,12 @@
 									<li><a href="doctor-register.html">Doctor Register</a></li>
 								</ul>
 							</li>
-							<li class="has-submenu">
+							<li class="has-submenu active">
 								<a href="#">Patients <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
 									<li><a href="search.html">Search Doctor</a></li>
 									<li><a href="doctor-profile.html">Doctor Profile</a></li>
-									<li><a href="booking.html">Booking</a></li>
+                                                                        <li><a href="<c:url value="/Customer/prepareDocs"/>">Booking</a></li>
 									<li><a href="checkout.html">Checkout</a></li>
 									<li><a href="booking-success.html">Booking Success</a></li>
 									<li><a href="patient-dashboard.html">Patient Dashboard</a></li>
@@ -111,17 +111,17 @@
 						<li class="nav-item dropdown has-arrow logged-item">
 							<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
 								<span class="user-img">
-									<img class="rounded-circle" src="${sessionScope.currentUser.image.imageInDisk}" width="31" alt="Darren Elder" />
+									<img class="rounded-circle" src="${sessionScope.currentUser.image.imageInDisk}" width="31" alt="${sessionScope.currentUser.fullName}" />
 								</span>
 							</a>
 							<div class="dropdown-menu dropdown-menu-right">
 								<div class="user-header">
 									<div class="avatar avatar-sm">
-										<img src="../assets/img/doctors/doctor-thumb-02.jpg" alt="User Image" class="avatar-img rounded-circle" />
+										<img src="${sessionScope.currentUser.image.imageInDisk}" alt="User Image" class="avatar-img rounded-circle" />
 									</div>
 									<div class="user-text">
-										<h6>Darren Elder</h6>
-										<p class="text-muted mb-0">Doctor</p>
+										<h6>${sessionScope.currentUser.fullName}</h6>
+										<p class="text-muted mb-0">${sessionScope.currentUser.displayRole}</p>
 									</div>
 								</div>
 								<a class="dropdown-item" href="doctor-dashboard.html">Dashboard</a>

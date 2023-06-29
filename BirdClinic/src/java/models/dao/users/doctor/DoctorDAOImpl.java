@@ -29,19 +29,18 @@ public class DoctorDAOImpl extends UserDAOImpl implements DoctorDAO {
 
     private final SpecialityDAO specialityDAO;
 
-    private static final String READ_DOCTOR = "select doctorID, specialityID, docPhone, docAge, yearsOfExperience, academicTitle, degree "
+    private static final String READ_DOCTOR = "select doctorID, specialityID, docAge, yearsOfExperience, academicTitle, degree "
             + "from Doctor "
             + "where doctorID = ?";
-    private static final String READ_ALL_DOCTOR = "select doctorID, specialityID, docPhone, docAge, yearsOfExperience, academicTitle, degree "
-            + "from Users ";
-    private static final String INSERT_DOCTOR = "insert into Doctor(doctorID, specialityID, docPhone, docAge, yearsOfExperience, academicTitle, degree) "
-            + "values (?, ?, ?, ?, ?, ?, ?)";
+    private static final String READ_ALL_DOCTOR = "select doctorID, specialityID, docAge, yearsOfExperience, academicTitle, degree "
+            + "from Doctor ";
+    private static final String INSERT_DOCTOR = "insert into Doctor(doctorID, specialityID, docAge, yearsOfExperience, academicTitle, degree) "
+            + "values (?, ?, ?, ?, ?, ?)";
     private static final String DELETE_DOCTOR = "delete from Doctor "
             + "where doctorID = ?";
     private static final String UPDATE_DOCTOR = "update Doctor "
-            + "set specialityID = ?, docPhone = ?, docAge = ?, yearsOfExperience = ?, academicTitle = ?, degree = ? "
+            + "set specialityID = ?, docAge = ?, yearsOfExperience = ?, academicTitle = ?, degree = ? "
             + "where doctorID = ?";
-    private List<DoctorDTO> doctorList;
 
     public DoctorDAOImpl(SpecialityDAO specialityDAO, ImageDAO imageDAO) {
         super(imageDAO);
@@ -61,13 +60,12 @@ public class DoctorDAOImpl extends UserDAOImpl implements DoctorDAO {
             stm.setString(1, doctorID);
             rs = stm.executeQuery();
 
-            if (rs != null) {
+            if (rs.next()) {
                 UserDTO user = this.readUser(doctorID);
                 result = new DoctorDTOImpl(user);
                 result.setUserID(doctorID);
-                result.setSpeciality(specialityDAO.readSpeciality(rs.getString("imageID")));
+                result.setSpeciality(specialityDAO.readSpeciality(rs.getString("specialityID")));
                 result.setAcademicTitle(rs.getString("academicTitle"));
-                result.setDocPhone(rs.getString("docPhone"));
                 result.setDocAge(rs.getInt("docAge"));
                 result.setYearsOfExperience(rs.getInt("yearsOfExperience"));
                 result.setAcademicTitle(rs.getString("academicTitle"));
@@ -101,13 +99,12 @@ public class DoctorDAOImpl extends UserDAOImpl implements DoctorDAO {
             stm.setString(1, doctorID);
             rs = stm.executeQuery();
 
-            if (rs != null) {
+            if (rs.next()) {
                 UserDTO user = this.readUser(doctorID, con);
                 result = new DoctorDTOImpl(user);
                 result.setUserID(doctorID);
-                result.setSpeciality(specialityDAO.readSpeciality(rs.getString("imageID")));
+                result.setSpeciality(specialityDAO.readSpeciality(rs.getString("specialityID")));
                 result.setAcademicTitle(rs.getString("academicTitle"));
-                result.setDocPhone(rs.getString("docPhone"));
                 result.setDocAge(rs.getInt("docAge"));
                 result.setYearsOfExperience(rs.getInt("yearsOfExperience"));
                 result.setAcademicTitle(rs.getString("academicTitle"));
@@ -139,11 +136,10 @@ public class DoctorDAOImpl extends UserDAOImpl implements DoctorDAO {
             stm = con.prepareStatement(INSERT_DOCTOR);
             stm.setString(1, doctor.getUserID());
             stm.setString(2, doctor.getSpeciality().getSpecialityID());
-            stm.setString(3, doctor.getDocPhone());
-            stm.setInt(4, doctor.getDocAge());
-            stm.setInt(5, doctor.getYearsOfExperience());
-            stm.setString(6, doctor.getAcademicTitle());
-            stm.setString(7, doctor.getDegree());
+            stm.setInt(3, doctor.getDocAge());
+            stm.setInt(4, doctor.getYearsOfExperience());
+            stm.setString(5, doctor.getAcademicTitle());
+            stm.setString(6, doctor.getDegree());
 
             result = stm.executeUpdate();
         } catch (SQLException ex) {
@@ -197,12 +193,11 @@ public class DoctorDAOImpl extends UserDAOImpl implements DoctorDAO {
             con = DBUtils.getConnection();
             stm = con.prepareStatement(UPDATE_DOCTOR);
             stm.setString(1, doctor.getSpeciality().getSpecialityID());
-            stm.setString(2, doctor.getDocPhone());
-            stm.setInt(3, doctor.getDocAge());
-            stm.setInt(4, doctor.getYearsOfExperience());
-            stm.setString(5, doctor.getAcademicTitle());
-            stm.setString(6, doctor.getDegree());
-            stm.setString(7, doctor.getUserID());
+            stm.setInt(2, doctor.getDocAge());
+            stm.setInt(3, doctor.getYearsOfExperience());
+            stm.setString(4, doctor.getAcademicTitle());
+            stm.setString(5, doctor.getDegree());
+            stm.setString(6, doctor.getUserID());
 
             result = stm.executeUpdate();
             super.updateUser(doctor, con);
@@ -225,28 +220,27 @@ public class DoctorDAOImpl extends UserDAOImpl implements DoctorDAO {
         Connection con = null;
         Statement stm = null;
         ResultSet rs = null;
+        List<DoctorDTO> doctorList = null;
 
         try {
             con = DBUtils.getConnection();
             stm = con.createStatement();
             rs = stm.executeQuery(READ_ALL_DOCTOR);
-            this.doctorList.clear();
 
-            while (rs != null) {
+            while (rs.next()) {
                 String doctorID = rs.getString("doctorID");
                 UserDTO user = this.readUser(doctorID,con);
                 DoctorDTO result = new DoctorDTOImpl(user);
                 result.setUserID(doctorID);
-                result.setSpeciality(specialityDAO.readSpeciality(rs.getString("imageID")));
+                result.setSpeciality(specialityDAO.readSpeciality(rs.getString("specialityID")));
                 result.setAcademicTitle(rs.getString("academicTitle"));
-                result.setDocPhone(rs.getString("docPhone"));
                 result.setDocAge(rs.getInt("docAge"));
                 result.setYearsOfExperience(rs.getInt("yearsOfExperience"));
                 result.setAcademicTitle(rs.getString("academicTitle"));
                 result.setDegree(rs.getString("degree"));
 
-                if (this.doctorList == null) {
-                    this.doctorList = new ArrayList();
+                if (doctorList == null) {
+                    doctorList = new ArrayList();
                 }
                 doctorList.add(result);
             }
@@ -264,11 +258,6 @@ public class DoctorDAOImpl extends UserDAOImpl implements DoctorDAO {
             }
         }
 
-        return this.doctorList;
-    }
-
-    @Override
-    public List<DoctorDTO> getDoctorList() {
         return doctorList;
     }
 }

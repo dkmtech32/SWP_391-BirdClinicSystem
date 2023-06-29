@@ -6,6 +6,7 @@
 package services.account.doctor;
 
 import java.io.Serializable;
+import java.util.List;
 import models.dto.users.doctor.DoctorDTO;
 
 /**
@@ -16,4 +17,5 @@ public interface DoctorServices extends Serializable {
 
     DoctorDTO getDoctor(String doctorID) throws NoSuchDoctorExistsException;
     
+    List<DoctorDTO> getAllDoctors() throws NoSuchDoctorExistsException;
 }

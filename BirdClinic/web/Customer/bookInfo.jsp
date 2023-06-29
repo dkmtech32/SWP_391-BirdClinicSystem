@@ -8,16 +8,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <jsp:include page="Common/head.jsp"/>
+    <jsp:include page="../Common/head.jsp"/>
     <body>
         <!-- Main Wrapper -->
         <div class="main-wrapper">
             <!-- Header -->
-            <jsp:include page="Common/header-guest.jsp"/>
+            <jsp:include page="../Common/header.jsp"/>
             <!--/Header -->
 
             <!-- Breadcrumb -->
-            <jsp:include page="Common/breadcrumb.jsp"/>
+            <jsp:include page="../Common/breadcrumb.jsp"/>
             <!-- /Breadcrumb -->
 
             <!-- Page Content -->
@@ -28,51 +28,48 @@
                             <div class="card">
                                 <div class="card-body">
                                     <!-- Checkout Form -->
-                                    <form action="booking-success.jsp">
+                                    <form action="<c:url value="Customer/bookAppointment"/>" method="POST">
+                                        <c:if test="${not empty doctorID}">
+                                            <input value="${doctorID}" name="doctorID" id="doctorID" hidden="hidden"/>
+                                        </c:if>
                                         <!-- Personal Information -->
                                         <div class="info-widget">
                                             <h4 class="card-title">Personal Information</h4>
                                             <div class="row">
                                                 <div class="col-12 col-md-6">
                                                     <div class="form-group">
-                                                        <label>First Name</label>
-                                                        <div class="form-control">${customer.firstName}</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Last Name</label>
-                                                        <div type="text" class="form-control">${customer.lastName}</div>
+                                                        <label>Full Name</label>
+                                                        <div class="form-control">${currentUser.fullName}</div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <div class="form-group">
                                                         <label>Date of Birth</label>
                                                         <div class="cal-icon">
-                                                            <div class="form-control datetimepicker">${customer.dob}</div>
+                                                            <div class="form-control datetimepicker">${currentUser.dob}</div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <div class="form-group">
                                                         <label>Address</label>
-                                                        <div class="form-control">${customer.phoneNumber}</div>
+                                                        <div class="form-control">${currentUser.phoneNumber}</div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <div class="form-group">
                                                         <label>Email</label>
-                                                        <div class="form-control">${customer.email}</div> <!-- email này chưa có nên tôi chế -->
+                                                        <div class="form-control">${currentUser.email}</div> <!-- email này chưa có nên tôi chế -->
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <div class="form-group">
                                                         <label>Mobile</label>
-                                                        <div class="form-control">${customer.customerAddress}</div> 
+                                                        <div class="form-control">${currentUser.customerAddress}</div> 
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- <div class="exist-customer">Existing Customer? <a href="#">Click here to login</a></div> -->
+                                            <!-- <div class="exist-currentUser">Existing Customer? <a href="#">Click here to login</a></div> -->
                                         </div>
                                         <!-- /Personal Information -->
                                         <!-- Bird info -->
@@ -82,33 +79,34 @@
                                                 <div class="col-md-12 col-sm-12">
                                                     <div class="form-group card-label">
                                                         <label>Choose your bird</label>
-                                                        <select class="form-control">
-                                                            <option value="dog">${bird.birdFullname}</option> <!--liệt kê tên mấy con chim của thằng customer ra-->
+                                                        <select class="form-control" name="birdID" required="required">
+                                                            <c:forEach var="bird" items="${birds}" >
+                                                                <option value="${bird.birdID}">${bird.birdFullname}</option>
+                                                            </c:forEach>
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- <div class="exist-customer">Existing Customer? <a href="#">Click here to login</a></div> -->
+                                            <!-- <div class="exist-currentUser">Existing Customer? <a href="#">Click here to login</a></div> -->
                                         </div>
                                         <!-- /Bird info -->
                                         <!-- Notes section -->
                                         <div class="info-widget">
                                             <h4 class="card-title">Notes</h4>
-                                            <c:if test="${param.doctor == 'all'}">
-                                                <div class="col-md-12 col-sm-12">
-                                                    <div class="form-group card-label">
-                                                        <label>Choose service</label>
-                                                        <select class="form-control" required >
-                                                            <option value="">--</option>
-                                                            <option value="general">${appoitment.service_}</option> <!--liệt kê services ra-->
-                                                        </select>
-                                                        <div class="invalid-feedback">Example invalid custom select feedback</div>
-                                                    </div>
+                                            <div class="col-md-12 col-sm-12">
+                                                <div class="form-group card-label">
+                                                    <label>Choose service</label>
+                                                    <select class="form-control" name="serviceID" required >
+                                                        <c:forEach var="service" items="${services}" >
+                                                            <option value="${service.serviceID}">${service.serviceName}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                    <div class="invalid-feedback">Example invalid custom select feedback</div>
                                                 </div>
-                                            </c:if>
+                                            </div>
                                             <div class="col-md-12 col-sm-12">
                                                 <div class="form-group">													
-                                                    <textarea class="form-control" rows="4" placeholder="Describe bird's symtoms" required></textarea> <!--customer mô tả triệu chứng của con chim--> 
+                                                    <textarea class="form-control" rows="4" placeholder="Describe bird's symtoms"></textarea>
                                                     <div class="invalid-feedback">Example invalid custom select feedback</div>
                                                 </div>
                                             </div>
@@ -178,13 +176,13 @@
             <!-- /Page Content -->
 
             <!-- Footer -->
-            <jsp:include page="Common/footer.jsp"/>
+            <jsp:include page="../Common/footer.jsp"/>
             <!-- /Footer -->
         </div>
         <!-- /Main Wrapper -->
 
         <!-- Script -->
-        <jsp:include page="Common/script.jsp"/>
+        <jsp:include page="../Common/script.jsp"/>
         <!-- /Script -->
     </body>
 </html>

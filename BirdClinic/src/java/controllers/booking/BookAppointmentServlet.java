@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.appointment;
+package controllers.booking;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -20,8 +20,9 @@ import services.appointment.AppointmentServicesImpl;
  * @author Admin
  */
 public class BookAppointmentServlet extends HttpServlet {
-    private AppointmentServices appServices; 
-    
+
+    private AppointmentServices appServices;
+
     @Override
     public void init() {
         appServices = new AppointmentServicesImpl();
@@ -54,37 +55,46 @@ public class BookAppointmentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         String birdID = request.getParameter("birdID");
         String notes = request.getParameter("notes");
         String serviceID = request.getParameter("serviceID");
         String timeslotID = request.getParameter("timeslotID");
         String appDay = request.getParameter("appDay");
+        String doctorID = request.getParameter("doctorID");
         String url = "/Customer/bookInfo.jsp";
-        
+
         try {
             Map<String, String> map = new HashMap<>();
             testString("birdID", birdID, map);
-            testString("notes", notes, map);
             testString("serviceID", serviceID, map);
             testString("timeslotID", timeslotID, map);
             testString("appDay", appDay, map);
-            
+            if (doctorID != null) {
+                map.put("doctorID", doctorID);
+            }
+            if (notes != null) {
+                map.put("notes", notes);
+            }
+
             if (!map.isEmpty()) {
                 appServices.bookAppointment(map);
                 url = "/Customer/customer-dashboard.jsp";
             }
         } catch (Exception ex) {
-            log (ex.getMessage());
-        } 
-        finally {
+            log(ex.getMessage());
+        } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
     }
-    
+
     private void testString(String key, String value, Map<String, String> map) throws Exception {
-        if (value == null) throw new Exception();
-        if (value.trim().isEmpty()) throw new Exception();
+        if (value == null) {
+            throw new Exception();
+        }
+        if (value.trim().isEmpty()) {
+            throw new Exception();
+        }
         map.put(key, value.trim());
     }
 

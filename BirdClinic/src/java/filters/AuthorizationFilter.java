@@ -64,11 +64,6 @@ public class AuthorizationFilter implements Filter {
             
             //if user is unauthorized
             if (!user.getUserRole().equals(authPattern)) {
-                if (session.getAttribute("tempURL") == null) {
-                    String tempURL = req.getRequestURI().split(req.getContextPath())[1];
-                    //store url to go back to after user logs in
-                    session.setAttribute("tempURL", tempURL); 
-                }
                 res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Wrong role.");
                 return;
             }

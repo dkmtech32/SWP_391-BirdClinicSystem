@@ -55,6 +55,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String remember = request.getParameter("remember");
@@ -63,7 +64,7 @@ public class LoginServlet extends HttpServlet {
         try {
             if (!username.trim().equals("") && !password.trim().equals("")) {
                 UserDTO user = accountServices.login(username, password);
-//                System.out
+//                System.out.println(user);
                 if (user != null) {
                     url = request.getContextPath() + "/Common/index.jsp";
                     HttpSession session = request.getSession(true);
