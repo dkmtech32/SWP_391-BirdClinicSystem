@@ -27,6 +27,7 @@ import models.dao.users.doctor.DoctorDAO;
 import models.dao.users.doctor.DoctorDAOImpl;
 import models.dto.appointment.AppointmentDTO;
 import models.dto.appointment.AppointmentDTOImpl;
+import models.dto.service_.Service_DTO;
 import models.dto.timeslot.TimeslotDTO;
 import models.dto.users.doctor.DoctorDTO;
 import utils.Utils;
@@ -61,13 +62,13 @@ public class AppointmentServicesImpl implements AppointmentServices {
         String birdID = args.get("birdID");
         String notes = args.get("notes");
         String timeslotID = args.get("timeslotID");
-        String service_ID = args.get("service_ID");
+        String service_ID = args.get("serviceID");
         String appDay = args.get("appDay");
         String doctorID = args.get("doctorID");
 
         try {
             app = new AppointmentDTOImpl();
-            app.setAppointmentID(Utils.hash(birdID + service_ID + timeslotID + appDay));
+            app.setAppointmentID(Utils.hash(birdID + service_ID + timeslotID + appDay + "BBBB"));
             app.setAppStatus("processing");
             app.setBird(birdDAO.readBird(birdID));
             TimeslotDTO timeslot = timeslotDAO.readTimeSlot(timeslotID);
@@ -78,13 +79,15 @@ public class AppointmentServicesImpl implements AppointmentServices {
                 app.setDoctor(doctorDAO.readDoctor(doctorID));
             }
             app.setPayment("cash");
-            app.setService_(serviceDAO.readService_(service_ID));
+            Service_DTO service = serviceDAO.readService_(service_ID);
+            app.setService_(service);
             app.setNotes(notes);
 
             Date date = Date.valueOf(appDay);
             long milliseconds = date.getTime() + timeslot.getTimeSlot().getTime();
             app.setAppTime(new Timestamp(milliseconds));
-
+            
+            System.out.println(app);
             appointmentDAO.insertAppointment(app);
         } catch (SQLException ex) {
             throw new AppointmentAlreadyExistsException();
