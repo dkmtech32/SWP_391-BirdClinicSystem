@@ -29,7 +29,7 @@ import models.dto.appointment.AppointmentDTO;
 import models.dto.appointment.AppointmentDTOImpl;
 import models.dto.timeslot.TimeslotDTO;
 import models.dto.users.doctor.DoctorDTO;
-import utils.StringUtil;
+import utils.Utils;
 
 /**
  *
@@ -67,7 +67,7 @@ public class AppointmentServicesImpl implements AppointmentServices {
 
         try {
             app = new AppointmentDTOImpl();
-            app.setAppointmentID(StringUtil.hash(birdID + service_ID + timeslotID + appDay));
+            app.setAppointmentID(Utils.hash(birdID + service_ID + timeslotID + appDay));
             app.setAppStatus("processing");
             app.setBird(birdDAO.readBird(birdID));
             TimeslotDTO timeslot = timeslotDAO.readTimeSlot(timeslotID);

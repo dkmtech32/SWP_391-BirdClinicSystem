@@ -6,6 +6,8 @@
 package controllers.booking;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +18,7 @@ import services.account.doctor.NoSuchDoctorExistsException;
 import services.timeslot.NoDoctorsAvailableException;
 import services.timeslot.TimeslotServices;
 import services.timeslot.TimeslotServicesImpl;
+import utils.Utils;
 
 /**
  *
@@ -52,6 +55,7 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String doctorID = request.getParameter("doctorID");
+        String nextMonday = request.getParameter("nextWeekday");
         String url = "/Common/index.jsp";
 
         try {
@@ -59,13 +63,21 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
             if (doctorID == null) {
                 //didn't choose a doctor
                 timeslots = timeslotServices.getAllTimeslots();
-            }
-            else {
+            } else {
                 //chose doctor
                 timeslots = timeslotServices.getDoctorTimeslot(doctorID);
                 request.setAttribute("doctorID", doctorID);
             }
+
+            Date date = Date.valueOf(LocalDate.now());
+            if (nextMonday != null) {
+                date = Date.valueOf(nextMonday);
+            }
+
+            List<Date> daysInWeek = Utils.getDaysInWeek(date);
             request.setAttribute("timeslots", timeslots);
+            request.setAttribute("week", daysInWeek);
+            request.setAttribute("nextWeekday", Utils.getNextWeekWeekday(date));
             url = "/Customer/bookingDatetime.jsp";
         } catch (NoDoctorsAvailableException | NoSuchDoctorExistsException ex) {
             log(ex.getMessage());
