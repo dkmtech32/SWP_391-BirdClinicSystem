@@ -8,16 +8,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <jsp:include page="../Common/head.jsp"/>
+    <jsp:include page="Common/head.jsp"/>
     <body>
         <!-- Main Wrapper -->
         <div class="main-wrapper">
             <!-- Header -->
-            <jsp:include page="../Common/header-guest.jsp"/>
+            <jsp:include page="Common/header-guest.jsp"/>
             <!--/Header -->
 
             <!-- Breadcrumb -->
-            <jsp:include page="../Common/breadcrumb.jsp"/>
+            <jsp:include page="Common/breadcrumb.jsp"/>
             <!-- /Breadcrumb -->
 
             <!-- Page Content -->
@@ -31,7 +31,7 @@
                                 <div class="widget-profile pro-widget-content">
                                     <div class="profile-info-widget">
                                         <a href="#" class="booking-doc-img">
-                                            <img src="../assets/img/patients/patient.jpg" alt="User Image" />
+                                            <img src="assets/img/patients/patient.jpg" alt="User Image" />
                                         </a>
                                         <div class="profile-det-info">
                                             <h3>Richard Wilson</h3>
@@ -97,7 +97,7 @@
                                                 <div class="form-group">
                                                     <div class="change-avatar">
                                                         <div class="profile-img">
-                                                            <img src="../assets/img/bird/bird-1.webp" alt="Bird Image" />
+                                                            <img src="assets/img/bird/bird-1.webp" alt="Bird Image" />
                                                         </div>
                                                         <div class="upload-img">
                                                             <div class="change-photo-btn">
@@ -185,13 +185,13 @@
 <!-- /Page Content -->
 
 <!-- Footer -->
-<jsp:include page="../Common/footer.jsp"/>
+<jsp:include page="Common/footer.jsp"/>
 <!-- /Footer -->
 </div>
 <!-- /Main Wrapper -->
 
 <!-- Script -->
-<jsp:include page="../Common/script.jsp"/>
+<jsp:include page="Common/script.jsp"/>
 <!-- /Script -->
 </body>
 </html>

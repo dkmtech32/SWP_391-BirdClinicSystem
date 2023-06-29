@@ -19,8 +19,6 @@ public interface DoctorDAO extends UserDAO {
 
     int deleteDoctor(String doctorID) throws SQLException;
 
-    List<DoctorDTO> getDoctorList();
-
     int insertDoctor(DoctorDTO doctor) throws SQLException;
 
     List<DoctorDTO> readAllDoctors() throws SQLException;

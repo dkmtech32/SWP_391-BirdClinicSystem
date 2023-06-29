@@ -5,6 +5,7 @@
  */
 package models.dto.users;
 
+import com.sun.xml.internal.ws.util.StringUtils;
 import models.dto.images.ImageDTO;
 
 /**
@@ -129,7 +130,10 @@ public class UserDTOImpl implements UserDTO {
         this.status_ = status_;
     }
     
-    
+    @Override
+    public String getDisplayRole() {
+        return StringUtils.capitalize(this.userRole);
+    }
     
     protected void copyUser(UserDTO user) {
         this.setUserID(user.getUserID());

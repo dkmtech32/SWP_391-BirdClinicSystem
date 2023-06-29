@@ -43,7 +43,7 @@ public class TimeslotDAOImpl implements TimeslotDAO {
             stm.setString(1, timeslotID);
             rs = stm.executeQuery();
 
-            if (rs != null) {
+            if (rs.next()) {
                 result = new TimeslotDTOImpl();
                 result.setTimeSlotID(timeslotID);
                 result.setDay_(rs.getString("day_"));
@@ -77,7 +77,7 @@ public class TimeslotDAOImpl implements TimeslotDAO {
             stm.setString(1, timeslotID);
             rs = stm.executeQuery();
 
-            if (rs != null) {
+            if (rs.next()) {
                 result = new TimeslotDTOImpl();
                 result.setTimeSlotID(timeslotID);
                 result.setDay_(rs.getString("day_"));
@@ -109,7 +109,7 @@ public class TimeslotDAOImpl implements TimeslotDAO {
             stm = con.createStatement();
             rs = stm.executeQuery(READ_ALL_TIMESLOT);
 
-            while (rs != null) {
+            while (rs.next()) {
                 TimeslotDTO result = new TimeslotDTOImpl();
                 result.setTimeSlotID(rs.getString("timeSlotID"));
                 result.setDay_(rs.getString("day_"));

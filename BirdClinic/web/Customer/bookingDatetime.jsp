@@ -20,6 +20,8 @@
             <jsp:include page="../Common/breadcrumb.jsp"/>
             <!-- /Breadcrumb -->
 
+            ${timeslots.size()}
+            
             <!-- Page Content -->
             <div class="content">
                 <div class="container">
