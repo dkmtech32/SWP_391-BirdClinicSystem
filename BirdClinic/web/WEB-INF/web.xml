@@ -12,6 +12,10 @@
         <filter-name>DispatchFilter</filter-name>
         <filter-class>filters.DispatchFilter</filter-class>
     </filter>
+    <filter>
+        <filter-name>CustomerFilter</filter-name>
+        <filter-class>filters.CustomerFilter</filter-class>
+    </filter>
     <filter-mapping>
         <filter-name>DispatchFilter</filter-name>
         <url-pattern>/*</url-pattern>
@@ -52,6 +56,10 @@
         <filter-name>AuthorizationFilter</filter-name>
         <url-pattern>/Customer/*</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>CustomerFilter</filter-name>
+        <url-pattern>/Customer/*</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>controllers.account.LoginServlet</servlet-class>
@@ -66,11 +74,19 @@
     </servlet>
     <servlet>
         <servlet-name>BookAppointmentServlet</servlet-name>
-        <servlet-class>controllers.appointment.BookAppointmentServlet</servlet-class>
+        <servlet-class>controllers.booking.BookAppointmentServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PrepareAppointmentBookServlet</servlet-name>
-        <servlet-class>controllers.appointment.PrepareAppointmentBookServlet</servlet-class>
+        <servlet-class>controllers.booking.PrepareAppointmentBookServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PrepareDatetimeAppBookServlet</servlet-name>
+        <servlet-class>controllers.booking.PrepareDatetimeAppBookServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PrepareDoctorsAppBookServlet</servlet-name>
+        <servlet-class>controllers.booking.PrepareDoctorsAppBookServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -91,6 +107,14 @@
     <servlet-mapping>
         <servlet-name>PrepareAppointmentBookServlet</servlet-name>
         <url-pattern>/Customer/prepareBooking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PrepareDatetimeAppBookServlet</servlet-name>
+        <url-pattern>/Customer/prepareDatetime</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PrepareDoctorsAppBookServlet</servlet-name>
+        <url-pattern>/Customer/prepareDocs</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

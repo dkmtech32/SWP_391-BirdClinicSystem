@@ -1,21 +1,21 @@
 <%-- 
-    Document   : client-appointmenst-detaisl-not-yet
-    Created on : Jun 25, 2023, 9:22:49 PM
+    Document   : client-appoitments-details
+    Created on : Jun 25, 2023, 9:53:59 PM
     Author     : ASUS
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <jsp:include page="../Common/head.jsp"/>
+    <jsp:include page="common/head.jsp"/>
     <body>
         <div class="main-wrapper">
             <!-- Header -->
-            <jsp:include page="../Common/header.jsp"/>
+            <jsp:include page="Common/header-guest.jsp"/>
             <!--/Header -->
 
             <!-- Breadcrumb -->
-            <jsp:include page="../Common/breadcrumb.jsp"/>
+            <jsp:include page="Common/breadcrumb.jsp"/>
             <!-- /Breadcrumb -->
 
             <!-- Page Content -->
@@ -46,7 +46,7 @@
                                     <p class="information">${bird.birdGender}</p>
                                 </div>
                                 <div class="bird-information-box">
-                                    <p class="header">Weight</p>
+                                    <p class="header">Weigth</p>
                                     <p class="information">${bird.birdWeight}</p>
                                 </div>
                                 <div class="bird-information-box">
@@ -126,40 +126,79 @@
                     </div>
                 </div>
                 <div class="prescription">
+                    <h2>General Information</h2>
                     <div class="col-md-12">
                         <table class="table table-bordered" >
                             <thead>
                                 <tr>
-                                    <th>Appointment Date</th>
+                                    <th>Date of diagnosis</th>
                                     <th>Appointment Time</th>
-                                    <th>Doctor</th>
-                                    <th>Type of Service</th>
-                                    <th>Bird's symptoms</th>
+                                    <th>Service</th>
+                                    <th>Length of treatment</th>
+                                    <th>Diagnosis</th>
+                                    <th>Doctor's Note</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr >
-                                    <td >${appoitment.date}</td>
-                                    <td >${appoitment.timeslot}</td>
-                                    <td >${appoitment.doctor}</td>
-                                    <td >${appoitment.service}</td>
-                                    <td >${appoitment.notes}</td>
+                                    <td>${appoitment.date}</td>
+                                    <td>${medicalRecord.recordTime}</td>
+                                    <td>${appoitment.service}</td>
+                                    <td>${appoitment.lengthOfTreatment}</td> <!-- chưa có -->
+                                    <td>${medicalRecord.diagnosis}</td>
+                                    <td>${medicalRecord.doctorNote}</td>  <!-- chưa có -->
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h2>Medicines</h2>
+                        <table class="table table-bordered" >
+                            <thead>
+                                <tr>
+                                    <th>Medicine</th>
+                                    <th>Quantity</th>
+                                    <th>Unit</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr >
+                                    <td>${medicinie.medicineName}</td>
+                                    <td>${medicinie.quantity}</td>
+                                    <td>${medicinie.unit}</td> <!-- chưa có, này nghĩa là đơn vị (2 viên, 2 gram, vv) -->
+                                    <td>${medicinie.descriptions}</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <button onclick="" class="btn btn-dark d-flex justify-content-center mx-auto mt-2">
-                        <a href="add-prescription.html" class="prescription-submit"> <i class="fa fa-flask"></i> Prescribe </a>
-                    </button>
+                    <div class="booking-summary-in-appointments-details">
+                        <h2>Payment</h2>
+                        <div class="booking-item-wrap-in-appointments-details">
+                            <ul class="booking-fee-in-appointments-details">
+                                <li>Service Fee<span>${medicinie.serviceFee}</span></li>
+                                <li>Booking Fee<span>${medicinie.bookingFee}</span></li>
+                                <li>Medicine Fee<span>${medicinie.medicinePriceTotal}</span></li>
+                            </ul>
+                            <div class="booking-total-in-appointments-details">
+                                <ul class="booking-total-list-in-appointments-details">
+                                    <li>
+                                        <span>Total</span>
+                                        <span class="total-cost-in-appointments-details">${medicinie.totalMoney}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- /Page Content -->
-
-                <!-- Footer -->
-                <jsp:include page="../Common/footer.jsp"/>
-                <!-- /Footer -->
             </div>
         </div>
+        <!-- /Page Content -->
+
+        <!-- Footer -->
+        <jsp:include page="Common/footer.jsp"/>
+        <!-- /Footer -->
     </div>
-    <jsp:include page="../Common/script.jsp"/>
+</div>
+</div>
+<jsp:include page="Common/script.jsp"/>
 </body>
 </html>

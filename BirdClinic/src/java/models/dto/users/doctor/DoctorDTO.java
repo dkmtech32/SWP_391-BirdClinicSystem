@@ -20,8 +20,6 @@ public interface DoctorDTO extends UserDTO {
 
     int getDocAge();
 
-    String getDocPhone();
-
     SpecialityDTO getSpeciality();
 
     int getYearsOfExperience();
@@ -31,8 +29,6 @@ public interface DoctorDTO extends UserDTO {
     void setDegree(String degree);
 
     void setDocAge(int docAge);
-
-    void setDocPhone(String docPhone);
 
     void setSpeciality(SpecialityDTO speciality);
 

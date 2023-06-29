@@ -67,12 +67,16 @@ public class AppointmentServicesImpl implements AppointmentServices {
 
         try {
             app = new AppointmentDTOImpl();
-            app.setAppointmentID(StringUtil.hash(birdID + notes + timeslotID + appDay));
+            app.setAppointmentID(StringUtil.hash(birdID + service_ID + timeslotID + appDay));
             app.setAppStatus("processing");
             app.setBird(birdDAO.readBird(birdID));
             TimeslotDTO timeslot = timeslotDAO.readTimeSlot(timeslotID);
             app.setTimeslot(timeslot);
-            app.setDoctor(doctorDAO.readDoctor(doctorID));
+            if (doctorID == null) {
+                app.setDoctor(null);
+            } else {
+                app.setDoctor(doctorDAO.readDoctor(doctorID));
+            }
             app.setPayment("cash");
             app.setService_(serviceDAO.readService_(service_ID));
             app.setNotes(notes);
