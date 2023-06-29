@@ -30,7 +30,7 @@
                                 <div class="widget-profile pro-widget-content">
                                     <div class="profile-info-widget">
                                         <a href="#" class="booking-doc-img">
-                                            <img src="../assets/img/patients/patient.jpg" alt="User Image" />
+                                            <img src="assets/img/patients/patient.jpg" alt="User Image" />
                                         </a>
                                         <div class="profile-det-info">
                                             <h3>Nguyen Van G</h3>
@@ -132,79 +132,19 @@
                                                                     <td>
                                                                         <h2 class="table-avatar">
                                                                             <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
-                                                                                <img class="avatar-img rounded-circle" src="../assets/img/bird/bird-1.webp" alt="User Image" />
+                                                                                <img class="avatar-img rounded-circle" src="${bird.imageInDisk}" alt="User Image" />
                                                                             </a>
                                                                             <a href="doctor-profile.jsp">Charlie</a>
                                                                         </h2>
                                                                     </td>
-                                                                    <td>Sparow</td>
-                                                                    <td>6 Nov 2023</td>
-                                                                    <td>Male</td>
-                                                                    <td>1kg</td>
-                                                                    <td><span class="badge badge-pill bg-danger-light">No</span></td>
+                                                                    <td>${bird.birdFullname}</td>
+                                                                    <td>${bird.breed}</td>
+                                                                    <td>${bird.hatchingDate}</td>
+                                                                    <td>${bird.birdWeight}</td>
+                                                                    <td><span class="badge badge-pill bg-danger-light">${bird.microchip}</span></td>
                                                                     <td class="text-right">
                                                                         <div class="table-action">
-                                                                            <a href="javascript:void(0);" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
-                                                                                <img class="avatar-img rounded-circle" src="../assets/img/bird/bird-2.webp" alt="User Image" />
-                                                                            </a>
-                                                                            <a href="doctor-profile.jsp">Lucifer</a>
-                                                                        </h2>
-                                                                    </td>
-                                                                    <td>Cuckoo</td>
-                                                                    <td>7 Nov 2023</td>
-                                                                    <td>Female</td>
-                                                                    <td>1.5kg</td>
-                                                                    <td><span class="badge badge-pill bg-success-light">Yes</span></td>
-                                                                    <td class="text-right">
-                                                                        <div class="table-action">
-                                                                            <a href="javascript:void(0);" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
-                                                                                <img class="avatar-img rounded-circle" src="../assets/img/bird/bird-3.jpg" alt="User Image" />
-                                                                            </a>
-                                                                            <a href="doctor-profile.jsp">Luffy</a>
-                                                                        </h2>
-                                                                    </td>
-                                                                    <td>Red-whiskered</td>
-                                                                    <td>4 Jun 2023</td>
-                                                                    <td>Female</td>
-                                                                    <td>2.2kg</td>
-                                                                    <td><span class="badge badge-pill bg-success-light">Yes</span></td>
-                                                                    <td class="text-right">
-                                                                        <div class="table-action">
-                                                                            <a href="invoice-view.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <h2 class="table-avatar">
-                                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
-                                                                                <img class="avatar-img rounded-circle" src="../assets/img/bird/bird-4.jpg" alt="User Image" />
-                                                                            </a>
-                                                                            <a href="doctor-profile.jsp">Jacky</a>
-                                                                        </h2>
-                                                                    </td>
-                                                                    <td>Parrot</td>
-                                                                    <td>1 Nov 2022</td>
-                                                                    <td>Male</td>
-                                                                    <td>3kg</td>
-                                                                    <td><span class="badge badge-pill bg-success-light">Yes</span></td>
-                                                                    <td class="text-right">
-                                                                        <div class="table-action">
-                                                                            <a href="javascript:void(0);" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                            <a href="bird-details.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>

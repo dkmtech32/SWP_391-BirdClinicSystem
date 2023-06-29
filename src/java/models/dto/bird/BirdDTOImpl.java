@@ -20,8 +20,7 @@ public class BirdDTOImpl implements BirdDTO {
     private String birdFullname;
     private String birdGender;
     private String breed;
-    private String band;
-    private String microchip;
+    private String band_chip;
     private int birdWeight;
     private String sexingMethod;
     private String medicalHistory;
@@ -97,6 +96,12 @@ public class BirdDTOImpl implements BirdDTO {
     public String getBreed() {
         return breed;
     }
+    
+    
+    @Override
+    public String getBand_Chip() {
+        return this.band_chip;
+    }
 
     
     @Override
@@ -104,30 +109,10 @@ public class BirdDTOImpl implements BirdDTO {
         this.breed = breed;
     }
 
-    
     @Override
-    public String getBand() {
-        return band;
+    public void setBand_Chip(String band_chip) {
+        this.band_chip = band_chip;
     }
-
-    
-    @Override
-    public void setBand(String band) {
-        this.band = band;
-    }
-
-    
-    @Override
-    public String getMicrochip() {
-        return microchip;
-    }
-
-    
-    @Override
-    public void setMicrochip(String microchip) {
-        this.microchip = microchip;
-    }
-
     
     @Override
     public int getBirdWeight() {

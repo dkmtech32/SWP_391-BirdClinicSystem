@@ -8,16 +8,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <jsp:include page="../Common/head.jsp"/>
+    <jsp:include page="Common/head.jsp"/>
     <body>
         <!-- Main Wrapper -->
         <div class="main-wrapper">
             <!-- Header -->
-            <jsp:include page="../Common/header-guest.jsp"/>
+            <jsp:include page="Common/header-guest.jsp"/>
             <!--/Header -->
 
             <!-- Breadcrumb -->
-            <jsp:include page="../Common/breadcrumb.jsp"/>
+            <jsp:include page="Common/breadcrumb.jsp"/>
             <!-- /Breadcrumb -->
 
             <!-- Page Content -->
@@ -83,49 +83,6 @@
                             <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
                             <label class="btn btn btn-primary" for="btnradio4"><input type="text" size="1"> Days</label>
                         </div>							
-
-
-
-
-                        <!-- <div class="form-group mt-3" id="mn">
-                                <label for="medicalNotes">Medical Notes :</label>
-                                <textarea class="form-control note-field" id="medicalNotes" rows='2'></textarea>
-                                <div class="gap-2 d-flex justify-content-end mt-2 ms-auto">
-                                        <button onclick="addNewMNField()" class="btn btn-success" id="mnAdd"
-                                                type="button">Add</button>
-                                        <button onclick="delNewMNField()" class="btn btn-danger" id="mnDel" type="button">
-                                                Delete
-                                        </button>
-                                </div>
-                        </div>
-
-                        
-
-                        <div class="form-group mt-3" id="md">
-                                <label for="medicineDetails">Medicine Details :</label>
-                                <textarea class="form-control detail-field" id="medicineDetails" rows='2'></textarea>
-                                <div class="gap-2 d-flex justify-content-end mt-2 ms-auto">
-                                        <button onclick="addNewMDField()" class="btn btn-success" id="mdAdd"
-                                                type="button">Add</button>
-                                        <button onclick="delNewMDField()" class="btn btn-danger" id="mdDel" type="button">
-                                                Delete
-                                        </button>
-                                </div>
-                        </div> -->
-                        <!-- <div id="tags">
-                                <p id="center">
-                                  <select class="search" id="search">
-                                        <option value="">Select a tag...</option>
-                                        <option value="dt-dd">&#60;dt&#62; &amp; &#60;dd&#62;</option>
-                                        <option value="det-sum">&#60;details&#62; &amp; &#60;summary&#62;</option>
-                                        <option value="sub-sup">&#60;sub&#62; &amp; &#60;sup&#62;</option>
-                                        <option value="del-ins">&#60;del&#62; &amp; &#60;ins&#62;</option>
-                                        <option value="a">&#60;a&#62;</option>
-                                        <option value="b-i">&#60;b&#62; &amp; &#60;i&#62;</option>
-                                  </select>
-                                </p>
-                          </div>
-                        -->
                         <div class="container">
 
                             <div class="row">
@@ -242,13 +199,13 @@
             <!-- /Page Content -->
 
             <!-- Footer -->
-            <jsp:include page="../Common/footer.jsp"/>
+            <jsp:include page="Common/footer.jsp"/>
             <!-- /Footer -->
         </div>
         <!-- /Main Wrapper -->
 
         <!-- Script -->
-        <jsp:include page="../Common/script.jsp"/>
+        <jsp:include page="Common/script.jsp"/>
         <!-- /Script -->
     </body>
 </html>

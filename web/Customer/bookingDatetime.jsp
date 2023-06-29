@@ -1,7 +1,7 @@
 <%-- 
-    Document   : bookingDatetime
-    Created on : Jun 29, 2023, 12:23:16 PM
-    Author     : ASUS
+    Document   : booking-all
+    Created on : Jun 20, 2023, 10:52:04 PM
+    Author     : Legion
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -19,7 +19,7 @@
             <!-- Breadcrumb -->
             <jsp:include page="../Common/breadcrumb.jsp"/>
             <!-- /Breadcrumb -->
-
+            
             <!-- Page Content -->
             <div class="content">
                 <div class="container">
@@ -68,17 +68,34 @@
                                                             <i class="fa fa-chevron-left"></i>
                                                         </a>
                                                     </li>
-                                                    <c:forEach var="slot" items="${requestScope.timeslots}">
-                                                        <li>
-                                                            <span>${slot.day}</span>
-                                                            <span class="slot-date">
-                                                                <fmt:formatDate value="${slot.date}" pattern="dd MMM"/>
-                                                                <small class="slot-year">
-                                                                    <fmt:formatDate value="${slot.date}" pattern="yyyy"/>
-                                                                </small>
-                                                            </span>
-                                                        </li>
-                                                    </c:forEach>
+                                                    <li>
+                                                        <span>Mon</span>
+                                                        <span class="slot-date">11 Jun <small class="slot-year">2023</small></span>
+                                                    </li>
+                                                    <li>
+                                                        <span>Tue</span>
+                                                        <span class="slot-date">12 Jun <small class="slot-year">2023</small></span>
+                                                    </li>
+                                                    <li>
+                                                        <span>Wed</span>
+                                                        <span class="slot-date">13 Jun <small class="slot-year">2023</small></span>
+                                                    </li>
+                                                    <li>
+                                                        <span>Thu</span>
+                                                        <span class="slot-date">14 Jun <small class="slot-year">2023</small></span>
+                                                    </li>
+                                                    <li>
+                                                        <span>Fri</span>
+                                                        <span class="slot-date">15 Jun <small class="slot-year">2023</small></span>
+                                                    </li>
+                                                    <li>
+                                                        <span>Sat</span>
+                                                        <span class="slot-date">16 Jun <small class="slot-year">2023</small></span>
+                                                    </li>
+                                                    <li>
+                                                        <span>Sun</span>
+                                                        <span class="slot-date">17 Jun <small class="slot-year">2023</small></span>
+                                                    </li>
                                                     <li class="right-arrow">
                                                         <a href="#">
                                                             <i class="fa fa-chevron-right"></i>
@@ -99,21 +116,47 @@
                                             <!-- Time Slot -->
                                             <div class="time-slot">
                                                 <ul class="clearfix">
-                                                    <c:forEach var="slot" items="${requestScope.timeslots}">
-                                                        <li>
-                                                            <c:forEach var="time" items="${slot.times}">
-                                                                <a class="timing" href="#">
-                                                                    <span>${time}</span>
-                                                                </a>
-                                                            </c:forEach>
-                                                        </li>
-                                                    </c:forEach>
+                                                    <li>
+                                                        <a class="timing" href="#"> <span>9:00</span> <span>AM</span> </a>
+                                                        <a class="timing" href="#"> <span>10:00</span> <span>AM</span> </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="timing" href="#"> <span>9:00</span> <span>AM</span> </a>
+                                                        <a class="timing" href="#"> <span>10:00</span> <span>AM</span> </a>
+                                                        <a class="timing" href="#"> <span>11:00</span> <span>AM</span> </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="timing" href="#"> <span>9:00</span> <span>AM</span> </a>
+                                                        <a class="timing" href="#"> <span>10:00</span> <span>AM</span> </a>
+                                                        <a class="timing" href="#"> <span>11:00</span> <span>AM</span> </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="timing" href="#"> <span>9:00</span> <span>AM</span> </a>
+                                                        <a class="timing" href="#"> <span>10:00</span> <span>AM</span> </a>
+                                                        <a class="timing" href="#"> <span>11:00</span> <span>AM</span> </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="timing" href="#"> <span>9:00</span> <span>AM</span> </a>
+                                                        <a class="timing selected" href="#"> <span>10:00</span> <span>AM</span> </a>
+                                                        <a class="timing" href="#"> <span>11:00</span> <span>AM</span> </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="timing" href="#"> <span>9:00</span> <span>AM</span> </a>
+                                                        <a class="timing" href="#"> <span>10:00</span> <span>AM</span> </a>
+                                                        <a class="timing" href="#"> <span>11:00</span> <span>AM</span> </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="timing" href="#"> <span>9:00</span> <span>AM</span> </a>
+                                                        <a class="timing" href="#"> <span>10:00</span> <span>AM</span> </a>
+                                                        <a class="timing" href="#"> <span>11:00</span> <span>AM</span> </a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                             <!-- /Time Slot -->
                                         </div>
                                     </div>
                                 </div>
+                                <!-- /Schedule Content -->
                             </div>
                             <!-- /Schedule Widget -->
 
@@ -121,12 +164,12 @@
                             <c:choose>
                                 <c:when test="${param.doctor == 'all'}">                                 
                                     <div class="submit-section proceed-btn text-right">
-                                        <a onclick="location.href = '../Customer/bookInfo.jsp?doctor=all'" class="btn btn-primary submit-btn">Next</a>
+                                        <a onclick="location.href='../Customer/bookInfo.jsp?doctor=all'" class="btn btn-primary submit-btn">Next</a>
                                     </div>
                                 </c:when>
                                 <c:when test="${param.doctor == 'doc'}">
-                                    <div class="submit-section proceed-btn text-right">
-                                        <a onclick="location.href = '../Customer/bookInfo.jsp?doctor=doc'" class="btn btn-primary submit-btn">Next</a>
+                                   <div class="submit-section proceed-btn text-right">
+                                        <a onclick="location.href='../Customer/bookInfo.jsp?doctor=doc'" class="btn btn-primary submit-btn">Next</a>
                                     </div>
                                 </c:when>                                       
                             </c:choose>
@@ -149,4 +192,3 @@
         <!-- /Script -->
     </body>
 </html>
-
