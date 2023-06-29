@@ -20,10 +20,6 @@
             <jsp:include page="../Common/breadcrumb.jsp"/>
             <!-- /Breadcrumb -->
             
-            <div>${timeslots.size()}</div>
-            <div>${week.size()}</div>
-            <div>${nextWeekday.toString()}</div>
-            
             <!-- Page Content -->
             <div class="content">
                 <div class="container">
