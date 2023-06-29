@@ -55,7 +55,7 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String doctorID = request.getParameter("doctorID");
-        String nextMonday = request.getParameter("nextMonday");
+        String nextMonday = request.getParameter("nextWeekday");
         String url = "/Common/index.jsp";
 
         try {
