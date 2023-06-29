@@ -6,7 +6,6 @@
 package filters;
 
 import java.io.IOException;
-import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import javax.servlet.Filter;
@@ -16,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,59 +33,6 @@ public class DispatchFilter implements Filter {
     public DispatchFilter() {
     }
 
-    private void doBeforeProcessing(ServletRequest request, ServletResponse response)
-            throws IOException, ServletException {
-        if (debug) {
-            log("DispatchFilter:DoBeforeProcessing");
-        }
-
-        // Write code here to process the request and/or response before
-        // the rest of the filter chain is invoked.
-        // For example, a logging filter might log items on the request object,
-        // such as the parameters.
-        /*
-	for (Enumeration en = request.getParameterNames(); en.hasMoreElements(); ) {
-	    String name = (String)en.nextElement();
-	    String values[] = request.getParameterValues(name);
-	    int n = values.length;
-	    StringBuffer buf = new StringBuffer();
-	    buf.append(name);
-	    buf.append("=");
-	    for(int i=0; i < n; i++) {
-	        buf.append(values[i]);
-	        if (i < n-1)
-	            buf.append(",");
-	    }
-	    log(buf.toString());
-	}
-         */
-    }
-
-    private void doAfterProcessing(ServletRequest request, ServletResponse response)
-            throws IOException, ServletException {
-        if (debug) {
-            log("DispatchFilter:DoAfterProcessing");
-        }
-
-        // Write code here to process the request and/or response after
-        // the rest of the filter chain is invoked.
-        // For example, a logging filter might log the attributes on the
-        // request object after the request has been processed. 
-        /*
-	for (Enumeration en = request.getAttributeNames(); en.hasMoreElements(); ) {
-	    String name = (String)en.nextElement();
-	    Object value = request.getAttribute(name);
-	    log("attribute: " + name + "=" + value.toString());
-
-	}
-         */
-        // For example, a filter might append something to the response.
-        /*
-	PrintWriter respOut = new PrintWriter(response.getWriter());
-	respOut.println("<P><B>This has been appended by an intrusive filter.</B>");
-         */
-    }
-
     /**
      *
      * @param request The servlet request we are processing
@@ -95,23 +42,36 @@ public class DispatchFilter implements Filter {
      * @exception IOException if an input/output error occurs
      * @exception ServletException if a servlet error occurs
      */
+    @Override
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
 
         HttpServletRequest req = (HttpServletRequest) request;
-        String url[] = req.getRequestURI().split(req.getContextPath())[1].split("/");
-        if (url.length > 1) {
-            String actor = url[1];
-            req.setAttribute("actor", actor);
+//        HttpServletResponse res = (HttpServletResponse) response;
+        HttpSession session = req.getSession();
+        
+        String tempURL = (String) session.getAttribute("tempURL"); //get stored url
+        //if the user stored a url
+        if (tempURL != null) {
+            //if user stored url then go to that url, else go default request url
+            System.out.println(tempURL);
+            session.setAttribute("tempURL", null);
+            req.getRequestDispatcher(tempURL).forward(request, response);
+//            res.sendRedirect(tempURL);
+            return;
         }
-        String action = url[url.length-1];
+        
+        
+        String url[] = req.getRequestURI().split("/");
+        String action = url[url.length - 1];
         req.setAttribute("action", action);
+//        System.out.println(action);
 
         try {
             chain.doFilter(request, response);
-        } catch (Throwable t) {
-            t.printStackTrace();
+        } catch (IOException | ServletException t) {
+            log(t.getMessage());
         }
 
     }
@@ -162,36 +122,6 @@ public class DispatchFilter implements Filter {
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());
-    }
-
-    private void sendProcessingError(Throwable t, ServletResponse response) {
-        String stackTrace = getStackTrace(t);
-
-        if (stackTrace != null && !stackTrace.equals("")) {
-            try {
-                response.setContentType("text/html");
-                PrintStream ps = new PrintStream(response.getOutputStream());
-                PrintWriter pw = new PrintWriter(ps);
-                pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
-
-                // PENDING! Localize this for next official release
-                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");
-                pw.print(stackTrace);
-                pw.print("</pre></body>\n</html>"); //NOI18N
-                pw.close();
-                ps.close();
-                response.getOutputStream().close();
-            } catch (Exception ex) {
-            }
-        } else {
-            try {
-                PrintStream ps = new PrintStream(response.getOutputStream());
-                t.printStackTrace(ps);
-                ps.close();
-                response.getOutputStream().close();
-            } catch (Exception ex) {
-            }
-        }
     }
 
     public static String getStackTrace(Throwable t) {

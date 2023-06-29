@@ -44,7 +44,7 @@ public class SpecialityDAOImpl implements SpecialityDAO {
             stm.setString(1, specialityID);
             rs = stm.executeQuery();
 
-            if (rs != null) {
+            if (rs.next()) {
                 result = new SpecialityDTOImpl();
                 result.setSpecialityID(specialityID);
                 result.setSpecialityName(rs.getString("specialityName"));
@@ -77,7 +77,7 @@ public class SpecialityDAOImpl implements SpecialityDAO {
             stm.setString(1, specialityID);
             rs = stm.executeQuery();
 
-            if (rs != null) {
+            if (rs.next()) {
                 result = new SpecialityDTOImpl();
                 result.setSpecialityID(specialityID);
                 result.setSpecialityName(rs.getString("specialityName"));

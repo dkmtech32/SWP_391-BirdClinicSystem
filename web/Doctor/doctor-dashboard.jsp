@@ -8,16 +8,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <jsp:include page="../Common/head.jsp"/>
+    <jsp:include page="Common/head.jsp"/>
     <body>
         <!-- Main Wrapper -->
         <div class="main-wrapper">
             <!-- Header -->
-            <jsp:include page="../Common/header-guest.jsp"/>
+            <jsp:include page="Common/header-guest.jsp"/>
             <!--/Header -->
 
             <!-- Breadcrumb -->
-            <jsp:include page="../Common/breadcrumb.jsp"/>
+            <jsp:include page="Common/breadcrumb.jsp"/>
             <!-- /Breadcrumb -->
 
             <!-- Page Content -->
@@ -30,7 +30,7 @@
                                 <div class="widget-profile pro-widget-content">
                                     <div class="profile-info-widget">
                                         <a href="#" class="booking-doc-img">
-                                            <img src="../assets/img/doctors/doctor-thumb-02.jpg" alt="User Image" />
+                                            <img src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image" />
                                         </a>
                                         <div class="profile-det-info">
                                             <h3>Dr. Darren Elder</h3>
@@ -57,7 +57,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="">
+                                                <a href="my-patients.jsp">
                                                     <i class="fas fa-user-injured"></i>
                                                     <span>My Patients</span>
                                                 </a>
@@ -106,7 +106,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="../index.jsp">
+                                                <a href="index.jsp">
                                                     <i class="fas fa-sign-out-alt"></i>
                                                     <span>Logout</span>
                                                 </a>
@@ -128,7 +128,7 @@
                                                     <div class="dash-widget dct-border-rht">
                                                         <div class="circle-bar circle-bar1">
                                                             <div class="circle-graph1" data-percent="75">
-                                                                <img src="../assets/img/icon-01.png" class="img-fluid" alt="patient" />
+                                                                <img src="assets/img/icon-01.png" class="img-fluid" alt="patient" />
                                                             </div>
                                                         </div>
                                                         <div class="dash-widget-info">
@@ -143,7 +143,7 @@
                                                     <div class="dash-widget dct-border-rht">
                                                         <div class="circle-bar circle-bar2">
                                                             <div class="circle-graph2" data-percent="65">
-                                                                <img src="../assets/img/icon-02.png" class="img-fluid" alt="Patient" />
+                                                                <img src="assets/img/icon-02.png" class="img-fluid" alt="Patient" />
                                                             </div>
                                                         </div>
                                                         <div class="dash-widget-info">
@@ -158,7 +158,7 @@
                                                     <div class="dash-widget">
                                                         <div class="circle-bar circle-bar3">
                                                             <div class="circle-graph3" data-percent="50">
-                                                                <img src="../assets/img/icon-03.png" class="img-fluid" alt="Patient" />
+                                                                <img src="assets/img/icon-03.png" class="img-fluid" alt="Patient" />
                                                             </div>
                                                         </div>
                                                         <div class="dash-widget-info">
@@ -211,7 +211,7 @@
                                                                         <td>
                                                                             <h2 class="table-avatar">
                                                                                 <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="../assets/img/patients/patient.jpg" alt="User Image"
+                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
                                                                                       /></a>
                                                                                 <a href="patient-profile.jsp">Richard Wilson <span>#PT0016</span></a>
                                                                             </h2>
@@ -220,7 +220,7 @@
                                                                         <td>
                                                                             <h2 class="table-avatar">
                                                                                 <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="../assets/img/bird/bird-2.webp" alt="User Image"
+                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
                                                                                       /></a>
                                                                                 <a href="patient-profile.jsp">Bird123 <span>#PT0016</span></a>
                                                                             </h2>
@@ -228,7 +228,7 @@
                                                                         <td>Parrot african</td>
                                                                         <td class="text-center">
                                                                             <div class="d-flex justify-content-center">
-                                                                                <select class="form-control select w-90" disabled>
+                                                                                <select class="form-control select w-75" disabled>
                                                                                     <option>Doctor 1</option>
                                                                                     <option>Doctor 2</option>
                                                                                     <option>Doctor 3</option>
@@ -248,7 +248,7 @@
                                                                         <td>
                                                                             <h2 class="table-avatar">
                                                                                 <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="../assets/img/patients/patient.jpg" alt="User Image"
+                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
                                                                                       /></a>
                                                                                 <a href="patient-profile.jsp">Richard Wilson <span>#PT0016</span></a>
                                                                             </h2>
@@ -257,7 +257,7 @@
                                                                         <td>
                                                                             <h2 class="table-avatar">
                                                                                 <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="../assets/img/bird/bird-1.webp" alt="User Image"
+                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-1.webp" alt="User Image"
                                                                                       /></a>
                                                                                 <a href="patient-profile.jsp">Bird123 <span>#PT0016</span></a>
                                                                             </h2>
@@ -265,7 +265,7 @@
                                                                         <td>Parrot african</td>
                                                                         <td class="text-center">
                                                                             <div class="d-flex justify-content-center">
-                                                                                <select class="form-control select w-90" disabled>
+                                                                                <select class="form-control select w-75" disabled>
                                                                                     <option>Doctor 1</option>
                                                                                     <option>Doctor 2</option>
                                                                                     <option>Doctor 3</option>
@@ -285,7 +285,7 @@
                                                                         <td>
                                                                             <h2 class="table-avatar">
                                                                                 <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="../assets/img/patients/patient.jpg" alt="User Image"
+                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
                                                                                       /></a>
                                                                                 <a href="patient-profile.jsp">Richard Wilson <span>#PT0016</span></a>
                                                                             </h2>
@@ -294,7 +294,7 @@
                                                                         <td>
                                                                             <h2 class="table-avatar">
                                                                                 <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="../assets/img/bird/bird-3.jpg" alt="User Image"
+                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-3.jpg" alt="User Image"
                                                                                       /></a>
                                                                                 <a href="patient-profile.jsp">Bird123 <span>#PT0016</span></a>
                                                                             </h2>
@@ -302,7 +302,7 @@
                                                                         <td>Parrot african</td>
                                                                         <td class="text-center">
                                                                             <div class="d-flex justify-content-center">
-                                                                                <select class="form-control select w-90" disabled>
+                                                                                <select class="form-control select w-75" disabled>
                                                                                     <option>Doctor 1</option>
                                                                                     <option>Doctor 2</option>
                                                                                     <option>Doctor 3</option>
@@ -322,7 +322,7 @@
                                                                         <td>
                                                                             <h2 class="table-avatar">
                                                                                 <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="../assets/img/patients/patient.jpg" alt="User Image"
+                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
                                                                                       /></a>
                                                                                 <a href="patient-profile.jsp">Richard Wilson <span>#PT0016</span></a>
                                                                             </h2>
@@ -331,7 +331,7 @@
                                                                         <td>
                                                                             <h2 class="table-avatar">
                                                                                 <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="../assets/img/bird/bird-4.jpg" alt="User Image"
+                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-4.jpg" alt="User Image"
                                                                                       /></a>
                                                                                 <a href="patient-profile.jsp">Bird123 <span>#PT0016</span></a>
                                                                             </h2>
@@ -339,7 +339,7 @@
                                                                         <td>Parrot african</td>
                                                                         <td class="text-center">
                                                                             <div class="d-flex justify-content-center">
-                                                                                <select class="form-control select w-90" disabled>
+                                                                                <select class="form-control select w-75" disabled>
                                                                                     <option>Doctor 1</option>
                                                                                     <option>Doctor 2</option>
                                                                                     <option>Doctor 3</option>
@@ -384,7 +384,7 @@
                                                                         <td>
                                                                             <h2 class="table-avatar">
                                                                                 <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="../assets/img/patients/patient6.jpg" alt="User Image"
+                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient6.jpg" alt="User Image"
                                                                                       /></a>
                                                                                 <a href="patient-profile.jsp">Elsie Gilley <span>#PT0006</span></a>
                                                                             </h2>
@@ -405,7 +405,7 @@
                                                                         <td>
                                                                             <h2 class="table-avatar">
                                                                                 <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="../assets/img/patients/patient7.jpg" alt="User Image"
+                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient7.jpg" alt="User Image"
                                                                                       /></a>
                                                                                 <a href="patient-profile.jsp">Joan Gardner <span>#PT0006</span></a>
                                                                             </h2>
@@ -426,7 +426,7 @@
                                                                         <td>
                                                                             <h2 class="table-avatar">
                                                                                 <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="../assets/img/patients/patient8.jpg" alt="User Image"
+                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient8.jpg" alt="User Image"
                                                                                       /></a>
                                                                                 <a href="patient-profile.jsp">Daniel Griffing <span>#PT0007</span></a>
                                                                             </h2>
@@ -447,7 +447,7 @@
                                                                         <td>
                                                                             <h2 class="table-avatar">
                                                                                 <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="../assets/img/patients/patient9.jpg" alt="User Image"
+                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient9.jpg" alt="User Image"
                                                                                       /></a>
                                                                                 <a href="patient-profile.jsp">Walter Roberson <span>#PT0008</span></a>
                                                                             </h2>
@@ -468,7 +468,7 @@
                                                                         <td>
                                                                             <h2 class="table-avatar">
                                                                                 <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="../assets/img/patients/patient10.jpg" alt="User Image"
+                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient10.jpg" alt="User Image"
                                                                                       /></a>
                                                                                 <a href="patient-profile.jsp">Robert Rhodes <span>#PT0010</span></a>
                                                                             </h2>
@@ -489,7 +489,7 @@
                                                                         <td>
                                                                             <h2 class="table-avatar">
                                                                                 <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="../assets/img/patients/patient11.jpg" alt="User Image"
+                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient11.jpg" alt="User Image"
                                                                                       /></a>
                                                                                 <a href="patient-profile.jsp">Harry Williams <span>#PT0011</span></a>
                                                                             </h2>

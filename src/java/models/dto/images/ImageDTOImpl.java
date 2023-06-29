@@ -41,5 +41,8 @@ public class ImageDTOImpl implements ImageDTO {
         this.imageURLName = imageURLName;
     }
     
-    
+    @Override
+    public String getImageInDisk() {
+        return "../assets/img/avatar/"+this.imageURLName;
+    }
 }

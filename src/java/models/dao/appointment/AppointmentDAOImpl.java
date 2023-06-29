@@ -435,7 +435,11 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             stm = con.prepareStatement(INSERT_APPOINTMENT);
             stm.setString(1, appointment.getAppointmentID());
             stm.setString(2, appointment.getBird().getBirdID());
-            stm.setString(3, appointment.getDoctor().getUserID());
+            if (appointment.getDoctor() != null) {
+                stm.setString(3, appointment.getDoctor().getUserID());
+            } else {
+                stm.setString(3, null);
+            }
             stm.setString(4, appointment.getTimeslot().getTimeSlotID());
             stm.setString(5, appointment.getService_().getServiceID());
             stm.setTimestamp(6, appointment.getAppTime());
@@ -466,7 +470,11 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             stm = con.prepareStatement(INSERT_APPOINTMENT);
             stm.setString(1, appointment.getAppointmentID());
             stm.setString(2, appointment.getBird().getBirdID());
-            stm.setString(3, appointment.getDoctor().getUserID());
+            if (appointment.getDoctor() != null) {
+                stm.setString(3, appointment.getDoctor().getUserID());
+            } else {
+                stm.setString(3, null);
+            }
             stm.setString(4, appointment.getTimeslot().getTimeSlotID());
             stm.setString(5, appointment.getService_().getServiceID());
             stm.setTimestamp(6, appointment.getAppTime());
@@ -496,7 +504,11 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             stm = con.prepareStatement(UPDATE_APPOINTMENT);
             stm.setString(1, appointment.getAppointmentID());
             stm.setString(2, appointment.getBird().getBirdID());
-            stm.setString(3, appointment.getDoctor().getUserID());
+            if (appointment.getDoctor() != null) {
+                stm.setString(3, appointment.getDoctor().getUserID());
+            } else {
+                stm.setString(3, null);
+            }
             stm.setString(4, appointment.getTimeslot().getTimeSlotID());
             stm.setString(5, appointment.getService_().getServiceID());
             stm.setTimestamp(6, appointment.getAppTime());
@@ -527,7 +539,11 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             stm = con.prepareStatement(UPDATE_APPOINTMENT);
             stm.setString(1, appointment.getAppointmentID());
             stm.setString(2, appointment.getBird().getBirdID());
-            stm.setString(3, appointment.getDoctor().getUserID());
+            if (appointment.getDoctor() != null) {
+                stm.setString(3, appointment.getDoctor().getUserID());
+            } else {
+                stm.setString(3, null);
+            }
             stm.setString(4, appointment.getTimeslot().getTimeSlotID());
             stm.setString(5, appointment.getService_().getServiceID());
             stm.setTimestamp(6, appointment.getAppTime());
@@ -550,7 +566,11 @@ public class AppointmentDAOImpl implements AppointmentDAO {
         AppointmentDTO appointment = new AppointmentDTOImpl();
         appointment.setAppointmentID(rs.getString("appointmentID"));
         appointment.setBird(BirdDAO.readBird(rs.getString("birdID"), con));
-        appointment.setDoctor(DoctorDAO.readDoctor("doctorID"));
+        if (rs.getString("doctorID") != null) {
+            appointment.setDoctor(DoctorDAO.readDoctor("doctorID"));
+        } else {
+            appointment.setDoctor(null);
+        }
         appointment.setTimeslot(TimeslotDAO.readTimeSlot("timeslotID"));
         appointment.setService_(Service_DAO.readService_("serviceID"));
         appointment.setAppTime(rs.getTimestamp("appTime"));

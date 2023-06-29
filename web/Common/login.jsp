@@ -13,7 +13,7 @@
         <!-- Main Wrapper -->
         <div class="main-wrapper">
             <!-- Header -->
-            <jsp:include page="../Common/header-guest.jsp"/>
+            <jsp:include page="../Common/header.jsp"/>
             <!--/Header -->
             
             <!-- Page Content -->
@@ -31,13 +31,13 @@
                                         <div class="login-header">
                                             <h3>Login <span>Birdlover</span></h3>
                                         </div>
-                                        <form action="index.jsp">
+                                        <form action="<c:url value="/Common/login"/>" method="POST">
                                             <div class="form-group form-focus">
-                                                <input type="email" class="form-control floating" />
+                                                <input name ="username" class="form-control floating" />
                                                 <label class="focus-label">Email</label>
                                             </div>
                                             <div class="form-group form-focus">
-                                                <input type="password" class="form-control floating" />
+                                                <input name ="password" type="password" class="form-control floating" />
                                                 <label class="focus-label">Password</label>
                                             </div>
                                             <div class="text-right">
