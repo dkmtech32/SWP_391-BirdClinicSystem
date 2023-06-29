@@ -57,12 +57,6 @@ public class AuthenticationFilter implements Filter {
             UserDTO user = (UserDTO) session.getAttribute("currentUser");
             
             if (user == null) { //user hasn't logged in
-                if (session.getAttribute("tempURL") == null) {
-                    String tempURL = req.getRequestURI().split(req.getContextPath())[1];
-                    //store url to go back to after user logs in
-                    session.setAttribute("tempURL", tempURL); 
-                }
-                
                 res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "User haven't logged in.");
                 return;
             } else { //user has logged in

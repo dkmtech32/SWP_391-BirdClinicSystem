@@ -41,6 +41,7 @@ public class TimeslotServicesImpl implements TimeslotServices {
         
         try {
             timeslots = docTimeDAO.readDoctorTimeslotByDoctor(doctorID);
+//            System.out.println("select timeslot size: " + timeslots.size());
             if (timeslots == null) throw new NoSuchDoctorExistsException();
             if (timeslots.isEmpty()) throw new NoDoctorsAvailableException();
         } catch (SQLException ex) {
@@ -56,6 +57,7 @@ public class TimeslotServicesImpl implements TimeslotServices {
         
         try {
             timeslots = timeslotDAO.readAllTimeSlot();
+//            System.out.println("all timeslot size: " + timeslots.size());
         } catch (SQLException ex) {
             throw new NoDoctorsAvailableException();
         }

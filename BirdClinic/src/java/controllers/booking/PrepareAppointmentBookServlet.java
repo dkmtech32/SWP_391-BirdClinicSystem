@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.appointment;
+package controllers.booking;
 
 import java.io.IOException;
 import java.util.List;
@@ -73,32 +73,27 @@ public class PrepareAppointmentBookServlet extends HttpServlet {
                 url = "/Common/login.jsp";
             } else {
                 UserDTO user = (UserDTO) session.getAttribute("currentUser");
-                if (user == null) {
-                    url = "/Common/login.jsp";
-                } else if (!user.getUserRole().equals("customer")) {
-                    url = "/Common/login.jsp";
-                } else {
-                    List<BirdDTO> birds = birdServices.getBirdsOfCustomer(user.getUserID());
-                    request.setAttribute("customerBirds", birds);
+                List<BirdDTO> birds = birdServices.getBirdsOfCustomer(user.getUserID());
+                request.setAttribute("birds", birds);
 
-                    if (doctorID != null) {
-                        //book appointment by doctor
-                        DoctorDTO doctor = doctorServices.getDoctor(doctorID);
-                        List<Service_DTO> services = serviceServices.getService_BySpeciality(doctor.getSpeciality().getSpecialityID());
-                        List<TimeslotDTO> timeslots = timeslotServices.getDoctorTimeslot(doctorID);
-                        request.setAttribute("services", services);
-                        request.setAttribute("timeslots", timeslots);
-                        request.setAttribute("doctorID", doctorID);
-                    } else if (doctorID == null) {
-                        //no doctors
-                        List<Service_DTO> services = serviceServices.getAllService_();
-                        List<TimeslotDTO> timeslots = timeslotServices.getAllTimeslots();
-                        request.setAttribute("services", services);
-                        request.setAttribute("timeslots", timeslots);
-                    }
-
-                    url = "Customer/bookInfo.jsp";
+                if (doctorID != null) {
+                    //book appointment by doctor
+                    DoctorDTO doctor = doctorServices.getDoctor(doctorID);
+                    List<Service_DTO> services = serviceServices.getService_BySpeciality(doctor.getSpeciality().getSpecialityID());
+                    List<TimeslotDTO> timeslots = timeslotServices.getDoctorTimeslot(doctorID);
+                    request.setAttribute("services", services);
+                    request.setAttribute("timeslots", timeslots);
+                    request.setAttribute("doctorID", doctorID);
+                } else if (doctorID == null) {
+                    //no doctors
+                    List<Service_DTO> services = serviceServices.getAllService_();
+                    List<TimeslotDTO> timeslots = timeslotServices.getAllTimeslots();
+                    request.setAttribute("services", services);
+                    request.setAttribute("timeslots", timeslots);
                 }
+
+                url = "Customer/bookInfo.jsp";
+
             }
 
         } catch (NoSuchCustomerExistsException ex) {

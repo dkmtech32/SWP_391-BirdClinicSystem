@@ -6,6 +6,7 @@
 package services.account.doctor;
 
 import java.sql.SQLException;
+import java.util.List;
 import models.dao.images.ImageDAO;
 import models.dao.images.ImageDAOImpl;
 import models.dao.speciality.SpecialityDAO;
@@ -42,5 +43,21 @@ public class DoctorServicesImpl implements DoctorServices {
         }
         
         return doctor;
+    }
+    
+    @Override
+    public List<DoctorDTO> getAllDoctors() throws NoSuchDoctorExistsException {
+        List<DoctorDTO> doctors = null;
+        
+        try {
+            doctors = doctorDAO.readAllDoctors();
+//            System.out.println(doctors.size());
+            if (doctors == null) throw new NoSuchDoctorExistsException();
+            if (doctors.isEmpty()) throw new NoSuchDoctorExistsException();
+        } catch (SQLException ex) {
+            throw new NoSuchDoctorExistsException();
+        }
+        
+        return doctors;
     }
 }

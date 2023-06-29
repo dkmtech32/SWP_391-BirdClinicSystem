@@ -6,6 +6,7 @@
 package filters;
 
 import java.io.IOException;
+import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import javax.servlet.Filter;
@@ -16,12 +17,17 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import models.dto.users.UserDTO;
+import models.dto.users.customer.CustomerDTO;
+import services.account.customer.CustomerServices;
+import services.account.customer.CustomerServicesImpl;
+import services.account.customer.NoSuchCustomerExistsException;
 
 /**
  *
  * @author Admin
  */
-public class DispatchFilter implements Filter {
+public class CustomerFilter implements Filter {
 
     private static final boolean debug = true;
 
@@ -30,7 +36,7 @@ public class DispatchFilter implements Filter {
     // configured. 
     private FilterConfig filterConfig = null;
 
-    public DispatchFilter() {
+    public CustomerFilter() {
     }
 
     /**
@@ -47,33 +53,27 @@ public class DispatchFilter implements Filter {
             FilterChain chain)
             throws IOException, ServletException {
 
+        CustomerServices service = new CustomerServicesImpl();
         HttpServletRequest req = (HttpServletRequest) request;
 //        HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession();
-        
-        String tempURL = (String) session.getAttribute("tempURL"); //get stored url
-        //if the user stored a url
-        if (tempURL != null) {
-            //if user stored url then go to that url, else go default request url
-            System.out.println(tempURL);
-            session.setAttribute("tempURL", null);
-            req.getRequestDispatcher(tempURL).forward(request, response);
-//            res.sendRedirect(tempURL);
-            return;
+        UserDTO user = (UserDTO) session.getAttribute("currentUser");
+
+        if (!(user instanceof CustomerDTO)) {
+            try {
+                user = service.getCustomerInformation(user.getUserID());
+                session.setAttribute("currentUser", user);
+            } catch (NoSuchCustomerExistsException ex) {
+                log(ex.getMessage());
+                return;
+            }
         }
-        
-        
-        String url[] = req.getRequestURI().split("/");
-        String action = url[url.length - 1];
-        req.setAttribute("action", action);
-//        System.out.println(action);
 
         try {
             chain.doFilter(request, response);
         } catch (IOException | ServletException t) {
             log(t.getMessage());
         }
-
     }
 
     /**
@@ -105,7 +105,7 @@ public class DispatchFilter implements Filter {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
             if (debug) {
-                log("DispatchFilter:Initializing filter");
+                log("CustomerFilter:Initializing filter");
             }
         }
     }
@@ -116,12 +116,42 @@ public class DispatchFilter implements Filter {
     @Override
     public String toString() {
         if (filterConfig == null) {
-            return ("DispatchFilter()");
+            return ("CustomerFilter()");
         }
-        StringBuffer sb = new StringBuffer("DispatchFilter(");
+        StringBuffer sb = new StringBuffer("CustomerFilter(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());
+    }
+
+    private void sendProcessingError(Throwable t, ServletResponse response) {
+        String stackTrace = getStackTrace(t);
+
+        if (stackTrace != null && !stackTrace.equals("")) {
+            try {
+                response.setContentType("text/html");
+                PrintStream ps = new PrintStream(response.getOutputStream());
+                PrintWriter pw = new PrintWriter(ps);
+                pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
+
+                // PENDING! Localize this for next official release
+                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");
+                pw.print(stackTrace);
+                pw.print("</pre></body>\n</html>"); //NOI18N
+                pw.close();
+                ps.close();
+                response.getOutputStream().close();
+            } catch (Exception ex) {
+            }
+        } else {
+            try {
+                PrintStream ps = new PrintStream(response.getOutputStream());
+                t.printStackTrace(ps);
+                ps.close();
+                response.getOutputStream().close();
+            } catch (Exception ex) {
+            }
+        }
     }
 
     public static String getStackTrace(Throwable t) {

@@ -30,6 +30,8 @@ public interface UserDTO extends Serializable {
 
     String getUserRole();
     
+    String getDisplayRole();
+    
     boolean isStatus_();
 
     void setEmail(String email);

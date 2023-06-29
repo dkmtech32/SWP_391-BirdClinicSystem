@@ -17,28 +17,42 @@ import models.dto.users.customer.CustomerDTO;
  * @author Admin
  */
 public class CustomerServicesImpl implements CustomerServices {
+
     private final CustomerDAO customerDAO;
-    
+
     public CustomerServicesImpl() {
         ImageDAO imageDAO = new ImageDAOImpl();
         customerDAO = new CustomerDAOImpl(imageDAO);
     }
-    
+
     @Override
     public CustomerDTO getCustomerInformation(String customerID) throws NoSuchCustomerExistsException {
         CustomerDTO result = null;
-        
+
         try {
             result = customerDAO.readCustomer(customerID);
         } catch (SQLException ex) {
             throw new NoSuchCustomerExistsException();
         }
-        
+
         return result;
     }
-    
+
     @Override
     public boolean updateCustomerInformation(CustomerDTO customer) {
         return true;
+    }
+
+    @Override
+    public boolean isCustomer(String customerID) throws NoSuchCustomerExistsException {
+        boolean result = false;
+
+        try {
+            result = customerDAO.readCustomer(customerID) != null;
+        } catch (SQLException ex) {
+            throw new NoSuchCustomerExistsException();
+        }
+
+        return result;
     }
 }

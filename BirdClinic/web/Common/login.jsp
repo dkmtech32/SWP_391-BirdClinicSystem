@@ -31,7 +31,7 @@
                                         <div class="login-header">
                                             <h3>Login <span>Birdlover</span></h3>
                                         </div>
-                                        <form action="<c:url value="login"/>" method="POST">
+                                        <form action="<c:url value="/Common/login"/>" method="POST">
                                             <div class="form-group form-focus">
                                                 <input name ="username" class="form-control floating" />
                                                 <label class="focus-label">Email</label>
