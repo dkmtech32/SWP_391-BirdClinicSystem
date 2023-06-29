@@ -8,12 +8,11 @@
         </group>
         <group>
             <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/web/Customer/bookInfo.jsp</file>
-            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/web/Customer/booking-list.jsp</file>
+            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/services/account/doctor/DoctorServices.java</file>
             <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/web/Common/header.jsp</file>
-            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/web/Customer/bookingDatetime.jsp</file>
+            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/services/timeslot/TimeslotServicesImpl.java</file>
             <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/filters/AuthenticationFilter.java</file>
-            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/controllers/appointment/PrepareDatetimeAppBookServlet.java</file>
-            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/controllers/appointment/PrepareAppointmentBookServlet.java</file>
+            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/controllers/booking/PrepareDatetimeAppBookServlet.java</file>
         </group>
     </open-files>
 </project-private>

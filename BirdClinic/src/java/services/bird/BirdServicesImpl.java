@@ -20,7 +20,7 @@ import models.dto.bird.BirdDTOImpl;
 import models.dto.images.ImageDTO;
 import models.dto.users.customer.CustomerDTO;
 import services.account.customer.NoSuchCustomerExistsException;
-import utils.StringUtil;
+import utils.Utils;
 
 /**
  *
@@ -73,7 +73,7 @@ public class BirdServicesImpl implements BirdServices {
                 String medicalHistory = args.get("medicalHistory");
                 Date hatchingDate = Date.valueOf(args.get("hatchingDate"));
                 String featherColor = args.get("featherColor");
-                String birdID = StringUtil.hash(birdFullname + breed);
+                String birdID = Utils.hash(birdFullname + breed);
                 
                 bird.setBirdID(birdID);
                 bird.setCustomer(customer);

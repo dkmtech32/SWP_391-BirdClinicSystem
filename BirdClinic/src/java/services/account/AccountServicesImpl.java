@@ -12,7 +12,7 @@ import models.dao.users.UserDAO;
 import models.dao.users.UserDAOImpl;
 import models.dto.users.UserDTO;
 import models.dto.users.UserDTOImpl;
-import utils.StringUtil;
+import utils.Utils;
 
 /**
  *
@@ -28,7 +28,7 @@ public class AccountServicesImpl implements AccountServices {
 
     @Override
     public UserDTO login(String username, String password) throws AccountNotExistException, SQLException {
-        password = StringUtil.hash(password);
+        password = Utils.hash(password);
         UserDTO user = null;
         user = userDAO.loginUser(username, password);
         if (user == null) {
@@ -61,8 +61,8 @@ public class AccountServicesImpl implements AccountServices {
             throw new PasswordsNotEqualException();
         }
 
-        String rPassword = StringUtil.hash(cPassword);
-        String userID = StringUtil.hash(cPassword + username);
+        String rPassword = Utils.hash(cPassword);
+        String userID = Utils.hash(cPassword + username);
 
         if (userDAO.readUser(userID) != null) {
             result = new UserDTOImpl();
