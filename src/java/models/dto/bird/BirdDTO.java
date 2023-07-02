@@ -16,8 +16,6 @@ import models.dto.users.customer.CustomerDTO;
  */
 public interface BirdDTO extends Serializable {
 
-    String getBand();
-
     String getBirdFullname();
 
     String getBirdGender();
@@ -38,11 +36,9 @@ public interface BirdDTO extends Serializable {
 
     String getMedicalHistory();
 
-    String getMicrochip();
+    String getBand_Chip();
 
     String getSexingMethod();
-
-    void setBand(String band);
 
     void setBirdFullname(String birdFullname);
 
@@ -64,7 +60,7 @@ public interface BirdDTO extends Serializable {
 
     void setMedicalHistory(String medicalHistory);
 
-    void setMicrochip(String microchip);
+    void setBand_Chip(String band_chip);
 
     void setSexingMethod(String sexingMethod);
     

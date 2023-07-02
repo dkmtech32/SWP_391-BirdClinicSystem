@@ -16,7 +16,6 @@ import models.dto.users.UserDTOImpl;
  */
 public class DoctorDTOImpl extends UserDTOImpl implements DoctorDTO {
     private SpecialityDTO speciality;
-    private String docPhone;
     private int docAge;
     private int yearsOfExperience;
     private String academicTitle;
@@ -29,10 +28,9 @@ public class DoctorDTOImpl extends UserDTOImpl implements DoctorDTO {
         super.copyUser(user);
     }
     
-    public DoctorDTOImpl(UserDTO user, SpecialityDTO speciality, String docPhone, int docAge, int yearsOfExperience, String academicTitle, String degree) {
+    public DoctorDTOImpl(UserDTO user, SpecialityDTO speciality, int docAge, int yearsOfExperience, String academicTitle, String degree) {
         super.copyUser(user);
         this.speciality = speciality;
-        this.docPhone = docPhone;
         this.docAge = docAge;
         this.yearsOfExperience = yearsOfExperience;
         this.academicTitle = academicTitle;
@@ -47,16 +45,6 @@ public class DoctorDTOImpl extends UserDTOImpl implements DoctorDTO {
     @Override
     public void setSpeciality(SpecialityDTO speciality) {
         this.speciality = speciality;
-    }
-
-    @Override
-    public String getDocPhone() {
-        return docPhone;
-    }
-
-    @Override
-    public void setDocPhone(String docPhone) {
-        this.docPhone = docPhone;
     }
 
     @Override

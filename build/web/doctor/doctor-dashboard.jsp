@@ -33,10 +33,10 @@
                                             <img src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image" />
                                         </a>
                                         <div class="profile-det-info">
-                                            <h3>Dr. Darren Elder</h3>
+                                            <h3>${doctor.fullName}</h3>
 
                                             <div class="patient-details">
-                                                <h5 class="mb-0">BDS, MDS - Oral & Maxillofacial Surgery</h5>
+                                                <h5 class="mb-0">${doctor.userRole}</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -62,43 +62,6 @@
                                                     <span>My Patients</span>
                                                 </a>
                                             </li>
-<!--                                            <li>
-                                                <a href="schedule-timings.jsp">
-                                                    <i class="fas fa-hourglass-start"></i>
-                                                    <span>Schedule Timings</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="invoices.jsp">
-                                                    <i class="fas fa-file-invoice"></i>
-                                                    <span>Invoices</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="reviews.jsp">
-                                                    <i class="fas fa-star"></i>
-                                                    <span>Reviews</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="chat-doctor.jsp">
-                                                    <i class="fas fa-comments"></i>
-                                                    <span>Message</span>
-                                                    <small class="unread-msg">23</small>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="doctor-profile-settings.jsp">
-                                                    <i class="fas fa-user-cog"></i>
-                                                    <span>Profile Settings</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="social-media.jsp">
-                                                    <i class="fas fa-share-alt"></i>
-                                                    <span>Social Media</span>
-                                                </a>
-                                            </li>-->
                                             <li>
                                                 <a href="doctor-change-password.jsp">
                                                     <i class="fas fa-lock"></i>
@@ -186,6 +149,9 @@
                                             <li class="nav-item">
                                                 <a class="nav-link" href="#today-appointments" data-toggle="tab">Today</a>
                                             </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#done-appointments" data-toggle="tab">Done</a>
+                                            </li>
                                         </ul>
                                         <!-- /Appointment Tab -->
 
@@ -199,162 +165,42 @@
                                                                 <thead>
                                                                     <tr>
                                                                         <th>Customer Name</th>
-                                                                        <th>Appt Date</th>
+                                                                        <th>Appointment Date</th>
                                                                         <th>Bird Name</th>
                                                                         <th>Bird Breed</th>
-                                                                        <th class="text-center">Doctor</th>
+                                                                        <th class="text-center">Service</th>
                                                                         <th></th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <h2 class="table-avatar">
-                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
-                                                                                      /></a>
-                                                                                <a href="patient-profile.jsp">Richard Wilson <span>#PT0016</span></a>
-                                                                            </h2>
-                                                                        </td>
-                                                                        <td>11 Nov 2019 <span class="d-block text-info">7.00 AM</span></td>
-                                                                        <td>
-                                                                            <h2 class="table-avatar">
-                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
-                                                                                      /></a>
-                                                                                <a href="patient-profile.jsp">Bird123 <span>#PT0016</span></a>
-                                                                            </h2>
-                                                                        </td>
-                                                                        <td>Parrot african</td>
-                                                                        <td class="text-center">
-                                                                            <div class="d-flex justify-content-center">
-                                                                                <select class="form-control select w-75" disabled>
-                                                                                    <option>Doctor 1</option>
-                                                                                    <option>Doctor 2</option>
-                                                                                    <option>Doctor 3</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </td>
-
-                                                                        <td class="text-right">
-                                                                            <div class="table-action">
-                                                                                <a href="" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                <a href="add-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
-
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <h2 class="table-avatar">
-                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
-                                                                                      /></a>
-                                                                                <a href="patient-profile.jsp">Richard Wilson <span>#PT0016</span></a>
-                                                                            </h2>
-                                                                        </td>
-                                                                        <td>11 Nov 2019 <span class="d-block text-info">12.00 AM</span></td>
-                                                                        <td>
-                                                                            <h2 class="table-avatar">
-                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-1.webp" alt="User Image"
-                                                                                      /></a>
-                                                                                <a href="patient-profile.jsp">Bird123 <span>#PT0016</span></a>
-                                                                            </h2>
-                                                                        </td>
-                                                                        <td>Parrot african</td>
-                                                                        <td class="text-center">
-                                                                            <div class="d-flex justify-content-center">
-                                                                                <select class="form-control select w-75" disabled>
-                                                                                    <option>Doctor 1</option>
-                                                                                    <option>Doctor 2</option>
-                                                                                    <option>Doctor 3</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </td>
-
-                                                                        <td class="text-right">
-                                                                            <div class="table-action">
-                                                                                <a href="javascript:void(0);" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                <a href="add-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
-
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <h2 class="table-avatar">
-                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
-                                                                                      /></a>
-                                                                                <a href="patient-profile.jsp">Richard Wilson <span>#PT0016</span></a>
-                                                                            </h2>
-                                                                        </td>
-                                                                        <td>11 Nov 2019 <span class="d-block text-info">1.00 PM</span></td>
-                                                                        <td>
-                                                                            <h2 class="table-avatar">
-                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-3.jpg" alt="User Image"
-                                                                                      /></a>
-                                                                                <a href="patient-profile.jsp">Bird123 <span>#PT0016</span></a>
-                                                                            </h2>
-                                                                        </td>
-                                                                        <td>Parrot african</td>
-                                                                        <td class="text-center">
-                                                                            <div class="d-flex justify-content-center">
-                                                                                <select class="form-control select w-75" disabled>
-                                                                                    <option>Doctor 1</option>
-                                                                                    <option>Doctor 2</option>
-                                                                                    <option>Doctor 3</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </td>
-
-                                                                        <td class="text-right">
-                                                                            <div class="table-action">
-                                                                                <a href="javascript:void(0);" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                <a href="add-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
-
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <h2 class="table-avatar">
-                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
-                                                                                      /></a>
-                                                                                <a href="patient-profile.jsp">Richard Wilson <span>#PT0016</span></a>
-                                                                            </h2>
-                                                                        </td>
-                                                                        <td>11 Nov 2019 <span class="d-block text-info">3.00 PM</span></td>
-                                                                        <td>
-                                                                            <h2 class="table-avatar">
-                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-4.jpg" alt="User Image"
-                                                                                      /></a>
-                                                                                <a href="patient-profile.jsp">Bird123 <span>#PT0016</span></a>
-                                                                            </h2>
-                                                                        </td>
-                                                                        <td>Parrot african</td>
-                                                                        <td class="text-center">
-                                                                            <div class="d-flex justify-content-center">
-                                                                                <select class="form-control select w-75" disabled>
-                                                                                    <option>Doctor 1</option>
-                                                                                    <option>Doctor 2</option>
-                                                                                    <option>Doctor 3</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </td>
-
-                                                                        <td class="text-right">
-                                                                            <div class="table-action">
-                                                                                <a href="javascript:void(0);" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                <a href="add-prescription.jsp;" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
-
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
+                                                                    <c:forEach>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <h2 class="table-avatar">
+                                                                                    <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
+                                                                                       ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
+                                                                                          /></a>
+                                                                                    <a href="patient-profile.jsp">${customer.name}</a>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>${appoitment.appTime}<span class="d-block text-info">${appoitment.timeslot}</span></td>
+                                                                            <td>
+                                                                                <h2 class="table-avatar">
+                                                                                    <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
+                                                                                       ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
+                                                                                          /></a>
+                                                                                    <a href="patient-profile.jsp">${bird.birdFullname}</a>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>${bird.breed}</td>
+                                                                            <td>${appointment.service_}</td>
+                                                                            <td class="text-right">
+                                                                                <div class="table-action">
+                                                                                    <a href="../Common/client-appointments-details.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </c:forEach>
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -371,141 +217,44 @@
                                                             <table class="table table-hover table-center mb-0">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>Patient Name</th>
-                                                                        <th>Appt Date</th>
-                                                                        <th>Purpose</th>
-                                                                        <th>Type</th>
-                                                                        <th class="text-center">Paid Amount</th>
+                                                                        <th>Customer Name</th>
+                                                                        <th>Appointment Date</th>
+                                                                        <th>Bird Name</th>
+                                                                        <th>Bird Breed</th>
+                                                                        <th class="text-center">Service</th>
                                                                         <th></th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <h2 class="table-avatar">
-                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient6.jpg" alt="User Image"
-                                                                                      /></a>
-                                                                                <a href="patient-profile.jsp">Elsie Gilley <span>#PT0006</span></a>
-                                                                            </h2>
-                                                                        </td>
-                                                                        <td>14 Nov 2019 <span class="d-block text-info">6.00 PM</span></td>
-                                                                        <td>Fever</td>
-                                                                        <td>Old Patient</td>
-                                                                        <td class="text-center">$300</td>
-                                                                        <td class="text-right">
-                                                                            <div class="table-action">
-                                                                                <a href="javascript:void(0);" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                <a href="add-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
-
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <h2 class="table-avatar">
-                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient7.jpg" alt="User Image"
-                                                                                      /></a>
-                                                                                <a href="patient-profile.jsp">Joan Gardner <span>#PT0006</span></a>
-                                                                            </h2>
-                                                                        </td>
-                                                                        <td>14 Nov 2019 <span class="d-block text-info">5.00 PM</span></td>
-                                                                        <td>General</td>
-                                                                        <td>Old Patient</td>
-                                                                        <td class="text-center">$100</td>
-                                                                        <td class="text-right">
-                                                                            <div class="table-action">
-                                                                                <a href="javascript:void(0);" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                <a href="add-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
-
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <h2 class="table-avatar">
-                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient8.jpg" alt="User Image"
-                                                                                      /></a>
-                                                                                <a href="patient-profile.jsp">Daniel Griffing <span>#PT0007</span></a>
-                                                                            </h2>
-                                                                        </td>
-                                                                        <td>14 Nov 2019 <span class="d-block text-info">3.00 PM</span></td>
-                                                                        <td>General</td>
-                                                                        <td>New Patient</td>
-                                                                        <td class="text-center">$75</td>
-                                                                        <td class="text-right">
-                                                                            <div class="table-action">
-                                                                                <a href="javascript:void(0);" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                <a href="add-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>																			
-
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <h2 class="table-avatar">
-                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient9.jpg" alt="User Image"
-                                                                                      /></a>
-                                                                                <a href="patient-profile.jsp">Walter Roberson <span>#PT0008</span></a>
-                                                                            </h2>
-                                                                        </td>
-                                                                        <td>14 Nov 2019 <span class="d-block text-info">1.00 PM</span></td>
-                                                                        <td>General</td>
-                                                                        <td>Old Patient</td>
-                                                                        <td class="text-center">$350</td>
-                                                                        <td class="text-right">
-                                                                            <div class="table-action">
-                                                                                <a href="javascript:void(0);" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                <a href="add-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>																				
-
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <h2 class="table-avatar">
-                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient10.jpg" alt="User Image"
-                                                                                      /></a>
-                                                                                <a href="patient-profile.jsp">Robert Rhodes <span>#PT0010</span></a>
-                                                                            </h2>
-                                                                        </td>
-                                                                        <td>14 Nov 2019 <span class="d-block text-info">5.00 PM</span></td>
-                                                                        <td>General</td>
-                                                                        <td>New Patient</td>
-                                                                        <td class="text-center">$175</td>
-                                                                        <td class="text-right">
-                                                                            <div class="table-action">
-                                                                                <a href="javascript:void(0);" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                <a href="add-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>																			
-
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <h2 class="table-avatar">
-                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient11.jpg" alt="User Image"
-                                                                                      /></a>
-                                                                                <a href="patient-profile.jsp">Harry Williams <span>#PT0011</span></a>
-                                                                            </h2>
-                                                                        </td>
-                                                                        <td>14 Nov 2019 <span class="d-block text-info">11.00 AM</span></td>
-                                                                        <td>General</td>
-                                                                        <td>New Patient</td>
-                                                                        <td class="text-center">$450</td>
-                                                                        <td class="text-right">
-                                                                            <div class="table-action">
-                                                                                <a href="javascript:void(0);" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                <a href="add-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
-
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
+                                                                    <c:forEach>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <h2 class="table-avatar">
+                                                                                    <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
+                                                                                       ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
+                                                                                          /></a>
+                                                                                    <a href="patient-profile.jsp">${customer.name}</a>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>${appoitment.appTime}<span class="d-block text-info">${appoitment.timeslot}</span></td>
+                                                                            <td>
+                                                                                <h2 class="table-avatar">
+                                                                                    <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
+                                                                                       ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
+                                                                                          /></a>
+                                                                                    <a href="patient-profile.jsp">${bird.birdFullname}</a>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>${bird.breed}</td>
+                                                                            <td>${appointment.service_}</td>
+                                                                            <td class="text-right">
+                                                                                <div class="table-action">
+                                                                                    <a href="../Common/client-appointments-details.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                                    <a href="add-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </c:forEach>
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -513,6 +262,59 @@
                                                 </div>
                                             </div>
                                             <!-- /Today Appointment Tab -->
+                                            
+                                            <!-- Done Appointment Tab -->
+                                            <div class="tab-pane" id="done-appointments">
+                                                <div class="card card-table mb-0">
+                                                    <div class="card-body">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-hover table-center mb-0">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Customer Name</th>
+                                                                        <th>Appointment Date</th>
+                                                                        <th>Bird Name</th>
+                                                                        <th>Bird Breed</th>
+                                                                        <th class="text-center">Service</th>
+                                                                        <th></th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <c:forEach>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <h2 class="table-avatar">
+                                                                                    <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
+                                                                                       ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
+                                                                                          /></a>
+                                                                                    <a href="patient-profile.jsp">${customer.name}</a>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>${appoitment.appTime}<span class="d-block text-info">${appoitment.timeslot}</span></td>
+                                                                            <td>
+                                                                                <h2 class="table-avatar">
+                                                                                    <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
+                                                                                       ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
+                                                                                          /></a>
+                                                                                    <a href="patient-profile.jsp">${bird.birdFullname}</a>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>${bird.breed}</td>
+                                                                            <td>${appointment.service_}</td>
+                                                                            <td class="text-right">
+                                                                                <div class="table-action">
+                                                                                    <a href="../Common/client-appointments-details.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </c:forEach>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /Done Appointment Tab -->
                                         </div>
                                     </div>
                                 </div>

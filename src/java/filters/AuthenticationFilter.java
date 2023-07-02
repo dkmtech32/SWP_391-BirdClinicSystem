@@ -6,7 +6,7 @@
 package filters;
 
 import java.io.IOException;
-import java.io.PrintStream;
+//import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import javax.servlet.Filter;
@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.dto.users.UserDTO;
+import services.account.AccountServices;
+import services.account.AccountServicesImpl;
 
 /**
  *
@@ -49,27 +51,28 @@ public class AuthenticationFilter implements Filter {
             throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
-        HttpSession session = req.getSession();
-        UserDTO user = (UserDTO) session.getAttribute("currentUser");
-        
-        if (user == null) { //user hasn't logged in
-            if (session.getAttribute("tempURL") == null) {
-                session.setAttribute("tempURL", req.getRequestURL()); //store url to go back to after user logs in
-            }
-            res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "User haven't logged in.");
-        }
-        else { //user has logged in
-            String tempURL = (String) session.getAttribute("tempURL"); //get stored url
+        if (res.getStatus() != 401) {
+            //get current user from session
+            HttpSession session = req.getSession();
+            UserDTO user = (UserDTO) session.getAttribute("currentUser");
             
-            if (tempURL != null) {
-                session.setAttribute("tempURL", null);
-                req.getRequestDispatcher(tempURL).forward(request, response); //if user stored url then go to that url, else go default request url
+            if (user == null) { //user hasn't logged in
+                res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "User haven't logged in.");
+                return;
+            } else { //user has logged in
+                AccountServices accService = new AccountServicesImpl();
+                
+                if (!accService.accExist(user)) {
+                    res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "User doesn't exist.");
+                    return;
+                }
+
             }
         }
         try {
             chain.doFilter(request, response);
         } catch (IOException | ServletException ex) {
-            ex.printStackTrace();
+            log(ex.getMessage());
         }
 
     }

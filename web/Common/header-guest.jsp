@@ -21,13 +21,13 @@
                     </span>
                 </a>
                 <a href="index.jsp" class="navbar-brand logo">
-                    <img src="assets/img/logo.png" class="img-fluid" alt="Logo" />
+                    <img src="../assets/img/logo.png" class="img-fluid" alt="Logo" />
                 </a>
             </div>
             <div class="main-menu-wrapper">
                 <div class="menu-header">
                     <a href="index.jsp" class="menu-logo">
-                        <img src="assets/img/logo.png" class="img-fluid" alt="Logo" />
+                        <img src="../assets/img/logo.png" class="img-fluid" alt="Logo" />
                     </a>
                     <a id="menu_close" class="menu-close" href="javascript:void(0);">
                         <i class="fas fa-times"></i>
@@ -107,9 +107,9 @@
                     </div>
                 </li>
                 <li class="nav-item">
-						<a href="booking-list.jsp" class="btn btn-lg btn-primary px-4">Book Now</a>
-						<!-- <a class="nav-link header-login" href="login.jsp">login / Signup </a> -->
-					</li>
+                    <a href="booking-list.jsp" class="btn btn-lg btn-primary px-4">Book Now</a>
+                    <!-- <a class="nav-link header-login" href="login.jsp">login / Signup </a> -->
+                </li>
                 <li class="nav-item">
                     <a class="nav-link header-login" href="login.jsp">login / Signup </a>
                 </li>

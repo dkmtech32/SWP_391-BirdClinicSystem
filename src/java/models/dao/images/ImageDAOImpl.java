@@ -21,7 +21,7 @@ import utils.DBUtils;
  */
 public class ImageDAOImpl implements ImageDAO {
 
-    private static final String READ_IMAGE_DB = "select imageID, imageURLName"
+    private static final String READ_IMAGE_DB = "select imageID, imageURLName "
             + "from Images "
             + "where imageID = ?";
     private static final String INSERT_IMAGE_DB = "insert into Images(imageID, imageURLName) "
@@ -50,7 +50,7 @@ public class ImageDAOImpl implements ImageDAO {
             stm.setString(1, imageID);
             rs = stm.executeQuery();
 
-            if (rs != null) {
+            if (rs.next()) {
                 result = new ImageDTOImpl();
                 result.setImageID(imageID);
                 result.setImageURLName(rs.getString("imageURLName"));
@@ -72,6 +72,7 @@ public class ImageDAOImpl implements ImageDAO {
         return result;
     }
     
+    @Override
     public ImageDTO readImageDb(String imageID, Connection con) throws SQLException {
         PreparedStatement stm = null;
         ResultSet rs = null;
@@ -82,7 +83,7 @@ public class ImageDAOImpl implements ImageDAO {
             stm.setString(1, imageID);
             rs = stm.executeQuery();
 
-            if (rs != null) {
+            if (rs.next()) {
                 result = new ImageDTOImpl();
                 result.setImageID(imageID);
                 result.setImageURLName(rs.getString("imageURLName"));
@@ -183,7 +184,7 @@ public class ImageDAOImpl implements ImageDAO {
     
     @Override
     public String getImageInDisk(ImageDTO image, ServletContext context) throws MalformedURLException {
-        String filepath = "/WEB-INF/images/";
+        String filepath = "../images/";
         
         String url = context.getResource(filepath + image.getImageURLName()).toString();
         return url;

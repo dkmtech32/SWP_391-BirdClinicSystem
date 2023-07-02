@@ -52,28 +52,23 @@ public class AuthorizationFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-        HttpServletRequest req = (HttpServletRequest) request;
+
         HttpServletResponse res = (HttpServletResponse) response;
-        String url = req.getPathInfo();
-        String authPattern = url.substring(1).split("/")[0];
-        HttpSession session = req.getSession();
-        UserDTO user = (UserDTO) session.getAttribute("currentUser");
-        String role = user.getUserRole().trim();
-        
-        if (!role.equals(authPattern)) {//if user is unauthorized
-            if (session.getAttribute("tempURL") == null) {
-                session.setAttribute("tempURL", req.getRequestURL()); //store url to go back to after user reauthorized
-            }
-            res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Wrong role.");
-        } else {//if user is authorized
-            String tempURL = (String) session.getAttribute("tempURL"); //get stored url
+        if (res.getStatus() != 401) {
+            HttpServletRequest req = (HttpServletRequest) request;
+            String url = req.getRequestURI().split(req.getContextPath())[1];
+            String authPattern = url.split("/")[1].toLowerCase();
+
+            HttpSession session = req.getSession();
+            UserDTO user = (UserDTO) session.getAttribute("currentUser");
             
-            if (tempURL != null) {
-                session.setAttribute("tempURL", null);
-                req.getRequestDispatcher(tempURL).forward(request, response); //if user stored url then go to that url, else go default request url
+            //if user is unauthorized
+            if (!user.getUserRole().equals(authPattern)) {
+                res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Wrong role.");
+                return;
             }
         }
-
+        //if user is authorized continue
         try {
             chain.doFilter(request, response);
         } catch (IOException | ServletException ex) {
