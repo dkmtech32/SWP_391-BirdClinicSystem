@@ -14,21 +14,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import services.appointment.AppointmentServices;
-import services.appointment.AppointmentServicesImpl;
 
 /**
  *
  * @author Admin
  */
 public class BookAppointmentServlet extends HttpServlet {
-
-    private AppointmentServices appServices;
-
-    @Override
-    public void init() {
-        appServices = new AppointmentServicesImpl();
-    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -65,13 +56,15 @@ public class BookAppointmentServlet extends HttpServlet {
         String appDay = request.getParameter("appDay");
         String doctorID = request.getParameter("doctorID");
         String url = "/Customer/prepareBooking";
+        
+        
 
         try {
             Map<String, String> map = new HashMap<>();
-            testString("birdID", birdID, map);
-            testString("serviceID", serviceID, map);
-            testString("timeslotID", "0227321c75909512447393796f173788", map);
-            testString("appDay", Date.valueOf(LocalDate.now()).toString(), map);
+            map.put("birdID", birdID);
+            map.put("serviceID", serviceID);
+            map.put("timeslotID", timeslotID);
+            map.put("appDay", appDay);
             if (doctorID != null) {
                 map.put("doctorID", doctorID);
             }
@@ -79,7 +72,7 @@ public class BookAppointmentServlet extends HttpServlet {
                 map.put("notes", notes);
             }
             if (!map.isEmpty()) {
-                appServices.bookAppointment(map);
+//                appServices.bookAppointment(map);
                 url = "/Customer/custDashboard";
             }
         } catch (Exception ex) {

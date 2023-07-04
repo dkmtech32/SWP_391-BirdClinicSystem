@@ -18,9 +18,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import models.dto.users.UserDTO;
+import models.users.UserDTO;
 import services.account.AccountServices;
-import services.account.AccountServicesImpl;
 
 /**
  *
@@ -54,19 +53,12 @@ public class AuthenticationFilter implements Filter {
         if (res.getStatus() != 401) {
             //get current user from session
             HttpSession session = req.getSession();
-            UserDTO user = (UserDTO) session.getAttribute("currentUser");
-            
+            AccountServices service = (AccountServices) session.getAttribute("service");
+            UserDTO user = service.getCurrentUser();
+
             if (user == null) { //user hasn't logged in
                 res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "User haven't logged in.");
                 return;
-            } else { //user has logged in
-                AccountServices accService = new AccountServicesImpl();
-                
-                if (!accService.accExist(user)) {
-                    res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "User doesn't exist.");
-                    return;
-                }
-
             }
         }
         try {
@@ -74,7 +66,6 @@ public class AuthenticationFilter implements Filter {
         } catch (IOException | ServletException ex) {
             log(ex.getMessage());
         }
-
     }
 
     /**

@@ -18,7 +18,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import models.dto.users.UserDTO;
+import models.users.UserDTO;
+import services.account.AccountServices;
 
 /**
  *
@@ -60,8 +61,9 @@ public class AuthorizationFilter implements Filter {
             String authPattern = url.split("/")[1].toLowerCase();
 
             HttpSession session = req.getSession();
-            UserDTO user = (UserDTO) session.getAttribute("currentUser");
-            
+            AccountServices service = (AccountServices) session.getAttribute("service");
+            UserDTO user = service.getCurrentUser();
+
             //if user is unauthorized
             if (!user.getUserRole().equals(authPattern)) {
                 res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Wrong role.");

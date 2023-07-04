@@ -12,23 +12,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import models.dto.users.UserDTO;
-import services.account.AccountNotExistException;
+import models.users.UserDTO;
+import services.account.AccountDoesNotExist;
 import services.account.AccountServices;
-import services.account.AccountServicesImpl;
+import services.admin.AdminServicesImpl;
+import services.customer.CustomerServicesImpl;
+import services.doctor.DoctorServicesImpl;
+import services.staff.StaffServicesImpl;
 
 /**
  *
  * @author Admin
  */
 public class LoginServlet extends HttpServlet {
-
-    private AccountServices accountServices;
-
-    @Override
-    public void init() throws ServletException {
-        accountServices = new AccountServicesImpl();
-    }
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -55,31 +51,47 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String remember = request.getParameter("remember");
-        String url = request.getContextPath() + "/Common/login.jsp";
+        String url = "/Common/login.jsp";
+        HttpSession session = request.getSession(true);
+        AccountServices accountService = (AccountServices) session.getAttribute("service");
 
         try {
-            if (!username.trim().equals("") && !password.trim().equals("")) {
-                UserDTO user = accountServices.login(username, password);
-//                System.out.println(user);
-                if (user != null) {
-                    url = request.getContextPath() + "/Common/index.jsp";
-                    HttpSession session = request.getSession(true);
-                    if (remember != null) {
-                        //set cookies
-                    }
-                    session.setAttribute("currentUser", user);
+            if (accountService.login(username, password)) {
+                UserDTO currentUser = accountService.getCurrentUser();
+                switch (currentUser.getUserRole().toLowerCase()) {
+                    case "customer":
+                        accountService = new CustomerServicesImpl(currentUser);
+                        break;
+                    case "doctor":
+                        accountService = new DoctorServicesImpl(currentUser);
+                        break;
+                        case "staff":
+                        accountService = new StaffServicesImpl(currentUser);
+                        break;
+                        case "admin":
+                        accountService = new AdminServicesImpl(currentUser);
+                        break;
                 }
+                session.setAttribute("service", accountService);
+                
+                if (remember!=null && !remember.trim().equals("")) {
+                    //cookies
+                }
+                
+                url = "/Common/index.jsp";
             }
-        } catch (NullPointerException ex1) {
+        } catch (AccountDoesNotExist ex) {
+            ex.printStackTrace();
+            request.setAttribute("message", "Both username and email must be unique. Please try again.");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
             request.setAttribute("message", "Something went wrong. Please try again.");
-        } catch (AccountNotExistException | SQLException ex2) {
-            request.setAttribute("message", "No accounts with this username exists");
         } finally {
-            response.sendRedirect(url);
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 

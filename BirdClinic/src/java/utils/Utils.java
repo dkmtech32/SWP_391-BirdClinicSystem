@@ -113,4 +113,12 @@ public class Utils {
         // Convert java.util.Date to java.sql.Date
         return new java.sql.Date(nextMonday.getTime());
     }
+    
+    public static boolean checkPassword(String password) {
+        if (password == null) {
+            return false;
+        }
+        if (password.trim().equals("")) return false;
+        return password.matches("^(?=.*[A-Z])(?=.*\\d).+$");
+    }
 }
