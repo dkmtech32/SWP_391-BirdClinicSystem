@@ -147,7 +147,7 @@
                                                 <a class="nav-link active" href="#upcoming-appointments" data-toggle="tab">Upcoming</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#today-appointments" data-toggle="tab">Today</a>
+                                                <a class="nav-link" href="#today-appointments" data-toggle="tab">Checked In</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" href="#done-appointments" data-toggle="tab">Done</a>

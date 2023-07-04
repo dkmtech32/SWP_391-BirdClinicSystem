@@ -104,7 +104,7 @@
                                                                 <td></td>
                                                                 <td class="text-right">
                                                                     <div class="table-action">
-                                                                        <a href="client-appointments-details.html" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                        <a href="../Common/client-appointments-details.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                                     </div>
                                                                 </td>
                                                             </tr>

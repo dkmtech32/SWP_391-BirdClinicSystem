@@ -1,6 +1,6 @@
 <%-- 
-    Document   : newjspclient-appoitments-details-not-yet-for-staff
-    Created on : Jun 26, 2023, 1:34:51 PM
+    Document   : client-appointments-details-for-staff-finish
+    Created on : Jul 4, 2023, 9:35:17 AM
     Author     : ASUS
 --%>
 
@@ -176,8 +176,125 @@
                         </tbody>
                     </table>
                 </div>
+                <h2>Owner's feedback</h2>
+                <c:choose>
+                    <c:when test="${appointment.rating =='1'}">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </c:when>
+                    <c:when test="${appointment.rating =='1.5'}">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star-half-alt filled"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </c:when>
+                    <c:when test="${appointment.rating =='2'}">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </c:when>
+                    <c:when test="${appointment.rating =='2.5'}">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star-half-alt filled"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </c:when>
+                    <c:when test="${appointment.rating =='3'}">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </c:when>
+                    <c:when test="${appointment.rating =='3.5'}">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star-half-alt filled"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </c:when>
+                    <c:when test="${appointment.rating =='4'}">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </c:when>
+                    <c:when test="${appointment.rating =='4.5'}">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star-half-alt filled"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </c:when>
+                    <c:when test="${appointment.rating =='5'}">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                            </div>
+                        </div>
+                    </c:when>
+                </c:choose>
+                <div class="col-md-12 col-sm-12">
+                    <div class="form-group">													
+                        <div class="form-control" rows="4" style="word-wrap: break-word; height: 9rem">
+                            ${appoitment.ownerFeedback}
+                        </div>
+                    </div>
+                </div>
                 <div class="booking-summary-in-appointments-details">
                     <h2>Payment</h2>
+                    <div class="payment-method">
+                        <h4>Payment Method</h4> 
+                        <select class="form-control select w-75" required>
+                            <c:forEach>
+                                <option>${appoitment.payment}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
                     <div class="booking-item-wrap-in-appointments-details">
                         <ul class="booking-fee-in-appointments-details">
                             <li>Service Fee<span>${service.servicePrice}</span></li>
@@ -194,20 +311,9 @@
                         </div>
                     </div>
                 </div>
-                <c:choose>
-                    <c:when test="${appointment.appStatus =='processing'}">
-                        <div class="table-action-staff">
-                            <button class="btn btn-sm bg-success-light"> <i class="fas fa-check"></i> Confirm </button> <!-- nhấn xong chuyển status thành confirm-->
-                            <button class="btn btn-sm bg-danger-light"> <i class="fas fa-times"></i> Cancel </button>
-                        </div>
-                    </c:when>
-                    <c:when test="${appointment.appStatus =='confirmed'}">
-                        <div class="table-action-staff">
-                            <button class="btn btn-sm bg-success-light"> <i class="fas fa-check"></i> Confirm </button> <!-- nhấn xong chuyển status thành check in-->
-                            <button class="btn btn-sm bg-danger-light"> <i class="fas fa-times"></i> Cancel </button>
-                        </div>
-                    </c:when>
-                </c:choose>
+                <div class="table-action-staff">
+                    <button class="btn btn-sm bg-success-light"> <i class="fas fa-check"></i> Confirm </button> <!-- nhấn xong chuyển status thành complete-->
+                </div>
             </div>
             <!-- /Page Content -->
 

@@ -143,7 +143,7 @@
                                                                                 <td><span class="badge badge-pill bg-success-light">Confirmed</span></td>
                                                                             </c:when>
                                                                             <c:when test="${appointment.appStatus =='checkin'}">
-                                                                                <td><span class="badge badge-pill bg-success-light">Check In</span></td>
+                                                                                <td><span class="badge badge-pill bg-purple-light">Check In</span></td>
                                                                             </c:when>
                                                                             <c:when test="${appointment.appStatus =='complete'}">
                                                                                 <td><span class="badge badge-pill bg-primary-light">Completed</span></td>
@@ -182,8 +182,9 @@
                                                                                 <td class="text-right">
                                                                                     <div class="table-action">
                                                                                         <a href="view-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescription </a>
-                                                                                        <!--                                                                                    <a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>-->
-                                                                                        <a href="../Common/client-appointments-details.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                                    <!--<a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>-->
+                                                                                        <a href="client-appointments-details-feedback.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                                        <!--Cái này là qua trang feedback, nếu feedback trong trang feedback rồi thì đường link trang phía trên là ../Common/client-appointments-details.jsp -->
                                                                                     </div>
                                                                                 </td>
                                                                             </c:when>

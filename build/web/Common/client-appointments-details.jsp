@@ -47,7 +47,7 @@
                                     <p class="information">${bird.birdGender}</p>
                                 </div>
                                 <div class="bird-information-box">
-                                    <p class="header">Weigth</p>
+                                    <p class="header">Weight</p>
                                     <p class="information">${bird.birdWeight}</p>
                                 </div>
                                 <div class="bird-information-box">
@@ -173,8 +173,124 @@
                             </tbody>
                         </table>
                     </div>
+                    <h2>Owner's feedback</h2>
+                    <c:choose>
+                        <c:when test="${appointment.rating =='1'}">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </c:when>
+                        <c:when test="${appointment.rating =='1.5'}">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star-half-alt filled"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </c:when>
+                        <c:when test="${appointment.rating =='2'}">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </c:when>
+                        <c:when test="${appointment.rating =='2.5'}">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star-half-alt filled"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </c:when>
+                        <c:when test="${appointment.rating =='3'}">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </c:when>
+                        <c:when test="${appointment.rating =='3.5'}">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star-half-alt filled"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </c:when>
+                        <c:when test="${appointment.rating =='4'}">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </c:when>
+                        <c:when test="${appointment.rating =='4.5'}">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star-half-alt filled"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </c:when>
+                        <c:when test="${appointment.rating =='5'}">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                </div>
+                            </div>
+                        </c:when>
+                    </c:choose>
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group">													
+                            <div class="form-control" rows="4" placeholder="Owner's feedback"
+                                 style="word-wrap: break-word; height: 9rem">
+                                ${appoitment.ownerFeedback}
+                            </div>
+                        </div>
+                    </div>
                     <div class="booking-summary-in-appointments-details">
                         <h2>Payment</h2>
+                        <div class="payment-method">
+                            <h4>Payment Method</h4> 
+                            <div class="form-control select w-75">
+                                ${appoitment.payment}
+                            </div>
+                        </div>
                         <div class="booking-item-wrap-in-appointments-details">
                             <ul class="booking-fee-in-appointments-details">
                                 <li>Service Fee<span>${medicinie.serviceFee}</span></li>

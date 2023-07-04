@@ -2,27 +2,17 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="PE sample">
-            <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/Common/header.jsp</file>
-            <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/Common/footer.jsp</file>
-        </group>
         <group>
-<<<<<<< Updated upstream
-            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/web/Customer/bookInfo.jsp</file>
-            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/controllers/booking/BookAppointmentServlet.java</file>
-            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/services/timeslot/TimeslotServicesImpl.java</file>
-            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/controllers/booking/PrepareAppointmentBookServlet.java</file>
-=======
-            <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/staff/staff-dashboard.jsp</file>
             <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/doctor/doctor-dashboard.jsp</file>
-            <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/customer/bookingDatetime.jsp</file>
+            <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/staff/staff-dashboard.jsp</file>
+            <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/Common/client-appoitments-details.jsp</file>
+            <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/Common/client-appointmenst-detaisl-not-yet.jsp</file>
+            <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/Common/booking-list.jsp</file>
             <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/Common/client-appointments-details.jsp</file>
-            <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/staff/client-appointments-details-not-yet-for-staff.jsp</file>
-            <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/customer/view-prescription.jsp</file>
+            <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/Common/bird-details.jsp</file>
             <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/customer/customer-dashboard.jsp</file>
-            <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/assets/css/style.css</file>
             <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/staff/client-appointments-details-for-staff.jsp</file>
->>>>>>> Stashed changes
+            <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/assets/css/style.css</file>
         </group>
     </open-files>
 </project-private>

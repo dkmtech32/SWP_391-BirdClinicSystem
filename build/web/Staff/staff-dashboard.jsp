@@ -145,6 +145,9 @@
                                             <li class="nav-item">
                                                 <a class="nav-link" href="#checking-out-today-appointments" data-toggle="tab">Check Out</a>
                                             </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#completed-appointments" data-toggle="tab">Completed</a>
+                                            </li>
                                         </ul>
                                         <!-- /Appointment Tab -->
 
@@ -199,7 +202,7 @@
                                                                             </td>
                                                                             <td class="text-right">
                                                                                 <div class="table-action">
-                                                                                    <a href="client-appointments-details-not-yet-for-staff.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                                    <a href="client-appointments-details-for-staff.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                                                     <a href="" class="btn btn-sm bg-success-light"> <i class="fas fa-check"></i> Confirm </a> <!-- nhấn xong chuyển status từ Processing qua Confirmed -->
                                                                                     <a href="" class="btn btn-sm bg-danger-light"> <i class="fas fa-times"></i> Cancel </a>
                                                                                 </div>
@@ -264,7 +267,7 @@
                                                                     </td>
                                                                     <td class="text-right">
                                                                         <div class="table-action">
-                                                                            <a href="client-appointments-details-not-yet-for-staff.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                            <a href="client-appointments-details-for-staff.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                                             <a href="" class="btn btn-sm bg-success-light"> <i class="fas fa-check"></i> Confirm </a> <!-- nhấn xong chuyển status từ confirmed qua check in -->
                                                                             <a href="" class="btn btn-sm bg-danger-light"> <i class="fas fa-times"></i> Cancel </a>
                                                                         </div>
@@ -279,7 +282,7 @@
                                             </div>
                                             <!-- /Today Appointment Tab -->
 
-                                            <!-- Done Appointment Tab -->
+                                            <!-- Check in Appointment Tab -->
                                             <div class="tab-pane" id="checking-out-today-appointments">
                                                 <div class="card card-table mb-0">
                                                     <div class="card-body">
@@ -318,7 +321,7 @@
                                                                                 </h2>
                                                                             </td>
                                                                             <td>${bird.breed}</td>
-                                                                            <td><span class="badge badge-pill bg-success-light">Check In</span></td> <!-- này để code cứng vì chỗ này thì status auto là check in -->
+                                                                            <td><span class="badge badge-pill bg-purple-light">Check In</span></td> <!-- này để code cứng vì chỗ này thì status auto là check in -->
                                                                             <td>${appointment.doctor}</td>
                                                                             <td>
                                                                                 <select class="form-control select w-75" required>
@@ -329,8 +332,8 @@
                                                                             </td>
                                                                             <td class="text-right">
                                                                                 <div class="table-action">
-                                                                                    <a href="client-appointments-details-for-staff.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                    <a href="" class="btn btn-sm bg-success-light"> <i class="fas fa-check"></i> Confirm </a> <!-- nhấn xong chuyển status từ check in qua completed -->
+                                                                                    <a href="client-appointments-details-for-staff-finish.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                                    <a href="" class="btn btn-sm bg-success-light"> <i class="fas fa-check"></i> Confirm </a> 
                                                                                 </div>
                                                                             </td>
                                                                         </tr>
@@ -341,7 +344,64 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- /Done Appointment Tab -->
+                                            <!-- /Check in Appointment Tab -->
+                                            
+                                            <!-- Completed in Appointment Tab -->
+                                            <div class="tab-pane" id="completed-appointments">
+                                                <div class="card card-table mb-0">
+                                                    <div class="card-body">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-hover table-center mb-0">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Customer Name</th>
+                                                                        <th>Appointment Date</th>
+                                                                        <th>Bird Name</th>
+                                                                        <th>Bird Breed</th>
+                                                                        <th>Status</th>
+                                                                        <th>Doctor</th>
+                                                                        <th>Payment Method</th>
+                                                                        <th></th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <c:forEach>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <h2 class="table-avatar">
+                                                                                    <a href="bird-details.jsp" class="avatar avatar-sm mr-2"
+                                                                                       ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
+                                                                                          /></a>
+                                                                                    <a href="bird-details.jsp">${customer.name}</a>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>${appoitment.appTime}<span class="d-block text-info">${appoitment.timeslot}</span></td>
+                                                                            <td>
+                                                                                <h2 class="table-avatar">
+                                                                                    <a href="bird-details.jsp" class="avatar avatar-sm mr-2"
+                                                                                       ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
+                                                                                          /></a>
+                                                                                    <a href="bird-details.jsp">${bird.birdFullname}</a>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>${bird.breed}</td>
+                                                                            <td><span class="badge badge-pill bg-primary-light">Completed</span></td> <!-- này để code cứng vì chỗ này thì status auto là check in -->
+                                                                            <td>${appointment.doctor}</td>
+                                                                            <td>${appoitment.payment}</td>
+                                                                            <td class="text-right">
+                                                                                <div class="table-action">
+                                                                                    <a href="client-appointments-details-for-staff.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </c:forEach>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /Completed Appointment Tab -->
                                         </div>
                                     </div>
                                 </div>

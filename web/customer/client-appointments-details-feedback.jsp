@@ -1,6 +1,6 @@
 <%-- 
-    Document   : client-appoitments-details
-    Created on : Jun 25, 2023, 9:53:59 PM
+    Document   : client-appointments-details-feedback
+    Created on : Jul 4, 2023, 10:30:34 AM
     Author     : ASUS
 --%>
 
@@ -174,123 +174,26 @@
                         </table>
                     </div>
                     <h2>Owner's feedback</h2>
-                    <c:choose>
-                        <c:when test="${appointment.rating =='1'}">
-                            <div class="col-md-12 col-sm-12">
-                                <div class="rating">
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </c:when>
-                        <c:when test="${appointment.rating =='1.5'}">
-                            <div class="col-md-12 col-sm-12">
-                                <div class="rating">
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star-half-alt filled"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </c:when>
-                        <c:when test="${appointment.rating =='2'}">
-                            <div class="col-md-12 col-sm-12">
-                                <div class="rating">
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </c:when>
-                        <c:when test="${appointment.rating =='2.5'}">
-                            <div class="col-md-12 col-sm-12">
-                                <div class="rating">
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star-half-alt filled"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </c:when>
-                        <c:when test="${appointment.rating =='3'}">
-                            <div class="col-md-12 col-sm-12">
-                                <div class="rating">
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </c:when>
-                        <c:when test="${appointment.rating =='3.5'}">
-                            <div class="col-md-12 col-sm-12">
-                                <div class="rating">
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star-half-alt filled"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </c:when>
-                        <c:when test="${appointment.rating =='4'}">
-                            <div class="col-md-12 col-sm-12">
-                                <div class="rating">
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </c:when>
-                        <c:when test="${appointment.rating =='4.5'}">
-                            <div class="col-md-12 col-sm-12">
-                                <div class="rating">
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star-half-alt filled"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </c:when>
-                        <c:when test="${appointment.rating =='5'}">
-                            <div class="col-md-12 col-sm-12">
-                                <div class="rating">
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star filled"></i>
-                                </div>
-                            </div>
-                        </c:when>
-                    </c:choose>
+                    <select class="form-control select w-75">
+                        <c:forEach>
+                            <option>${appoitment.rating}</option> <!-- này chọn 1, 1.5, 2,...,5 -->
+                        </c:forEach>
+                    </select>
                     <div class="col-md-12 col-sm-12">
                         <div class="form-group">													
-                            <div class="form-control" rows="4" placeholder="Owner's feedback"
-                                 style="word-wrap: break-word; height: 9rem">
-                                ${appoitment.ownerFeedback}
-                            </div>
+                            <textarea class="form-control" rows="4" placeholder="Owner's feedback"
+                                      style="word-wrap: break-word; height: 9rem">
+                            </textarea>
                         </div>
                     </div>
                     <div class="booking-summary-in-appointments-details">
-                        <h2>Payment</h2>
                         <div class="payment-method">
                             <h4>Payment Method</h4> 
                             <div class="form-control select w-75">
                                 ${appoitment.payment}
                             </div>
                         </div>
+                        <h2>Payment</h2>
                         <div class="booking-item-wrap-in-appointments-details">
                             <ul class="booking-fee-in-appointments-details">
                                 <li>Service Fee<span>${medicinie.serviceFee}</span></li>
@@ -307,6 +210,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="table-action-staff">
+                        <button class="btn btn-sm bg-success-light"> <i class="fas fa-check"></i> Confirm </button> <!-- nhấn xong cập nhật feedback & rating -->
+                    </div>                
                 </div>
             </div>
         </div>
