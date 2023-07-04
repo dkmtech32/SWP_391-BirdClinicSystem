@@ -16,10 +16,7 @@
 
     <!-- Favicons -->
     <link href="../assets/img/favicon.png" rel="icon" />
-    <!-- simplebar -->
-    <link href="../assets/css/simplebar.css" rel="stylesheet" type="text/css" />
-    <!-- Select2 -->
-    <link href="../assets/css/select2.min.css" rel="stylesheet" />
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
 
@@ -28,12 +25,7 @@
     <!-- Slick CSS -->
     <link rel="stylesheet" href="../assets/css/slick.css" />
     <link rel="stylesheet" href="../assets/css/slick-theme.css" />
-    <!-- Icons -->
-    <link href="../assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/css/remixicon.css" rel="stylesheet" type="text/css" />
-    <link href="https://unicons.iconscout.com/release/v3.0.6/css/line.css" rel="stylesheet" />
-    <!-- SLIDER -->
-    <link href="assets/css/tiny-slider.css" rel="stylesheet" />
+
     <!-- Fontawesome CSS -->
     <link rel="stylesheet" href="../assets/plugins/fontawesome/css/fontawesome.min.css" />		
     <link rel="stylesheet" href="../assets/plugins/fontawesome/css/all.min.css" />
