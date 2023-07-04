@@ -129,7 +129,10 @@ public class UserDTOImpl implements UserDTO {
         this.status_ = status_;
     }
     
-    
+    @Override
+    public String getDisplayRole() {
+        return this.userRole.substring(0,1).toUpperCase() + this.userRole.substring(1);
+    }
     
     protected void copyUser(UserDTO user) {
         this.setUserID(user.getUserID());

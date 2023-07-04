@@ -6,21 +6,17 @@ CREATE TABLE Images (
   CONSTRAINT PK_Images PRIMARY KEY CLUSTERED 
 (
 	imageID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] 
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
 
 CREATE TABLE Users (
   userID CHAR(32) NOT NULL,
   imageID CHAR(32) NOT NULL,
   userName VARCHAR(30) NOT NULL,
-  userPassword CHAR(30) NOT NULL,
-  fullName NVARCHAR(50) NOT NULL,
-  phoneNumber CHAR(10) NOT NULL,
+  userPassword CHAR(32) NOT NULL,
+  fullName NVARCHAR(50),
+  phoneNumber CHAR(10),
   gender VARCHAR(7) NOT NULL,
   email VARCHAR(40) NOT NULL, 
   userRole VARCHAR(10) NOT NULL, 
@@ -29,37 +25,29 @@ CREATE TABLE Users (
   CONSTRAINT PK_Users PRIMARY KEY CLUSTERED 
 (
 	userID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] 
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
 
 CREATE TABLE Customer (
   customerID CHAR(32) NOT NULL,
-  dob DATE NOT NULL,
-  customerAddress VARCHAR(70) NOT NULL, 
+  dob DATE,
+  customerAddress VARCHAR(70), 
   CONSTRAINT PK_Customer PRIMARY KEY CLUSTERED 
-  (
-    customerID ASC
-  ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
-  CONSTRAINT FK_Customer_Users FOREIGN KEY (customerID) REFERENCES Users(userID)
+(
+	customerID ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+GO
 
 CREATE TABLE Speciality (
   specialityID CHAR(32) NOT NULL,
   specialityName VARCHAR(30) NOT NULL,
   CONSTRAINT PK_Speciality PRIMARY KEY CLUSTERED 
 (
-	specialityID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] 
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+	SpecialityID ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
 
 CREATE TABLE Doctor (
@@ -73,13 +61,8 @@ CREATE TABLE Doctor (
   CONSTRAINT PK_Doctor PRIMARY KEY CLUSTERED 
 (
 	doctorID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
-CONSTRAINT FK_Doctor_Users FOREIGN KEY (doctorID) REFERENCES Users(userID)
-) ON [PRIMARY] 
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
 
 CREATE TABLE TimeSlot (
@@ -89,12 +72,8 @@ CREATE TABLE TimeSlot (
   CONSTRAINT PK_TimeSlot PRIMARY KEY CLUSTERED 
 (
 	timeSlotID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] 
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
 
 CREATE TABLE DoctorTimeSlot (
@@ -111,12 +90,8 @@ CREATE TABLE Medicine (
   CONSTRAINT PK_Medicine PRIMARY KEY CLUSTERED 
 (
 	medicineID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] 
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
 
 CREATE TABLE Service_ (
@@ -128,25 +103,21 @@ CREATE TABLE Service_ (
   CONSTRAINT PK_Service_ PRIMARY KEY CLUSTERED 
 (
 	serviceID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] 
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
 GO
 
 CREATE TABLE Bird (
   birdID CHAR(32) NOT NULL,
   customerID CHAR(32) NOT NULL,
   imageID CHAR(32) NOT NULL,
-  birdFullname NVARCHAR(30),
+  birdFullname NVARCHAR(30) NOT NULL,
   birdGender VARCHAR(6) NOT NULL,
   breed VARCHAR(20) NOT NULL,
   band_chip CHAR(6),
-  birdWeight INT NOT NULL,
+  birdWeight FLOAT NOT NULL,
   sexingMethod VARCHAR(60) NOT NULL,
-  medicalHistory VARCHAR(60),
+  medicalHistory NVARCHAR(60),
   hatchingDate DATE NOT NULL,
   featherColor VARCHAR(50) NOT NULL,
   FOREIGN KEY (customerID) REFERENCES Customer(customerID),
@@ -154,37 +125,29 @@ CREATE TABLE Bird (
   CONSTRAINT PK_Bird PRIMARY KEY CLUSTERED 
 (
 	birdID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE Appointment (
   appointmentID CHAR(32) NOT NULL,
   birdID CHAR(32) NOT NULL,
-  doctorID CHAR(32) NOT NULL,
+  doctorID CHAR(32),
   timeSlotID CHAR(32) NOT NULL,
   serviceID CHAR(32) NOT NULL,
   appTime DATETIME NOT NULL,
   notes NVARCHAR(200),
-  payment NVARCHAR(20) NOT NULL,
+  payment NVARCHAR(20),
   appStatus VARCHAR(20) NOT NULL,
   FOREIGN KEY (birdID) REFERENCES Bird(birdID),
   FOREIGN KEY (doctorID) REFERENCES Doctor(doctorID),
   FOREIGN KEY (timeSlotID) REFERENCES TimeSlot(timeSlotID),
   FOREIGN KEY (serviceID) REFERENCES Service_(serviceID),
-  CONSTRAINT PK_Appointment PRIMARY KEY CLUSTERED
+  CONSTRAINT PK_Appointment PRIMARY KEY CLUSTERED 
 (
 	appointmentID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE MedicalRecord (
@@ -193,19 +156,17 @@ CREATE TABLE MedicalRecord (
   birdID CHAR(32) NOT NULL,
   doctorID CHAR(32) NOT NULL,
   recordTime DATETIME NOT NULL,
-  diagnosis VARCHAR(100) NOT NULL,
+  diagnosis NVARCHAR(100) NOT NULL,
+  treatmentDays int NOT NULL,
+  doctorNotes nvarchar(300),
   FOREIGN KEY (appointmentID) REFERENCES Appointment(appointmentID),
   FOREIGN KEY (birdID) REFERENCES Bird(birdID),
   FOREIGN KEY (doctorID) REFERENCES Doctor(doctorID),
   CONSTRAINT PK_MedicalRecord PRIMARY KEY CLUSTERED 
 (
-	medicalRecordID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+	medicalrecordID ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE RecordServices (
@@ -217,9 +178,9 @@ CREATE TABLE RecordServices (
 
 CREATE TABLE RecordMedicine (
   medicalRecordID CHAR(32) NOT NULL,
-  medicineID CHAR(32),
-  quantity INT,
-  descriptions NVARCHAR(200),
+  medicineID CHAR(32) NOT NULL,
+  quantity INT NOT NULL,
+  description_ NVARCHAR(200),
   FOREIGN KEY (medicalRecordID) REFERENCES MedicalRecord(medicalRecordID),
   FOREIGN KEY (medicineID) REFERENCES Medicine(medicineID)
 );
@@ -227,44 +188,56 @@ CREATE TABLE RecordMedicine (
 CREATE TABLE Feedback (
   feedbackID CHAR(32) NOT NULL,
   appointmentID CHAR(32) NOT NULL,
-  feedbackContent NVARCHAR(500),
-  title NVARCHAR(100),
-  feedbackTime DATETIME,
+  feedbackContent NVARCHAR(500)NOT NULL,
+  title NVARCHAR(100) NOT NULL,
+  feedbackTime DATETIME NOT NULL,
+  rating decimal (2,1)NOT NULL,
   FOREIGN KEY (appointmentID) REFERENCES Appointment(appointmentID),
   CONSTRAINT PK_Feedback PRIMARY KEY CLUSTERED 
 (
 	feedbackID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE Blog (
   blogID CHAR(32) NOT NULL,
   title NVARCHAR(100) NOT NULL,
-  upload DATETIME,
+  uploadDatetime DATETIME NOT NULL,
   category NVARCHAR(50) NOT NULL,
   blogContent NVARCHAR(4000) NOT NULL,
   CONSTRAINT PK_Blog PRIMARY KEY CLUSTERED 
 (
 	blogID ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
 GO
 
 INSERT INTO Images(imageID, imageURLName)
 VALUES
     ('4twgbi3qw84bgqhorwoee83hf93jj30f', 'admin.jpg'),
-    ('janfuewhfnhfn3ga98h943ghafa92rhf', 'maleuser.png'),
+    ('janfuewhfnhfn3ga98h943ghafa92rhf', 'malecustomer1.jpg'),
+	('jan92rhffuewhfnhfn3ga98h943ghafa', 'malecustomer2.jpg'),
+	('jhfnhfn3anfuewga98h943ghafa92rhf', 'malecustomer3.jpg'),
+	('janfuewhhafa92rfnhfn3ga98h943ghf', 'malecustomer4.jpg'),
+	('hfnhfn3ga98h94janfuew3ghafa92rhf', 'malecustomer5.jpg'),
+	('janfuewhfnhfafa92n3ga98h943ghrhf', 'malecustomer6.jpg'),
+	('jfnhfn3ga98h9anfuewh43ghafa92rhf', 'malecustomer7.jpg'),
+	('whfnhfn3ga98h943ghjanfueafa92rhf', 'malecustomer8.jpg'),
+	('janfuewh8h943ghaffnhfn3ga9a92rhf', 'malecustomer9.jpg'),
+	('ga98h943ghjanwhfnhfn3fueafa92rhf', 'femalecustomer1.jpg'),
+	('3ghjanwhfnga98h94hfn3fueafa92rhf', 'femalecustomer2.jpg'),
+	('gnhfn3a98h943ghjanwhffueafa92rhf', 'femalecustomer3.jpg'),
+	('hjanwhfnhfn3ga98h943gfueafa92rhf', 'femalecustomer4.jpg'),
+	('ga98h943gfueafhjanwhfnhfn3a92rhf', 'femalecustomer5.jpg'),
+	('gahjanwhfnhfn3fuea98h943gfa92rhf', 'femalecustomer6.jpg'),
+	('gaafa9298h943ghjanwhfnhfn3fuerhf', 'femalecustomer7.jpg'),
+	('anwhga98h943ghjfnhfn3fueafa92rhf', 'femalecustomer8.jpg'),
+	('ga98hfnhfn3fueaf943ghjanwha92rhf', 'femalecustomer9.jpg'),
     ('gha948ga489hra3r9fh32f32f9838r93', 'femaleuser.png'),
     ('fhawfbwa98fha98hf9na9uwbga9ubvg9', 'lgbtuser.png'),
+	('f7384hfw34f38wb4fw38h4f03h43f93f', 'malestaff.png'),
+	('ngseriug908hg93h4g934nf34f938f4h', 'femalestaff.jpg'),
 	('cjndsjkcfnzslkjvnawjefn8jfh38fu3', 'bs1.png'),
 	('vnaeojvner9gh39g4waofh28f28hfa93', 'bs2.png'),
 	('fhafgbyfg87gf83bfiwifhweufhwe5g5', 'bs3.png'),
@@ -275,137 +248,139 @@ VALUES
 	('rfhiarebfniuaerhnfuah9f48h34f843', 'bs8.png'),
 	('fherajfhriuehfraufha94hf98fh93hf', 'bs9.png'),
 	('fnerajfha974fhy4973haf9ha49hf338', 'bs10.png'),
-    ('fafnbuhfauhfweoufha8hfa9hfa48hf8', 'Chim yến.png'),
-    ('avewifbaiuwefnwajenfhiuahenf998f', 'Chim công xanh.jpg'),
-	('fewabf9qb439fufh9h438q9h34fq34t4', 'Chim én.jpg'),
-	('frheafiuewhf9hf983h3f4ha438f94f4', 'Chim trĩ.jpg'),
-	('4rt43t5y56y465t4r3e24r435y65u76i', 'Chim sẻ.jpg'),
-	('efrgtrytuiykjhmngfbvdfewr4567898', 'Chim hồng yến.jpg'),
-	('48c967910f7eb39ea5f7b7602a3df9ea', 'Chim hạc trắng.jpg'),
-	('3b94ace86063b245916a6e906221e6a8', 'Chim khuyên trắng.jpg'),
-	('249fb9cb11171ae6ab41794bee070a8f', 'Chim Yến Phụng.jpg'),
-	('b3b9752ec51a5433b44e27b8d9b81c76', 'Chim bồ câu.jpg'),
-	('ee38603c9cfdb54fb0a0ab4a197f92a3', 'Chim Vẹt.jpg'),
-	('ef94fe9d57eed266b24c3fc1203c1e17', 'Chim hoàng yến.jpg'),
-	('a8cf052632950deb5ab9c1f5ec36334d', 'Chim chích chòe lửa.png'),
-	('7b1bc65da7abbaceaaadc0ea9564c175', 'Chim chào mào.png'),
-	('95f7e5a8c051e6b60905912bd8aedf7d', 'Chim oanh cổ đỏ.png'),
-	('365c43bd856cf86e0e0b4cd4b7bc0462', 'Chim Khướu bạc má.png'),
-	('b51f1bb2e54d243e60e32563b2b1a7ed', 'Chim chích bông.png'),
-	('08eed66a05827e8dc02d6ff1392f9bf6', 'Chim diệc đầu đen.png'),
-	('ddfff0e1f9009fe5d621e2ed07348a51', 'Chim cúc cu.png'),
-	('cbe26c3a3f34407ed023e3f02399d2fa', 'Chim nhạn đen.png'),
-	('05b5b4345d8ac2f73ece3df15be03230', 'Chim họa mi đồng cỏ.png'),
-	('2bda592b2aada870747dd4366a3dff18', 'Chim nhạn trắng.png'),
-	('e28e1458f599f2391b91bfd61338483e', 'Chim bìm bịp Đông Dương.png'),
-	('84cb52eda2e4f0b66f8509c37e857e8c', 'Chim sáo bụng đen.png'),
-	('8721d5a5f3f44bd01529d24dcf519239', 'Chim Chìa Vôi họng trắng.png'),
-	('66a5473e01debb47bff7f215d6c4a228', 'Chim cắt Mindoro.png'),
-	('6d47ad177fb45c2d87e1b54fc363676b', 'Chim đớp ruồi cằm đen.png'),
-	('25abf9603856427e295b7bd1137fd04a', 'Chim thiên nga đen.png'),
-	('ed1ed3634186fc66ee692da3ba98272f' , 'Chim sơn ca.png'),
-	('e47ccaddaa9e2cd4c25e84cae624b077' , 'Chim Vàng Anh.png');
-
+    ('fafnbuhfauhfweoufha8hfa9hfa48hf8', 'Chim yen.png'),
+    ('avewifbaiuwefnwajenfhiuahenf998f', 'Chim cong xanh.jpg'),
+	('fewabf9qb439fufh9h438q9h34fq34t4', 'Chim en.jpg'),
+	('frheafiuewhf9hf983h3f4ha438f94f4', 'Chim tri.jpg'),
+	('4rt43t5y56y465t4r3e24r435y65u76i', 'Chim se.jpg'),
+	('efrgtrytuiykjhmngfbvdfewr4567898', 'Chim hong yen.jpg'),
+	('48c967910f7eb39ea5f7b7602a3df9ea', 'Chim hac trang.jpg'),
+	('3b94ace86063b245916a6e906221e6a8', 'Chim khuyen trang.jpg'),
+	('249fb9cb11171ae6ab41794bee070a8f', 'Chim Yen Phung.jpg'),
+	('b3b9752ec51a5433b44e27b8d9b81c76', 'Chim bo cau.jpg'),
+	('ee38603c9cfdb54fb0a0ab4a197f92a3', 'Chim Vet.jpg'),
+	('ef94fe9d57eed266b24c3fc1203c1e17', 'Chim hoang yen.jpg'),
+	('a8cf052632950deb5ab9c1f5ec36334d', 'Chim chich choe lua.png'),
+	('7b1bc65da7abbaceaaadc0ea9564c175', 'Chim chao mao.png'),
+	('95f7e5a8c051e6b60905912bd8aedf7d', 'Chim oanh co đo.png'),
+	('365c43bd856cf86e0e0b4cd4b7bc0462', 'Chim Khuou bac ma.png'),
+	('b51f1bb2e54d243e60e32563b2b1a7ed', 'Chim chich bong.png'),
+	('08eed66a05827e8dc02d6ff1392f9bf6', 'Chim diec dau den.png'),
+	('ddfff0e1f9009fe5d621e2ed07348a51', 'Chim cuc cu.png'),
+	('cbe26c3a3f34407ed023e3f02399d2fa', 'Chim nhan den.png'),
+	('05b5b4345d8ac2f73ece3df15be03230', 'Chim hoa mi dong co.png'),
+	('2bda592b2aada870747dd4366a3dff18', 'Chim nhan trang.png'),
+	('e28e1458f599f2391b91bfd61338483e', 'Chim bim bip Dong Duong.png'),
+	('84cb52eda2e4f0b66f8509c37e857e8c', 'Chim sao bung den.png'),
+	('8721d5a5f3f44bd01529d24dcf519239', 'Chim Chia Voi hong trang.png'),
+	('66a5473e01debb47bff7f215d6c4a228', 'Chim cat Mindoro.png'),
+	('6d47ad177fb45c2d87e1b54fc363676b', 'Chim dop ruoi cam den.png'),
+	('25abf9603856427e295b7bd1137fd04a', 'Chim thien nga den.png'),
+	('ed1ed3634186fc66ee692da3ba98272f' , 'Chim son ca.png'),
+	('e47ccaddaa9e2cd4c25e84cae624b077' , 'Chim Vang Anh.png');
+	
 -- Insert data into the Users table
 INSERT INTO Users (userID, imageID, userName, userPassword, fullName, phoneNumber, gender, email, userRole, status_)
 VALUES
-    ('df906a974056cd590d0b9fc4ddc37c22', '4twgbi3qw84bgqhorwoee83hf93jj30f', 'tiendkmSE172051', 'password', 'Nguyễn Kim Minh Tiến', '0987896754', 'male', 'tiendkmse172051@fpt.edu.vn', 'admin', 'active' ),
-    ('2c9320b8639fc9e1c784880bbecfdfa1', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'tuanntaSE140515', 'password', 'Nguyễn Thanh Anh Tuấn', '0748195317', 'male', 'tuanntase140515@fpt.edu.vn', 'user', 'active' ),
-    ('3ff56e23cc31e9c9a85bc037341a65ee', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'bachnhSE172021', 'password', 'Nguyễn Huy Bách', '0987656788', 'male', 'bachnhSE172021@fpt.edu.vn', 'user', 'active' ),
-	('3ff5njfnijhfdsf8845bc037341a65ee', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'minhdnaSE172977', 'password', 'Đặng Võ Anh Minh', '0876549456', 'male', 'minhdnaSE172977@fpt.edu.vn', 'user', 'active' ),
-	('82d5cf38dc655bd1722ac5d4d350bce3', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'PhuctqhSE171472', 'password', '	Trương Quang Hồng Phúc', '0897412324', 'male', 'PhuctqhSE171472@fpt.edu.vn', 'user', 'banned' ),
-	('1c4f04058f291642c159e27e1554ddf8', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'anptSE172048', 'password', 'Phan Thiên Ân', '0987656788', 'male', 'anptSE172048@fpt.edu.vn', 'user', 'active' ),
-	('c0637bb4f3d7531d936f2686b9672a66', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'nghoangphuc01', 'password', 'Nguyễn Hoàng Phúc', '1234567890', 'male', 'phucnh01@gmail.com', 'user', 'active' ),
-    ('11eee90acf45377f4cc3ca0758f2bf30', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'tuannt02', 'password', 'Nguyễn Thanh Tuấn', '0987654321', 'male', 'tuannt02@gmail.com', 'user', 'active' ),
-    ('48b31829bc7599f232d06a1e686534bd', 'fhawfbwa98fha98hf9na9uwbga9ubvg9', 'anhttl03', 'password', 'Trần Thị Lan Anh', '0123456789', 'unknown', 'anhttl03@gmail.com', 'user', 'active' ),
-    ('4e192dacb208ceb2413376e2ad3b3db8', 'gha948ga489hra3r9fh32f32f9838r93', 'rienglt01', 'password', 'Lê Thị Riêng', '9876543210', 'female', 'riengtl01@gmail.com', 'user', 'active' ),
-    ('6cb9c7dba65dd3d9e1946c5dd265dbcd', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'hungnm02', 'password', 'Nguyễn Mạnh Hùng', '5678901234', 'male', 'hungnm02@gmail.com', 'user', 'active' ),
-	('45b76de8eb0fd35e124955a2ff2473db', 'gha948ga489hra3r9fh32f32f9838r93', 'thaophy04', 'password', 'Phan Hồng Yến Thảo', '6565743635', 'female', 'thaophy04@gmail.com', 'user', 'banned' ),
-    ('ea03ec90c8836f413784ee96e50a4f11', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'toanhm07', 'password', 'Huỳnh Minh Toàn', '0976534156', 'male', 'toanmt07@gmail.com', 'user', 'active' ),
-    ('bc6c32dbbb8bd0660d158b08d7cad96f', 'fhawfbwa98fha98hf9na9uwbga9ubvg9', 'haileduc56', 'password', 'Lê Đức Hải', '0965783451', 'unknown', 'haild56@gmail.com', 'user', 'active' ),
-    ('7e55fcb3a457634cfa78b49bdb774b3a', 'gha948ga489hra3r9fh32f32f9838r93', 'yennth09', 'password', 'Nguyễn Thị Hải Yến', '0914135352', 'female', 'yennth09@gmail.com', 'user', 'active' ),
-    ('d8869200b4fbde66a3475d6e730e1b6d', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'minhngtr04', 'password', 'Nguyẽn Trần Minh', '0765678234', 'male', 'minhngtr04@gmail.com', 'user', 'banned' ),
-	('128ce6812392dce1ca5a6919f03a26a2', 'gha948ga489hra3r9fh32f32f9838r93', 'thuthitran06', 'password', 'Trần Thị Thu', '0908070605', 'female', 'thuthitran06@gmail.com', 'user', 'active' ),
-    ('87ccfc84f4eb846b5aeb0e04f6ea12ea', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'bayvanng08', 'password', 'Nguyễn Văn Bảy', '0990807067', 'male', 'bayvanng08@gmail.com', 'user', 'active' ),
-    ('715c43d86b98da2212d7a9c9ce9d3062', 'fhawfbwa98fha98hf9na9uwbga9ubvg9', 'phattrduc04', 'password', 'Trần Đức Phát', '0975432654', 'unknown', 'phattrduc04@gmail.com', 'user', 'banned' ),
-    ('a69b4087d281cb16efaa6bc91308f64d', 'gha948ga489hra3r9fh32f32f9838r93', 'giangngquy03', 'password', 'Nguyễn Quỳnh Giang', '0914153645', 'female', 'giangngquy03@gmail.com', 'user', 'active' ),
-    ('61dd2b9c89fdcc1dce9fb553bf29cd8d', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'minhngqua07', 'password', 'Nguyễn Quang Minh', '0998877665', 'male', 'minhngqua07@gmail.com', 'user', 'active' ),
-	('03b016eef369ef40bba639aa4f04341b', 'gha948ga489hra3r9fh32f32f9838r93', 'anhtrdan06', 'password', 'Đặng Trâm Anh', '0908866442', 'female', 'anhtrdan06@gmail.com', 'user', 'active' ),
-    ('f8b0ed4e38a71924a7d2bca97029778a', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'datquocle05', 'password', 'Lê Quốc Đạt', '0913254465', 'male', 'datqule05@gmail.com', 'user', 'active' ),
-    ('5cbae581d99c1c3d17b8c09b07c54892', 'fhawfbwa98fha98hf9na9uwbga9ubvg9', 'yenkinguy45', 'password', 'Nguyễn Kim Yến', '0914253647', 'unknown', 'yenkinguy45@gmail.com', 'user', 'active' ),
-    ('20e843f249d75ada67c1a2eef0dac92e', 'gha948ga489hra3r9fh32f32f9838r93', 'yenlethai35', 'password', 'Lê Thị Hải Yến', '0912233445', 'female', 'yenlethai35@gmail.com', 'user', 'banned' ),
-    ('712da4f1096f6ae70d0f3c091b84ae7c', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'phucngminh17', 'password', 'Nguyễn Minh Phúc', '0945566748', 'male', 'phucngminh17@gmail.com', 'user', 'active' ),
-	('b03c6f5a51ee06d3dbd17d0e38507ede', 'gha948ga489hra3r9fh32f32f9838r93', 'vyngphuo57', 'password', 'Nguyễn Phương Vy', '0908123452', 'female', 'vyngphuo57@gmail.com', 'user', 'active' ),
-    ('b83bb75b898592b75232c4816842d824', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'longngvu14', 'password', 'Nguyễn Vũ Long', '0987432456', 'male', 'longngvu14@gmail.com', 'user', 'active' ),
-    ('a68757602ea7419f0e2313a842be9abf', 'fhawfbwa98fha98hf9na9uwbga9ubvg9', 'ngocvanng45', 'password', 'Nguyễn Văn Ngọc', '0965478154', 'unknown', 'ngocvanng45@gmail.com', 'user', 'active' ),
-    ('2b1850783245c06d0b782a4c9cd6a0a0', 'gha948ga489hra3r9fh32f32f9838r93', 'tratrthihuo37', 'password', 'Trần Thị Hương Trà', '9876543210', 'female', 'tratrthihuo37@gmail.com', 'user', 'banned' ),
-    ('eb70ed9c4c32afea8f482dc873be4f6a', 'gha948ga489hra3r9fh32f32f9838r93', 'tranglethihuo75', 'password', 'Lê Thị Hương Trang', '0904534256', 'female', 'tranglethihuo75@gmail.com', 'user', 'active' ),
-	('ae114dac5897fbcfd25797bf4be08fd3', 'cjndsjkcfnzslkjvnawjefn8jfh38fu3', 'yentrthith87', 'password', 'Trần Thị Thanh Yến', '0789145356', 'female', 'yentrthith87@gmail.com', 'user', 'active' ),
-	('9eae70b054be6eba305323d8c9106cfb', 'vnaeojvner9gh39g4waofh28f28hfa93', 'anhdongtr09', 'password', 'Đỗ Nguyễn Trâm Anh', '0345762433', 'female', 'anhdongtr09@gmail.com', 'user', 'banned' ),
-	('c8aa14ffb7da0912c84635aa2ee0bb62', 'fhafgbyfg87gf83bfiwifhweufhwe5g5', 'anhdoquynh35', 'password', 'Đỗ Quỳnh Anh', '0543749273', 'female', 'anhdoquynh35@gmail.com', 'user', 'active' ),
-	('dd0e3f50648088bfecc501f809a06ca8', 'g73f93hf9bwfb3v384ub83bg3487fb43', 'tiennamtr36', 'password', 'Trần Nam Tiến', '0546328472', 'male', 'tiennamtr36@gmail.com', 'user', 'active' ),
-	('62fe46dae9470f311d52973a6eeb6a1a', 'biserhbf9473hf9b94gb49f93f38f984', 'anhquochoa67', 'password', 'Hoàng Quốc Anh', '0534732843', 'male', 'anhquochoa67@gmail.com', 'user', 'active' ),
-	('9c6189a20beb35a93df963e3b48eb9b0', 'gsbheirbfg7a843hgfa943bfu9fb3f93', 'sangkim16', 'password', 'Ngô Kim Sa', '0534254324', 'female', 'sangkim16@gmail.com', 'user', 'banned' ),
-	('1c38dd30f9e415b3a34879be077381ce', 'fbriehafbihfa7hfa3hf983hf98qff82', 'taileanh78', 'password', 'Lê Anh Tài', '0523423234', 'male', 'taileanh78@gmail.com', 'user', 'active' ),
-	('21fc9daf44e2637d7972bd248c83577d', 'rfhiarebfniuaerhnfuah9f48h34f843', 'nhiluoman19', 'password', 'Lương Mẫn Nhi', '0556475242', 'female', 'nhiluoman19@gmail.com', 'user', 'active' ),
-	('01c1fa1b81297a2de21056f35303ad84', 'fherajfhriuehfraufha94hf98fh93hf', 'kietnganhmin47', 'password', 'Nguyễn Minh Anh Kiệt', '0556253524', 'male', 'kietnganhmin47@gmail.com', 'user', 'active' ),
-	('fe30e1ff175e10b1c538613084ab2417', 'fnerajfha974fhy4973haf9ha49hf338', 'thaodothithu64', 'password', 'Đoàn Thị Thu Thảo', '0534719873', 'male', 'thaodothithu64@gmail.com', 'user', 'banned' );
+    ('df906a974056cd590d0b9fc4ddc37c22', '4twgbi3qw84bgqhorwoee83hf93jj30f', 'tiendkmSE172051', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Kim Minh Tiến', '0987896754', 'male', 'tiendkmse172051@fpt.edu.vn', 'admin', 'active' ),
+    ('2c9320b8639fc9e1c784880bbecfdfa1', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'tuanntaSE140515', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Thanh Anh Tuấn', '0748195317', 'male', 'tuanntase140515@fpt.edu.vn', 'customer', 'active' ),
+    ('3ff56e23cc31e9c9a85bc037341a65ee', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'bachnhSE172021', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Huy Bách', '0987656788', 'male', 'bachnhSE172021@fpt.edu.vn', 'customer', 'active' ),
+	('3ff5njfnijhfdsf8845bc037341a65ee', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'minhdnaSE172977', '5f4dcc3b5aa765d61d8327deb882cf99', N'Đặng Võ Anh Minh', '0876549456', 'male', 'minhdnaSE172977@fpt.edu.vn', 'customer', 'active' ),
+	('82d5cf38dc655bd1722ac5d4d350bce3', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'PhuctqhSE171472', '5f4dcc3b5aa765d61d8327deb882cf99', N'Trương Quang Hồng Phúc', '0897412324', 'male', 'PhuctqhSE171472@fpt.edu.vn', 'customer', 'active' ),
+	('1c4f04058f291642c159e27e1554ddf8', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'anptSE172048', '5f4dcc3b5aa765d61d8327deb882cf99', N'Phan Thiên Ân', '0987656788', 'male', 'anptSE172048@fpt.edu.vn', 'customer', 'active' ),
+	('c0637bb4f3d7531d936f2686b9672a66', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'nghoangphuc01', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Hoàng Phúc', '1234567890', 'male', 'phucnh01@gmail.com', 'customer', 'banned' ),
+    ('11eee90acf45377f4cc3ca0758f2bf30', 'janfuewhhafa92rfnhfn3ga98h943ghf', 'tuannt02ert', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Thanh Tuấn', '0987654321', 'male', 'tuannt02@gmail.com', 'customer', 'active' ),
+    ('48b31829bc7599f232d06a1e686534bd', 'ga98h943ghjanwhfnhfn3fueafa92rhf', 'anhttl03edc', '5f4dcc3b5aa765d61d8327deb882cf99', N'Trần Thị Lan Anh', '0123456789', 'unknown', 'anhttl03@gmail.com', 'customer', 'active' ),
+    ('4e192dacb208ceb2413376e2ad3b3db8', 'gha948ga489hra3r9fh32f32f9838r93', 'rienglt01', '5f4dcc3b5aa765d61d8327deb882cf99', N'Lê Thị Riêng', '9876543210', 'female', 'riengtl01@gmail.com', 'customer', 'active' ),
+    ('6cb9c7dba65dd3d9e1946c5dd265dbcd', 'jan92rhffuewhfnhfn3ga98h943ghafa', 'hungnm02nbv', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Mạnh Hùng', '5678901234', 'male', 'hungnm02@gmail.com', 'customer', 'banned' ),
+	('45b76de8eb0fd35e124955a2ff2473db', '3ghjanwhfnga98h94hfn3fueafa92rhf', 'thaophy04', '5f4dcc3b5aa765d61d8327deb882cf99', N'Phan Hồng Yến Thảo', '6565743635', 'female', 'thaophy04@gmail.com', 'customer', 'banned' ),
+    ('ea03ec90c8836f413784ee96e50a4f11', 'gnhfn3a98h943ghjanwhffueafa92rhf', 'toanhm07cvb', '5f4dcc3b5aa765d61d8327deb882cf99', N'Huỳnh Minh Toàn', '0976534156', 'male', 'toanmt07@gmail.com', 'customer', 'active' ),
+    ('bc6c32dbbb8bd0660d158b08d7cad96f', 'hfnhfn3ga98h94janfuew3ghafa92rhf', 'haileduc56', '5f4dcc3b5aa765d61d8327deb882cf99', N'Lê Đức Hải', '0965783451', 'unknown', 'haild56@gmail.com', 'customer', 'active' ),
+    ('7e55fcb3a457634cfa78b49bdb774b3a', 'gnhfn3a98h943ghjanwhffueafa92rhf', 'yennth09jkl', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Thị Hải Yến', '0914135352', 'female', 'yennth09@gmail.com', 'customer', 'active' ),
+    ('d8869200b4fbde66a3475d6e730e1b6d', 'janfuewhfnhfafa92n3ga98h943ghrhf', 'minhngtr04', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nguyễn Trần Minh', '0765678234', 'male', 'minhngtr04@gmail.com', 'customer', 'banned' ),
+	('128ce6812392dce1ca5a6919f03a26a2', 'gha948ga489hra3r9fh32f32f9838r93', 'thuthitran06', '5f4dcc3b5aa765d61d8327deb882cf99', N'Trần Thị Thu', '0908070605', 'female', 'thuthitran06@gmail.com', 'customer', 'banned' ),
+    ('87ccfc84f4eb846b5aeb0e04f6ea12ea', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'bayvanng08', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Văn Bảy', '0990807067', 'male', 'bayvanng08@gmail.com', 'customer', 'active' ),
+    ('715c43d86b98da2212d7a9c9ce9d3062', 'jfnhfn3ga98h9anfuewh43ghafa92rhf', 'phattrduc04', '5f4dcc3b5aa765d61d8327deb882cf99', N'Trần Đức Phát', '0975432654', 'unknown', 'phattrduc04@gmail.com', 'customer', 'banned' ),
+    ('a69b4087d281cb16efaa6bc91308f64d', 'hjanwhfnhfn3ga98h943gfueafa92rhf', 'giangngquy03', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Quỳnh Giang', '0914153645', 'female', 'giangngquy03@gmail.com', 'customer', 'active' ),
+    ('61dd2b9c89fdcc1dce9fb553bf29cd8d', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'minhngqua07', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Quang Minh', '0998877665', 'male', 'minhngqua07@gmail.com', 'customer', 'active' ),
+	('03b016eef369ef40bba639aa4f04341b', 'gha948ga489hra3r9fh32f32f9838r93', 'anhtrdan06ewq', '5f4dcc3b5aa765d61d8327deb882cf99', N'Đặng Trâm Anh', '0908866442', 'female', 'anhtrdan06@gmail.com', 'customer', 'active' ),
+    ('f8b0ed4e38a71924a7d2bca97029778a', 'whfnhfn3ga98h943ghjanfueafa92rhf', 'datquocle05', '5f4dcc3b5aa765d61d8327deb882cf99', N'Lê Quốc Đạt', '0913254465', 'male', 'datqule05@gmail.com', 'customer', 'banned' ),
+    ('5cbae581d99c1c3d17b8c09b07c54892', 'fhawfbwa98fha98hf9na9uwbga9ubvg9', 'yenkinguy45', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Kim Yến', '0914253647', 'unknown', 'yenkinguy45@gmail.com', 'customer', 'active' ),
+    ('20e843f249d75ada67c1a2eef0dac92e', 'ga98h943gfueafhjanwhfnhfn3a92rhf', 'yenlethai35', '5f4dcc3b5aa765d61d8327deb882cf99', 'Lê Thị Hải Yến', '0912233445', 'female', 'yenlethai35@gmail.com', 'customer', 'banned' ),
+    ('712da4f1096f6ae70d0f3c091b84ae7c', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'phucngminh17', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Minh Phúc', '0945566748', 'male', 'phucngminh17@gmail.com', 'customer', 'active' ),
+	('b03c6f5a51ee06d3dbd17d0e38507ede', 'gahjanwhfnhfn3fuea98h943gfa92rhf', 'vyngphuo57qwe', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Phương Vy', '0908123452', 'female', 'vyngphuo57@gmail.com', 'customer', 'active' ),
+    ('b83bb75b898592b75232c4816842d824', 'janfuewh8h943ghaffnhfn3ga9a92rhf', 'longngvu14zxc', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Vũ Long', '0987432456', 'male', 'longngvu14@gmail.com', 'customer', 'active' ),
+    ('a68757602ea7419f0e2313a842be9abf', 'fhawfbwa98fha98hf9na9uwbga9ubvg9', 'ngocvanng45', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Văn Ngọc', '0965478154', 'unknown', 'ngocvanng45@gmail.com', 'customer', 'active' ),
+    ('2b1850783245c06d0b782a4c9cd6a0a0', 'gaafa9298h943ghjanwhfnhfn3fuerhf', 'tratrthihuo37', '5f4dcc3b5aa765d61d8327deb882cf99', N'Trần Thị Hương Trà', '9876543210', 'female', 'tratrthihuo37@gmail.com', 'customer', 'banned' ),
+    ('eb70ed9c4c32afea8f482dc873be4f6a', 'gha948ga489hra3r9fh32f32f9838r93', 'tranglethihuo75', '5f4dcc3b5aa765d61d8327deb882cf99', N'Lê Thị Hương Trang', '0904534256', 'female', 'tranglethihuo75@gmail.com', 'customer', 'active' ),
+	('ae114dac5897fbcfd25797bf4be08fd3', 'cjndsjkcfnzslkjvnawjefn8jfh38fu3', 'yentrthith87', '5f4dcc3b5aa765d61d8327deb882cf99', N'Trần Thị Thanh Yến', '0789145356', 'female', 'yentrthith87@gmail.com', 'doctor', 'active' ),
+	('9eae70b054be6eba305323d8c9106cfb', 'anwhga98h943ghjfnhfn3fueafa92rhf', 'anhdongtr09', '5f4dcc3b5aa765d61d8327deb882cf99', N'Đỗ Nguyễn Trâm Anh', '0345762433', 'female', 'anhdongtr09@gmail.com', 'doctor', 'active' ),
+	('c8aa14ffb7da0912c84635aa2ee0bb62', 'fhafgbyfg87gf83bfiwifhweufhwe5g5', 'anhdoquynh35', '5f4dcc3b5aa765d61d8327deb882cf99', N'Đỗ Quỳnh Anh', '0543749273', 'female', 'anhdoquynh35@gmail.com', 'doctor', 'active' ),
+	('dd0e3f50648088bfecc501f809a06ca8', 'g73f93hf9bwfb3v384ub83bg3487fb43', 'tiennamtr36', '5f4dcc3b5aa765d61d8327deb882cf99', N'Trần Nam Tiến', '0546328472', 'male', 'tiennamtr36@gmail.com', 'doctor', 'active' ),
+	('62fe46dae9470f311d52973a6eeb6a1a', 'biserhbf9473hf9b94gb49f93f38f984', 'anhquochoa67', '5f4dcc3b5aa765d61d8327deb882cf99', N'Hoàng Quốc Anh', '0534732843', 'male', 'anhquochoa67@gmail.com', 'doctor', 'active' ),
+	('9c6189a20beb35a93df963e3b48eb9b0', 'ga98hfnhfn3fueaf943ghjanwha92rhf', 'sangkim16abcd', '5f4dcc3b5aa765d61d8327deb882cf99', N'Ngô Kim Sa', '0534254324', 'female', 'sangkim16@gmail.com', 'doctor', 'active' ),
+	('1c38dd30f9e415b3a34879be077381ce', 'fbriehafbihfa7hfa3hf983hf98qff82', 'taileanh78xyz', '5f4dcc3b5aa765d61d8327deb882cf99', N'Lê Anh Tài', '0523423234', 'male', 'taileanh78@gmail.com', 'doctor', 'active' ),
+	('21fc9daf44e2637d7972bd248c83577d', 'rfhiarebfniuaerhnfuah9f48h34f843', 'nhiluoman19rty', '5f4dcc3b5aa765d61d8327deb882cf99', N'Lương Mẫn Nhi', '0556475242', 'female', 'nhiluoman19@gmail.com', 'doctor', 'active' ),
+	('01c1fa1b81297a2de21056f35303ad84', 'fherajfhriuehfraufha94hf98fh93hf', 'kietnganhmin47', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Minh Anh Kiệt', '0556253524', 'male', 'kietnganhmin47@gmail.com', 'doctor', 'active' ),
+	('fe30e1ff175e10b1c538613084ab2417', 'fnerajfha974fhy4973haf9ha49hf338', 'thaodothithu64', '5f4dcc3b5aa765d61d8327deb882cf99', N'Đoàn Thị Thu Thảo', '0534719873', 'male', 'thaodothithu64@gmail.com', 'doctor', 'active' ),
+	('hebrf38f7h348fb384fb38ybf38byfr3', 'f7384hfw34f38wb4fw38h4f03h43f93f', 'dongovan456qwer', '5f4dcc3b5aa765d61d8327deb882cf99', N'Ngô Văn Đô', '0512345469', 'male', 'dongovan456@gmail.com', 'staff', 'active' ),
+	('f7834yf8h3w9b93wfb943hf943f934hf', 'ngseriug908hg93h4g934nf34f938f4h', 'thaongthiphuong6969', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Thị Phương Thảo', '0705536741', 'female', 'thaongthiphuong6969@gmail.com', 'staff', 'active' );
 
 -- Insert data into the Customer table
 INSERT INTO Customer (customerID, dob, customerAddress)
 VALUES
-    ('2c9320b8639fc9e1c784880bbecfdfa1', '1990-02-15', '123 Nguyễn Văn A, Phường Bến Nghé, Quận 1, TP.HCM'),
-    ('3ff56e23cc31e9c9a85bc037341a65ee', '1985-07-28', '456 Lê Lợi, Phường Bến Nghé, Quận 1, TP.HCM'),
-    ('3ff5njfnijhfdsf8845bc037341a65ee', '1978-11-03', '258/3 Ngô Quyền, Phường Phạm Ngũ Lão, Quận 1, TP.HCM'),
-	('82d5cf38dc655bd1722ac5d4d350bce3', '1992-09-10', '369/2 Hàm Nghi, Phường Nguyễn Thái Bình, Quận 1, TP.HCM'),
-	('1c4f04058f291642c159e27e1554ddf8', '1987-04-21', '753/1 Trần Quang Khải, Phường Tân Định, Quận 1, TP.HCM'),
-	('c0637bb4f3d7531d936f2686b9672a66', '1995-12-06', '123 Nguyễn Cư Trinh, Phường Nguyễn Cư Trinh, Quận 1, TP.HCM'),
-	('11eee90acf45377f4cc3ca0758f2bf30', '1982-03-17', '456 Bùi Thị Xuân, Phường Phạm Ngũ Lão, Quận 1, TP.HCM'),
-	('48b31829bc7599f232d06a1e686534bd', '1998-08-24', '789 Huỳnh Thúc Kháng, Phường Bến Nghé, Quận 1, TP.HCM'),
-	('4e192dacb208ceb2413376e2ad3b3db8', '1975-01-09', '321 Phạm Ngũ Lão, Phường Phạm Ngũ Lão, Quận 1, TP.HCM'),
-	('6cb9c7dba65dd3d9e1946c5dd265dbcd', '1993-06-12', '654 Nguyễn Công Trứ, Phường Nguyễn Cư Trinh, Quận 1, TP.HCM'),
-	('45b76de8eb0fd35e124955a2ff2473db', '1989-10-27', '987 Nguyễn Du, Phường Bến Thành, Quận 1, TP.HCM'),
-	('ea03ec90c8836f413784ee96e50a4f11', '1996-05-02', '147 Hồ Tùng Mậu, Phường Bến Nghé, Quận 1, TP.HCM'),
-	('bc6c32dbbb8bd0660d158b08d7cad96f', '1983-08-14', '258 Lê Thánh Tôn, Phường Bến Nghé, Quận 1, TP.HCM'),
-	('7e55fcb3a457634cfa78b49bdb774b3a', '1979-12-19', '369 Lê Thị Riêng, Phường Bến Thành, Quận 1, TP.HCM'),
-	('d8869200b4fbde66a3475d6e730e1b6d', '1991-03-23', '753 Công Trường Mê Linh, Phường Bến Nghé, Quận 1, TP.HCM'),
-	('128ce6812392dce1ca5a6919f03a26a2', '1986-09-05', '753 Đề Thám, Phường 1, Quận 5, TP.HCM'),
-	('87ccfc84f4eb846b5aeb0e04f6ea12ea', '1994-02-18', '951 Trần Phú, Phường 2, Quận 5, TP.HCM'),
-	('715c43d86b98da2212d7a9c9ce9d3062', '1977-07-31', '369 Nguyễn Chí Thanh, Phường 9, Quận 5, TP.HCM'),
-	('a69b4087d281cb16efaa6bc91308f64d', '1999-11-11', '654 Hậu Giang, Phường 12, Quận 6, TP.HCM'),
-	('61dd2b9c89fdcc1dce9fb553bf29cd8d', '1984-04-26', '987 An Dương Vương, Phường 16, Quận 6, TP.HCM'),
-	('03b016eef369ef40bba639aa4f04341b', '1997-01-07', '123 Võ Văn Kiệt, Phường Cầu Ông Lãnh, Quận 8, TP.HCM'),
-	('f8b0ed4e38a71924a7d2bca97029778a', '1981-06-16', '456 Lê Đại Hành, Phường 15, Quận 8, TP.HCM'),
-	('5cbae581d99c1c3d17b8c09b07c54892', '1976-11-29', '789 Phạm Hùng, Phường 14, Quận 8, TP.HCM'),
-	('20e843f249d75ada67c1a2eef0dac92e', '1992-03-03', '321 Tỉnh Lộ 10, Phường Bình Hưng Hòa, Quận 8, TP.HCM'),
-	('712da4f1096f6ae70d0f3c091b84ae7c', '1988-08-08', '123/4 Nguyễn Văn A, Phường Bến Nghé, Quận 1, TP.HCM'),
-	('b03c6f5a51ee06d3dbd17d0e38507ede', '1995-12-13', '456/7 Lê Lợi, Phường Bến Nghé, Quận 1, TP.HCM'),
-	('b83bb75b898592b75232c4816842d824', '1980-05-25', '987/6 Nguyễn Huệ, Phường Bến Nghé, Quận 1, TP.HCM'),
-	('a68757602ea7419f0e2313a842be9abf', '1993-10-09', '753/1 Trần Quang Khải, Phường Tân Định, Quận 1, TP.HCM'),
-	('2b1850783245c06d0b782a4c9cd6a0a0', '1987-02-22', '147/9 Lý Tự Trọng, Phường Bến Thành, Quận 1, TP.HCM'),
-	('eb70ed9c4c32afea8f482dc873be4f6a', '1999-07-05' , '5 Trần Khắc Chân, Phường Tân Định, Quận 1, TP.HCM');
+    ('2c9320b8639fc9e1c784880bbecfdfa1', '1990-02-15', N'123 Nguyễn Văn A, Phường Bến Nghé, Quận 1, TP.HCM'),
+    ('3ff56e23cc31e9c9a85bc037341a65ee', '1985-07-28', N'456 Lê Lợi, Phường Bến Nghé, Quận 1, TP.HCM'),
+    ('3ff5njfnijhfdsf8845bc037341a65ee', '1978-11-03', N'258/3 Ngô Quyền, Phường Phạm Ngũ Lão, Quận 1, TP.HCM'),
+	('82d5cf38dc655bd1722ac5d4d350bce3', '1992-09-10', N'369/2 Hàm Nghi, Phường Nguyễn Thái Bình, Quận 1, TP.HCM'),
+	('1c4f04058f291642c159e27e1554ddf8', '1987-04-21', N'753/1 Trần Quang Khải, Phường Tân Định, Quận 1, TP.HCM'),
+	('c0637bb4f3d7531d936f2686b9672a66', '1995-12-06', N'123 Nguyễn Cư Trinh, Phường Nguyễn Cư Trinh, Quận 1, TP.HCM'),
+	('11eee90acf45377f4cc3ca0758f2bf30', '1982-03-17', N'456 Bùi Thị Xuân, Phường Phạm Ngũ Lão, Quận 1, TP.HCM'),
+	('48b31829bc7599f232d06a1e686534bd', '1998-08-24', N'789 Huỳnh Thúc Kháng, Phường Bến Nghé, Quận 1, TP.HCM'),
+	('4e192dacb208ceb2413376e2ad3b3db8', '1975-01-09', N'321 Phạm Ngũ Lão, Phường Phạm Ngũ Lão, Quận 1, TP.HCM'),
+	('6cb9c7dba65dd3d9e1946c5dd265dbcd', '1993-06-12', N'654 Nguyễn Công Trứ, Phường Nguyễn Cư Trinh, Quận 1, TP.HCM'),
+	('45b76de8eb0fd35e124955a2ff2473db', '1989-10-27', N'987 Nguyễn Du, Phường Bến Thành, Quận 1, TP.HCM'),
+	('ea03ec90c8836f413784ee96e50a4f11', '1996-05-02', N'147 Hồ Tùng Mậu, Phường Bến Nghé, Quận 1, TP.HCM'),
+	('bc6c32dbbb8bd0660d158b08d7cad96f', '1983-08-14', N'258 Lê Thánh Tôn, Phường Bến Nghé, Quận 1, TP.HCM'),
+	('7e55fcb3a457634cfa78b49bdb774b3a', '1979-12-19', N'369 Lê Thị Riêng, Phường Bến Thành, Quận 1, TP.HCM'),
+	('d8869200b4fbde66a3475d6e730e1b6d', '1991-03-23', N'753 Công Trường Mê Linh, Phường Bến Nghé, Quận 1, TP.HCM'),
+	('128ce6812392dce1ca5a6919f03a26a2', '1986-09-05', N'753 Đề Thám, Phường 1, Quận 5, TP.HCM'),
+	('87ccfc84f4eb846b5aeb0e04f6ea12ea', '1994-02-18', N'951 Trần Phú, Phường 2, Quận 5, TP.HCM'),
+	('715c43d86b98da2212d7a9c9ce9d3062', '1977-07-31', N'369 Nguyễn Chí Thanh, Phường 9, Quận 5, TP.HCM'),
+	('a69b4087d281cb16efaa6bc91308f64d', '1999-11-11', N'654 Hậu Giang, Phường 12, Quận 6, TP.HCM'),
+	('61dd2b9c89fdcc1dce9fb553bf29cd8d', '1984-04-26', N'987 An Dương Vương, Phường 16, Quận 6, TP.HCM'),
+	('03b016eef369ef40bba639aa4f04341b', '1997-01-07', N'123 Võ Văn Kiệt, Phường Cầu Ông Lãnh, Quận 8, TP.HCM'),
+	('f8b0ed4e38a71924a7d2bca97029778a', '1981-06-16', N'456 Lê Đại Hành, Phường 15, Quận 8, TP.HCM'),
+	('5cbae581d99c1c3d17b8c09b07c54892', '1976-11-29', N'789 Phạm Hùng, Phường 14, Quận 8, TP.HCM'),
+	('20e843f249d75ada67c1a2eef0dac92e', '1992-03-03', N'321 Tỉnh Lộ 10, Phường Bình Hưng Hòa, Quận 8, TP.HCM'),
+	('712da4f1096f6ae70d0f3c091b84ae7c', '1988-08-08', N'123/4 Nguyễn Văn A, Phường Bến Nghé, Quận 1, TP.HCM'),
+	('b03c6f5a51ee06d3dbd17d0e38507ede', '1995-12-13', N'456/7 Lê Lợi, Phường Bến Nghé, Quận 1, TP.HCM'),
+	('b83bb75b898592b75232c4816842d824', '1980-05-25', N'987/6 Nguyễn Huệ, Phường Bến Nghé, Quận 1, TP.HCM'),
+	('a68757602ea7419f0e2313a842be9abf', '1993-10-09', N'753/1 Trần Quang Khải, Phường Tân Định, Quận 1, TP.HCM'),
+	('2b1850783245c06d0b782a4c9cd6a0a0', '1987-02-22', N'147/9 Lý Tự Trọng, Phường Bến Thành, Quận 1, TP.HCM'),
+	('eb70ed9c4c32afea8f482dc873be4f6a', '1999-07-05', N'5 Trần Khắc Chân, Phường Tân Định, Quận 1, TP.HCM');
 
 INSERT INTO Speciality (specialityID, specialityName)
 VALUES
-    ('e6157a31d2c5e20dc446f4f42fc0d40f', 'Đa khoa'),
-    ('52f6743e4719de9a35e1e2e1c09d6d52', 'phẫu thuật'),
-    ('8c15dfb7f4f3d4789ed0c043b1512e34', 'hồi sức cấp cứu'),
-    ('4a30b3f33f96b639ab20dce9f0b8b8db', 'chẩn đoán hình ảnh'),
-    ('7e2dc1364e2e1bdc9efc1669a17a9e45', 'làm đẹp'),
-	('bfiwafjnbeaffaiuwhfa9fhawfa56565', 'di truyền học');
+    ('e6157a31d2c5e20dc446f4f42fc0d40f', N'general'),
+    ('52f6743e4719de9a35e1e2e1c09d6d52', N'surgery'),
+    ('8c15dfb7f4f3d4789ed0c043b1512e34', N'resuscitation'),
+    ('4a30b3f33f96b639ab20dce9f0b8b8db', N'image analysation'),
+    ('7e2dc1364e2e1bdc9efc1669a17a9e45', N'beautify'),
+	('bfiwafjnbeaffaiuwhfa9fhawfa56565', N'genetics');
 	
 INSERT INTO Doctor (doctorID,specialityID, docAge, academicTitle,degree,yearsOfExperience)
 VALUES
 	('ae114dac5897fbcfd25797bf4be08fd3', 'e6157a31d2c5e20dc446f4f42fc0d40f', 35,'','',10),
-	('9eae70b054be6eba305323d8c9106cfb', 'e6157a31d2c5e20dc446f4f42fc0d40f', 37,'','thạc sĩ',12),
-	('c8aa14ffb7da0912c84635aa2ee0bb62', '52f6743e4719de9a35e1e2e1c09d6d52', 50,'giáo sư','tiến sĩ',25),
+	('9eae70b054be6eba305323d8c9106cfb', 'e6157a31d2c5e20dc446f4f42fc0d40f', 37,'',N'thạc sĩ',12),
+	('c8aa14ffb7da0912c84635aa2ee0bb62', '52f6743e4719de9a35e1e2e1c09d6d52', 50,N'giáo sư',N'tiến sĩ',25),
 	('dd0e3f50648088bfecc501f809a06ca8' , '4a30b3f33f96b639ab20dce9f0b8b8db' , 30 , '' , '' , 5 ),
 	('62fe46dae9470f311d52973a6eeb6a1a' , '4a30b3f33f96b639ab20dce9f0b8b8db' , 35 , '' , '' , 10 ),
-	('9c6189a20beb35a93df963e3b48eb9b0' , '7e2dc1364e2e1bdc9efc1669a17a9e45' , 40 , '' , 'thạc sĩ' , 15 ),
-	('1c38dd30f9e415b3a34879be077381ce' , '8c15dfb7f4f3d4789ed0c043b1512e34' , 45 , 'phó giáo sư' , 'thạc sĩ' , 20 ),
-	('21fc9daf44e2637d7972bd248c83577d' , 'e6157a31d2c5e20dc446f4f42fc0d40f' , 50 , 'phó giáo sư' , 'thạc sĩ' , 25 ),
-	('01c1fa1b81297a2de21056f35303ad84' , '52f6743e4719de9a35e1e2e1c09d6d52' , 55 , 'giáo sư' , 'tiến sĩ' , 30 ),
-	('fe30e1ff175e10b1c538613084ab2417' , '52f6743e4719de9a35e1e2e1c09d6d52' , 46 , '' , 'tiến sĩ' , 19 );
+	('9c6189a20beb35a93df963e3b48eb9b0' , '7e2dc1364e2e1bdc9efc1669a17a9e45' , 40 , '' , N'thạc sĩ' , 15 ),
+	('1c38dd30f9e415b3a34879be077381ce' , '8c15dfb7f4f3d4789ed0c043b1512e34' , 45 , N'phó giáo sư' , N'thạc sĩ' , 20 ),
+	('21fc9daf44e2637d7972bd248c83577d' , 'e6157a31d2c5e20dc446f4f42fc0d40f' , 50 , N'phó giáo sư' , N'thạc sĩ' , 25 ),
+	('01c1fa1b81297a2de21056f35303ad84' , '52f6743e4719de9a35e1e2e1c09d6d52' , 55 , N'giáo sư' , N'tiến sĩ' , 30 ),
+	('fe30e1ff175e10b1c538613084ab2417' , '52f6743e4719de9a35e1e2e1c09d6d52' , 46 , '' , N'tiến sĩ' , 19 );
 	
 INSERT INTO TimeSlot (timeSlotID, timeSlot, day_)
 VALUES
@@ -516,32 +491,13 @@ FROM
 ) AS subquery
 WHERE row_num <= 8
 UNION ALL
+
+
+
+
+
+
 SELECT doctorID, timeSlotID
-FROM
-(
-    -- Saturday
-    SELECT 'ae114dac5897fbcfd25797bf4be08fd3' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
-    FROM TimeSlot
-    WHERE day_ = 'Saturday'
-) AS subquery
-WHERE row_num <= 8
-UNION ALL
-SELECT doctorID, timeSlotID
-FROM
-(
-    -- Sunday
-    SELECT 'ae114dac5897fbcfd25797bf4be08fd3' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
-    FROM TimeSlot
-    WHERE day_ = 'Sunday'
-) AS subquery
-WHERE row_num <= 8
-UNION ALL
-SELECT doctorID, timeSlotID
-
-
-
-
-
 FROM
 (
     -- Monday
@@ -628,16 +584,6 @@ WHERE row_num <= 8
 UNION ALL
 SELECT doctorID, timeSlotID
 FROM
-(
-    -- Tuesday
-    SELECT 'c8aa14ffb7da0912c84635aa2ee0bb62' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
-    FROM TimeSlot
-    WHERE day_ = 'Tuesday'
-) AS subquery
-WHERE row_num <= 8
-UNION ALL
-SELECT doctorID, timeSlotID
-FROM
 (    -- Wednesday
     SELECT 'c8aa14ffb7da0912c84635aa2ee0bb62' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
     FROM TimeSlot
@@ -730,16 +676,6 @@ UNION ALL
 SELECT doctorID, timeSlotID
 FROM
 (
-    -- Friday
-    SELECT 'dd0e3f50648088bfecc501f809a06ca8' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
-    FROM TimeSlot
-    WHERE day_ = 'Friday'
-) AS subquery
-WHERE row_num <= 8
-UNION ALL
-SELECT doctorID, timeSlotID
-FROM
-(
     -- Saturday
     SELECT 'dd0e3f50648088bfecc501f809a06ca8' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
     FROM TimeSlot
@@ -856,15 +792,6 @@ WHERE row_num <= 8
 UNION ALL
 SELECT doctorID, timeSlotID
 FROM
-(    -- Wednesday
-    SELECT '9c6189a20beb35a93df963e3b48eb9b0' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
-    FROM TimeSlot
-    WHERE day_ = 'Wednesday'
-) AS subquery
-WHERE row_num <= 8
-UNION ALL
-SELECT doctorID, timeSlotID
-FROM
 (
     -- Thursday
     SELECT '9c6189a20beb35a93df963e3b48eb9b0' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
@@ -999,15 +926,6 @@ FROM
     SELECT '21fc9daf44e2637d7972bd248c83577d' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
     FROM TimeSlot
     WHERE day_ = 'Tuesday'
-) AS subquery
-WHERE row_num <= 8
-UNION ALL
-SELECT doctorID, timeSlotID
-FROM
-(    -- Wednesday
-    SELECT '21fc9daf44e2637d7972bd248c83577d' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
-    FROM TimeSlot
-    WHERE day_ = 'Wednesday'
 ) AS subquery
 WHERE row_num <= 8
 UNION ALL
@@ -1176,29 +1094,8 @@ FROM
     SELECT 'fe30e1ff175e10b1c538613084ab2417' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
     FROM TimeSlot
     WHERE day_ = 'Friday'
-) AS subquery
-WHERE row_num <= 8
-UNION ALL
-SELECT doctorID, timeSlotID
-FROM
-(
-    -- Saturday
-    SELECT 'fe30e1ff175e10b1c538613084ab2417' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
-    FROM TimeSlot
-    WHERE day_ = 'Saturday'
-) AS subquery
-WHERE row_num <= 8
-UNION ALL
-SELECT doctorID, timeSlotID
-FROM
-(
-    -- Sunday
-    SELECT 'fe30e1ff175e10b1c538613084ab2417' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
-    FROM TimeSlot
-    WHERE day_ = 'Sunday'
 ) AS subquery
 WHERE row_num <= 8;
-
 INSERT INTO Medicine (medicineID,medicineName,medicinePrice)
 VALUES
 	('1a27a82eb264532c271baf05c7a6e10d','Penicillin','53.01'),
@@ -1222,50 +1119,50 @@ VALUES
 
 INSERT INTO Service_ (serviceID,specialityID,serviceName,servicePrice)
 VALUES
-	('f8c17d469d7dfd4fa84eae659923536b','e6157a31d2c5e20dc446f4f42fc0d40f','Khám và kiểm tra sức khỏe',100.00),
-	('c739c1e62319f52411908f874c0698bf','e6157a31d2c5e20dc446f4f42fc0d40f','kiểm tra chẩn đoán',101.00),
-	('a074614583162a3d58b89c13699d70a1','52f6743e4719de9a35e1e2e1c09d6d52','phẫu thuật',102.00),
-	('cd9bfc9d6bb22a47f6dcdc2a5c99b2fd','e6157a31d2c5e20dc446f4f42fc0d40f','lời khuyên và tư vấn dinh dưỡng',103.00),
-	('744722e0fb1eb8e7f4fc5c4682159800','e6157a31d2c5e20dc446f4f42fc0d40f','dịch vụ nội trú',104.00),
-	('84fbf5e32cfdb21cf48721cf849b0c20','8c15dfb7f4f3d4789ed0c043b1512e34','Chăm sóc khẩn cấp và hỗ trợ ngoài giờ',105.00),
-	('517d8993ec9bcdb8c33fc50ea7ec5da8','52f6743e4719de9a35e1e2e1c09d6d52','Dịch vụ vi mạch và nhận dạng',106.00),
-	('291129122c3e6bbbd76a76b428f2809a','4a30b3f33f96b639ab20dce9f0b8b8db','Nội soi và chụp X-quang',107.00),
-	('52b7bedca394c621f40a99d03a564341','7e2dc1364e2e1bdc9efc1669a17a9e45','Dịch vụ chăm sóc gia cầm',108.00),
-	('e41d8b0c31b65cc94f5eb4bbb7b76907','bfiwafjnbeaffaiuwhfa9fhawfa56565','Giới tính DNA và xét nghiệm bệnh tật',109.00),
-	('507e4c66da1ccd4fcf621069065494bc','e6157a31d2c5e20dc446f4f42fc0d40f','Chích vaccine',110.00);
+	('f8c17d469d7dfd4fa84eae659923536b','e6157a31d2c5e20dc446f4f42fc0d40f',N'Health check and check',100.00),
+	('c739c1e62319f52411908f874c0698bf','e6157a31d2c5e20dc446f4f42fc0d40f',N'diagnostic test',101.00),
+	('a074614583162a3d58b89c13699d70a1','52f6743e4719de9a35e1e2e1c09d6d52',N'surgery',102.00),
+	('cd9bfc9d6bb22a47f6dcdc2a5c99b2fd','e6157a31d2c5e20dc446f4f42fc0d40f',N'Nutrition advice and advice',103.00),
+	('744722e0fb1eb8e7f4fc5c4682159800','e6157a31d2c5e20dc446f4f42fc0d40f',N'boarding service',104.00),
+	('84fbf5e32cfdb21cf48721cf849b0c20','8c15dfb7f4f3d4789ed0c043b1512e34',N'Urgent care and after-hours support',105.00),
+	('517d8993ec9bcdb8c33fc50ea7ec5da8','52f6743e4719de9a35e1e2e1c09d6d52',N'Microchip service and identification',106.00),
+	('291129122c3e6bbbd76a76b428f2809a','4a30b3f33f96b639ab20dce9f0b8b8db',N'Endoscopy and X-ray',107.00),
+	('52b7bedca394c621f40a99d03a564341','7e2dc1364e2e1bdc9efc1669a17a9e45',N'Poultry care service',108.00),
+	('e41d8b0c31b65cc94f5eb4bbb7b76907','bfiwafjnbeaffaiuwhfa9fhawfa56565',N'DNA sex and disease testing',109.00),
+	('507e4c66da1ccd4fcf621069065494bc','e6157a31d2c5e20dc446f4f42fc0d40f',N'vaccinated',110.00);
 
-INSERT INTO Bird(birdID, customerID,imageID, birdFullname, birdGender, breed, band_chip, birdWeight, sexingMethod, medicalHistory, hatchingDate, featherColor)
+INSERT INTO Bird(birdID, customerID,imageID, medicalHistory, birdGender, breed, band_chip, birdWeight, sexingMethod, birdFullname, hatchingDate, featherColor)
 VALUES
-	('2bbb77362ead86434fd59f94b282eae1' , '2c9320b8639fc9e1c784880bbecfdfa1' , 'fafnbuhfauhfweoufha8hfa9hfa48hf8', 'cảm cúm' ,'male','Apodidae', 'qưerty', 0.02,'Quan sát hình dáng và màu sắc', '', '2019-01-01', 'đen'),
-	('507c2afab061a1c2cf1dee7142e557be' , '3ff56e23cc31e9c9a85bc037341a65ee' , 'avewifbaiuwefnwajenfhiuahenf998f', 'Bệnh viêm tuyến nhờn' ,'','Phasianidae', 'wertyu', 0.02, 'Kiểm tra hành vi', '', '2019-02-01', 'lam-lục'),
-	('15d35bb9396992d02127345380e38d73' , '3ff5njfnijhfdsf8845bc037341a65ee' , 'fewabf9qb439fufh9h438q9h34fq34t4', '' ,'female','Én', 'ertyui', 0.03, 'Quan sát hình dáng và màu sắc', '', '2019-03-01', 'đen'),
-	('e9e0f3bcddc65940e089972ce4088e59' , '82d5cf38dc655bd1722ac5d4d350bce3' , 'frheafiuewhf9hf983h3f4ha438f94f4', 'Bệnh cầu trùng' , 'rtyuio' , 'Phasianidae' , 'no' , 0.02 , 'Kiểm tra hành vi' , '' , '2019-04-01' , 'vàng-đỏ-lam'),
-	('2e4076dd7f277dc8f29b4cdb922052c0' , '1c4f04058f291642c159e27e1554ddf8' , '4rt43t5y56y465t4r3e24r435y65u76i', '' , 'male' , 'Sẻ', 'tyuiop' , 0.02 , 'Quan sát hình dáng và màu sắc' , '' , '2019-05-01' , 'nâu'),
-	('27009754484e5b64300b05706c954565' , 'c0637bb4f3d7531d936f2686b9672a66' , 'efrgtrytuiykjhmngfbvdfewr4567898', 'Bệnh tiêu chảy' , 'yuiopa' , 'Finches', 'no' , 0.2 , 'Kiểm tra hành vi' , '' , '2019-06-01' , 'đỏ'),
-	('49f34170b6590fea6bce454059764c12' , '11eee90acf45377f4cc3ca0758f2bf30' , '48c967910f7eb39ea5f7b7602a3df9ea', '' , 'male' , 'Ciconiidae', 'uiopas' , 15 , 'Kiểm tra vùng sinh sản' , '' , '2019-07-01' , 'trắng-đen'),
-	('2e9d61c3330f9e10e3a0bc3fb8a4b4a2' , '48b31829bc7599f232d06a1e686534bd' , '3b94ace86063b245916a6e906221e6a8', 'Bệnh cảm cúm' , 'female' , 'Canidae', 'iopasd' , 3 , 'Kiểm tra vùng sinh sản' , '' , '2019-08-01' , 'vàng-trắng'),
-	('e939af928268bda5f11f7bf215d452eb' , '4e192dacb208ceb2413376e2ad3b3db8' , '249fb9cb11171ae6ab41794bee070a8f', '' , 'male' , 'Vẹt', 'opasdf' , 0.2 , 'Quan sát hình dáng và màu sắc' , '' , '2019-09-01' , 'lục-vàng-đen'),
-	('43e02d9e3ce088b73229155e462e32d9' , '6cb9c7dba65dd3d9e1946c5dd265dbcd' , 'b3b9752ec51a5433b44e27b8d9b81c76', 'Bệnh cảm cúm' , 'female' , 'Bồ câu', 'pasdfg' , 0.4 , 'Phân tích ADN' , '' , '2019-10-01' , 'xám'),
-	('00c38b52d5cdedc2667af4a83e346a85' , '45b76de8eb0fd35e124955a2ff2473db' , 'ee38603c9cfdb54fb0a0ab4a197f92a3', '' , 'male' , 'Vẹt', 'asdfgh' , 0.02 , 'Kiểm tra hành vi' , '' , '2019-11-01' , 'đỏ-lam-vàng'),
-	('1587900aee161437134c2e2479de5b64' , 'ea03ec90c8836f413784ee96e50a4f11' , 'ef94fe9d57eed266b24c3fc1203c1e17', 'Bệnh viêm tuyến nhờn' , 'female' , 'Sẻ thông', 'sdfghj' , 0.02 , 'Phân tích ADN' , '' , '2019-12-01' , 'vàng'),
-	('277dd0cf43f2cc494be796373fd7bf2b' , 'bc6c32dbbb8bd0660d158b08d7cad96f' , 'a8cf052632950deb5ab9c1f5ec36334d', 'Bệnh cảm cúm' , 'male' , 'Muscicapidae', 'dfghjk' , 0.03 , 'Kiểm tra vùng sinh sản' , '' , '2020-01-01' , 'đen-nâu'),
-	('08605ccab7ad051603412533c59e46c7' , '7e55fcb3a457634cfa78b49bdb774b3a' , '7b1bc65da7abbaceaaadc0ea9564c175', '' , 'female' , 'Chào mào', 'fghjkl' , 0.05 , 'Quan sát hình dáng và màu sắc' , '' , '2020-02-01' , 'trắng-nâu'),
-	('acdbf948aa576959e791abe5ec2f124d' , 'd8869200b4fbde66a3475d6e730e1b6d' , '95f7e5a8c051e6b60905912bd8aedf7d', '' , 'male' , 'Đớp ruồi', 'ghjklz' , 0.03 , 'Kiểm tra hành vi' , '' , '2020-03-01' , 'xám-trắng-đỏ'),
-	('4b4c133439471c8d694b5c3e47edb446' , '128ce6812392dce1ca5a6919f03a26a2' , '365c43bd856cf86e0e0b4cd4b7bc0462', 'Bệnh cầu trùng' , 'female' , 'Sẻ', 'hjklzx' , 0.03 , 'Quan sát hình dáng và màu sắc' , '' , '2020-04-01' , 'trắng-đen-xám'),
-	('0d0dd3c14756ae8316e7054b205896c9' , '87ccfc84f4eb846b5aeb0e04f6ea12ea' , 'b51f1bb2e54d243e60e32563b2b1a7ed', '' , 'female' , 'Chiền chiện', 'jklzxc' , 0.03 , 'Phân tích ADN' , '' , '2020-05-01' , 'vàng-đen'),
-	('861c51821e55ecad053b072323fac994' , '715c43d86b98da2212d7a9c9ce9d3062' , '08eed66a05827e8dc02d6ff1392f9bf6', '' , 'female' , 'Diệc', 'klzxcv' , 0.2 , 'Phân tích ADN' , '' , '2020-06-01' , 'đen'),
-	('380965fe9f1584559ea8a90b9c8d680c' , 'a69b4087d281cb16efaa6bc91308f64d' , 'ddfff0e1f9009fe5d621e2ed07348a51', 'Bệnh cầu trùng' , 'female' , 'Cu cu', 'lzxcvb' , 0.08 , 'Kiểm tra vùng sinh sản' , '' , '2020-07-01' , 'xám'),
-	('17787dd14e0fda883a36016cada64123' , '61dd2b9c89fdcc1dce9fb553bf29cd8d' , 'cbe26c3a3f34407ed023e3f02399d2fa', '' , 'male' , 'Nhạn', 'zxcvbn' , 0.5 , 'Quan sát hình dáng và màu sắc' , '' , '2020-08-01' , 'đen'),
-	('d5ea83ec7f100a6803bd39e14c619299' , '03b016eef369ef40bba639aa4f04341b' , '05b5b4345d8ac2f73ece3df15be03230', 'Bệnh cầu trùng' , 'female' , 'Kim oanh', 'xcvbnm' , 0.1 , 'Phân tích ADN' , '' , '2020-09-01' , 'nâu đất'),
-	('25c448b0241244364f7653f08cb8aff6' , 'f8b0ed4e38a71924a7d2bca97029778a' , '2bda592b2aada870747dd4366a3dff18', '' , 'male' , 'Nhạn', 'cvbnmq' , 3 , 'Kiểm tra hành vi' , '' , '2020-10-01' , 'trắng'),
-	('bc0b9fe1f4df72fa1289f4437e6a3953' , '5cbae581d99c1c3d17b8c09b07c54892' , 'e28e1458f599f2391b91bfd61338483e', '' , 'male' , 'Cu cu', 'vbnmqw' , 0.08 , 'Quan sát hình dáng và màu sắc' , '' , '2020-11-01' , 'đen-cam'),
-	('43aaf0240284fd15416b429bed0ef321' , '20e843f249d75ada67c1a2eef0dac92e' , '84cb52eda2e4f0b66f8509c37e857e8c', '' , 'female' , 'Sáo', 'bnmqwe' , 0.015 , 'Phân tích ADN' , '' , '2020-12-01' , 'đen'),
-	('ca8406790940dec227193cc7dca16212' , '712da4f1096f6ae70d0f3c091b84ae7c' , '8721d5a5f3f44bd01529d24dcf519239', 'Bệnh cầu trùng' , 'male' , 'Chìa vôi', 'nmqwer' , 0.04 , 'Phân tích ADN' , '' , '2021-01-01' , 'đen-trắng'),
-	('752ee3ce65129a7bd54292accb28983e' , 'b03c6f5a51ee06d3dbd17d0e38507ede' , '66a5473e01debb47bff7f215d6c4a228', '' , 'male' , 'Cắt', 'mqwert' , 0.15 , 'Phân tích ADN' , '' , '2021-02-01' , 'nâu'),
-	('c91f8b119029caa4ec2046bcc5c69bb5' , 'b83bb75b898592b75232c4816842d824' , '6d47ad177fb45c2d87e1b54fc363676b', 'Bệnh viêm tuyến nhờn' , 'female' , 'Đớp ruồi', 'mnbvcx' , 0.05 , 'Quan sát hình dáng và màu sắc' , '' , '2021-03-01' , 'lam-vàng'),
-	('16c5bd4d79c66e16042bee6bbf128c6f' , 'a68757602ea7419f0e2313a842be9abf' , '25abf9603856427e295b7bd1137fd04a', '' , 'male' , 'Vịt', 'nbvcxz' , 6 , 'Phân tích ADN' , '' , '2021-04-01' , 'đen'),
-	('56a7207dd933fe09f539083edb711548' , '2b1850783245c06d0b782a4c9cd6a0a0' , 'ed1ed3634186fc66ee692da3ba98272f', 'Bệnh cầu trùng' , 'male' , 'sơn ca', 'bvcxzl' , 0.01 , 'Phân tích ADN' , '' , '2021-05-01' , 'trắng-đen-vàng-đỏ'),
-	('6a045cdabdccb76073091f263cbf3e52' , 'eb70ed9c4c32afea8f482dc873be4f6a' , 'e47ccaddaa9e2cd4c25e84cae624b077', '' , 'female' , 'Vàng Anh', 'vcxzlk' , 0.04 , 'Kiểm tra hành vi' , '' , '2021-06-01' , 'vàng-đen');
+	('2bbb77362ead86434fd59f94b282eae1' , '2c9320b8639fc9e1c784880bbecfdfa1' , 'fafnbuhfauhfweoufha8hfa9hfa48hf8', N'cảm cúm' ,'male','Apodidae', 'qwerty', 0.02,N'Observe shapes and colors', N'tom', '2019-01-01', N'đen'),
+	('507c2afab061a1c2cf1dee7142e557be' , '3ff56e23cc31e9c9a85bc037341a65ee' , 'avewifbaiuwefnwajenfhiuahenf998f', N'Bệnh viêm tuyến nhờn' ,'','Phasianidae', 'wertyu', 0.02, N'Check behavior', N'jerry', '2019-02-01', N'lam-lục'),
+	('15d35bb9396992d02127345380e38d73' , '3ff5njfnijhfdsf8845bc037341a65ee' , 'fewabf9qb439fufh9h438q9h34fq34t4', '' ,'female','Én', 'ertyui', 0.03, N'Observe shapes and colors', N'Yến', '2019-03-01', N'đen'),
+	('e9e0f3bcddc65940e089972ce4088e59' , '82d5cf38dc655bd1722ac5d4d350bce3' , 'frheafiuewhf9hf983h3f4ha438f94f4', N'Bệnh cầu trùng' , 'rtyuio' , 'Phasianidae' , 'no' , 0.02 , N'Check behavior' , N'mít' , '2019-04-01' , N'vàng-đỏ-lam'),
+	('2e4076dd7f277dc8f29b4cdb922052c0' , '1c4f04058f291642c159e27e1554ddf8' , '4rt43t5y56y465t4r3e24r435y65u76i', '' , 'male' , N'Sẻ', 'tyuiop' , 0.02 , N'Observe shapes and colors' , N'Leo' , '2019-05-01' , N'nâu'),
+	('27009754484e5b64300b05706c954565' , 'c0637bb4f3d7531d936f2686b9672a66' , 'efrgtrytuiykjhmngfbvdfewr4567898', 'Bệnh tiêu chảy' , 'male' , 'Finches', 'no' , 0.2 , N'Check behavior' , N'kitty' , '2019-06-01' , N'đỏ'),
+	('49f34170b6590fea6bce454059764c12' , '11eee90acf45377f4cc3ca0758f2bf30' , '48c967910f7eb39ea5f7b7602a3df9ea', '' , 'male' , 'Ciconiidae', 'uiopas' , 15 , N'Checking the spawning zone' , N'Milo' , '2019-07-01' , N'trắng-đen'),
+	('2e9d61c3330f9e10e3a0bc3fb8a4b4a2' , '48b31829bc7599f232d06a1e686534bd' , '3b94ace86063b245916a6e906221e6a8', N'Bệnh cảm cúm' , 'female' , 'Canidae', 'iopasd' , 3 , N'Checking the spawning zone' , N'Mỹ Diệu' , '2019-08-01' , N'vàng-trắng'),
+	('e939af928268bda5f11f7bf215d452eb' , '4e192dacb208ceb2413376e2ad3b3db8' , '249fb9cb11171ae6ab41794bee070a8f', '' , 'male' , N'Vẹt', 'opasdf' , 0.2 , N'Observe shapes and colors' , 'Oscar' , '2019-09-01' , N'lục-vàng-đen'),
+	('43e02d9e3ce088b73229155e462e32d9' , '6cb9c7dba65dd3d9e1946c5dd265dbcd' , 'b3b9752ec51a5433b44e27b8d9b81c76', N'Bệnh cảm cúm' , 'female' , N'Bồ câu', 'pasdfg' , 0.4 , N'DNA analysis' , N'Meo MEo' , '2019-10-01' , N'xám'),
+	('00c38b52d5cdedc2667af4a83e346a85' , '45b76de8eb0fd35e124955a2ff2473db' , 'ee38603c9cfdb54fb0a0ab4a197f92a3', '' , 'male' , N'Vẹt', 'asdfgh' , 0.02 , N'Check behavior' , N'Hổ Báo' , '2019-11-01' , N'đỏ-lam-vàng'),
+	('1587900aee161437134c2e2479de5b64' , 'ea03ec90c8836f413784ee96e50a4f11' , 'ef94fe9d57eed266b24c3fc1203c1e17', N'Bệnh viêm tuyến nhờn' , 'female' , N'Sẻ thông', 'sdfghj' , 0.02 , N'DNA analysis' , 'Oliver' , '2019-12-01' , N'vàng'),
+	('277dd0cf43f2cc494be796373fd7bf2b' , 'bc6c32dbbb8bd0660d158b08d7cad96f' , 'a8cf052632950deb5ab9c1f5ec36334d', N'Bệnh cảm cúm' , 'male' , 'Muscicapidae', 'dfghjk' , 0.03 , N'Checking the spawning zone' , N'Phượng Hoàng' , '2020-01-01' , N'đen-nâu'),
+	('08605ccab7ad051603412533c59e46c7' , '7e55fcb3a457634cfa78b49bdb774b3a' , '7b1bc65da7abbaceaaadc0ea9564c175', '' , 'female' , N'Chào mào', 'fghjkl' , 0.05 , N'Observe shapes and colors' , 'Rocky' , '2020-02-01' , N'trắng-nâu'),
+	('acdbf948aa576959e791abe5ec2f124d' , 'd8869200b4fbde66a3475d6e730e1b6d' , '95f7e5a8c051e6b60905912bd8aedf7d', '' , 'male' , N'Đớp ruồi', 'ghjklz' , 0.03 , N'Check behavior' , N'Cơm' , '2020-03-01' , N'xám-trắng-đỏ'),
+	('4b4c133439471c8d694b5c3e47edb446' , '128ce6812392dce1ca5a6919f03a26a2' , '365c43bd856cf86e0e0b4cd4b7bc0462', N'Bệnh cầu trùng' , 'female' , N'Sẻ', 'hjklzx' , 0.03 , N'Observe shapes and colors' , N'Mỹ Linh' , '2020-04-01' , N'trắng-đen-xám'),
+	('0d0dd3c14756ae8316e7054b205896c9' , '87ccfc84f4eb846b5aeb0e04f6ea12ea' , 'b51f1bb2e54d243e60e32563b2b1a7ed', '' , 'female' , N'Chiền chiện', 'jklzxc' , 0.03 , N'DNA analysis' , N'Lan' , '2020-05-01' , N'vàng-đen'),
+	('861c51821e55ecad053b072323fac994' , '715c43d86b98da2212d7a9c9ce9d3062' , '08eed66a05827e8dc02d6ff1392f9bf6', '' , 'female' , N'Diệc', 'klzxcv' , 0.2 , N'DNA analysis' , N'Hồng Nhung' , '2020-06-01' , N'đen'),
+	('380965fe9f1584559ea8a90b9c8d680c' , 'a69b4087d281cb16efaa6bc91308f64d' , 'ddfff0e1f9009fe5d621e2ed07348a51', N'Bệnh cầu trùng' , 'female' , N'Cu cu', 'lzxcvb' , 0.08 , N'Checking the spawning zone' , N'Chôm Chôm' , '2020-07-01' , N'xám'),
+	('17787dd14e0fda883a36016cada64123' , '61dd2b9c89fdcc1dce9fb553bf29cd8d' , 'cbe26c3a3f34407ed023e3f02399d2fa', '' , 'male' , N'Nhạn', 'zxcvbn' , 0.5 , N'Observe shapes and colors' , N'Đại ca' , '2020-08-01' , N'đen'),
+	('d5ea83ec7f100a6803bd39e14c619299' , '03b016eef369ef40bba639aa4f04341b' , '05b5b4345d8ac2f73ece3df15be03230', N'Bệnh cầu trùng' , 'female' , N'Kim oanh', 'xcvbnm' , 0.1 , N'DNA analysis' , N'Xuân Mai' , '2020-09-01' , N'nâu đất'),
+	('25c448b0241244364f7653f08cb8aff6' , 'f8b0ed4e38a71924a7d2bca97029778a' , '2bda592b2aada870747dd4366a3dff18', '' , 'male' , N'Nhạn', 'cvbnmq' , 3 , N'Check behavior' , N'Thạch đậu' , '2020-10-01' , N'trắng'),
+	('bc0b9fe1f4df72fa1289f4437e6a3953' , '5cbae581d99c1c3d17b8c09b07c54892' , 'e28e1458f599f2391b91bfd61338483e', '' , 'male' , N'Cu cu', 'vbnmqw' , 0.08 , N'Observe shapes and colors' , 'Buddy' , '2020-11-01' , N'đen-cam'),
+	('43aaf0240284fd15416b429bed0ef321' , '20e843f249d75ada67c1a2eef0dac92e' , '84cb52eda2e4f0b66f8509c37e857e8c', '' , 'female' , N'Sáo', 'bnmqwe' , 0.015 , N'DNA analysis' , N'Polly' , '2020-12-01' , N'đen'),
+	('ca8406790940dec227193cc7dca16212' , '712da4f1096f6ae70d0f3c091b84ae7c' , '8721d5a5f3f44bd01529d24dcf519239', N'Bệnh cầu trùng' , 'male' , N'Chìa vôi', 'nmqwer' , 0.04 , N'DNA analysis' , N'Anh chàng đẹp trai' , '2021-01-01' , N'đen-trắng'),
+	('752ee3ce65129a7bd54292accb28983e' , 'b03c6f5a51ee06d3dbd17d0e38507ede' , '66a5473e01debb47bff7f215d6c4a228', '' , 'male' , N'Cắt', 'mqwert' , 0.15 , N'DNA analysis' , 'Max' , '2021-02-01' , N'nâu'),
+	('c91f8b119029caa4ec2046bcc5c69bb5' , 'b83bb75b898592b75232c4816842d824' , '6d47ad177fb45c2d87e1b54fc363676b', N'Bệnh viêm tuyến nhờn' , 'female' , N'Đớp ruồi', 'mnbvcx' , 0.05 , N'Observe shapes and colors' , 'Daisy' , '2021-03-01' , N'lam-vàng'),
+	('16c5bd4d79c66e16042bee6bbf128c6f' , 'a68757602ea7419f0e2313a842be9abf' , '25abf9603856427e295b7bd1137fd04a', '' , 'male' , N'Vịt', 'nbvcxz' , 6 , N'DNA analysis' , N'Cạp cạp' , '2021-04-01' , N'đen'),
+	('56a7207dd933fe09f539083edb711548' , '2b1850783245c06d0b782a4c9cd6a0a0' , 'ed1ed3634186fc66ee692da3ba98272f', N'Bệnh cầu trùng' , 'male' , N'sơn ca', 'bvcxzl' , 0.01 , N'DNA analysis' , N'Bầu trời' , '2021-05-01' , N'trắng-đen-vàng-đỏ'),
+	('6a045cdabdccb76073091f263cbf3e52' , 'eb70ed9c4c32afea8f482dc873be4f6a' , 'e47ccaddaa9e2cd4c25e84cae624b077', '' , 'female' , N'vàng Anh', 'vcxzlk' , 0.04 , N'Check behavior' , 'Stella' , '2021-06-01' , N'vàng-đen');
 
 INSERT INTO Appointment(appointmentID, birdID, doctorID, timeSlotID, serviceID, appTime, notes, payment, appStatus)
 VALUES
@@ -1300,38 +1197,38 @@ VALUES
 	('b7ad6a62013acd21497265b6f7ff74eb' , '56a7207dd933fe09f539083edb711548' , '01c1fa1b81297a2de21056f35303ad84', '9eea7e14fbd37b455d69e7114399aa0a' , '517d8993ec9bcdb8c33fc50ea7ec5da8' , GETDATE() , '' , 'banking account' , 'processing'),
 	('3427f117121dd0789b94a37ef63b64dc' , '6a045cdabdccb76073091f263cbf3e52' , 'fe30e1ff175e10b1c538613084ab2417', '4db7ce38baceaddfc93e9bdcfe0a7f57' , '291129122c3e6bbbd76a76b428f2809a' , GETDATE() , '' , 'banking account' , 'processing');
 
-INSERT INTO MedicalRecord (medicalRecordID, birdID, doctorID, appointmentID, recordTime, diagnosis)
+INSERT INTO MedicalRecord (medicalRecordID, birdID, doctorID, appointmentID, recordTime, diagnosis, treatmentDays, doctorNotes)
 VALUES
-	('3b153a85daab45c693cdd0e1f02631c9' , '2bbb77362ead86434fd59f94b282eae1' , 'ae114dac5897fbcfd25797bf4be08fd3' , 'a6a837e5d05e57e160dea29c335f30d0', GETDATE(), 'không phát hiện bất thường'),
-	('87599195136fd0440b341eed32d36c84' , '507c2afab061a1c2cf1dee7142e557be' , '9eae70b054be6eba305323d8c9106cfb' , '95b579fe61c622b5c50def9dccb66bdc', GETDATE(), 'Thiếu hụt dinh dưỡng'),
-	('4d0ac1b5e6f8e2e4ee256c4c2031b1d2' , '15d35bb9396992d02127345380e38d73' , 'c8aa14ffb7da0912c84635aa2ee0bb62' , '86ae960dc44eba248c481d76520846c3', GETDATE(), 'chấn thương chân'),
-	('b356f8672801e4820bd72b17dbda7764' , 'e9e0f3bcddc65940e089972ce4088e59' , 'dd0e3f50648088bfecc501f809a06ca8' , '801b58e3d0b00f7f9f9eac80058f99f0' , GETDATE() , 'thiếu vitamin A' ),
-	('a0540a74c856251ad819d931fee6b078' , '2e4076dd7f277dc8f29b4cdb922052c0' , '62fe46dae9470f311d52973a6eeb6a1a' , 'ca768c1b1876a2f286496e62666dfada' , GETDATE() , 'nội trú'),
-	('32fe2542e25434a1acde0f6edff2f0b4' , '27009754484e5b64300b05706c954565' , '9c6189a20beb35a93df963e3b48eb9b0' , '0a7a30124b6b4f266459a6b69677152c' , GETDATE() , 'gãy cánh' ),
-	('2f6c8e2ec915f490a91c6c7e888126f6' , '49f34170b6590fea6bce454059764c12' , '1c38dd30f9e415b3a34879be077381ce' , 'ebcf025d47ee19d929f6707029df09d0' , GETDATE() , 'gắn chip' ),
-	('21def0e373e1e8d57d1ab5f339726167' , '2e9d61c3330f9e10e3a0bc3fb8a4b4a2' , '21fc9daf44e2637d7972bd248c83577d' , 'b7e4621ca7d7273ea67ba0b40992d189' , GETDATE() , 'dị vật trong dạ dày' ),
-	('ff398a2c8cdd28c7c9e31446c0e2a629' , 'e939af928268bda5f11f7bf215d452eb' , '01c1fa1b81297a2de21056f35303ad84' , '35847b5a3a8de7e0af06281b1d889bcf' , GETDATE() , 'chăm sóc' ),
-	('753906196d6e7bdd8f8d874efaacfa8d' , '43e02d9e3ce088b73229155e462e32d9' , 'fe30e1ff175e10b1c538613084ab2417' , 'ca05b981160139795fbf616bfd5d491b' , GETDATE() , 'xác định giới tính' ),
-	('9a590d8f7d706608bc3081a042d2e0dc' , '00c38b52d5cdedc2667af4a83e346a85' , 'ae114dac5897fbcfd25797bf4be08fd3' , '3967200752865b1bb65a63f386925d14' , GETDATE() , 'chích vaccine' ),
-	('4aa48bfce29088db4424a1b921e2be55' , '1587900aee161437134c2e2479de5b64' , '9eae70b054be6eba305323d8c9106cfb' , '943b4c67a61164d245ea5af7f3848a37' , GETDATE() , 'Bệnh cảm cúm' ),
-	('154aa8864b0445239a1c8cf636ce8164' , '277dd0cf43f2cc494be796373fd7bf2b' , 'c8aa14ffb7da0912c84635aa2ee0bb62' , '040c93cff9c0cc5cd6d008fb02e17b69' , GETDATE() , 'Bệnh cầu trùng' ),
-	('b72e56f3705781fdfaa652dabbefd8b4' , '08605ccab7ad051603412533c59e46c7' , 'dd0e3f50648088bfecc501f809a06ca8' , '3841cd8942a581d2092ff1d3739fcebc' , GETDATE() , 'chấn thương phần đầu' ),
-	('96f71fd09596eeda17b234c2a87b783f' , 'acdbf948aa576959e791abe5ec2f124d' , '62fe46dae9470f311d52973a6eeb6a1a' , '4a160bb951e81bb14485ab90391d0c58' , GETDATE() , 'thiếu vitamin D' ),
-	('c26b9ff4973daa21f4ec2fa61207639f' , '4b4c133439471c8d694b5c3e47edb446' , '9c6189a20beb35a93df963e3b48eb9b0' , '0bb8e03d00ecc7642c5142de8f12a335' , GETDATE() , 'nội trú' ),
-	('de9aa8254527b52b336a60f9373740ea' , '0d0dd3c14756ae8316e7054b205896c9' , '1c38dd30f9e415b3a34879be077381ce' , 'aeed52468a0d9880fa013c611816e897' , GETDATE() , 'mỏ bị gãy' ),
-	('737cebac25159c2b8e46f50881a7abcb' , '861c51821e55ecad053b072323fac994' , '21fc9daf44e2637d7972bd248c83577d' , 'cde92de8a056398e6a281dba87bdffb1' , GETDATE() , 'gắn chip' ),
-	('1450707c9e9a8ea70f8d341e19e5a9bb' , '380965fe9f1584559ea8a90b9c8d680c' , '01c1fa1b81297a2de21056f35303ad84' , '6c3b331b0cde4d503944f2f16f979c93' , GETDATE() , 'dị vật ở ngực'),
-	('321d5d0f522e1ba28bbb2243b6b18de8' , '17787dd14e0fda883a36016cada64123' , 'fe30e1ff175e10b1c538613084ab2417' , 'b6b447b56dbe005a626c4b5e3fdb97be' , GETDATE() , 'chăm sóc' ),
-	('008be4115afd1511f4cc2ae97c9834f0' , 'd5ea83ec7f100a6803bd39e14c619299' , 'ae114dac5897fbcfd25797bf4be08fd3' , 'a61de36f81c0f699a8653863ea9e3d2f' , GETDATE() , 'xác định giới tính' ),
-	('3ff90b1c47898c6e576e8f109eba0bef' , '25c448b0241244364f7653f08cb8aff6' , '9eae70b054be6eba305323d8c9106cfb' , '47b601885ddc891de11eb62451a97b43' , GETDATE() , 'chích vaccine' ),
-	('21879306649bc1429b0f6d9d57217356' , 'bc0b9fe1f4df72fa1289f4437e6a3953' , 'c8aa14ffb7da0912c84635aa2ee0bb62' , '2f7294ec43136a43ca696ad6f06e1635' , GETDATE() , 'Bệnh béo phì' ),
-	('56e00973cbc998b7ddce6cdc45b3cd25' , '43aaf0240284fd15416b429bed0ef321' , 'dd0e3f50648088bfecc501f809a06ca8' , '090f345a844fedfb9ca86ff69b59d969' , GETDATE() , 'Bệnh mổ lông' ),
-	('8c6abf5a30122f683a29871b67190785' , 'ca8406790940dec227193cc7dca16212' , '62fe46dae9470f311d52973a6eeb6a1a' , 'd2601ee48263e69982e4dbd809c0358a' , GETDATE() , 'khối u ở chân' ),
-	('65a4f559051183b9a50cda6876422baa' , '752ee3ce65129a7bd54292accb28983e' , '9c6189a20beb35a93df963e3b48eb9b0' , 'e221bebf131b7773da0045982e018fba' , GETDATE() , 'thiếu vitamin E' ),
-	('5fe272ab8622289deb002353518c8941' , 'c91f8b119029caa4ec2046bcc5c69bb5' , '1c38dd30f9e415b3a34879be077381ce' , '85c10fd22fe836139fd76fbaee831673' , GETDATE() , 'nội trú' ),
-	('3db65ac8adaadf9ff8fc0d6ef26111a6' , '16c5bd4d79c66e16042bee6bbf128c6f' , '21fc9daf44e2637d7972bd248c83577d' , '7caa694dda6e1cf8c0993cf301c84bba' , GETDATE() , 'bị chấn thương chân trái' ),
-	('ffd4d1092d5e6de12dc9d4fe82c4029e' , '56a7207dd933fe09f539083edb711548' , '01c1fa1b81297a2de21056f35303ad84' , 'b7ad6a62013acd21497265b6f7ff74eb' , GETDATE() , 'gắn chip' ),
-	('52f50c616b0653a3fab725e6c2421692' , '6a045cdabdccb76073091f263cbf3e52' , 'fe30e1ff175e10b1c538613084ab2417'  , '3427f117121dd0789b94a37ef63b64dc' , GETDATE() , 'không phát hiện dị vật' );
+	('3b153a85daab45c693cdd0e1f02631c9' , '2bbb77362ead86434fd59f94b282eae1' , 'ae114dac5897fbcfd25797bf4be08fd3' , 'a6a837e5d05e57e160dea29c335f30d0', GETDATE(), N'không phát hiện bất thường', 3, ''),
+	('87599195136fd0440b341eed32d36c84' , '507c2afab061a1c2cf1dee7142e557be' , '9eae70b054be6eba305323d8c9106cfb' , '95b579fe61c622b5c50def9dccb66bdc', GETDATE(), N'Thiếu hụt dinh dưỡng', 4, ''),
+	('4d0ac1b5e6f8e2e4ee256c4c2031b1d2' , '15d35bb9396992d02127345380e38d73' , 'c8aa14ffb7da0912c84635aa2ee0bb62' , '86ae960dc44eba248c481d76520846c3', GETDATE(), N'chấn thương chân', 2 , ''),
+	('b356f8672801e4820bd72b17dbda7764' , 'e9e0f3bcddc65940e089972ce4088e59' , 'dd0e3f50648088bfecc501f809a06ca8' , '801b58e3d0b00f7f9f9eac80058f99f0' , GETDATE() , N'thiếu vitamin A' , 3, ''),
+	('a0540a74c856251ad819d931fee6b078' , '2e4076dd7f277dc8f29b4cdb922052c0' , '62fe46dae9470f311d52973a6eeb6a1a' , 'ca768c1b1876a2f286496e62666dfada' , GETDATE() , N'nội trú', 1 , ''),
+	('32fe2542e25434a1acde0f6edff2f0b4' , '27009754484e5b64300b05706c954565' , '9c6189a20beb35a93df963e3b48eb9b0' , '0a7a30124b6b4f266459a6b69677152c' , GETDATE() , N'gãy cánh', 2, ''),
+	('2f6c8e2ec915f490a91c6c7e888126f6' , '49f34170b6590fea6bce454059764c12' , '1c38dd30f9e415b3a34879be077381ce' , 'ebcf025d47ee19d929f6707029df09d0' , GETDATE() , N'gắn chip', 3, ''),
+	('21def0e373e1e8d57d1ab5f339726167' , '2e9d61c3330f9e10e3a0bc3fb8a4b4a2' , '21fc9daf44e2637d7972bd248c83577d' , 'b7e4621ca7d7273ea67ba0b40992d189' , GETDATE() , N'dị vật trong dạ dày', 1, ''),
+	('ff398a2c8cdd28c7c9e31446c0e2a629' , 'e939af928268bda5f11f7bf215d452eb' , '01c1fa1b81297a2de21056f35303ad84' , '35847b5a3a8de7e0af06281b1d889bcf' , GETDATE() , N'chăm sóc', 0 , '' ),
+	('753906196d6e7bdd8f8d874efaacfa8d' , '43e02d9e3ce088b73229155e462e32d9' , 'fe30e1ff175e10b1c538613084ab2417' , 'ca05b981160139795fbf616bfd5d491b' , GETDATE() , N'xác định giới tính', 3, '' ),
+	('9a590d8f7d706608bc3081a042d2e0dc' , '00c38b52d5cdedc2667af4a83e346a85' , 'ae114dac5897fbcfd25797bf4be08fd3' , '3967200752865b1bb65a63f386925d14' , GETDATE() , N'chích vaccine', 3, '' ),
+	('4aa48bfce29088db4424a1b921e2be55' , '1587900aee161437134c2e2479de5b64' , '9eae70b054be6eba305323d8c9106cfb' , '943b4c67a61164d245ea5af7f3848a37' , GETDATE() , N'Bệnh cảm cúm', 0 , '' ),
+	('154aa8864b0445239a1c8cf636ce8164' , '277dd0cf43f2cc494be796373fd7bf2b' , 'c8aa14ffb7da0912c84635aa2ee0bb62' , '040c93cff9c0cc5cd6d008fb02e17b69' , GETDATE() , N'Bệnh cầu trùng', 2, '' ),
+	('b72e56f3705781fdfaa652dabbefd8b4' , '08605ccab7ad051603412533c59e46c7' , 'dd0e3f50648088bfecc501f809a06ca8' , '3841cd8942a581d2092ff1d3739fcebc' , GETDATE() , N'chấn thương phần đầu', 3, '' ),
+	('96f71fd09596eeda17b234c2a87b783f' , 'acdbf948aa576959e791abe5ec2f124d' , '62fe46dae9470f311d52973a6eeb6a1a' , '4a160bb951e81bb14485ab90391d0c58' , GETDATE() , N'thiếu vitamin D', 3, '' ),
+	('c26b9ff4973daa21f4ec2fa61207639f' , '4b4c133439471c8d694b5c3e47edb446' , '9c6189a20beb35a93df963e3b48eb9b0' , '0bb8e03d00ecc7642c5142de8f12a335' , GETDATE() , N'nội trú', 3, '' ),
+	('de9aa8254527b52b336a60f9373740ea' , '0d0dd3c14756ae8316e7054b205896c9' , '1c38dd30f9e415b3a34879be077381ce' , 'aeed52468a0d9880fa013c611816e897' , GETDATE() , N'mỏ bị gãy', 2, '' ),
+	('737cebac25159c2b8e46f50881a7abcb' , '861c51821e55ecad053b072323fac994' , '21fc9daf44e2637d7972bd248c83577d' , 'cde92de8a056398e6a281dba87bdffb1' , GETDATE() , N'gắn chip', 3, '' ),
+	('1450707c9e9a8ea70f8d341e19e5a9bb' , '380965fe9f1584559ea8a90b9c8d680c' , '01c1fa1b81297a2de21056f35303ad84' , '6c3b331b0cde4d503944f2f16f979c93' , GETDATE() , N'dị vật ở ngực', 2, ''),
+	('321d5d0f522e1ba28bbb2243b6b18de8' , '17787dd14e0fda883a36016cada64123' , 'fe30e1ff175e10b1c538613084ab2417' , 'b6b447b56dbe005a626c4b5e3fdb97be' , GETDATE() , N'chăm sóc', 3, '' ),
+	('008be4115afd1511f4cc2ae97c9834f0' , 'd5ea83ec7f100a6803bd39e14c619299' , 'ae114dac5897fbcfd25797bf4be08fd3' , 'a61de36f81c0f699a8653863ea9e3d2f' , GETDATE() , N'xác định giới tính', 3, '' ),
+	('3ff90b1c47898c6e576e8f109eba0bef' , '25c448b0241244364f7653f08cb8aff6' , '9eae70b054be6eba305323d8c9106cfb' , '47b601885ddc891de11eb62451a97b43' , GETDATE() , N'chích vaccine', 1 , '' ),
+	('21879306649bc1429b0f6d9d57217356' , 'bc0b9fe1f4df72fa1289f4437e6a3953' , 'c8aa14ffb7da0912c84635aa2ee0bb62' , '2f7294ec43136a43ca696ad6f06e1635' , GETDATE() , N'Bệnh béo phì', 3, '' ),
+	('56e00973cbc998b7ddce6cdc45b3cd25' , '43aaf0240284fd15416b429bed0ef321' , 'dd0e3f50648088bfecc501f809a06ca8' , '090f345a844fedfb9ca86ff69b59d969' , GETDATE() , N'Bệnh mổ lông', 2 , '' ),
+	('8c6abf5a30122f683a29871b67190785' , 'ca8406790940dec227193cc7dca16212' , '62fe46dae9470f311d52973a6eeb6a1a' , 'd2601ee48263e69982e4dbd809c0358a' , GETDATE() , N'khối u ở chân', 5, '' ),
+	('65a4f559051183b9a50cda6876422baa' , '752ee3ce65129a7bd54292accb28983e' , '9c6189a20beb35a93df963e3b48eb9b0' , 'e221bebf131b7773da0045982e018fba' , GETDATE() , N'thiếu vitamin E', 3, '' ),
+	('5fe272ab8622289deb002353518c8941' , 'c91f8b119029caa4ec2046bcc5c69bb5' , '1c38dd30f9e415b3a34879be077381ce' , '85c10fd22fe836139fd76fbaee831673' , GETDATE() , N'nội trú', 1, '' ),
+	('3db65ac8adaadf9ff8fc0d6ef26111a6' , '16c5bd4d79c66e16042bee6bbf128c6f' , '21fc9daf44e2637d7972bd248c83577d' , '7caa694dda6e1cf8c0993cf301c84bba' , GETDATE() , N'bị chấn thương chân trái', 3 , '' ),
+	('ffd4d1092d5e6de12dc9d4fe82c4029e' , '56a7207dd933fe09f539083edb711548' , '01c1fa1b81297a2de21056f35303ad84' , 'b7ad6a62013acd21497265b6f7ff74eb' , GETDATE() , N'gắn chip', 2 , '' ),
+	('52f50c616b0653a3fab725e6c2421692' , '6a045cdabdccb76073091f263cbf3e52' , 'fe30e1ff175e10b1c538613084ab2417'  , '3427f117121dd0789b94a37ef63b64dc' , GETDATE() , N'không phát hiện dị vật', 2, '' );
 
 INSERT INTO RecordServices (medicalRecordID, serviceID)
 VALUES
@@ -1366,103 +1263,104 @@ VALUES
 	( 'ffd4d1092d5e6de12dc9d4fe82c4029e' , '517d8993ec9bcdb8c33fc50ea7ec5da8' ),
 	( '52f50c616b0653a3fab725e6c2421692' , '291129122c3e6bbbd76a76b428f2809a' );
 
-INSERT INTO RecordMedicine (medicalRecordID, medicineID, quantity, descriptions)
+INSERT INTO RecordMedicine (medicalRecordID, medicineID, quantity, description_)
 VALUES
-('87599195136fd0440b341eed32d36c84', '1a27a82eb264532c271baf05c7a6e10d', 9 , 'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('87599195136fd0440b341eed32d36c84', 'c93c634859e543a562441ca36f9bd9f0', 9 , 'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('87599195136fd0440b341eed32d36c84', 'd0141bd1067e2f534fd908b54a72a1ff', 9 , 'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('4d0ac1b5e6f8e2e4ee256c4c2031b1d2', '7c7f0e401b7926cb956e1e798e7d6664', 12 , 'sáng: 1, trưa: 1, chiều: 1, tối: 1'),
-('4d0ac1b5e6f8e2e4ee256c4c2031b1d2', '2b1937a02cb1cc8255ecfeb8dc38c5d2', 6 , 'sáng: 1, trưa: 0, chiều: 1, tối: 0'),
-('4d0ac1b5e6f8e2e4ee256c4c2031b1d2', '589ff60828e99f431d7f07d8ef62baff', 12 , 'sáng: 1, trưa: 1, chiều: 1, tối: 1'),
-('4d0ac1b5e6f8e2e4ee256c4c2031b1d2', 'f9a7dfe69faaaf1f0c2dc348c0254d50', 9 , 'sáng: 0, trưa: 1, chiều: 1, tối: 1'),
-('b356f8672801e4820bd72b17dbda7764', '5f7fb0d98491f5efdf52623a7d4839aa', 12 , 'sáng: 1, trưa: 1, chiều: 1, tối: 1'),
-('b356f8672801e4820bd72b17dbda7764', '8e89704ade7f8e48da32ce2d6bb15054', 9 , 'sáng: 1, trưa: 0, chiều: 1, tối: 0'),
-('b356f8672801e4820bd72b17dbda7764', '7c7f0e401b7926cb956e1e798e7d6664', 9 , 'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('b356f8672801e4820bd72b17dbda7764', 'e365252333bf5bd19b86b828e64b0eb0', 6 , 'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('b356f8672801e4820bd72b17dbda7764', '7c6164ddf235787f5d1e2d8f4540c838', 4 , 'sáng: 1, trưa: 0, chiều: 1, tối: 1'),
-('32fe2542e25434a1acde0f6edff2f0b4', '9faeec1795e05223ab80bf4d06971616', 4 , 'sáng: 1, trưa: 0, chiều: 1, tối: 1'),
-('21def0e373e1e8d57d1ab5f339726167', '9e9af1d637a369cdaf6bac028b8bd813', 3 , 'sáng: 1, trưa: 0, chiều: 0, tối: 0'),
-('21def0e373e1e8d57d1ab5f339726167', '9faeec1795e05223ab80bf4d06971616', 3 , 'sáng: 1, trưa: 0, chiều: 0, tối: 0'),
-('4aa48bfce29088db4424a1b921e2be55', '9dc94408c0e9b062a5cdd03830011d72', 4 , 'sáng: 0, trưa: 1, chiều: 1, tối: 0'),
-('4aa48bfce29088db4424a1b921e2be55', '7c6164ddf235787f5d1e2d8f4540c838', 6 , 'sáng: 0, trưa: 1, chiều: 1, tối: 1'),
-('4aa48bfce29088db4424a1b921e2be55', '124b0999a2e3a37b30f8b4d4196d5666', 4 , 'sáng: 0, trưa: 1, chiều: 1, tối: 0'),
-('154aa8864b0445239a1c8cf636ce8164', '124b0999a2e3a37b30f8b4d4196d5666', 6 , 'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('154aa8864b0445239a1c8cf636ce8164', '9dc94408c0e9b062a5cdd03830011d72', 6 , 'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('154aa8864b0445239a1c8cf636ce8164', 'f9a7dfe69faaaf1f0c2dc348c0254d50', 6 , 'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('154aa8864b0445239a1c8cf636ce8164', '8e89704ade7f8e48da32ce2d6bb15054', 6 , 'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('b72e56f3705781fdfaa652dabbefd8b4', 'd0141bd1067e2f534fd908b54a72a1ff', 9 , 'sáng: 1, trưa: 1, chiều: 1, tối: 1'),
-('b72e56f3705781fdfaa652dabbefd8b4', 'c69f4b52c792233f31e11393012e5e19', 9 , 'sáng: 1, trưa: 1, chiều: 1, tối: 1'),
-('96f71fd09596eeda17b234c2a87b783f', '9dc94408c0e9b062a5cdd03830011d72', 9 , 'sáng: 1, trưa: 1, chiều: 1, tối: 1'),
-('de9aa8254527b52b336a60f9373740ea', '9faeec1795e05223ab80bf4d06971616', 9 , 'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('de9aa8254527b52b336a60f9373740ea', 'f9a7dfe69faaaf1f0c2dc348c0254d50', 3 , 'sáng: 0, trưa: 0, chiều: 1, tối: 0'),
-('de9aa8254527b52b336a60f9373740ea', '5f7fb0d98491f5efdf52623a7d4839aa', 3 , 'sáng: 0, trưa: 0, chiều: 1, tối: 0'),
-('de9aa8254527b52b336a60f9373740ea', 'e365252333bf5bd19b86b828e64b0eb0', 3 , 'sáng: 0, trưa: 0, chiều: 1, tối: 0'),
-('de9aa8254527b52b336a60f9373740ea', '8e89704ade7f8e48da32ce2d6bb15054', 3 , 'sáng: 0, trưa: 0, chiều: 1, tối: 0'),
-('21879306649bc1429b0f6d9d57217356', '1a27a82eb264532c271baf05c7a6e10d', 10 , 'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('21879306649bc1429b0f6d9d57217356', 'c93c634859e543a562441ca36f9bd9f0', 10 , 'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('21879306649bc1429b0f6d9d57217356', '2b1937a02cb1cc8255ecfeb8dc38c5d2', 12 , 'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('56e00973cbc998b7ddce6cdc45b3cd25', '589ff60828e99f431d7f07d8ef62baff', 6 , 'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('56e00973cbc998b7ddce6cdc45b3cd25', '7c7f0e401b7926cb956e1e798e7d6664', 6 , 'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('56e00973cbc998b7ddce6cdc45b3cd25', 'd0141bd1067e2f534fd908b54a72a1ff', 4 , 'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('8c6abf5a30122f683a29871b67190785', '976f58180ccfd7c80f492b1665fd003a', 8 , 'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('8c6abf5a30122f683a29871b67190785', '9faeec1795e05223ab80bf4d06971616', 8 , 'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('8c6abf5a30122f683a29871b67190785', '9e9af1d637a369cdaf6bac028b8bd813', 8 , 'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('65a4f559051183b9a50cda6876422baa', '2b1937a02cb1cc8255ecfeb8dc38c5d2', 6 , 'sáng: 1, trưa: 0, chiều: 1, tối: 0'),
-('65a4f559051183b9a50cda6876422baa', '5f7fb0d98491f5efdf52623a7d4839aa', 8 , 'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('3db65ac8adaadf9ff8fc0d6ef26111a6', 'd0141bd1067e2f534fd908b54a72a1ff', 4 , 'sáng: 1, trưa: 0, chiều: 0, tối: 1'),
-('3db65ac8adaadf9ff8fc0d6ef26111a6', '9dc94408c0e9b062a5cdd03830011d72', 6 , 'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('3db65ac8adaadf9ff8fc0d6ef26111a6', '7c7f0e401b7926cb956e1e798e7d6664', 8 , 'sáng: 1, trưa: 1, chiều: 1, tối: 0');
-INSERT INTO Feedback (feedbackID, appointmentID, feedbackContent, title, feedbackTime)	
-VALUES
-	( 'a4e6c35adb5663181253e2c610ceb080' , 'a6a837e5d05e57e160dea29c335f30d0', 'The clinic staff went above and beyond to ensure my comfort and satisfaction. From the warm welcome at the reception to the caring nurses and doctors, their exceptional customer service truly stood out.', 'Exceptional Customer Service', GETDATE()),
-	( '1926f20e0d3c56f9a5e4d9dea3a1ca23' , '95b579fe61c622b5c50def9dccb66bdc', 'The clinic state-of-the-art facilities impressed me. The modern equipment and comfortable environment contributed to a positive and stress-free experience during my visit.', 'State-of-the-Art Facilities', GETDATE()),
-	( 'c7c84d9b4f86cab7091dfc674da2d233' , '86ae960dc44eba248c481d76520846c3', 'The doctors at this clinic are highly knowledgeable in their respective fields. They took the time to explain my condition thoroughly, addressing all my concerns and providing appropriate treatment options.', 'Knowledgeable Doctors', GETDATE()),
-	( 'b85f8bf4eef0d6343a8ac49e824fdb77' , '801b58e3d0b00f7f9f9eac80058f99f0' , 'The clinic appointment scheduling system is efficient and convenient. I appreciated how easy it was to book an appointment, and the staff ensured minimal waiting time, allowing me to manage my schedule effectively.' , 'Efficient Appointment Scheduling' , GETDATE() ),
-	( '3871a21957320daf0208624dea20b3db' , 'ca768c1b1876a2f286496e62666dfada' , 'The clinic staff were incredibly friendly and supportive throughout my entire visit. Their compassionate approach and willingness to help created a welcoming atmosphere.' , 'Friendly and Supportive Staff' , GETDATE() ),
-	( 'c3f1ad462249f3d02191d1a9a872e881' , '0a7a30124b6b4f266459a6b69677152c' , 'The clinic maintains a clean and hygienic environment, which is essential for any medical facility. I felt reassured knowing that proper sanitization measures were in place.' , 'Clean and Hygienic Environment' , GETDATE() ),
-	( 'b529c5b6c02436d52646b251135a8580' , 'ebcf025d47ee19d929f6707029df09d0' , 'The doctors at this clinic provided a timely and accurate diagnosis, which allowed for prompt treatment. Their expertise and attention to detail were commendable.' , 'Timely and Accurate Diagnosis' , GETDATE() ),
-	( '6b608c52effdd5d149613fd5ebf4c55c' , 'b7e4621ca7d7273ea67ba0b40992d189' , 'This clinic offers a wide range of comprehensive health services, catering to various medical needs. From routine check-ups to specialized treatments, they have it all under one roof.' , 'Comprehensive Health Services' , GETDATE() ),
-	( 'e4da29dfa2d7f2e893b7068eba2f2665' , '35847b5a3a8de7e0af06281b1d889bcf' , ' The clinic excels in communication. The doctors and staff listened attentively to my concerns and communicated clearly, ensuring I understood the treatment process and any necessary follow-up steps.' , 'Excellent Communication' , GETDATE() ),
-	( 'c208fe80be67e0ac443894edf9048959' , 'ca05b981160139795fbf616bfd5d491b' , 'The clinic provides personalized care tailored to each patient needs. They took the time to understand my unique circumstances, ensuring a personalized and effective treatment plan.' , 'Personalized Care' , GETDATE() ),
-	( 'd968f7543b03fafc1e2c306edbe73cd5' , '3967200752865b1bb65a63f386925d14' , 'I appreciated the clinic holistic approach to health. They emphasized preventive measures, lifestyle recommendations, and complementary therapies alongside traditional medical treatments.' , 'Holistic Approach to Health' , GETDATE() ),
-	( '95e8fffd6181170d848151e13d25c397' , '943b4c67a61164d245ea5af7f3848a37' , 'The clinic has a positive and welcoming atmosphere that immediately put me at ease. The friendly smiles and supportive environment contributed to a stress-free experience.' , 'Positive Atmosphere' , GETDATE() ),
-	( 'bfbc8861190e55a089b0c4afc1c41a07' , '040c93cff9c0cc5cd6d008fb02e17b69' , 'The clinic maintains transparent pricing practices. They provided detailed explanations of the costs involved, ensuring there were no surprises or hidden fees.' , 'Transparent Pricing' , GETDATE() ),
-	( '4dcb301699e281d9eda42ee915f8c91d' , '3841cd8942a581d2092ff1d3739fcebc' , 'The clinic efficient follow-up procedures impressed me. They promptly scheduled any necessary follow-up appointments and ensured continuity of care.' , 'Efficient Follow-up Procedures' , GETDATE() ),
-	( '3f8c2d5acfcad832c564afe05fdc4dd2' , '4a160bb951e81bb14485ab90391d0c58' , 'This clinic integrates modern technology into their practice. From electronic medical records to advanced diagnostic tools, their commitment to innovation was evident.' , 'Modern Technology Integration' , GETDATE() ),
-	( '1c693b7b7f4f3967d56242710d4a6925' , '0bb8e03d00ecc7642c5142de8f12a335' , 'The nursing staff at this clinic are well-trained and attentive. They provided excellent care and were always available to address any concerns.' , 'Well-Trained Nursing Staff' , GETDATE() ),
-	( '02025191b401a33ee5d5dbf672b0d9cd' , 'aeed52468a0d9880fa013c611816e897' , 'The clinic places a strong emphasis on patient education. They provided me with valuable information about my condition, empowering me to make informed decisions about my health.' , 'Emphasis on Patient Education' , GETDATE() ),
-	( 'f31300a92d53523f7c9e63f082429559' , 'cde92de8a056398e6a281dba87bdffb1' , 'The clinic convenient location made it easily accessible. Its proximity to public transportation and ample parking options were a great convenience.' , 'Convenient Location' , GETDATE() ),
-	( '021c8752a33aa45ffaabbc24b9718c65' , '6c3b331b0cde4d503944f2f16f979c93' , 'The clinic fostered a respectful and non-judgmental environment. The staff treated everyone with dignity and respect, creating a safe space for patients.' , 'Respectful and Non-Judgmental Environment' , GETDATE() ),
-	( '2b72c3de10429d9be2c5b7f6fb799eb7' , 'b6b447b56dbe005a626c4b5e3fdb97be' , 'The clinic provided comprehensive follow-up support. They were proactive in ensuring my progress and addressing any post-treatment concerns.' , 'Comprehensive Follow-up Support' , GETDATE() ),
-	( 'b3ce71cf9331b8139a30efa95f01af8a' , 'a61de36f81c0f699a8653863ea9e3d2f' , ' The clinic prescription services were efficient and hassle-free. The staff promptly processed my prescriptions, minimizing any inconvenience.' , 'Efficient Prescription Services' , GETDATE() ),
-	( 'c83755957ea168197e2362912cd8ebdc' , '47b601885ddc891de11eb62451a97b43' , 'The clinic empathetic approach towards patients is commendable. They genuinely cared about my well-being and showed understanding throughout my treatment.' , ' Empathetic Approach' , GETDATE() ),
-	( 'a413ed3e5df4149bb41c5a55ab70cca8' , '2f7294ec43136a43ca696ad6f06e1635' , 'The clinic multilingual staff was a great advantage for patients from diverse backgrounds. The ability to communicate in different languages facilitated effective doctor-patient interactions.' , 'Multilingual Staff' , GETDATE() ),
-	( 'b2e26005217a74208df092883606602e' , '090f345a844fedfb9ca86ff69b59d969' , 'This clinic offers comprehensive health assessments that provide a thorough understanding of a patient overall health. Their in-depth evaluations go beyond conventional check-ups.' , 'Comprehensive Health Assessments' , GETDATE() ),
-	( '288269426198f8724d0da8a362f7cc2d' , 'd2601ee48263e69982e4dbd809c0358a' , 'The clinic excels in pain management. They provided effective treatments and therapies that significantly alleviated my discomfort.' , 'Effective Pain Management' , GETDATE() ),
-	( '6d8e4dfa0f9a9938e767039bba8c43b4' , 'e221bebf131b7773da0045982e018fba' , 'The clinic waiting area is welcoming and comfortable. The pleasant ambiance and thoughtful amenities helped create a relaxed atmosphere.' , 'Welcoming Waiting Area' , GETDATE() ),
-	( 'af5013fa896bf00600b23c7a8b4995d4' , '85c10fd22fe836139fd76fbaee831673' , 'I was impressed by the clinic efficiency in delivering test results. They provided prompt updates, ensuring timely decisions regarding further treatment, if needed.' , 'Prompt Test Results' , GETDATE() ),
-	( '79fbd660392170136d71bf85a359acd2' , '7caa694dda6e1cf8c0993cf301c84bba' , 'The clinic collaborates with specialists across various medical disciplines, ensuring patients receive comprehensive and well-rounded care.' , 'Collaboration with Specialists' , GETDATE() ),
-	( '4b9e4136b9380ce6264eba99e7cbecaa' , 'b7ad6a62013acd21497265b6f7ff74eb' , 'The clinic post-procedure care was exceptional. The staff provided clear instructions for post-treatment care and were available to answer any questions or concerns.' , 'Supportive Post-Procedure Care' , GETDATE() ),
-	( 'bc049c5b9cc23a7252cd02aaef7d6571' , '3427f117121dd0789b94a37ef63b64dc' , 'This clinic demonstrates a commitment to continuous improvement. They actively seek feedback from patients to enhance their services and overall patient experience.' , 'Commitment to Continuous Improvement' , GETDATE());
+('87599195136fd0440b341eed32d36c84', '1a27a82eb264532c271baf05c7a6e10d', 9 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
+('87599195136fd0440b341eed32d36c84', 'c93c634859e543a562441ca36f9bd9f0', 9 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
+('87599195136fd0440b341eed32d36c84', 'd0141bd1067e2f534fd908b54a72a1ff', 9 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
+('4d0ac1b5e6f8e2e4ee256c4c2031b1d2', '7c7f0e401b7926cb956e1e798e7d6664', 12 , N'sáng: 1, trưa: 1, chiều: 1, tối: 1'),
+('4d0ac1b5e6f8e2e4ee256c4c2031b1d2', '2b1937a02cb1cc8255ecfeb8dc38c5d2', 6 , N'sáng: 1, trưa: 0, chiều: 1, tối: 0'),
+('4d0ac1b5e6f8e2e4ee256c4c2031b1d2', '589ff60828e99f431d7f07d8ef62baff', 12 , N'sáng: 1, trưa: 1, chiều: 1, tối: 1'),
+('4d0ac1b5e6f8e2e4ee256c4c2031b1d2', 'f9a7dfe69faaaf1f0c2dc348c0254d50', 9 , N'sáng: 0, trưa: 1, chiều: 1, tối: 1'),
+('b356f8672801e4820bd72b17dbda7764', '5f7fb0d98491f5efdf52623a7d4839aa', 12 , N'sáng: 1, trưa: 1, chiều: 1, tối: 1'),
+('b356f8672801e4820bd72b17dbda7764', '8e89704ade7f8e48da32ce2d6bb15054', 9 , N'sáng: 1, trưa: 0, chiều: 1, tối: 0'),
+('b356f8672801e4820bd72b17dbda7764', '7c7f0e401b7926cb956e1e798e7d6664', 9 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
+('b356f8672801e4820bd72b17dbda7764', 'e365252333bf5bd19b86b828e64b0eb0', 6 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
+('b356f8672801e4820bd72b17dbda7764', '7c6164ddf235787f5d1e2d8f4540c838', 4 , N'sáng: 1, trưa: 0, chiều: 1, tối: 1'),
+('32fe2542e25434a1acde0f6edff2f0b4', '9faeec1795e05223ab80bf4d06971616', 4 , N'sáng: 1, trưa: 0, chiều: 1, tối: 1'),
+('21def0e373e1e8d57d1ab5f339726167', '9e9af1d637a369cdaf6bac028b8bd813', 3 , N'sáng: 1, trưa: 0, chiều: 0, tối: 0'),
+('21def0e373e1e8d57d1ab5f339726167', '9faeec1795e05223ab80bf4d06971616', 3 , N'sáng: 1, trưa: 0, chiều: 0, tối: 0'),
+('4aa48bfce29088db4424a1b921e2be55', '9dc94408c0e9b062a5cdd03830011d72', 4 , N'sáng: 0, trưa: 1, chiều: 1, tối: 0'),
+('4aa48bfce29088db4424a1b921e2be55', '7c6164ddf235787f5d1e2d8f4540c838', 6 , N'sáng: 0, trưa: 1, chiều: 1, tối: 1'),
+('4aa48bfce29088db4424a1b921e2be55', '124b0999a2e3a37b30f8b4d4196d5666', 4 , N'sáng: 0, trưa: 1, chiều: 1, tối: 0'),
+('154aa8864b0445239a1c8cf636ce8164', '124b0999a2e3a37b30f8b4d4196d5666', 6 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
+('154aa8864b0445239a1c8cf636ce8164', '9dc94408c0e9b062a5cdd03830011d72', 6 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
+('154aa8864b0445239a1c8cf636ce8164', 'f9a7dfe69faaaf1f0c2dc348c0254d50', 6 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
+('154aa8864b0445239a1c8cf636ce8164', '8e89704ade7f8e48da32ce2d6bb15054', 6 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
+('b72e56f3705781fdfaa652dabbefd8b4', 'd0141bd1067e2f534fd908b54a72a1ff', 9 , N'sáng: 1, trưa: 1, chiều: 1, tối: 1'),
+('b72e56f3705781fdfaa652dabbefd8b4', 'c69f4b52c792233f31e11393012e5e19', 9 , N'sáng: 1, trưa: 1, chiều: 1, tối: 1'),
+('96f71fd09596eeda17b234c2a87b783f', '9dc94408c0e9b062a5cdd03830011d72', 9 , N'sáng: 1, trưa: 1, chiều: 1, tối: 1'),
+('de9aa8254527b52b336a60f9373740ea', '9faeec1795e05223ab80bf4d06971616', 9 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
+('de9aa8254527b52b336a60f9373740ea', 'f9a7dfe69faaaf1f0c2dc348c0254d50', 3 , N'sáng: 0, trưa: 0, chiều: 1, tối: 0'),
+('de9aa8254527b52b336a60f9373740ea', '5f7fb0d98491f5efdf52623a7d4839aa', 3 , N'sáng: 0, trưa: 0, chiều: 1, tối: 0'),
+('de9aa8254527b52b336a60f9373740ea', 'e365252333bf5bd19b86b828e64b0eb0', 3 , N'sáng: 0, trưa: 0, chiều: 1, tối: 0'),
+('de9aa8254527b52b336a60f9373740ea', '8e89704ade7f8e48da32ce2d6bb15054', 3 , N'sáng: 0, trưa: 0, chiều: 1, tối: 0'),
+('21879306649bc1429b0f6d9d57217356', '1a27a82eb264532c271baf05c7a6e10d', 10 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
+('21879306649bc1429b0f6d9d57217356', 'c93c634859e543a562441ca36f9bd9f0', 10 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
+('21879306649bc1429b0f6d9d57217356', '2b1937a02cb1cc8255ecfeb8dc38c5d2', 12 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
+('56e00973cbc998b7ddce6cdc45b3cd25', '589ff60828e99f431d7f07d8ef62baff', 6 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
+('56e00973cbc998b7ddce6cdc45b3cd25', '7c7f0e401b7926cb956e1e798e7d6664', 6 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
+('56e00973cbc998b7ddce6cdc45b3cd25', 'd0141bd1067e2f534fd908b54a72a1ff', 4 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
+('8c6abf5a30122f683a29871b67190785', '976f58180ccfd7c80f492b1665fd003a', 8 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
+('8c6abf5a30122f683a29871b67190785', '9faeec1795e05223ab80bf4d06971616', 8 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
+('8c6abf5a30122f683a29871b67190785', '9e9af1d637a369cdaf6bac028b8bd813', 8 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
+('65a4f559051183b9a50cda6876422baa', '2b1937a02cb1cc8255ecfeb8dc38c5d2', 6 , N'sáng: 1, trưa: 0, chiều: 1, tối: 0'),
+('65a4f559051183b9a50cda6876422baa', '5f7fb0d98491f5efdf52623a7d4839aa', 8 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
+('3db65ac8adaadf9ff8fc0d6ef26111a6', 'd0141bd1067e2f534fd908b54a72a1ff', 4 , N'sáng: 1, trưa: 0, chiều: 0, tối: 1'),
+('3db65ac8adaadf9ff8fc0d6ef26111a6', '9dc94408c0e9b062a5cdd03830011d72', 6 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
+('3db65ac8adaadf9ff8fc0d6ef26111a6', '7c7f0e401b7926cb956e1e798e7d6664', 8 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0');
 
-INSERT INTO Blog (blogID, title, upload, category, blogContent)
+INSERT INTO Feedback (feedbackID, appointmentID, feedbackContent, title, feedbackTime, rating)	
 VALUES
-	( '36c8417c829ea8b07014eb3ca7946fb0', 'Những kinh nghiệm quý báu khi nuôi chim sâu xanh', GETDATE(), 'kinh nghiệm nuôi chim', 'Ngoài việc được biết đến là một loài chim có ích cho cuộc sống con người. Chim sâu xanh còn được biết đến là một loại chim cảnh. Mặc dù việc nuôi chim sâu xanh không phải là khó nhưng cũng đòi hỏi ở người nuôi sự tỉ mỉ kì công.
+	( 'a4e6c35adb5663181253e2c610ceb080' , 'a6a837e5d05e57e160dea29c335f30d0', N'Các nhân viên phòng khám đã vượt lên trên tất cả để đảm bảo sự thoải mái và hài lòng cho tôi. Từ sự chào đón nồng nhiệt tại quầy lễ tân đến các y tá và bác sĩ tận tình, dịch vụ khách hàng đặc biệt của họ thực sự nổi bật.', N'Dịch vụ khách hàng rất tốt', GETDATE(), 5),
+	( '1926f20e0d3c56f9a5e4d9dea3a1ca23' , '95b579fe61c622b5c50def9dccb66bdc', N'Cơ sở vật chất hiện đại của phòng khám đã gây ấn tượng với tôi. Các thiết bị hiện đại và môi trường thoải mái đã góp phần tạo nên trải nghiệm tích cực và không căng thẳng trong chuyến thăm của tôi.', N'Cơ sở vật chất hiện đại', GETDATE(), 4.5),
+	( 'c7c84d9b4f86cab7091dfc674da2d233' , '86ae960dc44eba248c481d76520846c3', N'Các bác sĩ tại phòng khám này có kiến ​​thức cao trong lĩnh vực tương ứng của họ. Họ đã dành thời gian để giải thích cặn kẽ về tình trạng cho chim của tôi, giải đáp mọi lo lắng của tôi và đưa ra các phương án điều trị thích hợp.', N'Bác sĩ chuyên nghiệp', GETDATE(), 4),
+	( 'b85f8bf4eef0d6343a8ac49e824fdb77' , '801b58e3d0b00f7f9f9eac80058f99f0' , N'Hệ thống đặt lịch hẹn phòng khám là hiệu quả và thuận tiện. Tôi đánh giá cao việc đặt lịch hẹn dễ dàng như thế nào và nhân viên đảm bảo giảm thiểu thời gian chờ đợi, cho phép tôi quản lý lịch trình của mình một cách hiệu quả.' , N'Lên lịch hẹn hiệu quả' , GETDATE(), 4.5 ),
+	( '3871a21957320daf0208624dea20b3db' , 'ca768c1b1876a2f286496e62666dfada' , N'Các nhân viên phòng khám có vẻ coi thường tôi, họ nói chuyện với tôi một cách cẩu thả và qua loa nhưng may là vẫn được các bác sĩ nói chuyện thân thiện và nhiệt tình' , N'Nhân viên không thân thiện' , GETDATE(), 2.5 ),
+	( 'c3f1ad462249f3d02191d1a9a872e881' , '0a7a30124b6b4f266459a6b69677152c' , N'Phòng khám duy trì một môi trường sạch sẽ và hợp vệ sinh, điều cần thiết cho bất kỳ cơ sở y tế nào. Tôi cảm thấy yên tâm khi biết rằng các biện pháp vệ sinh phù hợp đã được áp dụng.' , N'Môi trường sạch sẽ và hợp vệ sinh' , GETDATE(), 4),
+	( 'b529c5b6c02436d52646b251135a8580' , 'ebcf025d47ee19d929f6707029df09d0' , N'Các bác sĩ tại phòng khám này đã đưa ra chẩn đoán kịp thời và chính xác, cho phép điều trị kịp thời. Chuyên môn và sự chú ý của họ đến từng chi tiết rất đáng khen ngợi.' , N'Chẩn đoán kịp thời và chính xác' , GETDATE(), 4.5 ),
+	( '6b608c52effdd5d149613fd5ebf4c55c' , 'b7e4621ca7d7273ea67ba0b40992d189' , N'Phòng khám này cung cấp các dịch vụ y tế tạm được, chỉ phục vụ cho các nhu cầu y tế, không có quá nhiều dịch vụ.' , N'Dịch vụ Y tế tạm được' , GETDATE(), 3 ),
+	( 'e4da29dfa2d7f2e893b7068eba2f2665' , '35847b5a3a8de7e0af06281b1d889bcf' , N'Phòng khám vượt trội trong giao tiếp. Các bác sĩ và nhân viên chăm chú lắng nghe những lo lắng của tôi và truyền đạt rõ ràng, đảm bảo rằng tôi hiểu rõ quá trình điều trị và bất kỳ bước tiếp theo cần thiết nào.' , N'Giao tiếp xuất sắc' , GETDATE(), 5 ),
+	( 'c208fe80be67e0ac443894edf9048959' , 'ca05b981160139795fbf616bfd5d491b' , N'Phòng khám cung cấp dịch vụ chăm sóc cá nhân phù hợp với từng nhu cầu của bệnh nhân. Họ đã dành thời gian để hiểu hoàn cảnh đặc biệt của chim tôi, đảm bảo một kế hoạch điều trị cá nhân và hiệu quả.' , N'Chăm sóc cá nhân' , GETDATE(), 5 ),
+	( 'd968f7543b03fafc1e2c306edbe73cd5' , '3967200752865b1bb65a63f386925d14' , N'Tôi đánh giá cao cách tiếp cận toàn diện của phòng khám đối với sức khỏe. Họ nhấn mạnh các biện pháp phòng ngừa, khuyến nghị về lối sống và các liệu pháp bổ sung bên cạnh các phương pháp điều trị y tế truyền thống.' , N'Phương pháp tiếp cận toàn diện đối với sức khỏe' , GETDATE(), 5 ),
+	( '95e8fffd6181170d848151e13d25c397' , '943b4c67a61164d245ea5af7f3848a37' , N'Phòng khám có một bầu không khí tích cực và chào đón khiến tôi cảm thấy thoải mái ngay lập tức. Những nụ cười thân thiện và môi trường hỗ trợ đã góp phần tạo nên trải nghiệm không căng thẳng.' , N'bầu không khí tích cực' , GETDATE(), 5 ),
+	( 'bfbc8861190e55a089b0c4afc1c41a07' , '040c93cff9c0cc5cd6d008fb02e17b69' , N'Phòng khám duy trì thực hành giá cả minh bạch. Họ cung cấp giải thích chi tiết về các chi phí liên quan, đảm bảo không có bất ngờ hoặc phí ẩn.' , 'Định giá minh bạch' , GETDATE(), 5 ),
+	( '4dcb301699e281d9eda42ee915f8c91d' , '3841cd8942a581d2092ff1d3739fcebc' , N'Các quy trình theo dõi hiệu quả của phòng khám đã gây ấn tượng với tôi. Họ nhanh chóng lên lịch cho bất kỳ cuộc hẹn tiếp theo cần thiết nào và đảm bảo sự chăm sóc liên tục.' , N'Quy trình theo dõi hiệu quả' , GETDATE(), 5 ),
+	( '3f8c2d5acfcad832c564afe05fdc4dd2' , '4a160bb951e81bb14485ab90391d0c58' , N'Phòng khám này tích hợp công nghệ hiện đại vào thực hành của họ. Từ hồ sơ y tế điện tử đến các công cụ chẩn đoán tiên tiến, cam kết đổi mới của họ là điều hiển nhiên.' , N'Tích Hợp Công Nghệ Hiện Đại' , GETDATE(), 5 ),
+	( '1c693b7b7f4f3967d56242710d4a6925' , '0bb8e03d00ecc7642c5142de8f12a335' , N'Các nhân viên điều dưỡng tại phòng khám này được đào tạo bài bản và chu đáo. Họ đã cung cấp dịch vụ chăm sóc tuyệt vời và luôn sẵn sàng giải quyết bất kỳ mối lo ngại nào.' , N'Nhân viên điều dưỡng được đào tạo bài bản' , GETDATE(), 4 ),
+	( '02025191b401a33ee5d5dbf672b0d9cd' , 'aeed52468a0d9880fa013c611816e897' , N'Phòng khám đặt trọng tâm mạnh mẽ vào lời khuyên dành cho chim. Họ cung cấp cho tôi những thông tin có giá trị về tình trạng của chim, giúp tôi đưa ra những quyết định sáng suốt về sức khỏe của chim.' , N'Chú trọng vào lời khuyên chăm sóc chim' , GETDATE(), 5),
+	( 'f31300a92d53523f7c9e63f082429559' , 'cde92de8a056398e6a281dba87bdffb1' , N'Vị trí thuận tiện của phòng khám làm cho nó dễ dàng tiếp cận. Vị trí gần với phương tiện giao thông công cộng và nhiều lựa chọn đỗ xe là một sự thuận tiện tuyệt vời.' , N'Vị trí thuận tiện' , GETDATE(), 5 ),
+	( '021c8752a33aa45ffaabbc24b9718c65' , '6c3b331b0cde4d503944f2f16f979c93' , N'Phòng khám nuôi dưỡng một môi trường tôn trọng và không phán xét. Các nhân viên đối xử với mọi người một cách đàng hoàng và tôn trọng, tạo ra một không gian an toàn cho chim.' , N'Môi trường tôn trọng và không phán xét' , GETDATE(), 4.5 ),
+	( '2b72c3de10429d9be2c5b7f6fb799eb7' , 'b6b447b56dbe005a626c4b5e3fdb97be' , N'Phòng khám cung cấp hỗ trợ theo dõi toàn diện. Họ đã chủ động trong việc đảm bảo sự tiến bộ của chim và giải quyết mọi vấn đề sau điều trị.' , N'Hỗ trợ theo dõi toàn diện' , GETDATE(), 5),
+	( 'b3ce71cf9331b8139a30efa95f01af8a' , 'a61de36f81c0f699a8653863ea9e3d2f' , N'Các dịch vụ theo toa của phòng khám rất hiệu quả và không rắc rối. Các nhân viên đã nhanh chóng xử lý đơn thuốc cho chim, giảm thiểu bất kỳ sự bất tiện nào.' , N'Dịch vụ kê đơn hiệu quả' , GETDATE(), 5 ),
+	( 'c83755957ea168197e2362912cd8ebdc' , '47b601885ddc891de11eb62451a97b43' , N'Cách tiếp cận đồng cảm của phòng khám đối với bệnh nhân là đáng khen ngợi. Họ thực sự quan tâm đến sức khỏe của chim và thể hiện sự thấu hiểu trong suốt quá trình điều trị cho chim.' , N' Cách tiếp cận đồng cảm' , GETDATE(), 4.5 ),
+	( 'a413ed3e5df4149bb41c5a55ab70cca8' , '2f7294ec43136a43ca696ad6f06e1635' , N'Đội ngũ nhân viên đa ngôn ngữ của phòng khám là một lợi thế lớn cho bệnh nhân đến từ nhiều nguồn gốc khác nhau. Khả năng giao tiếp bằng các ngôn ngữ khác nhau tạo điều kiện cho các tương tác hiệu quả giữa bác sĩ và chim của khách hàng.' , N'Bác sĩ giỏi ngoại ngữ' , GETDATE(), 5 ),
+	( 'b2e26005217a74208df092883606602e' , '090f345a844fedfb9ca86ff69b59d969' , N'Phòng khám này cung cấp các đánh giá sức khỏe toàn diện nhằm cung cấp sự hiểu biết thấu đáo về sức khỏe tổng thể của chim. Những đánh giá chuyên sâu của họ vượt xa các cuộc kiểm tra thông thường.' , N'Đánh giá sức khỏe toàn diện' , GETDATE(), 5 ),
+	( '288269426198f8724d0da8a362f7cc2d' , 'd2601ee48263e69982e4dbd809c0358a' , N'Phòng khám vượt trội trong quản lý đau. Họ cung cấp các phương pháp điều trị và trị liệu hiệu quả làm giảm đáng kể sự khó chịu của chim.' , 'Quản lý cơn đau hiệu quả' , GETDATE(), 5 ),
+	( '6d8e4dfa0f9a9938e767039bba8c43b4' , 'e221bebf131b7773da0045982e018fba' , N'Khu vực chờ của phòng khám được chào đón và thoải mái. Bầu không khí dễ chịu và các tiện nghi chu đáo đã giúp tạo ra một bầu không khí thoải mái.' , N'Khu vực chờ thoải mái' , GETDATE(), 5 ),
+	( 'af5013fa896bf00600b23c7a8b4995d4' , '85c10fd22fe836139fd76fbaee831673' , N'Tôi rất ấn tượng bởi hiệu quả của phòng khám trong việc cung cấp kết quả xét nghiệm. Họ cung cấp thông tin cập nhật nhanh chóng, đảm bảo các quyết định kịp thời liên quan đến điều trị tiếp theo, nếu cần.' , N'Kết quả kiểm tra nhanh chóng' , GETDATE(), 5 ),
+	( '79fbd660392170136d71bf85a359acd2' , '7caa694dda6e1cf8c0993cf301c84bba' , N'Phòng khám hợp tác với các chuyên gia trong các lĩnh vực y tế khác nhau, đảm bảo chim được chăm sóc toàn diện.' , N'Hợp tác với Chuyên gia' , GETDATE(), 5 ),
+	( '4b9e4136b9380ce6264eba99e7cbecaa' , 'b7ad6a62013acd21497265b6f7ff74eb' , N'Dịch vụ chăm sóc hậu phẫu của phòng khám thật đặc biệt. Các nhân viên cung cấp các hướng dẫn rõ ràng về chăm sóc sau điều trị và sẵn sàng giải đáp mọi thắc mắc hoặc lo lắng.' , N'Chăm sóc hỗ trợ sau thủ thuật' , GETDATE(), 4.5 ),
+	( 'bc049c5b9cc23a7252cd02aaef7d6571' , '3427f117121dd0789b94a37ef63b64dc' , N'Phòng khám này thể hiện cam kết cải tiến liên tục. Họ tích cực tìm kiếm phản hồi từ khách hàng để nâng cao dịch vụ của họ và trải nghiệm tổng thể của khách hàng và chim.' , N'Cam kết cải tiến liên tục' , GETDATE(), 4.5);
+
+INSERT INTO Blog (blogID, title, uploadDatetime, category, blogContent)
+VALUES
+	( '36c8417c829ea8b07014eb3ca7946fb0', N'Những kinh nghiệm quý báu khi nuôi chim sâu xanh', GETDATE(), N'kinh nghiệm nuôi chim', N'Ngoài việc được biết đến là một loài chim có ích cho cuộc sống con người. Chim sâu xanh còn được biết đến là một loại chim cảnh. Mặc dù việc nuôi chim sâu xanh không phải là khó nhưng cũng đòi hỏi ở người nuôi sự tỉ mỉ kì công.
 	Nhưng nếu bạn là một người có tình cảm đặc biệt với những chú chim này thì đó không phải là vấn đề gì quá khó khăn. Để giúp bạn có thêm kinh nghiệm trong việc chăm sóc những chú chim đáng yêu này mời bạn theo dõi bài viết của chúng tôi dưới đây.Nghe tên gọi thôi là chúng ta có thể đoán được loài chim cảnh nhỏ nhắn đáng yêu này thích ăn gì rồi phải không nào.
 	Chúng có thể ăn được các loại sâu tồn tại trong thiên nhiên vì đây là một loại thức ăn chính để chúng tồn tại. Tuy nhiên trong điều kiện nuôi nhốt ở trong lồng ngoài việc cho ăn các loài sâu trong tự nhiên ra.
 	Thì bạn cần phải bổ sung cho chúng thêm một số thức ăn khác như trứng kiến, hoặc cám. Những loại thức ăn này đều có thể mang tới cho chúng được một chế độ dinh dưỡng hợp lý để chúng có thể phát triển toàn diện nhất.
 	Lồng nuôi cho chi sâu xanh tốt nhất là nên chọn lông tre có chiều cao vừa phải vì như chúng ta đã biết thì kích thước của chim sâu xanh khá nhỏ nên nếu không lựa chọn được lồng hợp lý sẽ khó có thể mang tới cho chúng môt cuộc sống thoải mái nhất. 
 	Bên trong lồng nên để 1 khay đựng cám ( loại cám mà bạn hay mua ở những của hàng chim) một khay đựng sâu khô để đảm bảo được lượng thức ăn cho chúng. 
 	Ngoài ra một điều kiện bắt buộc phải có đó chính là nước nước, nếu bạn ở thành thị nước máy thì bạn nên xử lý qua để bớt clo. Mặc dù món ăn khoái khẩu của loài chim này là sâu tuy nhiên sâu mà chúng ta mua tại các cửa hàng không thể chất lượng bằng sâu mà chúng tự kiếm trong thiên nhiên được nên phải hạn chế và cho chúng ăn một số lượng cụ thể đừng lạm dụng sẽ khiến cho sức khỏe của chúng không được ổn định'),
-	( '40f3cc38ef656d749d2e2a368b59711e', 'Cách phân biệt chim sâu xanh trống mái chính xác nhất',  GETDATE(), 'phân biệt chim',
-	'Việc phân biệt chim sâu xanh đối khó vì chúng khá giống nhau, vì bộ long chúng chưa hoàn thiện nên các bạn chỉ nhìn đảo qua một vài lần và so sánh. Không nên nhìn chằm chằm vào 1 con, nhìn lâu sinh ra hiện tượng hoa mắt, cuối cùng là con nào cũng như nhau, nên không phân biệt được.
+	( '40f3cc38ef656d749d2e2a368b59711e', N'Cách phân biệt chim sâu xanh trống mái chính xác nhất',  GETDATE(), N'phân biệt chim',
+	N'Việc phân biệt chim sâu xanh đối khó vì chúng khá giống nhau, vì bộ long chúng chưa hoàn thiện nên các bạn chỉ nhìn đảo qua một vài lần và so sánh. Không nên nhìn chằm chằm vào 1 con, nhìn lâu sinh ra hiện tượng hoa mắt, cuối cùng là con nào cũng như nhau, nên không phân biệt được.
 	Mời bạn theo giỏi bài viết sau đây để nhận biết chim sâu xanh trống mái một cách chính xác nhất.1. Phân biệt sâu đầu xanh chuyền trống, mái.
 	Với những chú chim sâu đang bay chuyển thì việc phân biệt chim không phải là điều đơn giản nhất là đối với những người không có quá nhiều kinh nghiệm. 
 	Sở dĩ việc này rất khó bởi lúc chim đang chuyển là lúc chúng đang hoàn thiện về bộ lông. Bạn có thể phân biệt chim sâu xanh trông mái bằng cách nhìn viền lông trước ngực. 
 	Nếu chú chim nào có ngực đen đậm cùng với đó 2 sợi lông đuôi dài hơn so với lông ở những chỗ khác thì đó là chú chim trống. 
 	Còn ngược lại những chú chim sâu xanh thì lông ở viền ngực sẽ nhạt hơn rất nhiều không có 2 sợi như chú chim trống.'),
-	( 'ff9086582c62af630123c568ca5db776', 'Top những loài chim cảnh biết nói thông minh nhất thế giới', GETDATE(), 'Top loài chim',
-'1. Chim Yến Phụng.
+	( 'ff9086582c62af630123c568ca5db776', N'Top những loài chim cảnh biết nói thông minh nhất thế giới', GETDATE(), N'Top loài chim',
+N'1. Chim Yến Phụng.
 	Yến Phụng là một loài chim cực kì thông minh và có khả năng bất bước tiếng người cực kì giỏi. Chỉ cần chủ nhân của chúng dành nhiều thời gian để dạy dỗ chúng có thể nhớ được rất nhiều từ. 
 	Chúng cũng rất hiền lành và thân thiện với con người đặc biệt sở hữu một bộ lông sặc sỡ rất bắt mắt nên thường được lựa chọn để làm chim cảnh trong nhà. 
 	Theo những người có kinh nghiệm nhận xét rằng một chú Vẹt Yến Phụng đực có khả năng bắt chước và phát âm chuẩn xác hơn so với những chú Vẹt Cái
@@ -1470,8 +1368,8 @@ VALUES
 	Trong số những loại chim cảnh biết nối thì Yểng được đánh giá cao nhất về khả năng phát âm chính xác và chuẩn về ngữ điều đến bất ngờ. Loài chim này cũng rất mau mồm mau miêng lúc hứng lên chúng có thể nói cả ngày không chán. 
 	Chúng sở hữu một màu lông xanh đen với chiếc mở màu được tô điểm bới lông sọc vàng. Thức ăn yêu thích của loài Yểng này là côn trùng và trái cây. 
 	Đây cũng là một loại chim cảnh rất được ưa chuộng tại Việt Nam'),
-	( '9b5aefbcffbf716f526dda302be5cdef' , 'Nuôi chim họa mi quan trọng nhất điều gì' , GETDATE() , 'kinh nghiệm nuôi chim' ,
-'1. Về thức ăn dành cho chim họa mi.
+	( '9b5aefbcffbf716f526dda302be5cdef' , N'Nuôi chim họa mi quan trọng nhất điều gì' , GETDATE() , N'kinh nghiệm nuôi chim' ,
+N'1. Về thức ăn dành cho chim họa mi.
 	Đúc kết kinh nghiệm từ những người nuôi chim họa mi trên khắp cả nước thức ăn dành cho chim họa mi đóng một vai trò không hề nhỏ quyết định đến ngoại hình, tính cách và giọng hót của chim. 
 	Vốn dĩ là một loài chim ở rừng núi họa mi tự nhiên ăn khá tạp chúng thích ăn côn trùng. Khi được thuần hóa và trở thành chim cảnh trong nhà thì chim được người nuôi cho ăn 
 	cám và giới chơi chim nói rằng nếu đã cho chim ăn cám thì mãi mãi chỉ cho chim ăn cám. Lượng thức ăn bên ngoài khác như thịt, trừng kiến...bổ xung khi chim cần đến dinh 
@@ -1485,8 +1383,8 @@ VALUES
 3. Lưu ý đến việc tắm cho chim.
 	Chim rất cần được tắm nắng để bổ xung những vitamin thiết yếu cho bộ lông. Việc tắm nắng cho chim cũng đòi hỏi những kĩ thuật tỉ mỉ. Không nên để chim ở những nơi có ánh 
 	nắng quá gắt nên tắm nắng cho chim 1 ngày 1 lần. Tắm nước cũng vậy cũng rất cần thiết để chim vệ sinh bộ lông của mình giúp cho lông chim luôn được óng mượt. '),
-	( 'b1fa395c5fa8c10d20990274f0e57a85' , 'Những điều thú vị về tiếng chim hoạ mi hót' , GETDATE() , 'Những điều thú vị' ,
-	'Bất kì một người nuôi chim nào cũng mong muốn được nghe thứ âm thanh tuyệt vời ấy nhất là vào mỗi buổi sáng. Thứ âm thanh mà loại chim này mang lại cho người nghe cảm giác
+	( 'b1fa395c5fa8c10d20990274f0e57a85' , N'Những điều thú vị về tiếng chim hoạ mi hót' , GETDATE() , N'Những điều thú vị' ,
+	N'Bất kì một người nuôi chim nào cũng mong muốn được nghe thứ âm thanh tuyệt vời ấy nhất là vào mỗi buổi sáng. Thứ âm thanh mà loại chim này mang lại cho người nghe cảm giác
 	thoải mái, thư giản sau một ngày làm việc. Ẩn sâu trong tiếng hót mê hoặc ấy là những câu chuyện được giới chơi chim truyền lại. Vậy câu chuyện đó là gì? Hãy cùng tìm hiểu 
 	những điều thú vị trong tiếng hót của chim hoạ mi.
 	Nguồn gốc tiếng hót chim hoa mi qua câu truyện đầy thú vị.
@@ -1498,8 +1396,8 @@ VALUES
 	Những điều thú vị khác về tiếng hót chim họa mi
 	Câu truyện thú vị đó dường như đã ăn sâu vào tiềm thức của những người đam mê chim chân chính và cũng 1 phần có thể lý giải được tại sao người ta lại yêu họa mi đến như thế.
 	Vốn dĩ là một loài chim rụt rè nhút nhát, chim họa mi chỉ cất cao tiếng hát khi nó cảm thấy có cảm hứng cảm thấy mọi thứ xung quanh nó đều tốt đẹp.'),
-	( 'db635b18aeddd06818d3eaee86183bab' , 'TOP 5 loài chim chào mào hót hay được các đại gia săn lùng hiện nay' , GETDATE() , 'Top loài chim' , 
-	'Chim chào mào Huế
+	( 'db635b18aeddd06818d3eaee86183bab' , N'Top 5 loài chim chào mào hót hay được các đại gia săn lùng hiện nay' , GETDATE() , N'Top loài chim' , 
+	N'Chim chào mào Huế
 	Đến từ xứ Huế mộng mơ, mang trong mình giọng hót đặc trưng bởi vậy những chú chim xuất sắc luôn được các đại gia những người sành sỏi đi tìm. Đặc biệt giống chim này sở hữu
 	một chất giọng cực độc theo giới chuyên môn gọi là giọng thổ to. Khi cất tiếng hót thì tiếng nào ra tiếng đó mỗi lần cất giọng lên là ra liền 6, 7 âm. Chính vì sự đặc biệt 
 	của giống chim chào mào quý này đòi hỏi người chơi phải rất sành sỏi, lồng phải được thiết kế tỉ mỉ hơn so với lồng chim thông thường. Sở dĩ rất nhiều người yêu thích loài 
@@ -1511,8 +1409,8 @@ VALUES
 	giọng hót. Sau những giờ làm việc căng thẳng được thả hồn vào trong tiếng chim và nhâm nhi tách trà thư giãn chắc chắn rằng sẽ mang đến những giây phút yên bình và một sự 
 	bình an tĩnh lặng trong tâm hồn để nạp lại năng lượng cho những ngày làm việc mệt mỏi tiếp theo. Chính vì sự hiếm có, sự uy vũ trong ngoài hình, và tiếng hót độc lạ tất cả
 	những điều trên có thể lý giải được tại sao đây cũng là giống chào mào được đại gia săn lùng và mong muốn được bổ xung 1 chú vào trong bộ sưu tập chim cảnh của mình.'),
-	( 'a66a0292d3af450e99bd42136898c36b' , 'Chế độ dinh dưỡng cho chim chào mào đấu hót' , GETDATE() , 'kinh nghiệm nuôi chim' , 
-'1. Thức ăn chính
+	( 'a66a0292d3af450e99bd42136898c36b' , N'Chế độ dinh dưỡng cho chim chào mào đấu hót' , GETDATE() , N'kinh nghiệm nuôi chim' , 
+N'1. Thức ăn chính
 	Đối với chào mào, đây là loại chim không quá cầu kì trong nhu cầu dinh dưỡng, tuy nhiên chúng ta cũng cần phải đảm bảo nguồn cung cấp bổ sung vi chất dinh dưỡng mỗi ngày.
 	Cám chim là một trong số các loại thực phẩm chính cho chim chào mào hiện nay đang được nhiều người sử dụng, phần vì tính cơ động và đảm bảo được nguồn cung cấp dinh dưỡng 
 	hằng ngày của chúng. Mặt khác, ta có thể trộn cám với một số thành phần bên ngoài để tăng lượng dinh dưỡng và khẩu vị như: trứng vịt, trứng gà, thịt rắn mối, thịt bò, tôm 
@@ -1525,8 +1423,8 @@ VALUES
 	Nước uống sạch là đủ rồi, không cần phải đun sôi để nguội gì cả, tuy nhiên nên sử dụng nước để trong lu hoặc chum, tránh sử dụng trực tiếp nước máy nhiều Clorua như hiện nay.
 	Ngoài ra để chú chim của bạn khỏe mạnh mỗi ngày thì cần phải bổ sung chất vi chất dinh dưỡng - vô thuốc nữa. Tuy nhiên đây là con dao hai lưỡi, khi sử dụng thuốc phải hết sức 
 	cẩn thận và theo dõi sát sao bầy chim, phải hiểu thật rõ thì mới làm tránh những trường hợp đáng tiếc xảy ra.'),
-	( '0aa6e189009d5d7cf2a981e8387fff4d' , 'Cách nuôi chào mào đẻ chuẩn kĩ thuật nhất' , GETDATE() , 'kinh nghiệm nuôi chim' , 
-'1. Giai đoạn chuẩn bị 
+	( '0aa6e189009d5d7cf2a981e8387fff4d' , N'Cách nuôi chào mào đẻ chuẩn kĩ thuật nhất' , GETDATE() , N'kinh nghiệm nuôi chim' , 
+N'1. Giai đoạn chuẩn bị 
 
 	Đầu tiên bạn cần phải chuẩn bị từ việc chon chào mào trống mái và tách ly riêng chúng để cho cúng 1 chế độ chăm sóc đặc biệt nhất. Đối với những chú chim trông thì bạn có 
 	thể cho chúng ăn thêm một số loại đồ tươi để chúng có được một thể trạng tốt nhất trước khi ghép với chim mái. Còn những chú chim mái thì cầu kì hơn một chút ngoài những 
@@ -1539,8 +1437,8 @@ VALUES
 	để chúng có thể làm tổ. Trong ổ cũng nên bố trí cho chúng thêm các loại thức ăn để sau này những chú chim non ra đời có thể tập chuyển được một cách nhanh nhất.
 
 	Sau khi giai đoạn chuẩn bị lồng đã xong thì việc tiếp theo là bạn cho chào mào bắt cặp trống mái, sau khi đã thả con chim trống vào chuồng rồi tiếp theo bạn cho chú chim mái và quan sát nếu chúng ưng ghép cặp với nhau thì sẽ có biểu hiện ve cánh và cúi đầu còn chúng có biểu hiện chống trả thì bạn nên tách riêng chúng ra nếu không chúng sẽ đánh nhau đến chết nên bạn cần phải lưu ý đặc biệt. '),
-	( '3f37126f037169bb080a309c88524d38' , 'Cách lựa chọn chim chào mào đẹp nhất hiện nay' , GETDATE() , 'cách chọn chim' , 
-'1: Đầu và mào
+	( '3f37126f037169bb080a309c88524d38' , N'Cách lựa chọn chim chào mào đẹp nhất hiện nay' , GETDATE() , N'cách chọn chim' , 
+N'1: Đầu và mào
 
 	 Tất nhiên rồi nhưng chú chim chào mào được lựa chọn thì phải theo tiêu đầu điên là chiếc mào. Về cách lựa chọn mào  thì không ai giống ai nhưng heo ý kiến đánh giá của một
 	 số người đã có kinh nghiệm chơi chim lâu nắm thì bạn nên lựa chon những chú chim có gốc mào dày. Những chú chim này thường tỏ ra rất bản lĩnh và bền bỉ. Đầu chào mào thì 
@@ -1558,8 +1456,8 @@ VALUES
 4: Mình chim
 	Về mình chim thì bạn lựa chọn những chú chim nào không quá to cũng không quá bé, chỉ cần chúng trông thon gọn và thanh thoát thì sẽ giúp cho những chú chim có thể di 
 	chuyển thanh thoát nhất.'),
-	( '0251849dac885e1123e573388a937b6d' , 'Cách chăm chào mào bổi tốt nhất' , GETDATE() , 'kinh nghiệm nuôi chim' , 
-	'Cách chăm chào mào bổi luôn được sự quan tâm rất lớn từ thế giới những người yêu chim. Bởi đơn giản đây là dòng chim khó nuôi, cần sự tinh tế và kinh nghiệm lâu năm của 
+	( '0251849dac885e1123e573388a937b6d' , N'Cách chăm chào mào bổi tốt nhất' , GETDATE() , N'kinh nghiệm nuôi chim' , 
+	N'Cách chăm chào mào bổi luôn được sự quan tâm rất lớn từ thế giới những người yêu chim. Bởi đơn giản đây là dòng chim khó nuôi, cần sự tinh tế và kinh nghiệm lâu năm của 
 	người chăm sóc. Chim chào mào bổi sau khi huấn luyện xong nếu thành công bạn sẽ có những chú chim tuyệt vời nhất, vời hình thế vóc dáng lực lượng, oai phong và giọng hót
 	hàng ngày cực nịnh người.
 	Cách chăm chào mào bổi 
@@ -1571,8 +1469,8 @@ VALUES
 	Hãy để chút hoa quả như chuối, đu đủ, xoài… trong lồng hoặc chút cám chim. Đặc biệt là nước rất quan trọng, lúc nào trong lồng chim cũng nên chó chút nước sạch để sẵn.
 
 	Thời gian đầu chim chào mào bổi hơi nhát nên bạn đừng quá lo lắng nếu chúng khôn hót, hoặc không nhanh nhẹn như bình thường. Sau khoảng 1 tháng chim sẽ bắt đầu dạn dĩ dần.'),
-	( 'b17fbe0d73b2ebacedfb6ac1b284767c' , 'Các loại chim cảnh đẹp ở Việt nam được yêu thích nhất' , GETDATE() , 'Top loài chim' , 
-'1. Chim vàng anh
+	( 'b17fbe0d73b2ebacedfb6ac1b284767c' , N'Các loại chim cảnh đẹp ở Việt nam được yêu thích nhất' , GETDATE() , N'Top loài chim' , 
+N'1. Chim vàng anh
 
 	Vàng anh là một trong những loại chim cảnh ở Việt Nam chiếm được cảm tình nhiều nhất của những người sành chim cảnh. Sở hữu một một bộ lông vàng với thân hình nhỏ nhắn lại 
 	quá gần gũi với người việt khi từng được nhắc trong các câu truyện cỏ tích thì thời xa xưa. Không cần quá cầu kì trong cách nuôi dưỡng chăm sóc, không cần đòi hởi chủ nhân 
@@ -1597,8 +1495,8 @@ nga luyến láy. Những chú chim khuyên cũng được chia ra thành 2 lo�
 nhà. Với ngoại hình đẹp, với cái mào đặc trưng và những tách đỏ rất nổi bật loài chim này luôn rất được lòng cộng đồng yêu chim. Giọng hót của những chú chào mào cũng có nhiều 
 điểm rất đặc trưng kích thích rất nhiều người muốn tìm tòi khám phá. Hiện tại cộng đồng những người chơi chim chào mào tại nước ta vô cùng đồng đảo, đây cũng là một loài chim 
 cảnh đáng tự hào khi có những cuộc thi được tổ chúc thường xuyên nhất. '),
-	( 'adc8a1de829b5aca8cd6f8a94b4dbf0d' , 'Chia sẻ cách nuôi chim họa mi bổi' , GETDATE() , 'kinh nghiệm nuôi chim' , 
-	'Chim họa mi nổi tiếng là loài chim khó thuần, đặc biệt đối với họa mi bổi thì việc thuần hóa chúng là một việc khó khăn đòi hỏi tính kiên trì và thời gian. Nhưng nếu như 
+	( 'adc8a1de829b5aca8cd6f8a94b4dbf0d' , N'Chia sẻ cách nuôi chim họa mi bổi' , GETDATE() , N'kinh nghiệm nuôi chim' , 
+	N'Chim họa mi nổi tiếng là loài chim khó thuần, đặc biệt đối với họa mi bổi thì việc thuần hóa chúng là một việc khó khăn đòi hỏi tính kiên trì và thời gian. Nhưng nếu như 
 	bạn thành công thì chắc chắn rằng kết qua sẽ khiến bạn cảm thấy vô cùng hài lòng. Dưới đây xin chia sẻ với bạn cách nuôi chim họa mi bổi, đặc biệt lưu ý với loại chim này
 	bạn cần nhiều thời gian và không thể đốt cháy giai đoạn được. 
 	Chim họa mi bổi sống quen với môi trường hoang dã
@@ -1621,8 +1519,8 @@ Chuẩn bị một chiếc lồng nhỏ xinh khi thuần chim họa mi
 Ngoài việc cung cấp thức ăn đủ chất dinh dưỡng và tạo không gian yên tĩnh, người nuôi cũng nên chú ý cho chim tắm nắng và tắm nước.  Tắm nắng để cung cấp vitamin D và tạo bộ 
 lông mượt mà ấp áp. Tắm nước là thói quen của chim họa mi trong tự nhiên, chúng rất cẩn thận và thử nước trước khi tắm, tuy nhiên chim họa mi tắm rất nhanh, chỉ với vài phút.
 Càng được tắm nhiều, bộ lông chim càng được mướt mát, tươi tắn, và sức khỏe của chim cũng khá hơn.'),
-	( '48981d702b321f55a52652da71155e67' , 'Tuân thủ những cách chăm sóc họa mi căng lửa' , GETDATE() , 'kinh nghiệm nuôi chim' , 
-	'Việc nuôi dưỡng và chăm sóc chim họa mi luôn giữ được phong độ là một điều tuy đơn giản nhưng không phải ai cũng có thể làm được vì đây là công việc nhẹ nhàng nhưng cần sự tỉ mỉ và kiên trì cao. Bài viết này xin bổ xung những cách chăm sóc chim họa mi căng lửa để bạn đọc tham khảo và áp dụng.
+	( '48981d702b321f55a52652da71155e67' , N'Tuân thủ những cách chăm sóc họa mi căng lửa' , GETDATE() , N'kinh nghiệm nuôi chim' , 
+	N'Việc nuôi dưỡng và chăm sóc chim họa mi luôn giữ được phong độ là một điều tuy đơn giản nhưng không phải ai cũng có thể làm được vì đây là công việc nhẹ nhàng nhưng cần sự tỉ mỉ và kiên trì cao. Bài viết này xin bổ xung những cách chăm sóc chim họa mi căng lửa để bạn đọc tham khảo và áp dụng.
 	Với những người nuôi chim họa mi, gặp phải trường hợp chim lên lửa, xuống lửa thất thường, ngày thì nghe hót rất nhiều, ngày thì không nghe thấy chim hót lần nào… đó 
 	là việc hết sức bình thường khi người nuôi chim họa mi không có các kĩ năng và chưa đủ kinh nghiệm giữ lửa cho họa mi. Những điều ảnh hưởng lớn nhất tới tạo lửa và giữ 
 	lửa cho chim mà bạn cần lưu ý như : môi trường sống, chế độ dinh dưỡng, cách chăm sóc..
@@ -1639,7 +1537,7 @@ Càng được tắm nhiều, bộ lông chim càng được mướt mát, tươ
 	lớn cầm que gậy, chổi lau nhà, trẻ em.. để gây ồn ào và làm cho chim họa mi sợ hãi, hoảng loạn và xuống lửa. Sau một thời gian khi chim họa mi đã quen dần với môi trường ,
 	bạn có thể áp dụng cách thay đổi nơi treo lồng chim, để tập cho chim dạn hơn.
 '),
-	( '309d3c8fc90b2cf25bf851f62e428ec7' , 'Kĩ thuật và những cách nuôi chim họa mi hót nhiều' , GETDATE() , 'kinh nghiệm nuôi chim' , '
+	( '309d3c8fc90b2cf25bf851f62e428ec7' , N'Kĩ thuật và những cách nuôi chim họa mi hót nhiều' , GETDATE() , N'kinh nghiệm nuôi chim' , N'
 	Hiện nay trào lưu nuôi chim được lan rộng mạnh mẻ, hiển nhiên những kinh nghiệm mà các tay chơi lão luyện làm như thế nào để chim hót nhiều cũng đã được truyền lại. 
 	Tuy nhiên, hôm nay hãy để chúng tôi bật mí những “bí kíp” dưới đây để thuần hóa chim họa mi được thành công hơn nhé!
 	Chọn mua chim họa mi
@@ -1662,7 +1560,7 @@ Kĩ năng để có một con chim họa mi hót giọng thánh thót và nhiề
 mang cái hồn của thiên nhiên núi rừng. Dù cho chim họa mi bạn nuôi là chim mộc mới mang từ rừng về, bạn cũng nên mang đi dượt chim, bằng cách trùm áo lồng thật kín để chúng
 nghe ngóng những con chim khác để bắt giọng.
 	'),
-	( 'e9dd9c14ec255e2700d76c05c70d0236' , 'Kỹ thuật thuần hóa chim họa mi mộc' , GETDATE() , 'kinh nghiệm nuôi chim' , '
+	( 'e9dd9c14ec255e2700d76c05c70d0236' , N'Kỹ thuật thuần hóa chim họa mi mộc' , GETDATE() , N'kinh nghiệm nuôi chim' , N'
 	“ chọn mặt gửi vàng” một con chim đá đủ chuẩn
 Phần đầu: phải to nhưng to chưa chắc đã tốt nhé , nên chọn đầu hơi bằng, gần ngang với mỏ chim vì chin có cái đầu này thường lanh lẹ, vừa lì lơn là một tuyển thủ né đòn mau lẹ.
 Phần mỏ: mỏi dài vừa phải, chót mỏ hơi khum như mỏ sẻ, chiếc mỏ này sẽ mổ đau và cắn mạnh đối thủ.
@@ -1680,7 +1578,7 @@ chim người ta thường đưa chim đi dượt. Người chơi chim cảnh s�
 hái hơn, sung độ hơn.
 
 	'),
-	( '553acd22fd496a02446c6258b3ba027e' , 'Cách chăm sóc chim chào mào thay lông chuẩn kỹ thuật nhất' , GETDATE() , 'kinh nghiệm nuôi chim' , '
+	( '553acd22fd496a02446c6258b3ba027e' , N'Cách chăm sóc chim chào mào thay lông chuẩn kỹ thuật nhất' , GETDATE() , N'kinh nghiệm nuôi chim' , N'
 	1. Chế độ dinh dưỡng
 
 Nhưng chú chim chào mào thay lông có những biểu hiện rất rõ ràng và chắc chắn rằng bất kì một người yêu chim nào cũng có thể nắm được trong lúc này chúng rất cần được bổ xung 
@@ -1700,7 +1598,7 @@ Thông thường 1 chú chim chào mào thay lông hoàn chỉn trong khoảng t
 đối với chúng. Nếu như bạn không giữ được sự ổn định đôi khi chúng còn đột ngột ngừng việc thay lông. Điều này khiến chúng phải mất thêm 1 khoảng thời gian dài nữa rất bất tiện.
 
 	'),
-	( 'd6d001e31f4065bbe402bc2eac44ca22' , 'Những kinh nghiệm vàng trong cách nuôi chào mào bổi thành mồi' , GETDATE() , 'kinh nghiệm nuôi chim' , '
+	( 'd6d001e31f4065bbe402bc2eac44ca22' , N'Những kinh nghiệm vàng trong cách nuôi chào mào bổi thành mồi' , GETDATE() , N'kinh nghiệm nuôi chim' , N'
 	Cách nuôi chào mào bổi thành mồi
 Chào mào bổi cũng có con này con nọ không phải con nào cũng có thể sở hữu được một chất giọng hoàn hảo. Nếu bạn may mắn sở hữu được một chú bổi ngon lành chắc chắn rằng khi vào 
 đấu trường chúng sẽ thể hiện được bản lĩnh thực sự của mình. 
@@ -1719,4 +1617,4 @@ chuyển chúng đến các vị trí khác nhau để chúng có thể thích n
 Bạn cứ tiếp tục cho đến khi chim bổi đã được thuần, thuần đễn mức có người đến chún cũng không sở hãi trổ lồng nữa thì bạn mang chúng đi cùng những chú chim mồi khác để chúng
 có thể làm quen dần với tiếng hót của những chú chim mồi thành thục.
 ');
-	
+
