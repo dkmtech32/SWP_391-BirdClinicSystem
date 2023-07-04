@@ -7077,3 +7077,11 @@ html.menu-opened body {
 .payment-method{
     margin: 2rem 2rem;
 }
+.owner-feedback{
+    display: flex;
+}
+.feedback-rating{
+    width: 10rem;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+}

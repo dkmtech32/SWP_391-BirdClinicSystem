@@ -174,16 +174,31 @@
                         </table>
                     </div>
                     <h2>Owner's feedback</h2>
-                    <select class="form-control select w-75">
-                        <c:forEach>
-                            <option>${appoitment.rating}</option> <!-- này chọn 1, 1.5, 2,...,5 -->
-                        </c:forEach>
-                    </select>
-                    <div class="col-md-12 col-sm-12">
-                        <div class="form-group">													
-                            <textarea class="form-control" rows="4" placeholder="Owner's feedback"
-                                      style="word-wrap: break-word; height: 9rem">
-                            </textarea>
+                    <div class="owner-feedback">
+                        <div class="feedback-rating">
+                            <h4>Rating</h4>
+                            <select class="form-control select w-75">
+<!--                                <option>1</option>
+                                <option>1.5</option>
+                                <option>2</option>
+                                <option>2.5</option>
+                                <option>3</option>
+                                <option>3.5</option>
+                                <option>4</option>
+                                <option>4.5</option>
+                                <option>5</option>-->
+                                <c:forEach>
+                                    <option>${appoitment.rating}</option> 
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <div class="col-md-11">
+                            <h4>Feedback</h4>
+                            <div class="form-group">													
+                                <textarea class="form-control" rows="4" placeholder="Owner's feedback"
+                                          style="word-wrap: break-word; height: 9rem">
+                                </textarea>
+                            </div>
                         </div>
                     </div>
                     <div class="booking-summary-in-appointments-details">
