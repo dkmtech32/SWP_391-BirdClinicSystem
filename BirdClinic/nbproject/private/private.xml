@@ -7,10 +7,13 @@
             <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/Common/footer.jsp</file>
         </group>
         <group>
-            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/web/Customer/bookInfo.jsp</file>
-            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/controllers/booking/BookAppointmentServlet.java</file>
-            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/services/timeslot/TimeslotServicesImpl.java</file>
-            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/controllers/booking/PrepareAppointmentBookServlet.java</file>
+            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/models/recordServices/RecordServicesDAO.java</file>
+            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/models/recordServices/RecordServicesAlreadyExistsException.java</file>
+            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/services/account/AccountDoesNotExist.java</file>
+            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/models/recordServices/RecordServicesDAOImpl.java</file>
+            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/services/account/AccountServicesImpl.java</file>
+            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/models/recordMedicine/RecordMedicineDAO.java</file>
+            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/models/users/UserDAOImpl.java</file>
         </group>
     </open-files>
 </project-private>

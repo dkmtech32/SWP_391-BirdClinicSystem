@@ -6,15 +6,19 @@
 package controllers.booking;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import models.dto.users.doctor.DoctorDTO;
-import services.account.doctor.DoctorServices;
-import services.account.doctor.DoctorServicesImpl;
-import services.account.doctor.NoSuchDoctorExistsException;
+import javax.servlet.http.HttpSession;
+import models.users.doctor.DoctorDTO;
+import models.users.doctor.NoSuchDoctorExistsException;
+import services.account.AccountServices;
+import services.customer.CustomerServices;
 
 /**
  *
@@ -22,14 +26,6 @@ import services.account.doctor.NoSuchDoctorExistsException;
  */
 public class PrepareDoctorsAppBookServlet extends HttpServlet {
 
-    
-    private DoctorServices doctorServices;
-    
-    @Override
-    public void init() {
-        doctorServices = new DoctorServicesImpl();
-    }
-    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -39,8 +35,6 @@ public class PrepareDoctorsAppBookServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -54,15 +48,17 @@ public class PrepareDoctorsAppBookServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String url = "/Common/index.jsp";
+        HttpSession session = request.getSession();
+        AccountServices services = (AccountServices) session.getAttribute("service");
         
         try {
-            List<DoctorDTO> doctors = doctorServices.getAllDoctors();
+            List<DoctorDTO> doctors = ((CustomerServices)services).getAllDoctors();
             request.setAttribute("doctors", doctors);
             url = "/Customer/booking-list.jsp";
-        } catch (NoSuchDoctorExistsException ex) {
-            log(ex.getMessage());
-        }
-        finally {
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            request.setAttribute("message", "Something went wrong. Please try again.");
+        }  finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
     }

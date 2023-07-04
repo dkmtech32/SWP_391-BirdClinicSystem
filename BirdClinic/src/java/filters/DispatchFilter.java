@@ -16,6 +16,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import services.account.AccountServices;
+import services.account.AccountServicesImpl;
 
 /**
  *
@@ -50,18 +52,23 @@ public class DispatchFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
 //        HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession();
+//        
+//        String tempURL = (String) session.getAttribute("tempURL"); //get stored url
+//        //if the user stored a url
+//        if (tempURL != null) {
+//            //if user stored url then go to that url, else go default request url
+//            System.out.println(tempURL);
+//            session.setAttribute("tempURL", null);
+//            req.getRequestDispatcher(tempURL).forward(request, response);
+////            res.sendRedirect(tempURL);
+//            return;
+//        }
         
-        String tempURL = (String) session.getAttribute("tempURL"); //get stored url
-        //if the user stored a url
-        if (tempURL != null) {
-            //if user stored url then go to that url, else go default request url
-            System.out.println(tempURL);
-            session.setAttribute("tempURL", null);
-            req.getRequestDispatcher(tempURL).forward(request, response);
-//            res.sendRedirect(tempURL);
-            return;
+        AccountServices service = (AccountServices) session.getAttribute("service");
+        if (service == null) {
+            service = new AccountServicesImpl();
+            session.setAttribute("service", service);
         }
-        
         
         String url[] = req.getRequestURI().split("/");
         String action = url[url.length - 1];
