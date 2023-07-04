@@ -7,16 +7,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <c:choose>
-    <c:when test="${sessionScope.currentUser.userRole == 'customer'}">
+    <c:when test="${sessionScope.service.currentUser.userRole == 'customer'}">
         <jsp:include page="../Common/header-customer.jsp"/>
     </c:when>
-    <c:when test="${sessionScope.currentUser.userRole == 'doctor'}">
+    <c:when test="${sessionScope.service.currentUser.userRole == 'doctor'}">
         <jsp:include page="../Common/header-doctor.jsp"/>
     </c:when>
-    <c:when test="${sessionScope.currentUser.userRole == 'staff'}">
+    <c:when test="${sessionScope.service.currentUser.userRole == 'staff'}">
         <jsp:include page="../Common/header-staff.jsp"/>
     </c:when>
-    <c:when test="${sessionScope.currentUser.userRole == 'admin'}">
+    <c:when test="${sessionScope.service.currentUser.userRole == 'admin'}">
         <jsp:include page="../Common/header-admin.jsp"/>
     </c:when>
     <c:otherwise>

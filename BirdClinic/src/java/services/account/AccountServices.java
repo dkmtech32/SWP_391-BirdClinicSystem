@@ -7,8 +7,16 @@ package services.account;
 
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
-import models.dto.users.UserDTO;
+import models.appointment.AppointmentDTO;
+import models.bird.BirdDTO;
+import models.medicalRecord.MedicalRecordDTO;
+import models.recordMedicine.RecordMedicineDTO;
+import models.service_.Service_DTO;
+import models.timeslot.TimeslotDTO;
+import models.users.UserDTO;
+import models.users.doctor.DoctorDTO;
 
 /**
  *
@@ -16,10 +24,32 @@ import models.dto.users.UserDTO;
  */
 public interface AccountServices extends Serializable {
 
-    boolean accExist(UserDTO user);
+    boolean checkRole(String role);
 
-    UserDTO login(String username, String password) throws AccountNotExistException, SQLException;
+    UserDTO getCurrentUser();
+
+    boolean login(String username, String password) throws AccountDoesNotExist, SQLException;
+
+    void setCurrentUser(UserDTO currentUser);
+
+    AppointmentDTO viewAppointment(String appointmentID) throws SQLException, AppointmentDoesNotExistException;
+
+    BirdDTO viewBird(String birdID) throws SQLException, BirdDoesNotExistException;
+
+    MedicalRecordDTO viewMedicalRecord(String appointmentID) throws SQLException;
+
+    List<RecordMedicineDTO> viewRecordMeds(String medicalRecordID) throws SQLException;
     
-    UserDTO register(Map<String, String> args) throws AccountAlreadyExistsException, PasswordsNotEqualException, SQLException;
+    boolean register(Map<String, String[]> args)
+            throws AccountAlreadyExistsException, PasswordsNotEqualException, SQLException, PasswordNotStrongException;
     
+    List<DoctorDTO> getAllDoctors() throws SQLException;
+    
+    Map<String, List<TimeslotDTO>> getTimeslotsByWeekday(String doctorID) 
+            throws SQLException;
+    
+    List<Service_DTO> getServices(String doctorID) 
+            throws SQLException, AccountDoesNotExist;
+    
+    TimeslotDTO getTimeslot(String TimeslotID) throws SQLException;
 }

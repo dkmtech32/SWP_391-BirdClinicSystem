@@ -6,48 +6,33 @@
 package controllers.booking;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import models.dto.bird.BirdDTO;
-import models.dto.service_.Service_DTO;
-import models.dto.users.UserDTO;
-import models.dto.users.doctor.DoctorDTO;
-import services.account.customer.NoSuchCustomerExistsException;
-import services.account.doctor.DoctorServices;
-import services.account.doctor.DoctorServicesImpl;
-import services.account.doctor.NoSuchDoctorExistsException;
-import services.bird.BirdServices;
-import services.bird.BirdServicesImpl;
-import services.service_.NoSuchService_ExistsException;
-import services.service_.NoSuchSpecialityExistsException;
-import services.service_.Service_Services;
-import services.service_.Service_ServicesImpl;
-import services.timeslot.NoSuchTimeslotExistsException;
-import services.timeslot.TimeslotServices;
-import services.timeslot.TimeslotServicesImpl;
+import models.bird.BirdDTO;
+import models.service_.NoSuchService_ExistsException;
+import models.service_.Service_DTO;
+import models.speciality.NoSuchSpecialityExistsException;
+import models.timeslot.NoSuchTimeslotExistsException;
+import models.users.UserDTO;
+import models.users.customer.NoSuchCustomerExistsException;
+import models.users.doctor.DoctorDTO;
+import models.users.doctor.NoSuchDoctorExistsException;
+import services.account.AccountDoesNotExist;
+import services.account.AccountServices;
+import services.customer.CustomerServices;
 
 /**
  *
  * @author Admin
  */
 public class PrepareAppointmentBookServlet extends HttpServlet {
-
-    private BirdServices birdServices;
-    private Service_Services serviceServices;
-    private TimeslotServices timeslotServices;
-    private DoctorServices doctorServices;
-
-    @Override
-    public void init() {
-        birdServices = new BirdServicesImpl();
-        serviceServices = new Service_ServicesImpl();
-        timeslotServices = new TimeslotServicesImpl();
-        doctorServices = new DoctorServicesImpl();
-    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -73,35 +58,22 @@ public class PrepareAppointmentBookServlet extends HttpServlet {
             if (session == null) {
                 url = "/Common/login.jsp";
             } else {
-                UserDTO user = (UserDTO) session.getAttribute("currentUser");
-                List<BirdDTO> birds = birdServices.getBirdsOfCustomer(user.getUserID());
+                AccountServices service = (AccountServices) session.getAttribute("service");
+                List<BirdDTO> birds = ((CustomerServices) service).getCustomerBirds();
                 request.setAttribute("birds", birds);
 
-                if (doctorID != null) {
-                    //book appointment by doctor
-                    DoctorDTO doctor = doctorServices.getDoctor(doctorID);
-                    List<Service_DTO> services
-                            = serviceServices.getService_BySpeciality(doctor.getSpeciality().getSpecialityID());
-                    request.setAttribute("services", services);
-                    request.setAttribute("doctorID", doctorID);
-                } else if (doctorID == null) {
-                    //no doctors
-                    List<Service_DTO> services = serviceServices.getAllService_();
-                    request.setAttribute("services", services);
-                }
+                request.setAttribute("doctorID", doctorID);
+                List<Service_DTO> services = service.getServices(doctorID);
+                request.setAttribute("serviceList", services);
 
                 request.setAttribute("appDay", appDate);
-                request.setAttribute("timeslot", timeslotServices.getTimeslot(timeslotID));
+                request.setAttribute("timeslot", service.getTimeslot(timeslotID));
                 url = "bookInfo.jsp";
 
             }
 
-        } catch (NoSuchCustomerExistsException ex) {
-            log(ex.getMessage());
-            url = "/Common/login.jsp";
-        } catch (NoSuchService_ExistsException | NoSuchDoctorExistsException
-                | NoSuchSpecialityExistsException | NoSuchTimeslotExistsException ex) {
-            log(ex.getMessage());
+        } catch (SQLException | AccountDoesNotExist ex) {
+            ex.printStackTrace();
             url = "/Common/booking-list.jsp";
         } finally {
             request.getRequestDispatcher(url).forward(request, response);

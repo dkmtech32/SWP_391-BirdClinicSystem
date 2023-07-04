@@ -16,7 +16,7 @@ public class PasswordsNotEqualException extends Exception {
      * detail message.
      */
     public PasswordsNotEqualException() {
-        super("Confirm Password is not equal to Password. Please try again.");
+        super("Confirm Password is not equal to Password");
     }
 
     /**

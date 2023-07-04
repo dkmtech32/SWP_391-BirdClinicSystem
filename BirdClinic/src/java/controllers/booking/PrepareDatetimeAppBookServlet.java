@@ -7,17 +7,18 @@ package controllers.booking;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import models.dto.timeslot.TimeslotDTO;
-import services.account.doctor.NoSuchDoctorExistsException;
-import services.timeslot.NoDoctorsAvailableException;
-import services.timeslot.TimeslotServices;
-import services.timeslot.TimeslotServicesImpl;
+import javax.servlet.http.HttpSession;
+import models.timeslot.TimeslotDTO;
+import services.account.AccountServices;
+import services.customer.CustomerServices;
 import utils.Utils;
 
 /**
@@ -25,19 +26,6 @@ import utils.Utils;
  * @author Admin
  */
 public class PrepareDatetimeAppBookServlet extends HttpServlet {
-
-//    private BirdServices birdServices;
-//    private Service_Services serviceServices;
-    private TimeslotServices timeslotServices;
-//    private DoctorServices doctorServices;
-
-    @Override
-    public void init() {
-//        birdServices = new BirdServicesImpl();
-//        serviceServices = new Service_ServicesImpl();
-        timeslotServices = new TimeslotServicesImpl();
-//        doctorServices = new DoctorServicesImpl();
-    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -57,17 +45,12 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
         String doctorID = request.getParameter("doctorID");
         String nextMonday = request.getParameter("nextWeekday");
         String url = "/Common/index.jsp";
+        HttpSession session = request.getSession();
+        AccountServices service = (AccountServices) session.getAttribute("service");
 
         try {
-            List<TimeslotDTO> timeslots;
-            if (doctorID == null) {
-                //didn't choose a doctor
-                timeslots = timeslotServices.getAllTimeslots();
-            } else {
-                //chose doctor
-                timeslots = timeslotServices.getDoctorTimeslot(doctorID);
-                request.setAttribute("doctorID", doctorID);
-            }
+            
+            Map<String, List<TimeslotDTO>> timeslots = ((CustomerServices)service).getTimeslotsByWeekday(doctorID);
 
             Date date = Date.valueOf(LocalDate.now());
             if (nextMonday != null) {
@@ -79,7 +62,7 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
             request.setAttribute("week", daysInWeek);
             request.setAttribute("nextWeekday", Utils.getNextWeekWeekday(date));
             url = "/Customer/bookingDatetime.jsp";
-        } catch (NoDoctorsAvailableException | NoSuchDoctorExistsException ex) {
+        } catch (SQLException ex) {
             log(ex.getMessage());
             url = "/Customer/booking-list.jsp";
         } finally {
