@@ -90,14 +90,14 @@ public class GeneralServicesImpl implements GeneralServices {
 
     @Override
     public boolean login(String username, String password)
-            throws AccountDoesNotExist, SQLException {
+            throws AccountDoesNotExistException, SQLException {
         password = Utils.hash(password);
         boolean result = false;
         try {
             currentUser = userDAO.loginUser(username, password);
             result = true;
         } catch (NoSuchRecordExists ex) {
-            throw new AccountDoesNotExist(ex.getMessage());
+            throw new AccountDoesNotExistException(ex.getMessage());
         }
         return result;
     }
@@ -154,7 +154,7 @@ public class GeneralServicesImpl implements GeneralServices {
     }
 
     @Override
-    public boolean enableAccount(String userID) throws AccountDoesNotExist, SQLException {
+    public boolean enableAccount(String userID) throws AccountDoesNotExistException, SQLException {
         boolean result = false;
 
         try {
@@ -164,7 +164,7 @@ public class GeneralServicesImpl implements GeneralServices {
                 result = userDAO.updateUser(user) > 0;
             }
         } catch (NoSuchRecordExists ex) {
-            throw new AccountDoesNotExist(ex.getMessage());
+            throw new AccountDoesNotExistException(ex.getMessage());
         }
 
         return result;
@@ -285,7 +285,7 @@ public class GeneralServicesImpl implements GeneralServices {
 
     @Override
     public List<Service_DTO> getServices(String doctorID)
-            throws SQLException, AccountDoesNotExist {
+            throws SQLException, AccountDoesNotExistException {
         List<Service_DTO> services = null;
 
         try {
@@ -296,7 +296,7 @@ public class GeneralServicesImpl implements GeneralServices {
                 services = serviceDAO.readServiceBySpeciality(spec.getSpecialityID());
             }
         } catch (NoSuchRecordExists ex) {
-            throw new AccountDoesNotExist(ex.getMessage());
+            throw new AccountDoesNotExistException(ex.getMessage());
         }
 
         return services;
@@ -317,7 +317,7 @@ public class GeneralServicesImpl implements GeneralServices {
 
     @Override
     public boolean updateAccount(Map<String, String[]> args)
-            throws AccountAlreadyExistsException, SQLException {
+            throws AccountAlreadyExistsException, AccountDoesNotExistException, SQLException {
         boolean result = false;
         //assume all args are in place
         String username = Utils.getFromMap(args, "username", currentUser.getUserName());
@@ -336,13 +336,13 @@ public class GeneralServicesImpl implements GeneralServices {
             user.setFullName(fullName);
 
             result = userDAO.updateUser(user) > 0;
-            currentUser = user;
+            currentUser.copyUser(user);
         } catch (NoSuchRecordExists ex) {
             //check if it's image problems
             if (ex.getMessage().contains("Image")) {
                 throw new SQLException(ex.getMessage());
             } else {
-                throw new AccountAlreadyExistsException(ex.getMessage());
+                throw new AccountDoesNotExistException(ex.getMessage());
             }
         }
 
@@ -351,7 +351,7 @@ public class GeneralServicesImpl implements GeneralServices {
 
     @Override
     public boolean updateAccountPassword(String nPassword)
-            throws PasswordNotStrongException, AccountDoesNotExist, SQLException {
+            throws PasswordNotStrongException, AccountDoesNotExistException, SQLException {
         boolean result = false;
 
         try {
@@ -363,7 +363,7 @@ public class GeneralServicesImpl implements GeneralServices {
             result = userDAO.updateUserPassword(currentUser.getUserID(), nPassword) > 0;
 
         } catch (NoSuchRecordExists ex) {
-            throw new AccountDoesNotExist(ex.getMessage());
+            throw new AccountDoesNotExistException(ex.getMessage());
         }
 
         return result;

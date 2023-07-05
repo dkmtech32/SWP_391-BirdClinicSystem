@@ -27,31 +27,39 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     private static final String READ_APPOINTMENT
             = "SELECT appointmentID, birdID, doctorID, timeSlotID, serviceID, appTime, notes, payment, appStatus "
             + "FROM Appointment "
-            + "WHERE appointmentID = ?;";
+            + "WHERE appointmentID = ?";
     private static final String READ_APPOINTMENT_BY_BIRD
             = "SELECT appointmentID, birdID, doctorID, timeSlotID, serviceID, appTime, notes, payment, appStatus "
             + "FROM Appointment "
-            + "WHERE birdID = ?;";
+            + "WHERE birdID = ?";
     private static final String READ_APPOINTMENT_BY_DOCTOR
             = "SELECT appointmentID, birdID, doctorID, timeSlotID, serviceID, appTime, notes, payment, appStatus "
             + "FROM Appointment "
-            + "WHERE doctorID = ?;";
+            + "WHERE doctorID = ?";
     private static final String READ_APPOINTMENT_BY_TIMESLOT
             = "SELECT appointmentID, birdID, doctorID, timeSlotID, serviceID, appTime, notes, payment, appStatus "
             + "FROM Appointment "
-            + "WHERE timeSlotID = ?;";
+            + "WHERE timeSlotID = ?";
     private static final String DELETE_APPOINTMENT
             = "DELETE FROM Appointment "
             + "WHERE appointmentID = ?";
     private static final String INSERT_APPOINTMENT
             = "INSERT INTO Appointment (appointmentID, birdID, doctorID, timeSlotID, "
             + "serviceID, appTime, notes, payment, appStatus) "
-            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String UPDATE_APPOINTMENT
             = "UPDATE Appointment "
             + "SET birdID = ?, doctorID = ?, timeSlotID = ?, serviceID = ?, "
             + "appTime = ?, notes = ?, payment = ?, appStatus = ? "
-            + "WHERE appointmentID = ?;";
+            + "WHERE appointmentID = ?";
+    private static final String UPDATE_APPOINTMENT_STATUS
+            = "UPDATE Appointment "
+            + "SET appStatus = ? "
+            + "WHERE appointmentID = ?";
+    private static final String UPDATE_APPOINTMENT_DOCTOR
+            = "UPDATE Appointment "
+            + "SET doctorID = ? "
+            + "WHERE appointmentID = ?";
 
     public AppointmentDAOImpl(BirdDAO birdDAO, DoctorDAO doctorDAO,
             Service_DAO service_DAO, TimeslotDAO timeslotDAO) {
@@ -396,19 +404,71 @@ public class AppointmentDAOImpl implements AppointmentDAO {
         try {
             con = DBUtils.getConnection();
             stm = con.prepareStatement(UPDATE_APPOINTMENT);
-            stm.setString(1, appointment.getAppointmentID());
-            stm.setString(2, appointment.getBird().getBirdID());
+            stm.setString(1, appointment.getBird().getBirdID());
             if (appointment.getDoctor() != null) {
-                stm.setString(3, appointment.getDoctor().getUserID());
+                stm.setString(2, appointment.getDoctor().getUserID());
             } else {
-                stm.setString(3, null);
+                stm.setString(2, null);
             }
-            stm.setString(4, appointment.getTimeslot().getTimeSlotID());
-            stm.setString(5, appointment.getService_().getServiceID());
-            stm.setTimestamp(6, appointment.getAppTime());
-            stm.setString(7, appointment.getNotes());
-            stm.setString(8, appointment.getPayment());
-            stm.setString(9, appointment.getAppStatus());
+            stm.setString(3, appointment.getTimeslot().getTimeSlotID());
+            stm.setString(4, appointment.getService_().getServiceID());
+            stm.setTimestamp(5, appointment.getAppTime());
+            stm.setString(6, appointment.getNotes());
+            stm.setString(7, appointment.getPayment());
+            stm.setString(8, appointment.getAppStatus());
+            stm.setString(9, appointment.getAppointmentID());
+            rowsUpdated = stm.executeUpdate();
+            
+            if (rowsUpdated == 0) throw new NoSuchAppointmentsExistsException();
+        }  finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+
+        return rowsUpdated;
+    }
+    
+    @Override
+    public int updateAppointmentStatus(String status, String appointmentID) throws NoSuchRecordExists, SQLException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        int rowsUpdated = 0;
+
+        try {
+            con = DBUtils.getConnection();
+            stm = con.prepareStatement(UPDATE_APPOINTMENT_STATUS);
+            stm.setString(1, status);
+            stm.setString(2, appointmentID);
+            rowsUpdated = stm.executeUpdate();
+            
+            if (rowsUpdated == 0) throw new NoSuchAppointmentsExistsException();
+        }  finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+
+        return rowsUpdated;
+    }
+    
+    @Override
+    public int updateAppointmentDoctor(String doctorID, String appointmentID) throws NoSuchRecordExists, SQLException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        int rowsUpdated = 0;
+
+        try {
+            con = DBUtils.getConnection();
+            stm = con.prepareStatement(UPDATE_APPOINTMENT_DOCTOR);
+            stm.setString(1, doctorID);
+            stm.setString(2, appointmentID);
             rowsUpdated = stm.executeUpdate();
             
             if (rowsUpdated == 0) throw new NoSuchAppointmentsExistsException();

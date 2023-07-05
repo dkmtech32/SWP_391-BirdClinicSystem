@@ -33,7 +33,8 @@ public class TimeslotDAOImpl implements TimeslotDAO {
             + "from TimeSlot ";
     private static final String READ_DAY
             = "SELECT day_ "
-            + "FROM TimeSlot";
+            + "FROM TimeSlot "
+            + "GROUP BY day_";
     private static final String READ_TIMESLOT_BY_WEEKDAY
             = "SELECT timeSlotID, timeSlot, day_ "
             + "FROM TimeSlot "
@@ -203,9 +204,9 @@ public class TimeslotDAOImpl implements TimeslotDAO {
             List<String> weekdays = readWeekdays();
             con = DBUtils.getConnection();
             stm = con.prepareStatement(READ_TIMESLOT_BY_WEEKDAY);
-            List<TimeslotDTO> timeSlotList = new ArrayList<>();
 
             for (String weekday : weekdays) {
+                List<TimeslotDTO> timeSlotList = new ArrayList<>();
                 stm.setString(1, weekday);
                 rs = stm.executeQuery();
 

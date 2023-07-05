@@ -7,14 +7,14 @@
             <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/Common/footer.jsp</file>
         </group>
         <group>
-            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/utils/Utils.java</file>
+            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/web/Customer/bookInfo.jsp</file>
+            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/controllers/account/LogoutServlet.java</file>
             <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/controllers/account/LoginServlet.java</file>
             <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/services/customer/CustomerServicesImpl.java</file>
+            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/web/Common/header-customer.jsp</file>
             <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/web/Common/login.jsp</file>
-            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/services/general/GeneralServicesImpl.java</file>
-            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/services/general/GeneralServices.java</file>
-            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/models/users/UserDAOImpl.java</file>
-            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/web/WEB-INF/web.xml</file>
+            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/web/Customer/bookingDatetime.jsp</file>
+            <file>file:/D:/work/FPT/2023_Summer/SWP391/BirdClinic/BirdClinic/src/java/controllers/booking/BookAppointmentServlet.java</file>
         </group>
     </open-files>
 </project-private>

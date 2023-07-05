@@ -11,13 +11,13 @@ import models.exceptions.NoSuchRecordExists;
  *
  * @author Admin
  */
-public class AccountDoesNotExist extends NoSuchRecordExists {
+public class AccountDoesNotExistException extends NoSuchRecordExists {
 
     /**
      * Creates a new instance of <code>AccountNotExistException</code> without
      * detail message.
      */
-    public AccountDoesNotExist() {
+    public AccountDoesNotExistException() {
         super("Username or password do not match");
     }
 
@@ -27,7 +27,7 @@ public class AccountDoesNotExist extends NoSuchRecordExists {
      *
      * @param msg the detail message.
      */
-    public AccountDoesNotExist(String msg) {
+    public AccountDoesNotExistException(String msg) {
         super(msg);
     }
 }
