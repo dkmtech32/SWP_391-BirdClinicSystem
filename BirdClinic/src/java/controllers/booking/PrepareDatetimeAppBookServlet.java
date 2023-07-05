@@ -55,13 +55,10 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
             Date date = Date.valueOf(LocalDate.now());
             if (currentWeekday != null) { //always in the future
                 date = Date.valueOf(currentWeekday.trim());
-                System.out.println(Utils.getLastWeekWeekday(date).toString());
                 request.setAttribute("lastWeekday", Utils.getLastWeekWeekday(date));
             }
 
             if (true) { //TODO: test to see if nextMonday is x weeks ahead. (can only book x+1 weeks in advance)
-                
-                System.out.println(Utils.getNextWeekWeekday(date).toString());
                 request.setAttribute("nextWeekday", Utils.getNextWeekWeekday(date));
             }
 

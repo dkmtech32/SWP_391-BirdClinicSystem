@@ -57,7 +57,7 @@ public class PrepareAppointmentBookServlet extends HttpServlet {
                 List<Service_DTO> services = service.getServices(doctorID);
                 request.setAttribute("serviceList", services);
 
-                request.setAttribute("appDay", appDate);
+                request.setAttribute("appDate", appDate);
                 request.setAttribute("timeslot", service.getTimeslot(timeslotID));
                 url = "bookInfo.jsp";
 

@@ -115,6 +115,11 @@
                                         <!-- /Notes section -->
                                         <!-- Submit Section -->
                                         <div class="submit-section mt-4">
+                                            <input type="text" name="appDate" value="${requestScope.appDate}" hidden/>
+                                            <input type="text" name="timeslotID" value="${requestScope.timeslot.timeSlotID}" hidden/>
+                                            <c:if test="${not empty doctorID}">
+                                                <input type="text" name="doctorID" value="${requestScope.doctorID}" hidden/>
+                                            </c:if>
                                             <button type="submit" class="btn btn-primary submit-btn">Confirm and submit</button>
                                         </div>
                                         <!-- /Submit Section -->
