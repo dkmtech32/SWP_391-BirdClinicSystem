@@ -38,4 +38,8 @@ public interface AppointmentDAO extends Serializable {
     int insertAppointment(AppointmentDTO appointment) throws RecordAlreadyExists, SQLException;
     
     int updateAppointment(AppointmentDTO appointment) throws NoSuchRecordExists, SQLException;
+    
+    int updateAppointmentStatus(String status, String appointmentID) throws NoSuchRecordExists, SQLException;
+    
+    int updateAppointmentDoctor(String doctorID, String appointmentID) throws NoSuchRecordExists, SQLException;
 }

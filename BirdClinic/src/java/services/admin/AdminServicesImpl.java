@@ -16,7 +16,7 @@ import models.users.customer.CustomerDTOImpl;
 import models.users.doctor.DoctorDTO;
 import models.users.doctor.DoctorDTOImpl;
 import services.general.AccountAlreadyExistsException;
-import services.general.AccountDoesNotExist;
+import services.general.AccountDoesNotExistException;
 import services.general.GeneralServicesImpl;
 import utils.Utils;
 
@@ -26,11 +26,11 @@ import utils.Utils;
  */
 public class AdminServicesImpl extends GeneralServicesImpl {
 
-    public AdminServicesImpl(UserDTO user) throws AccountDoesNotExist {
+    public AdminServicesImpl(UserDTO user) throws AccountDoesNotExistException {
         if (user.getUserRole().toLowerCase().equals("admin"))
         {
             this.currentUser = user;
-        } else throw new AccountDoesNotExist();
+        } else throw new AccountDoesNotExistException();
     }
     
     public DoctorDTO createDoctor(Map<String, String> args)
