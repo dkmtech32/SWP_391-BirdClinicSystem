@@ -10,15 +10,11 @@ import java.util.List;
 import java.util.Map;
 import models.appointment.AppointmentAlreadyExistsException;
 import models.appointment.AppointmentDTO;
-import models.bird.BirdAlreadyExistsException;
 import models.bird.BirdDTO;
-import models.service_.Service_DTO;
-import models.timeslot.TimeslotDTO;
 import models.users.doctor.DoctorDTO;
-import services.general.AccountAlreadyExistsException;
-import services.general.AccountDoesNotExist;
+import services.general.AccountDoesNotExistException;
+import services.general.AppointmentDoesNotExistException;
 import services.general.BirdDoesNotExistException;
-import services.general.PasswordNotStrongException;
 import services.general.GeneralServices;
 
 /**
@@ -37,8 +33,9 @@ public interface CustomerServices extends GeneralServices {
 
     List<BirdDTO> getCustomerBirds() throws SQLException;
 
-    boolean updateBird(Map<String, String[]> args) throws BirdAlreadyExistsException, SQLException;
+    boolean updateBird(Map<String, String[]> args) throws BirdDoesNotExistException, SQLException;
 
-    boolean updateCustomerInfo(Map<String, String[]> args) 
-            throws AccountAlreadyExistsException, PasswordNotStrongException, SQLException;
+    DoctorDTO getDoctor(String doctorID) throws SQLException, AccountDoesNotExistException;
+    
+    public boolean cancelAppointment(String appointmentID) throws AppointmentDoesNotExistException, SQLException;
 }

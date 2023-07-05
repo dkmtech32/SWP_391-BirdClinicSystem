@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.timeslot.TimeslotDTO;
 import services.customer.CustomerServices;
+import services.general.AccountDoesNotExistException;
 import utils.Utils;
-import services.general.GeneralServices;
 
 /**
  *
@@ -46,11 +46,13 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
         String currentWeekday = request.getParameter("currentWeekday");
         String url = "/Common/index.jsp";
         HttpSession session = request.getSession();
-        GeneralServices service = (GeneralServices) session.getAttribute("service");
+        CustomerServices service = (CustomerServices) session.getAttribute("service");
 
         try {
 
-            Map<String, List<TimeslotDTO>> timeslots = ((CustomerServices) service).getTimeslotsByWeekday(doctorID);
+            request.setAttribute("doctor", service.getDoctor(doctorID));
+            
+            Map<String, List<TimeslotDTO>> timeslots = service.getTimeslotsByWeekday(doctorID);
 
             Date date = Date.valueOf(LocalDate.now());
             if (currentWeekday != null) { //always in the future
@@ -68,8 +70,8 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
             request.setAttribute("daysInWeek", daysInWeek);
             request.setAttribute("weekdays", weekdays);
             url = "/Customer/bookingDatetime.jsp";
-        } catch (SQLException ex) {
-            log(ex.getMessage());
+        } catch (SQLException | AccountDoesNotExistException ex) {
+            ex.printStackTrace();
             url = "/Customer/booking-list.jsp";
         } finally {
             request.getRequestDispatcher(url).forward(request, response);

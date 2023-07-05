@@ -22,7 +22,7 @@ public interface BirdDTO extends Serializable {
 
     String getBirdID();
 
-    int getBirdWeight();
+    float getBirdWeight();
 
     String getBreed();
 
@@ -46,7 +46,7 @@ public interface BirdDTO extends Serializable {
 
     void setBirdID(String birdID);
 
-    void setBirdWeight(int birdWeight);
+    void setBirdWeight(float birdWeight);
 
     void setBreed(String breed);
 
