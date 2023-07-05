@@ -116,13 +116,13 @@
                 <li class="nav-item dropdown has-arrow logged-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <span class="user-img">
-                            <img class="rounded-circle" src="${sessionScope.currentUser.image.imageInDisk}" width="31" alt="${sessionScope.currentUser.fullName}" />
+                            <img class="rounded-circle" src="../assets/images/client/${sessionScope.currentUser.image.imageInDisk}" width="31" alt="${sessionScope.currentUser.fullName}" />
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="user-header">
                             <div class="avatar avatar-sm">
-                                <img src="${sessionScope.currentUser.image.imageInDisk}" alt="User Image" class="avatar-img rounded-circle" />
+                                <img src="../assets/images/client/${sessionScope.currentUser.image.imageInDisk}" alt="User Image" class="avatar-img rounded-circle" />
                             </div>
                             <div class="user-text">
                                 <h6>${sessionScope.currentUser.fullName}</h6>
