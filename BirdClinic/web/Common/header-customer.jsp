@@ -116,13 +116,13 @@
                 <li class="nav-item dropdown has-arrow logged-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <span class="user-img">
-                            <img class="rounded-circle" src="${sessionScope.service.currentUser.image.imageInDisk}" width="31" alt="${sessionScope.service.currentUser.fullName}" />
+                            <img class="rounded-circle" src="../assets/images/client/${sessionScope.service.currentUser.image.imageURLName}" width="31" alt="${sessionScope.service.currentUser.fullName}" />
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="user-header">
                             <div class="avatar avatar-sm">
-                                <img src="${sessionScope.service.currentUser.image.imageInDisk}" alt="User Image" class="avatar-img rounded-circle" />
+                                <img src="../assets/images/client/${sessionScope.service.currentUser.image.imageURLName}" alt="User Image" class="avatar-img rounded-circle" />
                             </div>
                             <div class="user-text">
                                 <h6>${sessionScope.currentUser.fullName}</h6>
@@ -131,7 +131,7 @@
                         </div>
                         <a class="dropdown-item" href="doctor-dashboard.html">Dashboard</a>
                         <a class="dropdown-item" href="<c:url value="/Customer/custAccountInfo"/>">Profile Settings</a>
-                        <a class="dropdown-item" href="login.html">Logout</a>
+                        <a class="dropdown-item" href="<c:url value="/logout"/>">Logout</a>
                     </div>
                 </li>
                 <!-- /User Menu -->
