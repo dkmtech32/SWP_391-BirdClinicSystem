@@ -55,13 +55,13 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
         String notes = args.get("notes");
         String timeslotID = args.get("timeslotID");
         String service_ID = args.get("serviceID");
-        String appDay = args.get("appDay");
+        String appDate = args.get("appDate");
         String doctorID = args.get("doctorID");
 
         try {
             AppointmentDTO app = new AppointmentDTOImpl();
-            app.setAppointmentID(Utils.hash(birdID + service_ID + timeslotID + appDay));
-            app.setAppStatus("Processing");
+            app.setAppointmentID(Utils.hash(birdID + service_ID + timeslotID + appDate));
+            app.setAppStatus("processing");
             app.setBird(birdDAO.readBird(birdID));
             TimeslotDTO timeslot = timeslotDAO.readTimeSlot(timeslotID);
             app.setTimeslot(timeslot);
@@ -70,12 +70,12 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
             } else {
                 app.setDoctor(doctorDAO.readDoctor(doctorID));
             }
-            app.setPayment("cash");
+            app.setPayment(null);
             Service_DTO service = serviceDAO.readService_(service_ID);
             app.setService_(service);
             app.setNotes(notes);
-
-            Date date = Date.valueOf(appDay);
+            
+            Date date = Date.valueOf(appDate);
             long milliseconds = date.getTime() + timeslot.getTimeSlot().getTime();
             app.setAppTime(new Timestamp(milliseconds));
 
@@ -86,6 +86,7 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
         } catch (RecordAlreadyExists ex) {
             throw new AppointmentAlreadyExistsException();
         }
+        System.out.println(result);
         return result;
     }
 

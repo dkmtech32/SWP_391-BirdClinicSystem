@@ -55,7 +55,7 @@ public class BookAppointmentServlet extends HttpServlet {
         String notes = request.getParameter("notes");
         String serviceID = request.getParameter("serviceID");
         String timeslotID = request.getParameter("timeslotID");
-        String appDay = request.getParameter("appDay");
+        String appDate = request.getParameter("appDate");
         String doctorID = request.getParameter("doctorID");
         String url = "/Customer/prepareBooking";
         
@@ -67,7 +67,7 @@ public class BookAppointmentServlet extends HttpServlet {
             map.put("birdID", birdID);
             map.put("serviceID", serviceID);
             map.put("timeslotID", timeslotID);
-            map.put("appDay", appDay);
+            map.put("appDate", appDate);
             if (doctorID != null) {
                 map.put("doctorID", doctorID);
             }
