@@ -14,6 +14,7 @@ import models.users.UserDTOImpl;
  * @author Admin
  */
 public class CustomerDTOImpl extends UserDTOImpl implements CustomerDTO {
+
     private Date dob;
     private String phoneNumber;
     private String customerAddress;
@@ -61,6 +62,24 @@ public class CustomerDTOImpl extends UserDTOImpl implements CustomerDTO {
     public void setCustomerAddress(String customerAddress) {
         this.customerAddress = customerAddress;
     }
-    
-    
+
+    @Override
+    public void copyUser(UserDTO user) {
+        if (user instanceof CustomerDTO) {
+            CustomerDTO customer = (CustomerDTO) user;
+
+            this.copyUser(customer);
+            this.setCustomerAddress(customer.getCustomerAddress());
+            this.setDob(customer.getDob());
+            this.setPhoneNumber(customer.getPhoneNumber());
+        }
+    }
+
+    @Override
+    public CustomerDTO copyUser() {
+        CustomerDTO customer = new CustomerDTOImpl();
+        customer.copyUser(this);
+        
+        return customer;
+    }
 }

@@ -3,27 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.booking;
+package controllers.customer;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import models.bird.BirdDTO;
-import models.service_.Service_DTO;
-import services.customer.CustomerServices;
-import services.general.AccountDoesNotExistException;
-import services.general.GeneralServices;
 
 /**
  *
  * @author Admin
  */
-public class PrepareAppointmentBookServlet extends HttpServlet {
+public class CustomerDashboardServlet extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -38,38 +40,6 @@ public class PrepareAppointmentBookServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        HttpSession session = request.getSession();
-        String doctorID = request.getParameter("doctorID");
-        String appDate = request.getParameter("appDate").trim();
-        String timeslotID = request.getParameter("timeslotID");
-        String url = "/Common/index.jsp";
-
-        try {
-            if (session == null) {
-                url = "/Common/login.jsp";
-            } else {
-                GeneralServices service = (GeneralServices) session.getAttribute("service");
-                List<BirdDTO> birds = ((CustomerServices) service).getCustomerBirds();
-                request.setAttribute("birds", birds);
-
-                request.setAttribute("doctorID", doctorID);
-                List<Service_DTO> services = service.getServices(doctorID);
-                request.setAttribute("serviceList", services);
-
-                request.setAttribute("appDate", appDate);
-                request.setAttribute("timeslot", service.getTimeslot(timeslotID));
-                url = "bookInfo.jsp";
-
-            }
-
-        } catch (SQLException | AccountDoesNotExistException ex) {
-            ex.printStackTrace();
-            url = "/Common/booking-list.jsp";
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
-        }
-
     }
 
     /**

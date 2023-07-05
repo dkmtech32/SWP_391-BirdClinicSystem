@@ -10,22 +10,26 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.appointment.AppointmentAlreadyExistsException;
 import models.appointment.AppointmentDTO;
 import models.appointment.AppointmentDTOImpl;
-import models.bird.BirdAlreadyExistsException;
 import models.bird.BirdDTO;
+import models.bird.BirdDTOImpl;
 import models.exceptions.NoSuchRecordExists;
 import models.exceptions.RecordAlreadyExists;
+import models.images.ImageDTO;
 import models.service_.Service_DTO;
 import models.timeslot.TimeslotDTO;
 import models.users.UserDTO;
 import models.users.customer.CustomerDTO;
-import models.users.customer.CustomerDTOImpl;
+import models.users.doctor.DoctorDTO;
 import services.general.AccountAlreadyExistsException;
+import services.general.AccountDoesNotExistException;
+import services.general.AppointmentDoesNotExistException;
 import services.general.GeneralServicesImpl;
 import services.general.BirdDoesNotExistException;
-import services.general.PasswordNotStrongException;
 import utils.Utils;
 
 /**
@@ -74,7 +78,7 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
             Service_DTO service = serviceDAO.readService_(service_ID);
             app.setService_(service);
             app.setNotes(notes);
-            
+
             Date date = Date.valueOf(appDate);
             long milliseconds = date.getTime() + timeslot.getTimeSlot().getTime();
             app.setAppTime(new Timestamp(milliseconds));
@@ -86,7 +90,6 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
         } catch (RecordAlreadyExists ex) {
             throw new AppointmentAlreadyExistsException();
         }
-        System.out.println(result);
         return result;
     }
 
@@ -117,71 +120,174 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
     }
 
     @Override
-    public boolean updateCustomerInfo(Map<String, String[]> args)
-            throws AccountAlreadyExistsException, PasswordNotStrongException, SQLException {
-        boolean result = false;
-        //assume all args are in place
-        String username = args.get("username")[0];
-        String fullName = args.get("full-name")[0];
-        String password = args.get("password")[0];
-        String email = args.get("email")[0];
-        String gender = args.get("gender")[0];
-        Date dob = Date.valueOf(args.get("dob")[0]);
-        String address = args.get("address")[0];
-        String phoneNumber = args.get("phone-number")[0];
-        if (Utils.checkPassword(password)) {
-            throw new PasswordNotStrongException();
-        }
-        try {
-            String userID = Utils.hash(email + username);
-            customerDAO.readCustomer(userID);
-            //if it reads -> repeat -> throw error
-            throw new AccountAlreadyExistsException();
-        } catch (NoSuchRecordExists ex) {
-            //check if it's image problems
-            if (!ex.getMessage().equals("Image")) {
-                CustomerDTO customer = new CustomerDTOImpl(currentUser);
-                customer.setEmail(email);
-                customer.setUserName(username);
-                customer.setUserPassword(password);
-                customer.setGender(gender);
-                customer.setFullName(fullName);
-                ((CustomerDTO) customer).setDob(dob);
-                ((CustomerDTO) customer).setCustomerAddress(address);
-                ((CustomerDTO) customer).setPhoneNumber(phoneNumber);
-
-                try {
-                    result = customerDAO.updateCustomer((CustomerDTO) currentUser) > 0;
-                } catch (NoSuchRecordExists ex1) {
-                    throw new SQLException(ex1.getMessage());
-                }
-            } else {
-                throw new AccountAlreadyExistsException(ex.getMessage());
-            }
-        }
-
-        return result;
-    }
-
-    @Override
     public boolean addBird(Map<String, String[]> args)
             throws BirdAlreadyExistsException, SQLException {
         boolean result = false;
-        
+
+        try {
+            BirdDTO bird = new BirdDTOImpl();
+
+            // Extract attribute values from the args map
+            String birdFullname = args.get("bird-full-name")[0];
+            String imageID = Utils.getFromMap(args, "imageID", "4rt43t5y56y465t4r3e24r435y65u76i"); //default bird image
+            String birdID = Utils.hash(birdFullname + currentUser.getUserID());
+
+            String birdGender = args.get("bird-gender")[0];
+            String breed = args.get("breed")[0];
+            String band_chip = args.get("band_chip")[0];
+            float birdWeight = Float.parseFloat(args.get("bird-weight")[0]);
+            String sexingMethod = args.get("sexing-method")[0];
+            String medicalHistory = args.get("medical-history")[0];
+            Date hatchingDate = Date.valueOf(args.get("hatching-date")[0]);
+            String featherColor = args.get("feather-color")[0];
+
+            // Set attribute values using the BirdDTO setters
+            bird.setBirdID(birdID);
+            // Assuming you have a CustomerDAO to read the customer from the database based on the customerID
+            bird.setCustomer((CustomerDTO) currentUser);
+            // Assuming you have an ImageDAO to read the image from the database based on the imageID
+            ImageDTO image = imageDAO.readImage(imageID);
+            bird.setImage(image);
+            bird.setBirdFullname(birdFullname);
+            bird.setBirdGender(birdGender);
+            bird.setBreed(breed);
+            bird.setBand_Chip(band_chip);
+            bird.setBirdWeight(birdWeight);
+            bird.setSexingMethod(sexingMethod);
+            bird.setMedicalHistory(medicalHistory);
+            bird.setHatchingDate(hatchingDate);
+            bird.setFeatherColor(featherColor);
+
+            // Assuming you have a BirdDAO to interact with the bird table in the database
+            // and the necessary methods like insertBird(BirdDTO bird) are implemented.
+            int insertResult = birdDAO.insertBird(bird);
+
+            result = insertResult > 0;
+        } catch (NoSuchRecordExists ex) {
+            throw new SQLException(ex.getMessage());
+        } catch (RecordAlreadyExists ex) {
+            throw new BirdAlreadyExistsException(ex.getMessage());
+        }
+
         return result;
     }
 
     @Override
     public boolean deleteBird(String birdID)
             throws BirdDoesNotExistException, SQLException {
-        return true;
+        boolean result = false;
+
+        try {
+            result = birdDAO.deleteBird(birdID) > 0;
+        } catch (NoSuchRecordExists ex) {
+            throw new BirdDoesNotExistException(ex.getMessage());
+        }
+
+        return result;
     }
 
     @Override
     public boolean updateBird(Map<String, String[]> args)
-            throws BirdAlreadyExistsException, SQLException {
-        return true;
+            throws BirdDoesNotExistException, SQLException {
+        boolean result = false;
+
+        try {
+            String birdID = args.get("birdID")[0];
+            BirdDTO bird = birdDAO.readBird(birdID);
+
+            // Extract attribute values from the args map
+            String imageID = Utils.getFromMap(args, "imageID", bird.getImage().getImageID());
+            String birdFullname = Utils.getFromMap(args, "bird-full-name", bird.getBirdFullname());
+            String birdGender = Utils.getFromMap(args, "bird-gender", bird.getBirdGender());
+            String breed = Utils.getFromMap(args, "breed", bird.getBreed());
+            String band_chip = Utils.getFromMap(args, "band_chip", bird.getBand_Chip());
+            float birdWeight = Float.parseFloat(Utils.getFromMap(args, "bird-weight", String.valueOf(bird.getBirdWeight())));
+            String sexingMethod = Utils.getFromMap(args, "sexing-method", bird.getSexingMethod());
+            String medicalHistory = Utils.getFromMap(args, "medical-history", bird.getMedicalHistory());
+            Date hatchingDate = Date.valueOf(Utils.getFromMap(args, "hatching-date", bird.getHatchingDate().toString()));
+            String featherColor = Utils.getFromMap(args, "feather-color", bird.getFeatherColor());
+
+            // Assuming you have an ImageDAO to read the image from the database based on the imageID
+            ImageDTO image = imageDAO.readImage(imageID);
+            bird.setImage(image);
+            bird.setBirdFullname(birdFullname);
+            bird.setBirdGender(birdGender);
+            bird.setBreed(breed);
+            bird.setBand_Chip(band_chip);
+            bird.setBirdWeight(birdWeight);
+            bird.setSexingMethod(sexingMethod);
+            bird.setMedicalHistory(medicalHistory);
+            bird.setHatchingDate(hatchingDate);
+            bird.setFeatherColor(featherColor);
+
+            // Assuming you have a BirdDAO to interact with the bird table in the database
+            // and the necessary methods like insertBird(BirdDTO bird) are implemented.
+            int updateResult = birdDAO.updateBird(bird);
+
+            result = updateResult > 0;
+        } catch (NoSuchRecordExists ex) {
+            throw new BirdDoesNotExistException(ex.getMessage());
+        }
+
+        return result;
     }
-    
-    
+
+    @Override
+    public boolean cancelAppointment(String appointmentID) throws AppointmentDoesNotExistException, SQLException {
+        boolean result = false;
+
+        try {
+            AppointmentDTO appointment = appointmentDAO.readAppointment(appointmentID);
+            if (appointment.getAppStatus().trim().toLowerCase().equals("processing")) {
+                result = appointmentDAO.updateAppointmentStatus("cancelled", appointmentID) > 0;
+            }
+        } catch (NoSuchRecordExists ex) {
+            throw new AppointmentDoesNotExistException(ex.getMessage());
+        }
+
+        return result;
+    }
+
+    @Override
+    public boolean updateAccount(Map<String, String[]> args)
+            throws AccountDoesNotExistException, AccountAlreadyExistsException, SQLException {
+        boolean result = false;
+        try {
+            if (super.updateAccount(args)) {
+                CustomerDTO tempCustomer = ((CustomerDTO) currentUser).copyUser();
+
+                Date dob = Date.valueOf(Utils.getFromMap(args, "dob", tempCustomer.getDob().toString()));
+                String address = Utils.getFromMap(args, "address", tempCustomer.getCustomerAddress());
+                String phoneNumber = Utils.getFromMap(args, "phone-number", tempCustomer.getPhoneNumber());
+
+                tempCustomer.setCustomerAddress(address);
+                tempCustomer.setDob(dob);
+                tempCustomer.setPhoneNumber(phoneNumber);
+                result = customerDAO.updateCustomer(tempCustomer) > 0;
+                if (result) {
+                    ((CustomerDTO) currentUser).copyUser(tempCustomer);
+                }
+
+            }
+        } catch (NoSuchRecordExists ex) {
+            throw new AccountDoesNotExistException(ex.getMessage());
+        }
+
+        return result;
+    }
+
+    @Override
+    public DoctorDTO getDoctor(String doctorID) throws SQLException, AccountDoesNotExistException {
+        DoctorDTO doctor = null;
+
+        if (doctorID != null && !doctorID.trim().equals("")) {
+            try {
+                doctor = doctorDAO.readDoctor(doctorID);
+            } catch (NoSuchRecordExists ex) {
+                throw new AccountDoesNotExistException(ex.getMessage());
+            }
+        }
+
+        return doctor;
+    }
 }
