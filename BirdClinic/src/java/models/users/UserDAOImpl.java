@@ -24,21 +24,26 @@ import utils.DBUtils;
 public class UserDAOImpl implements UserDAO {
 
     private static final String READ_USER
-            = "select userID, imageID, userName, userPassword, fullName, "
+            = "select imageID, userName, userPassword, fullName, "
             + "gender, email, userRole, status_ "
             + "from Users "
             + "where userID = ?";
+    private static final String READ_USER_BY_EMAIL_USERNAME
+            = "select userID, imageID, userPassword, fullName, "
+            + "gender, userRole, status_ "
+            + "from Users "
+            + "where email = ? or userName = ?";
     private static final String READ_ALL_USER
             = "select userID, imageID, userName, userPassword, fullName, "
             + "gender, email, userRole, status_ "
             + "from Users ";
     private static final String READ_ALL_USER_BY_ROLE
             = "select userID, imageID, userName, userPassword, fullName, "
-            + "gender, email, userRole, status_ "
+            + "gender, email, status_ "
             + "from Users "
             + "where userRole = ?";
     private static final String LOGIN_USER
-            = "select userID, imageID, userName, userPassword, fullName, "
+            = "select userID, imageID, fullName, "
             + "gender, email, userRole, status_ "
             + "from Users "
             + "where userName = ? and userPassword = ?";
@@ -52,8 +57,12 @@ public class UserDAOImpl implements UserDAO {
             + "where userID = ?";
     private static final String UPDATE_USER
             = "update Users "
-            + "set imageID = ?, userName = ?, userPassword = ?, fullName = ?, "
+            + "set imageID = ?, userName = ?, fullName = ?, "
             + "gender = ?, email = ?, userRole = ?, status_ = ? "
+            + "where userID = ?";
+    private static final String UPDATE_USER_PASSWORD
+            = "update Users "
+            + "set userPassword = ? "
             + "where userID = ?";
     private final ImageDAO imageDAO;
 
@@ -90,6 +99,48 @@ public class UserDAOImpl implements UserDAO {
 
             if (result == null) {
                 throw new NoSuchUserExistsException();
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+
+        return result;
+    }
+    
+    @Override
+    public UserDTO readUserByEmailUserName(String email, String username)
+            throws NoSuchRecordExists, SQLException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        UserDTO result = null;
+
+        try {
+            con = DBUtils.getConnection();
+            stm = con.prepareStatement(READ_USER_BY_EMAIL_USERNAME);
+            stm.setString(1, email);
+            stm.setString(2, username);
+            rs = stm.executeQuery();
+
+            if (rs.next()) {
+                result = new UserDTOImpl();
+                result.setUserID(rs.getString("userID"));
+                result.setImage(imageDAO.readImage(rs.getString("imageID")));
+                result.setFullName(rs.getString("fullName"));
+                result.setEmail(email);
+                result.setUserPassword(null);
+                result.setGender(rs.getString("gender"));
+                result.setUserRole(rs.getString("userRole"));
+                result.setUserName(username);
+                result.setStatus_(rs.getBoolean("status_"));
             }
         } finally {
             if (rs != null) {
@@ -225,13 +276,38 @@ public class UserDAOImpl implements UserDAO {
             stm = con.prepareStatement(UPDATE_USER);
             stm.setString(1, user.getImage().getImageID());
             stm.setString(2, user.getUserName());
-            stm.setString(3, user.getUserPassword());
-            stm.setString(4, user.getFullName());
-            stm.setString(5, user.getGender());
-            stm.setString(6, user.getEmail());
-            stm.setString(7, user.getUserRole());
-            stm.setBoolean(8, user.isStatus_());
+            stm.setString(3, user.getFullName());
+            stm.setString(4, user.getGender());
+            stm.setString(5, user.getEmail());
+            stm.setString(6, user.getUserRole());
+            stm.setBoolean(7, user.isStatus_());
             stm.setString(9, user.getUserID());
+
+            result = stm.executeUpdate();
+            if (result == 0) throw new NoSuchUserExistsException();
+        } finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+
+        return result;
+    }
+    
+    @Override
+    public int updateUserPassword(String userID, String password) throws NoSuchRecordExists, SQLException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        int result = 0;
+
+        try {
+            con = DBUtils.getConnection();
+            stm = con.prepareStatement(UPDATE_USER_PASSWORD);
+            stm.setString(1, password);
+            stm.setString(2, userID);
 
             result = stm.executeUpdate();
             if (result == 0) throw new NoSuchUserExistsException();
@@ -271,7 +347,7 @@ public class UserDAOImpl implements UserDAO {
                 result.setUserPassword(null);
                 result.setGender(rs.getString("gender"));
                 result.setUserRole(rs.getString("userRole"));
-                result.setUserName(rs.getString("userName"));
+                result.setUserName(userName);
                 result.setStatus_(rs.getBoolean("status_"));
             }
             if (result == null) throw new NoSuchUserExistsException();

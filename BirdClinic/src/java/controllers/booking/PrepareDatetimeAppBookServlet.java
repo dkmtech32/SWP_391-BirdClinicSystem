@@ -17,9 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.timeslot.TimeslotDTO;
-import services.account.AccountServices;
 import services.customer.CustomerServices;
 import utils.Utils;
+import services.general.GeneralServices;
 
 /**
  *
@@ -43,24 +43,33 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String doctorID = request.getParameter("doctorID");
-        String nextMonday = request.getParameter("nextWeekday");
+        String currentWeekday = request.getParameter("currentWeekday");
         String url = "/Common/index.jsp";
         HttpSession session = request.getSession();
-        AccountServices service = (AccountServices) session.getAttribute("service");
+        GeneralServices service = (GeneralServices) session.getAttribute("service");
 
         try {
-            
-            Map<String, List<TimeslotDTO>> timeslots = ((CustomerServices)service).getTimeslotsByWeekday(doctorID);
+
+            Map<String, List<TimeslotDTO>> timeslots = ((CustomerServices) service).getTimeslotsByWeekday(doctorID);
 
             Date date = Date.valueOf(LocalDate.now());
-            if (nextMonday != null) {
-                date = Date.valueOf(nextMonday);
+            if (currentWeekday != null) { //always in the future
+                date = Date.valueOf(currentWeekday.trim());
+                System.out.println(Utils.getLastWeekWeekday(date).toString());
+                request.setAttribute("lastWeekday", Utils.getLastWeekWeekday(date));
             }
 
-            List<Date> daysInWeek = Utils.getDaysInWeek(date);
+            if (true) { //TODO: test to see if nextMonday is x weeks ahead. (can only book x+1 weeks in advance)
+                
+                System.out.println(Utils.getNextWeekWeekday(date).toString());
+                request.setAttribute("nextWeekday", Utils.getNextWeekWeekday(date));
+            }
+
+            String[] weekdays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+            Map<String, Date> daysInWeek = Utils.getDaysInWeek(date, weekdays);
             request.setAttribute("timeslots", timeslots);
-            request.setAttribute("week", daysInWeek);
-            request.setAttribute("nextWeekday", Utils.getNextWeekWeekday(date));
+            request.setAttribute("daysInWeek", daysInWeek);
+            request.setAttribute("weekdays", weekdays);
             url = "/Customer/bookingDatetime.jsp";
         } catch (SQLException ex) {
             log(ex.getMessage());

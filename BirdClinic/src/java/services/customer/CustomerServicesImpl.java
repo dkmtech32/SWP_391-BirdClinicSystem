@@ -21,17 +21,18 @@ import models.service_.Service_DTO;
 import models.timeslot.TimeslotDTO;
 import models.users.UserDTO;
 import models.users.customer.CustomerDTO;
-import services.account.AccountAlreadyExistsException;
-import services.account.AccountServicesImpl;
-import services.account.BirdDoesNotExistException;
-import services.account.PasswordNotStrongException;
+import models.users.customer.CustomerDTOImpl;
+import services.general.AccountAlreadyExistsException;
+import services.general.GeneralServicesImpl;
+import services.general.BirdDoesNotExistException;
+import services.general.PasswordNotStrongException;
 import utils.Utils;
 
 /**
  *
  * @author Admin
  */
-public class CustomerServicesImpl extends AccountServicesImpl implements CustomerServices {
+public class CustomerServicesImpl extends GeneralServicesImpl implements CustomerServices {
 
     public CustomerServicesImpl(UserDTO currentUser) throws SQLException {
         super();
@@ -138,14 +139,15 @@ public class CustomerServicesImpl extends AccountServicesImpl implements Custome
         } catch (NoSuchRecordExists ex) {
             //check if it's image problems
             if (!ex.getMessage().equals("Image")) {
-                currentUser.setEmail(email);
-                currentUser.setUserName(username);
-                currentUser.setUserPassword(password);
-                currentUser.setGender(gender);
-                currentUser.setFullName(fullName);
-                ((CustomerDTO) currentUser).setDob(dob);
-                ((CustomerDTO) currentUser).setCustomerAddress(address);
-                ((CustomerDTO) currentUser).setPhoneNumber(phoneNumber);
+                CustomerDTO customer = new CustomerDTOImpl(currentUser);
+                customer.setEmail(email);
+                customer.setUserName(username);
+                customer.setUserPassword(password);
+                customer.setGender(gender);
+                customer.setFullName(fullName);
+                ((CustomerDTO) customer).setDob(dob);
+                ((CustomerDTO) customer).setCustomerAddress(address);
+                ((CustomerDTO) customer).setPhoneNumber(phoneNumber);
 
                 try {
                     result = customerDAO.updateCustomer((CustomerDTO) currentUser) > 0;
@@ -163,7 +165,9 @@ public class CustomerServicesImpl extends AccountServicesImpl implements Custome
     @Override
     public boolean addBird(Map<String, String[]> args)
             throws BirdAlreadyExistsException, SQLException {
-        return true;
+        boolean result = false;
+        
+        return result;
     }
 
     @Override
@@ -177,4 +181,6 @@ public class CustomerServicesImpl extends AccountServicesImpl implements Custome
             throws BirdAlreadyExistsException, SQLException {
         return true;
     }
+    
+    
 }

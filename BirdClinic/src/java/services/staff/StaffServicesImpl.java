@@ -6,14 +6,14 @@
 package services.staff;
 
 import models.users.UserDTO;
-import services.account.AccountDoesNotExist;
-import services.account.AccountServicesImpl;
+import services.general.AccountDoesNotExist;
+import services.general.GeneralServicesImpl;
 
 /**
  *
  * @author Admin
  */
-public class StaffServicesImpl extends AccountServicesImpl  {
+public class StaffServicesImpl extends GeneralServicesImpl  {
 
     public StaffServicesImpl(UserDTO user) throws AccountDoesNotExist {
         if (user.getUserRole().toLowerCase().equals("admin"))

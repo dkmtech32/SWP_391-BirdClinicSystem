@@ -8,25 +8,16 @@ package controllers.booking;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.bird.BirdDTO;
-import models.service_.NoSuchService_ExistsException;
 import models.service_.Service_DTO;
-import models.speciality.NoSuchSpecialityExistsException;
-import models.timeslot.NoSuchTimeslotExistsException;
-import models.users.UserDTO;
-import models.users.customer.NoSuchCustomerExistsException;
-import models.users.doctor.DoctorDTO;
-import models.users.doctor.NoSuchDoctorExistsException;
-import services.account.AccountDoesNotExist;
-import services.account.AccountServices;
+import services.general.AccountDoesNotExist;
 import services.customer.CustomerServices;
+import services.general.GeneralServices;
 
 /**
  *
@@ -50,7 +41,7 @@ public class PrepareAppointmentBookServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         String doctorID = request.getParameter("doctorID");
-        String appDate = request.getParameter("appDate");
+        String appDate = request.getParameter("appDate").trim();
         String timeslotID = request.getParameter("timeslotID");
         String url = "/Common/index.jsp";
 
@@ -58,7 +49,7 @@ public class PrepareAppointmentBookServlet extends HttpServlet {
             if (session == null) {
                 url = "/Common/login.jsp";
             } else {
-                AccountServices service = (AccountServices) session.getAttribute("service");
+                GeneralServices service = (GeneralServices) session.getAttribute("service");
                 List<BirdDTO> birds = ((CustomerServices) service).getCustomerBirds();
                 request.setAttribute("birds", birds);
 

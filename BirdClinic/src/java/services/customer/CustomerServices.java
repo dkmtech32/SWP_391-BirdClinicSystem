@@ -15,17 +15,17 @@ import models.bird.BirdDTO;
 import models.service_.Service_DTO;
 import models.timeslot.TimeslotDTO;
 import models.users.doctor.DoctorDTO;
-import services.account.AccountAlreadyExistsException;
-import services.account.AccountDoesNotExist;
-import services.account.AccountServices;
-import services.account.BirdDoesNotExistException;
-import services.account.PasswordNotStrongException;
+import services.general.AccountAlreadyExistsException;
+import services.general.AccountDoesNotExist;
+import services.general.BirdDoesNotExistException;
+import services.general.PasswordNotStrongException;
+import services.general.GeneralServices;
 
 /**
  *
  * @author Admin
  */
-public interface CustomerServices extends AccountServices {
+public interface CustomerServices extends GeneralServices {
 
     boolean addBird(Map<String, String[]> args) throws BirdAlreadyExistsException, SQLException;
 
