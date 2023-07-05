@@ -6,14 +6,16 @@
 package controllers.booking;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.time.LocalDate;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import models.appointment.AppointmentAlreadyExistsException;
+import services.customer.CustomerServices;
 
 /**
  *
@@ -57,7 +59,8 @@ public class BookAppointmentServlet extends HttpServlet {
         String doctorID = request.getParameter("doctorID");
         String url = "/Customer/prepareBooking";
         
-        
+        HttpSession session = request.getSession();
+        CustomerServices service = (CustomerServices) session.getAttribute("service");
 
         try {
             Map<String, String> map = new HashMap<>();
@@ -72,24 +75,14 @@ public class BookAppointmentServlet extends HttpServlet {
                 map.put("notes", notes);
             }
             if (!map.isEmpty()) {
-//                appServices.bookAppointment(map);
-                url = "/Customer/custDashboard";
+                service.bookAppointment(map);
+                url = "/Common/index.jsp";
             }
-        } catch (Exception ex) {
-            log(ex.getMessage());
+        } catch (SQLException | AppointmentAlreadyExistsException ex) {
+            ex.printStackTrace();
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
-    }
-
-    private void testString(String key, String value, Map<String, String> map) throws Exception {
-        if (value == null) {
-            throw new Exception();
-        }
-        if (value.trim().isEmpty()) {
-            throw new Exception();
-        }
-        map.put(key, value.trim());
     }
 
     /**

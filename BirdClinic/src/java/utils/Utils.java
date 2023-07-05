@@ -9,9 +9,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.text.Normalizer;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
@@ -74,9 +74,9 @@ public class Utils {
 
         return sb.toString();
     }
-    
-    public static List<Date> getDaysInWeek(java.sql.Date date) {
-        List<Date> daysInWeek = new ArrayList<>();
+
+    public static Map<String, Date> getDaysInWeek(java.sql.Date date, String[] weekdays) {
+        Map<String, Date> daysInWeek = new HashMap<>();
 
         // Create a calendar instance and set the provided date
         Calendar calendar = Calendar.getInstance();
@@ -88,15 +88,17 @@ public class Utils {
 
         // Add each day of the week to the list
         for (int i = 0; i < 7; i++) {
-            daysInWeek.add(new Date(calendar.getTimeInMillis()));
+            Date day = new Date(calendar.getTimeInMillis());
+            String weekday = weekdays[i];
+            daysInWeek.put(weekday, day);
             calendar.add(Calendar.DAY_OF_MONTH, 1);
         }
 
         return daysInWeek;
     }
-    
+
     public static Date getNextWeekWeekday(java.sql.Date date) {
-         Calendar calendar = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
 
         // Set the calendar to the next week
@@ -113,12 +115,55 @@ public class Utils {
         // Convert java.util.Date to java.sql.Date
         return new java.sql.Date(nextMonday.getTime());
     }
-    
+
+    public static Date getPreviousWeek(java.sql.Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+
+        // Set the calendar to the previous week
+        calendar.add(Calendar.WEEK_OF_YEAR, -1);
+
+        // Get the date one week before
+        java.util.Date previousWeek = calendar.getTime();
+
+        // Convert java.util.Date to java.sql.Date
+        return new java.sql.Date(previousWeek.getTime());
+    }
+
+    public static Date getLastWeekWeekday(java.sql.Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+
+        // Set the calendar to the next week
+        calendar.add(Calendar.WEEK_OF_YEAR, 1);
+
+        // Find the last Monday
+        int currentDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+        int daysUntilNextMonday = (Calendar.MONDAY - currentDayOfWeek + 7) % 7;
+        calendar.add(Calendar.DAY_OF_WEEK, daysUntilNextMonday);
+
+        // Get the date of the next Monday
+        java.util.Date nextMonday = calendar.getTime();
+
+        // Convert java.util.Date to java.sql.Date
+        return new java.sql.Date(nextMonday.getTime());
+    }
+
     public static boolean checkPassword(String password) {
         if (password == null) {
             return false;
         }
-        if (password.trim().equals("")) return false;
+        if (password.trim().equals("")) {
+            return false;
+        }
         return password.matches("^(?=.*[A-Z])(?=.*\\d).+$");
+    }
+
+    public static String getFromMap(Map<String, String[]> args, String name, String def) {
+        String value = args.get(name)[0];
+        if (value == null) {
+            value = def;
+        }
+        return value;
     }
 }

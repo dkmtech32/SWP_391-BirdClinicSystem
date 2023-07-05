@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import models.exceptions.NoSuchRecordExists;
@@ -109,7 +110,7 @@ public class TimeslotDAOImpl implements TimeslotDAO {
                 con.close();
             }
         }
-
+        Collections.sort(timeSlotList);
         return timeSlotList;
     }
 
@@ -152,6 +153,7 @@ public class TimeslotDAOImpl implements TimeslotDAO {
             }
         }
 
+        Collections.sort(timeSlotList);
         return timeSlotList;
     }
 
@@ -186,6 +188,7 @@ public class TimeslotDAOImpl implements TimeslotDAO {
             }
         }
 
+        Collections.sort(weekdays);
         return weekdays;
     }
 
@@ -215,7 +218,10 @@ public class TimeslotDAOImpl implements TimeslotDAO {
                     timeSlotList.add(result);
                 }
                 if (!timeSlotList.isEmpty()) {
-                    if (timeslots == null) timeslots = new HashMap<>();
+                    Collections.sort(timeSlotList);
+                    if (timeslots == null) {
+                        timeslots = new HashMap<>();
+                    }
                     timeslots.put(weekday, timeSlotList);
                 }
             }

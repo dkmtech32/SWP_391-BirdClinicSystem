@@ -51,4 +51,6 @@ public interface UserDTO extends Serializable {
     void setUserRole(String userRole);
     
     void setStatus_(boolean status_);
+    
+    UserDTO copyUser();
 }
