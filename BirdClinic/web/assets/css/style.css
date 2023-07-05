@@ -5912,6 +5912,7 @@ html.menu-opened body {
 		visibility: visible;
 		opacity: 1;
 		margin-top: 0;
+                top: 100%;
 		-webkit-transform: translateY(0);
 		-ms-transform: translateY(0);
 		transform: translateY(0);
