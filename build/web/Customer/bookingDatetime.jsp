@@ -76,13 +76,13 @@
                                             <!-- Time Slot -->
                                             <div class="time-slot">
                                                 <ul class="clearfix">
-<<<<<<< Updated upstream
+
                                                     <select name="timeslotID">
                                                         <c:forEach items="${timeslots}" var="timeslot">
                                                             ${timeslot.day_}, ${timeslot.timeslot}
                                                         </c:forEach>
                                                     </select>
-=======
+
                                                     <c:forEach var="slot" items="${requestScope.timeslots}">
                                                         <li>
                                                             <c:forEach var="time" items="${slot.times}">
@@ -92,7 +92,7 @@
                                                             </c:forEach>
                                                         </li>
                                                     </c:forEach>
->>>>>>> Stashed changes
+
                                                 </ul>
                                             </div>
                                             <!-- /Time Slot -->
@@ -100,14 +100,66 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                            <!-- Schedule Widget -->
+<!--                            <div class="card booking-schedule schedule-widget">
+                                 Schedule Header 
+                                <div class="schedule-header">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                             Day Slot 
+                                            <div class="day-slot">
+                                                <ul>
+                                                    <c:forEach var="date" items="${week}">
+                                                        <li>
+                                                            <span>${date.dayOfWeek.toString().substring(0, 3)}</span>
+                                                            <span class="slot-date">
+                                                                <fmt:formatDate value="${date}" pattern="dd MMM"/>
+                                                                <small class="slot-year">${date.year}</small>
+                                                            </span>
+                                                        </li>
+                                                    </c:forEach>
+                                                </ul>
+                                            </div>
+                                             /Day Slot 
+                                        </div>
+                                    </div>
+                                </div>
+                                 /Schedule Header 
+
+                                 Schedule Content 
+                                <div class="schedule-cont">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                             Time Slot 
+                                            <div class="time-slot">
+                                                <ul class="clearfix">
+                                                    <c:forEach var="timeslot" items="${timeslots}">
+                                                        <c:forEach var="dto" items="${timeslot.value}">
+                                                            <li>
+                                                                <a class="timing" href="#">
+                                                                    <span>${dto.time}</span>
+                                                                </a>
+                                                            </li>
+                                                        </c:forEach>
+                                                    </c:forEach>
+                                                </ul>
+                                            </div>
+                                             /Time Slot 
+                                        </div>
+                                    </div>
+                                </div>
+                                 /Schedule Content 
+                            </div>-->
                             <!-- /Schedule Widget -->
+
                             <c:if test="${not empty doctorID}">
                                 <input hidden="hidden" value="${doctorID}"/>
                             </c:if>
                             <!-- Submit Section -->
-<<<<<<< Updated upstream
+
                             <input type="submit"/>
-=======
+
                             <c:choose>
                                 <c:when test="${param.doctor == 'all'}">                                 
                                     <div class="submit-section proceed-btn text-right">
@@ -120,7 +172,7 @@
                                     </div>
                                 </c:when>                                       
                             </c:choose>
->>>>>>> Stashed changes
+
 
                             <!-- /Submit Section -->
                         </div>

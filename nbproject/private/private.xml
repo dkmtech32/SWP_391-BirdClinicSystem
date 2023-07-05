@@ -5,12 +5,12 @@
         <group>
             <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/doctor/doctor-dashboard.jsp</file>
             <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/staff/staff-dashboard.jsp</file>
-            <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/Common/client-appoitments-details.jsp</file>
-            <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/Common/client-appointmenst-detaisl-not-yet.jsp</file>
             <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/Common/booking-list.jsp</file>
             <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/Common/client-appointments-details.jsp</file>
+            <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/customer/client-appointments-details-feedback.jsp</file>
             <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/Common/bird-details.jsp</file>
             <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/customer/customer-dashboard.jsp</file>
+            <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/staff/client-appointments-details-for-staff-finish.jsp</file>
             <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/staff/client-appointments-details-for-staff.jsp</file>
             <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/BirdClinic/web/assets/css/style.css</file>
         </group>
