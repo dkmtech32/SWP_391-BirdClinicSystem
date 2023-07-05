@@ -5911,7 +5911,8 @@ html.menu-opened body {
 	.header-navbar-rht li.show > .dropdown-menu {
 		visibility: visible;
 		opacity: 1;
-		margin-top: 120px;
+		margin-top: 0;
+                top: 100%;
 		-webkit-transform: translateY(0);
 		-ms-transform: translateY(0);
 		transform: translateY(0);
