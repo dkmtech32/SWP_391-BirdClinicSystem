@@ -12,7 +12,7 @@ import java.sql.Time;
  *
  * @author Admin
  */
-public interface TimeslotDTO extends Serializable{
+public interface TimeslotDTO extends Serializable, Comparable{
 
     String getDay_();
 

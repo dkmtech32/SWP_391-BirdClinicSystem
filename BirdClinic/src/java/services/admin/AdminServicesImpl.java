@@ -15,16 +15,16 @@ import models.users.UserDTO;
 import models.users.customer.CustomerDTOImpl;
 import models.users.doctor.DoctorDTO;
 import models.users.doctor.DoctorDTOImpl;
-import services.account.AccountAlreadyExistsException;
-import services.account.AccountDoesNotExist;
-import services.account.AccountServicesImpl;
+import services.general.AccountAlreadyExistsException;
+import services.general.AccountDoesNotExist;
+import services.general.GeneralServicesImpl;
 import utils.Utils;
 
 /**
  *
  * @author Admin
  */
-public class AdminServicesImpl extends AccountServicesImpl {
+public class AdminServicesImpl extends GeneralServicesImpl {
 
     public AdminServicesImpl(UserDTO user) throws AccountDoesNotExist {
         if (user.getUserRole().toLowerCase().equals("admin"))

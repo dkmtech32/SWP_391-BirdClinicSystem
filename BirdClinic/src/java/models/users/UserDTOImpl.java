@@ -144,4 +144,19 @@ public class UserDTOImpl implements UserDTO {
         this.setGender(user.getGender());
         this.setUserRole(user.getUserRole());
     }
+    
+    @Override
+    public UserDTO copyUser() {
+        UserDTO user = new UserDTOImpl();
+        user.setUserID(this.getUserID());
+        user.setUserName(this.getUserName());
+        user.setImage(this.getImage());
+        user.setUserPassword(this.getUserPassword());
+        user.setEmail(this.getEmail());
+        user.setFullName(this.getFullName());
+        user.setGender(this.getGender());
+        user.setUserRole(this.getUserRole());
+        
+        return user;
+    }
 }

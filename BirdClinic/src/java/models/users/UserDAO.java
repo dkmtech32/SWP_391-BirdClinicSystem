@@ -31,7 +31,12 @@ public interface UserDAO extends Serializable {
 
     UserDTO readUser(String userID)
             throws NoSuchRecordExists, SQLException;
+    
+    UserDTO readUserByEmailUserName(String email, String username)
+            throws NoSuchRecordExists, SQLException;
 
+    int updateUserPassword(String userID, String password) throws NoSuchRecordExists, SQLException;
+    
     List<UserDTO> readListOfUsers(List<String> userIDs) 
             throws NoSuchRecordExists, SQLException;
 

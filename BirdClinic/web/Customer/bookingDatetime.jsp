@@ -40,27 +40,37 @@
                                             <!-- Day Slot -->
                                             <div class="day-slot">
                                                 <ul>
-                                                    <li class="left-arrow">
-                                                        <a href="#">
-                                                            <i class="fa fa-chevron-left"></i>
-                                                        </a>
-                                                    </li>
-                                                    <c:forEach var="slot" items="${requestScope.timeslots}">
+                                                    <c:if test="${not empty requestScope.lastWeekday}">
+                                                        <li class="left-arrow">
+                                                            <a href="
+                                                               <c:url value="/Customer/prepareDatetime?currentWeekday=${requestScope.lastWeekday.toString().trim()}"/>
+                                                               <c:if test="${not empty param.doctorID}">&doctorID=${param.doctorID}</c:if>
+                                                                   ">
+                                                                   <i class="fa fa-chevron-left"></i>
+                                                               </a>
+                                                            </li>
+                                                    </c:if>
+                                                    <c:forEach var="slot" items="${requestScope.week}">
                                                         <li>
-                                                            <span>${slot.day}</span>
+                                                            <span>${slot}</span>
                                                             <span class="slot-date">
-                                                                <fmt:formatDate value="${slot.date}" pattern="dd MMM"/>
+                                                                <fmt:formatDate value="${slot}" pattern="dd MMM"/>
                                                                 <small class="slot-year">
-                                                                    <fmt:formatDate value="${slot.date}" pattern="yyyy"/>
+                                                                    <fmt:formatDate value="${slot}" pattern="yyyy"/>
                                                                 </small>
                                                             </span>
                                                         </li>
                                                     </c:forEach>
-                                                    <li class="right-arrow">
-                                                        <a href="#">
-                                                            <i class="fa fa-chevron-right"></i>
-                                                        </a>
-                                                    </li>
+                                                    <c:if test="${not empty requestScope.nextWeekday}">
+                                                        <li class="right-arrow">
+                                                            <a href="
+                                                               <c:url value="/Customer/prepareDatetime?currentWeekday=${requestScope.nextWeekday}"/>
+                                                               <c:if test="${not empty param.doctorID}">&doctorID=${param.doctorID}</c:if>
+                                                                   ">
+                                                                   <i class="fa fa-chevron-left"></i>
+                                                               </a>
+                                                            </li>
+                                                    </c:if>
                                                 </ul>
                                             </div>
                                             <!-- /Day Slot -->
@@ -69,47 +79,115 @@
                                 </div>
                                 <!-- /Schedule Header -->
 
-                                <!-- Schedule Content -->
-                                <div class="schedule-cont">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <!-- Time Slot -->
-                                            <div class="time-slot">
-                                                <ul class="clearfix">
-                                                    <select name="timeslotID">
-                                                        <c:forEach items="${timeslots}" var="timeslot">
-                                                            ${timeslot.day_}, ${timeslot.timeslot}
+                                <!--                                 Schedule Content 
+                                                                <div class="schedule-cont">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                             Time Slot 
+                                                                            <div class="time-slot">
+                                                                                <ul class="clearfix">
+                                
+                                                                                    
+                                
+                                                                                </ul>
+                                                                            </div>
+                                                                             /Time Slot 
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>-->
+
+                                <!-- Schedule Widget -->
+                                <div class="card booking-schedule schedule-widget">
+                                    Schedule Header 
+                                    <div class="schedule-header">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                Day Slot 
+                                                <div class="day-slot">
+                                                    <ul>
+                                                        <c:forEach var="date" items="${daysInWeek}">
+                                                            <li>
+                                                                <span>${daysInWeek.key.substring(0, 3)}</span>
+                                                                <span class="slot-date">
+                                                                    <fmt:formatDate value="${date.value}" pattern="dd MMM"/>
+                                                                    <small class="slot-year">${date.value.year}</small>
+                                                                </span>
+                                                            </li>
                                                         </c:forEach>
-                                                    </select>
-                                                </ul>
+                                                    </ul>
+                                                </div>
+                                                /Day Slot 
                                             </div>
-                                            <!-- /Time Slot -->
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <!-- /Schedule Widget -->
-                            <c:if test="${not empty doctorID}">
-                                <input hidden="hidden" value="${doctorID}"/>
-                            </c:if>
-                            <!-- Submit Section -->
-                            <input type="submit"/>
+                                    /Schedule Header 
 
-                            <!-- /Submit Section -->
+                                    Schedule Content 
+                                    <div class="schedule-cont">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                Time Slot 
+                                                <div class="time-slot">
+                                                    <ul class="clearfix">
+                                                        <c:forEach var="timeslot" items="${timeslots}">
+                                                            <c:forEach var="dto" items="${timeslot.value}">
+                                                                <li>
+                                                                    <a class="timing" href="
+                                                                       <c:url value="/Customer/prepareBooking?timeslotID=${dto.timeSlotID}&appDate=${daysInWeek[dto.day_].toString().trim()}"/>
+                                                                       <c:if test="${not empty param.doctorID}">&doctorID=${param.doctorID}</c:if>
+                                                                       ">
+                                                                        <span>${dto.timeSlot}</span>
+                                                                    </a>
+                                                                </li>
+                                                            </c:forEach>
+                                                        </c:forEach>
+                                                    </ul>
+                                                </div>
+                                                /Time Slot 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    /Schedule Content 
+                                </div>
+                                <!-- /Schedule Widget -->
+
+                                <c:if test="${not empty doctorID}">
+                                    <input hidden="hidden" value="${doctorID}"/>
+                                </c:if>
+                                <!-- Submit Section -->
+
+                                <input type="submit"/>
+
+                                <c:choose>
+                                    <c:when test="${param.doctor == 'all'}">                                 
+                                        <div class="submit-section proceed-btn text-right">
+                                            <a onclick="location.href = '../Customer/bookInfo.jsp?doctor=all'" class="btn btn-primary submit-btn">Next</a>
+                                        </div>
+                                    </c:when>
+                                    <c:when test="${param.doctor == 'doc'}">
+                                        <div class="submit-section proceed-btn text-right">
+                                            <a onclick="location.href = '../Customer/bookInfo.jsp?doctor=doc'" class="btn btn-primary submit-btn">Next</a>
+                                        </div>
+                                    </c:when>                                       
+                                </c:choose>
+
+
+                                <!-- /Submit Section -->
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- /Page Content -->
+
+                <!-- Footer -->
+                <jsp:include page="../Common/footer.jsp"/>
+                <!-- /Footer -->
             </div>
-            <!-- /Page Content -->
+            <!-- /Main Wrapper -->
 
-            <!-- Footer -->
-            <jsp:include page="../Common/footer.jsp"/>
-            <!-- /Footer -->
-        </div>
-        <!-- /Main Wrapper -->
-
-        <!-- Script -->
-        <jsp:include page="../Common/script.jsp"/>
-        <!-- /Script -->
+            <!-- Script -->
+            <jsp:include page="../Common/script.jsp"/>
+            <!-- /Script -->
     </body>
 </html>
