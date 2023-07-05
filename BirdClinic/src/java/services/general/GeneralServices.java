@@ -28,7 +28,7 @@ public interface GeneralServices extends Serializable {
 
     UserDTO getCurrentUser();
 
-    boolean login(String username, String password) throws AccountDoesNotExistException, SQLException;
+    boolean login(String username, String password) throws AccountDoesNotExist, SQLException;
 
     AppointmentDTO viewAppointment(String appointmentID) throws SQLException, AppointmentDoesNotExistException;
 
@@ -47,15 +47,15 @@ public interface GeneralServices extends Serializable {
             throws SQLException;
     
     List<Service_DTO> getServices(String doctorID) 
-            throws SQLException, AccountDoesNotExistException;
+            throws SQLException, AccountDoesNotExist;
     
     TimeslotDTO getTimeslot(String TimeslotID) throws SQLException;
     
     boolean updateAccount(Map<String, String[]> args) 
-            throws AccountDoesNotExistException, AccountAlreadyExistsException, SQLException;
+            throws AccountAlreadyExistsException, PasswordNotStrongException, SQLException;
     
-    boolean enableAccount(String userID) throws AccountDoesNotExistException, SQLException;
+    boolean enableAccount(String userID) throws AccountDoesNotExist, SQLException;
     
     boolean updateAccountPassword(String nPassword)
-            throws PasswordNotStrongException, AccountDoesNotExistException, SQLException;
+            throws PasswordNotStrongException, AccountDoesNotExist, SQLException;
 }
