@@ -117,6 +117,7 @@
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <span class="user-img">
                             <img class="rounded-circle" src="${sessionScope.service.currentUser.image.imageInDisk}" width="31" alt="${sessionScope.service.currentUser.fullName}" />
+
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
