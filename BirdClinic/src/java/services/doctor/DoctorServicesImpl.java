@@ -9,13 +9,13 @@ import java.sql.SQLException;
 import models.exceptions.NoSuchRecordExists;
 import models.users.UserDTO;
 import models.users.doctor.DoctorDTO;
-import services.account.AccountServicesImpl;
+import services.general.GeneralServicesImpl;
 
 /**
  *
  * @author Admin
  */
-public class DoctorServicesImpl extends AccountServicesImpl {
+public class DoctorServicesImpl extends GeneralServicesImpl {
 
     public DoctorServicesImpl(UserDTO currentUser) throws SQLException {
         super();

@@ -27,18 +27,6 @@ public class LogoutServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String url = request.getContextPath() + "/Common/login.jsp";
-        try {
-            HttpSession session = request.getSession();
-            session.invalidate();
-            url = request.getContextPath() + "/Common/index.jsp";
-        } finally {
-            response.sendRedirect(url);
-        }
-    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -52,7 +40,15 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        String url = request.getContextPath() + "/Common/login.jsp";
+        try {
+            HttpSession session = request.getSession();
+            session.invalidate();
+            url = request.getContextPath() + "/Common/index.jsp";
+        } finally {
+            response.sendRedirect(url);
+        }
     }
 
     /**
@@ -66,7 +62,7 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.sendError(405);
     }
 
     /**

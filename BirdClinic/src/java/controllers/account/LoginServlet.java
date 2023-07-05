@@ -13,12 +13,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.users.UserDTO;
-import services.account.AccountDoesNotExist;
-import services.account.AccountServices;
+import services.general.AccountDoesNotExist;
 import services.admin.AdminServicesImpl;
 import services.customer.CustomerServicesImpl;
 import services.doctor.DoctorServicesImpl;
 import services.staff.StaffServicesImpl;
+import services.general.GeneralServices;
 
 /**
  *
@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
         String remember = request.getParameter("remember");
         String url = "/Common/login.jsp";
         HttpSession session = request.getSession(true);
-        AccountServices accountService = (AccountServices) session.getAttribute("service");
+        GeneralServices accountService = (GeneralServices) session.getAttribute("service");
 
         try {
             if (accountService.login(username, password)) {
@@ -69,19 +69,19 @@ public class LoginServlet extends HttpServlet {
                     case "doctor":
                         accountService = new DoctorServicesImpl(currentUser);
                         break;
-                        case "staff":
+                    case "staff":
                         accountService = new StaffServicesImpl(currentUser);
                         break;
-                        case "admin":
+                    case "admin":
                         accountService = new AdminServicesImpl(currentUser);
                         break;
                 }
                 session.setAttribute("service", accountService);
-                
-                if (remember!=null && !remember.trim().equals("")) {
+
+                if (remember != null && !remember.trim().equals("")) {
                     //cookies
                 }
-                
+
                 url = "/Common/index.jsp";
             }
         } catch (AccountDoesNotExist ex) {

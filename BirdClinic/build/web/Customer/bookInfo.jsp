@@ -39,37 +39,37 @@
                                                 <div class="col-12 col-md-6">
                                                     <div class="form-group">
                                                         <label>Full Name</label>
-                                                        <div class="form-control">${currentUser.fullName}</div>
+                                                        <div class="form-control">${service.currentUser.fullName}</div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <div class="form-group">
                                                         <label>Date of Birth</label>
                                                         <div class="cal-icon">
-                                                            <div class="form-control datetimepicker">${currentUser.dob}</div>
+                                                            <div class="form-control datetimepicker">${service.currentUser.dob}</div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <div class="form-group">
                                                         <label>Address</label>
-                                                        <div class="form-control">${currentUser.phoneNumber}</div>
+                                                        <div class="form-control">${service.currentUser.customerAddress}</div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <div class="form-group">
                                                         <label>Email</label>
-                                                        <div class="form-control">${currentUser.email}</div> <!-- email này chưa có nên tôi chế -->
+                                                        <div class="form-control">${service.currentUser.email}</div> <!-- email này chưa có nên tôi chế -->
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-6">
                                                     <div class="form-group">
                                                         <label>Mobile</label>
-                                                        <div class="form-control">${currentUser.customerAddress}</div> 
+                                                        <div class="form-control">${service.currentUser.phoneNumber}</div> 
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- <div class="exist-currentUser">Existing Customer? <a href="#">Click here to login</a></div> -->
+                                            <!-- <div class="exist-service.currentUser">Existing Customer? <a href="#">Click here to login</a></div> -->
                                         </div>
                                         <!-- /Personal Information -->
                                         <!-- Bird info -->
@@ -87,7 +87,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- <div class="exist-currentUser">Existing Customer? <a href="#">Click here to login</a></div> -->
+                                            <!-- <div class="exist-service.currentUser">Existing Customer? <a href="#">Click here to login</a></div> -->
                                         </div>
                                         <!-- /Bird info -->
                                         <!-- Notes section -->
@@ -97,7 +97,7 @@
                                                 <div class="form-group card-label">
                                                     <label>Choose service</label>
                                                     <select class="form-control" name="serviceID" required >
-                                                        <c:forEach var="service" items="${services}" >
+                                                        <c:forEach var="service" items="${serviceList}" >
                                                             <option value="${service.serviceID}">${service.serviceName}</option>
                                                         </c:forEach>
                                                     </select>

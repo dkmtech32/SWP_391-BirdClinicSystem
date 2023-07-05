@@ -2,15 +2,15 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <filter>
         <filter-name>AuthenticationFilter</filter-name>
-        <filter-class>filters.AuthenticationFilter</filter-class>
+        <filter-class>controllers.filters.AuthenticationFilter</filter-class>
     </filter>
     <filter>
         <filter-name>AuthorizationFilter</filter-name>
-        <filter-class>filters.AuthorizationFilter</filter-class>
+        <filter-class>controllers.filters.AuthorizationFilter</filter-class>
     </filter>
     <filter>
         <filter-name>DispatchFilter</filter-name>
-        <filter-class>filters.DispatchFilter</filter-class>
+        <filter-class>controllers.filters.DispatchFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>DispatchFilter</filter-name>

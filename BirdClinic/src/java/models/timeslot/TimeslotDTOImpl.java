@@ -59,4 +59,11 @@ public class TimeslotDTOImpl implements TimeslotDTO {
     public String getTimeDisplay() {
         return this.timeSlot.toString().substring(0, 5);
     }
+
+    @Override
+    public int compareTo(Object o) {
+        TimeslotDTOImpl obj = (TimeslotDTOImpl)o;
+        
+        return this.getTimeSlot().compareTo(obj.getTimeSlot());
+    }
 }
