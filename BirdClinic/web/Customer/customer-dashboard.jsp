@@ -30,7 +30,7 @@
                                 <div class="widget-profile pro-widget-content">
                                     <div class="profile-info-widget">
                                         <a href="#" class="booking-doc-img">
-                                            <img src="../assets/img/patients/patient.jpg" alt="User Image" />
+                                            <img src="../assets/img/customers/patient.jpg" alt="User Image" />
                                         </a>
                                         <div class="profile-det-info">
                                             <h3>Nguyen Van G</h3>
