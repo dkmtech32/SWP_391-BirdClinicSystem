@@ -53,6 +53,4 @@ public interface UserDTO extends Serializable {
     void setStatus_(boolean status_);
     
     UserDTO copyUser();
-    
-    void copyUser(UserDTO user);
 }
