@@ -116,17 +116,17 @@
                 <li class="nav-item dropdown has-arrow logged-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <span class="user-img">
-                            <img class="rounded-circle" src="${sessionScope.currentUser.image.imageInDisk}" width="31" alt="${sessionScope.currentUser.fullName}" />
+                            <img class="rounded-circle" src="${sessionScope.service.currentUser.image.imageInDisk}" width="31" alt="${sessionScope.service.currentUser.fullName}" />
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="user-header">
                             <div class="avatar avatar-sm">
-                                <img src="${sessionScope.currentUser.image.imageInDisk}" alt="User Image" class="avatar-img rounded-circle" />
+                                <img src="${sessionScope.service.currentUser.image.imageInDisk}" alt="User Image" class="avatar-img rounded-circle" />
                             </div>
                             <div class="user-text">
                                 <h6>${sessionScope.currentUser.fullName}</h6>
-                                <p class="text-muted mb-0">${sessionScope.currentUser.displayRole}</p>
+                                <p class="text-muted mb-0">${sessionScope.service.currentUser.displayRole}</p>
                             </div>
                         </div>
                         <a class="dropdown-item" href="doctor-dashboard.html">Dashboard</a>
