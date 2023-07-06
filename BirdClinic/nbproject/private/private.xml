@@ -7,10 +7,22 @@
             <file>file:/D:/Courses/sem5/SWP391/SWP391_BirdClinicSystem/Java/BirdClinic/web/Common/footer.jsp</file>
         </group>
         <group>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/assets/css/style.css</file>
             <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/nbproject/build-impl.xml</file>
-            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Common/header-doctor.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/src/java/models/bird/BirdDTO.java</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/src/java/services/customer/CustomerServicesImpl.java</file>
             <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Admin/doctor-list.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Doctor/doctor-dashboard.jsp</file>
             <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Common/header-customer.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Staff/staff-dashboard.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Common/header-doctor.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/src/java/models/appointment/AppointmentDTO.java</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Customer/customer-dashboard.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Customer/assignBird.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Customer/bookingDatetime.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Common/footer.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/src/java/services/doctor/DoctorServicesImpl.java</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/src/java/models/bird/BirdDTOImpl.java</file>
         </group>
     </open-files>
 </project-private>
