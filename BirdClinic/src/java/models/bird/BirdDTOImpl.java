@@ -21,7 +21,7 @@ public class BirdDTOImpl implements BirdDTO {
     private String birdGender;
     private String breed;
     private String band_chip;
-    private float birdWeight;
+    private int birdWeight;
     private String sexingMethod;
     private String medicalHistory;
     private Date hatchingDate;
@@ -115,13 +115,13 @@ public class BirdDTOImpl implements BirdDTO {
     }
     
     @Override
-    public float getBirdWeight() {
+    public int getBirdWeight() {
         return birdWeight;
     }
 
     
     @Override
-    public void setBirdWeight(float birdWeight) {
+    public void setBirdWeight(int birdWeight) {
         this.birdWeight = birdWeight;
     }
 

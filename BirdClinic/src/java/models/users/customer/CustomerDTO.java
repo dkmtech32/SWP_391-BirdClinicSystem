@@ -26,9 +26,4 @@ public interface CustomerDTO extends UserDTO {
 
     void setPhoneNumber(String phoneNumber);
     
-    @Override
-    CustomerDTO copyUser();
-    
-    @Override
-    void copyUser(UserDTO user);
 }
