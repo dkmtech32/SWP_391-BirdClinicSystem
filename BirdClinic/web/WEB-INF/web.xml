@@ -106,7 +106,7 @@
     </servlet>
     <servlet>
         <servlet-name>ChangePasswordServlet</servlet-name>
-        <servlet-class>controllers.account.ChangePasswordServlet</servlet-class>
+        <servlet-class>controllers.dashboard.ChangePasswordServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DashboardServlet</servlet-name>
