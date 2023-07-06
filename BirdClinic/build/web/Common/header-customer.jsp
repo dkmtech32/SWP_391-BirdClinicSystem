@@ -131,7 +131,7 @@
                         </div>
                         <a class="dropdown-item" href="doctor-dashboard.html">Dashboard</a>
                         <a class="dropdown-item" href="<c:url value="/Customer/custAccountInfo"/>">Profile Settings</a>
-                        <a class="dropdown-item" href="<c:url value="/logout"/>">Logout</a>
+                        <a class="dropdown-item" href="login.html">Logout</a>
                     </div>
                 </li>
                 <!-- /User Menu -->
