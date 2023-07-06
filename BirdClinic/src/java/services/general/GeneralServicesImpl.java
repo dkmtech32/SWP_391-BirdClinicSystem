@@ -266,9 +266,9 @@ public class GeneralServicesImpl implements GeneralServices {
     }
 
     @Override
-    public Map<String, List<TimeslotDTO>> getTimeslotsByWeekday(String doctorID)
+    public List<List<TimeslotDTO>> getTimeslotsByWeekday(String doctorID)
             throws SQLException {
-        Map<String, List<TimeslotDTO>> timeslots = null;
+        List<List<TimeslotDTO>> timeslots = null;
 
         try {
             if (doctorID == null || doctorID.trim().equals("")) {

@@ -9,14 +9,15 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.text.Normalizer;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
 /**
@@ -80,26 +81,49 @@ public class Utils {
         return sb.toString();
     }
 
-    public static Map<String, Date> getDaysInWeek(java.sql.Date date, String[] weekdays) {
-        Map<String, Date> daysInWeek = new HashMap<>();
-
-        // Create a calendar instance and set the provided date
+    public static int getDaysSinceStartOfWeek(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
 
-        // Find the first day of the week
-        int firstDayOfWeek = calendar.getFirstDayOfWeek();
-        calendar.set(Calendar.DAY_OF_WEEK, firstDayOfWeek);
+        // Set the first day of the week (Sunday in this case)
+        calendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
 
-        // Add each day of the week to the list
+        // Reset the time fields to midnight
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+
+        Date startOfWeek = new Date(calendar.getTimeInMillis());
+
+        // Calculate the number of days between the start of the week and the given date
+        long millisecondsDiff = date.getTime() - startOfWeek.getTime();
+        int daysDiff = (int) TimeUnit.MILLISECONDS.toDays(millisecondsDiff);
+        return daysDiff;
+    }
+    
+    public static List<Date> getDaysInWeek(Date date) {
+        List<Date> weekDays = new ArrayList<>();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+
+        // Set the first day of the week as Sunday
+        calendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+
+        // Reset the time fields to midnight
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+
+        // Add all days of the week to the list
         for (int i = 0; i < 7; i++) {
-            Date day = new Date(calendar.getTimeInMillis());
-            String weekday = weekdays[i];
-            daysInWeek.put(weekday, day);
-            calendar.add(Calendar.DAY_OF_MONTH, 1);
+            weekDays.add(new Date(calendar.getTimeInMillis()));
+            calendar.add(Calendar.DAY_OF_WEEK, 1);
         }
 
-        return daysInWeek;
+        return weekDays;
     }
 
     public static Date getNextWeekWeekday(java.sql.Date date) {
@@ -152,28 +176,6 @@ public class Utils {
 
         // Convert java.util.Date to java.sql.Date
         return new java.sql.Date(lastMonday.getTime());
-    }
-    
-    public static Map<String, Date> sortDates(Map<String, Date> unsortedDates) {
-        // Convert the Map to a List of Map entries
-        List<Map.Entry<String, Date>> list = new LinkedList<>(unsortedDates.entrySet());
-
-        // Sort the list based on the Date values
-        Collections.sort(list, new Comparator<Map.Entry<String, Date>>() {
-            public int compare(Map.Entry<String, Date> o1, Map.Entry<String, Date> o2) {
-                return o1.getValue().compareTo(o2.getValue());
-            }
-        });
-
-        // Create a new LinkedHashMap to store the sorted entries
-        Map<String, Date> sortedDates = new LinkedHashMap<>();
-
-        // Populate the sortedDates map with the sorted entries
-        for (Map.Entry<String, Date> entry : list) {
-            sortedDates.put(entry.getKey(), entry.getValue());
-        }
-
-        return sortedDates;
     }
 
 
