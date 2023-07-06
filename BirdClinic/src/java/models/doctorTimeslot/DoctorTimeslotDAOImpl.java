@@ -10,9 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import models.exceptions.NoSuchRecordExists;
 import models.exceptions.RecordAlreadyExists;
 import models.timeslot.TimeslotDAO;
@@ -183,12 +182,12 @@ public class DoctorTimeslotDAOImpl implements DoctorTimeslotDAO {
     }
 
     @Override
-    public Map<String, List<TimeslotDTO>> readDoctorTimeslotByDoctorGrouped(String doctorID)
+    public List<List<TimeslotDTO>> readDoctorTimeslotByDoctorGrouped(String doctorID)
             throws SQLException, NoSuchRecordExists {
         Connection con = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
-        Map<String, List<TimeslotDTO>> timeslotsByWeekday = null;
+        List<List<TimeslotDTO>> timeslotsByWeekday = null;
 
         try {
             con = DBUtils.getConnection();
@@ -201,17 +200,20 @@ public class DoctorTimeslotDAOImpl implements DoctorTimeslotDAO {
                 timeslotIDs.add(rs.getString("timeSlotID"));
             }
 
-            if (!timeslotIDs.isEmpty()) { //
+            if (!timeslotIDs.isEmpty()) {
                 List<TimeslotDTO> timeslots = timeslotDAO.readListOfTimeslot(timeslotIDs);
-                timeslotsByWeekday = new HashMap<>();
-
                 List<String> weekdays = timeslotDAO.readWeekdays();
-                for (String weekday : weekdays) { //is actually const, so still O(n)
-                    timeslotsByWeekday.put(weekday, new ArrayList<>());
+                timeslotsByWeekday = new ArrayList<>();
+                for (int i = 0; i < 7; i++) {
+                    timeslotsByWeekday.add(new ArrayList<>());
                 }
 
                 for (TimeslotDTO timeslot : timeslots) {
-                    timeslotsByWeekday.get(timeslot.getDay_()).add(timeslot);
+                    timeslotsByWeekday.get(weekdays.indexOf(timeslot.getDay_())).add(timeslot);
+                }
+                
+                for (int i = 0; i < 7; i++) {
+                    Collections.sort(timeslotsByWeekday.get(i));
                 }
             } else {
                 throw new DoctorNotInTimeslotException();

@@ -54,12 +54,12 @@
                                                                    </a>
                                                                 </li>
                                                         </c:if>
-                                                        <c:forEach var="date" items="${daysInWeek}">
+                                                        <c:forEach var="date" varStatus="index" items="${daysInWeek}">
                                                             <li>
-                                                                <span>${date.key}</span>
+                                                                <span>${timeslots[index.index][0].day_}</span>
                                                                 <span class="slot-date">
-                                                                    <fmt:formatDate value="${date.value}" pattern="dd MMM"/>
-                                                                    <small class="slot-year">${fn:substring(date.value, 0, 4)}</small>
+                                                                    <fmt:formatDate value="${date}" pattern="dd MMM"/>
+                                                                    <small class="slot-year">${fn:substring(date, 0, 4)}</small>
                                                                 </span>
                                                             </li>
                                                         </c:forEach>
@@ -88,11 +88,12 @@
                                                 <!-- Time Slot -->
                                                 <div class="time-slot">
                                                     <ul class="clearfix">
-                                                        <c:forEach var="timeslot" items="${timeslots}">
-                                                            <c:forEach var="dto" items="${timeslot.value}">
+                                                        <c:forEach var="timeslot" items="${timeslots}" varStatus="index">
+                                                            <c:forEach var="dto" items="${timeslot}" varStatus="count">
                                                                 <li>
+                                                                    ${index.count}-${count.count}
                                                                     <a class="timing" href="
-                                                                       <c:url value="/Customer/prepareBooking?timeslotID=${dto.timeSlotID}&appDate=${daysInWeek[dto.day_].toString().trim()}"/>
+                                                                       <c:url value="/Customer/prepareBooking?timeslotID=${dto.timeSlotID}&appDate=${daysInWeek[index.index].toString().trim()}"/>
                                                                        <c:if test="${not empty param.doctorID}">&doctorID=${param.doctorID}</c:if>
                                                                            ">
                                                                            <span>${dto.timeSlot}</span>
