@@ -65,7 +65,7 @@
                                                         </c:if>
                                                         <c:forEach var="date" varStatus="index" items="${daysInWeek}">
                                                             <li>
-                                                                <span>${timeslots[index.index][0].day_}</span>
+                                                                <span>${requestScope.weekdays[index.index]}</span>
                                                                 <span class="slot-date">
                                                                     <fmt:formatDate value="${date}" pattern="dd MMM"/>
                                                                     <small class="slot-year">${fn:substring(date, 0, 4)}</small>
@@ -99,15 +99,23 @@
                                                     <ul class="clearfix">
                                                         <c:forEach var="timeslot" items="${timeslots}" varStatus="index">
                                                             <li>
-                                                                <c:forEach var="dto" items="${timeslot}" varStatus="count">
-                                                                    <a class="timing" href="
-                                                                       <c:url value="/Customer/prepareBooking?timeslotID=${dto.timeSlotID}&appDate=${daysInWeek[index.index].toString().trim()}"/>
-                                                                       <c:if test="${not empty param.doctorID}">&doctorID=${param.doctorID}</c:if>
-                                                                           ">
-                                                                           <span>${dto.timeSlot}</span>
-                                                                    </a>
-                                                                </c:forEach>
-
+                                                                <c:choose>
+                                                                    <c:when test="${not empty timeslot}">
+                                                                        <c:forEach var="dto" items="${timeslot}" varStatus="count">
+                                                                            <a class="timing" href="
+                                                                               <c:url value="/Customer/prepareBooking?timeslotID=${dto.timeSlotID}&appDate=${daysInWeek[index.index].toString().trim()}"/>
+                                                                               <c:if test="${not empty param.doctorID}">&doctorID=${param.doctorID}</c:if>
+                                                                                   ">
+                                                                                   <span>${dto.timeSlot}</span>
+                                                                            </a>
+                                                                        </c:forEach>
+                                                                    </c:when>
+                                                                    <c:when test="${empty timeslot}">                                                                       
+                                                                            <a class="timingEmpty">
+                                                                                   <span></span>
+                                                                            </a>
+                                                                    </c:when>
+                                                                </c:choose>
                                                             </li>
 
                                                         </c:forEach>

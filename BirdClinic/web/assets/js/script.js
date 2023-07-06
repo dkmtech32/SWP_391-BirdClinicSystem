@@ -365,59 +365,79 @@ Version      : 1.0
 	$(window).scroll(animateElements);
 	
 })(jQuery);
+//
+//$(document).ready(function() {
+//	// When the user selects a specialty
+//	$("#specialty-selector").on("change", function() {
+//	  var selectedSpecialty = $(this).val();
+//	  
+//	  if(selectedSpecialty == 'general'){
+//		
+//		$(".doctor-slider").slick('slickUnfilter');
+//		
+//		$(".doctor-slider").slick('slickFilter','.general');
+//		$('.doctor-slider').slick({			
+//			infinite: false
+//		});
+//	  }
+//	  else if(selectedSpecialty == 'genetics'){
+//		$(".slider").slick('slickUnfilter');
+//		$(".slider").slick('slickFilter','.genetics');
+//		$('.doctor-slider').slick({			
+//			infinite: false
+//		});
+//	  }
+//	  else if(selectedSpecialty == 'resuscitation'){
+//		$(".slider").slick('slickUnfilter');
+//		$(".slider").slick('slickFilter','.resuscitation');
+//		$('.doctor-slider').slick({			
+//			infinite: false
+//		});
+//	  }
+//	  else if(selectedSpecialty == 'beautify'){
+//		$(".slider").slick('slickUnfilter');
+//		$(".slider").slick('slickFilter','.beautify');
+//		$('.doctor-slider').slick({			
+//			infinite: false
+//		});
+//	  }
+//	  else if(selectedSpecialty == 'surgery'){
+//		$(".slider").slick('slickUnfilter');
+//		$(".slider").slick('slickFilter','.surgery');
+//		$('.doctor-slider').slick({			
+//			infinite: false
+//		});
+//	  }
+//          else if(selectedSpecialty == 'image analysation'){
+//		$(".slider").slick('slickUnfilter');
+//		$(".slider").slick('slickFilter','.image analysation');
+//		$('.doctor-slider').slick({			
+//			infinite: false
+//		});
+//	  }
+//	  else if(selectedSpecialty == 'all'){
+//		
+//		$(".slider").slick('slickUnfilter');
+//		$('.doctor-slider').slick({			
+//			infinite: true
+//		});
+//	  }
+//	});
+//  });
+$('#specialty-selector').change(function() {
+    var selectedSpecialty = $(this).val();
 
-$(document).ready(function() {
-	// When the user selects a specialty
-	$("#specialty-selector").on("change", function() {
-	  var selectedSpecialty = $(this).val();
-	  
-	  if(selectedSpecialty == 'general'){
-		
-		$(".doctor-slider").slick('slickUnfilter');
-		
-		$(".doctor-slider").slick('slickFilter','.general');
-		$('.doctor-slider').slick({			
-			infinite: false
-		});
-	  }
-	  else if(selectedSpecialty == 'surgery'){
-		$(".slider").slick('slickUnfilter');
-		$(".slider").slick('slickFilter','.surgery');
-		$('.doctor-slider').slick({			
-			infinite: false
-		});
-	  }
-	  else if(selectedSpecialty == 'imaging'){
-		$(".slider").slick('slickUnfilter');
-		$(".slider").slick('slickFilter','.imaging');
-		$('.doctor-slider').slick({			
-			infinite: false
-		});
-	  }
-	  else if(selectedSpecialty == 'nutrition'){
-		$(".slider").slick('slickUnfilter');
-		$(".slider").slick('slickFilter','.nutrition');
-		$('.doctor-slider').slick({			
-			infinite: false
-		});
-	  }
-	  else if(selectedSpecialty == 'genetics'){
-		$(".slider").slick('slickUnfilter');
-		$(".slider").slick('slickFilter','.genetics');
-		$('.doctor-slider').slick({			
-			infinite: false
-		});
-	  }
-	  else if(selectedSpecialty == 'all'){
-		
-		$(".slider").slick('slickUnfilter');
-		$('.doctor-slider').slick({			
-			infinite: true
-		});
-	  }
-	});
-  });
+    if (selectedSpecialty === 'all') {
+        // Show all doctors
+        $('.profile-widget').parent().parent().show();
+    } else {
+        // Hide all doctors
+        $('.profile-widget').parent().parent().hide();
 
+        // Show doctors with the selected specialty
+        $('.profile-widget[data-specialty="' + selectedSpecialty + '"]').parent().parent().show();
+    }
+});
 // Filter doctor by specialty
 // $(document).ready(function() {
 // 	// When the specialty selector changes
