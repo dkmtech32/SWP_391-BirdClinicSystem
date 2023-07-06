@@ -77,10 +77,6 @@
         <servlet-class>controllers.account.LogoutServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CustomerDashboardServlet</servlet-name>
-        <servlet-class>controllers.customer.CustomerDashboardServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ChangePasswordServlet</servlet-name>
         <servlet-class>controllers.account.ChangePasswordServlet</servlet-class>
     </servlet>
@@ -107,10 +103,6 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CustomerDashboardServlet</servlet-name>
-        <url-pattern>/Customer/dashboard/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ChangePasswordServlet</servlet-name>
