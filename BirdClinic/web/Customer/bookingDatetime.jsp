@@ -131,16 +131,18 @@
                                                 <div class="time-slot">
                                                     <ul class="clearfix">
                                                         <c:forEach var="timeslot" items="${timeslots}">
-                                                            <c:forEach var="dto" items="${timeslot.value}">
+                                                           
                                                                 <li>
+                                                                     <c:forEach var="dto" items="${timeslot.value}">
                                                                     <a class="timing" href="
                                                                        <c:url value="/Customer/prepareBooking?timeslotID=${dto.timeSlotID}&appDate=${daysInWeek[dto.day_].toString().trim()}"/>
                                                                        <c:if test="${not empty param.doctorID}">&doctorID=${param.doctorID}</c:if>
                                                                        ">
                                                                         <span>${dto.timeSlot}</span>
                                                                     </a>
+                                                                    </c:forEach>
                                                                 </li>
-                                                            </c:forEach>
+                                                            
                                                         </c:forEach>
                                                     </ul>
                                                 </div>
