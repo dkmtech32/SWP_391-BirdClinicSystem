@@ -8,6 +8,8 @@ package services.general;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.appointment.AppointmentDAO;
 import models.appointment.AppointmentDAOImpl;
 import models.appointment.AppointmentDTO;
@@ -367,5 +369,21 @@ public class GeneralServicesImpl implements GeneralServices {
         }
 
         return result;
+    }
+    
+    @Override
+    public DoctorDTO getDoctorInfo(String doctorID) throws SQLException, AccountDoesNotExist {
+        DoctorDTO doctor = null;
+        
+        try {
+            if (doctorID!=null && !doctorID.trim().equals("")) {
+                doctor = doctorDAO.readDoctor(doctorID);
+                doctor.setUserName(null);
+            }
+        } catch (NoSuchRecordExists ex) {
+            throw new AccountDoesNotExist(ex.getMessage());
+        }
+        
+        return doctor;
     }
 }

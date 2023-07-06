@@ -58,4 +58,6 @@ public interface GeneralServices extends Serializable {
     
     boolean updateAccountPassword(String nPassword)
             throws PasswordNotStrongException, AccountDoesNotExist, SQLException;
+    
+    DoctorDTO getDoctorInfo(String doctorID) throws SQLException, AccountDoesNotExist;
 }
