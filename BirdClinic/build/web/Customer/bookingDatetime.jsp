@@ -89,17 +89,20 @@
                                                 <div class="time-slot">
                                                     <ul class="clearfix">
                                                         <c:forEach var="timeslot" items="${timeslots}" varStatus="index">
-                                                            <c:forEach var="dto" items="${timeslot}" varStatus="count">
-                                                                <li>
-                                                                    ${index.count}-${count.count}
+                                                            <li>
+                                                                <c:forEach var="dto" items="${timeslot}" varStatus="count">
+
+                                                                    ${index.count}-${count.count} 
                                                                     <a class="timing" href="
                                                                        <c:url value="/Customer/prepareBooking?timeslotID=${dto.timeSlotID}&appDate=${daysInWeek[index.index].toString().trim()}"/>
                                                                        <c:if test="${not empty param.doctorID}">&doctorID=${param.doctorID}</c:if>
                                                                            ">
                                                                            <span>${dto.timeSlot}</span>
                                                                     </a>
-                                                                </li>
-                                                            </c:forEach>
+                                                                </c:forEach>
+
+                                                            </li>
+
                                                         </c:forEach>
                                                     </ul>
                                                 </div>
