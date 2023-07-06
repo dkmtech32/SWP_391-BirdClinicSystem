@@ -153,12 +153,12 @@
                                     <div class="booking-summary">
                                         <div class="booking-item-wrap">
                                             <ul class="booking-date">
-                                                <li>Date <span>${appoitment.service_}</span></li>
-                                                <li>Time <span>${appoitment.timeslot}</span></li>
+                                                <li>Date <span>${param.appDate}</span></li>
+                                                <li>Time <span>${param.timeSlot}</span></li>
                                             </ul>
                                             <ul class="booking-fee">
                                                 <!-- <li>Consulting Fee <span>$100</span></li> -->
-                                                <li>Booking Fee <span>${appoitment.bookingFee}/span></li> <!--biến này chế vì chưa có-->
+                                                <li>Booking Fee <span>${appoitment.bookingFee}$10</span></li> <!--biến này chế vì chưa có-->
                                                 <!-- <li>Video Call <span>$50</span></li> -->
                                             </ul>
                                             <!-- <div class="booking-total">

@@ -84,7 +84,7 @@
                                                     <i class="fas fa-check-circle verified"></i>
                                                 </h3>
                                                 <p class="specialty" style="text-transform: capitalize">${doctor.speciality.specialityName}</p>
-                                                <div class="rating">
+<!--                                                <div class="rating">
                                                     <i class="fas fa-star filled"></i>
                                                     <i class="fas fa-star filled"></i>
                                                     <i class="fas fa-star filled"></i>
@@ -100,7 +100,7 @@
                                                         <i class="fas fa-info-circle" data-toggle="tooltip"
                                                            title="Lorem Ipsum"></i>
                                                     </li>
-                                                </ul>
+                                                </ul>-->
                                                 <div class="row row-sm">
                                                     <div class="col-6">
                                                         <a href="<c:url value="doctor-profile.jsp?doctorID=${doctor.userID}"/>" class="btn view-btn">View Profile</a>
