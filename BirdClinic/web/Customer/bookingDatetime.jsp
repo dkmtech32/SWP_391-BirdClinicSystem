@@ -103,7 +103,7 @@
                                                                     <c:when test="${not empty timeslot}">
                                                                         <c:forEach var="dto" items="${timeslot}" varStatus="count">
                                                                             <a class="timing" href="
-                                                                               <c:url value="/Customer/prepareBooking?timeslotID=${dto.timeSlotID}&appDate=${daysInWeek[index.index].toString().trim()}"/>
+                                                                               <c:url value="/Customer/prepareBooking?timeslotID=${dto.timeSlotID}&timeSlot=${dto.timeSlot}&appDate=${daysInWeek[index.index].toString().trim()}"/>
                                                                                <c:if test="${not empty param.doctorID}">&doctorID=${param.doctorID}</c:if>
                                                                                    ">
                                                                                    <span>${dto.timeSlot}</span>
