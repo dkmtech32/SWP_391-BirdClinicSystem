@@ -43,7 +43,7 @@ public interface GeneralServices extends Serializable {
     
     List<DoctorDTO> getAllDoctors() throws SQLException;
     
-    Map<String, List<TimeslotDTO>> getTimeslotsByWeekday(String doctorID) 
+    List<List<TimeslotDTO>> getTimeslotsByWeekday(String doctorID) 
             throws SQLException;
     
     List<Service_DTO> getServices(String doctorID) 

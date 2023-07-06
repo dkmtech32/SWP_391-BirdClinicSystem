@@ -32,6 +32,6 @@ public interface DoctorTimeslotDAO extends Serializable {
     List<DoctorDTO> readDoctorTimeslotByTimeslot(String timeslotID) 
             throws NoSuchRecordExists, SQLException;
     
-    Map<String, List<TimeslotDTO>> readDoctorTimeslotByDoctorGrouped(String doctorID) 
+    List<List<TimeslotDTO>> readDoctorTimeslotByDoctorGrouped(String doctorID) 
             throws NoSuchRecordExists, SQLException;
 }
