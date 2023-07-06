@@ -8,16 +8,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <jsp:include page="Common/head.jsp"/>
+    <jsp:include page="../Common/head.jsp"/>
     <body>
         <!-- Main Wrapper -->
         <div class="main-wrapper">
             <!-- Header -->
-            <jsp:include page="Common/header-guest.jsp"/>
+            <jsp:include page="../Common/header-guest.jsp"/>
             <!--/Header -->
 
             <!-- Breadcrumb -->
-            <jsp:include page="Common/breadcrumb.jsp"/>
+            <jsp:include page="../Common/breadcrumb.jsp"/>
             <!-- /Breadcrumb -->
 
             <!-- Page Content -->
