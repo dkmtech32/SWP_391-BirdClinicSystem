@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.account;
+package controllers.dashboard;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -38,7 +38,12 @@ public class ChangePasswordServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "/Dashboard/change-password.jsp";
+        HttpSession session = request.getSession();
+        
+        GeneralServices services = (GeneralServices) session.getAttribute("service");
+        String userRole = services.getCurrentUser().getDisplayRole();
+        
+        String url = "/" + userRole + "/Dashboard/change-password.jsp";
 
         request.getRequestDispatcher(url).forward(request, response);
     }

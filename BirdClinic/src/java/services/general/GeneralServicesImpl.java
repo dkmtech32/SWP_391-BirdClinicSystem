@@ -8,8 +8,6 @@ package services.general;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import models.appointment.AppointmentDAO;
 import models.appointment.AppointmentDAOImpl;
 import models.appointment.AppointmentDTO;
@@ -58,6 +56,8 @@ import utils.Utils;
  */
 public class GeneralServicesImpl implements GeneralServices {
 
+    private static final long serialVersionUID = 6529685098267757690L;
+    
     protected final UserDAO userDAO;
     protected final ImageDAO imageDAO;
     protected final AppointmentDAO appointmentDAO;
