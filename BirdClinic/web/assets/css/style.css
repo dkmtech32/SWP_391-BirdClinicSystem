@@ -3572,6 +3572,12 @@ html.menu-opened body {
         text-decoration: none;
         margin-top: 1rem;
 }
+.time-slot li .timingEmpty {	
+	display: block;
+	font-size: 14px;
+	position: relative;
+        margin-top: 1rem;
+}
 .time-slot li .timing:hover {
 	background-color: #fff;
 }
