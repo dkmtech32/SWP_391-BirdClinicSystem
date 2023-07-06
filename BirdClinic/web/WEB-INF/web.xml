@@ -57,6 +57,14 @@
         <servlet-class>controllers.account.LoginServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>CustomerAccountInformationServlet</servlet-name>
+        <servlet-class>controllers.account.CustomerAccountInformationServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CustomerDashboardInformationServlet</servlet-name>
+        <servlet-class>controllers.account.CustomerDashboardInformationServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>BookAppointmentServlet</servlet-name>
         <servlet-class>controllers.booking.BookAppointmentServlet</servlet-class>
     </servlet>
@@ -83,6 +91,14 @@
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Common/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerAccountInformationServlet</servlet-name>
+        <url-pattern>/Customer/custAccountInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerDashboardInformationServlet</servlet-name>
+        <url-pattern>/Customer/custDashboard</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>BookAppointmentServlet</servlet-name>

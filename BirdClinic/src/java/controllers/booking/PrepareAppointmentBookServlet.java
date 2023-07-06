@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.bird.BirdDTO;
 import models.service_.Service_DTO;
+import services.general.AccountDoesNotExist;
 import services.customer.CustomerServices;
-import services.general.AccountDoesNotExistException;
 import services.general.GeneralServices;
 
 /**
@@ -63,7 +63,7 @@ public class PrepareAppointmentBookServlet extends HttpServlet {
 
             }
 
-        } catch (SQLException | AccountDoesNotExistException ex) {
+        } catch (SQLException | AccountDoesNotExist ex) {
             ex.printStackTrace();
             url = "/Common/booking-list.jsp";
         } finally {

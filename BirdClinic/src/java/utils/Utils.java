@@ -10,7 +10,12 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.text.Normalizer;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -134,20 +139,43 @@ public class Utils {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
 
-        // Set the calendar to the next week
-        calendar.add(Calendar.WEEK_OF_YEAR, 1);
+        // Set the calendar to the previous week
+        calendar.add(Calendar.WEEK_OF_YEAR, -1);
 
         // Find the last Monday
         int currentDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-        int daysUntilNextMonday = (Calendar.MONDAY - currentDayOfWeek + 7) % 7;
-        calendar.add(Calendar.DAY_OF_WEEK, daysUntilNextMonday);
+        int daysUntilLastMonday = (Calendar.MONDAY - currentDayOfWeek - 7) % 7;
+        calendar.add(Calendar.DAY_OF_WEEK, daysUntilLastMonday);
 
-        // Get the date of the next Monday
-        java.util.Date nextMonday = calendar.getTime();
+        // Get the date of the last Monday
+        java.util.Date lastMonday = calendar.getTime();
 
         // Convert java.util.Date to java.sql.Date
-        return new java.sql.Date(nextMonday.getTime());
+        return new java.sql.Date(lastMonday.getTime());
     }
+    
+    public static Map<String, Date> sortDates(Map<String, Date> unsortedDates) {
+        // Convert the Map to a List of Map entries
+        List<Map.Entry<String, Date>> list = new LinkedList<>(unsortedDates.entrySet());
+
+        // Sort the list based on the Date values
+        Collections.sort(list, new Comparator<Map.Entry<String, Date>>() {
+            public int compare(Map.Entry<String, Date> o1, Map.Entry<String, Date> o2) {
+                return o1.getValue().compareTo(o2.getValue());
+            }
+        });
+
+        // Create a new LinkedHashMap to store the sorted entries
+        Map<String, Date> sortedDates = new LinkedHashMap<>();
+
+        // Populate the sortedDates map with the sorted entries
+        for (Map.Entry<String, Date> entry : list) {
+            sortedDates.put(entry.getKey(), entry.getValue());
+        }
+
+        return sortedDates;
+    }
+
 
     public static boolean checkPassword(String password) {
         if (password == null) {
