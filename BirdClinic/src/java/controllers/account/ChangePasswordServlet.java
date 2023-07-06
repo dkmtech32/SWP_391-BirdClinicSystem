@@ -6,11 +6,17 @@
 package controllers.account;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import services.general.AccountDoesNotExist;
+import services.general.GeneralServices;
+import services.general.PasswordNotStrongException;
+import services.general.PasswordsEqualException;
+import utils.Utils;
 
 /**
  *
@@ -31,7 +37,10 @@ public class ChangePasswordServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
+        String url = "/Dashboard/change-password.jsp";
+
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     /**
@@ -46,7 +55,39 @@ public class ChangePasswordServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
+        String url = "/Dashboard/change-password.jsp";
+        HttpSession session = request.getSession();
+        GeneralServices service = (GeneralServices) session.getAttribute("service");
+        String cPassword = request.getParameter("current-password");
+        String nPassword = request.getParameter("new-password");
+
+        try {
+            if (cPassword.equals(nPassword)) {
+                throw new PasswordsEqualException();
+            }
+
+            cPassword = Utils.hash(cPassword);
+
+            if (!service.login(service.getCurrentUser().getUserName(), cPassword)) {
+                throw new AccountDoesNotExist();
+            }
+
+            service.updateAccountPassword(nPassword);
+            url = "/Dashboard/";
+            request.setAttribute("success-message", "Password changed.");
+        } catch (AccountDoesNotExist ex) {
+            request.setAttribute("error-message", "Current password does not match. Please try again.");
+        } catch (SQLException ex) {
+            log(ex.getMessage());
+            request.setAttribute("error-message", "Something is wrong. Please try again.");
+        } catch (PasswordsEqualException ex) {
+            request.setAttribute("error-message", "New password must be different. Please try again.");
+        } catch (PasswordNotStrongException ex) {
+            request.setAttribute("error-message", "Password needs to be stronger. Please try again.");
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
+        }
     }
 
     /**
