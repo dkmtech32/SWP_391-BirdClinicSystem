@@ -130,19 +130,16 @@ public class Utils {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
 
-        // Set the calendar to the next week
-        calendar.add(Calendar.WEEK_OF_YEAR, 1);
-
         // Find the next Monday
         int currentDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-        int daysUntilNextMonday = (Calendar.MONDAY - currentDayOfWeek + 7) % 7;
-        calendar.add(Calendar.DAY_OF_WEEK, daysUntilNextMonday);
+        int daysUntilNextSunday = (Calendar.SUNDAY - currentDayOfWeek + 7);
+        calendar.add(Calendar.DAY_OF_WEEK, daysUntilNextSunday);
 
         // Get the date of the next Monday
-        java.util.Date nextMonday = calendar.getTime();
+        java.util.Date nextSunday = calendar.getTime();
 
         // Convert java.util.Date to java.sql.Date
-        return new java.sql.Date(nextMonday.getTime());
+        return new java.sql.Date(nextSunday.getTime());
     }
 
     public static Date getPreviousWeek(java.sql.Date date) {
@@ -163,12 +160,9 @@ public class Utils {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
 
-        // Set the calendar to the previous week
-        calendar.add(Calendar.WEEK_OF_YEAR, -1);
-
         // Find the last Monday
         int currentDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-        int daysUntilLastMonday = (Calendar.MONDAY - currentDayOfWeek - 7) % 7;
+        int daysUntilLastMonday = (Calendar.MONDAY - currentDayOfWeek - 7);
         calendar.add(Calendar.DAY_OF_WEEK, daysUntilLastMonday);
 
         // Get the date of the last Monday
