@@ -89,8 +89,9 @@
                                                 <div class="time-slot">
                                                     <ul class="clearfix">
                                                         <c:forEach var="timeslot" items="${timeslots}" varStatus="index">
-                                                            <c:forEach var="dto" items="${timeslot}" varStatus="count">
-                                                                <li>
+                                                            <li>
+                                                                <c:forEach var="dto" items="${timeslot}" varStatus="count">
+
                                                                     ${index.count}-${count.count} 
                                                                     <a class="timing" href="
                                                                        <c:url value="/Customer/prepareBooking?timeslotID=${dto.timeSlotID}&appDate=${daysInWeek[index.index].toString().trim()}"/>
@@ -98,9 +99,10 @@
                                                                            ">
                                                                            <span>${dto.timeSlot}</span>
                                                                     </a>
-                                                                    </c:forEach>
-                                                                </li>
-                                                            
+                                                                </c:forEach>
+
+                                                            </li>
+
                                                         </c:forEach>
                                                     </ul>
                                                 </div>
