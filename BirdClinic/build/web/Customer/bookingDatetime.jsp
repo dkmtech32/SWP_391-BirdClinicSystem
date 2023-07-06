@@ -29,7 +29,16 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <!--Doctor view goes here-->
+                                    <div class="booking-doc-info">
+                                        <a href="doctor-profile.html" class="booking-doc-img">
+                                            <img src="../assets/images/doctors/${requestScope.doctor.image.imageURLName}" alt="User Image" />
+                                        </a>
+                                        <div class="booking-info">
+                                            <h4><a href="doctor-profile.html">${requestScope.doctor.fullName}</a></h4>                                          
+                                            <p class="text-muted mb-0"><i class="fa-regular fa-hourglass-half"></i> ${requestScope.doctor.yearsOfExperience} (years of EXP)</p>
+                                            <p class="text-muted mb-0" style="text-transform: capitalize">${requestScope.doctor.speciality.specialityName}</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -91,8 +100,6 @@
                                                         <c:forEach var="timeslot" items="${timeslots}" varStatus="index">
                                                             <li>
                                                                 <c:forEach var="dto" items="${timeslot}" varStatus="count">
-
-                                                                    ${index.count}-${count.count} 
                                                                     <a class="timing" href="
                                                                        <c:url value="/Customer/prepareBooking?timeslotID=${dto.timeSlotID}&appDate=${daysInWeek[index.index].toString().trim()}"/>
                                                                        <c:if test="${not empty param.doctorID}">&doctorID=${param.doctorID}</c:if>
@@ -117,25 +124,7 @@
                                 <c:if test="${not empty doctorID}">
                                     <input hidden="hidden" value="${doctorID}"/>
                                 </c:if>
-                                <!-- Submit Section -->
 
-                                <input type="submit"/>
-
-                                <c:choose>
-                                    <c:when test="${param.doctor == 'all'}">                                 
-                                        <div class="submit-section proceed-btn text-right">
-                                            <a onclick="location.href = '../Customer/bookInfo.jsp?doctor=all'" class="btn btn-primary submit-btn">Next</a>
-                                        </div>
-                                    </c:when>
-                                    <c:when test="${param.doctor == 'doc'}">
-                                        <div class="submit-section proceed-btn text-right">
-                                            <a onclick="location.href = '../Customer/bookInfo.jsp?doctor=doc'" class="btn btn-primary submit-btn">Next</a>
-                                        </div>
-                                    </c:when>                                       
-                                </c:choose>
-
-
-                                <!-- /Submit Section -->
                             </div>
                         </div>
                     </div>
