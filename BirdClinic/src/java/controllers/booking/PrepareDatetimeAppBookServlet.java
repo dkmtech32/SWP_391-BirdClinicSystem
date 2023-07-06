@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.timeslot.TimeslotDTO;
 import services.customer.CustomerServices;
+import services.general.AccountDoesNotExist;
 import utils.Utils;
 
 /**
@@ -49,6 +52,8 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
 
         try {
 
+            request.setAttribute("doctor", service.getDoctorInfo(doctorID));
+            
 //           {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"}
             List<List<TimeslotDTO>> timeslots = service.getTimeslotsByWeekday(doctorID);
 
@@ -74,6 +79,9 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
             url = "/Customer/bookingDatetime.jsp";
         } catch (SQLException ex) {
             log(ex.getMessage());
+            url = "/Customer/booking-list.jsp";
+        } catch (AccountDoesNotExist ex) {
+            request.setAttribute("error-message", ex.toString());
             url = "/Customer/booking-list.jsp";
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
