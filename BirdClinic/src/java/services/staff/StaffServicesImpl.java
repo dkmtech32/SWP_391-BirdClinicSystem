@@ -6,7 +6,7 @@
 package services.staff;
 
 import models.users.UserDTO;
-import services.general.AccountDoesNotExistException;
+import services.general.AccountDoesNotExist;
 import services.general.GeneralServicesImpl;
 
 /**
@@ -15,11 +15,11 @@ import services.general.GeneralServicesImpl;
  */
 public class StaffServicesImpl extends GeneralServicesImpl  {
 
-    public StaffServicesImpl(UserDTO user) throws AccountDoesNotExistException {
+    public StaffServicesImpl(UserDTO user) throws AccountDoesNotExist {
         if (user.getUserRole().toLowerCase().equals("admin"))
         {
             this.currentUser = user;
-        } else throw new AccountDoesNotExistException();
+        } else throw new AccountDoesNotExist();
     }
     
 }
