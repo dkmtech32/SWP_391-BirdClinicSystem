@@ -125,7 +125,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="dash-widget-info">
-                                                            <h6>Appoinments</h6>
+                                                            <h6>Appointments</h6>
                                                             <h3>85</h3>
                                                             <p class="text-muted">06, Apr 2019</p>
                                                         </div>
@@ -139,7 +139,7 @@
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h4 class="mb-4">Patient Appoinment</h4>
+                                    <h4 class="mb-4">Patient Appointment</h4>
                                     <div class="appointment-tab">
                                         <!-- Appointment Tab -->
                                         <ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded">
@@ -186,10 +186,10 @@
                                                                             <td>${appoitment.appTime}<span class="d-block text-info">${appoitment.timeslot}</span></td>
                                                                             <td>
                                                                                 <h2 class="table-avatar">
-                                                                                    <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
+                                                                                    <a href="../Common/bird-details.jsp" class="avatar avatar-sm mr-2"
                                                                                        ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
                                                                                           /></a>
-                                                                                    <a href="patient-profile.jsp">${bird.birdFullname}</a>
+                                                                                    <a href="../Common/bird-details.jsp">${bird.birdFullname}</a>
                                                                                 </h2>
                                                                             </td>
                                                                             <td>${bird.breed}</td>
@@ -239,17 +239,17 @@
                                                                             <td>${appoitment.appTime}<span class="d-block text-info">${appoitment.timeslot}</span></td>
                                                                             <td>
                                                                                 <h2 class="table-avatar">
-                                                                                    <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
+                                                                                    <a href="../Common/bird-details.jsp" class="avatar avatar-sm mr-2"
                                                                                        ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
                                                                                           /></a>
-                                                                                    <a href="patient-profile.jsp">${bird.birdFullname}</a>
+                                                                                    <a href="../Common/bird-details.jsp">${bird.birdFullname}</a>
                                                                                 </h2>
                                                                             </td>
                                                                             <td>${bird.breed}</td>
                                                                             <td>${appointment.service_}</td>
                                                                             <td class="text-right">
                                                                                 <div class="table-action">
-                                                                                    <a href="../Common/client-appointments-details.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                                    <a href="client-appointments-details-for-doctor-today.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                                                     <a href="add-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
                                                                                 </div>
                                                                             </td>
@@ -293,10 +293,10 @@
                                                                             <td>${appoitment.appTime}<span class="d-block text-info">${appoitment.timeslot}</span></td>
                                                                             <td>
                                                                                 <h2 class="table-avatar">
-                                                                                    <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
+                                                                                    <a href="../Common/bird-details.jsp" class="avatar avatar-sm mr-2"
                                                                                        ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
                                                                                           /></a>
-                                                                                    <a href="patient-profile.jsp">${bird.birdFullname}</a>
+                                                                                    <a href="../Common/bird-details.jsp">${bird.birdFullname}</a>
                                                                                 </h2>
                                                                             </td>
                                                                             <td>${bird.breed}</td>
@@ -326,13 +326,13 @@
             <!-- /Page Content -->
 
             <!-- Footer -->
-            <jsp:include page="Common/footer.jsp"/>
+            <jsp:include page="../Common/footer.jsp"/>
             <!-- /Footer -->
         </div>
         <!-- /Main Wrapper -->
 
         <!-- Script -->
-        <jsp:include page="Common/script.jsp"/>
+        <jsp:include page="../Common/script.jsp"/>
         <!-- /Script -->
     </body>
 </html>
