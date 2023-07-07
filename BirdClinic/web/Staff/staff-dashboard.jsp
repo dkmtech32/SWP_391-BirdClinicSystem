@@ -45,25 +45,25 @@
                                     <nav class="dashboard-menu">
                                         <ul>
                                             <li class="active">
-                                                <a href="doctor-dashboard.html">
+                                                <a href="staff-dashboard.jsp">
                                                     <i class="fas fa-columns"></i>
                                                     <span>Dashboard</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="doctor-profile-settings.html">
+                                                <a href="staff-profile-settings.jsp">
                                                     <i class="fas fa-user-cog"></i>
                                                     <span>Profile Settings</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="doctor-change-password.html">
+                                                <a href="staff-change-password.jsp">
                                                     <i class="fas fa-lock"></i>
                                                     <span>Change Password</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="index.html">
+                                                <a href="index.jsp">
                                                     <i class="fas fa-sign-out-alt"></i>
                                                     <span>Logout</span>
                                                 </a>
@@ -74,7 +74,6 @@
                             </div>
                             <!-- /Profile Sidebar -->
                         </div>
-
                         <div class="col-md-7 col-lg-8 col-xl-9">
                             <div class="row">
                                 <div class="col-md-12">
@@ -119,7 +118,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="dash-widget-info">
-                                                            <h6>Appointments</h6>
+                                                            <h6>Appoinments</h6>
                                                             <h3>85</h3>
                                                             <p class="text-muted">06, Apr 2019</p>
                                                         </div>
@@ -138,17 +137,23 @@
                                         <!-- Appointment Tab -->
                                         <ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded">
                                             <li class="nav-item">
-                                                <a class="nav-link active" href="#upcoming-appointments" data-toggle="tab">Upcoming</a>
+                                                <a class="nav-link active" href="#requesting-appointments" data-toggle="tab">Requests</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#today-appointments" data-toggle="tab">Today</a>
+                                                <a class="nav-link" href="#upcoming-today-appointments" data-toggle="tab">Upcoming Today</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#checking-out-today-appointments" data-toggle="tab">Check Out</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#completed-appointments" data-toggle="tab">Completed</a>
                                             </li>
                                         </ul>
                                         <!-- /Appointment Tab -->
 
                                         <div class="tab-content">
-                                            <!-- Upcoming Appointment Tab -->
-                                            <div class="tab-pane show active" id="upcoming-appointments">
+                                            <!-- Requests -->
+                                            <div class="tab-pane show active" id="requesting-appointments">
                                                 <div class="card card-table mb-0">
                                                     <div class="card-body">
                                                         <div class="table-responsive">
@@ -156,60 +161,65 @@
                                                                 <thead>
                                                                     <tr>
                                                                         <th>Customer Name</th>
-                                                                        <th>Appt Date</th>
-                                                                        <th>Bird Name</th>                                                                  
-                                                                        <th class="text-center">Doctor</th>
+                                                                        <th>Appointment Date</th>
+                                                                        <th>Bird Name</th>
+                                                                        <th>Bird Breed</th>
                                                                         <th>Status</th>
+                                                                        <th class="text-center">Doctor</th>
                                                                         <th></th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
                                                                     <tr>
-                                                                        <td>
-                                                                            <h2 class="table-avatar">
-                                                                                <a href="patient-profile.html" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
-                                                                                      /></a>
-                                                                                <a href="patient-profile.html">${customer.lastName}${customer.lastName}</a>
-                                                                            </h2>
-                                                                        </td>
-                                                                        <td>${appointment.date} <span class="d-block text-info">${appointment.time}</span></td>
-                                                                        <td>
-                                                                            <h2 class="table-avatar">
-                                                                                <a href="patient-profile.html" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
-                                                                                      /></a>
-                                                                                <a href="patient-profile.html">${bird.birdName}<span>${bird.birdBreed}</span></a>
-                                                                            </h2>
-                                                                        </td>
-
-                                                                        <td class="text-center">
-                                                                            <div class="d-flex justify-content-center">
-                                                                                <select class="form-control select w-75">
-                                                                                    <option>${doctor.name}</option>  <!-- liệt kê mấy thằng bác sĩ có chuyên ngành trùng với service và có slot trùng với lịch -->
-                                                                                </select>
-                                                                            </div>
-                                                                        </td>
-
-                                                                        <td><span class="badge badge-pill bg-warning-light">${appointment.status}</span></td>
-                                                                        <td class="text-right">
-                                                                            <div class="table-action">
-                                                                                <a href="client-appoitments-details-not-yet-for-staff.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                <a href="javascript:void(0);" class="btn btn-sm bg-success-light"> <i class="fas fa-check"></i> Confirm </a>
-                                                                                <a href="javascript:void(0);" class="btn btn-sm bg-danger-light"> <i class="fas fa-times"></i> Cancel </a>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
+                                                                        <c:forEach>
+                                                                            <td>
+                                                                                <h2 class="table-avatar">
+                                                                                    <a href="bird-details.jsp" class="avatar avatar-sm mr-2"
+                                                                                       ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
+                                                                                          /></a>
+                                                                                    <a href="bird-details.jsp">${customer.name}</a>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>${appoitment.appTime}<span class="d-block text-info">${appoitment.timeslot}</span></td>
+                                                                            <td>
+                                                                                <h2 class="table-avatar">
+                                                                                    <a href="bird-details.jsp" class="avatar avatar-sm mr-2"
+                                                                                       ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
+                                                                                          /></a>
+                                                                                    <a href="bird-details.jsp">${bird.birdFullname}</a>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>${bird.breed}</td>
+                                                                            <td><span class="badge badge-pill bg-warning-light">Processing</span></td> <!-- này để code cứng vì requests thì status auto là processsing -->
+                                                                            <td class="text-center">
+                                                                                <div class="d-flex justify-content-center">
+                                                                                    <select class="form-control select w-75">
+                                                                                        <c:forEach>
+                                                                                            <option>${appointment.doctor}</option> <!-- này liệt kê tên mấy ông bác sĩ có chuyên môn khớp với service-->
+                                                                                        </c:forEach>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="text-right">
+                                                                                <div class="table-action">
+                                                                                    <a href="client-appointments-details-for-staff.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                                    <a href="" class="btn btn-sm bg-success-light"> <i class="fas fa-check"></i> Confirm </a> <!-- nhấn xong chuyển status từ Processing qua Confirmed -->
+                                                                                    <a href="" class="btn btn-sm bg-danger-light"> <i class="fas fa-times"></i> Cancel </a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </c:forEach>
                                                                 </tbody>
                                                             </table>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- /Upcoming Appointment Tab -->
+                                            <!-- /Request -->
 
                                             <!-- Today Appointment Tab -->
-                                            <div class="tab-pane" id="today-appointments">
+                                            <!-- này là lịch hẹn của hôm nay, cái nào tới ngày mới hiện lên -->
+                                            <div class="tab-pane" id="upcoming-today-appointments">
                                                 <div class="card card-table mb-0">
                                                     <div class="card-body">
                                                         <div class="table-responsive">
@@ -217,50 +227,53 @@
                                                                 <thead>
                                                                     <tr>
                                                                         <th>Customer Name</th>
-                                                                        <th>Appt Date</th>
-                                                                        <th>Bird Name</th>                                                                  
-                                                                        <th class="text-center">Doctor</th>
+                                                                        <th>Appointment Date</th>
+                                                                        <th>Bird Name</th>
+                                                                        <th>Bird Breed</th>
                                                                         <th>Status</th>
+                                                                        <th class="text-center">Doctor</th>
                                                                         <th></th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <h2 class="table-avatar">
-                                                                                <a href="patient-profile.html" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
-                                                                                      /></a>
-                                                                                <a href="patient-profile.html">${customer.lastName}${customer.lastName}</a>
-                                                                            </h2>
-                                                                        </td>
-                                                                        <td>${appointment.date} <span class="d-block text-info">${appointment.time}</span></td>
-                                                                        <td>
-                                                                            <h2 class="table-avatar">
-                                                                                <a href="patient-profile.html" class="avatar avatar-sm mr-2"
-                                                                                   ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
-                                                                                      /></a>
-                                                                                <a href="patient-profile.html">${bird.birdName}<span>${bird.birdBreed}</span></a>
-                                                                            </h2>
-                                                                        </td>
-
-                                                                        <td class="text-center">
-                                                                            <div class="d-flex justify-content-center">
-                                                                                <select class="form-control select w-75">
-                                                                                    <option>${doctor.name}</option>  <!-- liệt kê mấy thằng bác sĩ có chuyên ngành trùng với service và có slot trùng với lịch -->
-                                                                                </select>
-                                                                            </div>
-                                                                        </td>
-
-                                                                        <td><span class="badge badge-pill bg-warning-light">${appointment.status}</span></td>
-                                                                        <td class="text-right">
-                                                                            <div class="table-action">
-                                                                                <a href="client-appoitments-details-not-yet-for-staff.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                                <a href="javascript:void(0);" class="btn btn-sm bg-success-light"> <i class="fas fa-check"></i> Confirm </a>
-                                                                                <a href="javascript:void(0);" class="btn btn-sm bg-danger-light"> <i class="fas fa-times"></i> Cancel </a>
-                                                                            </div>
-                                                                        </td>
+                                                                    <c:forEach>
+                                                                    <td>
+                                                                        <h2 class="table-avatar">
+                                                                            <a href="bird-details.jsp" class="avatar avatar-sm mr-2"
+                                                                               ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
+                                                                                  /></a>
+                                                                            <a href="bird-details.jsp">${customer.name}</a>
+                                                                        </h2>
+                                                                    </td>
+                                                                    <td>${appoitment.appTime}<span class="d-block text-info">${appoitment.timeslot}</span></td>
+                                                                    <td>
+                                                                        <h2 class="table-avatar">
+                                                                            <a href="bird-details.jsp" class="avatar avatar-sm mr-2"
+                                                                               ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
+                                                                                  /></a>
+                                                                            <a href="bird-details.jsp">${bird.birdFullname}</a>
+                                                                        </h2>
+                                                                    </td>
+                                                                    <td>${bird.breed}</td>
+                                                                    <td><span class="badge badge-pill bg-success-light">Confirmed</span></td> <!-- này để code cứng vì upcoming today thì status auto là confirm -->
+                                                                    <td class="text-center">
+                                                                        <div class="d-flex justify-content-center">
+                                                                            <select class="form-control select w-75">
+                                                                                <c:forEach>
+                                                                                    <option>${appointment.doctor}</option> <!-- này liệt kê tên mấy ông bác sĩ có chuyên môn khớp với service-->
+                                                                                </c:forEach>
+                                                                            </select>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="text-right">
+                                                                        <div class="table-action">
+                                                                            <a href="client-appointments-details-for-staff.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                            <a href="" class="btn btn-sm bg-success-light"> <i class="fas fa-check"></i> Confirm </a> <!-- nhấn xong chuyển status từ confirmed qua check in -->
+                                                                            <a href="" class="btn btn-sm bg-danger-light"> <i class="fas fa-times"></i> Cancel </a>
+                                                                        </div>
+                                                                    </td>
                                                                     </tr>
+                                                                </c:forEach>
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -268,6 +281,127 @@
                                                 </div>
                                             </div>
                                             <!-- /Today Appointment Tab -->
+
+                                            <!-- Check in Appointment Tab -->
+                                            <div class="tab-pane" id="checking-out-today-appointments">
+                                                <div class="card card-table mb-0">
+                                                    <div class="card-body">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-hover table-center mb-0">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Customer Name</th>
+                                                                        <th>Appointment Date</th>
+                                                                        <th>Bird Name</th>
+                                                                        <th>Bird Breed</th>
+                                                                        <th>Status</th>
+                                                                        <th>Doctor</th>
+                                                                        <th>Payment Method</th>
+                                                                        <th></th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <c:forEach>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <h2 class="table-avatar">
+                                                                                    <a href="bird-details.jsp" class="avatar avatar-sm mr-2"
+                                                                                       ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
+                                                                                          /></a>
+                                                                                    <a href="bird-details.jsp">${customer.name}</a>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>${appoitment.appTime}<span class="d-block text-info">${appoitment.timeslot}</span></td>
+                                                                            <td>
+                                                                                <h2 class="table-avatar">
+                                                                                    <a href="bird-details.jsp" class="avatar avatar-sm mr-2"
+                                                                                       ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
+                                                                                          /></a>
+                                                                                    <a href="bird-details.jsp">${bird.birdFullname}</a>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>${bird.breed}</td>
+                                                                            <td><span class="badge badge-pill bg-purple-light">Check In</span></td> <!-- này để code cứng vì chỗ này thì status auto là check in -->
+                                                                            <td>${appointment.doctor}</td>
+                                                                            <td>
+                                                                                <select class="form-control select w-75" required>
+                                                                                    <c:forEach>
+                                                                                        <option>${appoitment.payment}</option>
+                                                                                    </c:forEach>
+                                                                                </select>
+                                                                            </td>
+                                                                            <td class="text-right">
+                                                                                <div class="table-action">
+                                                                                    <a href="client-appointments-details-for-staff-finish.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                                    <a href="" class="btn btn-sm bg-success-light"> <i class="fas fa-check"></i> Confirm </a> 
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </c:forEach>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /Check in Appointment Tab -->
+                                            
+                                            <!-- Completed in Appointment Tab -->
+                                            <div class="tab-pane" id="completed-appointments">
+                                                <div class="card card-table mb-0">
+                                                    <div class="card-body">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-hover table-center mb-0">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Customer Name</th>
+                                                                        <th>Appointment Date</th>
+                                                                        <th>Bird Name</th>
+                                                                        <th>Bird Breed</th>
+                                                                        <th>Status</th>
+                                                                        <th>Doctor</th>
+                                                                        <th>Payment Method</th>
+                                                                        <th></th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <c:forEach>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <h2 class="table-avatar">
+                                                                                    <a href="bird-details.jsp" class="avatar avatar-sm mr-2"
+                                                                                       ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
+                                                                                          /></a>
+                                                                                    <a href="bird-details.jsp">${customer.name}</a>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>${appoitment.appTime}<span class="d-block text-info">${appoitment.timeslot}</span></td>
+                                                                            <td>
+                                                                                <h2 class="table-avatar">
+                                                                                    <a href="bird-details.jsp" class="avatar avatar-sm mr-2"
+                                                                                       ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
+                                                                                          /></a>
+                                                                                    <a href="bird-details.jsp">${bird.birdFullname}</a>
+                                                                                </h2>
+                                                                            </td>
+                                                                            <td>${bird.breed}</td>
+                                                                            <td><span class="badge badge-pill bg-primary-light">Completed</span></td> <!-- này để code cứng vì chỗ này thì status auto là check in -->
+                                                                            <td>${appointment.doctor}</td>
+                                                                            <td>${appoitment.payment}</td>
+                                                                            <td class="text-right">
+                                                                                <div class="table-action">
+                                                                                    <a href="client-appointments-details-for-staff.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </c:forEach>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /Completed Appointment Tab -->
                                         </div>
                                     </div>
                                 </div>
@@ -276,16 +410,17 @@
                     </div>
                 </div>
             </div>
-            <!-- /Page Content -->
-
-            <!-- Footer -->
-            <jsp:include page="Common/footer.jsp"/>
-            <!-- /Footer -->
         </div>
-        <!-- /Main Wrapper -->
+        <!-- /Page Content -->
 
-        <!-- Script -->
-        <jsp:include page="Common/script.jsp"/>
-        <!-- /Script -->
-    </body>
+        <!-- Footer -->
+        <jsp:include page="Common/footer.jsp"/>
+        <!-- /Footer -->
+    </div>
+    <!-- /Main Wrapper -->
+
+    <!-- Script -->
+    <jsp:include page="Common/script.jsp"/>
+    <!-- /Script -->
+</body>
 </html>
