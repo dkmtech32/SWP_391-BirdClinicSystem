@@ -3,27 +3,48 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.booking;
+package controllers.view;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.bird.BirdDTO;
-import models.service_.Service_DTO;
-import services.general.AccountDoesNotExist;
-import services.customer.CustomerServices;
+import services.general.BirdDoesNotExistException;
 import services.general.GeneralServices;
 
 /**
  *
  * @author Admin
  */
-public class PrepareAppointmentBookServlet extends HttpServlet {
+public class ViewBirdInfoServlet extends HttpServlet {
+    
+    public void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+
+        String url = "/Common/bird-info.jsp";
+        HttpSession session = request.getSession();
+        GeneralServices service = (GeneralServices) session.getAttribute("service");
+        String birdID = request.getParameter("birdID");
+        
+        try {
+            BirdDTO bird = service.viewBird(birdID);
+            request.setAttribute("bird", bird);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            request.setAttribute("error-message", "Something is wrong. Please try again.");
+        } catch (BirdDoesNotExistException ex) {
+            ex.printStackTrace();
+            url = request.getRequestURI().substring(request.getContextPath().length()-1);
+            request.setAttribute("error-message", "Bird does not exist. Please try again");
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
+        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -37,39 +58,7 @@ public class PrepareAppointmentBookServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-
-        HttpSession session = request.getSession();
-        String doctorID = request.getParameter("doctorID");
-        String appDate = request.getParameter("appDate").trim();
-        String timeslotID = request.getParameter("timeslotID");
-        String url = "/Common/index.jsp";
-
-        try {
-            if (session == null) {
-                url = "/Common/login.jsp";
-            } else {
-                CustomerServices service = (CustomerServices) session.getAttribute("service");
-                List<BirdDTO> birds = service.getCustomerBirds();
-                request.setAttribute("birds", birds);
-
-                request.setAttribute("doctorID", doctorID);
-                List<Service_DTO> services = service.getServices(doctorID);
-                request.setAttribute("serviceList", services);
-
-                request.setAttribute("appDate", appDate);
-                request.setAttribute("timeslot", service.getTimeslot(timeslotID));
-                url = "bookInfo.jsp";
-
-            }
-
-        } catch (SQLException | AccountDoesNotExist ex) {
-            ex.printStackTrace();
-            url = "/Common/booking-list.jsp";
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
-        }
-
+        processRequest(request, response);
     }
 
     /**
@@ -83,7 +72,7 @@ public class PrepareAppointmentBookServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendError(405);
+        processRequest(request, response);
     }
 
     /**
