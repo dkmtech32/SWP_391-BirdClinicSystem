@@ -38,7 +38,7 @@ public class ChangePasswordServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String url = "/Dashboard/change-password.jsp";
+        String url = "/Common/change-password.jsp";
 
         request.getRequestDispatcher(url).forward(request, response);
     }
@@ -74,7 +74,7 @@ public class ChangePasswordServlet extends HttpServlet {
             }
 
             service.updateAccountPassword(nPassword);
-            url = "/Dashboard/";
+            url = "/Dashboard/view";
             request.setAttribute("success-message", "Password changed.");
         } catch (AccountDoesNotExist ex) {
             request.setAttribute("error-message", "Current password does not match. Please try again.");
