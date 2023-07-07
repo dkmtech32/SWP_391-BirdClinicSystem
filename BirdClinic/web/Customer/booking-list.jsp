@@ -13,7 +13,7 @@
         <!-- Main Wrapper -->
         <div class="main-wrapper">
             <!-- Header -->
-            <jsp:include page="../Common/header-guest.jsp"/>
+            <jsp:include page="../Common/header.jsp"/>
             <!--/Header -->
 
             <!-- Breadcrumb -->
