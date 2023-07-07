@@ -6,7 +6,7 @@
 package models.appointment;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.sql.Date;
 import models.bird.BirdDTO;
 import models.service_.Service_DTO;
 import models.timeslot.TimeslotDTO;
@@ -20,7 +20,7 @@ public interface AppointmentDTO extends Serializable {
 
     String getAppStatus();
 
-    Timestamp getAppTime();
+    Date getAppTime();
 
     String getAppointmentID();
 
@@ -38,7 +38,7 @@ public interface AppointmentDTO extends Serializable {
 
     void setAppStatus(String appStatus);
 
-    void setAppTime(Timestamp appTime);
+    void setAppTime(Date appTime);
 
     void setAppointmentID(String appointmentID);
 
