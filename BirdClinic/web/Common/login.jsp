@@ -34,7 +34,7 @@
                                         <form action="<c:url value="/Common/login"/>" method="POST">
                                             <div class="form-group form-focus">
                                                 <input name ="username" class="form-control floating" />
-                                                <label class="focus-label">Email</label>
+                                                <label class="focus-label">User Name</label>
                                             </div>
                                             <div class="form-group form-focus">
                                                 <input name ="password" type="password" class="form-control floating" />
