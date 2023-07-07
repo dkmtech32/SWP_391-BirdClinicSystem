@@ -183,10 +183,10 @@
                                                                             <td>${appoitment.appTime}<span class="d-block text-info">${appoitment.timeslot}</span></td>
                                                                             <td>
                                                                                 <h2 class="table-avatar">
-                                                                                    <a href="bird-details.jsp" class="avatar avatar-sm mr-2"
+                                                                                    <a href="../Common/bird-details.jsp" class="avatar avatar-sm mr-2"
                                                                                        ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
                                                                                           /></a>
-                                                                                    <a href="bird-details.jsp">${bird.birdFullname}</a>
+                                                                                    <a href="../Common/bird-details.jsp">${bird.birdFullname}</a>
                                                                                 </h2>
                                                                             </td>
                                                                             <td>${bird.breed}</td>
@@ -239,19 +239,19 @@
                                                                     <c:forEach>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="bird-details.jsp" class="avatar avatar-sm mr-2"
+                                                                            <a href="../Common/bird-details.jsp" class="avatar avatar-sm mr-2"
                                                                                ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
                                                                                   /></a>
-                                                                            <a href="bird-details.jsp">${customer.name}</a>
+                                                                            <a href="patient-details.jsp">${customer.name}</a>
                                                                         </h2>
                                                                     </td>
                                                                     <td>${appoitment.appTime}<span class="d-block text-info">${appoitment.timeslot}</span></td>
                                                                     <td>
                                                                         <h2 class="table-avatar">
-                                                                            <a href="bird-details.jsp" class="avatar avatar-sm mr-2"
+                                                                            <a href="../Common/bird-details.jsp" class="avatar avatar-sm mr-2"
                                                                                ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
                                                                                   /></a>
-                                                                            <a href="bird-details.jsp">${bird.birdFullname}</a>
+                                                                            <a href="../Common/bird-details.jsp">${bird.birdFullname}</a>
                                                                         </h2>
                                                                     </td>
                                                                     <td>${bird.breed}</td>
@@ -305,19 +305,19 @@
                                                                         <tr>
                                                                             <td>
                                                                                 <h2 class="table-avatar">
-                                                                                    <a href="bird-details.jsp" class="avatar avatar-sm mr-2"
+                                                                                    <a href="patient-details.jsp" class="avatar avatar-sm mr-2"
                                                                                        ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
                                                                                           /></a>
-                                                                                    <a href="bird-details.jsp">${customer.name}</a>
+                                                                                    <a href="patient-details.jsp">${customer.name}</a>
                                                                                 </h2>
                                                                             </td>
                                                                             <td>${appoitment.appTime}<span class="d-block text-info">${appoitment.timeslot}</span></td>
                                                                             <td>
                                                                                 <h2 class="table-avatar">
-                                                                                    <a href="bird-details.jsp" class="avatar avatar-sm mr-2"
+                                                                                    <a href="../Common/bird-details.jsp" class="avatar avatar-sm mr-2"
                                                                                        ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
                                                                                           /></a>
-                                                                                    <a href="bird-details.jsp">${bird.birdFullname}</a>
+                                                                                    <a href="../Common/bird-details.jsp">${bird.birdFullname}</a>
                                                                                 </h2>
                                                                             </td>
                                                                             <td>${bird.breed}</td>
@@ -378,10 +378,10 @@
                                                                             <td>${appoitment.appTime}<span class="d-block text-info">${appoitment.timeslot}</span></td>
                                                                             <td>
                                                                                 <h2 class="table-avatar">
-                                                                                    <a href="bird-details.jsp" class="avatar avatar-sm mr-2"
+                                                                                    <a href="../Common/bird-details.jsp" class="avatar avatar-sm mr-2"
                                                                                        ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
                                                                                           /></a>
-                                                                                    <a href="bird-details.jsp">${bird.birdFullname}</a>
+                                                                                    <a href="../Common/bird-details.jsp">${bird.birdFullname}</a>
                                                                                 </h2>
                                                                             </td>
                                                                             <td>${bird.breed}</td>
@@ -414,13 +414,13 @@
         <!-- /Page Content -->
 
         <!-- Footer -->
-        <jsp:include page="Common/footer.jsp"/>
+        <jsp:include page="../Common/footer.jsp"/>
         <!-- /Footer -->
     </div>
     <!-- /Main Wrapper -->
 
     <!-- Script -->
-    <jsp:include page="Common/script.jsp"/>
+    <jsp:include page="../Common/script.jsp"/>
     <!-- /Script -->
 </body>
 </html>
