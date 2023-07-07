@@ -82,7 +82,17 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
             
             if (doctorID == null) {
                 List<List<TimeslotDTO>> timeslots = service.getTimeslotsByWeekday(doctorID);
-                request.setAttribute("timeslots", timeslots);
+                List<List<Map<TimeslotDTO, Boolean>>> timeslotLate = new ArrayList<>();
+                for (int i = 0; i < timeslots.size(); i++) {
+                    timeslotLate.add(new ArrayList<>());
+                    for (int j = 0; j < timeslots.get(i).size();j++  ) {
+                        Map<TimeslotDTO, Boolean> map = new HashMap<>();
+                        TimeslotDTO timeslot = timeslots.get(i).get(j);
+                        map.put(timeslot, daysInWeek.get(j).compareTo(new Date(System.currentTimeMillis()))>0) ;
+                        timeslotLate.get(i).set(j, map);
+                    }
+                }
+                request.setAttribute("timeslots", timeslotLate);
             } else {
                 List<List<TimeslotDTO>> timeslots = service.getTimeslotsByWeekday(doctorID);
                 List<List<Map<TimeslotDTO, Boolean>>> timeslotBusy = new ArrayList<>();
@@ -93,7 +103,7 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
                         TimeslotDTO timeslot = timeslots.get(i).get(j);
                         map.put(timeslot, 
                                 service.isDoctorFree(doctorID, timeslot.getTimeSlotID(), daysInWeek.get(j)) 
-                                        && daysInWeek.get(j).compareTo(new Date(System.currentTimeMillis()))<=0);
+                                        && daysInWeek.get(j).compareTo(new Date(System.currentTimeMillis()))>0);
                         timeslotBusy.get(i).set(j, map);
                     }
                 }
