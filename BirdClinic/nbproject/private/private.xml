@@ -3,18 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/SWP_391-BirdClinicSystem-Anh-Minh/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Common/header-staff.jsp</file>
-            <file>file:/D:/SWP_391-BirdClinicSystem-Anh-Minh/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Staff/staff-dashboard.jsp</file>
-            <file>file:/D:/SWP_391-BirdClinicSystem-Anh-Minh/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Common/login.jsp</file>
-            <file>file:/D:/SWP_391-BirdClinicSystem-Anh-Minh/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Customer/customer-dashboard.jsp</file>
-            <file>file:/D:/SWP_391-BirdClinicSystem-Anh-Minh/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Common/client-appointments-details.jsp</file>
-            <file>file:/D:/SWP_391-BirdClinicSystem-Anh-Minh/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Common/header.jsp</file>
-            <file>file:/D:/SWP_391-BirdClinicSystem-Anh-Minh/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Common/bird-details.jsp</file>
-            <file>file:/D:/SWP_391-BirdClinicSystem-Anh-Minh/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Doctor/doctor-dashboard.jsp</file>
-            <file>file:/D:/SWP_391-BirdClinicSystem-Anh-Minh/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Staff/client-appointments-details-for-staff.jsp</file>
-            <file>file:/D:/SWP_391-BirdClinicSystem-Anh-Minh/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Doctor/client-appointments-details-for-doctor-today.jsp</file>
-            <file>file:/D:/SWP_391-BirdClinicSystem-Anh-Minh/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Staff/client-appointments-details-for-staff-finish.jsp</file>
-            <file>file:/D:/SWP_391-BirdClinicSystem-Anh-Minh/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Customer/bookingDatetime.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Common/breadcrumb.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/assets/css/bootstrap.min.css</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/src/java/services/general/BirdDoesNotExistException.java</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/src/java/controllers/booking/BookAppointmentServlet.java</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/src/java/controllers/booking/PrepareAppointmentBookServlet.java</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/src/java/controllers/booking/PrepareDatetimeAppBookServlet.java</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/src/java/controllers/booking/PrepareDoctorsAppBookServlet.java</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Customer/booking-list.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Customer/bookInfo.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Common/script.jsp</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/assets/css/fullcalendar.min.css</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/assets/plugins/fancybox/jquery.fancybox.min.css</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/src/java/models/exceptions/RecordAlreadyExists.java</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/src/java/models/appointment/AppointmentAlreadyExistsException.java</file>
+            <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/assets/plugins/fontawesome/less/_animated.less</file>
         </group>
     </open-files>
 </project-private>
