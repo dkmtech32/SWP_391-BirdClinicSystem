@@ -1,5 +1,5 @@
 <%-- 
-    Document   : client-appoitments-details
+    Document   : client-appointments-details
     Created on : Jun 25, 2023, 9:53:59 PM
     Author     : ASUS
 --%>
@@ -142,10 +142,10 @@
                             </thead>
                             <tbody>
                                 <tr >
-                                    <td>${appoitment.date}</td>
+                                    <td>${appointment.date}</td>
                                     <td>${medicalRecord.recordTime}</td>
-                                    <td>${appoitment.service}</td>
-                                    <td style="word-wrap: break-word; max-width: 300px;">${appoitment.ownerNote}</td> <!-- chưa có -->
+                                    <td>${appointment.service}</td>
+                                    <td style="word-wrap: break-word; max-width: 300px;">${appointment.ownerNote}</td> <!-- chưa có -->
                                     <td>${medicalRecord.diagnosis}</td>
                                     <td style="word-wrap: break-word; max-width: 300px;">${medicalRecord.doctorNote}</td>  <!-- chưa có -->
                                 </tr>
@@ -164,10 +164,10 @@
                             <tbody>
                                 <c:forEach>
                                     <tr>
-                                        <td>${medicinie.medicineName}</td>
-                                        <td>${medicinie.quantity}</td>
-                                        <td>${medicinie.unit}</td> <!-- chưa có, này nghĩa là đơn vị (2 viên, 2 gram, vv) -->
-                                        <td>${medicinie.descriptions}</td>
+                                        <td>${medicine.medicineName}</td>
+                                        <td>${medicine.quantity}</td>
+                                        <td>${medicine.unit}</td> <!-- chưa có, này nghĩa là đơn vị (2 viên, 2 gram, vv) -->
+                                        <td>${medicine.descriptions}</td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
@@ -279,7 +279,7 @@
                         <div class="form-group">													
                             <div class="form-control" rows="4" placeholder="Owner's feedback"
                                  style="word-wrap: break-word; height: 9rem">
-                                ${appoitment.ownerFeedback}
+                                ${appointment.ownerFeedback}
                             </div>
                         </div>
                     </div>
@@ -288,20 +288,20 @@
                         <div class="payment-method">
                             <h4>Payment Method</h4> 
                             <div class="form-control select w-75">
-                                ${appoitment.payment}
+                                ${appointment.payment}
                             </div>
                         </div>
                         <div class="booking-item-wrap-in-appointments-details">
                             <ul class="booking-fee-in-appointments-details">
-                                <li>Service Fee<span>${medicinie.serviceFee}</span></li>
-                                <li>Booking Fee<span>${medicinie.bookingFee}</span></li>
-                                <li>Medicine Fee<span>${medicinie.medicinePriceTotal}</span></li>
+                                <li>Service Fee<span>${medicine.serviceFee}</span></li>
+                                <li>Booking Fee<span>${medicine.bookingFee}</span></li>
+                                <li>Medicine Fee<span>${medicine.medicinePriceTotal}</span></li>
                             </ul>
                             <div class="booking-total-in-appointments-details">
                                 <ul class="booking-total-list-in-appointments-details">
                                     <li>
                                         <span>Total</span>
-                                        <span class="total-cost-in-appointments-details">${medicinie.totalMoney}</span>
+                                        <span class="total-cost-in-appointments-details">${medicine.totalMoney}</span>
                                     </li>
                                 </ul>
                             </div>

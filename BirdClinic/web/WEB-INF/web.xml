@@ -107,8 +107,8 @@
         <servlet-class>controllers.account.LogoutServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ChangePasswordServlet</servlet-name>
-        <servlet-class>controllers.dashboard.ChangePasswordServlet</servlet-class>
+        <servlet-name>UpdatePasswordServlet</servlet-name>
+        <servlet-class>controllers.dashboard.UpdatePasswordServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DashboardServlet</servlet-name>
@@ -125,6 +125,14 @@
     <servlet>
         <servlet-name>ViewAppointmentInfoServlet</servlet-name>
         <servlet-class>controllers.view.ViewAppointmentInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CustomerDashboardBirdsServlet</servlet-name>
+        <servlet-class>controllers.dashboard.customer.CustomerDashboardBirdsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateProfileServlet</servlet-name>
+        <servlet-class>controllers.dashboard.UpdateProfileServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -155,12 +163,12 @@
         <url-pattern>/Dashboard/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ChangePasswordServlet</servlet-name>
-        <url-pattern>/changePassword</url-pattern>
+        <servlet-name>UpdatePasswordServlet</servlet-name>
+        <url-pattern>/Update/Password</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ViewBirdInfoServlet</servlet-name>
-        <url-pattern>/BirdInfo</url-pattern>
+        <url-pattern>/View/Bird</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CustomerDashboardAppointmentsServlet</servlet-name>
@@ -172,7 +180,15 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ViewAppointmentInfoServlet</servlet-name>
-        <url-pattern>/ViewAppointment</url-pattern>
+        <url-pattern>/View/Appointment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerDashboardBirdsServlet</servlet-name>
+        <url-pattern>/Customer/Dashboard/Birds</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateProfileServlet</servlet-name>
+        <url-pattern>/Update/Profile</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
