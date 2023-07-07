@@ -164,10 +164,10 @@
                             <tbody>
                                 <c:forEach>
                                     <tr>
-                                        <td>${medicinie.medicineName}</td>
-                                        <td>${medicinie.quantity}</td>
-                                        <td>${medicinie.unit}</td> <!-- chưa có, này nghĩa là đơn vị (2 viên, 2 gram, vv) -->
-                                        <td>${medicinie.descriptions}</td>
+                                        <td>${medicine.medicineName}</td>
+                                        <td>${medicine.quantity}</td>
+                                        <td>${medicine.unit}</td> <!-- chưa có, này nghĩa là đơn vị (2 viên, 2 gram, vv) -->
+                                        <td>${medicine.descriptions}</td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
@@ -205,21 +205,21 @@
                         <div class="payment-method">
                             <h4>Payment Method</h4> 
                             <div class="form-control select w-75">
-                                ${appoitment.payment}
+                                ${appointment.payment}
                             </div>
                         </div>
                         <h2>Payment</h2>
                         <div class="booking-item-wrap-in-appointments-details">
                             <ul class="booking-fee-in-appointments-details">
-                                <li>Service Fee<span>${medicinie.serviceFee}</span></li>
-                                <li>Booking Fee<span>${medicinie.bookingFee}</span></li>
-                                <li>Medicine Fee<span>${medicinie.medicinePriceTotal}</span></li>
+                                <li>Service Fee<span>${medicine.serviceFee}</span></li>
+                                <li>Booking Fee<span>${medicine.bookingFee}</span></li>
+                                <li>Medicine Fee<span>${medicine.medicinePriceTotal}</span></li>
                             </ul>
                             <div class="booking-total-in-appointments-details">
                                 <ul class="booking-total-list-in-appointments-details">
                                     <li>
                                         <span>Total</span>
-                                        <span class="total-cost-in-appointments-details">${medicinie.totalMoney}</span>
+                                        <span class="total-cost-in-appointments-details">${medicine.totalMoney}</span>
                                     </li>
                                 </ul>
                             </div>

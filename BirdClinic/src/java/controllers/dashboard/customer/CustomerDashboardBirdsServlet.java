@@ -3,21 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.dashboard;
+package controllers.dashboard.customer;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import services.general.GeneralServices;
 
 /**
  *
  * @author Admin
  */
-public class DashboardServlet extends HttpServlet {
+public class CustomerDashboardBirdsServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,24 +30,18 @@ public class DashboardServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-
-        String forwardURL = request.getServletPath() + request.getPathInfo();
-        if (request.getQueryString() != null && !request.getQueryString().trim().equals("")) {
-            forwardURL = request.getServletPath() + request.getPathInfo() + request.getQueryString();
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet CustomerDashboardBirdsServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet CustomerDashboardBirdsServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
-        try {
-            if (!request.getPathInfo().contains("Update")) {
-                GeneralServices services = (GeneralServices) session.getAttribute("service");
-                String userRole = services.getCurrentUser().getDisplayRole();
-                forwardURL = "/" + userRole + forwardURL;
-            }
-        } catch (NullPointerException ex) {
-            forwardURL = "/Common/login";
-        }
-
-        request.getRequestDispatcher(forwardURL).include(request, response);
-        request.getRequestDispatcher("Common/dashboard.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

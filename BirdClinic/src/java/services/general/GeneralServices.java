@@ -42,6 +42,8 @@ public interface GeneralServices extends Serializable {
     List<RecordMedicineDTO> viewRecordMeds(String medicalRecordID) throws SQLException;
     
     FeedbackDTO viewFeedback(String appointmentID) throws SQLException;
+    
+    UserDTO viewAccount(String userID)throws AccountDoesNotExistException, SQLException;
 
     boolean register(Map<String, String[]> args)
             throws AccountAlreadyExistsException, PasswordsNotEqualException, SQLException, PasswordNotStrongException;
