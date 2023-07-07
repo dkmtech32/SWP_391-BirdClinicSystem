@@ -4,10 +4,12 @@
     Author     : Legion
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="en_US" />
+
 <!DOCTYPE html>
 <html>
     <jsp:include page="../Common/head.jsp"/>
@@ -97,27 +99,45 @@
                                                 <!-- Time Slot -->
                                                 <div class="time-slot">
                                                     <ul class="clearfix">
-                                                        <c:forEach var="timeslot" items="${timeslots}" varStatus="index">
+                                                        <c:forEach var="timeslotList" items="${timeslots}" varStatus="index">
                                                             <li>
                                                                 <c:choose>
-                                                                    <c:when test="${not empty timeslot}">
-                                                                        <c:forEach var="dto" items="${timeslot}" varStatus="count">
-                                                                            <a class="timing" href="
-                                                                               <c:url value="/Customer/prepareBooking?timeslotID=${dto.timeSlotID}&timeSlot=${dto.timeSlot}&appDate=${daysInWeek[index.index].toString().trim()}"/>
-                                                                               <c:if test="${not empty param.doctorID}">&doctorID=${param.doctorID}</c:if>
-                                                                                   ">
-                                                                                   <span>${dto.timeSlot}</span>
-                                                                            </a>
+                                                                    <c:when test="${not empty timeslotList}">
+                                                                        <c:forEach var="timeslotMap" items="${timeslotList}" varStatus="count">
+                                                                            <c:forEach var="entry" items="${timeslotMap}">
+                                                                                <c:set var="timeslot" value="${entry.key}" />
+                                                                                <c:set var="isLate" value="${entry.value}" />
+                                                                                <c:choose>
+                                                                                    <c:when test="${isLate}">
+                                                                                        <a class="timing" href="
+                                                                                           <c:url value="/Customer/prepareBooking">
+                                                                                               <c:param name="timeslotID" value="${timeslot.timeSlotID}" />
+                                                                                               <c:param name="timeSlot" value="${timeslot.timeSlot}" />
+                                                                                               <c:param name="appDate" value="${daysInWeek[index.index].toString().trim()}" />
+                                                                                               <c:if test="${not empty param.doctorID}">
+                                                                                                   <c:param name="doctorID" value="${param.doctorID}" />
+                                                                                               </c:if>
+                                                                                           </c:url>
+                                                                                           ">
+                                                                                            <span>${timeslot.timeSlot}</span>
+                                                                                        </a>
+                                                                                    </c:when>
+                                                                                    <c:when test="${!isLate}">
+                                                                                        <a class="timing-occupied">
+                                                                                           <span>${timeslot.timeSlot}</span> 
+                                                                                        </a>
+                                                                                    </c:when>
+                                                                                </c:choose>
+                                                                            </c:forEach>
                                                                         </c:forEach>
                                                                     </c:when>
-                                                                    <c:when test="${empty timeslot}">                                                                       
-                                                                            <a class="timingEmpty">
-                                                                                   <span></span>
-                                                                            </a>
+                                                                    <c:when test="${empty timeslotList}">
+                                                                        <a class="timingEmpty">
+                                                                            <span></span>
+                                                                        </a>
                                                                     </c:when>
                                                                 </c:choose>
                                                             </li>
-
                                                         </c:forEach>
                                                     </ul>
                                                 </div>
