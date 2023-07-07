@@ -37,13 +37,8 @@ public class ChangePasswordServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        HttpSession session = request.getSession();
         
-        GeneralServices services = (GeneralServices) session.getAttribute("service");
-        String userRole = services.getCurrentUser().getDisplayRole();
-        
-        String url = "/" + userRole + "/Dashboard/change-password.jsp";
+        String url = "/Dashboard/change-password.jsp";
 
         request.getRequestDispatcher(url).forward(request, response);
     }
@@ -61,7 +56,7 @@ public class ChangePasswordServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "/Dashboard/change-password.jsp";
+        String url = "/Common/change-password.jsp";
         HttpSession session = request.getSession();
         GeneralServices service = (GeneralServices) session.getAttribute("service");
         String cPassword = request.getParameter("current-password");

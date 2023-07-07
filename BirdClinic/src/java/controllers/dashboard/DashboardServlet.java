@@ -6,7 +6,6 @@
 package controllers.dashboard;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,13 +32,24 @@ public class DashboardServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        
-        GeneralServices services = (GeneralServices) session.getAttribute("service");
-        String userRole = services.getCurrentUser().getDisplayRole();
-        
-        String url = "/" + userRole + request.getRequestURI();
 
-        request.getRequestDispatcher(url).forward(request, response);
+        String path = "/Dashboard" + request.getPathInfo();
+        String forwardURL;
+        try {
+            if (path.contains("changePassword")) {
+                forwardURL = "/changePassword";
+            } else {
+                GeneralServices services = (GeneralServices) session.getAttribute("service");
+                String userRole = services.getCurrentUser().getDisplayRole();
+                forwardURL = "/" + userRole + path;
+            }
+        } catch (NullPointerException ex) {
+            forwardURL = "/Common/login";
+        }
+        
+        System.out.println("forwardURL: " + forwardURL);
+
+        request.getRequestDispatcher(forwardURL).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
