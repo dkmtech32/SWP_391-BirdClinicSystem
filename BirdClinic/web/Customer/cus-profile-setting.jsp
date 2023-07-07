@@ -1,27 +1,28 @@
+
 <%-- 
-    Document   : bookInfo-all
+    Document   : 
     Created on : Jun 20, 2023, 11:06:50 PM
     Author     : Legion
 --%>
-<!--dont use-->
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <jsp:include page="Common/head.jsp"/>
+    <jsp:include page="../Common/head.jsp"/>
     <body>
         <!-- Main Wrapper -->
         <div class="main-wrapper">
             <!-- Header -->
-            <jsp:include page="Common/header-guest.jsp"/>
+            <jsp:include page="../Common/header-guest.jsp"/>
             <!--/Header -->
 
             <!-- Breadcrumb -->
-            <jsp:include page="Common/breadcrumb.jsp"/>
+            <jsp:include page="../Common/breadcrumb.jsp"/>
             <!-- /Breadcrumb -->
 
             <!-- Page Content -->
-
+            <!-- Page Content -->
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
@@ -51,29 +52,31 @@
                                                     <span>Dashboard</span>
                                                 </a>
                                             </li>
-
-
+                                            <li>
+                                                <a href="favourites.html">
+                                                    <i class="fas fa-bookmark"></i>
+                                                    <span>Favourites</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="chat.html">
+                                                    <i class="fas fa-comments"></i>
+                                                    <span>Message</span>
+                                                    <small class="unread-msg">23</small>
+                                                </a>
+                                            </li>
                                             <li class="active">
                                                 <a href="profile-settings.html">
                                                     <i class="fas fa-user-cog"></i>
                                                     <span>Profile Settings</span>
                                                 </a>
                                             </li>
-
-                                            <li>
-                                                <a href="birdlist.jsp">
-                                                    <i class="fa fa-tasks"></i>
-                                                    <span>Birds List</span>
-                                                </a>
-                                            </li>
-
                                             <li>
                                                 <a href="change-password.html">
                                                     <i class="fas fa-lock"></i>
                                                     <span>Change Password</span>
                                                 </a>
                                             </li>
-
                                             <li>
                                                 <a href="index.html">
                                                     <i class="fas fa-sign-out-alt"></i>
@@ -97,7 +100,7 @@
                                                 <div class="form-group">
                                                     <div class="change-avatar">
                                                         <div class="profile-img">
-                                                            <img src="assets/img/bird/bird-1.webp" alt="Bird Image" />
+                                                            <img src="assets/img/patients/patient.jpg" alt="User Image" />
                                                         </div>
                                                         <div class="upload-img">
                                                             <div class="change-photo-btn">
@@ -111,54 +114,85 @@
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="form-group">
-                                                    <label>Bird's Name</label>
-                                                    <input type="text" class="form-control" value="Chó" required />
+                                                    <label>First Name</label>
+                                                    <input type="text" class="form-control" value="Richard" />
                                                 </div>
                                             </div>
-
                                             <div class="col-12 col-md-6">
                                                 <div class="form-group">
-                                                    <label>Hatching Date</label>
+                                                    <label>Last Name</label>
+                                                    <input type="text" class="form-control" value="Wilson" />
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="form-group">
+                                                    <label>Date of Birth</label>
                                                     <div class="cal-icon">
-                                                        <input type="text" class="form-control datetimepicker" value="24-07-2022" required/>
+                                                        <input type="text" class="form-control datetimepicker" value="24-07-1983" />
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div class="col-12 col-md-6">
                                                 <div class="form-group">
-                                                    <label>Breed</label>
-                                                    <input type="text" class="form-control" value="Sparrow" required/>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12 col-md-6">
-                                                <div class="form-group">
-                                                    <label>Sex</label>
-                                                    <select class="form-control" required>
-                                                        <option>Male</option>
-                                                        <option>Female</option>
+                                                    <label>Blood Group</label>
+                                                    <select class="form-control select">
+                                                        <option>A-</option>
+                                                        <option>A+</option>
+                                                        <option>B-</option>
+                                                        <option>B+</option>
+                                                        <option>AB-</option>
+                                                        <option>AB+</option>
+                                                        <option>O-</option>
+                                                        <option>O+</option>
                                                     </select>
                                                 </div>
                                             </div>
-
                                             <div class="col-12 col-md-6">
                                                 <div class="form-group">
-                                                    <label>Weight (in grams)</label>
-                                                    <input type="number" class="form-control" name="weight" placeholder="Enter weight in grams" step="0.1" value="35" required />
+                                                    <label>Email ID</label>
+                                                    <input type="email" class="form-control" value="richard@example.com" />
                                                 </div>
                                             </div>
-
                                             <div class="col-12 col-md-6">
                                                 <div class="form-group">
-                                                    <label>Band/Microchip ID</label>
-                                                    <input type="text" class="form-control" name="weight" value="emdeplam123" required/>
+                                                    <label>Mobile</label>
+                                                    <input type="text" value="+1 202-555-0125" class="form-control" />
                                                 </div>
                                             </div>
-
-                                            <div class="submit-section">
-                                                <button type="submit" class="btn btn-primary submit-btn">Save Changes</button>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label>Address</label>
+                                                    <input type="text" class="form-control" value="806 Twin Willow Lane" />
+                                                </div>
                                             </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="form-group">
+                                                    <label>City</label>
+                                                    <input type="text" class="form-control" value="Old Forge" />
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="form-group">
+                                                    <label>State</label>
+                                                    <input type="text" class="form-control" value="Newyork" />
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="form-group">
+                                                    <label>Zip Code</label>
+                                                    <input type="text" class="form-control" value="13420" />
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="form-group">
+                                                    <label>Country</label>
+                                                    <input type="text" class="form-control" value="United States" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="submit-section">
+                                            <button type="submit" class="btn btn-primary submit-btn">Save Changes</button>
+                                        </div>
                                     </form>
                                     <!-- /Profile Settings Form -->
                                 </div>
@@ -167,21 +201,17 @@
                     </div>
                 </div>
             </div>
+            <!-- /Page Content -->
+            <!-- /Page Content -->
 
-
+            <!-- Footer -->
+            <jsp:include page="../Common/footer.jsp"/>
+            <!-- /Footer -->
         </div>
+        <!-- /Main Wrapper -->
 
-
-        <!-- /Page Content -->
-
-        <!-- Footer -->
-        <jsp:include page="Common/footer.jsp"/>
-        <!-- /Footer -->
-    </div>
-    <!-- /Main Wrapper -->
-
-    <!-- Script -->
-    <jsp:include page="Common/script.jsp"/>
-    <!-- /Script -->
-</body>
+        <!-- Script -->
+        <jsp:include page="../Common/script.jsp"/>
+        <!-- /Script -->
+    </body>
 </html>
