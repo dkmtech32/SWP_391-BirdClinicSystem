@@ -8,7 +8,6 @@ package models.timeslot;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 import models.exceptions.NoSuchRecordExists;
 
 /**
@@ -25,5 +24,5 @@ public interface TimeslotDAO extends Serializable{
     
     List<String> readWeekdays() throws NoSuchRecordExists, SQLException;
     
-    Map<String, List<TimeslotDTO>> readTimeslotsGrouped() throws NoSuchRecordExists, SQLException;
+    List<List<TimeslotDTO>> readTimeslotsGrouped() throws NoSuchRecordExists, SQLException;
 }

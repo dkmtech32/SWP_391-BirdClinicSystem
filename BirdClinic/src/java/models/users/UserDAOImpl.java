@@ -180,7 +180,7 @@ public class UserDAOImpl implements UserDAO {
                 result.setUserPassword(null);
                 result.setGender(rs.getString("gender"));
                 result.setUserRole(userRole);
-                result.setUserName(rs.getString("userName"));
+                result.setUserName(null);
                 result.setStatus_(rs.getBoolean("status_"));
 
                 if (users == null) {

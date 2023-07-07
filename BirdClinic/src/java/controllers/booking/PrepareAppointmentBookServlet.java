@@ -49,8 +49,8 @@ public class PrepareAppointmentBookServlet extends HttpServlet {
             if (session == null) {
                 url = "/Common/login.jsp";
             } else {
-                GeneralServices service = (GeneralServices) session.getAttribute("service");
-                List<BirdDTO> birds = ((CustomerServices) service).getCustomerBirds();
+                CustomerServices service = (CustomerServices) session.getAttribute("service");
+                List<BirdDTO> birds = service.getCustomerBirds();
                 request.setAttribute("birds", birds);
 
                 request.setAttribute("doctorID", doctorID);

@@ -5,7 +5,7 @@
  */
 package models.appointment;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 import models.bird.BirdDTO;
 import models.service_.Service_DTO;
 import models.timeslot.TimeslotDTO;
@@ -21,7 +21,7 @@ public class AppointmentDTOImpl implements AppointmentDTO {
     private DoctorDTO doctor;
     private TimeslotDTO timeslot;
     private Service_DTO service_;
-    private Timestamp appTime;
+    private Date appTime;
     private String notes;
     private String payment;
     private String appStatus;
@@ -29,7 +29,7 @@ public class AppointmentDTOImpl implements AppointmentDTO {
     public AppointmentDTOImpl() {
     }
 
-    public AppointmentDTOImpl(String appointmentID, BirdDTO bird, DoctorDTO doctor, TimeslotDTO timeslot, Service_DTO service_, Timestamp appTime, String notes, String payment, String appStatus) {
+    public AppointmentDTOImpl(String appointmentID, BirdDTO bird, DoctorDTO doctor, TimeslotDTO timeslot, Service_DTO service_, Date appTime, String notes, String payment, String appStatus) {
         this.appointmentID = appointmentID;
         this.bird = bird;
         this.doctor = doctor;
@@ -92,12 +92,12 @@ public class AppointmentDTOImpl implements AppointmentDTO {
     }
 
     @Override
-    public Timestamp getAppTime() {
+    public Date getAppTime() {
         return appTime;
     }
 
     @Override
-    public void setAppTime(Timestamp appTime) {
+    public void setAppTime(Date appTime) {
         this.appTime = appTime;
     }
 

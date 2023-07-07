@@ -8,16 +8,13 @@ package controllers.booking;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import models.speciality.SpecialityDTO;
 import models.users.doctor.DoctorDTO;
-import models.users.doctor.NoSuchDoctorExistsException;
-import services.customer.CustomerServices;
 import services.general.GeneralServices;
 
 /**
@@ -52,8 +49,10 @@ public class PrepareDoctorsAppBookServlet extends HttpServlet {
         GeneralServices services = (GeneralServices) session.getAttribute("service");
         
         try {
-            List<DoctorDTO> doctors = ((CustomerServices)services).getAllDoctors();
+            List<DoctorDTO> doctors = services.getAllDoctors();
             request.setAttribute("doctors", doctors);
+            List<SpecialityDTO> specs = services.getSpecialities();
+            request.setAttribute("specs",specs);
             url = "/Customer/booking-list.jsp";
         } catch (SQLException ex) {
             ex.printStackTrace();

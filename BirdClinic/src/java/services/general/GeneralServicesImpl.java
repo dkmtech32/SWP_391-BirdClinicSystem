@@ -5,6 +5,7 @@
  */
 package services.general;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,9 @@ import models.doctorTimeslot.DoctorTimeslotDAO;
 import models.doctorTimeslot.DoctorTimeslotDAOImpl;
 import models.exceptions.NoSuchRecordExists;
 import models.exceptions.RecordAlreadyExists;
+import models.feedback.FeedbackDAO;
+import models.feedback.FeedbackDAOImpl;
+import models.feedback.FeedbackDTO;
 import models.images.ImageDAO;
 import models.images.ImageDAOImpl;
 import models.images.ImageDTO;
@@ -56,6 +60,8 @@ import utils.Utils;
  */
 public class GeneralServicesImpl implements GeneralServices {
 
+    private static final long serialVersionUID = 6529685098267757690L;
+
     protected final UserDAO userDAO;
     protected final ImageDAO imageDAO;
     protected final AppointmentDAO appointmentDAO;
@@ -69,6 +75,7 @@ public class GeneralServicesImpl implements GeneralServices {
     protected final SpecialityDAO specialityDAO;
     protected final CustomerDAO customerDAO;
     protected final DoctorTimeslotDAO doctorTimeslotDAO;
+    protected final FeedbackDAO feedbackDAO;
 
     protected UserDTO currentUser;
 
@@ -86,6 +93,7 @@ public class GeneralServicesImpl implements GeneralServices {
         medicineDAO = new MedicineDAOImpl();
         recordMedicineDAO = new RecordMedicineDAOImpl(medicalRecordDAO, medicineDAO);
         doctorTimeslotDAO = new DoctorTimeslotDAOImpl(timeslotDAO, doctorDAO);
+        feedbackDAO = new FeedbackDAOImpl(appointmentDAO);
     }
 
     @Override
@@ -125,7 +133,7 @@ public class GeneralServicesImpl implements GeneralServices {
             }
 
             String rPassword = Utils.hash(uPassword);
-            String userID = Utils.hash(email + username);
+            String userID = Utils.hash(email + username + String.valueOf(System.currentTimeMillis()));
             CustomerDTO customer = new CustomerDTOImpl();
             customer.setUserID(userID);
             customer.setEmail(email);
@@ -234,6 +242,23 @@ public class GeneralServicesImpl implements GeneralServices {
 
         return medicalRecord;
     }
+    
+    @Override
+    public FeedbackDTO viewFeedback(String appointmentID) throws SQLException {
+        FeedbackDTO feedback = null;
+
+        try {
+            if (currentUser != null) {
+                feedback = feedbackDAO.readFeedbackByAppointment(appointmentID);
+            }
+        } catch (SQLException ex) {
+            throw ex;
+        } catch (NoSuchRecordExists ex) {
+            feedback = null;
+        }
+
+        return feedback;
+    }
 
     @Override
     public List<RecordMedicineDTO> viewRecordMeds(String medicalRecordID) throws SQLException {
@@ -266,9 +291,9 @@ public class GeneralServicesImpl implements GeneralServices {
     }
 
     @Override
-    public Map<String, List<TimeslotDTO>> getTimeslotsByWeekday(String doctorID)
+    public List<List<TimeslotDTO>> getTimeslotsByWeekday(String doctorID)
             throws SQLException {
-        Map<String, List<TimeslotDTO>> timeslots = null;
+        List<List<TimeslotDTO>> timeslots = null;
 
         try {
             if (doctorID == null || doctorID.trim().equals("")) {
@@ -300,6 +325,34 @@ public class GeneralServicesImpl implements GeneralServices {
         }
 
         return services;
+    }
+
+    @Override
+    public List<SpecialityDTO> getSpecialities()
+            throws SQLException {
+        List<SpecialityDTO> services = null;
+
+        try {
+            services = specialityDAO.readAllSpecialities();
+        } catch (NoSuchRecordExists ex) {
+            throw new SQLException(ex.getMessage());
+        }
+
+        return services;
+    }
+    
+    @Override
+    public boolean isDoctorFree(String doctorID, String timeslotID, Date appDate) 
+            throws SQLException, AccountDoesNotExistException {
+        boolean result = false;
+        
+        try {
+            result = appointmentDAO.readAppointmentByDocTime(doctorID, timeslotID, appDate) == null;
+        } catch (NoSuchRecordExists ex) {
+            throw new AccountDoesNotExistException(ex.getMessage());
+        }
+        
+        return result;
     }
 
     @Override
@@ -336,7 +389,7 @@ public class GeneralServicesImpl implements GeneralServices {
             user.setFullName(fullName);
 
             result = userDAO.updateUser(user) > 0;
-            currentUser = user;
+            currentUser.copyUser(user);
         } catch (NoSuchRecordExists ex) {
             //check if it's image problems
             if (ex.getMessage().contains("Image")) {
@@ -367,5 +420,21 @@ public class GeneralServicesImpl implements GeneralServices {
         }
 
         return result;
+    }
+
+    @Override
+    public DoctorDTO getDoctorInfo(String doctorID) throws SQLException, AccountDoesNotExist {
+        DoctorDTO doctor = null;
+
+        try {
+            if (doctorID != null && !doctorID.trim().equals("")) {
+                doctor = doctorDAO.readDoctor(doctorID);
+                doctor.setUserName(null);
+            }
+        } catch (NoSuchRecordExists ex) {
+            throw new AccountDoesNotExist(ex.getMessage());
+        }
+
+        return doctor;
     }
 }
