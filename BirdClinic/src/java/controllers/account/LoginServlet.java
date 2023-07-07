@@ -37,7 +37,9 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendError(405);
+        String url = "/Common/login.jsp";
+
+        response.sendRedirect(request.getContextPath() + url);
     }
 
     /**
@@ -86,12 +88,13 @@ public class LoginServlet extends HttpServlet {
             }
         } catch (AccountDoesNotExist ex) {
             ex.printStackTrace();
-            request.setAttribute("message", "Both username and email must be unique. Please try again.");
+            request.setAttribute("message", "Either password or username is wrong. Please try again.");
         } catch (SQLException ex) {
             ex.printStackTrace();
             request.setAttribute("message", "Something went wrong. Please try again.");
+            url = "/Common/index.jsp";
         } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+            response.sendRedirect(request.getContextPath() + url);
         }
     }
 

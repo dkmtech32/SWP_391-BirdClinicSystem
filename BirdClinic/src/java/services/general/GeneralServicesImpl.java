@@ -19,6 +19,9 @@ import models.doctorTimeslot.DoctorTimeslotDAO;
 import models.doctorTimeslot.DoctorTimeslotDAOImpl;
 import models.exceptions.NoSuchRecordExists;
 import models.exceptions.RecordAlreadyExists;
+import models.feedback.FeedbackDAO;
+import models.feedback.FeedbackDAOImpl;
+import models.feedback.FeedbackDTO;
 import models.images.ImageDAO;
 import models.images.ImageDAOImpl;
 import models.images.ImageDTO;
@@ -72,6 +75,7 @@ public class GeneralServicesImpl implements GeneralServices {
     protected final SpecialityDAO specialityDAO;
     protected final CustomerDAO customerDAO;
     protected final DoctorTimeslotDAO doctorTimeslotDAO;
+    protected final FeedbackDAO feedbackDAO;
 
     protected UserDTO currentUser;
 
@@ -89,6 +93,7 @@ public class GeneralServicesImpl implements GeneralServices {
         medicineDAO = new MedicineDAOImpl();
         recordMedicineDAO = new RecordMedicineDAOImpl(medicalRecordDAO, medicineDAO);
         doctorTimeslotDAO = new DoctorTimeslotDAOImpl(timeslotDAO, doctorDAO);
+        feedbackDAO = new FeedbackDAOImpl(appointmentDAO);
     }
 
     @Override
@@ -128,7 +133,7 @@ public class GeneralServicesImpl implements GeneralServices {
             }
 
             String rPassword = Utils.hash(uPassword);
-            String userID = Utils.hash(email + username);
+            String userID = Utils.hash(email + username + String.valueOf(System.currentTimeMillis()));
             CustomerDTO customer = new CustomerDTOImpl();
             customer.setUserID(userID);
             customer.setEmail(email);
@@ -236,6 +241,23 @@ public class GeneralServicesImpl implements GeneralServices {
         }
 
         return medicalRecord;
+    }
+    
+    @Override
+    public FeedbackDTO viewFeedback(String appointmentID) throws SQLException {
+        FeedbackDTO feedback = null;
+
+        try {
+            if (currentUser != null) {
+                feedback = feedbackDAO.readFeedbackByAppointment(appointmentID);
+            }
+        } catch (SQLException ex) {
+            throw ex;
+        } catch (NoSuchRecordExists ex) {
+            feedback = null;
+        }
+
+        return feedback;
     }
 
     @Override
@@ -367,7 +389,7 @@ public class GeneralServicesImpl implements GeneralServices {
             user.setFullName(fullName);
 
             result = userDAO.updateUser(user) > 0;
-            currentUser = user;
+            currentUser.copyUser(user);
         } catch (NoSuchRecordExists ex) {
             //check if it's image problems
             if (ex.getMessage().contains("Image")) {

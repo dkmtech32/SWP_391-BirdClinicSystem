@@ -135,7 +135,7 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendError(405);
+        response.sendRedirect(request.getContextPath() + "/Customer/prepareDocs");
     }
 
     /**

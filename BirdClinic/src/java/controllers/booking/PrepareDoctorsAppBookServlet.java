@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.speciality.SpecialityDTO;
 import models.users.doctor.DoctorDTO;
-import services.customer.CustomerServices;
 import services.general.GeneralServices;
 
 /**
