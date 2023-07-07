@@ -12,13 +12,7 @@ import models.appointment.AppointmentAlreadyExistsException;
 import models.appointment.AppointmentDTO;
 import models.bird.BirdAlreadyExistsException;
 import models.bird.BirdDTO;
-import models.service_.Service_DTO;
-import models.timeslot.TimeslotDTO;
-import models.users.doctor.DoctorDTO;
-import services.general.AccountAlreadyExistsException;
-import services.general.AccountDoesNotExist;
 import services.general.BirdDoesNotExistException;
-import services.general.PasswordNotStrongException;
 import services.general.GeneralServices;
 
 /**
@@ -37,8 +31,5 @@ public interface CustomerServices extends GeneralServices {
 
     List<BirdDTO> getCustomerBirds() throws SQLException;
 
-    boolean updateBird(Map<String, String[]> args) throws BirdAlreadyExistsException, SQLException;
-
-    boolean updateCustomerInfo(Map<String, String[]> args) 
-            throws AccountAlreadyExistsException, PasswordNotStrongException, SQLException;
+    boolean updateBird(Map<String, String[]> args) throws BirdDoesNotExistException, SQLException;
 }
