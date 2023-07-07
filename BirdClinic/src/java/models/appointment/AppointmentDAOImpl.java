@@ -40,7 +40,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     private static final String READ_APPOINTMENT_BY_DOCTIME
             = "SELECT appointmentID, birdID, doctorID, timeSlotID, serviceID, appTime, notes, payment, appStatus "
             + "FROM Appointment "
-            + "WHERE doctorID = ? AND timeSlotID = ? and appTime=?;";
+            + "WHERE doctorID = ? AND timeSlotID = ? and appTime=? and appStatus!='cancelled';";
     private static final String READ_APPOINTMENT_BY_TIMESLOT
             = "SELECT appointmentID, birdID, doctorID, timeSlotID, serviceID, appTime, notes, payment, appStatus "
             + "FROM Appointment "
@@ -347,12 +347,12 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 appointment.setAppointmentID(rs.getString("appointmentID"));
                 appointment.setBird(birdDAO.readBird(rs.getString("birdID")));
                 if (rs.getString("doctorID") != null) {
-                    appointment.setDoctor(doctorDAO.readDoctor("doctorID"));
+                    appointment.setDoctor(doctorDAO.readDoctor(rs.getString("doctorID")));
                 } else {
                     appointment.setDoctor(null);
                 }
-                appointment.setTimeslot(timeslotDAO.readTimeSlot("timeSlotID"));
-                appointment.setService_(service_DAO.readService_("serviceID"));
+                appointment.setTimeslot(timeslotDAO.readTimeSlot(rs.getString("timeSlotID")));
+                appointment.setService_(service_DAO.readService_(rs.getString("serviceID")));
                 appointment.setAppTime(rs.getDate("appTime"));
                 appointment.setNotes(rs.getString("notes"));
                 appointment.setPayment(rs.getString("payment"));
