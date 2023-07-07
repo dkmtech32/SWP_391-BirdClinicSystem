@@ -4,6 +4,7 @@
     Author     : ASUS
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -26,7 +27,7 @@
                         <div class="bird-general-info">
                             <div class="avatar-image">
                                 <img src="assets/img/about-1.jpg" class="bird-avatar"/>
-                                <h2><a href="bird-details.html">Andy</a></h2>
+                                <h2><a href="../Common/bird-details.jsp">${bird.birdFullname}</a></h2>
                             </div>
                             <div class="bird-information-boxes">
                                 <div class="bird-information-box">
@@ -46,7 +47,7 @@
                                     <p class="information">${bird.birdGender}</p>
                                 </div>
                                 <div class="bird-information-box">
-                                    <p class="header">Weigth</p>
+                                    <p class="header">Weight</p>
                                     <p class="information">${bird.birdWeight}</p>
                                 </div>
                                 <div class="bird-information-box">
@@ -134,7 +135,7 @@
                                     <th>Date of diagnosis</th>
                                     <th>Appointment Time</th>
                                     <th>Service</th>
-                                    <th>Length of treatment</th>
+                                    <th>Owner's Note</th>
                                     <th>Diagnosis</th>
                                     <th>Doctor's Note</th>
                                 </tr>
@@ -144,9 +145,9 @@
                                     <td>${appoitment.date}</td>
                                     <td>${medicalRecord.recordTime}</td>
                                     <td>${appoitment.service}</td>
-                                    <td>${appoitment.lengthOfTreatment}</td> <!-- chưa có -->
+                                    <td style="word-wrap: break-word; max-width: 300px;">${appoitment.ownerNote}</td> <!-- chưa có -->
                                     <td>${medicalRecord.diagnosis}</td>
-                                    <td>${medicalRecord.doctorNote}</td>  <!-- chưa có -->
+                                    <td style="word-wrap: break-word; max-width: 300px;">${medicalRecord.doctorNote}</td>  <!-- chưa có -->
                                 </tr>
                             </tbody>
                         </table>
@@ -161,17 +162,135 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr >
-                                    <td>${medicinie.medicineName}</td>
-                                    <td>${medicinie.quantity}</td>
-                                    <td>${medicinie.unit}</td> <!-- chưa có, này nghĩa là đơn vị (2 viên, 2 gram, vv) -->
-                                    <td>${medicinie.descriptions}</td>
-                                </tr>
+                                <c:forEach>
+                                    <tr>
+                                        <td>${medicinie.medicineName}</td>
+                                        <td>${medicinie.quantity}</td>
+                                        <td>${medicinie.unit}</td> <!-- chưa có, này nghĩa là đơn vị (2 viên, 2 gram, vv) -->
+                                        <td>${medicinie.descriptions}</td>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>
+                    <h2>Owner's feedback</h2>
+                    <c:choose>
+                        <c:when test="${appointment.rating =='1'}">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </c:when>
+                        <c:when test="${appointment.rating =='1.5'}">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star-half-alt filled"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </c:when>
+                        <c:when test="${appointment.rating =='2'}">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </c:when>
+                        <c:when test="${appointment.rating =='2.5'}">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star-half-alt filled"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </c:when>
+                        <c:when test="${appointment.rating =='3'}">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </c:when>
+                        <c:when test="${appointment.rating =='3.5'}">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star-half-alt filled"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </c:when>
+                        <c:when test="${appointment.rating =='4'}">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </c:when>
+                        <c:when test="${appointment.rating =='4.5'}">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star-half-alt filled"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </c:when>
+                        <c:when test="${appointment.rating =='5'}">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="rating">
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                    <i class="fas fa-star filled"></i>
+                                </div>
+                            </div>
+                        </c:when>
+                    </c:choose>
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group">													
+                            <div class="form-control" rows="4" placeholder="Owner's feedback"
+                                 style="word-wrap: break-word; height: 9rem">
+                                ${appoitment.ownerFeedback}
+                            </div>
+                        </div>
+                    </div>
                     <div class="booking-summary-in-appointments-details">
                         <h2>Payment</h2>
+                        <div class="payment-method">
+                            <h4>Payment Method</h4> 
+                            <div class="form-control select w-75">
+                                ${appoitment.payment}
+                            </div>
+                        </div>
                         <div class="booking-item-wrap-in-appointments-details">
                             <ul class="booking-fee-in-appointments-details">
                                 <li>Service Fee<span>${medicinie.serviceFee}</span></li>
@@ -194,11 +313,11 @@
         <!-- /Page Content -->
 
         <!-- Footer -->
-        <jsp:include page="Common/footer.jsp"/>
+        <jsp:include page="../Common/footer.jsp"/>
         <!-- /Footer -->
     </div>
 </div>
 </div>
-<jsp:include page="Common/script.jsp"/>
+<jsp:include page="../Common/script.jsp"/>
 </body>
 </html>

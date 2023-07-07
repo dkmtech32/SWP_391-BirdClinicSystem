@@ -1,13 +1,14 @@
 <%-- 
-    Document   : client-appointmenst-detaisl-not-yet
-    Created on : Jun 25, 2023, 9:22:49 PM
+    Document   : client-appointments-details-for-staff-finish
+    Created on : Jul 7, 2023, 10:05:30 AM
     Author     : ASUS
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <jsp:include page="../Common/head.jsp"/>
+    <jsp:include page="common/head.jsp"/>
     <body>
         <div class="main-wrapper">
             <!-- Header -->
@@ -26,7 +27,7 @@
                         <div class="bird-general-info">
                             <div class="avatar-image">
                                 <img src="assets/img/about-1.jpg" class="bird-avatar"/>
-                                <h2><a href="bird-details.html">Andy</a></h2>
+                                <h2><a href="../Common/bird-details.jsp">${bird.birdFullname}</a></h2>
                             </div>
                             <div class="bird-information-boxes">
                                 <div class="bird-information-box">
@@ -126,6 +127,7 @@
                     </div>
                 </div>
                 <div class="prescription">
+                    <h2>General Information</h2>
                     <div class="col-md-12">
                         <table class="table table-bordered" >
                             <thead>
@@ -133,33 +135,94 @@
                                     <th>Appointment Date</th>
                                     <th>Appointment Time</th>
                                     <th>Doctor</th>
-                                    <th>Type of Service</th>
-                                    <th>Bird's symptoms</th>
+                                    <th>Service</th>
+                                    <th>Owner's Note</th>
+                                    <th>Diagnosis</th>
+                                    <th>Doctor's Note</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr >
-                                    <td >${appoitment.date}</td>
-                                    <td >${appoitment.timeslot}</td>
-                                    <td >${appoitment.doctor}</td>
-                                    <td >${appoitment.service}</td>
-                                    <td >${appoitment.notes}</td>
+                                <tr>
+                                    <td>${appoitment.appTime}</td>
+                                    <td>${appoitment.timeslot}</td>
+                                    <td>${appoitment.doctor}</td>
+                                    <td>${appoitment.service}</td>
+                                    <td style="word-wrap: break-word; max-width: 300px;">${appoitment.ownerNote}</td> <!-- này chưa có -->
+                                    <td>${medicalRecord.diagnosis}</td>
+                                    <td style="word-wrap: break-word; max-width: 300px;">${appoitment.notes}</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <button onclick="" class="btn btn-dark d-flex justify-content-center mx-auto mt-2">
-                        <a href="add-prescription.html" class="prescription-submit"> <i class="fa fa-flask"></i> Prescribe </a>
-                    </button>
+                    <h2>Medicines</h2>
+                    <table class="table table-bordered" >
+                        <thead>
+                            <tr>
+                                <th>Medicine</th>
+                                <th>Quantity</th>
+                                <th>Unit</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach>
+                                <tr>
+                                    <td>${medicalRecord.medicine}</td>
+                                    <td>${medicalRecord.quantity}</td>
+                                    <td>${medicalRecord.unit}</td> <!-- Cái này chưa có -->
+                                    <td>${medicalRecord.descriptions}</td> 
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
                 </div>
-                <!-- /Page Content -->
-
-                <!-- Footer -->
-                <jsp:include page="../Common/footer.jsp"/>
-                <!-- /Footer -->
+                
+                <div class="col-md-12 col-sm-12">
+                    <div class="form-group">													
+                        <div class="form-control" rows="4" style="word-wrap: break-word; height: 9rem">
+                            ${appoitment.ownerFeedback}
+                        </div>
+                    </div>
+                </div>
+                <div class="booking-summary-in-appointments-details">
+                    <h2>Payment</h2>
+                    <div class="payment-method">
+                        <h4>Payment Method</h4> 
+                        <select class="form-control select w-75" required>
+                            <c:forEach>
+                                <option>${appoitment.payment}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <div class="booking-item-wrap-in-appointments-details">
+                        <ul class="booking-fee-in-appointments-details">
+                            <li>Service Fee<span>${service.servicePrice}</span></li>
+                            <li>Booking Fee<span>${service.bookingFee}</span></li> <!-- Cái này chưa có -->
+                            <li>Medicine Fee<span>${medicine.medicinePrice}</span></li> <!-- Cái này tổng tiền thuốc -->
+                        </ul>
+                        <div class="booking-total-in-appointments-details">
+                            <ul class="booking-total-list-in-appointments-details">
+                                <li>
+                                    <span>Total</span>
+                                    <span class="total-cost-in-appointments-details">${service.totalMoney}</span> <!-- Cái chưa có, tổng của 3 thứ trên -->
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-action-staff">
+                    <button class="btn btn-sm bg-success-light"> <i class="fas fa-check"></i> Confirm </button> <!-- nhấn xong chuyển status thành complete-->
+                </div>
             </div>
+            <!-- /Page Content -->
+
+            <!-- Footer -->
+            <jsp:include page="../Common/footer.jsp"/>
+            <!-- /Footer -->
         </div>
     </div>
-    <jsp:include page="../Common/script.jsp"/>
+</div>
+<jsp:include page="../Common/script.jsp"/>
 </body>
 </html>
+
