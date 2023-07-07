@@ -3,21 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.dashboard;
+package controllers.view;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import models.appointment.AppointmentDTO;
+import models.feedback.FeedbackDTO;
+import models.medicalRecord.MedicalRecordDTO;
+import models.recordMedicine.RecordMedicineDTO;
+import services.general.AppointmentDoesNotExistException;
 import services.general.GeneralServices;
 
 /**
  *
  * @author Admin
  */
-public class DashboardServlet extends HttpServlet {
+public class ViewAppointmentInfoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,24 +38,31 @@ public class DashboardServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        String url = "/Common/appointment-info.jsp";
         HttpSession session = request.getSession();
-
-        String path = "/Dashboard" + request.getPathInfo();
-        String forwardURL;
+        GeneralServices service = (GeneralServices) session.getAttribute("service");
+        String appointmentID = request.getParameter("appointmentID");
+        
         try {
-            if (path.contains("changePassword")) {
-                forwardURL = "/changePassword";
-            } else {
-                GeneralServices services = (GeneralServices) session.getAttribute("service");
-                String userRole = services.getCurrentUser().getDisplayRole();
-                forwardURL = "/" + userRole + path;
-            }
-        } catch (NullPointerException ex) {
-            forwardURL = "/Common/login";
+            AppointmentDTO appointment = service.viewAppointment(appointmentID);
+            MedicalRecordDTO medRec = service.viewMedicalRecord(appointmentID);
+            List<RecordMedicineDTO> recMed = service.viewRecordMeds(medRec.getMedicalRecordID());
+            FeedbackDTO feedback = service.viewFeedback(appointmentID);
+            request.setAttribute("appointment", appointment);
+            request.setAttribute("medicalRecord", medRec);
+            request.setAttribute("recordMedicines", recMed);
+            request.setAttribute("feedback", feedback);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            request.setAttribute("error-message", "Something is wrong. Please try again.");
+        } catch (AppointmentDoesNotExistException ex) {
+            ex.printStackTrace();
+            url = request.getRequestURI().substring(request.getContextPath().length()-1);
+            request.setAttribute("error-message", "Appointment does not exist. Please try again");
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
         }
-
-        request.getRequestDispatcher(forwardURL).include(request, response);
-        request.getRequestDispatcher("Common/dashboard.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

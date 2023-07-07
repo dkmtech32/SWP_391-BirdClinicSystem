@@ -37,10 +37,10 @@ public class ChangePasswordServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         String url = "/Common/change-password.jsp";
 
-        request.getRequestDispatcher(url).forward(request, response);
+        request.setAttribute("url", url);
     }
 
     /**
@@ -86,7 +86,7 @@ public class ChangePasswordServlet extends HttpServlet {
         } catch (PasswordNotStrongException ex) {
             request.setAttribute("error-message", "Password needs to be stronger. Please try again.");
         } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+            request.setAttribute("url", url);
         }
     }
 
