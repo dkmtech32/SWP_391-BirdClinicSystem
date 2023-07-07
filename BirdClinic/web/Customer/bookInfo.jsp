@@ -19,8 +19,20 @@
                 // Update the service fee text
                 $('#serviceFee').text(servicePrice);
             });
+
+            // Handle initial selection
+            var defaultOption = $('select[name="serviceID"] option:selected');
+            var defaultPrice = defaultOption.data('service-price');
+
+            // Set the initial service fee text
+            if (defaultPrice) {
+                $('#serviceFee').text(defaultPrice);
+            } else {
+                $('#serviceFee').text('');
+            }
         });
     </script>
+
     <jsp:include page="../Common/head.jsp"/>
     <body>
         <!-- Main Wrapper -->
@@ -175,8 +187,8 @@
                                                 <li>Time <span>${param.timeSlot}</span></li>
                                             </ul>
                                             <ul class="booking-fee">
-                                                <li>Booking Fee <span>${appoitment.bookingFee}$10</span></li>
-                                                <li>Service Fee <span id="serviceFee">${service.servicePrice}</span></li>
+                                                <li>Booking Fee <span>$10</span></li>
+                                                <li>Service Fee <span id="serviceFee"></span></li>
                                             </ul>
                                         </div>
                                     </div>
