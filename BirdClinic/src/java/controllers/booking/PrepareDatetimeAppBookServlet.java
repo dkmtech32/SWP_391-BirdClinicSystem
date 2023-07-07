@@ -61,20 +61,20 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
             String[] weekdays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
             request.setAttribute("weekdays", weekdays);
 
-            Date date = new Date(System.currentTimeMillis());
+            Date currentDate = new Date(System.currentTimeMillis());
             if (currentWeekday != null) {
-                Date currentDate = Date.valueOf(currentWeekday.trim());
-                if (currentDate.compareTo(date) > 0) { // in the future
-                    date = currentDate;
-                    request.setAttribute("lastWeekday", Utils.getLastWeekWeekday(date));
+                Date date = Date.valueOf(currentWeekday.trim());
+                if (date.compareTo(currentDate) > 0) { // in the future
+                    currentDate = date;
+                    request.setAttribute("lastWeekday", Utils.getLastWeekWeekday(currentDate));
                 } else { //in the present
-                    int days = Utils.getDaysSinceStartOfWeek(date);
+                    int days = Utils.getDaysSinceStartOfWeek(currentDate);
                     request.setAttribute("daysBeforeToday", days);
                 }
             }
 
-            List<Date> daysInWeek = Utils.getDaysInWeek(date);
-            Date nextWeekWeekday = Utils.getNextWeekWeekday(date);
+            List<Date> daysInWeek = Utils.getDaysInWeek(currentDate);
+            Date nextWeekWeekday = Utils.getNextWeekWeekday(currentDate);
             if (true) { //TODO: test to see if nextMonday is x weeks ahead. (can only book x weeks in advance)
                 request.setAttribute("nextWeekday", nextWeekWeekday);
             }
@@ -91,7 +91,9 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
                     for (int j = 0; j < timeslots.get(i).size();j++  ) {
                         Map<TimeslotDTO, Boolean> map = new HashMap<>();
                         TimeslotDTO timeslot = timeslots.get(i).get(j);
-                        map.put(timeslot, service.isDoctorFree(doctorID, timeslot.getTimeSlotID(), daysInWeek.get(j)));
+                        map.put(timeslot, 
+                                service.isDoctorFree(doctorID, timeslot.getTimeSlotID(), daysInWeek.get(j)) 
+                                        && daysInWeek.get(j).compareTo(new Date(System.currentTimeMillis()))<=0);
                         timeslotBusy.get(i).set(j, map);
                     }
                 }
