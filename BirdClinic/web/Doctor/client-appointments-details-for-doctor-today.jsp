@@ -1,21 +1,21 @@
 <%-- 
-    Document   : newjspclient-appoitments-details-not-yet-for-staff
-    Created on : Jun 26, 2023, 1:34:51 PM
+    Document   : client-appointments-details-for-doctor-today
+    Created on : Jul 7, 2023, 10:27:05 AM
     Author     : ASUS
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <jsp:include page="common/head.jsp"/>
+    <jsp:include page="../Common/head.jsp"/>
     <body>
         <div class="main-wrapper">
             <!-- Header -->
-            <jsp:include page="Common/header-guest.jsp"/>
+            <jsp:include page="../Common/header.jsp"/>
             <!--/Header -->
 
             <!-- Breadcrumb -->
-            <jsp:include page="Common/breadcrumb.jsp"/>
+            <jsp:include page="../Common/breadcrumb.jsp"/>
             <!-- /Breadcrumb -->
 
             <!-- Page Content -->
@@ -26,7 +26,7 @@
                         <div class="bird-general-info">
                             <div class="avatar-image">
                                 <img src="assets/img/about-1.jpg" class="bird-avatar"/>
-                                <h2><a href="bird-details.html">Andy</a></h2>
+                                <h2><a href="../Common/bird-details.jsp">${bird.birdFullname}</a></h2>
                             </div>
                             <div class="bird-information-boxes">
                                 <div class="bird-information-box">
@@ -46,7 +46,7 @@
                                     <p class="information">${bird.birdGender}</p>
                                 </div>
                                 <div class="bird-information-box">
-                                    <p class="header">Weigth</p>
+                                    <p class="header">Weight</p>
                                     <p class="information">${bird.birdWeight}</p>
                                 </div>
                                 <div class="bird-information-box">
@@ -148,19 +148,18 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="table-action-staff">
-                        <button class="btn btn-sm bg-success-light"> <i class="fas fa-check"></i> Confirm </button>
-                        <button class="btn btn-sm bg-danger-light"> <i class="fas fa-times"></i> Cancel </button>
-                    </div>
+                    <button onclick="" class="btn btn-dark d-flex justify-content-center mx-auto mt-2">
+                        <a href="add-prescription.jsp" class="prescription-submit"> <i class="fa fa-flask"></i> Prescribe </a>
+                    </button>
                 </div>
                 <!-- /Page Content -->
 
                 <!-- Footer -->
-                <jsp:include page="Common/footer.jsp"/>
+                <jsp:include page="../Common/footer.jsp"/>
                 <!-- /Footer -->
             </div>
         </div>
     </div>
-    <jsp:include page="Common/script.jsp"/>
+    <jsp:include page="../Common/script.jsp"/>
 </body>
 </html>

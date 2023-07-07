@@ -127,10 +127,10 @@
                                                                         <td>${appoitment.appTime}<span class="d-block text-info">${appoitment.timeslot}</span></td>
                                                                         <td>
                                                                             <h2 class="table-avatar">
-                                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
+                                                                                <a href="../Common/bird-details.jsp" class="avatar avatar-sm mr-2"
                                                                                    ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-3.jpg" alt="User Image"
                                                                                       /></a>
-                                                                                <a href="patient-profile.jsp">${bird.birdFullname}</a>
+                                                                                <a href="../Common/bird-details.jsp">${bird.birdFullname}</a>
                                                                             </h2>
                                                                         </td>
                                                                         <td>${bird.breed}</td>
