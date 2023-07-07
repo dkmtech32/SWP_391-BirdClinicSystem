@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import models.appointment.AppointmentDTO;
 import models.bird.BirdDTO;
+import models.feedback.FeedbackDTO;
 import models.medicalRecord.MedicalRecordDTO;
 import models.recordMedicine.RecordMedicineDTO;
 import models.service_.Service_DTO;
@@ -39,6 +40,8 @@ public interface GeneralServices extends Serializable {
     MedicalRecordDTO viewMedicalRecord(String appointmentID) throws SQLException;
 
     List<RecordMedicineDTO> viewRecordMeds(String medicalRecordID) throws SQLException;
+    
+    FeedbackDTO viewFeedback(String appointmentID) throws SQLException;
 
     boolean register(Map<String, String[]> args)
             throws AccountAlreadyExistsException, PasswordsNotEqualException, SQLException, PasswordNotStrongException;
