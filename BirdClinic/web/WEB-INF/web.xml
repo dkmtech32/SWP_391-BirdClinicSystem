@@ -87,14 +87,6 @@
         <servlet-class>controllers.account.LoginServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CustomerAccountInformationServlet</servlet-name>
-        <servlet-class>controllers.account.CustomerAccountInformationServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>CustomerDashboardInformationServlet</servlet-name>
-        <servlet-class>controllers.account.CustomerDashboardInformationServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>BookAppointmentServlet</servlet-name>
         <servlet-class>controllers.booking.BookAppointmentServlet</servlet-class>
     </servlet>
@@ -124,7 +116,15 @@
     </servlet>
     <servlet>
         <servlet-name>ViewBirdInfoServlet</servlet-name>
-        <servlet-class>controllers.dashboard.ViewBirdInfoServlet</servlet-class>
+        <servlet-class>controllers.view.ViewBirdInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CustomerDashboardAppointmentsServlet</servlet-name>
+        <servlet-class>controllers.dashboard.customer.CustomerDashboardAppointmentsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewAppointmentInfoServlet</servlet-name>
+        <servlet-class>controllers.view.ViewAppointmentInfoServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -161,6 +161,18 @@
     <servlet-mapping>
         <servlet-name>ViewBirdInfoServlet</servlet-name>
         <url-pattern>/BirdInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerDashboardAppointmentsServlet</servlet-name>
+        <url-pattern>/Customer/Dashboard/appointments</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerDashboardAppointmentsServlet</servlet-name>
+        <url-pattern>/Customer/Dashboard/view</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewAppointmentInfoServlet</servlet-name>
+        <url-pattern>/ViewAppointment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -139,7 +139,7 @@ public class BirdDAOImpl implements BirdDAO {
             stm.setString(5, bird.getBirdGender());
             stm.setString(6, bird.getBreed());
             stm.setString(7, bird.getBand_Chip());
-            stm.setInt(8, bird.getBirdWeight());
+            stm.setFloat(8, bird.getBirdWeight());
             stm.setString(9, bird.getSexingMethod());
             stm.setString(10, bird.getMedicalHistory());
             stm.setDate(11, bird.getHatchingDate());
@@ -207,7 +207,7 @@ public class BirdDAOImpl implements BirdDAO {
             stm.setString(4, bird.getBirdGender());
             stm.setString(5, bird.getBreed());
             stm.setString(6, bird.getBand_Chip());
-            stm.setInt(7, bird.getBirdWeight());
+            stm.setFloat(7, bird.getBirdWeight());
             stm.setString(8, bird.getSexingMethod());
             stm.setString(9, bird.getMedicalHistory());
             stm.setDate(10, bird.getHatchingDate());
