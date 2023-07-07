@@ -79,7 +79,7 @@ public class SpecialityDAOImpl implements SpecialityDAO {
             stm = con.createStatement();
             rs = stm.executeQuery(READ_ALL_SPECIALITY);
 
-            while (rs != null) {
+            while (rs.next()) {
                 SpecialityDTO result = new SpecialityDTOImpl();
                 result.setSpecialityID(rs.getString("specialityID"));
                 result.setSpecialityName(rs.getString("specialityName"));

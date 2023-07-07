@@ -7,7 +7,7 @@ package services.customer;
 
 import java.sql.Date;
 import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 import models.appointment.AppointmentAlreadyExistsException;
@@ -33,7 +33,7 @@ import utils.Utils;
  * @author Admin
  */
 public class CustomerServicesImpl extends GeneralServicesImpl implements CustomerServices {
-
+    
     public CustomerServicesImpl(UserDTO currentUser) throws SQLException {
         super();
         String customerID = currentUser.getUserID();
@@ -44,9 +44,9 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
             //impossible bc controller will check role and initiates the right service -> db problem
             throw new SQLException(ex.getMessage());
         }
-
+        
     }
-
+    
     @Override
     public boolean bookAppointment(Map<String, String> args)
             throws AppointmentAlreadyExistsException, SQLException {
@@ -57,10 +57,10 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
         String service_ID = args.get("serviceID");
         String appDate = args.get("appDate");
         String doctorID = args.get("doctorID");
-
+        
         try {
             AppointmentDTO app = new AppointmentDTOImpl();
-            app.setAppointmentID(Utils.hash(birdID + service_ID + timeslotID + appDate));
+            app.setAppointmentID(Utils.hash(birdID + service_ID + timeslotID + String.valueOf(System.currentTimeMillis())));
             app.setAppStatus("processing");
             app.setBird(birdDAO.readBird(birdID));
             TimeslotDTO timeslot = timeslotDAO.readTimeSlot(timeslotID);
@@ -77,8 +77,8 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
             
             Date date = Date.valueOf(appDate);
             long milliseconds = date.getTime() + timeslot.getTimeSlot().getTime();
-            app.setAppTime(new Timestamp(milliseconds));
-
+            app.setAppTime(new Date(milliseconds));
+            
             result = appointmentDAO.insertAppointment(app) > 0;
         } catch (NoSuchRecordExists ex) {
             //impossible unless account/timeslot/service doesn't exist in db -> SQLException
@@ -89,12 +89,12 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
         System.out.println(result);
         return result;
     }
-
+    
     @Override
     public List<BirdDTO> getCustomerBirds() throws SQLException {
         String customerID = currentUser.getUserID();
         List<BirdDTO> birds;
-
+        
         try {
             birds = birdDAO.readAllBirdByCustomer(customerID);
         } catch (NoSuchRecordExists ex) {
@@ -102,12 +102,12 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
         }
         return birds;
     }
-
+    
     @Override
     public List<AppointmentDTO> getCustomerAppointments() throws SQLException {
         String customerID = currentUser.getUserID();
         List<AppointmentDTO> apps;
-
+        
         try {
             apps = appointmentDAO.readAppointmentByCustomer(customerID);
         } catch (NoSuchRecordExists ex) {
@@ -115,7 +115,7 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
         }
         return apps;
     }
-
+    
     @Override
     public boolean updateCustomerInfo(Map<String, String[]> args)
             throws AccountAlreadyExistsException, PasswordNotStrongException, SQLException {
@@ -149,7 +149,7 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
                 ((CustomerDTO) customer).setDob(dob);
                 ((CustomerDTO) customer).setCustomerAddress(address);
                 ((CustomerDTO) customer).setPhoneNumber(phoneNumber);
-
+                
                 try {
                     result = customerDAO.updateCustomer((CustomerDTO) currentUser) > 0;
                 } catch (NoSuchRecordExists ex1) {
@@ -159,10 +159,10 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
                 throw new AccountAlreadyExistsException(ex.getMessage());
             }
         }
-
+        
         return result;
     }
-
+    
     @Override
     public boolean addBird(Map<String, String[]> args)
             throws BirdAlreadyExistsException, SQLException {
@@ -170,18 +170,17 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
         
         return result;
     }
-
+    
     @Override
     public boolean deleteBird(String birdID)
             throws BirdDoesNotExistException, SQLException {
         return true;
     }
-
+    
     @Override
     public boolean updateBird(Map<String, String[]> args)
             throws BirdAlreadyExistsException, SQLException {
         return true;
     }
-    
     
 }
