@@ -1,6 +1,7 @@
 package models.appointment;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,6 +37,10 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             = "SELECT appointmentID, birdID, doctorID, timeSlotID, serviceID, appTime, notes, payment, appStatus "
             + "FROM Appointment "
             + "WHERE doctorID = ?;";
+    private static final String READ_APPOINTMENT_BY_DOCTIME
+            = "SELECT appointmentID, birdID, doctorID, timeSlotID, serviceID, appTime, notes, payment, appStatus "
+            + "FROM Appointment "
+            + "WHERE doctorID = ? AND timeSlotID = ? and appTime=? and appStatus!='cancelled';";
     private static final String READ_APPOINTMENT_BY_TIMESLOT
             = "SELECT appointmentID, birdID, doctorID, timeSlotID, serviceID, appTime, notes, payment, appStatus "
             + "FROM Appointment "
@@ -86,7 +91,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 }
                 appointment.setTimeslot(timeslotDAO.readTimeSlot("timeSlotID"));
                 appointment.setService_(service_DAO.readService_("serviceID"));
-                appointment.setAppTime(rs.getTimestamp("appTime"));
+                appointment.setAppTime(rs.getDate("appTime"));
                 appointment.setNotes(rs.getString("notes"));
                 appointment.setPayment(rs.getString("payment"));
                 appointment.setAppStatus(rs.getString("appStatus"));
@@ -135,7 +140,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 }
                 appointment.setTimeslot(timeslotDAO.readTimeSlot("timeSlotID"));
                 appointment.setService_(service_DAO.readService_("serviceID"));
-                appointment.setAppTime(rs.getTimestamp("appTime"));
+                appointment.setAppTime(rs.getDate("appTime"));
                 appointment.setNotes(rs.getString("notes"));
                 appointment.setPayment(rs.getString("payment"));
                 appointment.setAppStatus(rs.getString("appStatus"));
@@ -184,7 +189,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 appointment.setDoctor(doctor);
                 appointment.setTimeslot(timeslotDAO.readTimeSlot("timeSlotID"));
                 appointment.setService_(service_DAO.readService_("serviceID"));
-                appointment.setAppTime(rs.getTimestamp("appTime"));
+                appointment.setAppTime(rs.getDate("appTime"));
                 appointment.setNotes(rs.getString("notes"));
                 appointment.setPayment(rs.getString("payment"));
                 appointment.setAppStatus(rs.getString("appStatus"));
@@ -193,7 +198,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 }
                 appointmentList.add(appointment);
             }
-            
+
             if (appointmentList == null || appointmentList.isEmpty()) {
                 throw new NoSuchAppointmentsExistsException();
             }
@@ -237,7 +242,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                     }
                     appointment.setTimeslot(timeslotDAO.readTimeSlot("timeSlotID"));
                     appointment.setService_(service_DAO.readService_("serviceID"));
-                    appointment.setAppTime(rs.getTimestamp("appTime"));
+                    appointment.setAppTime(rs.getDate("appTime"));
                     appointment.setNotes(rs.getString("notes"));
                     appointment.setPayment(rs.getString("payment"));
                     appointment.setAppStatus(rs.getString("appStatus"));
@@ -248,7 +253,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                     appointmentList.add(appointment);
                 }
             }
-            
+
             if (appointmentList == null || appointmentList.isEmpty()) {
                 throw new NoSuchAppointmentsExistsException();
             }
@@ -292,7 +297,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 }
                 appointment.setTimeslot(timeslot);
                 appointment.setService_(service_DAO.readService_("serviceID"));
-                appointment.setAppTime(rs.getTimestamp("appTime"));
+                appointment.setAppTime(rs.getDate("appTime"));
                 appointment.setNotes(rs.getString("notes"));
                 appointment.setPayment(rs.getString("payment"));
                 appointment.setAppStatus(rs.getString("appStatus"));
@@ -302,7 +307,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 }
                 appointmentList.add(appointment);
             }
-            
+
             if (appointmentList == null || appointmentList.isEmpty()) {
                 throw new NoSuchAppointmentsExistsException();
             }
@@ -322,6 +327,53 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     }
 
     @Override
+    public AppointmentDTO readAppointmentByDocTime(String doctorID, String timeslotID, Date appDate)
+            throws NoSuchRecordExists, SQLException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        AppointmentDTO appointment = null;
+
+        try {
+            con = DBUtils.getConnection();
+            stm = con.prepareStatement(READ_APPOINTMENT_BY_DOCTIME);
+            stm.setString(1, doctorID);
+            stm.setString(2, timeslotID);
+            stm.setDate(3, appDate);
+            rs = stm.executeQuery();
+
+            if (rs.next()) {
+                appointment = new AppointmentDTOImpl();
+                appointment.setAppointmentID(rs.getString("appointmentID"));
+                appointment.setBird(birdDAO.readBird(rs.getString("birdID")));
+                if (rs.getString("doctorID") != null) {
+                    appointment.setDoctor(doctorDAO.readDoctor(rs.getString("doctorID")));
+                } else {
+                    appointment.setDoctor(null);
+                }
+                appointment.setTimeslot(timeslotDAO.readTimeSlot(rs.getString("timeSlotID")));
+                appointment.setService_(service_DAO.readService_(rs.getString("serviceID")));
+                appointment.setAppTime(rs.getDate("appTime"));
+                appointment.setNotes(rs.getString("notes"));
+                appointment.setPayment(rs.getString("payment"));
+                appointment.setAppStatus(rs.getString("appStatus"));
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+
+        return appointment;
+    }
+
+    @Override
     public int deleteAppointment(String appointmentID) throws NoSuchRecordExists, SQLException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -332,8 +384,10 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             stm = con.prepareStatement(DELETE_APPOINTMENT);
             stm.setString(1, appointmentID);
             rowsDeleted = stm.executeUpdate();
-            
-            if (rowsDeleted == 0) throw new NoSuchAppointmentsExistsException();
+
+            if (rowsDeleted == 0) {
+                throw new NoSuchAppointmentsExistsException();
+            }
         } finally {
             if (stm != null) {
                 stm.close();
@@ -364,14 +418,16 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             }
             stm.setString(4, appointment.getTimeslot().getTimeSlotID());
             stm.setString(5, appointment.getService_().getServiceID());
-            stm.setTimestamp(6, appointment.getAppTime());
+            stm.setDate(6, appointment.getAppTime());
             stm.setString(7, appointment.getNotes());
             stm.setString(8, appointment.getPayment());
             stm.setString(9, appointment.getAppStatus());
 
             rowsInserted = stm.executeUpdate();
-            
-            if (rowsInserted == 0) throw new AppointmentAlreadyExistsException();
+
+            if (rowsInserted == 0) {
+                throw new AppointmentAlreadyExistsException();
+            }
         } finally {
             if (con != null) {
                 con.close();
@@ -405,14 +461,16 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             }
             stm.setString(4, appointment.getTimeslot().getTimeSlotID());
             stm.setString(5, appointment.getService_().getServiceID());
-            stm.setTimestamp(6, appointment.getAppTime());
+            stm.setDate(6, appointment.getAppTime());
             stm.setString(7, appointment.getNotes());
             stm.setString(8, appointment.getPayment());
             stm.setString(9, appointment.getAppStatus());
             rowsUpdated = stm.executeUpdate();
-            
-            if (rowsUpdated == 0) throw new NoSuchAppointmentsExistsException();
-        }  finally {
+
+            if (rowsUpdated == 0) {
+                throw new NoSuchAppointmentsExistsException();
+            }
+        } finally {
             if (stm != null) {
                 stm.close();
             }
@@ -450,7 +508,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                     }
                     appointment.setTimeslot(timeslotDAO.readTimeSlot(rs.getString("timeSlotID")));
                     appointment.setService_(service_DAO.readService_(rs.getString("serviceID")));
-                    appointment.setAppTime(rs.getTimestamp("appTime"));
+                    appointment.setAppTime(rs.getDate("appTime"));
                     appointment.setNotes(rs.getString("notes"));
                     appointment.setPayment(rs.getString("payment"));
                     appointment.setAppStatus(rs.getString("appStatus"));
@@ -458,8 +516,10 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                     appointments.add(appointment);
                 }
             }
-            
-            if (appointments.isEmpty()) throw new NoSuchAppointmentsExistsException();
+
+            if (appointments.isEmpty()) {
+                throw new NoSuchAppointmentsExistsException();
+            }
         } finally {
             if (rs != null) {
                 rs.close();

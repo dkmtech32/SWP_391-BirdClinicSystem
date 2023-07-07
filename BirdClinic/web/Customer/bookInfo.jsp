@@ -8,6 +8,31 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Handle change event of the service select element
+            $('select[name="serviceID"]').change(function () {
+                // Get the selected service price
+                var servicePrice = $(this).children('option:selected').data('service-price');
+
+                // Update the service fee text
+                $('#serviceFee').text(servicePrice);
+            });
+
+            // Handle initial selection
+            var defaultOption = $('select[name="serviceID"] option:selected');
+            var defaultPrice = defaultOption.data('service-price');
+
+            // Set the initial service fee text
+            if (defaultPrice) {
+                $('#serviceFee').text(defaultPrice);
+            } else {
+                $('#serviceFee').text('');
+            }
+        });
+    </script>
+
     <jsp:include page="../Common/head.jsp"/>
     <body>
         <!-- Main Wrapper -->
@@ -81,6 +106,7 @@
                                                         <label>Choose your bird</label>
                                                         <select class="form-control" name="birdID" required="required">
                                                             <c:forEach var="bird" items="${birds}" >
+                                                                <option value="">--</option> <!-- Default option with empty value -->
                                                                 <option value="${bird.birdID}">${bird.birdFullname}</option>
                                                             </c:forEach>
                                                         </select>
@@ -96,11 +122,15 @@
                                             <div class="col-md-12 col-sm-12">
                                                 <div class="form-group card-label">
                                                     <label>Choose service</label>
-                                                    <select class="form-control" name="serviceID" required >
-                                                        <c:forEach var="service" items="${serviceList}" >
-                                                            <option value="${service.serviceID}">${service.serviceName}</option>
+                                                    <select class="form-control" name="serviceID" required>
+                                                        <option value="">--</option> <!-- Default option with empty value -->
+                                                        <c:forEach var="service" items="${serviceList}">
+                                                            <option value="${service.serviceID}" data-service-price="${service.servicePrice}">
+                                                                ${service.serviceName}
+                                                            </option>
                                                         </c:forEach>
                                                     </select>
+
                                                     <div class="invalid-feedback">Example invalid custom select feedback</div>
                                                 </div>
                                             </div>
@@ -153,22 +183,13 @@
                                     <div class="booking-summary">
                                         <div class="booking-item-wrap">
                                             <ul class="booking-date">
-                                                <li>Date <span>${appoitment.service_}</span></li>
-                                                <li>Time <span>${appoitment.timeslot}</span></li>
+                                                <li>Date <span>${param.appDate}</span></li>
+                                                <li>Time <span>${param.timeSlot}</span></li>
                                             </ul>
                                             <ul class="booking-fee">
-                                                <!-- <li>Consulting Fee <span>$100</span></li> -->
-                                                <li>Booking Fee <span>${appoitment.bookingFee}/span></li> <!--biến này chế vì chưa có-->
-                                                <!-- <li>Video Call <span>$50</span></li> -->
+                                                <li>Booking Fee <span>$10</span></li>
+                                                <li>Service Fee <span id="serviceFee"></span></li>
                                             </ul>
-                                            <!-- <div class="booking-total">
-                                                    <ul class="booking-total-list">
-                                                            <li>
-                                                                    <span>Total</span>
-                                                                    <span class="total-cost">$160</span>
-                                                            </li>
-                                                    </ul>
-                                            </div> -->
                                         </div>
                                     </div>
                                 </div>

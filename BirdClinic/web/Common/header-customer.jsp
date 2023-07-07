@@ -20,13 +20,13 @@
                         <span></span>
                     </span>
                 </a>
-                <a href="index.html" class="navbar-brand logo">
+                <a href="index.jsp" class="navbar-brand logo">
                     <img src="../assets/img/logo.png" class="img-fluid" alt="Logo" />
                 </a>
             </div>
             <div class="main-menu-wrapper">
                 <div class="menu-header">
-                    <a href="index.html" class="menu-logo">
+                    <a href="index.jsp" class="menu-logo">
                         <img src="../assets/img/logo.png" class="img-fluid" alt="Logo" />
                     </a>
                     <a id="menu_close" class="menu-close" href="javascript:void(0);">
@@ -35,64 +35,64 @@
                 </div>
                 <ul class="main-nav">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="index.jsp">Home</a>
                     </li>
                     <li class="has-submenu">
                         <a href="#">Doctors <i class="fas fa-chevron-down"></i></a>
                         <ul class="submenu">
-                            <li><a href="doctor-dashboard.html">Doctor Dashboard</a></li>
-                            <li><a href="appointments.html">Appointments</a></li>
-                            <li><a href="schedule-timings.html">Schedule Timing</a></li>
-                            <li><a href="my-patients.html">Patients List</a></li>
-                            <li class="active"><a href="patient-profile.html">Patients Profile</a></li>
-                            <li><a href="chat-doctor.html">Chat</a></li>
-                            <li><a href="invoices.html">Invoices</a></li>
-                            <li><a href="doctor-profile-settings.html">Profile Settings</a></li>
-                            <li><a href="reviews.html">Reviews</a></li>
-                            <li><a href="doctor-register.html">Doctor Register</a></li>
+                            <li><a href="doctor-dashboard.jsp">Doctor Dashboard</a></li>
+                            <li><a href="appointments.jsp">Appointments</a></li>
+                            <li><a href="schedule-timings.jsp">Schedule Timing</a></li>
+                            <li><a href="my-patients.jsp">Patients List</a></li>
+                            <li class="active"><a href="patient-profile.jsp">Patients Profile</a></li>
+                            <li><a href="chat-doctor.jsp">Chat</a></li>
+                            <li><a href="invoices.jsp">Invoices</a></li>
+                            <li><a href="doctor-profile-settings.jsp">Profile Settings</a></li>
+                            <li><a href="reviews.jsp">Reviews</a></li>
+                            <li><a href="doctor-register.jsp">Doctor Register</a></li>
                         </ul>
                     </li>
                     <li class="has-submenu active">
                         <a href="#">Patients <i class="fas fa-chevron-down"></i></a>
                         <ul class="submenu">
-                            <li><a href="search.html">Search Doctor</a></li>
-                            <li><a href="doctor-profile.html">Doctor Profile</a></li>
+                            <li><a href="search.jsp">Search Doctor</a></li>
+                            <li><a href="doctor-profile.jsp">Doctor Profile</a></li>
                             <li><a href="<c:url value="/Customer/prepareDocs"/>">Booking</a></li>
-                            <li><a href="checkout.html">Checkout</a></li>
-                            <li><a href="booking-success.html">Booking Success</a></li>
-                            <li><a href="patient-dashboard.html">Patient Dashboard</a></li>
-                            <li><a href="favourites.html">Favourites</a></li>
-                            <li><a href="chat.html">Chat</a></li>
-                            <li><a href="profile-settings.html">Profile Settings</a></li>
-                            <li><a href="change-password.html">Change Password</a></li>
+                            <li><a href="checkout.jsp">Checkout</a></li>
+                            <li><a href="booking-success.jsp">Booking Success</a></li>
+                            <li><a href="patient-dashboard.jsp">Patient Dashboard</a></li>
+                            <li><a href="favourites.jsp">Favourites</a></li>
+                            <li><a href="chat.jsp">Chat</a></li>
+                            <li><a href="profile-settings.jsp">Profile Settings</a></li>
+                            <li><a href="change-password.jsp">Change Password</a></li>
                         </ul>
                     </li>
                     <li class="has-submenu">
                         <a href="#">Pages <i class="fas fa-chevron-down"></i></a>
                         <ul class="submenu">
-                            <li><a href="voice-call.html">Voice Call</a></li>
-                            <li><a href="video-call.html">Video Call</a></li>
-                            <li><a href="search.html">Search Doctors</a></li>
-                            <li><a href="calendar.html">Calendar</a></li>
-                            <li><a href="components.html">Components</a></li>
+                            <li><a href="voice-call.jsp">Voice Call</a></li>
+                            <li><a href="video-call.jsp">Video Call</a></li>
+                            <li><a href="search.jsp">Search Doctors</a></li>
+                            <li><a href="calendar.jsp">Calendar</a></li>
+                            <li><a href="components.jsp">Components</a></li>
                             <li class="has-submenu">
-                                <a href="invoices.html">Invoices</a>
+                                <a href="invoices.jsp">Invoices</a>
                                 <ul class="submenu">
-                                    <li><a href="invoices.html">Invoices</a></li>
-                                    <li><a href="invoice-view.html">Invoice View</a></li>
+                                    <li><a href="invoices.jsp">Invoices</a></li>
+                                    <li><a href="invoice-view.jsp">Invoice View</a></li>
                                 </ul>
                             </li>
-                            <li><a href="blank-page.html">Starter Page</a></li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="register.html">Register</a></li>
-                            <li><a href="forgot-password.html">Forgot Password</a></li>
+                            <li><a href="blank-page.jsp">Starter Page</a></li>
+                            <li><a href="login.jsp">Login</a></li>
+                            <li><a href="register.jsp">Register</a></li>
+                            <li><a href="forgot-password.jsp">Forgot Password</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="admin/index.html" target="_blank">Admin</a>
+                        <a href="admin/index.jsp" target="_blank">Admin</a>
                     </li>
                     <li class="login-link">
-                        <a href="login.html">Login / Signup</a>
+                        <a href="login.jsp">Login / Signup</a>
                     </li>
                 </ul>
             </div>
@@ -116,22 +116,22 @@
                 <li class="nav-item dropdown has-arrow logged-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <span class="user-img">
-                            <img class="rounded-circle" src="${sessionScope.service.currentUser.image.imageInDisk}" width="31" alt="${sessionScope.service.currentUser.fullName}" />
+                            <img class="rounded-circle" src="../assets/images/client/${sessionScope.service.currentUser.image.imageURLName}" width="31" alt="${sessionScope.service.currentUser.fullName}" />
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="user-header">
                             <div class="avatar avatar-sm">
-                                <img src="${sessionScope.service.currentUser.image.imageInDisk}" alt="User Image" class="avatar-img rounded-circle" />
+                                <img src="../assets/images/client/${sessionScope.service.currentUser.image.imageURLName}" alt="User Image" class="avatar-img rounded-circle" />
                             </div>
                             <div class="user-text">
                                 <h6>${sessionScope.currentUser.fullName}</h6>
                                 <p class="text-muted mb-0">${sessionScope.service.currentUser.displayRole}</p>
                             </div>
                         </div>
-                        <a class="dropdown-item" href="doctor-dashboard.html">Dashboard</a>
+                        <a class="dropdown-item" href="../Customer/customer-dashboard.jsp">Dashboard</a>
                         <a class="dropdown-item" href="<c:url value="/Customer/custAccountInfo"/>">Profile Settings</a>
-                        <a class="dropdown-item" href="login.html">Logout</a>
+                        <a class="dropdown-item" href="login.jsp">Logout</a>
                     </div>
                 </li>
                 <!-- /User Menu -->

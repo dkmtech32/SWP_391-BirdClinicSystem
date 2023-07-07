@@ -3,7 +3,7 @@
     Created on : Jun 20, 2023, 11:06:50 PM
     Author     : Legion
 --%>
-
+<!--dont use-->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -124,14 +124,14 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-12 col-md-6">
                                                 <div class="form-group">
                                                     <label>Breed</label>
                                                     <input type="text" class="form-control" value="Sparrow" required/>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-12 col-md-6">
                                                 <div class="form-group">
                                                     <label>Sex</label>
@@ -141,34 +141,24 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-12 col-md-6">
                                                 <div class="form-group">
                                                     <label>Weight (in grams)</label>
                                                     <input type="number" class="form-control" name="weight" placeholder="Enter weight in grams" step="0.1" value="35" required />
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-12 col-md-6">
                                                 <div class="form-group">
-                                                    <label>Microchip</label>
-                                                    <select class="form-control" required>
-                                                        <option>Yes</option>
-                                                        <option>No</option>
-                                                    </select>
+                                                    <label>Band/Microchip ID</label>
+                                                    <input type="text" class="form-control" name="weight" value="emdeplam123" required/>
                                                 </div>
                                             </div>
-                                            
-                                            <div class="col-12 col-md-6">
-                                                <div class="form-group">
-                                                    <label>Band ID</label>
-                                                    <input type="text" class="form-control" value="emdeplam123" required/>
-                                                </div>
+
+                                            <div class="submit-section">
+                                                <button type="submit" class="btn btn-primary submit-btn">Save Changes</button>
                                             </div>
-                                            
-                                        <div class="submit-section">
-                                            <button type="submit" class="btn btn-primary submit-btn">Save Changes</button>
-                                        </div>
                                     </form>
                                     <!-- /Profile Settings Form -->
                                 </div>
@@ -177,21 +167,21 @@
                     </div>
                 </div>
             </div>
-       
-        
-</div>
 
 
-<!-- /Page Content -->
+        </div>
 
-<!-- Footer -->
-<jsp:include page="Common/footer.jsp"/>
-<!-- /Footer -->
-</div>
-<!-- /Main Wrapper -->
 
-<!-- Script -->
-<jsp:include page="Common/script.jsp"/>
-<!-- /Script -->
+        <!-- /Page Content -->
+
+        <!-- Footer -->
+        <jsp:include page="Common/footer.jsp"/>
+        <!-- /Footer -->
+    </div>
+    <!-- /Main Wrapper -->
+
+    <!-- Script -->
+    <jsp:include page="Common/script.jsp"/>
+    <!-- /Script -->
 </body>
 </html>

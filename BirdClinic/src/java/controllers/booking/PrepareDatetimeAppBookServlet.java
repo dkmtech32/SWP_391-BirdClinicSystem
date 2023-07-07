@@ -8,7 +8,8 @@ package controllers.booking;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
@@ -17,9 +18,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.timeslot.TimeslotDTO;
+import models.users.doctor.DoctorDTO;
 import services.customer.CustomerServices;
+import services.general.AccountDoesNotExist;
+import services.general.AccountDoesNotExistException;
 import utils.Utils;
-import services.general.GeneralServices;
 
 /**
  *
@@ -46,31 +49,76 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
         String currentWeekday = request.getParameter("currentWeekday");
         String url = "/Common/index.jsp";
         HttpSession session = request.getSession();
-        GeneralServices service = (GeneralServices) session.getAttribute("service");
+        CustomerServices service = (CustomerServices) session.getAttribute("service");
 
         try {
 
-            Map<String, List<TimeslotDTO>> timeslots = ((CustomerServices) service).getTimeslotsByWeekday(doctorID);
-
-            Date date = Date.valueOf(LocalDate.now());
-            if (currentWeekday != null) { //always in the future
-                date = Date.valueOf(currentWeekday.trim());
-                request.setAttribute("lastWeekday", Utils.getLastWeekWeekday(date));
-            }
-
-            if (true) { //TODO: test to see if nextMonday is x weeks ahead. (can only book x+1 weeks in advance)
-                request.setAttribute("nextWeekday", Utils.getNextWeekWeekday(date));
-            }
+            request.setAttribute("doctor", service.getDoctorInfo(doctorID));
 
             String[] weekdays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-            Map<String, Date> daysInWeek = Utils.getDaysInWeek(date, weekdays);
-            request.setAttribute("timeslots", timeslots);
-            request.setAttribute("daysInWeek", daysInWeek);
             request.setAttribute("weekdays", weekdays);
+
+            Date currentDate = new Date(System.currentTimeMillis());
+            if (currentWeekday != null) {
+                Date date = Date.valueOf(currentWeekday.trim());
+                if (date.compareTo(currentDate) > 0) { // in the future
+                    currentDate = date;
+                    request.setAttribute("lastWeekday", Utils.getLastWeekWeekday(currentDate));
+                } else { //in the present
+                    int days = Utils.getDaysSinceStartOfWeek(currentDate);
+                    request.setAttribute("daysBeforeToday", days);
+                }
+            }
+
+            List<Date> daysInWeek = Utils.getDaysInWeek(currentDate);
+            Date nextWeekWeekday = Utils.getNextWeekWeekday(currentDate);
+            if (true) { //TODO: test to see if nextMonday is x weeks ahead. (can only book x weeks in advance)
+                request.setAttribute("nextWeekday", nextWeekWeekday);
+            }
+            request.setAttribute("daysInWeek", daysInWeek);
+
+            if (doctorID == null) {
+                List<List<TimeslotDTO>> timeslots = service.getTimeslotsByWeekday(doctorID);
+                List<List<Map<TimeslotDTO, Boolean>>> timeslotLate = new ArrayList<>();
+                for (int i = 0; i < timeslots.size(); i++) {
+                    timeslotLate.add(new ArrayList<>());
+                    for (int j = 0; j < timeslots.get(i).size(); j++) {
+                        Map<TimeslotDTO, Boolean> map = new HashMap<>();
+                        TimeslotDTO timeslot = timeslots.get(i).get(j);
+                        boolean isFuture = daysInWeek.get(i).compareTo(new Date(System.currentTimeMillis())) > 0;
+                        map.put(timeslot, isFuture);
+                        timeslotLate.get(i).add(map);
+                    }
+                }
+                request.setAttribute("timeslots", timeslotLate);
+            } else {
+                List<List<TimeslotDTO>> timeslots = service.getTimeslotsByWeekday(doctorID);
+                List<List<Map<TimeslotDTO, Boolean>>> timeslotBusy = new ArrayList<>();
+                for (int i = 0; i < timeslots.size(); i++) {
+                    timeslotBusy.add(new ArrayList<>());
+                    for (int j = 0; j < timeslots.get(i).size(); j++) {
+                        Map<TimeslotDTO, Boolean> map = new HashMap<>();
+                        TimeslotDTO timeslot = timeslots.get(i).get(j);
+                        boolean isFuture = daysInWeek.get(i).compareTo(new Date(System.currentTimeMillis())) > 0;
+                        boolean isFree = service.isDoctorFree(doctorID, timeslot.getTimeSlotID(), daysInWeek.get(i));
+                        map.put(timeslot, isFuture && isFree);
+                        timeslotBusy.get(i).add(map);
+                    }
+                }
+                request.setAttribute("timeslots", timeslotBusy);
+            }
+
             url = "/Customer/bookingDatetime.jsp";
         } catch (SQLException ex) {
-            log(ex.getMessage());
+            ex.printStackTrace();
             url = "/Customer/booking-list.jsp";
+        } catch (AccountDoesNotExist ex) {
+
+            ex.printStackTrace();
+            request.setAttribute("error-message", ex.toString());
+            url = "/Customer/booking-list.jsp";
+        } catch (AccountDoesNotExistException ex) {
+            ex.printStackTrace();
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
@@ -87,7 +135,7 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendError(405);
+        response.sendRedirect(request.getContextPath() + "/Customer/prepareDocs");
     }
 
     /**

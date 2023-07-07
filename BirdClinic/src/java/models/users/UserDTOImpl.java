@@ -134,7 +134,8 @@ public class UserDTOImpl implements UserDTO {
         return this.userRole.substring(0,1).toUpperCase() + this.userRole.substring(1);
     }
     
-    protected void copyUser(UserDTO user) {
+    @Override
+    public void copyUser(UserDTO user) {
         this.setUserID(user.getUserID());
         this.setUserName(user.getUserName());
         this.setImage(user.getImage());

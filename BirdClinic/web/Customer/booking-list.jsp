@@ -13,7 +13,7 @@
         <!-- Main Wrapper -->
         <div class="main-wrapper">
             <!-- Header -->
-            <jsp:include page="../Common/header-guest.jsp"/>
+            <jsp:include page="../Common/header.jsp"/>
             <!--/Header -->
 
             <!-- Breadcrumb -->
@@ -51,23 +51,28 @@
                                     <label>Specialty</label>
                                     <select class="form-control" id="specialty-selector">
                                         <option value="all">All</option>
+                                        <c:forEach var="specs" items="${requestScope.specs}">
+                                            <option value="${specs.specialityName}" style="text-transform: capitalize">${specs.specialityName}</option>
+                                        </c:forEach>
                                         <option value="general">General</option>
                                         <option value="surgery">Surgery</option>
-                                        <option value="imaging">Imaging</option>
+                                        <option value="beautify">Beautify</option>
+
+                                        <option value="image analysation">Imaging</option>
                                         <option value="nutrition">Nutrition</option>
                                         <option value="genetics">Genetics</option>
                                     </select>
                                 </div>
-                                <div class="doctor-slider slider" id="doctors-container">
-                                    
-                                    <!-- Doctor Widget -->
+                                <div class="doctor-slider slider"  id="doctors-container">
+
 
                                     <c:forEach items="${doctors}" var="doctor">
-                                        <div class="profile-widget nutrition" data-specialty="${doctor.speciality.specialityName}">
-                                            <div class="doc-img">
+                                        <!-- Doctor Widget -->
+                                        <div class="profile-widget ${doctor.speciality.specialityName}" data-specialty="${doctor.speciality.specialityName}">
+                                            <div class="doc-img">   
                                                 <a href="doctor-profile.jsp?doctorID=${doctor.userID}">
-                                                    <img class="img-fluidoctor-profile.jspd" alt="User Image"
-                                                         src="${doctor.image.imageInDisk}" />
+                                                    <img class="img-fluid" alt="User Image"
+                                                         src="../assets/images/doctors/${doctor.image.imageURLName}" style="height: 200px; object-fit: cover" />
                                                 </a>
                                                 <a href="javascript:void(0)" class="fav-btn">
                                                     <i class="far fa-bookmark"></i>
@@ -78,8 +83,8 @@
                                                     <a href="doctor-profile.jsp?doctorID=${doctor.userID}">${doctor.fullName}</a>
                                                     <i class="fas fa-check-circle verified"></i>
                                                 </h3>
-                                                <p class="specialty">${doctor.speciality.specialityName}</p>
-                                                <div class="rating">
+                                                <p class="specialty" style="text-transform: capitalize">${doctor.speciality.specialityName}</p>
+<!--                                                <div class="rating">
                                                     <i class="fas fa-star filled"></i>
                                                     <i class="fas fa-star filled"></i>
                                                     <i class="fas fa-star filled"></i>
@@ -95,7 +100,7 @@
                                                         <i class="fas fa-info-circle" data-toggle="tooltip"
                                                            title="Lorem Ipsum"></i>
                                                     </li>
-                                                </ul>
+                                                </ul>-->
                                                 <div class="row row-sm">
                                                     <div class="col-6">
                                                         <a href="<c:url value="doctor-profile.jsp?doctorID=${doctor.userID}"/>" class="btn view-btn">View Profile</a>
@@ -106,10 +111,8 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <!-- Doctor Widget -->
                                     </c:forEach>
-
-                                    <!-- Doctor Widget -->
-
 
                                 </div>
                             </div>

@@ -6,14 +6,17 @@
 package services.general;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import models.appointment.AppointmentDTO;
 import models.bird.BirdDTO;
+import models.feedback.FeedbackDTO;
 import models.medicalRecord.MedicalRecordDTO;
 import models.recordMedicine.RecordMedicineDTO;
 import models.service_.Service_DTO;
+import models.speciality.SpecialityDTO;
 import models.timeslot.TimeslotDTO;
 import models.users.UserDTO;
 import models.users.doctor.DoctorDTO;
@@ -38,24 +41,34 @@ public interface GeneralServices extends Serializable {
 
     List<RecordMedicineDTO> viewRecordMeds(String medicalRecordID) throws SQLException;
     
+    FeedbackDTO viewFeedback(String appointmentID) throws SQLException;
+
     boolean register(Map<String, String[]> args)
             throws AccountAlreadyExistsException, PasswordsNotEqualException, SQLException, PasswordNotStrongException;
-    
+
     List<DoctorDTO> getAllDoctors() throws SQLException;
-    
-    Map<String, List<TimeslotDTO>> getTimeslotsByWeekday(String doctorID) 
+
+    List<List<TimeslotDTO>> getTimeslotsByWeekday(String doctorID)
             throws SQLException;
-    
-    List<Service_DTO> getServices(String doctorID) 
+
+    List<Service_DTO> getServices(String doctorID)
             throws SQLException, AccountDoesNotExist;
-    
+
     TimeslotDTO getTimeslot(String TimeslotID) throws SQLException;
-    
-    boolean updateAccount(Map<String, String[]> args) 
+
+    boolean updateAccount(Map<String, String[]> args)
             throws AccountAlreadyExistsException, PasswordNotStrongException, SQLException;
-    
+
     boolean enableAccount(String userID) throws AccountDoesNotExist, SQLException;
-    
+
     boolean updateAccountPassword(String nPassword)
             throws PasswordNotStrongException, AccountDoesNotExist, SQLException;
+
+    DoctorDTO getDoctorInfo(String doctorID) throws SQLException, AccountDoesNotExist;
+
+    List<SpecialityDTO> getSpecialities()
+            throws SQLException;
+    
+    public boolean isDoctorFree(String doctorID, String timeslotID, Date appDate) 
+            throws SQLException, AccountDoesNotExistException;
 }
