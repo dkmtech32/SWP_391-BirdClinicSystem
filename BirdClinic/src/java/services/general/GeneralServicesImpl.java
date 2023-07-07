@@ -5,6 +5,7 @@
  */
 package services.general;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
@@ -57,7 +58,7 @@ import utils.Utils;
 public class GeneralServicesImpl implements GeneralServices {
 
     private static final long serialVersionUID = 6529685098267757690L;
-    
+
     protected final UserDAO userDAO;
     protected final ImageDAO imageDAO;
     protected final AppointmentDAO appointmentDAO;
@@ -305,6 +306,34 @@ public class GeneralServicesImpl implements GeneralServices {
     }
 
     @Override
+    public List<SpecialityDTO> getSpecialities()
+            throws SQLException {
+        List<SpecialityDTO> services = null;
+
+        try {
+            services = specialityDAO.readAllSpecialities();
+        } catch (NoSuchRecordExists ex) {
+            throw new SQLException(ex.getMessage());
+        }
+
+        return services;
+    }
+    
+    @Override
+    public boolean isDoctorFree(String doctorID, String timeslotID, Date appDate) 
+            throws SQLException, AccountDoesNotExistException {
+        boolean result = false;
+        
+        try {
+            result = appointmentDAO.readAppointmentByDocTime(doctorID, timeslotID, appDate) == null;
+        } catch (NoSuchRecordExists ex) {
+            throw new AccountDoesNotExistException(ex.getMessage());
+        }
+        
+        return result;
+    }
+
+    @Override
     public TimeslotDTO getTimeslot(String TimeslotID) throws SQLException {
         TimeslotDTO timeslot = null;
 
@@ -370,20 +399,20 @@ public class GeneralServicesImpl implements GeneralServices {
 
         return result;
     }
-    
+
     @Override
     public DoctorDTO getDoctorInfo(String doctorID) throws SQLException, AccountDoesNotExist {
         DoctorDTO doctor = null;
-        
+
         try {
-            if (doctorID!=null && !doctorID.trim().equals("")) {
+            if (doctorID != null && !doctorID.trim().equals("")) {
                 doctor = doctorDAO.readDoctor(doctorID);
                 doctor.setUserName(null);
             }
         } catch (NoSuchRecordExists ex) {
             throw new AccountDoesNotExist(ex.getMessage());
         }
-        
+
         return doctor;
     }
 }

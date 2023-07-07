@@ -8,9 +8,10 @@ package controllers.booking;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -21,6 +22,7 @@ import javax.servlet.http.HttpSession;
 import models.timeslot.TimeslotDTO;
 import services.customer.CustomerServices;
 import services.general.AccountDoesNotExist;
+import services.general.AccountDoesNotExistException;
 import utils.Utils;
 
 /**
@@ -54,9 +56,10 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
 
             request.setAttribute("doctor", service.getDoctorInfo(doctorID));
 
+            
+
             String[] weekdays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
             request.setAttribute("weekdays", weekdays);
-            List<List<TimeslotDTO>> timeslots = service.getTimeslotsByWeekday(doctorID);
 
             Date date = new Date(System.currentTimeMillis());
             if (currentWeekday != null) {
@@ -73,11 +76,28 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
             List<Date> daysInWeek = Utils.getDaysInWeek(date);
             Date nextWeekWeekday = Utils.getNextWeekWeekday(date);
             if (true) { //TODO: test to see if nextMonday is x weeks ahead. (can only book x weeks in advance)
-
                 request.setAttribute("nextWeekday", nextWeekWeekday);
             }
             request.setAttribute("daysInWeek", daysInWeek);
-            request.setAttribute("timeslots", timeslots);
+            
+            if (doctorID == null) {
+                List<List<TimeslotDTO>> timeslots = service.getTimeslotsByWeekday(doctorID);
+                request.setAttribute("timeslots", timeslots);
+            } else {
+                List<List<TimeslotDTO>> timeslots = service.getTimeslotsByWeekday(doctorID);
+                List<List<Map<TimeslotDTO, Boolean>>> timeslotBusy = new ArrayList<>();
+                for (int i = 0; i < timeslots.size(); i++) {
+                    timeslotBusy.add(new ArrayList<>());
+                    for (int j = 0; j < timeslots.get(i).size();j++  ) {
+                        Map<TimeslotDTO, Boolean> map = new HashMap<>();
+                        TimeslotDTO timeslot = timeslots.get(i).get(j);
+                        map.put(timeslot, service.isDoctorFree(doctorID, timeslot.getTimeSlotID(), daysInWeek.get(j)));
+                        timeslotBusy.get(i).set(j, map);
+                    }
+                }
+                request.setAttribute("timeslots", timeslotBusy);
+            }
+            
             url = "/Customer/bookingDatetime.jsp";
         } catch (SQLException ex) {
             log(ex.getMessage());
@@ -85,6 +105,7 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
         } catch (AccountDoesNotExist ex) {
             request.setAttribute("error-message", ex.toString());
             url = "/Customer/booking-list.jsp";
+        } catch (AccountDoesNotExistException ex) {
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

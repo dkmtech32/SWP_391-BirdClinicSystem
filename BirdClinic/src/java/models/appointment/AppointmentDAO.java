@@ -6,6 +6,7 @@
 package models.appointment;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 import models.exceptions.NoSuchRecordExists;
@@ -31,6 +32,9 @@ public interface AppointmentDAO extends Serializable {
             throws NoSuchRecordExists, SQLException;
     
     List<AppointmentDTO> readAppointmentByTimeslot(String timeslotID) 
+            throws NoSuchRecordExists, SQLException;
+    
+    AppointmentDTO readAppointmentByDocTime(String doctorID, String timeslotID, Date appDate)
             throws NoSuchRecordExists, SQLException;
     
     int deleteAppointment(String appointmentID) throws NoSuchRecordExists, SQLException;
