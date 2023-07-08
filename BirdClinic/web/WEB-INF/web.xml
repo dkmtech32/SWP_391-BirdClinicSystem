@@ -134,6 +134,14 @@
         <servlet-name>UpdateProfileServlet</servlet-name>
         <servlet-class>controllers.dashboard.UpdateProfileServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewAccountServlet</servlet-name>
+        <servlet-class>controllers.view.ViewAccountServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewCustomerProfileServlet</servlet-name>
+        <servlet-class>controllers.view.ViewCustomerProfileServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Common/login</url-pattern>
@@ -189,6 +197,14 @@
     <servlet-mapping>
         <servlet-name>UpdateProfileServlet</servlet-name>
         <url-pattern>/Update/Profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewAccountServlet</servlet-name>
+        <url-pattern>/View/Account</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewCustomerProfileServlet</servlet-name>
+        <url-pattern>/View/Customer</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
