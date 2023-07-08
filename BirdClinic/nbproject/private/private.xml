@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/src/java/models/users/customer/CustomerDTOImpl.java</file>
             <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Customer/dashboard-customer-addBirds.jsp</file>
             <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Admin/add-doctor.jsp</file>
@@ -21,6 +22,14 @@
             <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/web/Customer/customer-dashboard.jsp</file>
             <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/src/java/models/exceptions/RecordAlreadyExists.java</file>
             <file>file:/D:/Courses/sem5/SWP_391-BirdClinicSystem-Anh-Minh/BirdClinic/src/java/models/appointment/AppointmentAlreadyExistsException.java</file>
+=======
+            <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/src/java/controllers/account/LoginServlet.java</file>
+            <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/src/java/controllers/booking/BookAppointmentServlet.java</file>
+            <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/src/java/controllers/booking/PrepareAppointmentBookServlet.java</file>
+            <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/src/java/controllers/booking/PrepareDatetimeAppBookServlet.java</file>
+            <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/src/java/controllers/account/LogoutServlet.java</file>
+            <file>file:/D:/SWP_391-BirdClinicSystem/BirdClinic/src/java/controllers/booking/PrepareDoctorsAppBookServlet.java</file>
+>>>>>>> 7dd0efdc61550096d934bb469ad800f074161d86
         </group>
     </open-files>
 </project-private>

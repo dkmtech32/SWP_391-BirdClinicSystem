@@ -51,21 +51,6 @@
                         </ul>
                     </li>
                     <li class="has-submenu">
-                        <a href="#">Patients <i class="fas fa-chevron-down"></i></a>
-                        <ul class="submenu">
-                            <li><a href="search.jsp">Search Doctor</a></li>
-                            <li><a href="doctor-profile.jsp">Doctor Profile</a></li>
-                            <li><a href="booking.jsp">Booking</a></li>
-                            <li><a href="checkout.jsp">Checkout</a></li>
-                            <li><a href="booking-success.jsp">Booking Success</a></li>
-                            <li><a href="patient-dashboard.jsp">Patient Dashboard</a></li>
-                            <li><a href="favourites.jsp">Favourites</a></li>
-                            <li><a href="chat.jsp">Chat</a></li>
-                            <li><a href="profile-settings.jsp">Profile Settings</a></li>
-                            <li><a href="change-password.jsp">Change Password</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-submenu">
                         <a href="#">Pages <i class="fas fa-chevron-down"></i></a>
                         <ul class="submenu">
                             <li><a href="voice-call.jsp">Voice Call</a></li>
@@ -85,9 +70,6 @@
                             <li><a href="register.jsp">Register</a></li>
                             <li><a href="forgot-password.jsp">Forgot Password</a></li>
                         </ul>
-                    </li>
-                    <li>
-                        <a href="admin/index.jsp" target="_blank">Admin</a>
                     </li>
                     <li class="login-link">
                         <a href="login.jsp">Login / Signup</a>
