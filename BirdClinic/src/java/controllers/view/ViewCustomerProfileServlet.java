@@ -3,21 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.dashboard;
+package controllers.view;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import services.general.GeneralServices;
+import models.bird.BirdDTO;
+import models.feedback.FeedbackDTO;
+import services.customer.CustomerServices;
 
 /**
  *
  * @author Admin
  */
-public class DashboardServlet extends HttpServlet {
+public class ViewCustomerProfileServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,24 +35,24 @@ public class DashboardServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String url = "/View/Account";
         HttpSession session = request.getSession();
-
-        String forwardURL = request.getServletPath() + request.getPathInfo();
-        if (request.getQueryString() != null && !request.getQueryString().trim().equals("")) {
-            forwardURL = request.getServletPath() + request.getPathInfo() + request.getQueryString();
-        }
+        
+        String userID = request.getParameter("userID");
+        
         try {
-            if (!request.getPathInfo().contains("Update")) {
-                GeneralServices services = (GeneralServices) session.getAttribute("service");
-                String userRole = services.getCurrentUser().getDisplayRole();
-                forwardURL = "/" + userRole + forwardURL;
-            }
-        } catch (NullPointerException ex) {
-            forwardURL = "/Common/login";
+            CustomerServices service = (CustomerServices) session.getAttribute("service");
+            List<BirdDTO> birds = service.getCustomerBirds(userID);
+            List<FeedbackDTO> feedbacks = service.getCustomerFeedbacks(userID);
+            request.setAttribute("birds", birds);
+        } catch (ClassCastException ex) {
+            url = "/login";
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            request.setAttribute("error-message", "Something is wrong. Please try again.");
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
         }
-
-        request.getRequestDispatcher(forwardURL).include(request, response);
-        request.getRequestDispatcher("Common/dashboard.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

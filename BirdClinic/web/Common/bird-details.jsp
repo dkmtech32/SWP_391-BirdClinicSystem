@@ -4,6 +4,7 @@
     Author     : ASUS
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -45,7 +46,7 @@
                                 <p class="information">${bird.birdGender}</p>
                             </div>
                             <div class="bird-information-box">
-                                <p class="header">Weigth</p>
+                                <p class="header">Weight</p>
                                 <p class="information">${bird.birdWeight}</p>
                             </div>
                             <div class="bird-information-box">
@@ -96,17 +97,19 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr> <!-- làm vòng lặp xổ tất cả danh sách medical record của con chim này -->
-                                                                <td class="text-center">${medicalRecord.recordTime}</td>
-                                                                <td></td>
-                                                                <td class="text-center">${medicalRecord.diagnosis}</td>
-                                                                <td></td>
-                                                                <td class="text-center">${medicalRecord.doctor}</td>
-                                                                <td></td>
-                                                                <td class="text-right">
-                                                                    <div class="table-action">
-                                                                        <a href="../Common/client-appointments-details.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                    </div>
-                                                                </td>
+                                                                <c:forEach>
+                                                                    <td class="text-center">${medicalRecord.recordTime}</td>
+                                                                    <td></td>
+                                                                    <td class="text-center">${medicalRecord.diagnosis}</td>
+                                                                    <td></td>
+                                                                    <td class="text-center">${medicalRecord.doctor}</td>
+                                                                    <td></td>
+                                                                    <td class="text-right">
+                                                                        <div class="table-action">
+                                                                            <a href="../Common/client-appointments-details.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                        </div>
+                                                                    </td>
+                                                                </c:forEach>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -122,17 +125,17 @@
             </div>
         </div>
 
-<!-- /Page Content -->
+        <!-- /Page Content -->
 
-<!-- Footer -->
-<jsp:include page="Common/footer.jsp"/>
-<!-- /Footer -->
-</div>
-<!-- /Main Wrapper -->
+        <!-- Footer -->
+        <jsp:include page="Common/footer.jsp"/>
+        <!-- /Footer -->
+    </div>
+    <!-- /Main Wrapper -->
 
-<!-- Script -->
-<jsp:include page="Common/script.jsp"/>
-<!-- /Script -->
+    <!-- Script -->
+    <jsp:include page="Common/script.jsp"/>
+    <!-- /Script -->
 </body>
 </html>
 
