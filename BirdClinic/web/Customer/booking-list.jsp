@@ -27,21 +27,21 @@
                         <div class="col-lg-4">
                             <div class="section-header">
                                 <h2>Book Our Doctor</h2>
-                                <p>Lorem Ipsum is simply dummy text</p>
+                                <p>Certified Avian Practice</p>
                             </div>
                             <div class="about-content">
                                 <p>
-                                    It is a long established fact that a reader will be distracted by the readable content
-                                    of a page when looking at its layout. The
-                                    point of using Lorem Ipsum.
+                                    BirdLovers Clinic, is home to Dr. Kiet, a Certified Avian Specialist offering 
+                                    an exceptional level of veterinary care to all types of birds. We work with pet 
+                                    owners, bird breeders, zoos and other facilities treating birds, from exotic 
+                                    toucans and parrots, to cockatoos, parakeets, and more.
                                 </p>
                                 <p>
-                                    web page editors now use Lorem Ipsum as their default model text, and a search for
-                                    'lorem ipsum' will uncover many web sites still
-                                    in their infancy. Various versions have evolved over the years, sometimes
+                                    We feature a state-of-the-art surgical center, ICU, specialized avian radiography, 
+                                    anesthesia, endoscopy, boarding, in-house laboratory, and more. Schedule your appointment today.
                                 </p>
                                 <a class="btn" href="<c:url value="/Customer/prepareDatetime"/>">Book All</a>
-                                <a class="btn" href="javascript:;">Read More..</a>
+                                <!--                                <a class="btn" href="javascript:;">Read More..</a>-->
                             </div>
                         </div>
 
@@ -53,14 +53,7 @@
                                         <option value="all">All</option>
                                         <c:forEach var="specs" items="${requestScope.specs}">
                                             <option value="${specs.specialityName}" style="text-transform: capitalize">${specs.specialityName}</option>
-                                        </c:forEach>
-                                        <option value="general">General</option>
-                                        <option value="surgery">Surgery</option>
-                                        <option value="beautify">Beautify</option>
-
-                                        <option value="image analysation">Imaging</option>
-                                        <option value="nutrition">Nutrition</option>
-                                        <option value="genetics">Genetics</option>
+                                        </c:forEach>                                        
                                     </select>
                                 </div>
                                 <div class="doctor-slider slider"  id="doctors-container">
@@ -84,23 +77,23 @@
                                                     <i class="fas fa-check-circle verified"></i>
                                                 </h3>
                                                 <p class="specialty" style="text-transform: capitalize">${doctor.speciality.specialityName}</p>
-<!--                                                <div class="rating">
-                                                    <i class="fas fa-star filled"></i>
-                                                    <i class="fas fa-star filled"></i>
-                                                    <i class="fas fa-star filled"></i>
-                                                    <i class="fas fa-star filled"></i>
-                                                    <i class="fas fa-star filled"></i>
-                                                    <span class="d-inline-block average-rating">(17)</span>
-                                                </div>
-                                                <ul class="available-info">
-                                                    <li><i class="fas fa-map-marker-alt"></i> Florida, USA</li>
-                                                    <li><i class="far fa-clock"></i> Available on Fri, 22 Mar</li>
-                                                    <li>
-                                                        <i class="far fa-money-bill-alt"></i> $300 - $1000
-                                                        <i class="fas fa-info-circle" data-toggle="tooltip"
-                                                           title="Lorem Ipsum"></i>
-                                                    </li>
-                                                </ul>-->
+                                                <!--                                                <div class="rating">
+                                                                                                    <i class="fas fa-star filled"></i>
+                                                                                                    <i class="fas fa-star filled"></i>
+                                                                                                    <i class="fas fa-star filled"></i>
+                                                                                                    <i class="fas fa-star filled"></i>
+                                                                                                    <i class="fas fa-star filled"></i>
+                                                                                                    <span class="d-inline-block average-rating">(17)</span>
+                                                                                                </div>
+                                                                                                <ul class="available-info">
+                                                                                                    <li><i class="fas fa-map-marker-alt"></i> Florida, USA</li>
+                                                                                                    <li><i class="far fa-clock"></i> Available on Fri, 22 Mar</li>
+                                                                                                    <li>
+                                                                                                        <i class="far fa-money-bill-alt"></i> $300 - $1000
+                                                                                                        <i class="fas fa-info-circle" data-toggle="tooltip"
+                                                                                                           title="Lorem Ipsum"></i>
+                                                                                                    </li>
+                                                                                                </ul>-->
                                                 <div class="row row-sm">
                                                     <div class="col-6">
                                                         <a href="<c:url value="doctor-profile.jsp?doctorID=${doctor.userID}"/>" class="btn view-btn">View Profile</a>

@@ -126,6 +126,7 @@ h6 {
 
 a {
     color: #2e3842;
+    text-decoration: none;
 }
 a:hover {
     color: #ed6436d1;

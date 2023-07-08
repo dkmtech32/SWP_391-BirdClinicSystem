@@ -69,16 +69,16 @@
                                                         <c:when test="${appointment.appStatus =='processing'}">
                                                             <td><span class="badge badge-pill bg-warning-light">Processing</span></td>
                                                         </c:when>
-                                                        <c:when test="${appointment.appStatus =='confirmed'}">
+                                                        <c:when test="${appointment.appStatus =='confirm'}">
                                                             <td><span class="badge badge-pill bg-success-light">Confirmed</span></td>
                                                         </c:when>
-                                                        <c:when test="${appointment.appStatus =='checkin'}">
+                                                        <c:when test="${appointment.appStatus =='check-in'}">
                                                             <td><span class="badge badge-pill bg-purple-light">Check In</span></td>
                                                         </c:when>
                                                         <c:when test="${appointment.appStatus =='complete'}">
                                                             <td><span class="badge badge-pill bg-primary-light">Completed</span></td>
                                                         </c:when>
-                                                        <c:when test="${appointment.appStatus =='cancel'}">
+                                                        <c:when test="${appointment.appStatus =='cancelled'}">
                                                             <td><span class="badge badge-pill bg-danger-light">Canceled</span></td>
                                                         </c:when>
                                                     </c:choose>
