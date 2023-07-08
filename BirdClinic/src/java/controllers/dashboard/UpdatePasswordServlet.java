@@ -22,7 +22,7 @@ import utils.Utils;
  *
  * @author Admin
  */
-public class ChangePasswordServlet extends HttpServlet {
+public class UpdatePasswordServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
