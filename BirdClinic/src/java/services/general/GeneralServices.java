@@ -42,6 +42,8 @@ public interface GeneralServices extends Serializable {
     List<RecordMedicineDTO> viewRecordMeds(String medicalRecordID) throws SQLException;
     
     FeedbackDTO viewFeedback(String appointmentID) throws SQLException;
+    
+    UserDTO viewAccount(String userID)throws AccountDoesNotExistException, SQLException;
 
     boolean register(Map<String, String[]> args)
             throws AccountAlreadyExistsException, PasswordsNotEqualException, SQLException, PasswordNotStrongException;
@@ -71,4 +73,8 @@ public interface GeneralServices extends Serializable {
     
     public boolean isDoctorFree(String doctorID, String timeslotID, Date appDate) 
             throws SQLException, AccountDoesNotExistException;
+    
+    public List<FeedbackDTO> getDoctorFeedbacks(String doctorID) throws SQLException;
+    
+    public List<FeedbackDTO> getCustomerFeedbacks(String customerID) throws SQLException;
 }

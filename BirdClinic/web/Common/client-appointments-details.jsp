@@ -1,5 +1,5 @@
 <%-- 
-    Document   : client-appoitments-details
+    Document   : client-appointments-details
     Created on : Jun 25, 2023, 9:53:59 PM
     Author     : ASUS
 --%>
