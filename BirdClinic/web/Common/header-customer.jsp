@@ -111,7 +111,7 @@
                                 <p class="text-muted mb-0">${sessionScope.service.currentUser.displayRole}</p>
                             </div>
                         </div>
-                        <a class="dropdown-item" href="<c:url value="/Dashboard/*"/>">Dashboard</a>
+                        <a class="dropdown-item" href="<c:url value="/Dashboard/Appointments"/>">Dashboard</a>
                         <a class="dropdown-item" href="<c:url value="/Customer/custAccountInfo"/>">Profile Settings</a>
                         <a class="dropdown-item" href="login.jsp">Logout</a>
                     </div>
