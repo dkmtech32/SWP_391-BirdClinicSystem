@@ -8,8 +8,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
-
     <header class="header">
         <nav class="navbar navbar-expand-lg header-nav">
             <div class="navbar-header">
@@ -107,13 +105,13 @@
                                 <img src="../assets/images/client/${sessionScope.service.currentUser.image.imageURLName}" alt="User Image" class="avatar-img rounded-circle" />
                             </div>
                             <div class="user-text">
-                                <h6>${sessionScope.currentUser.fullName}</h6>
+                                <h6>${sessionScope.service.currentUser.fullName}</h6>
                                 <p class="text-muted mb-0">${sessionScope.service.currentUser.displayRole}</p>
                             </div>
                         </div>
                         <a class="dropdown-item" href="<c:url value="/Dashboard/Appointments"/>">Dashboard</a>
                         <a class="dropdown-item" href="<c:url value="/Customer/custAccountInfo"/>">Profile Settings</a>
-                        <a class="dropdown-item" href="login.jsp">Logout</a>
+                        <a class="dropdown-item" href="<c:url value="/logout"/>">Logout</a>
                     </div>
                 </li>
                 <!-- /User Menu -->

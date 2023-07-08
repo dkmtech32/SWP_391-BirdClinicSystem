@@ -150,7 +150,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UpdatePasswordServlet</servlet-name>
-        <url-pattern>/Update/Password</url-pattern>
+        <url-pattern>/Dashboard/Update/Password</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ViewBirdInfoServlet</servlet-name>

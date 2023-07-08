@@ -3,7 +3,9 @@
     Created on : Jun 19, 2023, 3:20:27 PM
     Author     : Legion
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 
     <header class="header">
@@ -107,22 +109,22 @@
                 <li class="nav-item dropdown has-arrow logged-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <span class="user-img">
-                            <img class="rounded-circle" src="../assets/img/doctors/doctor-thumb-02.jpg" width="31" alt="Darren Elder" />
+                            <img class="rounded-circle" src="../assets/images/${sessionScope.service.currentUser.image.imageURLName}" width="31" alt="${sessionScope.service.currentUser.fullName}" />
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="user-header">
                             <div class="avatar avatar-sm">
-                                <img src="../assets/img/doctors/doctor-thumb-02.jpg" alt="User Image" class="avatar-img rounded-circle" />
+                                <img src="../assets/images/${sessionScope.service.currentUser.image.imageURLName}" alt="User Image" class="avatar-img rounded-circle" />
                             </div>
                             <div class="user-text">
-                                <h6>Darren Elder</h6>
-                                <p class="text-muted mb-0">Doctor</p>
+                                <h6>${sessionScope.currentUser.fullName}</h6>
+                                <p class="text-muted mb-0">${sessionScope.service.currentUser.displayRole}</p>
                             </div>
                         </div>
-                        <a class="dropdown-item" href="../Staff/staff-dashboard.jsp">Dashboard</a>
-                        <a class="dropdown-item" href="doctor-profile-settings.jsp">Profile Settings</a>
-                        <a class="dropdown-item" href="login.jsp">Logout</a>
+                        <a class="dropdown-item" href="<c:url value="/Dashboard/Appointments"/>">Dashboard</a>
+                        <a class="dropdown-item" href="<c:url value="/Customer/custAccountInfo"/>">Profile Settings</a>
+                        <a class="dropdown-item" href="<c:url value="/logout"/>">Logout</a>
                     </div>
                 </li>
                 <!-- /User Menu -->
