@@ -28,10 +28,8 @@ public interface CustomerServices extends GeneralServices {
     boolean deleteBird(String birdID) throws BirdDoesNotExistException, SQLException;
 
     List<AppointmentDTO> getCustomerAppointments() throws SQLException;
-
+    
     List<BirdDTO> getCustomerBirds() throws SQLException;
-
-    List<BirdDTO> getCustomerBirds(String customerID) throws SQLException;
 
     boolean updateBird(Map<String, String[]> args) throws BirdDoesNotExistException, SQLException;
 }
