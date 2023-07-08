@@ -15,7 +15,10 @@
                 <nav class="user-tabs mb-4">
                     <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#pat_appointments" data-toggle="tab">Appointments</a>
+                            <a class="nav-link active" href="<c:url value="/Dashboard/Appointments"/>" data-toggle="tab">Appointments</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<c:url value="/Dashboard/Birds"/>" data-toggle="tab">Birds</a>
                         </li>
                     </ul>
                 </nav>
@@ -46,22 +49,22 @@
                                                     <td>
                                                         <h2 class="table-avatar">
                                                             <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
-                                                                <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-07.jpg" alt="User Image" />
+                                                                <img class="avatar-img rounded-circle" src="../assets/img/doctors/doctor-thumb-07.jpg" alt="User Image" />
                                                             </a>
-                                                            <a href="doctor-profile.jsp">${appointment.doctor}<span>${doctor.userRole}</span></a> <!-- userRole này ý ông là chuyên ngành của bác sĩ? -->
+                                                            <a href="doctor-profile.jsp">${appointment.doctor.fullName} <span>${doctor.speciality.specialityName}</span></a> 
                                                         </h2>
                                                     </td>
-                                                    <td>${appointment.appTime}<span class="d-block text-info">${appointment.timeslot}</span></td>
+                                                    <td>${appointment.appTime}<span class="d-block text-info">${appointment.timeslot.timeSlot}</span></td>
                                                     <td>
                                                         <h2 class="table-avatar">
-                                                            <a href="../Common/bird-details.jsp" class="avatar avatar-sm mr-2"
+                                                            <a href="<c:url value="/View/Bird?birdID=${appointment.bird.birdID}"/>" class="avatar avatar-sm mr-2"
                                                                ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-3.jpg" alt="User Image"
                                                                   /></a>
-                                                            <a href="../Common/bird-details.jsp">${bird.birdFullname}</a>
+                                                            <a href="<c:url value="/View/Bird?birdID=${appointment.bird.birdID}"/>">${appointment.bird.birdFullname}</a>
                                                         </h2>
                                                     </td>
-                                                    <td>${bird.breed}</td>
-                                                    <td>${appointment.service_}</td>
+                                                    <td>${appointment.bird.breed}</td>
+                                                    <td>${appointment.service_.serviceName}</td>
                                                     <c:choose>
                                                         <c:when test="${appointment.appStatus =='processing'}">
                                                             <td><span class="badge badge-pill bg-warning-light">Processing</span></td>
@@ -79,50 +82,18 @@
                                                             <td><span class="badge badge-pill bg-danger-light">Canceled</span></td>
                                                         </c:when>
                                                     </c:choose>
-                                                    <c:choose>
-                                                        <c:when test="${appointment.appStatus =='processing'}">
-                                                            <td class="text-right">
-                                                                <div class="table-action">
-                                                                    <a href="" class="btn btn-sm bg-danger-light"> <i class="fa fa-times"></i> Cancel </a>
-                                                                    <!--                                                                                    <a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>-->
-                                                                    <a href="../Common/client-appointments-details.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                </div>
-                                                            </td>
-                                                        </c:when>
-                                                        <c:when test="${appointment.appStatus =='confirmed'}">
-                                                            <td class="text-right">
-                                                                <div class="table-action">
-                                                                    <!-- <a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>-->
-                                                                    <a href="../Common/client-appointments-details.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                </div>
-                                                            </td>
-                                                        </c:when>
-                                                        <c:when test="${appointment.appStatus =='check in'}">
-                                                            <td class="text-right">
-                                                                <div class="table-action">
-                                                                    <!-- <a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>-->
-                                                                    <a href="../Common/client-appointments-details.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                </div>
-                                                            </td>
-                                                        </c:when>
-                                                        <c:when test="${appointment.appStatus =='complete'}">
-                                                            <td class="text-right">
-                                                                <div class="table-action">
-                                                                    <a href="view-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescription </a>
-                                                                    <!--<a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>-->
-                                                                    <a href="../Common/client-appointments-details.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                </div>
-                                                            </td>
-                                                        </c:when>
-                                                        <c:when test="${appointment.appStatus =='cancel'}">
-                                                            <td class="text-right">
-                                                                <div class="table-action">
-                                                                    <!-- <a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>-->
-                                                                    <a href="client-appointments-details-feedback.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                </div>
-                                                            </td>
-                                                        </c:when>
-                                                    </c:choose>
+                                                    <td class="text-right">
+                                                        <div class="table-action">
+                                                            <c:if test="${appointment.appStatus =='processing'}">
+                                                                <a href="<c:url value="/Dashboard/Appointments/Cancel?appointmentID=${appointment.appointmentID}"/>" class="btn btn-sm bg-danger-light"> 
+                                                                    <i class="fa fa-times"></i> Cancel 
+                                                                </a>
+                                                            </c:if>
+                                                            <!--                                                                                    <a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>-->
+                                                            <a href="<c:url value="/View/Appointment?appointmentID=${appointment.appointmentID}"/>" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                        </div>
+                                                    </td>
+                                                    
                                                 </tr>
                                             </c:forEach>
                                         </tbody>
