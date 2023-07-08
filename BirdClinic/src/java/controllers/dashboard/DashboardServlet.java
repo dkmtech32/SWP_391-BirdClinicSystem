@@ -48,7 +48,6 @@ public class DashboardServlet extends HttpServlet {
         } catch (NullPointerException ex) {
             forwardURL = "/Common/login";
         }
-
         request.getRequestDispatcher(forwardURL).forward(request, response);
     }
 

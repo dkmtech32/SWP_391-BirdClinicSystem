@@ -38,7 +38,7 @@ public class UpdatePasswordServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "/Common/change-password.jsp";
+        String url = "/Common/dashboard-change-password.jsp";
 
         request.setAttribute("url", url);
     }
