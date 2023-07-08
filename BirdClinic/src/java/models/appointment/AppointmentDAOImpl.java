@@ -85,12 +85,12 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 appointment.setAppointmentID(rs.getString("appointmentID"));
                 appointment.setBird(birdDAO.readBird(rs.getString("birdID")));
                 if (rs.getString("doctorID") != null) {
-                    appointment.setDoctor(doctorDAO.readDoctor("doctorID"));
+                    appointment.setDoctor(doctorDAO.readDoctor(rs.getString("doctorID")));
                 } else {
                     appointment.setDoctor(null);
                 }
-                appointment.setTimeslot(timeslotDAO.readTimeSlot("timeSlotID"));
-                appointment.setService_(service_DAO.readService_("serviceID"));
+                appointment.setTimeslot(timeslotDAO.readTimeSlot(rs.getString("timeslotID")));
+                appointment.setService_(service_DAO.readService_(rs.getString("serviceID")));
                 appointment.setAppTime(rs.getDate("appTime"));
                 appointment.setNotes(rs.getString("notes"));
                 appointment.setPayment(rs.getString("payment"));
@@ -134,12 +134,12 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 appointment.setAppointmentID(rs.getString("appointmentID"));
                 appointment.setBird(bird);
                 if (rs.getString("doctorID") != null) {
-                    appointment.setDoctor(doctorDAO.readDoctor("doctorID"));
+                    appointment.setDoctor(doctorDAO.readDoctor(rs.getString("doctorID")));
                 } else {
                     appointment.setDoctor(null);
                 }
-                appointment.setTimeslot(timeslotDAO.readTimeSlot("timeSlotID"));
-                appointment.setService_(service_DAO.readService_("serviceID"));
+                appointment.setTimeslot(timeslotDAO.readTimeSlot(rs.getString("timeslotID")));
+                appointment.setService_(service_DAO.readService_(rs.getString("serviceID")));
                 appointment.setAppTime(rs.getDate("appTime"));
                 appointment.setNotes(rs.getString("notes"));
                 appointment.setPayment(rs.getString("payment"));
@@ -187,8 +187,8 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 appointment.setAppointmentID(rs.getString("appointmentID"));
                 appointment.setBird(birdDAO.readBird(rs.getString("birdID")));
                 appointment.setDoctor(doctor);
-                appointment.setTimeslot(timeslotDAO.readTimeSlot("timeSlotID"));
-                appointment.setService_(service_DAO.readService_("serviceID"));
+                appointment.setTimeslot(timeslotDAO.readTimeSlot(rs.getString("timeslotID")));
+                appointment.setService_(service_DAO.readService_(rs.getString("serviceID")));
                 appointment.setAppTime(rs.getDate("appTime"));
                 appointment.setNotes(rs.getString("notes"));
                 appointment.setPayment(rs.getString("payment"));
@@ -236,12 +236,12 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                     appointment.setAppointmentID(rs.getString("appointmentID"));
                     appointment.setBird(bird);
                     if (rs.getString("doctorID") != null) {
-                        appointment.setDoctor(doctorDAO.readDoctor("doctorID"));
+                        appointment.setDoctor(doctorDAO.readDoctor(rs.getString("doctorID")));
                     } else {
                         appointment.setDoctor(null);
                     }
-                    appointment.setTimeslot(timeslotDAO.readTimeSlot("timeSlotID"));
-                    appointment.setService_(service_DAO.readService_("serviceID"));
+                    appointment.setTimeslot(timeslotDAO.readTimeSlot(rs.getString("timeslotID")));
+                    appointment.setService_(service_DAO.readService_(rs.getString("serviceID")));
                     appointment.setAppTime(rs.getDate("appTime"));
                     appointment.setNotes(rs.getString("notes"));
                     appointment.setPayment(rs.getString("payment"));
@@ -291,12 +291,12 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 appointment.setAppointmentID(rs.getString("appointmentID"));
                 appointment.setBird(birdDAO.readBird(rs.getString("birdID")));
                 if (rs.getString("doctorID") != null) {
-                    appointment.setDoctor(doctorDAO.readDoctor("doctorID"));
+                    appointment.setDoctor(doctorDAO.readDoctor(rs.getString("doctorID")));
                 } else {
                     appointment.setDoctor(null);
                 }
-                appointment.setTimeslot(timeslot);
-                appointment.setService_(service_DAO.readService_("serviceID"));
+                appointment.setTimeslot(timeslotDAO.readTimeSlot(rs.getString("timeslotID")));
+                appointment.setService_(service_DAO.readService_(rs.getString("serviceID")));
                 appointment.setAppTime(rs.getDate("appTime"));
                 appointment.setNotes(rs.getString("notes"));
                 appointment.setPayment(rs.getString("payment"));
@@ -506,7 +506,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                     } else {
                         appointment.setDoctor(null);
                     }
-                    appointment.setTimeslot(timeslotDAO.readTimeSlot(rs.getString("timeSlotID")));
+                    appointment.setTimeslot(timeslotDAO.readTimeSlot(rs.getString("timeslotID")));
                     appointment.setService_(service_DAO.readService_(rs.getString("serviceID")));
                     appointment.setAppTime(rs.getDate("appTime"));
                     appointment.setNotes(rs.getString("notes"));

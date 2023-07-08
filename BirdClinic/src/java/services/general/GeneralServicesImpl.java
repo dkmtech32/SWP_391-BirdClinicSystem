@@ -5,12 +5,12 @@
  */
 package services.general;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import models.appointment.AppointmentDAO;
 import models.appointment.AppointmentDAOImpl;
 import models.appointment.AppointmentDTO;
@@ -238,7 +238,7 @@ public class GeneralServicesImpl implements GeneralServices {
 
         return medicalRecord;
     }
-    
+
     @Override
     public FeedbackDTO viewFeedback(String appointmentID) throws SQLException {
         FeedbackDTO feedback = null;
@@ -268,9 +268,9 @@ public class GeneralServicesImpl implements GeneralServices {
 
         return recMeds;
     }
-    
+
     @Override
-    public UserDTO viewAccount(String userID)throws AccountDoesNotExistException, SQLException {
+    public UserDTO viewAccount(String userID) throws AccountDoesNotExistException, SQLException {
         UserDTO user = null;
 
         try {
@@ -353,18 +353,18 @@ public class GeneralServicesImpl implements GeneralServices {
 
         return services;
     }
-    
+
     @Override
-    public boolean isDoctorFree(String doctorID, String timeslotID, Date appDate) 
+    public boolean isDoctorFree(String doctorID, String timeslotID, Date appDate)
             throws SQLException, AccountDoesNotExistException {
         boolean result = false;
-        
+
         try {
             result = appointmentDAO.readAppointmentByDocTime(doctorID, timeslotID, appDate) == null;
         } catch (NoSuchRecordExists ex) {
             throw new AccountDoesNotExistException(ex.getMessage());
         }
-        
+
         return result;
     }
 
@@ -450,30 +450,61 @@ public class GeneralServicesImpl implements GeneralServices {
 
         return doctor;
     }
-    
+
     @Override
     public List<FeedbackDTO> getDoctorFeedbacks(String doctorID) throws SQLException {
         List<FeedbackDTO> feedbacks = null;
-        
+
         try {
             feedbacks = feedbackDAO.readFeedbackByDoctor(doctorID);
         } catch (NoSuchRecordExists ex) {
             feedbacks = null;
         }
-        
+
         return feedbacks;
     }
-    
+
     @Override
     public List<FeedbackDTO> getCustomerFeedbacks(String customerID) throws SQLException {
         List<FeedbackDTO> feedbacks = null;
-        
+
         try {
             feedbacks = feedbackDAO.readFeedbackByCustomer(customerID);
         } catch (NoSuchRecordExists ex) {
             feedbacks = null;
         }
-        
+
         return feedbacks;
+    }
+
+    @Override
+    public BigDecimal getDoctorRatings(String doctorID) throws SQLException {
+        BigDecimal ratings = BigDecimal.ZERO;
+        try {
+            List<FeedbackDTO> feedbacks = feedbackDAO.readFeedbackByDoctor(doctorID);
+            for (FeedbackDTO feedback : feedbacks) {
+                ratings = feedback.getRating().add(ratings);
+            }
+            if (ratings.compareTo(BigDecimal.ZERO) > 0) {
+                ratings = ratings.divide(BigDecimal.valueOf(feedbacks.size()));
+                ratings.setScale(2, RoundingMode.HALF_DOWN);
+            }
+        } catch (NoSuchRecordExists ex) {
+            ratings = BigDecimal.ZERO;
+        }
+
+        return ratings;
+    }
+    
+    @Override
+    public List<BirdDTO> getCustomerBirds(String customerID) throws SQLException {
+        List<BirdDTO> birds;
+
+        try {
+            birds = birdDAO.readAllBirdByCustomer(customerID);
+        } catch (NoSuchRecordExists ex) {
+            birds = null;
+        }
+        return birds;
     }
 }

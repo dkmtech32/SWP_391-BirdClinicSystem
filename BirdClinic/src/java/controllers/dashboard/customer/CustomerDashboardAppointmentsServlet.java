@@ -36,12 +36,16 @@ public class CustomerDashboardAppointmentsServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
+        String url = "/Customer/dashboard-customer-appointments.jsp";
         try {
             CustomerServices service = (CustomerServices) session.getAttribute("service");
             List<AppointmentDTO> apps = service.getCustomerAppointments();
             request.setAttribute("appointments", apps);
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } finally {
+            request.setAttribute("url", url);
+            request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);
         }
     }
 
@@ -56,7 +60,19 @@ public class CustomerDashboardAppointmentsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect(request.getRequestURI());
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        String url = "/Customer/dashboard-customer-appointments.jsp";
+        try {
+            CustomerServices service = (CustomerServices) session.getAttribute("service");
+            List<AppointmentDTO> apps = service.getCustomerAppointments();
+            request.setAttribute("appointments", apps);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            request.setAttribute("url", url);
+            request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);
+        }
     }
 
     /**
