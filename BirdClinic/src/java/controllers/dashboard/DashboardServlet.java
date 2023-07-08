@@ -42,13 +42,13 @@ public class DashboardServlet extends HttpServlet {
                 GeneralServices services = (GeneralServices) session.getAttribute("service");
                 String userRole = services.getCurrentUser().getDisplayRole();
                 forwardURL = "/" + userRole + forwardURL;
+            } else {
+                forwardURL = request.getPathInfo();
             }
         } catch (NullPointerException ex) {
             forwardURL = "/Common/login";
         }
-
-        request.getRequestDispatcher(forwardURL).include(request, response);
-        request.getRequestDispatcher("../Common/dashboard.jsp").forward(request, response);
+        request.getRequestDispatcher(forwardURL).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

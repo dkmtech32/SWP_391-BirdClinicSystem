@@ -7,20 +7,20 @@ package controllers.view;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import models.users.UserDTO;
-import services.general.AccountDoesNotExistException;
+import models.bird.BirdDTO;
 import services.general.GeneralServices;
 
 /**
  *
  * @author Admin
  */
-public class ViewAccountServlet extends HttpServlet {
+public class ViewCustomerInfoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,22 +34,20 @@ public class ViewAccountServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "/Common/account-info.jsp";
+        String url = "/View/Account";
         HttpSession session = request.getSession();
-        GeneralServices service = (GeneralServices) session.getAttribute("service");
+        
         String userID = request.getParameter("userID");
         
         try {
-            UserDTO user = service.viewAccount(userID);
-            
-            request.setAttribute("user", user);
+            GeneralServices service = (GeneralServices) session.getAttribute("service");
+            List<BirdDTO> birds = service.getCustomerBirds(userID);
+            request.setAttribute("birds", birds);
+        } catch (ClassCastException ex) {
+            url = "/login";
         } catch (SQLException ex) {
             ex.printStackTrace();
             request.setAttribute("error-message", "Something is wrong. Please try again.");
-        } catch (AccountDoesNotExistException ex) {
-            ex.printStackTrace();
-            url = request.getRequestURI().substring(request.getContextPath().length()-1);
-            request.setAttribute("error-message", "Account does not exist. Please try again");
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

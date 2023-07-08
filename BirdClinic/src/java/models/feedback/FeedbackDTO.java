@@ -5,9 +5,9 @@
  */
 package models.feedback;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import models.appointment.AppointmentDTO;
-import models.users.customer.CustomerDTO;
 
 /**
  *
@@ -24,6 +24,8 @@ public interface FeedbackDTO {
     Timestamp getFeedbackTime();
 
     String getTitle();
+    
+    BigDecimal getRating();
 
     void setAppointment(AppointmentDTO appointment);
 
@@ -35,4 +37,5 @@ public interface FeedbackDTO {
 
     void setTitle(String title);
     
+    void setRating(BigDecimal rating);
 }

@@ -15,72 +15,42 @@
     <filter-mapping>
         <filter-name>DispatchFilter</filter-name>
         <url-pattern>/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-        <dispatcher>INCLUDE</dispatcher>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
         <url-pattern>/Staff/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-        <dispatcher>INCLUDE</dispatcher>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
         <url-pattern>/Admin/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-        <dispatcher>INCLUDE</dispatcher>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
         <url-pattern>/logout</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-        <dispatcher>INCLUDE</dispatcher>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
         <url-pattern>/Doctor/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-        <dispatcher>INCLUDE</dispatcher>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
         <url-pattern>/Customer/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-        <dispatcher>INCLUDE</dispatcher>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthorizationFilter</filter-name>
         <url-pattern>/Staff/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-        <dispatcher>INCLUDE</dispatcher>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthorizationFilter</filter-name>
         <url-pattern>/Admin/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-        <dispatcher>INCLUDE</dispatcher>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthorizationFilter</filter-name>
         <url-pattern>/Doctor/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-        <dispatcher>INCLUDE</dispatcher>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthorizationFilter</filter-name>
         <url-pattern>/Customer/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-        <dispatcher>INCLUDE</dispatcher>
     </filter-mapping>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
@@ -136,11 +106,19 @@
     </servlet>
     <servlet>
         <servlet-name>ViewAccountServlet</servlet-name>
-        <servlet-class>controllers.view.ViewAccountServlet</servlet-class>
+        <servlet-class>controllers.view.ViewAccountInfoServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ViewCustomerProfileServlet</servlet-name>
-        <servlet-class>controllers.view.ViewCustomerProfileServlet</servlet-class>
+        <servlet-class>controllers.view.ViewCustomerInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewDoctorProfileServlet</servlet-name>
+        <servlet-class>controllers.view.ViewDoctorInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CustomerDashboardUpdateBirdServlet</servlet-name>
+        <servlet-class>controllers.dashboard.customer.CustomerDashboardUpdateBirdServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -180,11 +158,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CustomerDashboardAppointmentsServlet</servlet-name>
-        <url-pattern>/Customer/Dashboard/appointments</url-pattern>
+        <url-pattern>/Customer/Dashboard/Appointments</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CustomerDashboardAppointmentsServlet</servlet-name>
-        <url-pattern>/Customer/Dashboard/view</url-pattern>
+        <url-pattern>/Customer/Dashboard</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ViewAppointmentInfoServlet</servlet-name>
@@ -205,6 +183,14 @@
     <servlet-mapping>
         <servlet-name>ViewCustomerProfileServlet</servlet-name>
         <url-pattern>/View/Customer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewDoctorProfileServlet</servlet-name>
+        <url-pattern>/View/Doctor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerDashboardUpdateBirdServlet</servlet-name>
+        <url-pattern>/Customer/Dashboard/Birds/update</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

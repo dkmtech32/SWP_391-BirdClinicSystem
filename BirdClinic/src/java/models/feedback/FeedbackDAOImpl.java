@@ -27,19 +27,19 @@ public class FeedbackDAOImpl implements FeedbackDAO {
     }
 
     private static final String READ_FEEDBACK
-            = "SELECT feedbackID, appointmentID, feedbackContent, title, feedbackTime "
+            = "SELECT feedbackID, appointmentID, feedbackContent, title, feedbackTime, rating "
             + "FROM Feedback "
             + "WHERE feedbackID = ?";
     private static final String READ_FEEDBACK_BY_APPOINTMENT
-            = "SELECT feedbackID, appointmentID, feedbackContent, title, feedbackTime "
+            = "SELECT feedbackID, appointmentID, feedbackContent, title, feedbackTime, rating "
             + "FROM Feedback "
             + "WHERE appointmentID = ?";
     private static final String UPDATE_FEEDBACK
             = "UPDATE Feedback "
-            + "SET feedbackContent = ?, title = ? "
+            + "SET feedbackContent = ?, title = ?, rating = ? "
             + "WHERE feedbackID = ?";
     private static final String INSERT_FEEDBACK
-            = "INSERT INTO Feedback (feedbackID, appointmentID, feedbackContent, title, feedbackTime) "
+            = "INSERT INTO Feedback (feedbackID, appointmentID, feedbackContent, title, feedbackTime, rating) "
             + "VALUES (?, ?, ?, ?, ?)";
     private static final String DELETE_FEEDBACK
             = "DELETE FROM Feedback "
@@ -65,6 +65,7 @@ public class FeedbackDAOImpl implements FeedbackDAO {
                 feedback.setFeedbackContent(rs.getString("feedbackContent"));
                 feedback.setTitle(rs.getString("title"));
                 feedback.setFeedbackTime(rs.getTimestamp("feedbackTime"));
+                feedback.setRating(rs.getBigDecimal("rating"));
             }
             
             if (feedback == null) {
@@ -105,6 +106,7 @@ public class FeedbackDAOImpl implements FeedbackDAO {
                 feedback.setFeedbackContent(rs.getString("feedbackContent"));
                 feedback.setTitle(rs.getString("title"));
                 feedback.setFeedbackTime(rs.getTimestamp("feedbackTime"));
+                feedback.setRating(rs.getBigDecimal("rating"));
             }
 
             if (feedback == null) {
@@ -146,6 +148,7 @@ public class FeedbackDAOImpl implements FeedbackDAO {
                     feedback.setFeedbackContent(rs.getString("feedbackContent"));
                     feedback.setTitle(rs.getString("title"));
                     feedback.setFeedbackTime(rs.getTimestamp("feedbackTime"));
+                feedback.setRating(rs.getBigDecimal("rating"));
                     if (result == null) {
                         result = new ArrayList<>();
                     }
@@ -190,6 +193,7 @@ public class FeedbackDAOImpl implements FeedbackDAO {
                     feedback.setFeedbackContent(rs.getString("feedbackContent"));
                     feedback.setTitle(rs.getString("title"));
                     feedback.setFeedbackTime(rs.getTimestamp("feedbackTime"));
+                feedback.setRating(rs.getBigDecimal("rating"));
                     if (result == null) {
                         result = new ArrayList<>();
                     }
@@ -225,6 +229,7 @@ public class FeedbackDAOImpl implements FeedbackDAO {
             stm.setString(3, feedback.getFeedbackContent());
             stm.setString(4, feedback.getTitle());
             stm.setTimestamp(5, feedback.getFeedbackTime());
+            stm.setBigDecimal(6, feedback.getRating());
 
             result = stm.executeUpdate();
             
@@ -253,9 +258,6 @@ public class FeedbackDAOImpl implements FeedbackDAO {
             result = stm.executeUpdate();
             
             if (result == 0) throw new NoSuchFeedbackExistsException();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-            throw ex;
         } finally {
             if (stm != null) {
                 stm.close();
@@ -275,18 +277,14 @@ public class FeedbackDAOImpl implements FeedbackDAO {
         try {
             con = DBUtils.getConnection();
             stm = con.prepareStatement(UPDATE_FEEDBACK);
-            stm.setString(1, feedback.getAppointment().getAppointmentID());
-            stm.setString(2, feedback.getFeedbackContent());
-            stm.setString(3, feedback.getTitle());
-            stm.setTimestamp(4, feedback.getFeedbackTime());
-            stm.setString(5, feedback.getFeedbackID());
+            stm.setString(1, feedback.getFeedbackContent());
+            stm.setString(2, feedback.getTitle());
+            stm.setBigDecimal(3, feedback.getRating());
+            stm.setString(4, feedback.getFeedbackID());
 
             result = stm.executeUpdate();
             
             if (result == 0) throw new NoSuchFeedbackExistsException();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-            throw ex;
         } finally {
             if (stm != null) {
                 stm.close();

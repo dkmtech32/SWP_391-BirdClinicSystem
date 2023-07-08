@@ -30,14 +30,10 @@
                                 <div class="widget-profile pro-widget-content">
                                     <div class="profile-info-widget">
                                         <a href="#" class="booking-doc-img">
-                                            <img src="../assets/images/client/${service.currentUser.image.imageURL}" alt="User Image" />
+                                            <img src="../assets/images/client/${service.currentUser.image.imageURLName}" alt="User Image" />
                                         </a>
                                         <div class="profile-det-info">
                                             <h3>${service.currentUser.fullName}</h3>
-                                            <div class="patient-details">
-                                                <h5><i class="fas fa-birthday-cake"></i> ${service.currentUser.dob}, ${service.currentUser.age}</h5>
-                                                <h5 class="mb-0"><i class="fas fa-map-marker-alt"></i> ${service.currentUser.address}</h5>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -45,31 +41,25 @@
                                     <nav class="dashboard-menu">
                                         <ul>
                                             <li class="active">
-                                                <a href="patient-dashboard.jsp">
+                                                <a href="<c:url value="/Dashboard/Appointments"/>">
                                                     <i class="fas fa-columns"></i>
                                                     <span>Dashboard</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="birdlist.jsp">
-                                                    <i class="fa fa-tasks"></i>
-                                                    <span>Birds List</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="profile-settings.jsp">
+                                                <a href="<c:url value="/Dashboard/Profile"/>">
                                                     <i class="fas fa-user-cog"></i>
                                                     <span>Profile Settings</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="change-password.jsp">
+                                                <a href="<c:url value="/Dashboard/Update/Password"/>">
                                                     <i class="fas fa-lock"></i>
                                                     <span>Change Password</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="index.jsp">
+                                                <a href="<c:url value="/logout"/>">
                                                     <i class="fas fa-sign-out-alt"></i>
                                                     <span>Logout</span>
                                                 </a>
@@ -80,7 +70,7 @@
                             </div>
                         </div>
                         <!-- / Profile Sidebar -->
-                        <jsp:include page=""/>
+                        <jsp:include page="${url}"/>
 
                     </div>
                 </div>

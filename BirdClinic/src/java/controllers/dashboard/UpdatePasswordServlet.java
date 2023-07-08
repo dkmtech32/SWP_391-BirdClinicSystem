@@ -77,13 +77,16 @@ public class UpdatePasswordServlet extends HttpServlet {
             url = "/Dashboard/view";
             request.setAttribute("success-message", "Password changed.");
         } catch (AccountDoesNotExist ex) {
+            ex.printStackTrace();
             request.setAttribute("error-message", "Current password does not match. Please try again.");
         } catch (SQLException ex) {
-            log(ex.getMessage());
+            ex.printStackTrace();
             request.setAttribute("error-message", "Something is wrong. Please try again.");
         } catch (PasswordsEqualException ex) {
+            ex.printStackTrace();
             request.setAttribute("error-message", "New password must be different. Please try again.");
         } catch (PasswordNotStrongException ex) {
+            ex.printStackTrace();
             request.setAttribute("error-message", "Password needs to be stronger. Please try again.");
         } finally {
             request.setAttribute("url", url);
