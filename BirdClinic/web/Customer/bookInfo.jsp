@@ -26,7 +26,7 @@
 
             // Set the initial service fee text
             if (defaultPrice) {
-                $('#serviceFee').text('$'+defaultPrice);
+                $('#serviceFee').text(defaultPrice);
             } else {
                 $('#serviceFee').text('');
             }
