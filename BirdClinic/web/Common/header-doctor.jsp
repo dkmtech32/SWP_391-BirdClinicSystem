@@ -18,7 +18,7 @@
                         <span></span>
                     </span>
                 </a>
-                <a href="index.jsp" class="navbar-brand logo">
+                <a href="../Common/index.jsp" class="navbar-brand logo">
                     <img src="../assets/img/logo.png" class="img-fluid" alt="Logo" />
                 </a>
             </div>
