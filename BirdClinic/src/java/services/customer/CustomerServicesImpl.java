@@ -104,6 +104,18 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
         }
         return birds;
     }
+    
+    @Override
+    public List<BirdDTO> getCustomerBirds(String customerID) throws SQLException {
+        List<BirdDTO> birds;
+
+        try {
+            birds = birdDAO.readAllBirdByCustomer(customerID);
+        } catch (NoSuchRecordExists ex) {
+            birds = null;
+        }
+        return birds;
+    }
 
     @Override
     public List<AppointmentDTO> getCustomerAppointments() throws SQLException {

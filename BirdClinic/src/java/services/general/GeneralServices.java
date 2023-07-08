@@ -73,4 +73,8 @@ public interface GeneralServices extends Serializable {
     
     public boolean isDoctorFree(String doctorID, String timeslotID, Date appDate) 
             throws SQLException, AccountDoesNotExistException;
+    
+    public List<FeedbackDTO> getDoctorFeedbacks(String doctorID) throws SQLException;
+    
+    public List<FeedbackDTO> getCustomerFeedbacks(String customerID) throws SQLException;
 }
