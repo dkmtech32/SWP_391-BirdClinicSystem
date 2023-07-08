@@ -26,7 +26,7 @@
             </div>
             <div class="main-menu-wrapper">
                 <div class="menu-header">
-                    <a href="index.jsp" class="menu-logo">
+                    <a href="../Common/index.jsp" class="menu-logo">
                         <img src="../assets/img/logo.png" class="img-fluid" alt="Logo" />
                     </a>
                     <a id="menu_close" class="menu-close" href="javascript:void(0);">
