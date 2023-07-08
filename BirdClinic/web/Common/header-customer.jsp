@@ -37,23 +37,8 @@
                     <li>
                         <a href="index.jsp">Home</a>
                     </li>
-                    <li class="has-submenu">
-                        <a href="#">Doctors <i class="fas fa-chevron-down"></i></a>
-                        <ul class="submenu">
-                            <li><a href="doctor-dashboard.jsp">Doctor Dashboard</a></li>
-                            <li><a href="appointments.jsp">Appointments</a></li>
-                            <li><a href="schedule-timings.jsp">Schedule Timing</a></li>
-                            <li><a href="my-patients.jsp">Patients List</a></li>
-                            <li class="active"><a href="patient-profile.jsp">Patients Profile</a></li>
-                            <li><a href="chat-doctor.jsp">Chat</a></li>
-                            <li><a href="invoices.jsp">Invoices</a></li>
-                            <li><a href="doctor-profile-settings.jsp">Profile Settings</a></li>
-                            <li><a href="reviews.jsp">Reviews</a></li>
-                            <li><a href="doctor-register.jsp">Doctor Register</a></li>
-                        </ul>
-                    </li>
                     <li class="has-submenu active">
-                        <a href="#">Patients <i class="fas fa-chevron-down"></i></a>
+                        <a href="#">Owner<i class="fas fa-chevron-down"></i></a>
                         <ul class="submenu">
                             <li><a href="search.jsp">Search Doctor</a></li>
                             <li><a href="doctor-profile.jsp">Doctor Profile</a></li>
@@ -61,7 +46,7 @@
                             <li><a href="checkout.jsp">Checkout</a></li>
                             <li><a href="booking-success.jsp">Booking Success</a></li>
                             <li><a href="patient-dashboard.jsp">Patient Dashboard</a></li>
-                            <li><a href="favourites.jsp">Favourites</a></li>
+                            <li><a href="favourites.jsp">Favorites</a></li>
                             <li><a href="chat.jsp">Chat</a></li>
                             <li><a href="profile-settings.jsp">Profile Settings</a></li>
                             <li><a href="change-password.jsp">Change Password</a></li>
@@ -88,11 +73,8 @@
                             <li><a href="forgot-password.jsp">Forgot Password</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="admin/index.jsp" target="_blank">Admin</a>
-                    </li>
                     <li class="login-link">
-                        <a href="login.jsp">Login / Signup</a>
+                        <a href="login.jsp">Login /Signup</a>
                     </li>
                 </ul>
             </div>
@@ -129,7 +111,7 @@
                                 <p class="text-muted mb-0">${sessionScope.service.currentUser.displayRole}</p>
                             </div>
                         </div>
-                        <a class="dropdown-item" href="../Customer/customer-dashboard.jsp">Dashboard</a>
+                        <a class="dropdown-item" href="<c:url value="/Dashboard/*"/>">Dashboard</a>
                         <a class="dropdown-item" href="<c:url value="/Customer/custAccountInfo"/>">Profile Settings</a>
                         <a class="dropdown-item" href="login.jsp">Logout</a>
                     </div>
