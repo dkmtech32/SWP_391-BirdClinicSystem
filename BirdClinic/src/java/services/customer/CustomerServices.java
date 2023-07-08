@@ -31,5 +31,7 @@ public interface CustomerServices extends GeneralServices {
 
     List<BirdDTO> getCustomerBirds() throws SQLException;
 
+    List<BirdDTO> getCustomerBirds(String customerID) throws SQLException;
+
     boolean updateBird(Map<String, String[]> args) throws BirdDoesNotExistException, SQLException;
 }
