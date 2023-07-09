@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import models.appointment.AppointmentDTO;
 import models.bird.BirdDTO;
+import models.blog.BlogDTO;
 import models.feedback.FeedbackDTO;
 import models.medicalRecord.MedicalRecordDTO;
 import models.recordMedicine.RecordMedicineDTO;
@@ -41,10 +42,10 @@ public interface GeneralServices extends Serializable {
     MedicalRecordDTO viewMedicalRecord(String appointmentID) throws SQLException;
 
     List<RecordMedicineDTO> viewRecordMeds(String medicalRecordID) throws SQLException;
-    
+
     FeedbackDTO viewFeedback(String appointmentID) throws SQLException;
-    
-    UserDTO viewAccount(String userID)throws AccountDoesNotExistException, SQLException;
+
+    UserDTO viewAccount(String userID) throws AccountDoesNotExistException, SQLException;
 
     boolean register(Map<String, String[]> args)
             throws AccountAlreadyExistsException, PasswordsNotEqualException, SQLException, PasswordNotStrongException;
@@ -71,15 +72,17 @@ public interface GeneralServices extends Serializable {
 
     List<SpecialityDTO> getSpecialities()
             throws SQLException;
-    
-    boolean isDoctorFree(String doctorID, String timeslotID, Date appDate) 
+
+    boolean isDoctorFree(String doctorID, String timeslotID, Date appDate)
             throws SQLException, AccountDoesNotExistException;
-    
+
     List<FeedbackDTO> getDoctorFeedbacks(String doctorID) throws SQLException;
-    
-    List<FeedbackDTO> getCustomerFeedbacks(String customerID) throws SQLException;
-    
+
     BigDecimal getDoctorRatings(String doctorID) throws SQLException;
 
     List<BirdDTO> getCustomerBirds(String customerID) throws SQLException;
+
+    BlogDTO viewBlog(String blogID) throws SQLException, BlogDoesNotExistException;
+
+    List<BlogDTO> viewIntroBlogs() throws SQLException;
 }

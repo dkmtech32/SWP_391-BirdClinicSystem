@@ -7,10 +7,13 @@ package services.staff;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import models.appointment.AppointmentDTO;
+import models.feedback.FeedbackDTO;
 import models.users.doctor.DoctorDTO;
 import services.doctor.DoctorDoesNotExistException;
 import services.general.AppointmentDoesNotExistException;
+import services.general.BlogDoesNotExistException;
 import services.general.GeneralServices;
 
 /**
@@ -31,4 +34,9 @@ public interface StaffServices extends GeneralServices {
 
     boolean updateService_(String serviceID, float servicePrice, String serviceName) throws ServiceDoesNotExistException, SQLException;
     
+    List<FeedbackDTO> getCustomerFeedbacks(String customerID) throws SQLException;
+    
+    boolean addBlog(Map<String, String[]> args) throws BlogAlreadyExistsException, SQLException;
+    
+    boolean editBlog(Map<String, String[]> args) throws BlogDoesNotExistException, SQLException;
 }
