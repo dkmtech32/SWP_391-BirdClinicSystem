@@ -92,22 +92,22 @@
             <li class="nav-item dropdown has-arrow logged-item">
                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                     <span class="user-img">
-                        <img class="rounded-circle" src="<c:url value='/assets/img/doctors/doctor-thumb-02.jpg' />" width="31" alt="Darren Elder" />
+                        <img class="rounded-circle" src="<c:url value='/assets/images/doctors/${service.currentUser.image.imageURLName}' />" width="31" alt="Darren Elder" />
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <div class="user-header">
                         <div class="avatar avatar-sm">
-                            <img src="<c:url value='/assets/img/doctors/doctor-thumb-02.jpg' />" alt="User Image" class="avatar-img rounded-circle" />
+                            <img src="<c:url value='/assets/images/doctors/${service.currentUser.image.imageURLName}'/>" alt="User Image" class="avatar-img rounded-circle" />
                         </div>
                         <div class="user-text">
-                            <h6>Darren Elder</h6>
-                            <p class="text-muted mb-0">Doctor</p>
+                            <h6>${service.currentUser.fullName}</h6>
+                            <p class="text-muted mb-0" style="text-transform: capitalize;">${service.currentUser.userRole}</p>
                         </div>
                     </div>
                     <a class="dropdown-item" href="<c:url value='/Dashboard/Appointments' />">Dashboard</a>
-                    <a class="dropdown-item" href="<c:url value='doctor-profile-settings.jsp' />">Profile Settings</a>
-                    <a class="dropdown-item" href="<c:url value='login.jsp' />">Logout</a>
+                    <a class="dropdown-item" href="<c:url value='/Update/Profile'/>">Profile Settings</a>
+                    <a class="dropdown-item" href="<c:url value='/logout'/>">Logout</a>
                 </div>
             </li>
             <!-- /User Menu -->

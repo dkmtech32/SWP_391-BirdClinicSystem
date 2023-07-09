@@ -23,8 +23,8 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 import static javax.servlet.SessionTrackingMode.URL;
-import org.zefer.pd4ml.PD4Constants;
-import org.zefer.pd4ml.PD4ML;
+//import org.zefer.pd4ml.PD4Constants;
+//import org.zefer.pd4ml.PD4ML;
 
 /**
  *
@@ -196,23 +196,23 @@ public class Utils {
         return value[0];
     }
 
-    public static void doConversion(String url, String outputPath)
-            throws InvalidParameterException, MalformedURLException, IOException {
-        File output = new File(outputPath);
-        java.io.FileOutputStream fos = new java.io.FileOutputStream(output);
-
-        PD4ML pd4ml = new PD4ML();
-        pd4ml.setPageSize(pd4ml.changePageOrientation(PD4Constants.A4));
-
-        pd4ml.render(new URL(url), fos);
-        fos.close();
-
-        if (Desktop.isDesktopSupported()) {
-            Desktop.getDesktop().open(output);
-        } else {
-            System.out.println("Awt Desktop is not supported!");
-        }
-
-        System.out.println(outputPath + "\ndone.");
-    }
+//    public static void doConversion(String url, String outputPath)
+//            throws InvalidParameterException, MalformedURLException, IOException {
+//        File output = new File(outputPath);
+//        java.io.FileOutputStream fos = new java.io.FileOutputStream(output);
+//
+//        PD4ML pd4ml = new PD4ML();
+//        pd4ml.setPageSize(pd4ml.changePageOrientation(PD4Constants.A4));
+//
+//        pd4ml.render(new URL(url), fos);
+//        fos.close();
+//
+//        if (Desktop.isDesktopSupported()) {
+//            Desktop.getDesktop().open(output);
+//        } else {
+//            System.out.println("Awt Desktop is not supported!");
+//        }
+//
+//        System.out.println(outputPath + "\ndone.");
+//    }
 }
