@@ -16,8 +16,6 @@ import java.util.logging.Logger;
 import models.appointment.AppointmentAlreadyExistsException;
 import models.appointment.AppointmentDTO;
 import models.appointment.AppointmentDTOImpl;
-import models.appointmentCancel.AppointmentCancelDTO;
-import models.appointmentCancel.AppointmentCancelDTOImpl;
 import models.bird.BirdAlreadyExistsException;
 import models.bird.BirdDTO;
 import models.bird.BirdDTOImpl;
@@ -32,6 +30,8 @@ import models.service_.Service_DTO;
 import models.timeslot.TimeslotDTO;
 import models.users.UserDTO;
 import models.users.customer.CustomerDTO;
+import services.general.AccountAlreadyExistsException;
+import services.general.AccountDoesNotExistException;
 import services.general.AppointmentDoesNotExistException;
 import services.general.GeneralServicesImpl;
 import services.general.BirdDoesNotExistException;
@@ -308,6 +308,27 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
         }
         return result;
 
+    }
+    
+    @Override
+    public boolean updateAccount(Map<String, String[]> args)
+            throws AccountAlreadyExistsException, SQLException {
+        boolean result = super.updateAccount(args);
+        
+        if (result) {
+            CustomerDTO customer = (CustomerDTO)this.currentUser.copyUser();
+            String customerAddress = Utils.getFromMap(args, "customer-address", customer.getCustomerAddress());
+            if (!customerAddress.equals(customer.getCustomerAddress())) {
+                customer.setCustomerAddress(customerAddress);
+            }
+            try {
+                result = customerDAO.updateCustomer(customer) > 0;
+            } catch (NoSuchRecordExists ex) {
+                throw new AccountAlreadyExistsException(ex.getMessage());
+            }
+        }
+        
+        return result;
     }
 
     @Override
