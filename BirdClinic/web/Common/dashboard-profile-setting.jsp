@@ -20,9 +20,24 @@
                     <div class="p-4">
                         <div class="row align-items-center">
                             <div class="col-lg-2 col-md-4">
-                                <img src="${sessionScope.service.currentUser.image.imageURLName}"
-                                     class="avatar avatar-md-md rounded-pill shadow mx-auto d-block"
-                                     alt />
+                                <c:choose>
+                                    <c:when test="${sessionScope.service.currentUser.userRole =='customer'}">
+                                        <img src="../assets/images/client/${sessionScope.service.currentUser.image.imageURLName}"
+                                             class="avatar avatar-md-md rounded-pill shadow mx-auto d-block"
+                                             alt />
+                                    </c:when>
+                                        <c:when test="${sessionScope.service.currentUser.userRole =='staff'}">
+                                        <img src="../assets/images/${sessionScope.service.currentUser.image.imageURLName}"
+                                             class="avatar avatar-md-md rounded-pill shadow mx-auto d-block"
+                                             alt />
+                                    </c:when>
+                                        <c:when test="${sessionScope.service.currentUser.userRole =='doctor'}">
+                                            <img src="../assets/images/doctors/${sessionScope.service.currentUser.image.imageURLName}"
+                                             class="avatar avatar-md-md rounded-pill shadow mx-auto d-block"
+                                             alt />
+                                    </c:when>
+
+                                </c:choose>
                             </div>
                             <!--end col-->
 
@@ -83,14 +98,14 @@
                                     <div class="mb-3">
                                         <label class="form-label">Gender</label>
                                         <select class="form-control time-during" >
-                                            <option value="male" <c:if test="${sessionScope.service.currentUser.gender}=='male'"> selected</c:if>>Male</option>
-                                            <option value="female" <c:if test="${sessionScope.service.currentUser.gender}=='female'"> selected</c:if>>Female</option>
-                                            <option value="unknown" <c:if test="${sessionScope.service.currentUser.gender}=='unknown'"> selected</c:if>>Unknown</option>
+                                            <option value="male" <c:if test="${sessionScope.service.currentUser.gender =='male'}"> selected</c:if>>Male</option>
+                                            <option value="female" <c:if test="${sessionScope.service.currentUser.gender =='female'}"> selected</c:if>>Female</option>
+                                            <option value="unknown" <c:if test="${sessionScope.service.currentUser.gender =='unknown'}"> selected</c:if>>Unknown</option>
                                             </select>
                                         </div>
                                     </div>
                                     <!-- customer address -->
-                                <c:if test="${sessionScope.service.currentUser.userRole}=='customer'">
+                                <c:if test="${sessionScope.service.currentUser.userRole =='customer'}">
                                     <div class="col-md-12">
                                         <div class="mb-3">
                                             <label class="form-label">Address</label>
