@@ -15,6 +15,7 @@ import models.exceptions.NoSuchRecordExists;
 import models.exceptions.RecordAlreadyExists;
 import models.medicalRecord.MedicalRecordDTO;
 import models.medicalRecord.MedicalRecordDTOImpl;
+import models.medicine.MedicineDTO;
 import models.recordMedicine.RecordMedicineDTO;
 import models.recordMedicine.RecordMedicineDTOImpl;
 import models.users.UserDTO;
@@ -27,7 +28,7 @@ import utils.Utils;
  *
  * @author Admin
  */
-public class DoctorServicesImpl extends GeneralServicesImpl {
+public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorServices {
 
     public DoctorServicesImpl(UserDTO currentUser) throws SQLException {
         super();
@@ -42,6 +43,7 @@ public class DoctorServicesImpl extends GeneralServicesImpl {
 
     }
 
+    @Override
     public boolean updateRecord(Map<String, String[]> args, MedicalRecordDTO medicalRecord)
             throws AppointmentDoesNotExistException, SQLException {
         boolean result = false;
@@ -51,7 +53,6 @@ public class DoctorServicesImpl extends GeneralServicesImpl {
                 medicalRecord = new MedicalRecordDTOImpl();
                 String appointmentID = Utils.getFromMap(args, "appointmentID", "");
                 medicalRecord.setAppointment(appointmentDAO.readAppointment(appointmentID));
-                medicalRecord.setRecordTime(new Timestamp(System.currentTimeMillis()));
                 medicalRecord.setMedicalRecordID(Utils.hash(appointmentID));
                 result = true;
             } else {
@@ -75,6 +76,7 @@ public class DoctorServicesImpl extends GeneralServicesImpl {
         return result;
     }
 
+    @Override
     public boolean updatePrescription(
             Map<String, String[]> args,
             MedicalRecordDTO medRec,
@@ -117,11 +119,13 @@ public class DoctorServicesImpl extends GeneralServicesImpl {
         return result;
     }
 
+    @Override
     public boolean prescribe(MedicalRecordDTO medRec, List<RecordMedicineDTO> recMeds)
             throws MedicalRecordAlreadyExistsException, SQLException {
         boolean result = false;
 
         try {
+            medRec.setRecordTime(new Timestamp(System.currentTimeMillis()));
             result = medicalRecordDAO.insertMedicalRecord(medRec) > 0;
             if (result) {
                 if (recMeds != null && recMeds.size() > 0) {
@@ -134,16 +138,30 @@ public class DoctorServicesImpl extends GeneralServicesImpl {
 
         return result;
     }
-    
-    public List<AppointmentDTO> getDoctorAppointments() throws AppointmentDoesNotExistException, SQLException {
+
+    @Override
+    public List<AppointmentDTO> getDoctorAppointments() throws SQLException {
         List<AppointmentDTO> apps = null;
-        
+
         try {
             apps = appointmentDAO.readAppointmentByDoctor(this.currentUser.getUserID());
         } catch (NoSuchRecordExists ex) {
-            throw new AppointmentDoesNotExistException(ex.getMessage());
+            throw new SQLException(ex.getMessage());
         }
-        
+
         return apps;
-    } 
+    }
+    
+    @Override
+    public List<MedicineDTO> getAllMedicine() throws SQLException {
+        List<MedicineDTO> apps = null;
+
+        try {
+            apps = medicineDAO.readAllMedicines();
+        } catch (NoSuchRecordExists ex) {
+            throw new SQLException(ex.getMessage());
+        }
+
+        return apps;
+    }
 }

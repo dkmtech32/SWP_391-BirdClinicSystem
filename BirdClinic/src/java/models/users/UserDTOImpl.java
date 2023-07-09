@@ -12,6 +12,7 @@ import models.images.ImageDTO;
  * @author Admin
  */
 public class UserDTOImpl implements UserDTO {
+
     private String userID;
     private ImageDTO image;
     private String userName;
@@ -20,11 +21,12 @@ public class UserDTOImpl implements UserDTO {
     private String gender;
     private String email;
     private String userRole;
+    private String phoneNumber;
     private boolean status_;
 
     public UserDTOImpl(
-            String userID, ImageDTO image, String userName, String userPassword, 
-            String fullName, String gender, String email, String userRole, boolean status_) {
+            String userID, ImageDTO image, String userName, String userPassword,
+            String fullName, String gender, String email, String userRole, String phoneNumber, boolean status_) {
         this.userID = userID;
         this.image = image;
         this.userName = userName;
@@ -33,6 +35,7 @@ public class UserDTOImpl implements UserDTO {
         this.gender = gender;
         this.email = email;
         this.userRole = userRole;
+        this.phoneNumber = phoneNumber;
         this.status_ = status_;
     }
 
@@ -120,6 +123,16 @@ public class UserDTOImpl implements UserDTO {
     }
 
     @Override
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    @Override
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    @Override
     public boolean isStatus_() {
         return status_;
     }
@@ -128,12 +141,12 @@ public class UserDTOImpl implements UserDTO {
     public void setStatus_(boolean status_) {
         this.status_ = status_;
     }
-    
+
     @Override
     public String getDisplayRole() {
-        return this.userRole.substring(0,1).toUpperCase() + this.userRole.substring(1);
+        return this.userRole.substring(0, 1).toUpperCase() + this.userRole.substring(1);
     }
-    
+
     @Override
     public void copyUser(UserDTO user) {
         this.setUserID(user.getUserID());
@@ -144,8 +157,9 @@ public class UserDTOImpl implements UserDTO {
         this.setFullName(user.getFullName());
         this.setGender(user.getGender());
         this.setUserRole(user.getUserRole());
+        this.setPhoneNumber(user.getPhoneNumber());
     }
-    
+
     @Override
     public UserDTO copyUser() {
         UserDTO user = new UserDTOImpl();
@@ -157,7 +171,8 @@ public class UserDTOImpl implements UserDTO {
         user.setFullName(this.getFullName());
         user.setGender(this.getGender());
         user.setUserRole(this.getUserRole());
-        
+        user.setPhoneNumber(this.getPhoneNumber());
+
         return user;
     }
 }
