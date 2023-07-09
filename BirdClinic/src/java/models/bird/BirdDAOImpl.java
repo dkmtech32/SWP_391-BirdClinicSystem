@@ -97,7 +97,7 @@ public class BirdDAOImpl implements BirdDAO {
                 result.setBirdGender(rs.getString("birdGender"));
                 result.setBreed(rs.getString("breed"));
                 result.setBand_Chip(rs.getString("band_chip"));
-                result.setBirdWeight(rs.getInt("birdWeight"));
+                result.setBirdWeight(rs.getFloat("birdWeight"));
                 result.setSexingMethod(rs.getString("sexingMethod"));
                 result.setMedicalHistory(rs.getString("medicalHistory"));
                 result.setHatchingDate(rs.getDate("hatchingDate"));
@@ -253,7 +253,7 @@ public class BirdDAOImpl implements BirdDAO {
                 result.setBirdGender(rs.getString("birdGender"));
                 result.setBreed(rs.getString("breed"));
                 result.setBand_Chip(rs.getString("band_chip"));
-                result.setBirdWeight(rs.getInt("birdWeight"));
+                result.setBirdWeight(rs.getFloat("birdWeight"));
                 result.setSexingMethod(rs.getString("sexingMethod"));
                 result.setMedicalHistory(rs.getString("medicalHistory"));
                 result.setHatchingDate(rs.getDate("hatchingDate"));
@@ -307,7 +307,7 @@ public class BirdDAOImpl implements BirdDAO {
                 bird.setBirdGender(rs.getString("birdGender"));
                 bird.setBreed(rs.getString("breed"));
                 bird.setBand_Chip(rs.getString("band_chip"));
-                bird.setBirdWeight(rs.getInt("birdWeight"));
+                bird.setBirdWeight(rs.getFloat("birdWeight"));
                 bird.setSexingMethod(rs.getString("sexingMethod"));
                 bird.setMedicalHistory(rs.getString("medicalHistory"));
                 bird.setHatchingDate(rs.getDate("hatchingDate"));
@@ -361,7 +361,7 @@ public class BirdDAOImpl implements BirdDAO {
                     bird.setBirdGender(rs.getString("birdGender"));
                     bird.setBreed(rs.getString("breed"));
                     bird.setBand_Chip(rs.getString("band_chip"));
-                    bird.setBirdWeight(rs.getInt("birdWeight"));
+                    bird.setBirdWeight(rs.getFloat("birdWeight"));
                     bird.setSexingMethod(rs.getString("sexingMethod"));
                     bird.setMedicalHistory(rs.getString("medicalHistory"));
                     bird.setHatchingDate(rs.getDate("hatchingDate"));

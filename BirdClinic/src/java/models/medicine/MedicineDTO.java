@@ -19,7 +19,7 @@ public interface MedicineDTO extends Serializable {
     String getMedicineName();
 
     BigDecimal getMedicinePrice();
-    
+
     String getUnit();
 
     void setMedicineID(String medicineID);
@@ -27,7 +27,7 @@ public interface MedicineDTO extends Serializable {
     void setMedicineName(String medicineName);
 
     void setMedicinePrice(BigDecimal medicinePrice);
-    
+
     void setUnit(String unit);
-    
+
 }
