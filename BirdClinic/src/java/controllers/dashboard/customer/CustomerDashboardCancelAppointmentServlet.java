@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.dashboard;
+package controllers.dashboard.customer;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -12,17 +12,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import services.general.AccountDoesNotExist;
-import services.general.GeneralServices;
-import services.general.PasswordNotStrongException;
-import services.general.PasswordsEqualException;
-import utils.Utils;
+import services.customer.CustomerServices;
+import services.general.AppointmentDoesNotExistException;
 
 /**
  *
  * @author Admin
  */
-public class UpdatePasswordServlet extends HttpServlet {
+public class CustomerDashboardCancelAppointmentServlet extends HttpServlet {
+
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -37,9 +35,9 @@ public class UpdatePasswordServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "../Common/dashboard-change-password.jsp";
+        String url = "/Dashboard/Appointments";
 
-        request.setAttribute("url", url);
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     /**
@@ -55,38 +53,20 @@ public class UpdatePasswordServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "/Common/update-password.jsp";
+        String url = "/Dashboard/Appointments";
         HttpSession session = request.getSession();
-        GeneralServices service = (GeneralServices) session.getAttribute("service");
-        String cPassword = request.getParameter("current-password");
-        String nPassword = request.getParameter("new-password");
+        CustomerServices service = (CustomerServices) session.getAttribute("service");
+        String appointmentID = request.getParameter("appointmentID");
+        String reason = request.getParameter("reason");
 
         try {
-            if (cPassword.equals(nPassword)) {
-                throw new PasswordsEqualException();
-            }
-
-            cPassword = Utils.hash(cPassword);
-
-            if (!service.login(service.getCurrentUser().getUserName(), cPassword)) {
-                throw new AccountDoesNotExist();
-            }
-
-            service.updateAccountPassword(nPassword);
-            url = "/Dashboard/Appointments";
-            request.setAttribute("success-message", "Password changed.");
-        } catch (AccountDoesNotExist ex) {
+            service.cancelAppointment(appointmentID, reason);
+        } catch (AppointmentDoesNotExistException ex) {
             ex.printStackTrace();
-            request.setAttribute("error-message", "Current password does not match. Please try again.");
+            request.setAttribute("error-message", "Appointment does not exist. Please try again.");
         } catch (SQLException ex) {
             ex.printStackTrace();
-            request.setAttribute("error-message", "Something is wrong. Please try again.");
-        } catch (PasswordsEqualException ex) {
-            ex.printStackTrace();
-            request.setAttribute("error-message", "New password must be different. Please try again.");
-        } catch (PasswordNotStrongException ex) {
-            ex.printStackTrace();
-            request.setAttribute("error-message", "Password needs to be stronger. Please try again.");
+            request.setAttribute("error-message", "Something went wrong. Please try again.");
         } finally {
             request.setAttribute("url", url);
             request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);

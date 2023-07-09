@@ -22,7 +22,6 @@ import services.general.GeneralServices;
  */
 public class UpdateProfileServlet extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -36,9 +35,10 @@ public class UpdateProfileServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "/Common/change-profile.jsp";
+        String url = "/Common/update-profile.jsp";
 
         request.setAttribute("url", url);
+        request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);
     }
 
     /**
@@ -54,7 +54,7 @@ public class UpdateProfileServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "/Common/change-password.jsp";
+        String url = "/Common/update-profile.jsp";
         HttpSession session = request.getSession();
         GeneralServices service = (GeneralServices) session.getAttribute("service");
         Map<String, String[]> params = request.getParameterMap();
@@ -69,6 +69,7 @@ public class UpdateProfileServlet extends HttpServlet {
             request.setAttribute("error-message", "Something went wrong. Please try again.");
         } finally {
             request.setAttribute("url", url);
+            request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);
         }
     }
 
@@ -80,6 +81,6 @@ public class UpdateProfileServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

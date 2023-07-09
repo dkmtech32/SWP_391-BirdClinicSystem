@@ -3,27 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.dashboard;
+package controllers.dashboard.customer;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import services.general.AccountDoesNotExist;
-import services.general.GeneralServices;
-import services.general.PasswordNotStrongException;
-import services.general.PasswordsEqualException;
-import utils.Utils;
+import services.customer.CustomerServices;
 
 /**
  *
  * @author Admin
  */
-public class UpdatePasswordServlet extends HttpServlet {
-
+public class CustomerDashboardInsertBirdServlet extends HttpServlet {
+    
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -37,9 +34,10 @@ public class UpdatePasswordServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "../Common/dashboard-change-password.jsp";
+        String url = "/Customer/insert-bird.jsp";
 
         request.setAttribute("url", url);
+        request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);
     }
 
     /**
@@ -55,38 +53,19 @@ public class UpdatePasswordServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "/Common/update-password.jsp";
+        String url = "/Customer/update-bird.jsp";
         HttpSession session = request.getSession();
-        GeneralServices service = (GeneralServices) session.getAttribute("service");
-        String cPassword = request.getParameter("current-password");
-        String nPassword = request.getParameter("new-password");
+        CustomerServices service = (CustomerServices) session.getAttribute("service");
+        Map<String, String[]> params = request.getParameterMap();
 
         try {
-            if (cPassword.equals(nPassword)) {
-                throw new PasswordsEqualException();
-            }
-
-            cPassword = Utils.hash(cPassword);
-
-            if (!service.login(service.getCurrentUser().getUserName(), cPassword)) {
-                throw new AccountDoesNotExist();
-            }
-
-            service.updateAccountPassword(nPassword);
-            url = "/Dashboard/Appointments";
-            request.setAttribute("success-message", "Password changed.");
-        } catch (AccountDoesNotExist ex) {
-            ex.printStackTrace();
-            request.setAttribute("error-message", "Current password does not match. Please try again.");
+            service.addBird(params);
         } catch (SQLException ex) {
             ex.printStackTrace();
-            request.setAttribute("error-message", "Something is wrong. Please try again.");
-        } catch (PasswordsEqualException ex) {
+            request.setAttribute("error-message", "Something went wrong. Please try again.");
+        } catch (models.bird.BirdAlreadyExistsException ex) {
             ex.printStackTrace();
-            request.setAttribute("error-message", "New password must be different. Please try again.");
-        } catch (PasswordNotStrongException ex) {
-            ex.printStackTrace();
-            request.setAttribute("error-message", "Password needs to be stronger. Please try again.");
+            request.setAttribute("error-message", "Bird already exists. Please try again.");
         } finally {
             request.setAttribute("url", url);
             request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);
