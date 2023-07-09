@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <body>
@@ -15,20 +15,20 @@
                 <tr>
                     <th>Medicine</th>
                     <th>Quantity</th>
-<!--                    <th>Unit</th>-->
+                    <!--                    <th>Unit</th>-->
                     <th>Description</th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="med" items="recordMedicines">
-                <tr>
-                    <td>${med.medicineName}</td>
-                    <td>${med.quantity} (${med.unit})</td>
-                    <td></td> <!-- chưa có, này nghĩa là đơn vị (2 viên, 2 gram, vv) -->
-                    <td>${med.descriptions}</td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
-</body>
+                <c:forEach var="med" items="${recordMedicines}">
+                    <tr>
+                        <td>${med.medicine.medicineName}</td>
+                        <td>${med.quantity} (${med.medicine.unit})</td>
+                        <!--                    <td></td>  chưa có, này nghĩa là đơn vị (2 viên, 2 gram, vv) -->
+                        <td>${med.description}</td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </body>
 </html>

@@ -14,18 +14,18 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-6">
                         <!-- Change Password Form -->
-                        <form>
+                        <form method='POST' action="<c:url value="/Dashboard/Update/Password"/>">
                             <div class="form-group">
                                 <label>Old Password</label>
-                                <input type="password" class="form-control" />
+                                <input type="password" class="form-control" name='current-password' />
                             </div>
                             <div class="form-group">
                                 <label>New Password</label>
-                                <input type="password" class="form-control" />
+                                <input type="password" class="form-control" name='new-password' />
                             </div>
                             <div class="form-group">
                                 <label>Confirm Password</label>
-                                <input type="password" class="form-control" />
+                                <input type="password" class="form-control" name="confirm-password" />
                             </div>
                             <div class="submit-section">
                                 <button type="submit" class="btn btn-primary submit-btn">Save Changes</button>

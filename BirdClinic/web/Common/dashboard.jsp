@@ -30,7 +30,16 @@
                                 <div class="widget-profile pro-widget-content">
                                     <div class="profile-info-widget">
                                         <a href="#" class="booking-doc-img">
-                                            <img src="../assets/images/client/${service.currentUser.image.imageURLName}" alt="User Image" />
+                                            <c:if test="${service.currentUser.userRole=='customer'}">
+                                                <img src="<c:url value='/assets/images/client/${service.currentUser.image.imageURLName}'/>" alt="User Image" />
+                                            </c:if>
+                                            <c:if test="${service.currentUser.userRole=='doctor'}">
+                                                <img src="<c:url value='/assets/images/doctors/${service.currentUser.image.imageURLName}'/>" alt="User Image" />
+                                            </c:if>
+                                            <c:if test="${service.currentUser.userRole=='staff'}">
+                                                <img src="<c:url value='/assets/images/${service.currentUser.image.imageURLName}'/>" alt="User Image" />
+                                            </c:if>
+
                                         </a>
                                         <div class="profile-det-info">
                                             <h3>${service.currentUser.fullName}</h3>
@@ -47,11 +56,22 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="<c:url value="/Dashboard/Profile"/>">
+                                                <a href="<c:url value="/Update/Profile"/>">
                                                     <i class="fas fa-user-cog"></i>
                                                     <span>Profile Settings</span>
                                                 </a>
                                             </li>
+                                            
+                                            <c:if test="${service.currentUser.userRole=='customer'}">
+
+                                                <li>
+                                                    <a href="<c:url value="/Dashboard/Birds"/>">
+                                                        <i class="fa-solid fa-dove"></i>                                                   
+                                                        <span>Bird list</span>
+                                                    </a>
+                                                </li>
+                                            </c:if>
+                                                
                                             <li>
                                                 <a href="<c:url value="/Dashboard/Update/Password"/>">
                                                     <i class="fas fa-lock"></i>

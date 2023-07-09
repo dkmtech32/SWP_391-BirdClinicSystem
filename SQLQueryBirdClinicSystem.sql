@@ -106,7 +106,7 @@ GO
 
 CREATE TABLE Bird (
   birdID CHAR(32) NOT NULL,
-  customerID CHAR(32) NOT NULL,
+  customerID CHAR(32),
   imageID CHAR(32) NOT NULL,
   birdFullname NVARCHAR(30) NOT NULL,
   birdGender VARCHAR(6) NOT NULL,
@@ -191,17 +191,17 @@ CREATE TABLE RecordMedicine (
 CREATE TABLE Feedback (
   feedbackID CHAR(32) NOT NULL,
   appointmentID CHAR(32) NOT NULL,
-  feedbackContent NVARCHAR(500)NOT NULL,
+  feedbackContent NVARCHAR(500) NOT NULL,
   title NVARCHAR(100) NOT NULL,
   feedbackTime DATETIME NOT NULL,
-  rating decimal (2,1)NOT NULL,
+  rating DECIMAL(2, 1) NOT NULL,
   FOREIGN KEY (appointmentID) REFERENCES Appointment(appointmentID),
   CONSTRAINT PK_Feedback PRIMARY KEY CLUSTERED 
-(
-	feedbackID ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
+  (
+    feedbackID ASC
+  ),
+  CONSTRAINT UC_AppointmentID UNIQUE (appointmentID)
+) ON [PRIMARY];
 
 CREATE TABLE Blog (
   blogID CHAR(32) NOT NULL,

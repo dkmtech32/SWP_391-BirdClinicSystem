@@ -195,22 +195,22 @@ public class Utils {
     }
 
     public static void doConversion(String url, String outputPath)
-            throws InvalidParameterException, MalformedURLException, IOException {
-        File output = new File(outputPath);
-        java.io.FileOutputStream fos = new java.io.FileOutputStream(output);
+           throws InvalidParameterException, MalformedURLException, IOException {
+       File output = new File(outputPath);
+       java.io.FileOutputStream fos = new java.io.FileOutputStream(output);
 
-        PD4ML pd4ml = new PD4ML();
-        pd4ml.setPageSize(pd4ml.changePageOrientation(PD4Constants.A4));
+       PD4ML pd4ml = new PD4ML();
+       pd4ml.setPageSize(pd4ml.changePageOrientation(PD4Constants.A4));
 
-        pd4ml.render(new URL(url), fos);
-        fos.close();
+       pd4ml.render(new URL(url), fos);
+       fos.close();
 
-        if (Desktop.isDesktopSupported()) {
-            Desktop.getDesktop().open(output);
-        } else {
-            System.out.println("Awt Desktop is not supported!");
-        }
+       if (Desktop.isDesktopSupported()) {
+           Desktop.getDesktop().open(output);
+       } else {
+           System.out.println("Awt Desktop is not supported!");
+       }
 
-        System.out.println(outputPath + "\ndone.");
-    }
+       System.out.println(outputPath + "\ndone.");
+   }
 }

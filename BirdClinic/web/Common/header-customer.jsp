@@ -18,8 +18,8 @@
                         <span></span>
                     </span>
                 </a>
-                <a href="../Common/index.jsp" class="navbar-brand logo">
-                    <img src="../assets/img/logo.png" class="img-fluid" alt="Logo" />
+                <a href="<c:url value='/Common/index.jsp'/>" class="navbar-brand logo">
+                    <img src="<c:url value='/assets/img/logo.png'/>" class="img-fluid" alt="Logo" />
                 </a>
             </div>
             <div class="main-menu-wrapper">
@@ -96,13 +96,13 @@
                 <li class="nav-item dropdown has-arrow logged-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <span class="user-img">
-                            <img class="rounded-circle" src="../assets/images/client/${sessionScope.service.currentUser.image.imageURLName}" width="31" alt="${sessionScope.service.currentUser.fullName}" />
+                            <img class="rounded-circle" src="<c:url value='/assets/images/client/${sessionScope.service.currentUser.image.imageURLName}'/>" width="31" alt="${sessionScope.service.currentUser.fullName}" />
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="user-header">
                             <div class="avatar avatar-sm">
-                                <img src="../assets/images/client/${sessionScope.service.currentUser.image.imageURLName}" alt="User Image" class="avatar-img rounded-circle" />
+                                <img src="<c:url value='/assets/images/client/${sessionScope.service.currentUser.image.imageURLName}'/>" alt="User Image" class="avatar-img rounded-circle" />
                             </div>
                             <div class="user-text">
                                 <h6>${sessionScope.service.currentUser.fullName}</h6>
@@ -110,7 +110,7 @@
                             </div>
                         </div>
                         <a class="dropdown-item" href="<c:url value="/Dashboard/Appointments"/>">Dashboard</a>
-                        <a class="dropdown-item" href="<c:url value="/Customer/custAccountInfo"/>">Profile Settings</a>
+                        <a class="dropdown-item" href="<c:url value="/Update/Profile"/>">Profile Settings</a>
                         <a class="dropdown-item" href="<c:url value="/logout"/>">Logout</a>
                     </div>
                 </li>
@@ -118,5 +118,4 @@
             </ul>
         </nav>
     </header>
-
 </html>

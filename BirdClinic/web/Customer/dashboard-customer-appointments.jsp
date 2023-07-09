@@ -15,11 +15,9 @@
                 <nav class="user-tabs mb-4">
                     <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
                         <li class="nav-item">
-                            <a class="nav-link active" href="<c:url value="/Dashboard/Appointments"/>" data-toggle="tab">Appointments</a>
+                            <a class="nav-link active" data-toggle="tab">Appointments</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<c:url value="/Dashboard/Birds"/>" data-toggle="tab">Birds</a>
-                        </li>
+                        
                     </ul>
                 </nav>
                 <!-- /Tab Menu -->

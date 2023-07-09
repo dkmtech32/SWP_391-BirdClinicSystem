@@ -404,7 +404,7 @@ public class GeneralServicesImpl implements GeneralServices {
         String gender = Utils.getFromMap(args, "gender", currentUser.getUserName());
         String phoneNumber = Utils.getFromMap(args, "phone-number", currentUser.getPhoneNumber());
         try {
-            if (userDAO.readUserByEmailUserName(email, username) != null) {
+            if (!username.equals(currentUser.getUserName()) && !email.equals(currentUser.getEmail()) && userDAO.readUserByEmailUserName(email, username) != null) {
                 throw new AccountAlreadyExistsException();
             }
 
@@ -435,9 +435,7 @@ public class GeneralServicesImpl implements GeneralServices {
         boolean result = false;
 
         try {
-            if (Utils.checkPassword(nPassword)) {
-                throw new PasswordNotStrongException();
-            }
+            
 
             nPassword = Utils.hash(nPassword);
             result = userDAO.updateUserPassword(currentUser.getUserID(), nPassword) > 0;
