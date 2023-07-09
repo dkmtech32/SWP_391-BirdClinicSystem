@@ -47,7 +47,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="<c:url value="/Dashboard/Profile"/>">
+                                                <a href="<c:url value="/Update/Profile"/>">
                                                     <i class="fas fa-user-cog"></i>
                                                     <span>Profile Settings</span>
                                                 </a>
