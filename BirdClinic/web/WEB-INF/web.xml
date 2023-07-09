@@ -156,6 +156,14 @@
         <servlet-name>StaffDashboardAppointmentsUpdateServlet</servlet-name>
         <servlet-class>controllers.dashboard.staff.StaffDashboardAppointmentsUpdateServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StaffDashboardServicesServlet</servlet-name>
+        <servlet-class>controllers.dashboard.staff.StaffDashboardServicesServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StaffDashboardServicesUpdateServlet</servlet-name>
+        <servlet-class>controllers.dashboard.staff.StaffDashboardServicesUpdateServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Common/login</url-pattern>
@@ -263,6 +271,14 @@
     <servlet-mapping>
         <servlet-name>StaffDashboardAppointmentsUpdateServlet</servlet-name>
         <url-pattern>/Staff/Dashboard/Appointments/Update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaffDashboardServicesServlet</servlet-name>
+        <url-pattern>/Staff/Dashboard/Service</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaffDashboardServicesUpdateServlet</servlet-name>
+        <url-pattern>/Staff/Dashboard/Services/Update</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -121,8 +121,8 @@
                                                 <div class="form-group card-label">
                                                     <label>Medicine name</label>
                                                     <select class="js-example-basic-single" name="state">
-                                                        <c:forEach var="list" items="${requestScope.drugList}">
-                                                            <option value="${list.name}">${list.name} (${list.unit})</option>                           
+                                                        <c:forEach var="list" items="${sessionScope.medicines}">
+                                                            <option value="${list.medicineID}">${list.medicineName} (${list.unit})</option>                           
                                                         </c:forEach>
                                                     </select>
                                                 </div>
@@ -161,15 +161,17 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach var="list" items="${requestScope.prescript}" varStatus="loop">
+                                                <c:forEach var="list" items="${sessionScope.prescription}" varStatus="loop">
                                                     <tr >
                                                         <td data-field="#">${loop.index}</td>
-                                                        <td data-field="medicine">${list.medName}</td>
+                                                        <td data-field="medicine">${list.medicine.medicineName}</td>
                                                         <td data-field="quantity">${list.quantity}</td>
-                                                        <td data-field="unit">${list.unit}</td>
-                                                        <td data-field="description">${list.description}</td>
+                                                        <td data-field="unit">${list.medicine.unit}</td>
+                                                        <td data-field="description">${list.description_}</td>
                                                         <td>											
-                                                            <a class="button button-small edit" title="Delete" >
+                                                            <a class="button button-small edit" 
+                                                               href="<c:url value="/Doctor/Prescription/Update?medicineID=${list.medicine.medicineID}&quantity=${-list.quantity}"/>" 
+                                                               title="Delete" >
                                                                 <i class="fa fa-trash"></i>
                                                             </a>
                                                         </td>

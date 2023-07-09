@@ -17,6 +17,8 @@ import models.exceptions.NoSuchRecordExists;
 import models.exceptions.RecordAlreadyExists;
 import models.feedback.FeedbackDTO;
 import models.service_.Service_DTO;
+import models.service_.Service_DTOImpl;
+import models.speciality.NoSuchSpecialityExistsException;
 import models.users.UserDTO;
 import models.users.doctor.DoctorDTO;
 import services.doctor.DoctorDoesNotExistException;
@@ -183,6 +185,49 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
     }
 
     @Override
+    public List<Service_DTO> getService_BySpeciality(String specialityID) throws SQLException, ServiceDoesNotExistException {
+        List<Service_DTO> services = null;
+
+        try {
+            if (specialityID != null) {
+                services = serviceDAO.readServiceBySpeciality(specialityID);
+            } else {
+                services = serviceDAO.readAllService_();
+            }
+        } catch (NoSuchRecordExists ex) {
+            throw new ServiceDoesNotExistException(ex.getMessage());
+        }
+
+        return services;
+    }
+
+    @Override
+    public boolean addService(Map<String, String[]> args) throws ServiceAlreadyExistsException, SQLException {
+        boolean result = false;
+
+        try {
+            String specialityID = Utils.getFromMap(args, "specialityID", "");
+            String serviceName = Utils.getFromMap(args, "service-name", "");
+            BigDecimal servicePrice = BigDecimal.valueOf(Float.valueOf(Utils.getFromMap(args, "service-price", "")));
+            String serviceID = Utils.hash(specialityID + serviceName);
+
+            Service_DTO service = new Service_DTOImpl();
+            service.setServiceID(serviceID);
+            service.setServiceName(serviceName);
+            service.setSpeciality(specialityDAO.readSpeciality(specialityID));
+            service.setServicePrice(servicePrice);
+
+            result = serviceDAO.insertService(service) > 0;
+        } catch (NoSuchSpecialityExistsException ex) {
+            throw new SQLException(ex.getMessage());
+        } catch (RecordAlreadyExists ex) {
+            throw new ServiceAlreadyExistsException(ex.getMessage());
+        }
+
+        return result;
+    }
+
+    @Override
     public boolean addBlog(Map<String, String[]> args) throws BlogAlreadyExistsException, SQLException {
         boolean result = false;
 
@@ -255,13 +300,13 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
     @Override
     public List<DoctorDTO> getDoctorBySpeciality(String specialityID) throws DoctorDoesNotExistException, SQLException {
         List<DoctorDTO> docs = null;
-        
+
         try {
             docs = doctorDAO.readDoctorsBySpeciality(specialityID);
         } catch (NoSuchRecordExists ex) {
             throw new DoctorDoesNotExistException(ex.getMessage());
         }
-        
+
         return docs;
     }
 }
