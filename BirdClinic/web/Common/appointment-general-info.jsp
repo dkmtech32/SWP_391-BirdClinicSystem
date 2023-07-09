@@ -25,12 +25,13 @@
                 <tr >
                     <td>${appointment.appTime}</td>
                     <td>${medicalRecord.recordTime}</td>
-                    <td>${appointment.service_}</td>
+                    <td>${appointment.service_.serviceName}</td>
                     <td style="word-wrap: break-word; max-width: 300px;">${appointment.notes}</td> <!-- chưa có -->
                     <td>${medicalRecord.diagnosis}</td>
                     <td style="word-wrap: break-word; max-width: 300px;">${medicalRecord.doctorNotes}</td>  <!-- chưa có -->                    
                 </tr>
             </tbody>
         </table>
+        <jsp:include page="../Common/script.jsp"/>
     </body>
 </html>
