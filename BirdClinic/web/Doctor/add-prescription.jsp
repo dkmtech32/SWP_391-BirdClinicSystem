@@ -46,6 +46,7 @@
                                                     <p class="information"></p>
                                                 </div>-->
                                 <div class="row">
+
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label>Hatching Day</label>
@@ -86,12 +87,7 @@
                                                                     <p>Sex Method</p>
                                                                     <p class="information"></p>
                                                                 </div>-->
-                                    <div class="col-12 col-md-6">
-                                        <div class="form-group">
-                                            <label>Feather Color</label>                                        
-                                            <div class="form-control">${medicalRecord.appointment.bird.featherColor}</div>
-                                        </div>
-                                    </div>
+
 
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
@@ -108,7 +104,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-6">
+                                    <div class="col-12 col-md-12">
                                         <div class="form-group">
                                             <label>Address</label>
                                             <div class="form-control">${medicalRecord.appointment.bird.customer.customerAddress}</div>
@@ -131,7 +127,7 @@
                             <div class="col-md-8">
                                 <h3 class="text-center prescription">Prescription:</h3>
 
-                                <form action="" method="">
+                                <form action="<c:url value='/Doctor/Prescription/Update'/>" method="post">
                                     <!-- Medicine Information -->
                                     <div class="info-widget">
                                         <h4 class="card-title">Add medicine</h4>
@@ -140,8 +136,8 @@
                                                 <div class="form-group card-label">
                                                     <label>Medicine name</label>
                                                     <select class="js-example-basic-single" name="medicineID">
-                                                        <c:forEach var="list" items="${requestScope.medicines}">
-                                                            <option value="${list.medicineID}">${list.medicineName} (${list.medicineUnit})</option>                           
+                                                        <c:forEach var="list" items="${sessionScope.medicines}">
+                                                            <option value="${list.medicineID}">${list.medicineName} (${list.unit})</option>                           
                                                         </c:forEach>
                                                     </select>
                                                 </div>
@@ -161,7 +157,7 @@
 
                                         </div>							
                                         <!-- <div class="exist-customer">Existing Customer? <a href="#">Click here to login</a></div> -->
-                                        <button  name="action" value="add" type="submit" class="btn btn-primary submit-btn">Add</button>
+                                        <button value="add" name="action" type="submit" class="btn btn-primary submit-btn">Add</button>
                                     </div>
                                     <!-- /Medicine Information -->						
                                 </form>
@@ -180,15 +176,16 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach var="list" items="${requestScope.prescript}" varStatus="loop">
+                                                <c:forEach var="list" items="${sessionScope.prescription}" varStatus="loop">
                                                     <tr >
-                                                        <td data-field="#">${loop.index}</td>
-                                                        <td data-field="medicine">${list.medName}</td>
+                                                        <td data-field="#">${loop.index+1}</td>
+                                                        <td data-field="medicine">${list.medicine.medicineName}</td>
                                                         <td data-field="quantity">${list.quantity}</td>
-                                                        <td data-field="unit">${list.unit}</td>
-                                                        <td data-field="description">${list.description}</td>
+                                                        <td data-field="unit">${list.medicine.unit}</td>
+                                                        <td data-field="description">${list.description_}</td>
                                                         <td>											
-                                                            <a class="button button-small edit" title="Delete" href="<c:url value='/Doctor/Prescription/Update?action=remove'/>" >
+                                                            <a class="button button-small edit" title="Delete" href="<c:url value='/Doctor/Prescription/Update?action=remove&'/>">
+                                                                
                                                                 <i class="fa fa-trash"></i>
                                                             </a>
                                                         </td>
@@ -230,6 +227,11 @@
 
         <!-- Script -->
         <jsp:include page="../Common/script.jsp"/>
+        <script>
+            $(document).ready(function () {
+                $('.js-example-basic-single').select2();
+            });
+        </script>
         <!-- /Script -->
     </body>
 </html>
