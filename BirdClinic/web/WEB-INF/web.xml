@@ -148,6 +148,14 @@
         <servlet-name>CustomerAddFeedbackServlet</servlet-name>
         <servlet-class>controllers.feedback.CustomerAddFeedbackServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StaffDashboardAppointmentsServlet</servlet-name>
+        <servlet-class>controllers.dashboard.staff.StaffDashboardAppointmentsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StaffDashboardAppointmentsUpdateServlet</servlet-name>
+        <servlet-class>controllers.dashboard.staff.StaffDashboardAppointmentsUpdateServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Common/login</url-pattern>
@@ -247,6 +255,14 @@
     <servlet-mapping>
         <servlet-name>CustomerAddFeedbackServlet</servlet-name>
         <url-pattern>/Customer/Feedback</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaffDashboardAppointmentsServlet</servlet-name>
+        <url-pattern>/Staff/Dashboard/Appointments</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaffDashboardAppointmentsUpdateServlet</servlet-name>
+        <url-pattern>/Staff/Dashboard/Appointments/Update</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
