@@ -12,11 +12,11 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row form-row">
-                        <div class="col-12 col-md-12">
+                        <div class="col-6 col-md-6">
                             <div class="form-group">
                                 <div class="change-avatar">
                                     <div class="profile-img">
-                                        <img src="assets/img/patients/patient.jpg" alt="User Image" />
+                                        <img src="../assets/images/client/${appointment.bird.customer.image.imageURLName}" alt="User Image" />
                                     </div>
                                 </div>
                             </div>

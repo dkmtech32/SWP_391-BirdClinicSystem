@@ -35,7 +35,7 @@ public class UpdateProfileServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "/Common/update-profile.jsp";
+        String url = "/Common/dashboard-profile-setting.jsp";
 
         request.setAttribute("url", url);
         request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);
@@ -54,7 +54,7 @@ public class UpdateProfileServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "/Common/update-profile.jsp";
+        String url = "/Common/dashboard-profile-setting.jsp";
         HttpSession session = request.getSession();
         GeneralServices service = (GeneralServices) session.getAttribute("service");
         Map<String, String[]> params = request.getParameterMap();
