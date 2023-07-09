@@ -6,11 +6,15 @@
 package controllers.dashboard.customer;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import services.customer.CustomerServices;
+import services.general.BirdDoesNotExistException;
 
 /**
  *
@@ -18,33 +22,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CustomerDashboardUpdateBirdServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CustomerDashboardUpdateBirdServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CustomerDashboardUpdateBirdServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -56,7 +33,12 @@ public class CustomerDashboardUpdateBirdServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+
+        String url = "/Customer/update-bird.jsp";
+
+        request.setAttribute("url", url);
+        request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);
     }
 
     /**
@@ -70,7 +52,25 @@ public class CustomerDashboardUpdateBirdServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+
+        String url = "/Customer/update-bird.jsp";
+        HttpSession session = request.getSession();
+        CustomerServices service = (CustomerServices) session.getAttribute("service");
+        Map<String, String[]> params = request.getParameterMap();
+
+        try {
+            service.updateBird(params);
+        } catch (BirdDoesNotExistException ex) {
+            ex.printStackTrace();
+            request.setAttribute("error-message", "Bird does not exist. Please try again.");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            request.setAttribute("error-message", "Something went wrong. Please try again.");
+        } finally {
+            request.setAttribute("url", url);
+            request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);
+        }
     }
 
     /**
@@ -81,6 +81,6 @@ public class CustomerDashboardUpdateBirdServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

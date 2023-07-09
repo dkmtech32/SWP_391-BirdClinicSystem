@@ -6,10 +6,20 @@
 package services.doctor;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import models.exceptions.NoSuchRecordExists;
+import models.medicalRecord.MedicalRecordDTO;
+import models.medicalRecord.MedicalRecordDTOImpl;
+import models.recordMedicine.RecordMedicineDTO;
+import models.recordMedicine.RecordMedicineDTOImpl;
 import models.users.UserDTO;
 import models.users.doctor.DoctorDTO;
+import services.general.AppointmentDoesNotExistException;
 import services.general.GeneralServicesImpl;
+import utils.Utils;
 
 /**
  *
@@ -29,6 +39,79 @@ public class DoctorServicesImpl extends GeneralServicesImpl {
         }
 
     }
-    
-    
+
+    public boolean updateRecord(Map<String, String[]> args, MedicalRecordDTO medicalRecord)
+            throws AppointmentDoesNotExistException, SQLException {
+        boolean result = false;
+
+        try {
+            if (medicalRecord == null) {
+                medicalRecord = new MedicalRecordDTOImpl();
+                String appointmentID = Utils.getFromMap(args, "appointmentID", "");
+                medicalRecord.setAppointment(appointmentDAO.readAppointment(appointmentID));
+                medicalRecord.setRecordTime(new Timestamp(System.currentTimeMillis()));
+                medicalRecord.setMedicalRecordID(Utils.hash(appointmentID));
+                result = true;
+            } else {
+                int treatmentDays = Integer.parseInt(Utils.getFromMap(
+                        args,
+                        "treatment-days",
+                        String.valueOf(medicalRecord.getTreatmentDays())));
+                String diagnosis = Utils.getFromMap(args, "diagnosis", medicalRecord.getDiagnosis());
+                String doctorNotes = Utils.getFromMap(args, "doctor-notes", medicalRecord.getDoctorNotes());
+
+                medicalRecord.setDiagnosis(diagnosis);
+                medicalRecord.setTreatmentDays(treatmentDays);
+                medicalRecord.setDoctorNotes(doctorNotes);
+
+                result = true;
+            }
+        } catch (NoSuchRecordExists ex) {
+            throw new AppointmentDoesNotExistException(ex.getMessage());
+        }
+
+        return result;
+    }
+
+    public boolean updatePrescription(
+            Map<String, String[]> args,
+            MedicalRecordDTO medRec,
+            List<RecordMedicineDTO> prescription)
+            throws MedicineDoesNotExistException, SQLException {
+        boolean result = false;
+
+        try {
+            String medicineID = Utils.getFromMap(args, "medicineID", "");
+            int quantity = Integer.valueOf(Utils.getFromMap(args, "quantity", "0"));
+            String description_ = Utils.getFromMap(args, "description", "");
+
+            RecordMedicineDTO recMed = new RecordMedicineDTOImpl();
+            recMed.setMedicine(medicineDAO.readMedicine(medicineID));
+            recMed.setMedicalRecord(medRec);
+            recMed.setDescription_(description_);
+            recMed.setQuantity(quantity);
+
+            if (prescription == null) {
+                prescription = new ArrayList<>();
+            }
+
+            int index = prescription.indexOf(recMed);
+            if (index > -1) {
+                int newQuantity = quantity + prescription.get(index).getQuantity();
+                if (newQuantity <= 0) {
+                    prescription.remove(index);
+                } else {
+                    prescription.get(index).setQuantity(newQuantity);
+                }
+            } else {
+                prescription.add(recMed);
+            }
+            result = true;
+
+        } catch (NoSuchRecordExists ex) {
+            throw new MedicineDoesNotExistException(ex.getMessage());
+        }
+
+        return result;
+    }
 }

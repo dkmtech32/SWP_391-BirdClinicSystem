@@ -93,13 +93,8 @@ public class RecordMedicineDTOImpl implements RecordMedicineDTO {
             return false;
         }
         final RecordMedicineDTOImpl other = (RecordMedicineDTOImpl) obj;
-        if (!Objects.equals(this.medicalRecord, other.medicalRecord)) {
-            return false;
-        }
-        if (!Objects.equals(this.medicine, other.medicine)) {
-            return false;
-        }
-        return true;
+        
+        return this.medicine.equals(other.medicine) && this.medicalRecord.equals(other.medicalRecord);
     }
 
     
