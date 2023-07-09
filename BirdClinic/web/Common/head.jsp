@@ -25,7 +25,8 @@
     <!-- Slick CSS -->
     <link rel="stylesheet" href="<c:url value='/assets/css/slick.css'/>" />
     <link rel="stylesheet" href="<c:url value='/assets/css/slick-theme.css'/>" />
-
+    <!--select2-->
+    <link rel="stylesheet" href="<c:url value='/assets/css/select2.min.css'/>" />
     <!-- Fontawesome CSS -->
     <link rel="stylesheet" href="<c:url value='/assets/plugins/fontawesome/css/fontawesome.min.css'/>" />		
     <link rel="stylesheet" href="<c:url value='/assets/plugins/fontawesome/css/all.min.css'/>" />
