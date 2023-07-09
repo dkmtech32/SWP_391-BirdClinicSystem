@@ -82,21 +82,23 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Gender</label>
-                                        <select class="form-control time-during" value='male'>
-                                            <option value="male">Male</option>
-                                            <option value="female">Female</option>
-                                            <option value="unknown">Unknown</option>
-                                        </select>
+                                        <select class="form-control time-during" >
+                                            <option value="male" <c:if test="${sessionScope.service.currentUser.gender}=='male'"> selected</c:if>>Male</option>
+                                            <option value="female" <c:if test="${sessionScope.service.currentUser.gender}=='female'"> selected</c:if>>Female</option>
+                                            <option value="unknown" <c:if test="${sessionScope.service.currentUser.gender}=='unknown'"> selected</c:if>>Unknown</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- customer address -->
-                                <div class="col-md-12">
-                                    <div class="mb-3">
-                                        <label class="form-label">Address</label>
-                                        <input name="degree" id="text" type="text" class="form-control"
-                                               value="" />
+                                    <!-- customer address -->
+                                <c:if test="${sessionScope.service.currentUser.userRole}=='customer'">
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+                                            <label class="form-label">Address</label>
+                                            <input name="degree" id="text" type="text" class="form-control"
+                                                   value="${sessionScope.service.currentUser.customerAddress}" />
+                                        </div>
                                     </div>
-                                </div>
+                                </c:if>
                             </div>
                             <!--end row-->
 
