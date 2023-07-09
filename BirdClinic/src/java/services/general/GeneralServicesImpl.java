@@ -430,9 +430,7 @@ public class GeneralServicesImpl implements GeneralServices {
         boolean result = false;
 
         try {
-            if (Utils.checkPassword(nPassword)) {
-                throw new PasswordNotStrongException();
-            }
+            
 
             nPassword = Utils.hash(nPassword);
             result = userDAO.updateUserPassword(currentUser.getUserID(), nPassword) > 0;
