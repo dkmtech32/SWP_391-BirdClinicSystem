@@ -204,7 +204,11 @@ public class BirdDAOImpl implements BirdDAO {
         try {
             con = DBUtils.getConnection();
             stm = con.prepareStatement(UPDATE_BIRD);
-            stm.setString(1, bird.getCustomer().getUserID());
+            if (bird.getCustomer() != null) {
+                stm.setString(1, bird.getCustomer().getUserID());
+            } else {
+                stm.setString(1, "");
+            }
             stm.setString(2, bird.getImage().getImageID());
             stm.setString(3, bird.getBirdFullname());
             stm.setString(4, bird.getBirdGender());
