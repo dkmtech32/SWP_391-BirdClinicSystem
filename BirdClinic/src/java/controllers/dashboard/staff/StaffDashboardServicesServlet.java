@@ -7,24 +7,23 @@ package controllers.dashboard.staff;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import models.appointment.AppointmentDTO;
-import models.users.doctor.DoctorDTO;
-import services.doctor.DoctorDoesNotExistException;
-import services.general.AppointmentDoesNotExistException;
+import models.service_.Service_DTO;
+import services.staff.ServiceDoesNotExistException;
 import services.staff.StaffServices;
 
 /**
  *
  * @author Admin
  */
-public class StaffDashboardAppointmentsServlet extends HttpServlet {
+public class StaffDashboardServicesServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,36 +38,21 @@ public class StaffDashboardAppointmentsServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        String url = "/Staff/dashboard-staff-appointments.jsp";
+        String url = "/Staff/dashboard-staff-service.jsp";
         try {
             StaffServices service = (StaffServices) session.getAttribute("service");
-            String filter = request.getParameter("filter");
-            if (filter == null || filter.trim().equals("")) {
-                filter = "upcoming";
-            }
-            List<AppointmentDTO> apps = service.getAppointmentsByFilter(filter);
-            if (filter.equals("processing")) {
-                List<List<DoctorDTO>> appDocs = new ArrayList<>();
-                for (AppointmentDTO app : apps) {
-                    List<DoctorDTO> doctorList = null;
-                    if (app.getDoctor() == null) {
-                        doctorList = service.getDoctorBySpeciality(app.getService_().getSpeciality().getSpecialityID());
-                    }
-                    appDocs.add(doctorList);
-                }
-                request.setAttribute("doctorList", appDocs);
-            }
-            request.setAttribute("appointments", apps);
+            String specialityID = request.getParameter("specialityID");
+            List<Service_DTO> services = service.getService_BySpeciality(specialityID);
+            request.setAttribute("services", services);
         } catch (SQLException ex) {
             ex.printStackTrace();
-        } catch (AppointmentDoesNotExistException ex) {
-            ex.printStackTrace();
-        } catch (DoctorDoesNotExistException ex) {
+        } catch (ServiceDoesNotExistException ex) {
             ex.printStackTrace();
         } finally {
             request.setAttribute("url", url);
             request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -135,7 +135,7 @@
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group card-label">
                                                     <label>Medicine name</label>
-                                                    <select class="js-example-basic-single" name="medicineID">
+                                                    <select class="js-example-basic-single" name="state">
                                                         <c:forEach var="list" items="${sessionScope.medicines}">
                                                             <option value="${list.medicineID}">${list.medicineName} (${list.unit})</option>                           
                                                         </c:forEach>
@@ -178,14 +178,15 @@
                                             <tbody>
                                                 <c:forEach var="list" items="${sessionScope.prescription}" varStatus="loop">
                                                     <tr >
-                                                        <td data-field="#">${loop.index+1}</td>
+                                                        <td data-field="#">${loop.count}</td>
                                                         <td data-field="medicine">${list.medicine.medicineName}</td>
                                                         <td data-field="quantity">${list.quantity}</td>
                                                         <td data-field="unit">${list.medicine.unit}</td>
                                                         <td data-field="description">${list.description_}</td>
                                                         <td>											
-                                                            <a class="button button-small edit" title="Delete" href="<c:url value='/Doctor/Prescription/Update?action=remove&'/>">
-                                                                
+                                                            <a class="button button-small edit" 
+                                                               href="<c:url value="/Doctor/Prescription/Update?medicineID=${list.medicine.medicineID}&quantity=${-list.quantity}"/>" 
+                                                               title="Delete" >
                                                                 <i class="fa fa-trash"></i>
                                                             </a>
                                                         </td>
