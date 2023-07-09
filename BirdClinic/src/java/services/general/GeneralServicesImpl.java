@@ -109,7 +109,10 @@ public class GeneralServicesImpl implements GeneralServices {
         boolean result = false;
         try {
             UserDTO user = userDAO.loginUser(username, password);
-            result = true;
+            if (user.isStatus_()) {
+                currentUser = user;
+                result = true;
+            }
         } catch (NoSuchRecordExists ex) {
             throw new AccountDoesNotExist(ex.getMessage());
         }
