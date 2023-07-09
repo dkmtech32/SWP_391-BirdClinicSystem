@@ -19,6 +19,8 @@ public interface MedicineDTO extends Serializable {
     String getMedicineName();
 
     BigDecimal getMedicinePrice();
+    
+    String getMedicineUnit();
 
     void setMedicineID(String medicineID);
 
@@ -26,4 +28,5 @@ public interface MedicineDTO extends Serializable {
 
     void setMedicinePrice(BigDecimal medicinePrice);
     
+    void setMedicineUnit(String medicineUnit);
 }
