@@ -69,8 +69,8 @@ public class DoctorPrescriptionUpdateServlet extends HttpServlet {
             switch (action) {
 
                 case "submit":
-                    service.updateRecord(args, medRec);
-                    service.updatePrescription(args, medRec, recMed);
+                    medRec = service.updateRecord(args, medRec);
+                    recMed = service.updatePrescription(args, medRec, recMed);
                     if (service.prescribe(medRec, recMed)) {
                         session.removeAttribute("medicalRecord");
                         if (recMed != null) {
@@ -81,12 +81,10 @@ public class DoctorPrescriptionUpdateServlet extends HttpServlet {
                     url = "/View/Appointment?appointmentID=" + medRec.getAppointment().getAppointmentID();
                     break;
                 case "add":
-                    service.updatePrescription(args, medRec, recMed);
+                    recMed = service.updatePrescription(args, medRec, recMed);
                     session.setAttribute("prescription", recMed);
                     break;
                 case "remove":
-                    service.updateRecord(args, medRec);
-                    session.setAttribute("medicalRecord", medRec);
                     args.put("quantity", new String[]{"-" + args.get("quantity")[0]});
                     service.updatePrescription(args, medRec, recMed);
                     session.setAttribute("prescription", recMed);

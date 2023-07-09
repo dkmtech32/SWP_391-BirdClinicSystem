@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import models.appointment.AppointmentDAO;
@@ -435,7 +436,6 @@ public class GeneralServicesImpl implements GeneralServices {
         boolean result = false;
 
         try {
-            
 
             nPassword = Utils.hash(nPassword);
             result = userDAO.updateUserPassword(currentUser.getUserID(), nPassword) > 0;
@@ -469,19 +469,6 @@ public class GeneralServicesImpl implements GeneralServices {
 
         try {
             feedbacks = feedbackDAO.readFeedbackByDoctor(doctorID);
-        } catch (NoSuchRecordExists ex) {
-            feedbacks = null;
-        }
-
-        return feedbacks;
-    }
-
-    @Override
-    public List<FeedbackDTO> getCustomerFeedbacks(String customerID) throws SQLException {
-        List<FeedbackDTO> feedbacks = null;
-
-        try {
-            feedbacks = feedbackDAO.readFeedbackByCustomer(customerID);
         } catch (NoSuchRecordExists ex) {
             feedbacks = null;
         }
@@ -532,28 +519,68 @@ public class GeneralServicesImpl implements GeneralServices {
 
         return result;
     }
-    
+
+    @Override
     public BlogDTO viewBlog(String blogID) throws SQLException, BlogDoesNotExistException {
         BlogDTO blog = null;
-        
+
         try {
             blog = blogDAO.readBlog(blogID);
         } catch (NoSuchRecordExists ex) {
             throw new BlogDoesNotExistException(ex.getMessage());
         }
-        
+
         return blog;
     }
-    
+
+    @Override
     public List<BlogDTO> viewIntroBlogs() throws SQLException {
         List<BlogDTO> blog = null;
-        
+
         try {
             blog = blogDAO.readTopThreeBlogs();
         } catch (NoSuchRecordExists ex) {
             throw new SQLException(ex.getMessage());
         }
-        
+
         return blog;
     }
+
+    protected List<AppointmentDTO> filterAppointmentsByStatus(List<AppointmentDTO> appointments, String status) {
+        List<AppointmentDTO> filteredAppointments = new ArrayList<>();
+
+        appointments.stream().filter((appointment)
+                -> (appointment.getAppStatus().equals(status))).forEachOrdered((appointment)
+                -> {
+            filteredAppointments.add(appointment);
+        });
+
+        return filteredAppointments;
+    }
+
+    protected List<AppointmentDTO> filterAppointmentsByStatuses(List<AppointmentDTO> appointments, List<String> statusList) {
+        List<AppointmentDTO> filteredAppointments = new ArrayList<>();
+
+        appointments.stream().filter((appointment)
+                -> (statusList.contains(appointment.getAppStatus()))).forEachOrdered((appointment)
+                -> {
+            filteredAppointments.add(appointment);
+        });
+
+        return filteredAppointments;
+    }
+
+    protected List<AppointmentDTO> filterAppointmentsByDate(List<AppointmentDTO> appointments, Date startDate, Date endDate) {
+        List<AppointmentDTO> filteredAppointments = new ArrayList<>();
+
+        appointments.forEach((appointment) -> {
+            Date appTime = appointment.getAppTime();
+            if (appTime.after(startDate) && appTime.before(endDate)) {
+                filteredAppointments.add(appointment);
+            }
+        });
+
+        return filteredAppointments;
+    }
+
 }

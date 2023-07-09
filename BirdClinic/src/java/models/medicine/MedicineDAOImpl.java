@@ -92,7 +92,7 @@ public class MedicineDAOImpl implements MedicineDAO {
             stm.setString(1, "%" + medicineName + "%");
             rs = stm.executeQuery();
 
-            while (rs != null) {
+            while (rs.next()) {
                 MedicineDTO result = new MedicineDTOImpl();
                 result.setMedicineID(rs.getString("medicineID"));
                 result.setMedicineName(rs.getString("medicineName"));
@@ -134,7 +134,7 @@ public class MedicineDAOImpl implements MedicineDAO {
             stm = con.createStatement();
             rs = stm.executeQuery(READ_ALL_MEDICINE);
 
-            while (rs != null) {
+            while (rs.next()) {
                 MedicineDTO result = new MedicineDTOImpl();
                 result.setMedicineID(rs.getString("medicineID"));
                 result.setMedicineName(rs.getString("medicineName"));

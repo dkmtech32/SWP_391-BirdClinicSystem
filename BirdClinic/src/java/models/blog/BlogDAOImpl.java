@@ -8,12 +8,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import models.exceptions.NoSuchRecordExists;
+import models.exceptions.RecordAlreadyExists;
 import utils.DBUtils;
 
 public class BlogDAOImpl implements BlogDAO {
 
     private static final String READ_BLOG
-            = "SELECT blogID, title, uploadDatetime, category, blogContent "
+            = "SELECT blogID, title, uploadDatetime, category,  blogContent "
             + "FROM Blog "
             + "WHERE blogID = ?";
     private static final String INSERT_BLOG
@@ -21,7 +22,7 @@ public class BlogDAOImpl implements BlogDAO {
             + "VALUES (?, ?, ?, ?, ?)";
     private static final String UPDATE_BLOG
             = "UPDATE Blog "
-            + "SET title = ?, uploadDatetime = ?, category = ?, blogContent = ? "
+            + "SET title = ?, category = ?, blogContent = ? "
             + "WHERE blogID = ?";
     private static final String READ_TOP_THREE_BLOGS
             = "SELECT TOP 3 blogID, title, uploadDatetime, category, blogContent "
@@ -51,7 +52,7 @@ public class BlogDAOImpl implements BlogDAO {
             }
 
             if (blog == null) {
-                throw new NoSuchRecordExists();
+                throw new NoSuchBlogExistsException();
             }
         } finally {
             if (rs != null) {
@@ -69,9 +70,10 @@ public class BlogDAOImpl implements BlogDAO {
     }
 
     @Override
-    public void insertBlog(BlogDTO blog) throws SQLException {
+    public int insertBlog(BlogDTO blog) throws RecordAlreadyExists, SQLException {
         Connection con = null;
         PreparedStatement stm = null;
+        int result = 0;
 
         try {
             con = DBUtils.getConnection();
@@ -81,7 +83,10 @@ public class BlogDAOImpl implements BlogDAO {
             stm.setTimestamp(3, blog.getUploadDatetime());
             stm.setString(4, blog.getCategory());
             stm.setString(5, blog.getBlogContent());
-            stm.executeUpdate();
+            result = stm.executeUpdate();
+            if (result == 0) {
+                throw new BlogAlreadyExistsException();
+            }
         } finally {
             if (stm != null) {
                 stm.close();
@@ -90,6 +95,7 @@ public class BlogDAOImpl implements BlogDAO {
                 con.close();
             }
         }
+        return result;
     }
 
     @Override
@@ -110,7 +116,7 @@ public class BlogDAOImpl implements BlogDAO {
             rowsAffected = stm.executeUpdate();
 
             if (rowsAffected == 0) {
-                throw new NoSuchRecordExists();
+                throw new NoSuchBlogExistsException();
             }
         } finally {
             if (stm != null) {
@@ -123,7 +129,7 @@ public class BlogDAOImpl implements BlogDAO {
 
         return rowsAffected;
     }
-    
+
     @Override
     public List<BlogDTO> readTopThreeBlogs() throws NoSuchRecordExists, SQLException {
         Connection con = null;
@@ -147,7 +153,7 @@ public class BlogDAOImpl implements BlogDAO {
             }
 
             if (blogs.isEmpty()) {
-                throw new NoSuchRecordExists();
+                throw new NoSuchBlogExistsException();
             }
         } finally {
             if (rs != null) {
