@@ -67,22 +67,29 @@ public class DoctorPrescriptionUpdateServlet extends HttpServlet {
             Map<String, String[]> args = request.getParameterMap();
 
             switch (action) {
+
                 case "submit":
+                    service.updateRecord(args, medRec);
+                    service.updatePrescription(args, medRec, recMed);
                     if (service.prescribe(medRec, recMed)) {
                         session.removeAttribute("medicalRecord");
-                        session.removeAttribute("prescription");
+                        if (recMed != null) {
+                            session.removeAttribute("prescription");
+                        }
                         session.removeAttribute("medicines");
                     }
                     url = "/View/Appointment?appointmentID=" + medRec.getAppointment().getAppointmentID();
                     break;
                 case "add":
-                    service.updateRecord(args, medRec);
                     service.updatePrescription(args, medRec, recMed);
+                    session.setAttribute("prescription", recMed);
                     break;
                 case "remove":
                     service.updateRecord(args, medRec);
-                    args.put("quantity", new String[]{"-"+args.get("quantity")[0]});
+                    session.setAttribute("medicalRecord", medRec);
+                    args.put("quantity", new String[]{"-" + args.get("quantity")[0]});
                     service.updatePrescription(args, medRec, recMed);
+                    session.setAttribute("prescription", recMed);
                     break;
             }
 
