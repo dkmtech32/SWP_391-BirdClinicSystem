@@ -19,14 +19,15 @@ public interface MedicineDTO extends Serializable {
     String getMedicineName();
 
     BigDecimal getMedicinePrice();
-    
-    String getMedicineUnit();
+
+    String getUnit();
 
     void setMedicineID(String medicineID);
 
     void setMedicineName(String medicineName);
 
     void setMedicinePrice(BigDecimal medicinePrice);
-    
-    void setMedicineUnit(String medicineUnit);
+
+    void setUnit(String unit);
+
 }

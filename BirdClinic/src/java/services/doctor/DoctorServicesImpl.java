@@ -10,7 +10,9 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import models.appointment.AppointmentDTO;
 import models.exceptions.NoSuchRecordExists;
+import models.exceptions.RecordAlreadyExists;
 import models.medicalRecord.MedicalRecordDTO;
 import models.medicalRecord.MedicalRecordDTOImpl;
 import models.recordMedicine.RecordMedicineDTO;
@@ -114,4 +116,34 @@ public class DoctorServicesImpl extends GeneralServicesImpl {
 
         return result;
     }
+
+    public boolean prescribe(MedicalRecordDTO medRec, List<RecordMedicineDTO> recMeds)
+            throws MedicalRecordAlreadyExistsException, SQLException {
+        boolean result = false;
+
+        try {
+            result = medicalRecordDAO.insertMedicalRecord(medRec) > 0;
+            if (result) {
+                if (recMeds != null && recMeds.size() > 0) {
+                    result = recordMedicineDAO.insertMultipleRecordMedicine(recMeds) > 0;
+                }
+            }
+        } catch (RecordAlreadyExists ex) {
+            throw new MedicalRecordAlreadyExistsException(ex.getMessage());
+        }
+
+        return result;
+    }
+    
+    public List<AppointmentDTO> getDoctorAppointments() throws AppointmentDoesNotExistException, SQLException {
+        List<AppointmentDTO> apps = null;
+        
+        try {
+            apps = appointmentDAO.readAppointmentByDoctor(this.currentUser.getUserID());
+        } catch (NoSuchRecordExists ex) {
+            throw new AppointmentDoesNotExistException(ex.getMessage());
+        }
+        
+        return apps;
+    } 
 }

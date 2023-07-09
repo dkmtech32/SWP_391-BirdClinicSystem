@@ -24,5 +24,6 @@ public interface RecordMedicineDAO extends Serializable {
     List<RecordMedicineDTO> readMedicineFromRecord(String medicalRecordID) throws SQLException, NoSuchRecordExists;
 
     int updateRecordMedicine(RecordMedicineDTO recMed) throws SQLException, NoSuchRecordExists;
-    
+
+    int insertMultipleRecordMedicine(List<RecordMedicineDTO> recMeds) throws SQLException, RecordAlreadyExists;
 }

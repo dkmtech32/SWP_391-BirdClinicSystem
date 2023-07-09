@@ -132,6 +132,10 @@
         <servlet-name>CustomerDashboardCancelAppointmentServlet</servlet-name>
         <servlet-class>controllers.dashboard.customer.CustomerDashboardCancelAppointmentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DoctorDashboardAppointmentsServlet</servlet-name>
+        <servlet-class>controllers.dashboard.doctor.DoctorDashboardAppointmentsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Common/login</url-pattern>
@@ -215,6 +219,10 @@
     <servlet-mapping>
         <servlet-name>CustomerDashboardCancelAppointmentServlet</servlet-name>
         <url-pattern>/Customer/Dashboard/Appointments/Cancel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DoctorDashboardAppointmentsServlet</servlet-name>
+        <url-pattern>/Doctor/Dashboard/Appointments</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
