@@ -15,9 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.bird.BirdDTO;
 import models.service_.Service_DTO;
+import models.users.doctor.DoctorDTO;
 import services.general.AccountDoesNotExist;
 import services.customer.CustomerServices;
-import services.general.GeneralServices;
 
 /**
  *
@@ -25,7 +25,6 @@ import services.general.GeneralServices;
  */
 public class PrepareAppointmentBookServlet extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -53,7 +52,10 @@ public class PrepareAppointmentBookServlet extends HttpServlet {
                 List<BirdDTO> birds = service.getCustomerBirds();
                 request.setAttribute("birds", birds);
 
-                request.setAttribute("doctorID", doctorID);
+                if (doctorID != null) {
+                    DoctorDTO doctor = service.getDoctorInfo(doctorID);
+                    request.setAttribute("doctor", doctor);
+                }
                 List<Service_DTO> services = service.getServices(doctorID);
                 request.setAttribute("serviceList", services);
 
@@ -94,6 +96,6 @@ public class PrepareAppointmentBookServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

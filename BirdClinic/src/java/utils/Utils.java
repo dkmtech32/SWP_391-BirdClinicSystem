@@ -184,10 +184,10 @@ public class Utils {
     }
 
     public static String getFromMap(Map<String, String[]> args, String name, String def) {
-        String value = args.get(name)[0];
+        String[] value = args.get(name);
         if (value == null) {
-            value = def;
+            value = new String[]{def};
         }
-        return value;
+        return value[0];
     }
 }

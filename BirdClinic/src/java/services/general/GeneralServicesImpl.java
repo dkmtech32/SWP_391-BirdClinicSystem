@@ -14,6 +14,8 @@ import java.util.Map;
 import models.appointment.AppointmentDAO;
 import models.appointment.AppointmentDAOImpl;
 import models.appointment.AppointmentDTO;
+import models.appointmentCancel.AppointmentCancelDAO;
+import models.appointmentCancel.AppointmentCancelDAOImpl;
 import models.bird.BirdDAO;
 import models.bird.BirdDAOImpl;
 import models.bird.BirdDTO;
@@ -78,6 +80,7 @@ public class GeneralServicesImpl implements GeneralServices {
     protected final CustomerDAO customerDAO;
     protected final DoctorTimeslotDAO doctorTimeslotDAO;
     protected final FeedbackDAO feedbackDAO;
+    protected final AppointmentCancelDAO appointmentCancelDAO;
 
     protected UserDTO currentUser;
 
@@ -96,6 +99,7 @@ public class GeneralServicesImpl implements GeneralServices {
         recordMedicineDAO = new RecordMedicineDAOImpl(medicalRecordDAO, medicineDAO);
         doctorTimeslotDAO = new DoctorTimeslotDAOImpl(timeslotDAO, doctorDAO);
         feedbackDAO = new FeedbackDAOImpl(appointmentDAO);
+        appointmentCancelDAO = new AppointmentCancelDAOImpl(appointmentDAO);
     }
 
     @Override
@@ -495,7 +499,7 @@ public class GeneralServicesImpl implements GeneralServices {
 
         return ratings;
     }
-    
+
     @Override
     public List<BirdDTO> getCustomerBirds(String customerID) throws SQLException {
         List<BirdDTO> birds;
@@ -506,5 +510,18 @@ public class GeneralServicesImpl implements GeneralServices {
             birds = null;
         }
         return birds;
+    }
+
+    protected boolean changeAppointmentStatus(String appointmentID, String status)
+            throws SQLException, AppointmentDoesNotExistException {
+        boolean result = false;
+
+        try {
+            result = appointmentDAO.updateAppointmentStatus(appointmentID, status) > 0;
+        } catch (NoSuchRecordExists ex) {
+            throw new AppointmentDoesNotExistException(ex.getMessage());
+        }
+
+        return result;
     }
 }
