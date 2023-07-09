@@ -44,9 +44,9 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
     }
 
     @Override
-    public boolean updateRecord(Map<String, String[]> args, MedicalRecordDTO medicalRecord)
+    public MedicalRecordDTO updateRecord(Map<String, String[]> args, MedicalRecordDTO medicalRecord)
             throws AppointmentDoesNotExistException, SQLException {
-        boolean result = false;
+        MedicalRecordDTO result = null;
 
         try {
             if (medicalRecord == null) {
@@ -54,7 +54,7 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
                 String appointmentID = Utils.getFromMap(args, "appointmentID", "");
                 medicalRecord.setAppointment(appointmentDAO.readAppointment(appointmentID));
                 medicalRecord.setMedicalRecordID(Utils.hash(appointmentID));
-                result = true;
+                result = medicalRecord;
             } else {
                 int treatmentDays = Integer.parseInt(Utils.getFromMap(
                         args,
@@ -67,7 +67,7 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
                 medicalRecord.setTreatmentDays(treatmentDays);
                 medicalRecord.setDoctorNotes(doctorNotes);
 
-                result = true;
+                result = medicalRecord;
             }
         } catch (NoSuchRecordExists ex) {
             throw new AppointmentDoesNotExistException(ex.getMessage());
@@ -77,12 +77,12 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
     }
 
     @Override
-    public boolean updatePrescription(
+    public List<RecordMedicineDTO> updatePrescription(
             Map<String, String[]> args,
             MedicalRecordDTO medRec,
             List<RecordMedicineDTO> prescription)
             throws MedicineDoesNotExistException, SQLException {
-        boolean result = false;
+        List<RecordMedicineDTO> result = null;
 
         try {
             String medicineID = Utils.getFromMap(args, "medicineID", "");
@@ -110,7 +110,7 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
             } else {
                 prescription.add(recMed);
             }
-            result = true;
+            result = prescription;
 
         } catch (NoSuchRecordExists ex) {
             throw new MedicineDoesNotExistException(ex.getMessage());
@@ -145,7 +145,7 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
 
         try {
             apps = appointmentDAO.readAppointmentByDoctor(this.currentUser.getUserID());
-            apps = filterAppointmentsByStatus(apps, "check-in");
+//            apps = filterAppointmentsByStatus(apps, "check-in");
         } catch (NoSuchRecordExists ex) {
             throw new SQLException(ex.getMessage());
         }

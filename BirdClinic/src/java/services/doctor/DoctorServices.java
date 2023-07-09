@@ -19,15 +19,15 @@ import services.general.AppointmentDoesNotExistException;
  *
  * @author Admin
  */
-public interface DoctorServices {
+public interface DoctorServices extends Serializable{
 
     List<AppointmentDTO> getDoctorAppointments() throws SQLException;
 
     boolean prescribe(MedicalRecordDTO medRec, List<RecordMedicineDTO> recMeds) throws MedicalRecordAlreadyExistsException, SQLException;
 
-    boolean updatePrescription(Map<String, String[]> args, MedicalRecordDTO medRec, List<RecordMedicineDTO> prescription) throws MedicineDoesNotExistException, SQLException;
+    List<RecordMedicineDTO> updatePrescription(Map<String, String[]> args, MedicalRecordDTO medRec, List<RecordMedicineDTO> prescription) throws MedicineDoesNotExistException, SQLException;
 
-    boolean updateRecord(Map<String, String[]> args, MedicalRecordDTO medicalRecord) throws AppointmentDoesNotExistException, SQLException;
+    MedicalRecordDTO updateRecord(Map<String, String[]> args, MedicalRecordDTO medicalRecord) throws AppointmentDoesNotExistException, SQLException;
     
     List<MedicineDTO> getAllMedicine() throws SQLException;
 }
