@@ -236,7 +236,9 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
         boolean result = false;
 
         try {
-            result = birdDAO.deleteBird(birdID) > 0;
+            BirdDTO bird = birdDAO.readBird(birdID);
+            bird.setCustomer(null);
+            result = birdDAO.updateBird(bird) > 0;
         } catch (NoSuchRecordExists ex) {
             throw new BirdDoesNotExistException(ex.getMessage());
         }

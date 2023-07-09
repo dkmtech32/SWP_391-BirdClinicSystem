@@ -9,13 +9,13 @@ package services.doctor;
  *
  * @author Admin
  */
-public class DoctorDoesNotExist extends Exception {
+public class DoctorDoesNotExistException extends Exception {
 
     /**
      * Creates a new instance of <code>DoctorDoesNotExist</code> without detail
      * message.
      */
-    public DoctorDoesNotExist() {
+    public DoctorDoesNotExistException() {
     }
 
     /**
@@ -24,7 +24,7 @@ public class DoctorDoesNotExist extends Exception {
      *
      * @param msg the detail message.
      */
-    public DoctorDoesNotExist(String msg) {
+    public DoctorDoesNotExistException(String msg) {
         super(msg);
     }
 }

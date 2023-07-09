@@ -131,5 +131,15 @@ public class AppointmentDTOImpl implements AppointmentDTO {
         this.appStatus = appStatus;
     }
     
-    
+    @Override
+    public int compareTo(Object o) {
+        int result = 0;
+        if (o instanceof AppointmentDTO) {
+            AppointmentDTO obj = (AppointmentDTO) o;
+            
+            result = appTime.compareTo(obj.getAppTime());
+            if (result == 0) result = timeslot.compareTo(obj.getTimeslot());
+        }
+        return result;
+    }
 }
