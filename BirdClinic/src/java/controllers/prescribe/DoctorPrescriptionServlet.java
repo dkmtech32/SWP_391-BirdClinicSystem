@@ -16,9 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.medicalRecord.MedicalRecordDTO;
 import models.medicine.MedicineDTO;
-import models.recordMedicine.RecordMedicineDTO;
 import services.doctor.DoctorServices;
-import services.doctor.MedicalRecordAlreadyExistsException;
 import services.general.AppointmentDoesNotExistException;
 
 /**
@@ -47,7 +45,7 @@ public class DoctorPrescriptionServlet extends HttpServlet {
             MedicalRecordDTO medRec = (MedicalRecordDTO) session.getAttribute("medicalRecord");
             List<MedicineDTO> medicines = (List<MedicineDTO>) session.getAttribute("medicines");
             if (medRec == null) {
-                service.updateRecord(args, medRec);
+                medRec = service.updateRecord(args, medRec);
                 session.setAttribute("medicalRecord", medRec);
             }
             if (medicines == null) {
