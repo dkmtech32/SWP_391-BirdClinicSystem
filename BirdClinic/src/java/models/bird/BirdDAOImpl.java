@@ -91,7 +91,10 @@ public class BirdDAOImpl implements BirdDAO {
             if (rs.next()) {
                 result = new BirdDTOImpl();
                 result.setBirdID(rs.getString("birdID"));
-                result.setCustomer(customerDAO.readCustomer(rs.getString("customerID")));
+                String customerID = rs.getString("customerID");
+                if (customerID != null) {
+                    result.setCustomer(customerDAO.readCustomer(customerID));
+                }
                 result.setImage(imageDAO.readImage(rs.getString("imageID")));
                 result.setBirdFullname(rs.getString("birdFullName"));
                 result.setBirdGender(rs.getString("birdGender"));
@@ -201,7 +204,11 @@ public class BirdDAOImpl implements BirdDAO {
         try {
             con = DBUtils.getConnection();
             stm = con.prepareStatement(UPDATE_BIRD);
-            stm.setString(1, bird.getCustomer().getUserID());
+            if (bird.getCustomer() != null) {
+                stm.setString(1, bird.getCustomer().getUserID());
+            } else {
+                stm.setString(1, "");
+            }
             stm.setString(2, bird.getImage().getImageID());
             stm.setString(3, bird.getBirdFullname());
             stm.setString(4, bird.getBirdGender());
@@ -247,7 +254,10 @@ public class BirdDAOImpl implements BirdDAO {
             while (rs.next()) {
                 BirdDTO result = new BirdDTOImpl();
                 result.setBirdID(rs.getString("birdID"));
-                result.setCustomer(customerDAO.readCustomer(rs.getString("customerID")));
+                String customerID = rs.getString("customerID");
+                if (customerID != null) {
+                    result.setCustomer(customerDAO.readCustomer(customerID));
+                }
                 result.setImage(imageDAO.readImage(rs.getString("imageID")));
                 result.setBirdFullname(rs.getString("birdFullName"));
                 result.setBirdGender(rs.getString("birdGender"));
@@ -355,7 +365,10 @@ public class BirdDAOImpl implements BirdDAO {
                 while (rs.next()) {
                     BirdDTO bird = new BirdDTOImpl();
                     bird.setBirdID(birdID);
-                    bird.setCustomer(customerDAO.readCustomer(rs.getString("customerID")));
+                    String customerID = rs.getString("customerID");
+                    if (customerID != null) {
+                        bird.setCustomer(customerDAO.readCustomer(customerID));
+                    }
                     bird.setImage(imageDAO.readImage(rs.getString("imageID")));
                     bird.setBirdFullname(rs.getString("birdFullName"));
                     bird.setBirdGender(rs.getString("birdGender"));

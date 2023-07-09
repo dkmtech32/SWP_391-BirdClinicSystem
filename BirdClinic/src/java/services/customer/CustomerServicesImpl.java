@@ -234,7 +234,9 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
         boolean result = false;
 
         try {
-            result = birdDAO.deleteBird(birdID) > 0;
+            BirdDTO bird = birdDAO.readBird(birdID);
+            bird.setCustomer(null);
+            result = birdDAO.updateBird(bird) > 0;
         } catch (NoSuchRecordExists ex) {
             throw new BirdDoesNotExistException(ex.getMessage());
         }
@@ -350,7 +352,7 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
 
             result = feedbackDAO.insertFeedback(feedback) > 0;
         } catch (NoSuchRecordExists ex) {
-            Logger.getLogger(CustomerServicesImpl.class.getName()).log(Level.SEVERE, null, ex);
+            throw new AppointmentDoesNotExistException(ex.getMessage());
         } catch (SQLException ex) {
             if (ex.getMessage().toLowerCase().contains("foreign")) {
                 throw new AppointmentDoesNotExistException(ex.getMessage());

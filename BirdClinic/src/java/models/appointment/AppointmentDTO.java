@@ -16,7 +16,7 @@ import models.users.doctor.DoctorDTO;
  *
  * @author Admin
  */
-public interface AppointmentDTO extends Serializable {
+public interface AppointmentDTO extends Serializable, Comparable {
 
     String getAppStatus();
 

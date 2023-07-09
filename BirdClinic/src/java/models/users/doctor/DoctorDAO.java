@@ -35,4 +35,7 @@ public interface DoctorDAO extends UserDAO {
     int updateDoctor(DoctorDTO doctor) 
             throws SQLException, NoSuchRecordExists;
     
+    List<DoctorDTO> readDoctorsBySpeciality(String specialityID)
+            throws SQLException, NoSuchRecordExists;
+    
 }
