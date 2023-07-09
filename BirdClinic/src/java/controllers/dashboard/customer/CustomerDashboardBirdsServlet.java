@@ -44,7 +44,7 @@ public class CustomerDashboardBirdsServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        String url = "/Customer/dashboard-customer-appointments.jsp";
+        String url = "/Customer/dashboard-customer-birds.jsp";
         try {
             CustomerServices service = (CustomerServices) session.getAttribute("service");
             List<BirdDTO> birds = service.getCustomerBirds();

@@ -31,7 +31,7 @@ public class CustomerDashboardCancelAppointmentServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
@@ -49,7 +49,7 @@ public class CustomerDashboardCancelAppointmentServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
@@ -68,8 +68,7 @@ public class CustomerDashboardCancelAppointmentServlet extends HttpServlet {
             ex.printStackTrace();
             request.setAttribute("error-message", "Something went wrong. Please try again.");
         } finally {
-            request.setAttribute("url", url);
-            request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);
+            response.sendRedirect(request.getContextPath() + url);
         }
     }
 
