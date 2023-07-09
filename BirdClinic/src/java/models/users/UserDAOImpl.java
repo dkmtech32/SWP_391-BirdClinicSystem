@@ -94,7 +94,7 @@ public class UserDAOImpl implements UserDAO {
                 result.setGender(rs.getString("gender"));
                 result.setUserRole(rs.getString("userRole"));
                 result.setUserName(rs.getString("userName"));
-                result.setStatus_(rs.getBoolean("status_"));
+                result.setStatus_(rs.getString("status_").equals("active"));
                 result.setPhoneNumber(rs.getString("phoneNumber"));
             }
 
@@ -141,7 +141,7 @@ public class UserDAOImpl implements UserDAO {
                 result.setGender(rs.getString("gender"));
                 result.setUserRole(rs.getString("userRole"));
                 result.setUserName(username);
-                result.setStatus_(rs.getBoolean("status_"));
+                result.setStatus_(rs.getString("status_").equals("active"));
                 result.setPhoneNumber(rs.getString("phoneNumber"));
             }
         } finally {
@@ -183,7 +183,7 @@ public class UserDAOImpl implements UserDAO {
                 result.setGender(rs.getString("gender"));
                 result.setUserRole(userRole);
                 result.setUserName(null);
-                result.setStatus_(rs.getBoolean("status_"));
+                result.setStatus_(rs.getString("status_").equals("active"));
                 result.setPhoneNumber(rs.getString("phoneNumber"));
 
                 if (users == null) {
@@ -229,7 +229,7 @@ public class UserDAOImpl implements UserDAO {
             stm.setString(7, user.getEmail());
             stm.setString(8, user.getUserRole());
             stm.setString(9, user.getPhoneNumber());
-            stm.setBoolean(10, user.isStatus_());
+            stm.setString(10, user.isStatus_()?"active":"banned");
 
             result = stm.executeUpdate();
 
@@ -291,7 +291,7 @@ public class UserDAOImpl implements UserDAO {
             stm.setString(5, user.getEmail());
             stm.setString(6, user.getUserRole());
             stm.setString(7, user.getPhoneNumber());
-            stm.setBoolean(8, user.isStatus_());
+            stm.setString(8, user.isStatus_()?"active":"banned");
             stm.setString(9, user.getUserID());
 
             result = stm.executeUpdate();
@@ -363,7 +363,7 @@ public class UserDAOImpl implements UserDAO {
                 result.setGender(rs.getString("gender"));
                 result.setUserRole(rs.getString("userRole"));
                 result.setUserName(userName);
-                result.setStatus_(rs.getBoolean("status_"));
+                result.setStatus_(rs.getString("status_").equals("active"));
                 result.setPhoneNumber(rs.getString("phoneNumber"));
             }
             if (result == null) {
@@ -407,7 +407,7 @@ public class UserDAOImpl implements UserDAO {
                 result.setGender(rs.getString("gender"));
                 result.setUserRole(rs.getString("userRole"));
                 result.setUserName(rs.getString("userName"));
-                result.setStatus_(rs.getBoolean("status_"));
+                result.setStatus_(rs.getString("status_").equals("active"));
                 result.setPhoneNumber(rs.getString("phoneNumber"));
 
                 if (userList == null) {
@@ -458,7 +458,7 @@ public class UserDAOImpl implements UserDAO {
                     result.setGender(rs.getString("gender"));
                     result.setUserRole(rs.getString("userRole"));
                     result.setUserName(rs.getString("userName"));
-                    result.setStatus_(rs.getBoolean("status_"));
+                    result.setStatus_(rs.getString("status_").equals("active"));
                     result.setPhoneNumber(rs.getString("phoneNumber"));
 
                     if (userList == null) {
