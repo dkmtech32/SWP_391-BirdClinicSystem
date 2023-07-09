@@ -40,7 +40,7 @@ public class DoctorPrescriptionServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        String url = "/Doctor/prescription.jsp";
+        String url = "/Doctor/add-prescription.jsp";
         try {
             DoctorServices service = (DoctorServices) session.getAttribute("service");
             Map<String, String[]> args = request.getParameterMap();
