@@ -8,8 +8,7 @@ package services.staff;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Map;
 import models.appointment.AppointmentDTO;
 import models.exceptions.NoSuchRecordExists;
 import models.service_.Service_DTO;
@@ -19,12 +18,13 @@ import services.doctor.DoctorDoesNotExistException;
 import services.general.AccountDoesNotExist;
 import services.general.AppointmentDoesNotExistException;
 import services.general.GeneralServicesImpl;
+import utils.Utils;
 
 /**
  *
  * @author Admin
  */
-public class StaffServicesImpl extends GeneralServicesImpl {
+public class StaffServicesImpl extends GeneralServicesImpl implements StaffServices {
 
     public StaffServicesImpl(UserDTO user) throws AccountDoesNotExist {
         if (user.getUserRole().toLowerCase().equals("staff")) {
@@ -34,6 +34,7 @@ public class StaffServicesImpl extends GeneralServicesImpl {
         }
     }
 
+    @Override
     public boolean updateAppointmentDoctor(String appointmentID, String doctorID)
             throws DoctorDoesNotExistException, AppointmentDoesNotExistException, SQLException {
         boolean result = false;
@@ -56,6 +57,23 @@ public class StaffServicesImpl extends GeneralServicesImpl {
         return result;
     }
 
+    @Override
+    public boolean updateAppointmentPayment(String appointmentID, String payment)
+            throws AppointmentDoesNotExistException, SQLException {
+        boolean result = false;
+
+        try {
+            AppointmentDTO appointment = appointmentDAO.readAppointment(appointmentID);
+            appointment.setPayment(payment);
+            result = appointmentDAO.updateAppointment(appointment) > 0;
+        } catch (NoSuchRecordExists ex) {
+            throw new AppointmentDoesNotExistException(ex.getMessage());
+        }
+
+        return result;
+    }
+
+    @Override
     public List<DoctorDTO> checkDoctor(AppointmentDTO appointment)
             throws AppointmentDoesNotExistException, DoctorDoesNotExistException, SQLException {
         List<DoctorDTO> result = null;
@@ -75,6 +93,32 @@ public class StaffServicesImpl extends GeneralServicesImpl {
         return result;
     }
 
+    @Override
+    public boolean cancelAppointment(String appointmentID)
+            throws AppointmentDoesNotExistException, SQLException {
+        boolean result = false;
+
+        try {
+            AppointmentDTO appointment = appointmentDAO.readAppointment(appointmentID);
+            String newStatus;
+            switch (appointment.getAppStatus().toLowerCase()) {
+                case "processing":
+                case "confirm":
+                    newStatus = "cancelled";
+                    break;
+                default:
+                    newStatus = appointment.getAppStatus();
+            }
+
+            result = appointmentDAO.updateAppointmentStatus(appointmentID, newStatus) > 0;
+        } catch (NoSuchRecordExists ex) {
+            throw new AppointmentDoesNotExistException(ex.getMessage());
+        }
+
+        return result;
+    }
+
+    @Override
     public boolean updateAppointment(String appointmentID)
             throws AppointmentDoesNotExistException, DoctorDoesNotExistException, SQLException {
         boolean result = false;
@@ -113,12 +157,13 @@ public class StaffServicesImpl extends GeneralServicesImpl {
 
         return result;
     }
-    
-    public boolean updateService_(String serviceID, float servicePrice, String serviceName) 
+
+    @Override
+    public boolean updateService_(String serviceID, float servicePrice, String serviceName)
             throws ServiceDoesNotExistException, SQLException {
         boolean result = false;
         BigDecimal price = BigDecimal.valueOf(servicePrice);
-        
+
         try {
             Service_DTO service = serviceDAO.readService_(serviceID);
             service.setServicePrice(price);
@@ -127,6 +172,14 @@ public class StaffServicesImpl extends GeneralServicesImpl {
         } catch (NoSuchRecordExists ex) {
             throw new ServiceDoesNotExistException(ex.getMessage());
         }
+
+        return result;
+    }
+    
+    public boolean addBlog(Map<String, String[]> args) throws BlogAlreadyExistsException, SQLException {
+        boolean result = false;
+        
+        String title = Utils.getFromMap(args, "title", "");
         
         return result;
     }
