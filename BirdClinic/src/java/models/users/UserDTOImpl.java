@@ -158,6 +158,7 @@ public class UserDTOImpl implements UserDTO {
         this.setGender(user.getGender());
         this.setUserRole(user.getUserRole());
         this.setPhoneNumber(user.getPhoneNumber());
+        this.setStatus_(user.isStatus_());
     }
 
     @Override
@@ -172,7 +173,7 @@ public class UserDTOImpl implements UserDTO {
         user.setGender(this.getGender());
         user.setUserRole(this.getUserRole());
         user.setPhoneNumber(this.getPhoneNumber());
-
+        user.setStatus_(this.isStatus_());
         return user;
     }
 }

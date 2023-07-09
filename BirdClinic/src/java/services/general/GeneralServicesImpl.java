@@ -404,7 +404,7 @@ public class GeneralServicesImpl implements GeneralServices {
         String gender = Utils.getFromMap(args, "gender", currentUser.getUserName());
         String phoneNumber = Utils.getFromMap(args, "phone-number", currentUser.getPhoneNumber());
         try {
-            if (userDAO.readUserByEmailUserName(email, username) != null) {
+            if (!username.equals(currentUser.getUserName()) && !email.equals(currentUser.getEmail()) && userDAO.readUserByEmailUserName(email, username) != null) {
                 throw new AccountAlreadyExistsException();
             }
 

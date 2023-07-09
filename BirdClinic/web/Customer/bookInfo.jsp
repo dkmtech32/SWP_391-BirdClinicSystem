@@ -137,7 +137,7 @@
                                             </div>
                                             <div class="col-md-12 col-sm-12">
                                                 <div class="form-group">													
-                                                    <textarea class="form-control" rows="4" placeholder="Describe bird's symtoms"></textarea>
+                                                    <textarea name="notes" class="form-control" rows="4" placeholder="Describe bird's symtoms"></textarea>
                                                     <div class="invalid-feedback">Example invalid custom select feedback</div>
                                                 </div>
                                             </div>

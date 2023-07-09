@@ -207,7 +207,7 @@ public class BirdDAOImpl implements BirdDAO {
             if (bird.getCustomer() != null) {
                 stm.setString(1, bird.getCustomer().getUserID());
             } else {
-                stm.setString(1, "");
+                stm.setString(1, null);
             }
             stm.setString(2, bird.getImage().getImageID());
             stm.setString(3, bird.getBirdFullname());
