@@ -47,13 +47,13 @@
             <!-- /Page Content -->
 
             <!-- Footer -->
-            <jsp:include page="Common/footer.jsp"/>
+            <jsp:include page="../Common/footer.jsp"/>
             <!-- /Footer -->
         </div>
         <!-- /Main Wrapper -->
 
         <!-- Script -->
-        <jsp:include page="Common/script.jsp"/>
+        <jsp:include page="../Common/script.jsp"/>
         <!-- /Script -->
     </body>
 </html>
