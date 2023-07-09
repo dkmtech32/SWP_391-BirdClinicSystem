@@ -61,12 +61,12 @@
                         </div>
                         <!--end row-->
 
-                        <form class="mt-4">
+                        <form class="mt-4" accept-charset="utf-8" method='POST' action="<c:url value="/Update/Profile"/>">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Username</label>
-                                        <input name="name" id="name" type="text" class="form-control"
+                                        <input name="username" id="name" type="text" class="form-control"
                                                value="${sessionScope.service.currentUser.userName}" />
                                     </div>
                                 </div>
@@ -75,7 +75,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Full name</label>
-                                        <input name="name" id="name2" type="text" class="form-control"
+                                        <input name="full-name" id="name2" type="text" class="form-control"
                                                value="${sessionScope.service.currentUser.fullName}" />
                                     </div>
                                 </div>
@@ -93,7 +93,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Phone</label>
-                                        <input name="number" id="number" type="text"
+                                        <input name="phone-number" id="number" type="text"
                                                class="form-control" value="${sessionScope.service.currentUser.phoneNumber}" />
                                     </div>
                                 </div>
@@ -102,7 +102,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Gender</label>
-                                        <select class="form-control time-during" >
+                                        <select name="gender" class="form-control time-during" >
                                             <option value="male" <c:if test="${sessionScope.service.currentUser.gender =='male'}"> selected</c:if>>Male</option>
                                             <option value="female" <c:if test="${sessionScope.service.currentUser.gender =='female'}"> selected</c:if>>Female</option>
                                             <option value="unknown" <c:if test="${sessionScope.service.currentUser.gender =='unknown'}"> selected</c:if>>Unknown</option>
@@ -114,7 +114,7 @@
                                     <div class="col-md-12">
                                         <div class="mb-3">
                                             <label class="form-label">Address</label>
-                                            <input name="degree" id="text" type="text" class="form-control"
+                                            <input name="customer-address" id="text" type="text" class="form-control"
                                                    value="${sessionScope.service.currentUser.customerAddress}" />
                                         </div>
                                     </div>

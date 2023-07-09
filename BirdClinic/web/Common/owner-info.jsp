@@ -54,6 +54,8 @@
                                 <div class="form-control">${appointment.bird.customer.phoneNumber}</div> 
                             </div>
                         </div>
+                            
+                           
                     </div>
                 </div>
             </div>

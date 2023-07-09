@@ -110,7 +110,7 @@
                             </div>
                         </div>
                         <a class="dropdown-item" href="<c:url value="/Dashboard/Appointments"/>">Dashboard</a>
-                        <a class="dropdown-item" href="<c:url value="/Customer/custAccountInfo"/>">Profile Settings</a>
+                        <a class="dropdown-item" href="<c:url value="/Update/Profile"/>">Profile Settings</a>
                         <a class="dropdown-item" href="<c:url value="/logout"/>">Logout</a>
                     </div>
                 </li>

@@ -54,6 +54,7 @@ public class UpdateProfileServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        request.setCharacterEncoding("UTF-8");
         String url = "/Common/dashboard-profile-setting.jsp";
         HttpSession session = request.getSession();
         GeneralServices service = (GeneralServices) session.getAttribute("service");
