@@ -33,52 +33,12 @@
                     </div>
                     <div class="prescription">
                         <div class="col-md-12">
-                            <table class="table table-bordered" >
-                                <h2>General Information</h2>
-                                <thead>
-                                    <tr>
-                                        <th>Date of diagnosis</th>
-                                        <th>Appointment Time</th>
-                                        <th>Service</th>
-                                        <th>Owner's Note</th>
-                                        <th>Diagnosis</th>
-                                        <th>Doctor's Note</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr >
-                                        <td>${appointment.appTime}</td>
-                                        <td>${medicalRecord.recordTime}</td>
-                                        <td>${appointment.service_.serviceName}</td>
-                                        <td style="word-wrap: break-word; max-width: 300px;">${appointment.notes}</td> <!-- chưa có -->
-                                        <td>${medicalRecord.diagnosis}</td>
-                                        <td style="word-wrap: break-word; max-width: 300px;">${medicalRecord.doctorNotes}</td>  <!-- chưa có -->                    
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table class="table table-bordered" >
-                                <h2>Medicines</h2>
-                                <thead>
-                                    <tr>
-                                        <th>Medicine</th>
-                                        <th>Quantity</th>
-                                        <!--                    <th>Unit</th>-->
-                                        <th>Description</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <c:forEach var="med" items="${recordMedicines}">
-                                        <tr>
-                                            <td>${med.medicine.medicineName}</td>
-                                            <td>${med.quantity} (${med.medicine.unit})</td>
-                                            <!--                    <td></td>  chưa có, này nghĩa là đơn vị (2 viên, 2 gram, vv) -->
-                                            <td>${med.description}</td>
-                                        </tr>
-                                    </c:forEach>
-                                </tbody>
-                            </table>                       
+                            <jsp:include page="../Common/appointment-general-info.jsp"/>
+                            <jsp:include page="../Common/appointment-medicine-list.jsp"/>                       
                         </div>
-                       
+                        <jsp:include page="../Customer/give-feedback.jsp"/>
+                        <!-- <jsp:include page="../Common/owner-feedback.jsp"/>  chỉ hiện khi user đưa feedback rồi -->
+                        <jsp:include page="../Common/payment-info.jsp"/>
                     </div>
                 </div>
             </div>
