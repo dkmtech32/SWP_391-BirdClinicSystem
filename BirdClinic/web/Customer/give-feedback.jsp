@@ -36,5 +36,6 @@
                 </div>
             </div>
         </div> <!-- từ đây là hết phần feedback-->
+        <jsp:include page="../Common/script.jsp"/>
     </body>
 </html>
