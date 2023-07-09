@@ -35,8 +35,6 @@ public class MedicalRecordDTOImpl implements MedicalRecordDTO {
         this.doctorNotes = doctorNotes;
     }
 
-    
-
     @Override
     public String getMedicalRecordID() {
         return medicalRecordID;

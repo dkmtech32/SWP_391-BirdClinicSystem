@@ -16,7 +16,7 @@ public class MedicineDTOImpl implements MedicineDTO {
     private String medicineID;
     private String medicineName;
     private BigDecimal medicinePrice;
-    private String medicineUnit;
+    private String unit;
 
     public MedicineDTOImpl() {
     }
@@ -25,20 +25,10 @@ public class MedicineDTOImpl implements MedicineDTO {
         this.medicineID = medicineID;
         this.medicineName = medicineName;
         this.medicinePrice = medicinePrice;
-                this.medicineUnit = medicineUnit;
+        this.unit = medicineUnit;
 
     }
-
-    public String getMedicineUnit() {
-        return medicineUnit;
-    }
-
-    public void setMedicineUnit(String medicineUnit) {
-        this.medicineUnit = medicineUnit;
-    }
-
-
-
+    
     @Override
     public String getMedicineID() {
         return medicineID;
@@ -68,6 +58,18 @@ public class MedicineDTOImpl implements MedicineDTO {
     public void setMedicinePrice(BigDecimal medicinePrice) {
         this.medicinePrice = medicinePrice;
     }
+
+    @Override
+    public String getUnit() {
+        return unit;
+    }
+
+    @Override
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+    
+    
 
     @Override
     public int hashCode() {
