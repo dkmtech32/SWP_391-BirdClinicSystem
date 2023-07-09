@@ -6,7 +6,6 @@
 package utils;
 
 import java.awt.Desktop;
-import java.awt.Insets;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -22,7 +21,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
-import static javax.servlet.SessionTrackingMode.URL;
 import org.zefer.pd4ml.PD4Constants;
 import org.zefer.pd4ml.PD4ML;
 

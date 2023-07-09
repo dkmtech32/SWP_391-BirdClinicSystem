@@ -5,6 +5,7 @@
  */
 package models.blog;
 
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
 import models.exceptions.NoSuchRecordExists;
@@ -13,7 +14,7 @@ import models.exceptions.NoSuchRecordExists;
  *
  * @author Admin
  */
-public interface BlogDAO {
+public interface BlogDAO extends Serializable {
 
     void insertBlog(BlogDTO blog) throws SQLException;
 
