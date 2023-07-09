@@ -52,7 +52,63 @@
                                                         <td>
                                                             <h2 class="table-avatar">
                                                                 <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
-                                                                    <img class="avatar-img rounded-circle" src="../assets/images/doctors/${appointment.bird.customer.image.imageURLName}" alt="User Image" />
+                                                                    <img class="avatar-img rounded-circle" src="../assets/images/client/${appointment.bird.customer.image.imageURLName}" alt="User Image" />
+                                                                </a>
+                                                                <a href="doctor-profile.jsp">${appointment.bird.customer.fullName} </a> 
+                                                            </h2>
+                                                        </td>
+                                                        <td>${appointment.appTime}<span class="d-block text-info">${appointment.timeslot.timeSlot}</span></td>
+                                                        <td>
+                                                            <h2 class="table-avatar">
+                                                                <a href="<c:url value="/View/Bird?birdID=${appointment.bird.birdID}"/>" class="avatar avatar-sm mr-2"
+                                                                   ><img class="avatar-img rounded-circle" src="../assets/images/bird/${appointment.bird.image.imageURLName}" alt="User Image"
+                                                                      /></a>
+                                                                <a href="<c:url value="/View/Bird?birdID=${appointment.bird.birdID}"/>">${appointment.bird.birdFullname}</a>
+                                                            </h2>
+                                                        </td>
+                                                        <td>${appointment.bird.breed}</td>
+                                                        <td>${appointment.service_.serviceName}</td>
+
+                                                        <td class="text-right">
+                                                            <div class="table-action">
+                                                                <a href="<c:url value="/View/Appointment?appointmentID=${appointment.appointmentID}"/>" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                <a href="<c:url value=''/>" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
+
+                                                            </div>
+                                                        </td>
+
+                                                    </tr>
+                                                </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Upcoming Appointment Tab -->
+                        <!-- Today Appointment Tab -->
+                        <div class="tab-pane" id="today-appointments">
+                            <div class="card card-table mb-0">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-center mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Customer Name</th>
+                                                    <th>Appointment Date</th>
+                                                    <th>Bird Name</th>
+                                                    <th>Bird Breed</th>
+                                                    <th class="text-center">Service</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <c:forEach var="appointment" items="${requestScope.appointments}">
+                                                    <tr>
+                                                        <td>
+                                                            <h2 class="table-avatar">
+                                                                <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                    <img class="avatar-img rounded-circle" src="../assets/images/client/${appointment.bird.customer.image.imageURLName}" alt="User Image" />
                                                                 </a>
                                                                 <a href="doctor-profile.jsp">${appointment.bird.customer.fullName} </a> 
                                                             </h2>
@@ -83,59 +139,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- /Upcoming Appointment Tab -->
-<!-- Today Appointment Tab -->
-                        <div class="tab-pane" id="today-appointments">
-                            <div class="card card-table mb-0">
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-hover table-center mb-0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Customer Name</th>
-                                                    <th>Appointment Date</th>
-                                                    <th>Bird Name</th>
-                                                    <th>Bird Breed</th>
-                                                    <th class="text-center">Service</th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <c:forEach>
-                                                    <tr>
-                                                        <td>
-                                                            <h2 class="table-avatar">
-                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
-                                                                      /></a>
-                                                                <a href="patient-profile.jsp">${customer.name}</a>
-                                                            </h2>
-                                                        </td>
-                                                        <td>${app.appTime}<span class="d-block text-info">${app.timeslot}</span></td>
-                                                        <td>
-                                                            <h2 class="table-avatar">
-                                                                <a href="../Common/bird-details.jsp" class="avatar avatar-sm mr-2"
-                                                                   ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
-                                                                      /></a>
-                                                                <a href="../Common/bird-details.jsp">${bird.birdFullname}</a>
-                                                            </h2>
-                                                        </td>
-                                                        <td>${bird.breed}</td>
-                                                        <td>${appointment.service_}</td>
-                                                        <td class="text-right">
-                                                            <div class="table-action">
-                                                                <a href="client-appointments-details-for-doctor-today.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                <a href="add-prescription.jsp" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </c:forEach>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <!-- /Today Appointment Tab -->
 
                         <!-- Done Appointment Tab -->
@@ -155,32 +158,34 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach>
+                                                <c:forEach var="appointment" items="${requestScope.appointments}">
                                                     <tr>
                                                         <td>
                                                             <h2 class="table-avatar">
-                                                                <a href="patient-profile.jsp" class="avatar avatar-sm mr-2"
-                                                                   ><img class="avatar-img rounded-circle" src="assets/img/patients/patient.jpg" alt="User Image"
-                                                                      /></a>
-                                                                <a href="patient-profile.jsp">${customer.name}</a>
+                                                                <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                    <img class="avatar-img rounded-circle" src="../assets/images/client/${appointment.bird.customer.image.imageURLName}" alt="User Image" />
+                                                                </a>
+                                                                <a href="doctor-profile.jsp">${appointment.bird.customer.fullName} </a> 
                                                             </h2>
                                                         </td>
-                                                        <td>${app.appTime}<span class="d-block text-info">${app.timeslot}</span></td>
+                                                        <td>${appointment.appTime}<span class="d-block text-info">${appointment.timeslot.timeSlot}</span></td>
                                                         <td>
                                                             <h2 class="table-avatar">
-                                                                <a href="../Common/bird-details.jsp" class="avatar avatar-sm mr-2"
-                                                                   ><img class="avatar-img rounded-circle" src="assets/img/bird/bird-2.webp" alt="User Image"
+                                                                <a href="<c:url value="/View/Bird?birdID=${appointment.bird.birdID}"/>" class="avatar avatar-sm mr-2"
+                                                                   ><img class="avatar-img rounded-circle" src="../assets/images/bird/${appointment.bird.image.imageURLName}" alt="User Image"
                                                                       /></a>
-                                                                <a href="../Common/bird-details.jsp">${bird.birdFullname}</a>
+                                                                <a href="<c:url value="/View/Bird?birdID=${appointment.bird.birdID}"/>">${appointment.bird.birdFullname}</a>
                                                             </h2>
                                                         </td>
-                                                        <td>${bird.breed}</td>
-                                                        <td>${appointment.service_}</td>
+                                                        <td>${appointment.bird.breed}</td>
+                                                        <td>${appointment.service_.serviceName}</td>
+
                                                         <td class="text-right">
                                                             <div class="table-action">
-                                                                <a href="../Common/client-appointments-details.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                <a href="<c:url value="/View/Appointment?appointmentID=${appointment.appointmentID}"/>" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                             </div>
                                                         </td>
+
                                                     </tr>
                                                 </c:forEach>
                                             </tbody>
@@ -189,7 +194,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- /Done Appointment Tab -->
                     </div>
                 </div>

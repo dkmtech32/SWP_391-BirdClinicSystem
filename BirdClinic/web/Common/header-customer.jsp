@@ -118,5 +118,4 @@
             </ul>
         </nav>
     </header>
-    <jsp:include page="../Common/script.jsp"/>
 </html>

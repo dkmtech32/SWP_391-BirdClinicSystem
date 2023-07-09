@@ -32,6 +32,5 @@
                 </tr>
             </tbody>
         </table>
-        <jsp:include page="../Common/script.jsp"/>
     </body>
 </html>
