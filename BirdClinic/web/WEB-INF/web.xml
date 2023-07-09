@@ -136,6 +136,14 @@
         <servlet-name>DoctorDashboardAppointmentsServlet</servlet-name>
         <servlet-class>controllers.dashboard.doctor.DoctorDashboardAppointmentsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DoctorPrescriptionServlet</servlet-name>
+        <servlet-class>controllers.prescribe.DoctorPrescriptionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DoctorPrescriptionUpdateServlet</servlet-name>
+        <servlet-class>controllers.prescribe.DoctorPrescriptionUpdateServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Common/login</url-pattern>
@@ -223,6 +231,14 @@
     <servlet-mapping>
         <servlet-name>DoctorDashboardAppointmentsServlet</servlet-name>
         <url-pattern>/Doctor/Dashboard/Appointments</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DoctorPrescriptionServlet</servlet-name>
+        <url-pattern>/Doctor/Prescription</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DoctorPrescriptionUpdateServlet</servlet-name>
+        <url-pattern>/Doctor/Prescription/Update</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -108,7 +108,7 @@ public class GeneralServicesImpl implements GeneralServices {
         password = Utils.hash(password);
         boolean result = false;
         try {
-            currentUser = userDAO.loginUser(username, password);
+            UserDTO user = userDAO.loginUser(username, password);
             result = true;
         } catch (NoSuchRecordExists ex) {
             throw new AccountDoesNotExist(ex.getMessage());
@@ -394,6 +394,7 @@ public class GeneralServicesImpl implements GeneralServices {
         String fullName = Utils.getFromMap(args, "full-name", currentUser.getFullName());
         String email = Utils.getFromMap(args, "email", currentUser.getUserName());
         String gender = Utils.getFromMap(args, "gender", currentUser.getUserName());
+        String phoneNumber = Utils.getFromMap(args, "phone-number", currentUser.getPhoneNumber());
         try {
             if (userDAO.readUserByEmailUserName(email, username) != null) {
                 throw new AccountAlreadyExistsException();
@@ -404,6 +405,7 @@ public class GeneralServicesImpl implements GeneralServices {
             user.setUserName(username);
             user.setGender(gender);
             user.setFullName(fullName);
+            user.setPhoneNumber(phoneNumber);
 
             result = userDAO.updateUser(user) > 0;
             currentUser.copyUser(user);

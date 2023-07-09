@@ -155,8 +155,6 @@ public class CustomerDAOImpl extends UserDAOImpl implements CustomerDAO {
         int result = 0;
 
         try {
-            super.updateUser(customer);
-
             con = DBUtils.getConnection();
             stm = con.prepareStatement(UPDATE_CUSTOMER);
             stm.setDate(1, customer.getDob());
