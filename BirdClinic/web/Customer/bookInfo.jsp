@@ -55,7 +55,7 @@
                                     <!-- Checkout Form -->
                                     <form action="<c:url value="/Customer/bookAppointment"/>" method="POST">
                                         <c:if test="${not empty doctor}">
-                                            <input value="${doctor.doctorID}" name="doctorID" id="doctorID" hidden="hidden"/>
+                                            <input value="${doctor.userID}" name="doctorID" id="doctorID" hidden="hidden"/>
                                         </c:if>
                                         <!-- Personal Information -->
                                         <div class="info-widget">
@@ -169,10 +169,10 @@
                                     <!-- Booking Doctor Info -->
                                     <div class="booking-doc-info">
                                         <a href="doctor-profile.jsp" class="booking-doc-img">
-                                            <img src="${requestScope.doctorID}" alt="User Image" />
+                                            <img src="../assets/images/doctors/${doctor.image.imageURLName}" alt="User Image" />
                                         </a>
                                         <div class="booking-info">
-                                            <h4><a href="doctor-profile.jsp">BirdLover Clinic</a></h4>
+                                            <h4><a href="doctor-profile.jsp">${doctor.fullName}</a></h4>
                                             <div class="clinic-details">
                                                 <p class="doc-location"><i class="fas fa-map-marker-alt"></i> Long Bien, Hanoi</p>
                                             </div>

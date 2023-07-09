@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <div class="col-md-7 col-lg-8 col-xl-9">
+        <div class="col-md-6 col-lg-7 col-xl-8">
             <div class="card">
                 <div class="card-body">
                     <div class="row form-row">
@@ -23,40 +23,35 @@
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="form-group">
-                                <label>First Name</label>
-                                <div class="form-control">${customer.firstName}</div>
+                                <label>Full Name</label>
+                                <div class="form-control">${appointment.bird.customer.fullName}</div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-group">
-                                <label>Last Name</label>
-                                <div class="form-control">${customer.lastName}</div>
-                            </div>
-                        </div>
+                        
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Date of Birth</label>
                                 <div class="cal-icon">
-                                    <div class="form-control datetimepicker">${customer.dob}</div>
+                                    <div class="form-control datetimepicker">${appointment.bird.customer.dob}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Address</label>
-                                <div class="form-control">${customer.customerAddress}</div>
+                                <div class="form-control">${appointment.bird.customer.customerAddress}</div>
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Email</label>
-                                <div class="form-control">${customer.email}</div>
+                                <div class="form-control">${appointment.bird.customer.email}</div>
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Mobile</label>
-                                <div class="form-control">${customer.phoneNumber}</div> 
+                                <div class="form-control">${appointment.bird.customer.phoneNumber}</div> 
                             </div>
                         </div>
                     </div>
