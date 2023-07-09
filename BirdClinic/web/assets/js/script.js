@@ -461,4 +461,14 @@ $('#specialty-selector').change(function() {
   
 
 
-
+//confirm deletion
+function confirmDelete() {
+      var result = confirm("Are you sure you want to delete?");
+      if (result) {
+        // User clicked 'OK', perform deletion here
+        alert("Deleted successfully!");
+      } else {
+        // User clicked 'Cancel', do nothing or handle accordingly
+        alert("Deletion canceled.");
+      }
+    }

@@ -194,9 +194,7 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
             String birdGender = args.get("bird-gender")[0];
             String breed = args.get("breed")[0];
             String band_chip = args.get("band_chip")[0];
-            float birdWeight = Float.parseFloat(args.get("bird-weight")[0]);
-            String sexingMethod = args.get("sexing-method")[0];
-            String medicalHistory = args.get("medical-history")[0];
+            float birdWeight = Float.parseFloat(args.get("bird-weight")[0])/1000;
             Date hatchingDate = Date.valueOf(args.get("hatching-date")[0]);
             String featherColor = args.get("feather-color")[0];
 
@@ -211,8 +209,8 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
             bird.setBreed(breed);
             bird.setBand_Chip(band_chip);
             bird.setBirdWeight(birdWeight);
-            bird.setSexingMethod(sexingMethod);
-            bird.setMedicalHistory(medicalHistory);
+            bird.setSexingMethod("");
+            bird.setMedicalHistory(null);
             bird.setHatchingDate(hatchingDate);
             bird.setFeatherColor(featherColor);
 
