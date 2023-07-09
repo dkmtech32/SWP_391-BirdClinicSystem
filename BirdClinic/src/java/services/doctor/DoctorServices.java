@@ -19,7 +19,7 @@ import services.general.AppointmentDoesNotExistException;
  *
  * @author Admin
  */
-public interface DoctorServices extends Serializable {
+public interface DoctorServices {
 
     List<AppointmentDTO> getDoctorAppointments() throws SQLException;
 
