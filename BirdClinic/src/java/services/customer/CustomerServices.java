@@ -12,6 +12,7 @@ import models.appointment.AppointmentAlreadyExistsException;
 import models.appointment.AppointmentDTO;
 import models.bird.BirdAlreadyExistsException;
 import models.bird.BirdDTO;
+import services.general.AppointmentDoesNotExistException;
 import services.general.BirdDoesNotExistException;
 import services.general.GeneralServices;
 
@@ -28,8 +29,13 @@ public interface CustomerServices extends GeneralServices {
     boolean deleteBird(String birdID) throws BirdDoesNotExistException, SQLException;
 
     List<AppointmentDTO> getCustomerAppointments() throws SQLException;
-    
+
     List<BirdDTO> getCustomerBirds() throws SQLException;
 
     boolean updateBird(Map<String, String[]> args) throws BirdDoesNotExistException, SQLException;
+
+    boolean cancelAppointment(String appointmentID, String reason)
+            throws SQLException, AppointmentDoesNotExistException;
+
+    boolean addFeedback(Map<String, String[]> args) throws AppointmentDoesNotExistException, SQLException;
 }

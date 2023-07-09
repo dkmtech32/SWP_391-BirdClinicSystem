@@ -120,6 +120,18 @@
         <servlet-name>CustomerDashboardUpdateBirdServlet</servlet-name>
         <servlet-class>controllers.dashboard.customer.CustomerDashboardUpdateBirdServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CustomerDashboardInsertBirdServlet</servlet-name>
+        <servlet-class>controllers.dashboard.customer.CustomerDashboardInsertBirdServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CustomerDashboardDeleteBirdServlet</servlet-name>
+        <servlet-class>controllers.dashboard.customer.CustomerDashboardDeleteBirdServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CustomerDashboardCancelAppointmentServlet</servlet-name>
+        <servlet-class>controllers.dashboard.customer.CustomerDashboardCancelAppointmentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Common/login</url-pattern>
@@ -191,6 +203,18 @@
     <servlet-mapping>
         <servlet-name>CustomerDashboardUpdateBirdServlet</servlet-name>
         <url-pattern>/Customer/Dashboard/Birds/update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerDashboardInsertBirdServlet</servlet-name>
+        <url-pattern>/Customer/Dashboard/Bird/Insert</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerDashboardDeleteBirdServlet</servlet-name>
+        <url-pattern>/Customer/Dashboard/Birds/Delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerDashboardCancelAppointmentServlet</servlet-name>
+        <url-pattern>/Customer/Dashboard/Appointments/Cancel</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
