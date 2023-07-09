@@ -32,7 +32,7 @@ public class AppointmentCancelDAOImpl implements AppointmentCancelDAO {
             + "FROM AppointmentCancel "
             + "WHERE appointmentID = ?;";
     private static final String INSERT_APPOINTMENT_CANCEL
-            = "INSERT INTO AppointmentCancel (appointmentID, reason) "
+            = "INSERT INTO AppointmentCancel (appointmentID) "
             + "VALUES (?, ?);";
 
     @Override

@@ -33,9 +33,9 @@ public class DashboardServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
 
-        String forwardURL = request.getServletPath() + request.getPathInfo();
+        String forwardURL = request.getServletPath() + request.getPathInfo() + "?" + request.getQueryString();
         if (request.getQueryString() != null && !request.getQueryString().trim().equals("")) {
-            forwardURL = request.getServletPath() + request.getPathInfo() + request.getQueryString();
+            forwardURL = request.getServletPath() + request.getPathInfo() + "?" + request.getQueryString();
         }
         try {
             if (!request.getPathInfo().contains("Update")) {
@@ -43,7 +43,7 @@ public class DashboardServlet extends HttpServlet {
                 String userRole = services.getCurrentUser().getDisplayRole();
                 forwardURL = "/" + userRole + forwardURL;
             } else {
-                forwardURL = request.getPathInfo();
+                forwardURL = request.getPathInfo() + "?" + request.getQueryString();
             }
         } catch (NullPointerException ex) {
             forwardURL = "/Common/login";
