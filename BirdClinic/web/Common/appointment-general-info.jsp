@@ -4,6 +4,7 @@
     Author     : ASUS
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,12 +23,12 @@
             </thead>
             <tbody>
                 <tr >
-                    <td>${appoitment.date}</td>
+                    <td>${appointment.appTime}</td>
                     <td>${medicalRecord.recordTime}</td>
-                    <td>${appoitment.service}</td>
-                    <td style="word-wrap: break-word; max-width: 300px;">${appoitment.ownerNote}</td> <!-- chưa có -->
+                    <td>${appointment.service_.serviceName}</td>
+                    <td style="word-wrap: break-word; max-width: 300px;">${appointment.notes}</td> <!-- chưa có -->
                     <td>${medicalRecord.diagnosis}</td>
-                    <td style="word-wrap: break-word; max-width: 300px;">${medicalRecord.doctorNote}</td>  <!-- chưa có -->
+                    <td style="word-wrap: break-word; max-width: 300px;">${medicalRecord.doctorNotes}</td>  <!-- chưa có -->                    
                 </tr>
             </tbody>
         </table>

@@ -6,6 +6,7 @@
 package services.general;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
@@ -42,6 +43,8 @@ public interface GeneralServices extends Serializable {
     List<RecordMedicineDTO> viewRecordMeds(String medicalRecordID) throws SQLException;
     
     FeedbackDTO viewFeedback(String appointmentID) throws SQLException;
+    
+    UserDTO viewAccount(String userID)throws AccountDoesNotExistException, SQLException;
 
     boolean register(Map<String, String[]> args)
             throws AccountAlreadyExistsException, PasswordsNotEqualException, SQLException, PasswordNotStrongException;
@@ -57,7 +60,7 @@ public interface GeneralServices extends Serializable {
     TimeslotDTO getTimeslot(String TimeslotID) throws SQLException;
 
     boolean updateAccount(Map<String, String[]> args)
-            throws AccountAlreadyExistsException, PasswordNotStrongException, SQLException;
+            throws AccountAlreadyExistsException, SQLException;
 
     boolean enableAccount(String userID) throws AccountDoesNotExist, SQLException;
 
@@ -69,6 +72,14 @@ public interface GeneralServices extends Serializable {
     List<SpecialityDTO> getSpecialities()
             throws SQLException;
     
-    public boolean isDoctorFree(String doctorID, String timeslotID, Date appDate) 
+    boolean isDoctorFree(String doctorID, String timeslotID, Date appDate) 
             throws SQLException, AccountDoesNotExistException;
+    
+    List<FeedbackDTO> getDoctorFeedbacks(String doctorID) throws SQLException;
+    
+    List<FeedbackDTO> getCustomerFeedbacks(String customerID) throws SQLException;
+    
+    BigDecimal getDoctorRatings(String doctorID) throws SQLException;
+
+    List<BirdDTO> getCustomerBirds(String customerID) throws SQLException;
 }

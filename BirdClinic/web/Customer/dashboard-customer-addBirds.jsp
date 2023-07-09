@@ -12,7 +12,7 @@
         <div class="card">
             <div class="card-body">
                 <!-- Profile Settings Form -->
-                <form>
+                <form method='POST' action="<c:url value='/Customer/Dashboard/Birds/Insert'/>">
                     <div class="row form-row">
                         <div class="col-12 col-md-12">
                             <div class="form-group">
@@ -33,15 +33,15 @@
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Bird's Name</label>
-                                <input type="text" class="form-control" value="Chó" required />
+                                <input type="text" class="form-control" name='bird-full-name' required />
                             </div>
                         </div>
 
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Hatching Date</label>
-                                <div class="cal-icon">
-                                    <input type="text" class="form-control datetimepicker" value="24-07-2022" required/>
+                                <div class="">
+                                    <input type="date" class="form-control " name='hatching-date' required/>
                                 </div>
                             </div>
                         </div>
@@ -49,16 +49,16 @@
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Breed</label>
-                                <input type="text" class="form-control" value="Sparrow" required/>
+                                <input type="text" class="form-control" name='breed' required/>
                             </div>
                         </div>
 
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Sex</label>
-                                <select class="form-control" required>
-                                    <option>Male</option>
-                                    <option>Female</option>
+                                <select class="form-control" name='bird-gender' required>
+                                    <option value='male'>Male</option>
+                                    <option value='female'>Female</option>
                                 </select>
                             </div>
                         </div>
@@ -66,18 +66,25 @@
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Weight (in grams)</label>
-                                <input type="number" class="form-control" name="weight" placeholder="Enter weight in grams" step="0.1" value="35" required />
+                                <input type="number" class="form-control" name="bird-weight" placeholder="Enter weight in grams" step="0.1" value="" required />
+                            </div>
+                        </div>
+                        
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label>Color</label>
+                                <input type="text" class="form-control" name='feather-color' required />
                             </div>
                         </div>
 
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Band/Microchip ID</label>
-                                <input type="text" class="form-control" name="weight" value="emdeplam123" required/>
+                                <input type="text" class="form-control" name="band_chip" value="" required/>
                             </div>
                         </div>
 
-                        <div class="submit-section">
+                        <div class="submit-section mt-4">
                             <button type="submit" class="btn btn-primary submit-btn">Save Changes</button>
                         </div>
                 </form>

@@ -54,8 +54,8 @@
                                 <div class="card-body">
                                     <!-- Checkout Form -->
                                     <form action="<c:url value="/Customer/bookAppointment"/>" method="POST">
-                                        <c:if test="${not empty doctorID}">
-                                            <input value="${doctorID}" name="doctorID" id="doctorID" hidden="hidden"/>
+                                        <c:if test="${not empty doctor}">
+                                            <input value="${doctor.userID}" name="doctorID" id="doctorID" hidden="hidden"/>
                                         </c:if>
                                         <!-- Personal Information -->
                                         <div class="info-widget">
@@ -105,8 +105,9 @@
                                                     <div class="form-group card-label">
                                                         <label>Choose your bird</label>
                                                         <select class="form-control" name="birdID" required="required">
+                                                            <option value="">--</option>
                                                             <c:forEach var="bird" items="${birds}" >
-                                                                <option value="">--</option> <!-- Default option with empty value -->
+                                                                 <!-- Default option with empty value -->
                                                                 <option value="${bird.birdID}">${bird.birdFullname}</option>
                                                             </c:forEach>
                                                         </select>
@@ -123,7 +124,7 @@
                                                 <div class="form-group card-label">
                                                     <label>Choose service</label>
                                                     <select class="form-control" name="serviceID" required>
-                                                        <option value="">--</option> <!-- Default option with empty value -->
+                                                        <option value="" data-service-price='-'>--</option> <!-- Default option with empty value -->
                                                         <c:forEach var="service" items="${serviceList}">
                                                             <option value="${service.serviceID}" data-service-price="${service.servicePrice}">
                                                                 ${service.serviceName}
@@ -136,7 +137,7 @@
                                             </div>
                                             <div class="col-md-12 col-sm-12">
                                                 <div class="form-group">													
-                                                    <textarea class="form-control" rows="4" placeholder="Describe bird's symtoms"></textarea>
+                                                    <textarea name="notes" class="form-control" rows="4" placeholder="Describe bird's symtoms"></textarea>
                                                     <div class="invalid-feedback">Example invalid custom select feedback</div>
                                                 </div>
                                             </div>
@@ -169,10 +170,10 @@
                                     <!-- Booking Doctor Info -->
                                     <div class="booking-doc-info">
                                         <a href="doctor-profile.jsp" class="booking-doc-img">
-                                            <img src="assets/img/logo.png" alt="User Image" />
+                                            <img src="../assets/images/doctors/${doctor.image.imageURLName}" alt="User Image" />
                                         </a>
                                         <div class="booking-info">
-                                            <h4><a href="doctor-profile.jsp">BirdLover Clinic</a></h4>
+                                            <h4><a href="doctor-profile.jsp">${doctor.fullName}</a></h4>
                                             <div class="clinic-details">
                                                 <p class="doc-location"><i class="fas fa-map-marker-alt"></i> Long Bien, Hanoi</p>
                                             </div>

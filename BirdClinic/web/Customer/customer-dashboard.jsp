@@ -191,7 +191,7 @@
                                                                                 <td class="text-right">
                                                                                     <div class="table-action">
                                                                                         <!-- <a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>-->
-                                                                                        <a href="client-appointments-details-feedback.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                                        <a href="../Common/client-appointments-details.jsp" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                                                     </div>
                                                                                 </td>
                                                                             </c:when>

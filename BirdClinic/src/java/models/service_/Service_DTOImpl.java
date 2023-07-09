@@ -5,6 +5,7 @@
  */
 package models.service_;
 
+import java.math.BigDecimal;
 import models.speciality.SpecialityDTO;
 
 /**
@@ -15,12 +16,12 @@ public class Service_DTOImpl implements Service_DTO {
     private String serviceID;
     private SpecialityDTO speciality;
     private String serviceName;
-    private int servicePrice;
+    private BigDecimal servicePrice;
 
     public Service_DTOImpl() {
     }
 
-    public Service_DTOImpl(String serviceID, SpecialityDTO speciality, String serviceName, int servicePrice) {
+    public Service_DTOImpl(String serviceID, SpecialityDTO speciality, String serviceName, BigDecimal servicePrice) {
         this.serviceID = serviceID;
         this.speciality = speciality;
         this.serviceName = serviceName;
@@ -58,12 +59,12 @@ public class Service_DTOImpl implements Service_DTO {
     }
 
     @Override
-    public int getServicePrice() {
+    public BigDecimal getServicePrice() {
         return servicePrice;
     }
 
     @Override
-    public void setServicePrice(int servicePrice) {
+    public void setServicePrice(BigDecimal servicePrice) {
         this.servicePrice = servicePrice;
     }
     

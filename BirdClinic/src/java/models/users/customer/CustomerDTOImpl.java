@@ -15,16 +15,14 @@ import models.users.UserDTOImpl;
  */
 public class CustomerDTOImpl extends UserDTOImpl implements CustomerDTO {
     private Date dob;
-    private String phoneNumber;
     private String customerAddress;
 
     public CustomerDTOImpl() {
     }
 
-    public CustomerDTOImpl(UserDTO user, Date dob, String phoneNumber, String customerAddress) {
+    public CustomerDTOImpl(UserDTO user, Date dob, String customerAddress) {
         super.copyUser(user);
         this.dob = dob;
-        this.phoneNumber = phoneNumber;
         this.customerAddress = customerAddress;
     }
 
@@ -40,16 +38,6 @@ public class CustomerDTOImpl extends UserDTOImpl implements CustomerDTO {
     @Override
     public void setDob(Date dob) {
         this.dob = dob;
-    }
-
-    @Override
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    @Override
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     @Override

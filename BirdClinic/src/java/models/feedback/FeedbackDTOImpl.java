@@ -5,6 +5,7 @@
  */
 package models.feedback;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import models.appointment.AppointmentDTO;
 
@@ -18,17 +19,21 @@ public class FeedbackDTOImpl implements FeedbackDTO {
     private String feedbackContent;
     private String title;
     private Timestamp feedbackTime;
+    private BigDecimal rating;
 
     public FeedbackDTOImpl() {
     }
 
-    public FeedbackDTOImpl(String feedbackID, AppointmentDTO appointment, String feedbackContent, String title, Timestamp feedbackTime) {
+    public FeedbackDTOImpl(String feedbackID, AppointmentDTO appointment, String feedbackContent, String title, Timestamp feedbackTime, BigDecimal rating) {
         this.feedbackID = feedbackID;
         this.appointment = appointment;
         this.feedbackContent = feedbackContent;
         this.title = title;
         this.feedbackTime = feedbackTime;
+        this.rating = rating;
     }
+
+    
 
     @Override
     public String getFeedbackID() {
@@ -78,6 +83,16 @@ public class FeedbackDTOImpl implements FeedbackDTO {
     @Override
     public void setFeedbackTime(Timestamp feedbackTime) {
         this.feedbackTime = feedbackTime;
+    }
+
+    @Override
+    public BigDecimal getRating() {
+        return rating;
+    }
+
+    @Override
+    public void setRating(BigDecimal rating) {
+        this.rating = rating;
     }
     
     

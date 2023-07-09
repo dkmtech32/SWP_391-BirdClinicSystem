@@ -5,6 +5,8 @@
  */
 package services.general;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
@@ -12,9 +14,14 @@ import java.util.Map;
 import models.appointment.AppointmentDAO;
 import models.appointment.AppointmentDAOImpl;
 import models.appointment.AppointmentDTO;
+import models.appointmentCancel.AppointmentCancelDAO;
+import models.appointmentCancel.AppointmentCancelDAOImpl;
 import models.bird.BirdDAO;
 import models.bird.BirdDAOImpl;
 import models.bird.BirdDTO;
+import models.blog.BlogDAO;
+import models.blog.BlogDAOImpl;
+import models.blog.BlogDTO;
 import models.doctorTimeslot.DoctorTimeslotDAO;
 import models.doctorTimeslot.DoctorTimeslotDAOImpl;
 import models.exceptions.NoSuchRecordExists;
@@ -76,6 +83,8 @@ public class GeneralServicesImpl implements GeneralServices {
     protected final CustomerDAO customerDAO;
     protected final DoctorTimeslotDAO doctorTimeslotDAO;
     protected final FeedbackDAO feedbackDAO;
+    protected final AppointmentCancelDAO appointmentCancelDAO;
+    protected final BlogDAO blogDAO;
 
     protected UserDTO currentUser;
 
@@ -94,6 +103,8 @@ public class GeneralServicesImpl implements GeneralServices {
         recordMedicineDAO = new RecordMedicineDAOImpl(medicalRecordDAO, medicineDAO);
         doctorTimeslotDAO = new DoctorTimeslotDAOImpl(timeslotDAO, doctorDAO);
         feedbackDAO = new FeedbackDAOImpl(appointmentDAO);
+        appointmentCancelDAO = new AppointmentCancelDAOImpl(appointmentDAO);
+        blogDAO = new BlogDAOImpl();
     }
 
     @Override
@@ -102,8 +113,11 @@ public class GeneralServicesImpl implements GeneralServices {
         password = Utils.hash(password);
         boolean result = false;
         try {
-            currentUser = userDAO.loginUser(username, password);
-            result = true;
+            UserDTO user = userDAO.loginUser(username, password);
+            if (user.isStatus_()) {
+                currentUser = user;
+                result = true;
+            }
         } catch (NoSuchRecordExists ex) {
             throw new AccountDoesNotExist(ex.getMessage());
         }
@@ -198,8 +212,6 @@ public class GeneralServicesImpl implements GeneralServices {
             if (currentUser != null) {
                 bird = birdDAO.readBird(birdID);
             }
-        } catch (SQLException ex) {
-            throw ex;
         } catch (NoSuchRecordExists ex) {
             throw new BirdDoesNotExistException(ex.getMessage());
         }
@@ -217,8 +229,6 @@ public class GeneralServicesImpl implements GeneralServices {
             if (currentUser != null) {
                 appointment = appointmentDAO.readAppointment(appointmentID);
             }
-        } catch (SQLException ex) {
-            throw ex;
         } catch (NoSuchRecordExists ex) {
             throw new AppointmentDoesNotExistException(ex.getMessage());
         }
@@ -234,15 +244,13 @@ public class GeneralServicesImpl implements GeneralServices {
             if (currentUser != null) {
                 medicalRecord = medicalRecordDAO.readMedicalRecordByAppointment(appointmentID);
             }
-        } catch (SQLException ex) {
-            throw ex;
         } catch (NoSuchRecordExists ex) {
             medicalRecord = null;
         }
 
         return medicalRecord;
     }
-    
+
     @Override
     public FeedbackDTO viewFeedback(String appointmentID) throws SQLException {
         FeedbackDTO feedback = null;
@@ -251,8 +259,6 @@ public class GeneralServicesImpl implements GeneralServices {
             if (currentUser != null) {
                 feedback = feedbackDAO.readFeedbackByAppointment(appointmentID);
             }
-        } catch (SQLException ex) {
-            throw ex;
         } catch (NoSuchRecordExists ex) {
             feedback = null;
         }
@@ -268,13 +274,32 @@ public class GeneralServicesImpl implements GeneralServices {
             if (currentUser != null) {
                 recMeds = recordMedicineDAO.readMedicineFromRecord(medicalRecordID);
             }
-        } catch (SQLException ex) {
-            throw ex;
         } catch (NoSuchRecordExists ex) {
             recMeds = null;
         }
 
         return recMeds;
+    }
+
+    @Override
+    public UserDTO viewAccount(String userID) throws AccountDoesNotExistException, SQLException {
+        UserDTO user = null;
+
+        try {
+            if (currentUser != null) {
+                user = userDAO.readUser(userID);
+                if (user.getUserRole().toLowerCase().equals("customer")) {
+                    user = customerDAO.readCustomer(userID);
+                }
+                if (user.getUserRole().toLowerCase().equals("doctor")) {
+                    user = doctorDAO.readDoctor(userID);
+                }
+            }
+        } catch (NoSuchRecordExists ex) {
+            throw new AccountDoesNotExistException(ex.getMessage());
+        }
+
+        return user;
     }
 
     @Override
@@ -340,18 +365,18 @@ public class GeneralServicesImpl implements GeneralServices {
 
         return services;
     }
-    
+
     @Override
-    public boolean isDoctorFree(String doctorID, String timeslotID, Date appDate) 
+    public boolean isDoctorFree(String doctorID, String timeslotID, Date appDate)
             throws SQLException, AccountDoesNotExistException {
         boolean result = false;
-        
+
         try {
             result = appointmentDAO.readAppointmentByDocTime(doctorID, timeslotID, appDate) == null;
         } catch (NoSuchRecordExists ex) {
             throw new AccountDoesNotExistException(ex.getMessage());
         }
-        
+
         return result;
     }
 
@@ -377,8 +402,9 @@ public class GeneralServicesImpl implements GeneralServices {
         String fullName = Utils.getFromMap(args, "full-name", currentUser.getFullName());
         String email = Utils.getFromMap(args, "email", currentUser.getUserName());
         String gender = Utils.getFromMap(args, "gender", currentUser.getUserName());
+        String phoneNumber = Utils.getFromMap(args, "phone-number", currentUser.getPhoneNumber());
         try {
-            if (userDAO.readUserByEmailUserName(email, username) != null) {
+            if (!username.equals(currentUser.getUserName()) && !email.equals(currentUser.getEmail()) && userDAO.readUserByEmailUserName(email, username) != null) {
                 throw new AccountAlreadyExistsException();
             }
 
@@ -387,6 +413,7 @@ public class GeneralServicesImpl implements GeneralServices {
             user.setUserName(username);
             user.setGender(gender);
             user.setFullName(fullName);
+            user.setPhoneNumber(phoneNumber);
 
             result = userDAO.updateUser(user) > 0;
             currentUser.copyUser(user);
@@ -408,9 +435,7 @@ public class GeneralServicesImpl implements GeneralServices {
         boolean result = false;
 
         try {
-            if (Utils.checkPassword(nPassword)) {
-                throw new PasswordNotStrongException();
-            }
+            
 
             nPassword = Utils.hash(nPassword);
             result = userDAO.updateUserPassword(currentUser.getUserID(), nPassword) > 0;
@@ -436,5 +461,99 @@ public class GeneralServicesImpl implements GeneralServices {
         }
 
         return doctor;
+    }
+
+    @Override
+    public List<FeedbackDTO> getDoctorFeedbacks(String doctorID) throws SQLException {
+        List<FeedbackDTO> feedbacks = null;
+
+        try {
+            feedbacks = feedbackDAO.readFeedbackByDoctor(doctorID);
+        } catch (NoSuchRecordExists ex) {
+            feedbacks = null;
+        }
+
+        return feedbacks;
+    }
+
+    @Override
+    public List<FeedbackDTO> getCustomerFeedbacks(String customerID) throws SQLException {
+        List<FeedbackDTO> feedbacks = null;
+
+        try {
+            feedbacks = feedbackDAO.readFeedbackByCustomer(customerID);
+        } catch (NoSuchRecordExists ex) {
+            feedbacks = null;
+        }
+
+        return feedbacks;
+    }
+
+    @Override
+    public BigDecimal getDoctorRatings(String doctorID) throws SQLException {
+        BigDecimal ratings = BigDecimal.ZERO;
+        try {
+            List<FeedbackDTO> feedbacks = feedbackDAO.readFeedbackByDoctor(doctorID);
+            for (FeedbackDTO feedback : feedbacks) {
+                ratings = feedback.getRating().add(ratings);
+            }
+            if (ratings.compareTo(BigDecimal.ZERO) > 0) {
+                ratings = ratings.divide(BigDecimal.valueOf(feedbacks.size()));
+                ratings.setScale(2, RoundingMode.HALF_DOWN);
+            }
+        } catch (NoSuchRecordExists ex) {
+            ratings = BigDecimal.ZERO;
+        }
+
+        return ratings;
+    }
+
+    @Override
+    public List<BirdDTO> getCustomerBirds(String customerID) throws SQLException {
+        List<BirdDTO> birds;
+
+        try {
+            birds = birdDAO.readAllBirdByCustomer(customerID);
+        } catch (NoSuchRecordExists ex) {
+            birds = null;
+        }
+        return birds;
+    }
+
+    protected boolean changeAppointmentStatus(String appointmentID, String status)
+            throws SQLException, AppointmentDoesNotExistException {
+        boolean result = false;
+
+        try {
+            result = appointmentDAO.updateAppointmentStatus(appointmentID, status) > 0;
+        } catch (NoSuchRecordExists ex) {
+            throw new AppointmentDoesNotExistException(ex.getMessage());
+        }
+
+        return result;
+    }
+    
+    public BlogDTO viewBlog(String blogID) throws SQLException, BlogDoesNotExistException {
+        BlogDTO blog = null;
+        
+        try {
+            blog = blogDAO.readBlog(blogID);
+        } catch (NoSuchRecordExists ex) {
+            throw new BlogDoesNotExistException(ex.getMessage());
+        }
+        
+        return blog;
+    }
+    
+    public List<BlogDTO> viewIntroBlogs() throws SQLException {
+        List<BlogDTO> blog = null;
+        
+        try {
+            blog = blogDAO.readTopThreeBlogs();
+        } catch (NoSuchRecordExists ex) {
+            throw new SQLException(ex.getMessage());
+        }
+        
+        return blog;
     }
 }

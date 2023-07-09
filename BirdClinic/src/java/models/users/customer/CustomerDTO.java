@@ -18,12 +18,8 @@ public interface CustomerDTO extends UserDTO {
 
     Date getDob();
 
-    String getPhoneNumber();
-
     void setCustomerAddress(String customerAddress);
 
     void setDob(Date dob);
-
-    void setPhoneNumber(String phoneNumber);
     
 }
