@@ -30,7 +30,7 @@
                                 <div class="widget-profile pro-widget-content">
                                     <div class="profile-info-widget">
                                         <a href="#" class="booking-doc-img">
-                                            <img src="../assets/images/client/${service.currentUser.image.imageURLName}" alt="User Image" />
+                                            <img src="<c:url value='/assets/images/client/${service.currentUser.image.imageURLName}'/>" alt="User Image" />
                                         </a>
                                         <div class="profile-det-info">
                                             <h3>${service.currentUser.fullName}</h3>
@@ -47,7 +47,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="<c:url value="/Dashboard/Profile"/>">
+                                                <a href="<c:url value="/Update/Profile"/>">
                                                     <i class="fas fa-user-cog"></i>
                                                     <span>Profile Settings</span>
                                                 </a>
