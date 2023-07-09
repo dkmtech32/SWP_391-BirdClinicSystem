@@ -33,18 +33,18 @@ public class RecordMedicineDAOImpl implements RecordMedicineDAO {
     }
 
     private static final String READ_MEDICINE_BY_MEDICAL_RECORD
-            = "SELECT medicalRecordID, medicineID, quantity, description "
+            = "SELECT medicalRecordID, medicineID, quantity, description_ "
             + "FROM RecordMedicine "
             + "WHERE medicalRecordID=?";
     private static final String INSERT_RECORD_MEDICINE
-            = "INSERT INTO RecordMedicine (medicalRecordID, medicineID, quantity, description) "
+            = "INSERT INTO RecordMedicine (medicalRecordID, medicineID, quantity, description_) "
             + "VALUES (?, ?, ?, ?)";
     private static final String DELETE_RECORD_MEDICINE
             = "DELETE FROM RecordMedicine "
             + "WHERE medicalRecordID=? and medicineID=?";
     private static final String UPDATE_RECORD_MEDICINE
             = "UPDATE RecordMedicine "
-            + "SET quantity=?, description=? "
+            + "SET quantity=?, description_=? "
             + "WHERE medicalRecordID=? and medicineID=?";
 
     @Override

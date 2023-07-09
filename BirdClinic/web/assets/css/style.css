@@ -6938,3 +6938,16 @@ html.menu-opened body {
     font-size: 40px;
 }*/
 /* birdlist & assignbird (remove later) */
+
+.bird-information-boxes .col-md-6{
+    display: flex;
+}
+.bird-information-boxes .col-md-6 .information{
+    margin-left: 0.5rem;
+}
+.bird-information-boxes .col-md-6 .title{
+    font-weight: 700;
+}
+.bird-info{
+    justify-content: center;
+}
