@@ -8,6 +8,8 @@ package services.staff;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.appointment.AppointmentDTO;
 import models.exceptions.NoSuchRecordExists;
 import models.service_.Service_DTO;
@@ -109,6 +111,23 @@ public class StaffServicesImpl extends GeneralServicesImpl {
             }
         }
 
+        return result;
+    }
+    
+    public boolean updateService_(String serviceID, float servicePrice, String serviceName) 
+            throws ServiceDoesNotExistException, SQLException {
+        boolean result = false;
+        BigDecimal price = BigDecimal.valueOf(servicePrice);
+        
+        try {
+            Service_DTO service = serviceDAO.readService_(serviceID);
+            service.setServicePrice(price);
+            service.setServiceName(serviceName);
+            result = serviceDAO.updateService(service) > 0;
+        } catch (NoSuchRecordExists ex) {
+            throw new ServiceDoesNotExistException(ex.getMessage());
+        }
+        
         return result;
     }
 }
