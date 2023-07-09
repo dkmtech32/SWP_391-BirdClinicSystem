@@ -37,82 +37,97 @@
                                             <img src="<c:url value='/assets/images/bird/${medicalRecord.appointment.bird.image.imageURLName}'/>" alt="User Image">
                                         </a>
                                         <div class="profile-det-info">
-                                            <h3>${appointment.bird.birdFullname}</h3>
+                                            <h3>${medicalRecord.appointment.bird.birdFullname}</h3>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row bird-information-boxes">
-                                    <!--                <div class="col-12 col-md-6">
-                                                        <p class="header">Bird's name</p>
-                                                        <p class="information"></p>
-                                                    </div>-->
+                                <!--                <div class="col-12 col-md-6">
+                                                    <p class="header">Bird's name</p>
+                                                    <p class="information"></p>
+                                                </div>-->
+                                <div class="row">
+
                                     <div class="col-12 col-md-6">
-                                        <p class="title">Hatching Day: </p>
-                                        <p class="information">${appointment.bird.hatchingDate}</p>
+                                        <div class="form-group">
+                                            <label>Hatching Day</label>
+                                            <div class="form-control">${medicalRecord.appointment.bird.hatchingDate}</div>
+                                        </div>
                                     </div>
                                     <div class="col-12 col-md-6">
-                                        <p class="title">Breed: </p>
-                                        <p class="information">${appointment.bird.breed}</p>
+                                        <div class="form-group">
+                                            <label>Breed</label>
+                                            <div class="form-control">${medicalRecord.appointment.bird.breed}</div>
+                                        </div>
                                     </div>
                                     <div class="col-12 col-md-6">
-                                        <p class="title">Sex: </p>
-                                        <p class="information">${appointment.bird.birdGender}</p>
+                                        <div class="form-group">
+                                            <label>Sex</label>
+                                            <div class="form-control">${medicalRecord.appointment.bird.birdGender}</div>
+                                        </div>
                                     </div>
                                     <div class="col-12 col-md-6">
-                                        <p class="title">Weight: </p>
-                                        <p class="information">${appointment.bird.birdWeight}</p>
+                                        <div class="form-group">
+                                            <label>Weight</label>
+                                            <div class="form-control">${medicalRecord.appointment.bird.birdWeight}</div>
+                                        </div>
                                     </div>
                                     <div class="col-12 col-md-6">
-                                        <p class="title">Microchip: </p>  
-                                        <p class="information">${appointment.bird.band_Chip}</p>
+                                        <div class="form-group">
+                                            <label>Microchip</label>
+                                            <div class="form-control">${medicalRecord.appointment.bird.band_Chip}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>Feather Color</label>
+                                            <div class="form-control">${medicalRecord.appointment.bird.featherColor}</div>
+                                        </div>
                                     </div>
                                     <!--                            <div class="col-12 col-md-6">
                                                                     <p>Sex Method</p>
                                                                     <p class="information"></p>
                                                                 </div>-->
-                                    <div class="col-12 col-md-6">
-                                        <p class="title">Feather Color: </p>
-                                        <p class="information">${appointment.bird.featherColor}</p>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="form-group">
-                                        <label>Full Name</label>
-                                        <div class="form-control">${appointment.bird.customer.fullName}</div>
-                                    </div>
-                                </div>
 
-                                <div class="col-12 col-md-6">
-                                    <div class="form-group">
-                                        <label>Date of Birth</label>
-                                        <div class="cal-icon">
-                                            <div class="form-control datetimepicker">${appointment.bird.customer.dob}</div>
+
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>Owner's Name</label>
+                                            <div class="form-control">${medicalRecord.appointment.bird.customer.fullName}</div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="form-group">
-                                        <label>Address</label>
-                                        <div class="form-control">${appointment.bird.customer.customerAddress}</div>
+
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>Date of Birth</label>
+                                            <div class="cal-icon">
+                                                <div class="form-control datetimepicker">${medicalRecord.appointment.bird.customer.dob}</div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <div class="form-control">${appointment.bird.customer.email}</div>
+                                    <div class="col-12 col-md-12">
+                                        <div class="form-group">
+                                            <label>Address</label>
+                                            <div class="form-control">${medicalRecord.appointment.bird.customer.customerAddress}</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="form-group">
-                                        <label>Mobile</label>
-                                        <div class="form-control">${appointment.bird.customer.phoneNumber}</div> 
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <div class="form-control">${medicalRecord.appointment.bird.customer.email}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>Mobile</label>
+                                            <div class="form-control">${medicalRecord.appointment.bird.customer.phoneNumber}</div> 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-8">
                                 <h3 class="text-center prescription">Prescription:</h3>
 
-                                <form action="" method="">
+                                <form action="<c:url value='/Doctor/Prescription/Update'/>" method="post">
                                     <!-- Medicine Information -->
                                     <div class="info-widget">
                                         <h4 class="card-title">Add medicine</h4>
@@ -142,7 +157,7 @@
 
                                         </div>							
                                         <!-- <div class="exist-customer">Existing Customer? <a href="#">Click here to login</a></div> -->
-                                        <button name="" type="submit" class="btn btn-primary submit-btn">Add</button>
+                                        <button value="add" name="action" type="submit" class="btn btn-primary submit-btn">Add</button>
                                     </div>
                                     <!-- /Medicine Information -->						
                                 </form>
@@ -163,7 +178,7 @@
                                             <tbody>
                                                 <c:forEach var="list" items="${sessionScope.prescription}" varStatus="loop">
                                                     <tr >
-                                                        <td data-field="#">${loop.index}</td>
+                                                        <td data-field="#">${loop.count}</td>
                                                         <td data-field="medicine">${list.medicine.medicineName}</td>
                                                         <td data-field="quantity">${list.quantity}</td>
                                                         <td data-field="unit">${list.medicine.unit}</td>
@@ -198,7 +213,7 @@
                     </div>
                 </div>     
 
-                <button onclick="" name="action" value="addPrescript" class="btn btn-dark d-flex justify-content-center mx-auto mt-2">
+                <button type="submit" name="action" value="submit" class="btn btn-dark d-flex justify-content-center mx-auto mt-2">
                     Submit
                 </button>
             </div>
@@ -213,6 +228,11 @@
 
         <!-- Script -->
         <jsp:include page="../Common/script.jsp"/>
+        <script>
+            $(document).ready(function () {
+                $('.js-example-basic-single').select2();
+            });
+        </script>
         <!-- /Script -->
     </body>
 </html>

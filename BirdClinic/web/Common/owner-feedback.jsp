@@ -114,7 +114,7 @@
         <div class="form-group">													
             <div class="form-control" rows="4" placeholder="Owner's feedback"
                  style="word-wrap: break-word; height: 9rem">
-                ${appoitment.ownerFeedback}
+                ${appointment.ownerFeedback}
             </div>
         </div>
     </div>
