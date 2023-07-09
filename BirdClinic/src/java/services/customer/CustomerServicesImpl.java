@@ -297,12 +297,12 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
         try {
             AppointmentDTO appointment = appointmentDAO.readAppointment(appointmentID);
             result = super.changeAppointmentStatus(appointmentID, "cancelled");
-            if (result) {
-                AppointmentCancelDTO appCancel = new AppointmentCancelDTOImpl();
-                appCancel.setAppointment(appointment);
-                appCancel.setReason(reason);
-                appointmentCancelDAO.insertAppointmentCancel(appCancel);
-            }
+//            if (result) {
+//                AppointmentCancelDTO appCancel = new AppointmentCancelDTOImpl();
+//                appCancel.setAppointment(appointment);
+////                appCancel.setReason(reason);
+//                appointmentCancelDAO.insertAppointmentCancel(appCancel);
+//            }
         } catch (NoSuchRecordExists ex) {
             throw new AppointmentDoesNotExistException(ex.getMessage());
         }
