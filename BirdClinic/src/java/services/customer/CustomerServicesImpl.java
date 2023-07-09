@@ -354,7 +354,7 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
 
             result = feedbackDAO.insertFeedback(feedback) > 0;
         } catch (NoSuchRecordExists ex) {
-            Logger.getLogger(CustomerServicesImpl.class.getName()).log(Level.SEVERE, null, ex);
+            throw new AppointmentDoesNotExistException(ex.getMessage());
         } catch (SQLException ex) {
             if (ex.getMessage().toLowerCase().contains("foreign")) {
                 throw new AppointmentDoesNotExistException(ex.getMessage());
