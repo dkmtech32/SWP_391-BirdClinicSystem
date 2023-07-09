@@ -16,7 +16,7 @@ import services.general.AccountDoesNotExist;
 import services.general.GeneralServices;
 import services.general.PasswordNotStrongException;
 import services.general.PasswordsEqualException;
-import utils.Utils;
+import services.general.PasswordsNotEqualException;
 
 /**
  *
@@ -61,16 +61,15 @@ public class UpdatePasswordServlet extends HttpServlet {
         GeneralServices service = (GeneralServices) session.getAttribute("service");
         String cPassword = request.getParameter("current-password");
         String nPassword = request.getParameter("new-password");
+        String fPassword = request.getParameter("confirm-password");
 
         try {
+            if (fPassword.equals(cPassword)) {
+                throw new PasswordsNotEqualException();
+            }
+            
             if (cPassword.equals(nPassword)) {
                 throw new PasswordsEqualException();
-            }
-
-            cPassword = Utils.hash(cPassword);
-
-            if (!service.login(service.getCurrentUser().getUserName(), cPassword)) {
-                throw new AccountDoesNotExist();
             }
 
             service.updateAccountPassword(nPassword);
@@ -85,12 +84,13 @@ public class UpdatePasswordServlet extends HttpServlet {
         } catch (PasswordsEqualException ex) {
             ex.printStackTrace();
             request.setAttribute("error-message", "New password must be different. Please try again.");
+        } catch (PasswordsNotEqualException ex) {
+            ex.printStackTrace();
         } catch (PasswordNotStrongException ex) {
             ex.printStackTrace();
             request.setAttribute("error-message", "Password needs to be stronger. Please try again.");
         } finally {
-            request.setAttribute("url", url);
-            request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);
+            response.sendRedirect(request.getContextPath() + url);
         }
     }
 
