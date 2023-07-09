@@ -7,16 +7,22 @@ package services.staff;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 import models.appointment.AppointmentDTO;
+import models.blog.BlogDTO;
+import models.blog.BlogDTOImpl;
 import models.exceptions.NoSuchRecordExists;
+import models.exceptions.RecordAlreadyExists;
+import models.feedback.FeedbackDTO;
 import models.service_.Service_DTO;
 import models.users.UserDTO;
 import models.users.doctor.DoctorDTO;
 import services.doctor.DoctorDoesNotExistException;
 import services.general.AccountDoesNotExist;
 import services.general.AppointmentDoesNotExistException;
+import services.general.BlogDoesNotExistException;
 import services.general.GeneralServicesImpl;
 import utils.Utils;
 
@@ -176,11 +182,73 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
         return result;
     }
     
+    @Override
     public boolean addBlog(Map<String, String[]> args) throws BlogAlreadyExistsException, SQLException {
         boolean result = false;
         
-        String title = Utils.getFromMap(args, "title", "");
+        String title = Utils.getFromMap(args, "blog-title", "");
+        String content = Utils.getFromMap(args, "blog-content", "");
+        String author = currentUser.getFullName();
+        String category = Utils.getFromMap(args, "category", "");
+        Timestamp uploadTime = new Timestamp(System.currentTimeMillis());
+        String blogID = Utils.hash(title + author + category + uploadTime.toString());
+        
+        try {
+            BlogDTO blog = new BlogDTOImpl();
+            
+            blog.setBlogID(blogID);
+            blog.setBlogContent(content);
+            blog.setTitle(title);
+            blog.setCategory(category);
+            blog.setUploadDatetime(uploadTime);
+            
+            blogDAO.insertBlog(blog);
+            result = true;
+        } catch (RecordAlreadyExists ex) {
+            throw new BlogAlreadyExistsException(ex.getMessage());
+        }
         
         return result;
+    }
+    
+    public boolean editBlog(Map<String, String[]> args) throws BlogDoesNotExistException, SQLException {
+        boolean result = false;
+        
+        String title = Utils.getFromMap(args, "blog-title", "");
+        String content = Utils.getFromMap(args, "blog-content", "");
+        String category = Utils.getFromMap(args, "category", "");
+        Timestamp uploadTime = new Timestamp(System.currentTimeMillis());
+        String blogID = Utils.hash(title + category + uploadTime.toString());
+        
+        try {
+            BlogDTO blog = new BlogDTOImpl();
+            
+            blog.setBlogID(blogID);
+            blog.setBlogContent(content);
+            blog.setTitle(title);
+            blog.setCategory(category);
+            blog.setUploadDatetime(uploadTime);
+            
+            blogDAO.insertBlog(blog);
+            result = true;
+        } catch (RecordAlreadyExists ex) {
+            throw new BlogDoesNotExistException(ex.getMessage());
+        }
+        
+        return result;
+    }
+    
+    
+    @Override
+    public List<FeedbackDTO> getCustomerFeedbacks(String customerID) throws SQLException {
+        List<FeedbackDTO> feedbacks = null;
+
+        try {
+            feedbacks = feedbackDAO.readFeedbackByCustomer(customerID);
+        } catch (NoSuchRecordExists ex) {
+            feedbacks = null;
+        }
+
+        return feedbacks;
     }
 }

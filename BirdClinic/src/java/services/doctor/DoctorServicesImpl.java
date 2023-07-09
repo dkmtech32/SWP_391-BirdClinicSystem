@@ -145,6 +145,7 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
 
         try {
             apps = appointmentDAO.readAppointmentByDoctor(this.currentUser.getUserID());
+            apps = filterAppointmentsByStatus(apps, "check-in");
         } catch (NoSuchRecordExists ex) {
             throw new SQLException(ex.getMessage());
         }
