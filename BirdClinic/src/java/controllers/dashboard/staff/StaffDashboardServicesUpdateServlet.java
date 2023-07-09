@@ -6,7 +6,10 @@
 package controllers.dashboard.staff;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,13 +17,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import services.doctor.DoctorDoesNotExistException;
 import services.general.AppointmentDoesNotExistException;
+import services.staff.ServiceDoesNotExistException;
 import services.staff.StaffServices;
 
 /**
  *
  * @author Admin
  */
-public class StaffDashboardAppointmentsUpdateServlet extends HttpServlet {
+public class StaffDashboardServicesUpdateServlet extends HttpServlet {
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -33,7 +37,7 @@ public class StaffDashboardAppointmentsUpdateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/Dashboard/Appointments").forward(request, response);
+        request.getRequestDispatcher("/Dashboard/Services").forward(request, response);
     }
 
     /**
@@ -52,28 +56,12 @@ public class StaffDashboardAppointmentsUpdateServlet extends HttpServlet {
 
         try {
             StaffServices service = (StaffServices) session.getAttribute("service");
-            String appointmentID = request.getParameter("appointmentID");
-            String action = request.getParameter("action");
+            String serviceID = request.getParameter("serviceID");
+            BigDecimal price = BigDecimal.valueOf(Float.valueOf(request.getParameter("service-price")));
+            String name = request.getParameter("name");
+            service.updateService_(serviceID, price.floatValue(), name);
 
-            switch (action.toLowerCase()) {
-                case "cancel":
-                    service.cancelAppointment(appointmentID);
-                    break;
-                case "update":
-                    String doctorID = request.getParameter("doctorID");
-                    String payment = request.getParameter("payment");
-                    if (doctorID != null) {
-                        service.updateAppointmentDoctor(appointmentID, doctorID);
-                    }
-                    if (payment != null) {
-                        service.updateAppointmentPayment(appointmentID, payment);
-                    }
-                    service.updateAppointment(appointmentID);
-                    break;
-            }
-        } catch (DoctorDoesNotExistException ex) {
-            ex.printStackTrace();
-        } catch (AppointmentDoesNotExistException ex) {
+        } catch (ServiceDoesNotExistException ex) {
             ex.printStackTrace();
         } catch (SQLException ex) {
             ex.printStackTrace();
