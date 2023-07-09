@@ -37,9 +37,10 @@ public class UpdatePasswordServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "../Common/dashboard-change-password.jsp";
+        String url = "/Common/dashboard-change-password.jsp";
 
         request.setAttribute("url", url);
+        request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);
     }
 
     /**
@@ -55,7 +56,7 @@ public class UpdatePasswordServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "../Common/dashboard-change-password.jsp";
+        String url = "/Common/dashboard-change-password.jsp";
         HttpSession session = request.getSession();
         GeneralServices service = (GeneralServices) session.getAttribute("service");
         String cPassword = request.getParameter("current-password");
