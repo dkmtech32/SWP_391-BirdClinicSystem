@@ -13,18 +13,16 @@
             <div class="feedback-rating">
                 <h4>Rating</h4>
                 <select class="form-control select w-75">
-                    <!--                            <option>1</option>
-                                                    <option>1.5</option>
-                                                    <option>2</option>
-                                                    <option>2.5</option>
-                                                    <option>3</option>
-                                                    <option>3.5</option>
-                                                    <option>4</option>
-                                                    <option>4.5</option>
-                                                    <option>5</option>-->
-                    <c:forEach>
-                        <option>${appoitment.rating}</option> 
-                    </c:forEach>
+                    <option>1</option>
+                    <option>1.5</option>
+                    <option>2</option>
+                    <option>2.5</option>
+                    <option>3</option>
+                    <option>3.5</option>
+                    <option>4</option>
+                    <option>4.5</option>
+                    <option>5</option>
+
                 </select>
             </div>
             <div class="col-md-11">
