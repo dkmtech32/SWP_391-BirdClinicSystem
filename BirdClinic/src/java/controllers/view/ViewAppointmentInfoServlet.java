@@ -38,16 +38,19 @@ public class ViewAppointmentInfoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String url = "/Common/appointment-info.jsp";
+
+        String url = "/Common/client-appointments-details.jsp";
         HttpSession session = request.getSession();
         GeneralServices service = (GeneralServices) session.getAttribute("service");
         String appointmentID = request.getParameter("appointmentID");
-        
+
         try {
             AppointmentDTO appointment = service.viewAppointment(appointmentID);
             MedicalRecordDTO medRec = service.viewMedicalRecord(appointmentID);
-            List<RecordMedicineDTO> recMed = service.viewRecordMeds(medRec.getMedicalRecordID());
+            List<RecordMedicineDTO> recMed = null;
+            if (medRec != null) {
+                recMed = service.viewRecordMeds(medRec.getMedicalRecordID());
+            }
             FeedbackDTO feedback = service.viewFeedback(appointmentID);
             request.setAttribute("appointment", appointment);
             request.setAttribute("medicalRecord", medRec);
@@ -58,7 +61,7 @@ public class ViewAppointmentInfoServlet extends HttpServlet {
             request.setAttribute("error-message", "Something is wrong. Please try again.");
         } catch (AppointmentDoesNotExistException ex) {
             ex.printStackTrace();
-            url = request.getRequestURI().substring(request.getContextPath().length()-1);
+            url = request.getRequestURI().substring(request.getContextPath().length() - 1);
             request.setAttribute("error-message", "Appointment does not exist. Please try again");
         } finally {
             request.getRequestDispatcher(url).forward(request, response);

@@ -44,7 +44,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <c:forEach var="bird" items="requestScope.birds">
+                                            <c:forEach var="bird" items="${requestScope.birds}">
                                             <tr>
                                                 <td>
                                                     <h2 class="table-avatar">
@@ -58,7 +58,7 @@
                                                 <td>${bird.hatchingDate}</td>
                                                 <td>${bird.birdGender}</td>
                                                 <td>${bird.birdWeight}</td>
-                                                <td>${bird.band_chip}</td>
+                                                <td>${bird.band_Chip}</td>
                                                 <td class="text-right">
                                                     <div class="table-action">
                                                         <a href="javascript:void(0);" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>

@@ -16,15 +16,28 @@ public class MedicineDTOImpl implements MedicineDTO {
     private String medicineID;
     private String medicineName;
     private BigDecimal medicinePrice;
+    private String medicineUnit;
 
     public MedicineDTOImpl() {
     }
 
-    public MedicineDTOImpl(String medicineID, String medicineName, BigDecimal medicinePrice) {
+    public MedicineDTOImpl(String medicineID, String medicineName, BigDecimal medicinePrice, String medicineUnit) {
         this.medicineID = medicineID;
         this.medicineName = medicineName;
         this.medicinePrice = medicinePrice;
+                this.medicineUnit = medicineUnit;
+
     }
+
+    public String getMedicineUnit() {
+        return medicineUnit;
+    }
+
+    public void setMedicineUnit(String medicineUnit) {
+        this.medicineUnit = medicineUnit;
+    }
+
+
 
     @Override
     public String getMedicineID() {
