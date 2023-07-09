@@ -4,6 +4,7 @@
     Author     : Legion
 --%>
 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -19,104 +20,75 @@
             <!-- Breadcrumb -->
             <jsp:include page="../Common/breadcrumb.jsp"/>
             <!-- /Breadcrumb --> 
-            <div class="container-fluid">
+            <div class="container pt-5">
                 <jsp:useBean id="blog" class="" scope="request"></jsp:useBean>
                 <c:if test="${not empty sessionScope.BLOG_DETAIL}">
                     <c:set var="detail" value="${sessionScope.BLOG_DETAIL}"/>
-                    <div class="body-container">
-                        <section class="section-head">
-                            <img src="data:images/jpg;base64,${detail.thumbnail}" draggable="false"/>
-                            <div class="desc-container">
-                                <div class="date-time">
-                                    <span>${detail.date}</span>
-                                    <span>${detail.author}</span>
-                                    <span>10 minutes reading</span>
-                                </div>
-                                <h1>
-                                    ${detail.title}
-                                </h1>
+                    <div class="d-flex flex-column text-left mb-4">
+                        <h4 class="text-secondary mb-3">Blog Detail</h4>
+                        <h1 class="mb-3">${detail.title}</h1>
+                        <div class="d-index-flex mb-2">
+                            <span>${detail.date}</span>
+                            <span class="mr-3"></i> ${detail.author}</span>
+                        </div>
+                    </div>
+                    <div class="mb-5">
+                        <img class="img-fluid w-100 mb-4" src="data:images/jpg;base64,${detail.thumbnail}" alt="Image" />
+                        <p>${detail.introduction}</p>
+                        <div>
+                            <br />
+                            <b>1. Understanding of the post Blog Detail</b> <!-- you can modify this heading if needed -->
+                            ${detail.content1}
+                            <div class="img-container">
+                                <img src="data:images/jpg;base64,${detail.contentIMG}" draggable="false"/>
                             </div>
-                        </section>
-                        <section class="section-body">
-                            <div class="upvote">
-                                <a href="#" class="triangle-up"></a>
-                                <span class="vote-count">+15</span>
-                                <a href="#" class="triangle-down"></a>
+                        </div>
+                        <div>
+                            <b>2. Building Trust and Partnership:</b> <!-- you can modify this heading if needed -->
+                            ${detail.content2}
+                        </div>
+                        <div>
+                            <br />
+                            <h5>Conclusion</h5> <!-- you can modify this heading if needed -->
+                            ${detail.inconclusion}
+                        </div>
+                    </div>
+                    <section class="section-more">
+                        <div class="heading"> 
+                            <h2>MORE BLOGS & TIPS</h2>
+                            <div>
+                                <h1>Discover more valuable insights!</h1>
                             </div>
-                            <div class="content">
-                                <div>
-                                    <!-- hard code -->
-                                    <h5>Introduction:</h5>
-                                    <!--------------->
-                                    ${detail.introduction}
-                                </div>
-                                <div>
-                                    <!-- hard code -->
-                                    <br />
-                                    <b>1. Understanding of the post Blog Detail</b> <!-- này là cái tiêu đề, mình thay đổi cũng đc-->
-                                    <!--------------->
-                                    ${detail.content1}
-                                    <!-- hard code -->
-                                    <div class="img-container">
-                                        <img src="data:images/jpg;base64,${detail.contentIMG}" draggable="false"/>
-                                    </div>
-                                    <!--------------->
-                                </div>
-                                <div>
-                                    <!-- hard code -->
-                                    <b>2. Building Trust and Partnership:</b> <!-- này là cái tiêu đề, mình thay đổi cũng đc-->
-                                    <!--------------->
-                                    ${detail.content2}
-                                </div>
-                                <div>
-                                    <!-- hard code -->
-                                    <br />
-                                    <h5>Conclusion</h5> <!-- này là cái tiêu đề, mình thay đổi cũng đc-->
-                                    <!--------------->
-                                    ${detail.inconclusion}
-                                </div>
-                            </div>
-                        </section>
-                        <section class="section-more">
-                            <!--                    Này là những cái blog khác -->
-                            <div class="heading"> 
-                                <h2>MORE BLOGS & TIPS</h2>
-                                <div>
-                                    <h1>Discover more valuable insights!</h1>
-                                </div>
-                            </div>
-
-                            <div class="blogs-container">
-
-                                <div id="blogs-slider" class="blogs-slider">
-                                    <c:forEach var="card" items="${blog.getLisofBlog('available')}">
-                                        <!-- start item -->
-                                        <div class="blog">
-                                            <div class="img-container">
-                                                <img style="" src="data:images/jpg;base64,${card.thumbnail}" draggable="false"/>
+                        </div>
+                        <div class="blogs-container">
+                            <div id="blogs-slider" class="blogs-slider">
+                                <c:forEach var="card" items="${blog.getLisofBlog('available')}">
+                                    <!-- start item -->
+                                    <div class="blog">
+                                        <div class="img-container">
+                                            <img style="" src="data:images/jpg;base64,${card.thumbnail}" draggable="false"/>
+                                        </div>
+                                        <div class="desc-container">
+                                            <h5 class="blog-title">${card.title}</h5>
+                                            <div class="date-write">
+                                                <span>May, - ${card.date}</span>
+                                                <span>${card.author}</span>
                                             </div>
-                                            <div class="desc-container">
-                                                <h5 class="blog-title">${card.title}</h5>
-                                                <div class="date-write">
-                                                    <span>May, - ${card.date}</span>
-                                                    <span>${card.author}</span>
-                                                </div>
-                                                <div class="blog-description">
-                                                    ${card.briefinfo}
-                                                </div>
-                                                <div class="button-container">
-                                                    <a href="MainController?action=view_blog_detail&blog_id=${card.blogid}">
-                                                        <button>Read more</button>
-                                                    </a>
-                                                </div>
+                                            <div class="blog-description">
+                                                ${card.briefinfo}
+                                            </div>
+                                            <div class="button-container">
+                                                <a href="MainController?action=view_blog_detail&blog_id=${card.blogid}">
+                                                    <button>Read more</button>
+                                                </a>
                                             </div>
                                         </div>
-                                    </c:forEach>
+                                    </div>
                                     <!-- end item -->
-                                </div>
+                                </c:forEach>
                             </div>
-                        </section>
-                    </div>
+                        </div>
+                    </section>
                 </c:if>
             </div>
 
