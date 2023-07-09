@@ -105,8 +105,9 @@
                                                     <div class="form-group card-label">
                                                         <label>Choose your bird</label>
                                                         <select class="form-control" name="birdID" required="required">
+                                                            <option value="">--</option>
                                                             <c:forEach var="bird" items="${birds}" >
-                                                                <option value="">--</option> <!-- Default option with empty value -->
+                                                                 <!-- Default option with empty value -->
                                                                 <option value="${bird.birdID}">${bird.birdFullname}</option>
                                                             </c:forEach>
                                                         </select>
@@ -123,7 +124,7 @@
                                                 <div class="form-group card-label">
                                                     <label>Choose service</label>
                                                     <select class="form-control" name="serviceID" required>
-                                                        <option value="">--</option> <!-- Default option with empty value -->
+                                                        <option value="" data-service-price='-'>--</option> <!-- Default option with empty value -->
                                                         <c:forEach var="service" items="${serviceList}">
                                                             <option value="${service.serviceID}" data-service-price="${service.servicePrice}">
                                                                 ${service.serviceName}

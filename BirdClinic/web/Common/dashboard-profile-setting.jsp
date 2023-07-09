@@ -13,9 +13,14 @@
             <div class="card-body">
                 <!-- Profile Settings Form -->
                 <div class="rounded shadow mt-4">
-                    <div class="p-4 border-bottom">
-                        <h6 class="mb-0">Personal Information :</h6>
-                    </div>
+                   <nav class="user-tabs mb-4">
+                    <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab">Personal Information</a>
+                        </li>
+                        
+                    </ul>
+                </nav>
 
                     <div class="p-4">
                         <div class="row align-items-center">

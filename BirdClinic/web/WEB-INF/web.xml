@@ -218,7 +218,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CustomerDashboardInsertBirdServlet</servlet-name>
-        <url-pattern>/Customer/Dashboard/Bird/Insert</url-pattern>
+        <url-pattern>/Customer/Dashboard/Birds/Insert</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CustomerDashboardDeleteBirdServlet</servlet-name>

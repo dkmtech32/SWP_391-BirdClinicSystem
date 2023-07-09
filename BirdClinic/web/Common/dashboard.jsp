@@ -53,6 +53,12 @@
                                                 </a>
                                             </li>
                                             <li>
+                                                <a href="<c:url value="/Dashboard/Birds"/>">
+                                                    <i class="fa-solid fa-dove"></i>                                                   
+                                                    <span>Bird list</span>
+                                                </a>
+                                            </li>
+                                            <li>
                                                 <a href="<c:url value="/Dashboard/Update/Password"/>">
                                                     <i class="fas fa-lock"></i>
                                                     <span>Change Password</span>
