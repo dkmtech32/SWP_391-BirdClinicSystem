@@ -14,6 +14,12 @@ import models.images.ImageDTO;
  */
 public interface UserDTO extends Serializable {
 
+    void copyUser(UserDTO user);
+
+    UserDTO copyUser();
+
+    String getDisplayRole();
+
     String getEmail();
 
     String getFullName();
@@ -22,6 +28,8 @@ public interface UserDTO extends Serializable {
 
     ImageDTO getImage();
 
+    String getPhoneNumber();
+
     String getUserID();
 
     String getUserName();
@@ -29,9 +37,7 @@ public interface UserDTO extends Serializable {
     String getUserPassword();
 
     String getUserRole();
-    
-    String getDisplayRole();
-    
+
     boolean isStatus_();
 
     void setEmail(String email);
@@ -42,6 +48,10 @@ public interface UserDTO extends Serializable {
 
     void setImage(ImageDTO image);
 
+    void setPhoneNumber(String phoneNumber);
+
+    void setStatus_(boolean status_);
+
     void setUserID(String userID);
 
     void setUserName(String userName);
@@ -50,9 +60,4 @@ public interface UserDTO extends Serializable {
 
     void setUserRole(String userRole);
     
-    void setStatus_(boolean status_);
-    
-    UserDTO copyUser();
-    
-    void copyUser(UserDTO user);
 }

@@ -5,10 +5,14 @@
  */
 package services.customer;
 
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.appointment.AppointmentAlreadyExistsException;
 import models.appointment.AppointmentDTO;
 import models.appointment.AppointmentDTOImpl;
@@ -18,6 +22,7 @@ import models.bird.BirdDTOImpl;
 import models.exceptions.NoSuchRecordExists;
 import models.exceptions.RecordAlreadyExists;
 import models.feedback.FeedbackDTO;
+import models.feedback.FeedbackDTOImpl;
 import models.images.ImageDTO;
 import models.medicalRecord.MedicalRecordDTO;
 import models.recordMedicine.RecordMedicineDTO;
@@ -25,6 +30,8 @@ import models.service_.Service_DTO;
 import models.timeslot.TimeslotDTO;
 import models.users.UserDTO;
 import models.users.customer.CustomerDTO;
+import services.general.AccountAlreadyExistsException;
+import services.general.AccountDoesNotExistException;
 import services.general.AppointmentDoesNotExistException;
 import services.general.GeneralServicesImpl;
 import services.general.BirdDoesNotExistException;
@@ -159,16 +166,16 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
 
         return recMeds;
     }
-    
+
     @Override
     public FeedbackDTO viewFeedback(String appointmentID) throws SQLException {
         FeedbackDTO feedback = super.viewFeedback(appointmentID);
-        if (feedback!= null) {
+        if (feedback != null) {
             if (!feedback.getAppointment().getBird().getCustomer().getUserID().equals(currentUser.getUserID())) {
                 feedback = null;
             }
         }
-        
+
         return feedback;
     }
 
@@ -187,9 +194,7 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
             String birdGender = args.get("bird-gender")[0];
             String breed = args.get("breed")[0];
             String band_chip = args.get("band_chip")[0];
-            float birdWeight = Float.parseFloat(args.get("bird-weight")[0]);
-            String sexingMethod = args.get("sexing-method")[0];
-            String medicalHistory = args.get("medical-history")[0];
+            float birdWeight = Float.parseFloat(args.get("bird-weight")[0])/1000;
             Date hatchingDate = Date.valueOf(args.get("hatching-date")[0]);
             String featherColor = args.get("feather-color")[0];
 
@@ -204,8 +209,8 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
             bird.setBreed(breed);
             bird.setBand_Chip(band_chip);
             bird.setBirdWeight(birdWeight);
-            bird.setSexingMethod(sexingMethod);
-            bird.setMedicalHistory(medicalHistory);
+            bird.setSexingMethod("");
+            bird.setMedicalHistory(null);
             bird.setHatchingDate(hatchingDate);
             bird.setFeatherColor(featherColor);
 
@@ -229,7 +234,9 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
         boolean result = false;
 
         try {
-            result = birdDAO.deleteBird(birdID) > 0;
+            BirdDTO bird = birdDAO.readBird(birdID);
+            bird.setCustomer(null);
+            result = birdDAO.updateBird(bird) > 0;
         } catch (NoSuchRecordExists ex) {
             throw new BirdDoesNotExistException(ex.getMessage());
         }
@@ -259,7 +266,7 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
             String medicalHistory = Utils.getFromMap(args, "medical-history", bird.getMedicalHistory());
             Date hatchingDate = Date.valueOf(Utils.getFromMap(args, "hatching-date", String.valueOf(bird.getHatchingDate())));
             String featherColor = Utils.getFromMap(args, "feather-color", bird.getFeatherColor());
-            
+
             bird.setCustomer(customer);
             bird.setImage(image);
             bird.setBirdID(birdID);
@@ -273,7 +280,7 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
             bird.setMedicalHistory(medicalHistory);
             bird.setHatchingDate(hatchingDate);
             bird.setFeatherColor(featherColor);
-            
+
             result = birdDAO.updateBird(bird) > 0;
         } catch (NoSuchRecordExists ex) {
             throw new BirdDoesNotExistException(ex.getMessage());
@@ -282,4 +289,80 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
         return result;
     }
 
+    @Override
+    public boolean cancelAppointment(String appointmentID, String reason)
+            throws SQLException, AppointmentDoesNotExistException {
+        boolean result = false;
+
+        try {
+            AppointmentDTO appointment = appointmentDAO.readAppointment(appointmentID);
+            result = super.changeAppointmentStatus(appointmentID, "cancelled");
+//            if (result) {
+//                AppointmentCancelDTO appCancel = new AppointmentCancelDTOImpl();
+//                appCancel.setAppointment(appointment);
+////                appCancel.setReason(reason);
+//                appointmentCancelDAO.insertAppointmentCancel(appCancel);
+//            }
+        } catch (NoSuchRecordExists ex) {
+            throw new AppointmentDoesNotExistException(ex.getMessage());
+        }
+        return result;
+
+    }
+    
+    @Override
+    public boolean updateAccount(Map<String, String[]> args)
+            throws AccountAlreadyExistsException, SQLException {
+        boolean result = super.updateAccount(args);
+        
+        if (result) {
+            CustomerDTO customer = (CustomerDTO)this.currentUser.copyUser();
+            String customerAddress = Utils.getFromMap(args, "customer-address", customer.getCustomerAddress());
+            if (!customerAddress.equals(customer.getCustomerAddress())) {
+                customer.setCustomerAddress(customerAddress);
+            }
+            try {
+                result = customerDAO.updateCustomer(customer) > 0;
+            } catch (NoSuchRecordExists ex) {
+                throw new AccountAlreadyExistsException(ex.getMessage());
+            }
+        }
+        
+        return result;
+    }
+
+    @Override
+    public boolean addFeedback(Map<String, String[]> args) throws AppointmentDoesNotExistException, SQLException {
+        boolean result = false;
+
+        try {
+            String appointmentID = args.getOrDefault("appointmentID", new String[]{""})[0];
+            String feedbackContent = args.getOrDefault("feedbackContent", new String[]{""})[0];
+            String title = args.getOrDefault("title", new String[]{""})[0];
+            BigDecimal rating = BigDecimal.valueOf(Long.valueOf(args.getOrDefault("rating", new String[]{""})[0]), 2);
+            Timestamp feedbackTime = new Timestamp(System.currentTimeMillis());
+
+            FeedbackDTO feedback = new FeedbackDTOImpl();
+            feedback.setFeedbackID(Utils.hash(appointmentID + feedbackTime.toString()));
+            feedback.setAppointment(appointmentDAO.readAppointment(appointmentID));
+            feedback.setFeedbackContent(feedbackContent);
+            feedback.setFeedbackTime(feedbackTime);
+            feedback.setRating(rating);
+            feedback.setTitle(title);
+
+            result = feedbackDAO.insertFeedback(feedback) > 0;
+        } catch (NoSuchRecordExists ex) {
+            throw new AppointmentDoesNotExistException(ex.getMessage());
+        } catch (SQLException ex) {
+            if (ex.getMessage().toLowerCase().contains("foreign")) {
+                throw new AppointmentDoesNotExistException(ex.getMessage());
+            } else {
+                throw ex;
+            }
+        } catch (RecordAlreadyExists ex) {
+            throw new SQLException(ex.getMessage());
+        }
+
+        return result;
+    }
 }

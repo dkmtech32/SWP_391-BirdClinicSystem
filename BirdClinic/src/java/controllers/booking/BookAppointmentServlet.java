@@ -35,7 +35,7 @@ public class BookAppointmentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect(request.getContextPath() + "/Customer/prepareBooking");
+        response.sendError(405);
     }
 
     /**
@@ -76,7 +76,7 @@ public class BookAppointmentServlet extends HttpServlet {
             }
             if (!map.isEmpty()) {
                 service.bookAppointment(map);
-                url = "/Dashboard/appointments";
+                url = "/Dashboard/Appointments";
             }
         } catch (SQLException | AppointmentAlreadyExistsException ex) {
             ex.printStackTrace();

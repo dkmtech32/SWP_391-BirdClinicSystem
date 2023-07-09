@@ -5,20 +5,24 @@
  */
 package utils;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.security.InvalidParameterException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
+import org.zefer.pd4ml.PD4Constants;
+import org.zefer.pd4ml.PD4ML;
 
 /**
  *
@@ -101,7 +105,7 @@ public class Utils {
         int daysDiff = (int) TimeUnit.MILLISECONDS.toDays(millisecondsDiff);
         return daysDiff;
     }
-    
+
     public static List<Date> getDaysInWeek(Date date) {
         List<Date> weekDays = new ArrayList<>();
 
@@ -172,7 +176,6 @@ public class Utils {
         return new java.sql.Date(lastMonday.getTime());
     }
 
-
     public static boolean checkPassword(String password) {
         if (password == null) {
             return false;
@@ -184,10 +187,30 @@ public class Utils {
     }
 
     public static String getFromMap(Map<String, String[]> args, String name, String def) {
-        String value = args.get(name)[0];
+        String[] value = args.get(name);
         if (value == null) {
-            value = def;
+            value = new String[]{def};
         }
-        return value;
+        return value[0];
     }
+
+    public static void doConversion(String url, String outputPath)
+           throws InvalidParameterException, MalformedURLException, IOException {
+       File output = new File(outputPath);
+       java.io.FileOutputStream fos = new java.io.FileOutputStream(output);
+
+       PD4ML pd4ml = new PD4ML();
+       pd4ml.setPageSize(pd4ml.changePageOrientation(PD4Constants.A4));
+
+       pd4ml.render(new URL(url), fos);
+       fos.close();
+
+       if (Desktop.isDesktopSupported()) {
+           Desktop.getDesktop().open(output);
+       } else {
+           System.out.println("Awt Desktop is not supported!");
+       }
+
+       System.out.println(outputPath + "\ndone.");
+   }
 }

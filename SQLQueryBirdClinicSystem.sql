@@ -32,13 +32,9 @@ GO
 CREATE TABLE Customer (
   customerID CHAR(32) NOT NULL,
   dob DATE,
-  customerAddress VARCHAR(70), 
-  CONSTRAINT PK_Customer PRIMARY KEY CLUSTERED 
-(
-	customerID ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
+  customerAddress NVARCHAR(70) COLLATE Vietnamese_CI_AS,
+  CONSTRAINT PK_Customer PRIMARY KEY CLUSTERED (customerID ASC)
+) ON [PRIMARY];
 
 CREATE TABLE Speciality (
   specialityID CHAR(32) NOT NULL,
@@ -55,8 +51,8 @@ CREATE TABLE Doctor (
   specialityID CHAR(32) NOT NULL,
   docAge TINYINT NOT NULL,
   yearsOfExperience TINYINT NOT NULL,
-  academicTitle VARCHAR(20),
-  degree VARCHAR(10),
+  academicTitle NVARCHAR(20),
+  degree NVARCHAR(10),
   FOREIGN KEY (specialityID) REFERENCES Speciality(specialityID),
   CONSTRAINT PK_Doctor PRIMARY KEY CLUSTERED 
 (
@@ -110,17 +106,17 @@ GO
 
 CREATE TABLE Bird (
   birdID CHAR(32) NOT NULL,
-  customerID CHAR(32) NOT NULL,
+  customerID CHAR(32),
   imageID CHAR(32) NOT NULL,
   birdFullname NVARCHAR(30) NOT NULL,
   birdGender VARCHAR(6) NOT NULL,
-  breed VARCHAR(20) NOT NULL,
+  breed NVARCHAR(20) NOT NULL,
   band_chip CHAR(6),
   birdWeight FLOAT NOT NULL,
   sexingMethod VARCHAR(60) NOT NULL,
   medicalHistory NVARCHAR(60),
   hatchingDate DATE NOT NULL,
-  featherColor VARCHAR(50) NOT NULL,
+  featherColor NVARCHAR(50) NOT NULL,
   FOREIGN KEY (customerID) REFERENCES Customer(customerID),
   FOREIGN KEY (imageID) REFERENCES Images(imageID),
   CONSTRAINT PK_Bird PRIMARY KEY CLUSTERED 
@@ -195,17 +191,17 @@ CREATE TABLE RecordMedicine (
 CREATE TABLE Feedback (
   feedbackID CHAR(32) NOT NULL,
   appointmentID CHAR(32) NOT NULL,
-  feedbackContent NVARCHAR(500)NOT NULL,
+  feedbackContent NVARCHAR(500) NOT NULL,
   title NVARCHAR(100) NOT NULL,
   feedbackTime DATETIME NOT NULL,
-  rating decimal (2,1)NOT NULL,
+  rating DECIMAL(2, 1) NOT NULL,
   FOREIGN KEY (appointmentID) REFERENCES Appointment(appointmentID),
   CONSTRAINT PK_Feedback PRIMARY KEY CLUSTERED 
-(
-	feedbackID ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
+  (
+    feedbackID ASC
+  ),
+  CONSTRAINT UC_AppointmentID UNIQUE (appointmentID)
+) ON [PRIMARY];
 
 CREATE TABLE Blog (
   blogID CHAR(32) NOT NULL,
@@ -250,8 +246,9 @@ VALUES
 	('hga98hfnhfn3a92rhfueaf943ghjanwf', 'femalecustomer11.jpg'),
 	('hfn3fueaf94gajanwha932rhf98hfngh', 'femalecustomer12.jpg'),
 	('rhaanwha928hfnhff943ghjga9fue3nf', 'femalecustomer13.jpg'),
+	('3ghjga9frf94aanwhavfnhf928hue3nf', 'femalecustomer14.jpg'),
     ('fhawfbwa98fha98hf9na9uwbga9ubvg9', 'lgbtcustomer.jpg'),
-	('f7384hfw34f38wb4fw38h4f03h43f93f', 'malestaff.png'),
+	('f7384hfw34f38wb4fw38h4f03h43f93f', 'malestaff.jpg'),
 	('ngseriug908hg93h4g934nf34f938f4h', 'femalestaff.jpg'),
 	('cjndsjkcfnzslkjvnawjefn8jfh38fu3', 'bs1.png'),
 	('vnaeojvner9gh39g4waofh28f28hfa93', 'bs2.png'),
@@ -290,10 +287,10 @@ VALUES
 	('8721d5a5f3f44bd01529d24dcf519239', 'ChimChiaVoihongtrang.png'),
 	('66a5473e01debb47bff7f215d6c4a228', 'ChimcatMindoro.png'),
 	('6d47ad177fb45c2d87e1b54fc363676b', 'Chimdopruoicamden.png'),
-	('25abf9603856427e295b7bd1137fd04a', 'Chimthienngaden.png'),
+	('25abf9603856427e295b7bd1137fd04a', 'vetnammy.png'),
 	('ed1ed3634186fc66ee692da3ba98272f' , 'Chimsonca.png'),
 	('e47ccaddaa9e2cd4c25e84cae624b077' , 'ChimVangAnh.png');
-	
+
 -- Insert data into the Users table
 INSERT INTO Users (userID, imageID, userName, userPassword, fullName, phoneNumber, gender, email, userRole, status_)
 VALUES
@@ -306,13 +303,13 @@ VALUES
 	('c0637bb4f3d7531d936f2686b9672a66', 'janfuewhfnhfn3ga98h943ghafa92rhf', 'nghoangphuc01', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Hoàng Phúc', '1234567890', 'male', 'phucnh01@gmail.com', 'customer', 'banned' ),
     ('11eee90acf45377f4cc3ca0758f2bf30', 'janfuewhhafa92rfnhfn3ga98h943ghf', 'tuannt02ert', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Thanh Tuấn', '0987654321', 'male', 'tuannt02@gmail.com', 'customer', 'active' ),
     ('48b31829bc7599f232d06a1e686534bd', 'ga98h943ghjanwhfnhfn3fueafa92rhf', 'anhttl03edc', '5f4dcc3b5aa765d61d8327deb882cf99', N'Trần Thị Lan Anh', '0123456789', 'unknown', 'anhttl03@gmail.com', 'customer', 'active' ),
-    ('4e192dacb208ceb2413376e2ad3b3db8', 'gha948ga489hra3r9fh32f32f9838r93', 'rienglt01', '5f4dcc3b5aa765d61d8327deb882cf99', N'Lê Thị Riêng', '9876543210', 'female', 'riengtl01@gmail.com', 'customer', 'active' ),
+    ('4e192dacb208ceb2413376e2ad3b3db8', '3ghjga9frf94aanwhavfnhf928hue3nf', 'rienglt01', '5f4dcc3b5aa765d61d8327deb882cf99', N'Lê Thị Riêng', '9876543210', 'female', 'riengtl01@gmail.com', 'customer', 'active' ),
     ('6cb9c7dba65dd3d9e1946c5dd265dbcd', 'jan92rhffuewhfnhfn3ga98h943ghafa', 'hungnm02nbv', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Mạnh Hùng', '5678901234', 'male', 'hungnm02@gmail.com', 'customer', 'banned' ),
 	('45b76de8eb0fd35e124955a2ff2473db', '3ghjanwhfnga98h94hfn3fueafa92rhf', 'thaophy04', '5f4dcc3b5aa765d61d8327deb882cf99', N'Phan Hồng Yến Thảo', '6565743635', 'female', 'thaophy04@gmail.com', 'customer', 'banned' ),
     ('ea03ec90c8836f413784ee96e50a4f11', 'gnhfn3a98h943ghjanwhffueafa92rhf', 'toanhm07cvb', '5f4dcc3b5aa765d61d8327deb882cf99', N'Huỳnh Minh Toàn', '0976534156', 'male', 'toanmt07@gmail.com', 'customer', 'active' ),
     ('bc6c32dbbb8bd0660d158b08d7cad96f', 'hfnhfn3ga98h94janfuew3ghafa92rhf', 'haileduc56', '5f4dcc3b5aa765d61d8327deb882cf99', N'Lê Đức Hải', '0965783451', 'unknown', 'haild56@gmail.com', 'customer', 'active' ),
     ('7e55fcb3a457634cfa78b49bdb774b3a', 'nanwha92r943ghga98hfnh3fueaffjhf', 'yennth09jkl', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Thị Hải Yến', '0914135352', 'female', 'yennth09@gmail.com', 'customer', 'active' ),
-    ('d8869200b4fbde66a3475d6e730e1b6d', 'janfuewhfnhfafa92n3ga98h943ghrhf', 'minhngtr04', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nguyễn Trần Minh', '0765678234', 'male', 'minhngtr04@gmail.com', 'customer', 'banned' ),
+    ('d8869200b4fbde66a3475d6e730e1b6d', 'janfuewhfnhfafa92n3ga98h943ghrhf', 'minhngtr04', '5f4dcc3b5aa765d61d8327deb882cf99', 'Nguyên Khôi', '0765678234', 'male', 'minhngtr04@gmail.com', 'customer', 'banned' ),
 	('128ce6812392dce1ca5a6919f03a26a2', 'hga98hfnhfn3a92rhfueaf943ghjanwf', 'thuthitran06', '5f4dcc3b5aa765d61d8327deb882cf99', N'Trần Thị Thu', '0908070605', 'female', 'thuthitran06@gmail.com', 'customer', 'banned' ),
     ('87ccfc84f4eb846b5aeb0e04f6ea12ea', 'uewh8h943ghaffnhfnjanf3ga9a92rhf', 'bayvanng08', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Văn Bảy', '0990807067', 'male', 'bayvanng08@gmail.com', 'customer', 'active' ),
     ('715c43d86b98da2212d7a9c9ce9d3062', 'jfnhfn3ga98h9anfuewh43ghafa92rhf', 'phattrduc04', '5f4dcc3b5aa765d61d8327deb882cf99', N'Trần Đức Phát', '0975432654', 'unknown', 'phattrduc04@gmail.com', 'customer', 'banned' ),
@@ -321,7 +318,7 @@ VALUES
 	('03b016eef369ef40bba639aa4f04341b', 'hfn3fueaf94gajanwha932rhf98hfngh', 'anhtrdan06ewq', '5f4dcc3b5aa765d61d8327deb882cf99', N'Đặng Trâm Anh', '0908866442', 'female', 'anhtrdan06@gmail.com', 'customer', 'active' ),
     ('f8b0ed4e38a71924a7d2bca97029778a', 'whfnhfn3ga98h943ghjanfueafa92rhf', 'datquocle05', '5f4dcc3b5aa765d61d8327deb882cf99', N'Lê Quốc Đạt', '0913254465', 'male', 'datqule05@gmail.com', 'customer', 'banned' ),
     ('5cbae581d99c1c3d17b8c09b07c54892', 'fhawfbwa98fha98hf9na9uwbga9ubvg9', 'yenkinguy45', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Kim Yến', '0914253647', 'unknown', 'yenkinguy45@gmail.com', 'customer', 'active' ),
-    ('20e843f249d75ada67c1a2eef0dac92e', 'ga98h943gfueafhjanwhfnhfn3a92rhf', 'yenlethai35', '5f4dcc3b5aa765d61d8327deb882cf99', 'Lê Thị Hải Yến', '0912233445', 'female', 'yenlethai35@gmail.com', 'customer', 'banned' ),
+    ('20e843f249d75ada67c1a2eef0dac92e', 'ga98h943gfueafhjanwhfnhfn3a92rhf', 'yenlethai35', '5f4dcc3b5aa765d61d8327deb882cf99', 'Lê Thanh Kim', '0912233445', 'female', 'yenlethai35@gmail.com', 'customer', 'banned' ),
     ('712da4f1096f6ae70d0f3c091b84ae7c', 'h8ewa9a92rhfaffnhfnh943ghfu3gjan', 'phucngminh17', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Minh Phúc', '0945566748', 'male', 'phucngminh17@gmail.com', 'customer', 'active' ),
 	('b03c6f5a51ee06d3dbd17d0e38507ede', 'gahjanwhfnhfn3fuea98h943gfa92rhf', 'vyngphuo57qwe', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Phương Vy', '0908123452', 'female', 'vyngphuo57@gmail.com', 'customer', 'active' ),
     ('b83bb75b898592b75232c4816842d824', 'janfuewh8h943ghaffnhfn3ga9a92rhf', 'longngvu14zxc', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Vũ Long', '0987432456', 'male', 'longngvu14@gmail.com', 'customer', 'active' ),
@@ -329,11 +326,11 @@ VALUES
     ('2b1850783245c06d0b782a4c9cd6a0a0', 'gaafa9298h943ghjanwhfnhfn3fuerhf', 'tratrthihuo37', '5f4dcc3b5aa765d61d8327deb882cf99', N'Trần Thị Hương Trà', '9876543210', 'female', 'tratrthihuo37@gmail.com', 'customer', 'banned' ),
     ('eb70ed9c4c32afea8f482dc873be4f6a', 'rhaanwha928hfnhff943ghjga9fue3nf', 'tranglethihuo75', '5f4dcc3b5aa765d61d8327deb882cf99', N'Lê Thị Hương Trang', '0904534256', 'female', 'tranglethihuo75@gmail.com', 'customer', 'active' ),
 	('ae114dac5897fbcfd25797bf4be08fd3', 'cjndsjkcfnzslkjvnawjefn8jfh38fu3', 'yentrthith87', '5f4dcc3b5aa765d61d8327deb882cf99', N'Trần Thị Thanh Yến', '0789145356', 'female', 'yentrthith87@gmail.com', 'doctor', 'active' ),
-	('9eae70b054be6eba305323d8c9106cfb', 'anwhga98h943ghjfnhfn3fueafa92rhf', 'anhdongtr09', '5f4dcc3b5aa765d61d8327deb882cf99', N'Đỗ Nguyễn Trâm Anh', '0345762433', 'female', 'anhdongtr09@gmail.com', 'doctor', 'active' ),
+	('9eae70b054be6eba305323d8c9106cfb', 'vnaeojvner9gh39g4waofh28f28hfa93', 'anhdongtr09', '5f4dcc3b5aa765d61d8327deb882cf99', N'Đỗ Nguyễn Trâm Anh', '0345762433', 'female', 'anhdongtr09@gmail.com', 'doctor', 'active' ),
 	('c8aa14ffb7da0912c84635aa2ee0bb62', 'fhafgbyfg87gf83bfiwifhweufhwe5g5', 'anhdoquynh35', '5f4dcc3b5aa765d61d8327deb882cf99', N'Đỗ Quỳnh Anh', '0543749273', 'female', 'anhdoquynh35@gmail.com', 'doctor', 'active' ),
 	('dd0e3f50648088bfecc501f809a06ca8', 'g73f93hf9bwfb3v384ub83bg3487fb43', 'tiennamtr36', '5f4dcc3b5aa765d61d8327deb882cf99', N'Trần Nam Tiến', '0546328472', 'male', 'tiennamtr36@gmail.com', 'doctor', 'active' ),
 	('62fe46dae9470f311d52973a6eeb6a1a', 'biserhbf9473hf9b94gb49f93f38f984', 'anhquochoa67', '5f4dcc3b5aa765d61d8327deb882cf99', N'Hoàng Quốc Anh', '0534732843', 'male', 'anhquochoa67@gmail.com', 'doctor', 'active' ),
-	('9c6189a20beb35a93df963e3b48eb9b0', 'ga98hfnhfn3fueaf943ghjanwha92rhf', 'sangkim16abcd', '5f4dcc3b5aa765d61d8327deb882cf99', N'Ngô Kim Sa', '0534254324', 'female', 'sangkim16@gmail.com', 'doctor', 'active' ),
+	('9c6189a20beb35a93df963e3b48eb9b0', 'gsbheirbfg7a843hgfa943bfu9fb3f93', 'sangkim16abcd', '5f4dcc3b5aa765d61d8327deb882cf99', N'Ngô Kim Sa', '0534254324', 'female', 'sangkim16@gmail.com', 'doctor', 'active' ),
 	('1c38dd30f9e415b3a34879be077381ce', 'fbriehafbihfa7hfa3hf983hf98qff82', 'taileanh78xyz', '5f4dcc3b5aa765d61d8327deb882cf99', N'Lê Anh Tài', '0523423234', 'male', 'taileanh78@gmail.com', 'doctor', 'active' ),
 	('21fc9daf44e2637d7972bd248c83577d', 'rfhiarebfniuaerhnfuah9f48h34f843', 'nhiluoman19rty', '5f4dcc3b5aa765d61d8327deb882cf99', N'Lương Mẫn Nhi', '0556475242', 'female', 'nhiluoman19@gmail.com', 'doctor', 'active' ),
 	('01c1fa1b81297a2de21056f35303ad84', 'fherajfhriuehfraufha94hf98fh93hf', 'kietnganhmin47', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Minh Anh Kiệt', '0556253524', 'male', 'kietnganhmin47@gmail.com', 'doctor', 'active' ),
@@ -342,9 +339,10 @@ VALUES
 	('f7834yf8h3w9b93wfb943hf943f934hf', 'ngseriug908hg93h4g934nf34f938f4h', 'thaongthiphuong6969', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Thị Phương Thảo', '0705536741', 'female', 'thaongthiphuong6969@gmail.com', 'staff', 'active' );
 
 -- Insert data into the Customer table
+
 INSERT INTO Customer (customerID, dob, customerAddress)
-VALUES
-    ('2c9320b8639fc9e1c784880bbecfdfa1', '1990-02-15', N'123 Nguyễn Văn A, Phường Bến Nghé, Quận 1, TP.HCM'),
+VALUES 
+	('2c9320b8639fc9e1c784880bbecfdfa1', '1990-02-15', N'123 Nguyễn Văn A, Phường Bến Nghé, Quận 1, TP.HCM'),
     ('3ff56e23cc31e9c9a85bc037341a65ee', '1985-07-28', N'456 Lê Lợi, Phường Bến Nghé, Quận 1, TP.HCM'),
     ('3ff5njfnijhfdsf8845bc037341a65ee', '1978-11-03', N'258/3 Ngô Quyền, Phường Phạm Ngũ Lão, Quận 1, TP.HCM'),
 	('82d5cf38dc655bd1722ac5d4d350bce3', '1992-09-10', N'369/2 Hàm Nghi, Phường Nguyễn Thái Bình, Quận 1, TP.HCM'),
@@ -1175,7 +1173,7 @@ VALUES
 	('ca8406790940dec227193cc7dca16212' , '712da4f1096f6ae70d0f3c091b84ae7c' , '8721d5a5f3f44bd01529d24dcf519239', N'Bệnh cầu trùng' , 'male' , N'Chìa vôi', 'nmqwer' , 0.04 , N'DNA analysis' , N'Anh chàng đẹp trai' , '2021-01-01' , N'đen-trắng'),
 	('752ee3ce65129a7bd54292accb28983e' , 'b03c6f5a51ee06d3dbd17d0e38507ede' , '66a5473e01debb47bff7f215d6c4a228', '' , 'male' , N'Cắt', 'mqwert' , 0.15 , N'DNA analysis' , 'Max' , '2021-02-01' , N'nâu'),
 	('c91f8b119029caa4ec2046bcc5c69bb5' , 'b83bb75b898592b75232c4816842d824' , '6d47ad177fb45c2d87e1b54fc363676b', N'Bệnh viêm tuyến nhờn' , 'female' , N'Đớp ruồi', 'mnbvcx' , 0.05 , N'Observe shapes and colors' , 'Daisy' , '2021-03-01' , N'lam-vàng'),
-	('16c5bd4d79c66e16042bee6bbf128c6f' , 'a68757602ea7419f0e2313a842be9abf' , '25abf9603856427e295b7bd1137fd04a', '' , 'male' , N'Vịt', 'nbvcxz' , 6 , N'DNA analysis' , N'Cạp cạp' , '2021-04-01' , N'đen'),
+	('16c5bd4d79c66e16042bee6bbf128c6f' , 'a68757602ea7419f0e2313a842be9abf' , '25abf9603856427e295b7bd1137fd04a', '' , 'male' , N'Vẹt', 'nbvcxz' , 6 , N'DNA analysis' , N'Cạp cạp' , '2021-04-01' , N'xanh lá-xanh nước biển-vàng'),
 	('56a7207dd933fe09f539083edb711548' , '2b1850783245c06d0b782a4c9cd6a0a0' , 'ed1ed3634186fc66ee692da3ba98272f', N'Bệnh cầu trùng' , 'male' , N'sơn ca', 'bvcxzl' , 0.01 , N'DNA analysis' , N'Bầu trời' , '2021-05-01' , N'trắng-đen-vàng-đỏ'),
 	('6a045cdabdccb76073091f263cbf3e52' , 'eb70ed9c4c32afea8f482dc873be4f6a' , 'e47ccaddaa9e2cd4c25e84cae624b077', '' , 'female' , N'vàng Anh', 'vcxzlk' , 0.04 , N'Check behavior' , 'Stella' , '2021-06-01' , N'vàng-đen');
 
@@ -1863,6 +1861,5 @@ Bạn cứ tiếp tục cho đến khi chim bổi đã được thuần, thuần
 Với cách nuôi chào mào bổi thành mồi mà chúng tôi đề cập đến trong bài viết trên hi vọng sẽ giúp ích được cho anh chị em có thể thuần hóa được một chú bổi với tỷ lệ thành công cao nhất.
 
 ');
-
 
 

@@ -6,6 +6,7 @@
 package models.medicine;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 /**
  *
@@ -15,16 +16,19 @@ public class MedicineDTOImpl implements MedicineDTO {
     private String medicineID;
     private String medicineName;
     private BigDecimal medicinePrice;
+    private String unit;
 
     public MedicineDTOImpl() {
     }
 
-    public MedicineDTOImpl(String medicineID, String medicineName, BigDecimal medicinePrice) {
+    public MedicineDTOImpl(String medicineID, String medicineName, BigDecimal medicinePrice, String medicineUnit) {
         this.medicineID = medicineID;
         this.medicineName = medicineName;
         this.medicinePrice = medicinePrice;
-    }
+        this.unit = medicineUnit;
 
+    }
+    
     @Override
     public String getMedicineID() {
         return medicineID;
@@ -53,6 +57,40 @@ public class MedicineDTOImpl implements MedicineDTO {
     @Override
     public void setMedicinePrice(BigDecimal medicinePrice) {
         this.medicinePrice = medicinePrice;
+    }
+
+    @Override
+    public String getUnit() {
+        return unit;
+    }
+
+    @Override
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+    
+    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.medicineID);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final MedicineDTOImpl other = (MedicineDTOImpl) obj;
+        return Objects.equals(this.medicineID, other.medicineID);
     }
     
     

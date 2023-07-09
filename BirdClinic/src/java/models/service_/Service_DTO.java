@@ -6,6 +6,7 @@
 package models.service_;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import models.speciality.SpecialityDTO;
 
 /**
@@ -18,7 +19,7 @@ public interface Service_DTO extends Serializable {
 
     String getServiceName();
 
-    int getServicePrice();
+    BigDecimal getServicePrice();
 
     SpecialityDTO getSpeciality();
 
@@ -26,7 +27,7 @@ public interface Service_DTO extends Serializable {
 
     void setServiceName(String serviceName);
 
-    void setServicePrice(int servicePrice);
+    void setServicePrice(BigDecimal servicePrice);
 
     void setSpeciality(SpecialityDTO speciality);
     

@@ -1,5 +1,5 @@
 <%-- 
-    Document   : client-appoitments-details
+    Document   : client-appointments-details
     Created on : Jun 25, 2023, 9:53:59 PM
     Author     : ASUS
 --%>
@@ -12,11 +12,11 @@
     <body>
         <div class="main-wrapper">
             <!-- Header -->
-            <jsp:include page="Common/header-guest.jsp"/>
+            <jsp:include page="../Common/header.jsp"/>
             <!--/Header -->
 
             <!-- Breadcrumb -->
-            <jsp:include page="Common/breadcrumb.jsp"/>
+            <jsp:include page="../Common/breadcrumb.jsp"/>
             <!-- /Breadcrumb -->
 
             <!-- Page Content -->
@@ -34,9 +34,10 @@
                     <div class="prescription">
                         <div class="col-md-12">
                             <jsp:include page="../Common/appointment-general-info.jsp"/>
-                            <jsp:include page="../Common/appointment-medicine-list.jsp"/>
+                            <jsp:include page="../Common/appointment-medicine-list.jsp"/>                       
                         </div>
-                        <jsp:include page="../Common/owner-feedback.jsp"/> <!-- chỉ hiện khi user đưa feedback rồi -->
+                        <jsp:include page="../Customer/give-feedback.jsp"/>
+                        <!-- <jsp:include page="../Common/owner-feedback.jsp"/>  chỉ hiện khi user đưa feedback rồi -->
                         <jsp:include page="../Common/payment-info.jsp"/>
                     </div>
                 </div>

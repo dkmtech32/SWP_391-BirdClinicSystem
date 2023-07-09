@@ -8,43 +8,56 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <div class="bird-general-info">
-            <div class="avatar-image">
-                <img src="assets/img/about-1.jpg" class="bird-avatar"/>
-                <h2><a href="../Common/bird-details.jsp">${bird.birdFullname}</a></h2>
-            </div>
-            <div class="bird-information-boxes">
-                <div class="bird-information-box">
-                    <p class="header">Bird's name</p>
-                    <p class="information">${bird.birdFullname}</p>
-                </div>
-                <div class="bird-information-box">
-                    <p class="header">Hatching Day</p>
-                    <p class="information">${bird.hatchingDate}</p>
-                </div>
-                <div class="bird-information-box">
-                    <p class="header">Breed</p>
-                    <p class="information">${bird.breed}</p>
-                </div>
-                <div class="bird-information-box">
-                    <p class="header">Sex</p>
-                    <p class="information">${bird.birdGender}</p>
-                </div>
-                <div class="bird-information-box">
-                    <p class="header">Weight</p>
-                    <p class="information">${bird.birdWeight}</p>
-                </div>
-                <div class="bird-information-box">
-                    <p class="header">Microchip</p>
-                    <p class="information">${bird.microchip}</p>
-                </div>
-                <div class="bird-information-box">
-                    <p class="header">Sex Method</p>
-                    <p class="information">${bird.sexingMethod}</p>
-                </div>
-                <div class="bird-information-box">
-                    <p class="header">Feather Color</p>
-                    <p class="information">${bird.featherColor}</p>
+        <div class="col-md-6 col-lg-5 col-xl-4" >
+            <div class="card">
+                <div class="card-body">
+                    <div class="row bird-info">
+                       
+                        <div class="widget-profile pro-widget-content">
+                                    <div class="profile-info-widget">
+                                        <a href="#" class="booking-doc-img">
+                                            <img src="../assets/images/bird/${appointment.bird.image.imageURLName}" alt="User Image">
+                                        </a>
+                                        <div class="profile-det-info">
+                                            <h3>${appointment.bird.birdFullname}</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                        <div class="row bird-information-boxes">
+                            <!--                <div class="col-12 col-md-6">
+                                                <p class="header">Bird's name</p>
+                                                <p class="information"></p>
+                                            </div>-->
+                            <div class="col-12 col-md-6">
+                                <p class="title">Hatching Day: </p>
+                                <p class="information">${appointment.bird.hatchingDate}</p>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <p class="title">Breed: </p>
+                                <p class="information">${appointment.bird.breed}</p>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <p class="title">Sex: </p>
+                                <p class="information">${appointment.bird.birdGender}</p>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <p class="title">Weight: </p>
+                                <p class="information">${appointment.bird.birdWeight}</p>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <p class="title">Microchip: </p>  
+                                <p class="information">${appointment.bird.band_Chip}</p>
+                            </div>
+                            <!--                            <div class="col-12 col-md-6">
+                                                            <p>Sex Method</p>
+                                                            <p class="information"></p>
+                                                        </div>-->
+                            <div class="col-12 col-md-6">
+                                <p class="title">Feather Color: </p>
+                                <p class="information">${appointment.bird.featherColor}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

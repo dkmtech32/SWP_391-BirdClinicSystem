@@ -33,18 +33,18 @@ public class RecordMedicineDAOImpl implements RecordMedicineDAO {
     }
 
     private static final String READ_MEDICINE_BY_MEDICAL_RECORD
-            = "SELECT medicalRecordID, medicineID, quantity, description "
+            = "SELECT medicalRecordID, medicineID, quantity, description_ "
             + "FROM RecordMedicine "
             + "WHERE medicalRecordID=?";
     private static final String INSERT_RECORD_MEDICINE
-            = "INSERT INTO RecordMedicine (medicalRecordID, medicineID, quantity, description) "
+            = "INSERT INTO RecordMedicine (medicalRecordID, medicineID, quantity, description_) "
             + "VALUES (?, ?, ?, ?)";
     private static final String DELETE_RECORD_MEDICINE
             = "DELETE FROM RecordMedicine "
             + "WHERE medicalRecordID=? and medicineID=?";
     private static final String UPDATE_RECORD_MEDICINE
             = "UPDATE RecordMedicine "
-            + "SET quantity=?, description=? "
+            + "SET quantity=?, description_=? "
             + "WHERE medicalRecordID=? and medicineID=?";
 
     @Override
@@ -70,7 +70,7 @@ public class RecordMedicineDAOImpl implements RecordMedicineDAO {
                 recMed.setMedicine(medDAO.readMedicine(rs.getString("medicineID")));
                 recMed.setDescription_(rs.getString("description"));
                 recMed.setQuantity(rs.getInt("quantity"));
-                
+
                 result.add(recMed);
             }
         } finally {
@@ -99,8 +99,10 @@ public class RecordMedicineDAOImpl implements RecordMedicineDAO {
             stm.setString(2, medicineID);
 
             result = stm.executeUpdate();
-            
-            if (result == 0) throw new NoSuchRecordMedicineException();
+
+            if (result == 0) {
+                throw new NoSuchRecordMedicineException();
+            }
         } finally {
             if (stm != null) {
                 stm.close();
@@ -126,8 +128,41 @@ public class RecordMedicineDAOImpl implements RecordMedicineDAO {
             stm.setString(4, recMed.getDescription_());
 
             result = stm.executeUpdate();
-            
-            if (result == 0) throw new RecordMedicineAlreadyExistsException();
+
+            if (result == 0) {
+                throw new RecordMedicineAlreadyExistsException();
+            }
+        } finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public int insertMultipleRecordMedicine(List<RecordMedicineDTO> recMeds) throws SQLException, RecordAlreadyExists {
+        Connection con = null;
+        PreparedStatement stm = null;
+        int result = 0;
+        try {
+            con = DBUtils.getConnection();
+            stm = con.prepareStatement(INSERT_RECORD_MEDICINE);
+            for (RecordMedicineDTO recMed : recMeds) {
+                stm.setString(1, recMed.getMedicalRecord().getMedicalRecordID());
+                stm.setString(2, recMed.getMedicine().getMedicineID());
+                stm.setInt(3, recMed.getQuantity());
+                stm.setString(4, recMed.getDescription_());
+
+                result = stm.executeUpdate();
+
+                if (result == 0) {
+                    throw new RecordMedicineAlreadyExistsException();
+                }
+            }
         } finally {
             if (stm != null) {
                 stm.close();
@@ -153,8 +188,10 @@ public class RecordMedicineDAOImpl implements RecordMedicineDAO {
             stm.setString(4, recMed.getMedicine().getMedicineID());
 
             result = stm.executeUpdate();
-            
-            if (result == 0) throw new NoSuchRecordMedicineException();
+
+            if (result == 0) {
+                throw new NoSuchRecordMedicineException();
+            }
         } finally {
             if (stm != null) {
                 stm.close();

@@ -22,20 +22,19 @@ import utils.DBUtils;
 public class MedicineDAOImpl implements MedicineDAO {
 
     private static final String READ_MEDICINE
-            = "select medicineID, medicineName, medicinePrice "
+            = "select medicineID, medicineName, medicinePrice, unit "
             + "from Medicine "
             + "where medicineID = ?";
     private static final String READ_ALL_MEDICINE
-            = "select medicineID, medicineName, medicinePrice "
+            = "select medicineID, medicineName, medicinePrice, unit "
             + "from Medicine ";
     private static final String SEARCH_MEDICINE
-            = "select medicineID, medicineName, medicinePrice "
+            = "select medicineID, medicineName, medicinePrice, unit "
             + "from Medicine "
             + "where medicineName like ?";
     private static final String UPDATE_MEDICINE
             = "UPDATE Medicine "
-            + "SET medicineName = ?, "
-            + "medicinePrice = ? "
+            + "SET medicineName = ?, medicinePrice = ?, unit = ? "
             + "WHERE medicineID = ?";
 
     public MedicineDAOImpl() {
@@ -59,8 +58,9 @@ public class MedicineDAOImpl implements MedicineDAO {
                 result.setMedicineID(medicineID);
                 result.setMedicineName(rs.getString("medicineName"));
                 result.setMedicinePrice(rs.getBigDecimal("medicinePrice"));
+                result.setUnit(rs.getString("unit"));
             }
-            
+
             if (result == null) {
                 throw new NoSuchMedicineExistsException();
             }
@@ -97,15 +97,16 @@ public class MedicineDAOImpl implements MedicineDAO {
                 result.setMedicineID(rs.getString("medicineID"));
                 result.setMedicineName(rs.getString("medicineName"));
                 result.setMedicinePrice(rs.getBigDecimal("medicinePrice"));
+                result.setUnit(rs.getString("unit"));
                 if (medicineList == null) {
                     medicineList = new ArrayList();
                 }
                 medicineList.add(result);
             }
-            
+
             if (medicineList == null || medicineList.isEmpty()) {
                 throw new NoSuchMedicineExistsException();
-            } 
+            }
         } finally {
             if (rs != null) {
                 rs.close();
@@ -138,6 +139,7 @@ public class MedicineDAOImpl implements MedicineDAO {
                 result.setMedicineID(rs.getString("medicineID"));
                 result.setMedicineName(rs.getString("medicineName"));
                 result.setMedicinePrice(rs.getBigDecimal("medicinePrice"));
+                result.setUnit(rs.getString("unit"));
 
                 if (medicineList == null) {
                     medicineList = new ArrayList();
@@ -163,7 +165,7 @@ public class MedicineDAOImpl implements MedicineDAO {
     }
 
     @Override
-    public List<MedicineDTO> readListOfMedicine(List<String> medicineIDs) 
+    public List<MedicineDTO> readListOfMedicine(List<String> medicineIDs)
             throws NoSuchRecordExists, SQLException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -183,12 +185,13 @@ public class MedicineDAOImpl implements MedicineDAO {
                     medicine.setMedicineID(rs.getString("medicineID"));
                     medicine.setMedicineName(rs.getString("medicineName"));
                     medicine.setMedicinePrice(rs.getBigDecimal("medicinePrice"));
+                    medicine.setUnit(rs.getString("unit"));
                     medicineList.add(medicine);
                 }
 
                 rs.close();
             }
-            
+
             if (medicineList.isEmpty()) {
                 throw new NoSuchMedicineExistsException();
             }
@@ -218,11 +221,14 @@ public class MedicineDAOImpl implements MedicineDAO {
             stm = con.prepareStatement(UPDATE_MEDICINE);
             stm.setString(1, medicineDTO.getMedicineName());
             stm.setBigDecimal(2, medicineDTO.getMedicinePrice());
-            stm.setString(3, medicineDTO.getMedicineID());
+            stm.setString(3, medicineDTO.getUnit());
+            stm.setString(4, medicineDTO.getMedicineID());
 
             rowsAffected = stm.executeUpdate();
-            
-            if (rowsAffected == 0) throw new NoSuchMedicineExistsException();
+
+            if (rowsAffected == 0) {
+                throw new NoSuchMedicineExistsException();
+            }
         } finally {
             if (stm != null) {
                 stm.close();

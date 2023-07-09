@@ -25,40 +25,40 @@ public class UserDAOImpl implements UserDAO {
 
     private static final String READ_USER
             = "select imageID, userName, userPassword, fullName, "
-            + "gender, email, userRole, status_ "
+            + "gender, email, userRole, phoneNumber, status_ "
             + "from Users "
             + "where userID = ?";
     private static final String READ_USER_BY_EMAIL_USERNAME
             = "select userID, imageID, userPassword, fullName, "
-            + "gender, userRole, status_ "
+            + "gender, userRole, phoneNumber, status_ "
             + "from Users "
             + "where email = ? or userName = ?";
     private static final String READ_ALL_USER
             = "select userID, imageID, userName, userPassword, fullName, "
-            + "gender, email, userRole, status_ "
+            + "gender, email, userRole, phoneNumber, status_ "
             + "from Users ";
     private static final String READ_ALL_USER_BY_ROLE
             = "select userID, imageID, userName, userPassword, fullName, "
-            + "gender, email, status_ "
+            + "gender, email, phoneNumber, status_ "
             + "from Users "
             + "where userRole = ?";
     private static final String LOGIN_USER
             = "select userID, imageID, fullName, "
-            + "gender, email, userRole, status_ "
+            + "gender, email, userRole, phoneNumber, status_ "
             + "from Users "
             + "where userName = ? and userPassword = ?";
     private static final String INSERT_USER
             = "insert into "
             + "Users(userID, imageID, userName, userPassword, fullName, "
-            + "gender, email, userRole, status_) "
-            + "values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            + "gender, email, userRole, phoneNumber, status_) "
+            + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String DELETE_USER
             = "delete from Users "
             + "where userID = ?";
     private static final String UPDATE_USER
             = "update Users "
             + "set imageID = ?, userName = ?, fullName = ?, "
-            + "gender = ?, email = ?, userRole = ?, status_ = ? "
+            + "gender = ?, email = ?, userRole = ?, phoneNumber = ?, status_ = ? "
             + "where userID = ?";
     private static final String UPDATE_USER_PASSWORD
             = "update Users "
@@ -94,7 +94,8 @@ public class UserDAOImpl implements UserDAO {
                 result.setGender(rs.getString("gender"));
                 result.setUserRole(rs.getString("userRole"));
                 result.setUserName(rs.getString("userName"));
-                result.setStatus_(rs.getBoolean("status_"));
+                result.setStatus_(rs.getString("status_").equals("active"));
+                result.setPhoneNumber(rs.getString("phoneNumber"));
             }
 
             if (result == null) {
@@ -114,7 +115,7 @@ public class UserDAOImpl implements UserDAO {
 
         return result;
     }
-    
+
     @Override
     public UserDTO readUserByEmailUserName(String email, String username)
             throws NoSuchRecordExists, SQLException {
@@ -140,7 +141,8 @@ public class UserDAOImpl implements UserDAO {
                 result.setGender(rs.getString("gender"));
                 result.setUserRole(rs.getString("userRole"));
                 result.setUserName(username);
-                result.setStatus_(rs.getBoolean("status_"));
+                result.setStatus_(rs.getString("status_").equals("active"));
+                result.setPhoneNumber(rs.getString("phoneNumber"));
             }
         } finally {
             if (rs != null) {
@@ -181,16 +183,19 @@ public class UserDAOImpl implements UserDAO {
                 result.setGender(rs.getString("gender"));
                 result.setUserRole(userRole);
                 result.setUserName(null);
-                result.setStatus_(rs.getBoolean("status_"));
+                result.setStatus_(rs.getString("status_").equals("active"));
+                result.setPhoneNumber(rs.getString("phoneNumber"));
 
                 if (users == null) {
                     users = new ArrayList<>();
                 }
-                
+
                 users.add(result);
             }
-            
-            if (users == null || users.isEmpty()) throw new NoSuchUserExistsException();
+
+            if (users == null || users.isEmpty()) {
+                throw new NoSuchUserExistsException();
+            }
         } finally {
             if (rs != null) {
                 rs.close();
@@ -223,11 +228,14 @@ public class UserDAOImpl implements UserDAO {
             stm.setString(6, user.getGender());
             stm.setString(7, user.getEmail());
             stm.setString(8, user.getUserRole());
-            stm.setBoolean(9, user.isStatus_());
+            stm.setString(9, user.getPhoneNumber());
+            stm.setString(10, user.isStatus_()?"active":"banned");
 
             result = stm.executeUpdate();
-            
-            if (result == 0) throw new UserAlreadyExistsException();
+
+            if (result == 0) {
+                throw new UserAlreadyExistsException();
+            }
         } finally {
             if (stm != null) {
                 stm.close();
@@ -252,7 +260,9 @@ public class UserDAOImpl implements UserDAO {
             stm.setString(1, userID);
 
             result = stm.executeUpdate();
-            if (result == 0) throw new NoSuchUserExistsException();
+            if (result == 0) {
+                throw new NoSuchUserExistsException();
+            }
         } finally {
             if (stm != null) {
                 stm.close();
@@ -280,11 +290,14 @@ public class UserDAOImpl implements UserDAO {
             stm.setString(4, user.getGender());
             stm.setString(5, user.getEmail());
             stm.setString(6, user.getUserRole());
-            stm.setBoolean(7, user.isStatus_());
+            stm.setString(7, user.getPhoneNumber());
+            stm.setString(8, user.isStatus_()?"active":"banned");
             stm.setString(9, user.getUserID());
 
             result = stm.executeUpdate();
-            if (result == 0) throw new NoSuchUserExistsException();
+            if (result == 0) {
+                throw new NoSuchUserExistsException();
+            }
         } finally {
             if (stm != null) {
                 stm.close();
@@ -296,7 +309,7 @@ public class UserDAOImpl implements UserDAO {
 
         return result;
     }
-    
+
     @Override
     public int updateUserPassword(String userID, String password) throws NoSuchRecordExists, SQLException {
         Connection con = null;
@@ -310,7 +323,9 @@ public class UserDAOImpl implements UserDAO {
             stm.setString(2, userID);
 
             result = stm.executeUpdate();
-            if (result == 0) throw new NoSuchUserExistsException();
+            if (result == 0) {
+                throw new NoSuchUserExistsException();
+            }
         } finally {
             if (stm != null) {
                 stm.close();
@@ -324,7 +339,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public UserDTO loginUser(String userName, String userPassword) 
+    public UserDTO loginUser(String userName, String userPassword)
             throws NoSuchRecordExists, SQLException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -348,9 +363,12 @@ public class UserDAOImpl implements UserDAO {
                 result.setGender(rs.getString("gender"));
                 result.setUserRole(rs.getString("userRole"));
                 result.setUserName(userName);
-                result.setStatus_(rs.getBoolean("status_"));
+                result.setStatus_(rs.getString("status_").equals("active"));
+                result.setPhoneNumber(rs.getString("phoneNumber"));
             }
-            if (result == null) throw new NoSuchUserExistsException();
+            if (result == null) {
+                throw new NoSuchUserExistsException();
+            }
         } finally {
             if (rs != null) {
                 rs.close();
@@ -367,7 +385,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public List<UserDTO> readAllUsers() 
+    public List<UserDTO> readAllUsers()
             throws NoSuchRecordExists, SQLException {
         Connection con = null;
         Statement stm = null;
@@ -389,14 +407,17 @@ public class UserDAOImpl implements UserDAO {
                 result.setGender(rs.getString("gender"));
                 result.setUserRole(rs.getString("userRole"));
                 result.setUserName(rs.getString("userName"));
-                result.setStatus_(rs.getBoolean("status_"));
+                result.setStatus_(rs.getString("status_").equals("active"));
+                result.setPhoneNumber(rs.getString("phoneNumber"));
 
                 if (userList == null) {
                     userList = new ArrayList<>();
                 }
                 userList.add(result);
             }
-            if (userList == null || userList.isEmpty()) throw new NoSuchUserExistsException();
+            if (userList == null || userList.isEmpty()) {
+                throw new NoSuchUserExistsException();
+            }
         } finally {
             if (rs != null) {
                 rs.close();
@@ -413,7 +434,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public List<UserDTO> readListOfUsers(List<String> userIDs) 
+    public List<UserDTO> readListOfUsers(List<String> userIDs)
             throws NoSuchRecordExists, SQLException {
         Connection con = null;
         PreparedStatement stm = null;
@@ -437,7 +458,8 @@ public class UserDAOImpl implements UserDAO {
                     result.setGender(rs.getString("gender"));
                     result.setUserRole(rs.getString("userRole"));
                     result.setUserName(rs.getString("userName"));
-                    result.setStatus_(rs.getBoolean("status_"));
+                    result.setStatus_(rs.getString("status_").equals("active"));
+                    result.setPhoneNumber(rs.getString("phoneNumber"));
 
                     if (userList == null) {
                         userList = new ArrayList<>();
@@ -445,8 +467,10 @@ public class UserDAOImpl implements UserDAO {
                     userList.add(result);
                 }
             }
-            
-            if (userList == null || userList.isEmpty()) throw new NoSuchUserExistsException();
+
+            if (userList == null || userList.isEmpty()) {
+                throw new NoSuchUserExistsException();
+            }
         } finally {
             if (rs != null) {
                 rs.close();
