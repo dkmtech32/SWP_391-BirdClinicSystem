@@ -19,6 +19,9 @@ import models.appointmentCancel.AppointmentCancelDAOImpl;
 import models.bird.BirdDAO;
 import models.bird.BirdDAOImpl;
 import models.bird.BirdDTO;
+import models.blog.BlogDAO;
+import models.blog.BlogDAOImpl;
+import models.blog.BlogDTO;
 import models.doctorTimeslot.DoctorTimeslotDAO;
 import models.doctorTimeslot.DoctorTimeslotDAOImpl;
 import models.exceptions.NoSuchRecordExists;
@@ -81,6 +84,7 @@ public class GeneralServicesImpl implements GeneralServices {
     protected final DoctorTimeslotDAO doctorTimeslotDAO;
     protected final FeedbackDAO feedbackDAO;
     protected final AppointmentCancelDAO appointmentCancelDAO;
+    protected final BlogDAO blogDAO;
 
     protected UserDTO currentUser;
 
@@ -100,6 +104,7 @@ public class GeneralServicesImpl implements GeneralServices {
         doctorTimeslotDAO = new DoctorTimeslotDAOImpl(timeslotDAO, doctorDAO);
         feedbackDAO = new FeedbackDAOImpl(appointmentDAO);
         appointmentCancelDAO = new AppointmentCancelDAOImpl(appointmentDAO);
+        blogDAO = new BlogDAOImpl();
     }
 
     @Override
@@ -528,5 +533,29 @@ public class GeneralServicesImpl implements GeneralServices {
         }
 
         return result;
+    }
+    
+    public BlogDTO viewBlog(String blogID) throws SQLException, BlogDoesNotExistException {
+        BlogDTO blog = null;
+        
+        try {
+            blog = blogDAO.readBlog(blogID);
+        } catch (NoSuchRecordExists ex) {
+            throw new BlogDoesNotExistException(ex.getMessage());
+        }
+        
+        return blog;
+    }
+    
+    public List<BlogDTO> viewIntroBlogs() throws SQLException {
+        List<BlogDTO> blog = null;
+        
+        try {
+            blog = blogDAO.readTopThreeBlogs();
+        } catch (NoSuchRecordExists ex) {
+            throw new SQLException(ex.getMessage());
+        }
+        
+        return blog;
     }
 }

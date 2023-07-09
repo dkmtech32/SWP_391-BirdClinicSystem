@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import models.exceptions.NoSuchRecordExists;
 import models.exceptions.RecordAlreadyExists;
 import models.images.ImageDAO;
+import models.speciality.SpecialityDTO;
 import models.users.UserDAOImpl;
 import models.users.UserDTO;
 import utils.DBUtils;
@@ -32,9 +33,10 @@ public class DoctorDAOImpl extends UserDAOImpl implements DoctorDAO {
             = "select doctorID, specialityID, docAge, yearsOfExperience, academicTitle, degree "
             + "from Doctor "
             + "where doctorID = ?";
-    private static final String READ_ALL_DOCTOR
+    private static final String READ_DOCTOR_BY_SPECIALITY
             = "select doctorID, specialityID, docAge, yearsOfExperience, academicTitle, degree "
-            + "from Doctor ";
+            + "from Doctor "
+            + "where specialityID = ?";
     private static final String INSERT_DOCTOR
             = "insert into Doctor(doctorID, specialityID, docAge, yearsOfExperience, academicTitle, degree) "
             + "values (?, ?, ?, ?, ?, ?)";
@@ -280,6 +282,55 @@ public class DoctorDAOImpl extends UserDAOImpl implements DoctorDAO {
                     }
                     doctorList.add(result);
                 }
+            }
+
+            if (doctorList == null || doctorList.isEmpty()) {
+                throw new NoSuchDoctorExistsException();
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+
+        return doctorList;
+    }
+
+    @Override
+    public List<DoctorDTO> readDoctorsBySpeciality(String specialityID)
+            throws SQLException, NoSuchRecordExists {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        List<DoctorDTO> doctorList = null;
+
+        try {
+            con = DBUtils.getConnection();
+            stm = con.prepareStatement(READ_DOCTOR_BY_SPECIALITY);
+            SpecialityDTO speciality = specialityDAO.readSpeciality(specialityID);
+
+            stm.setString(1, specialityID);
+            rs = stm.executeQuery();
+
+            while (rs.next()) {
+                DoctorDTO result = new DoctorDTOImpl(super.readUser(rs.getString("doctorID")));
+                result.setSpeciality(speciality);
+                result.setAcademicTitle(rs.getString("academicTitle"));
+                result.setDocAge(rs.getInt("docAge"));
+                result.setYearsOfExperience(rs.getInt("yearsOfExperience"));
+                result.setAcademicTitle(rs.getString("academicTitle"));
+                result.setDegree(rs.getString("degree"));
+
+                if (doctorList == null) {
+                    doctorList = new ArrayList();
+                }
+                doctorList.add(result);
             }
 
             if (doctorList == null || doctorList.isEmpty()) {

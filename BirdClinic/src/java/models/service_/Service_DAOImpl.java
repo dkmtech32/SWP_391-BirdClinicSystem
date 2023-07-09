@@ -68,7 +68,7 @@ public class Service_DAOImpl implements Service_DAO {
                 result.setServiceID(serviceID);
                 result.setSpeciality(specialityDAO.readSpeciality(rs.getString("specialityID")));
                 result.setServiceName(rs.getString("serviceName"));
-                result.setServicePrice(rs.getInt("servicePrice"));
+                result.setServicePrice(rs.getBigDecimal("servicePrice"));
             }
 
             if (result == null) {
@@ -108,7 +108,7 @@ public class Service_DAOImpl implements Service_DAO {
                 result.setServiceID(rs.getString("serviceID"));
                 result.setSpeciality(specialityDAO.readSpeciality(rs.getString("specialityID")));
                 result.setServiceName(rs.getString("serviceName"));
-                result.setServicePrice(rs.getInt("servicePrice"));
+                result.setServicePrice(rs.getBigDecimal("servicePrice"));
                 if (serviceList == null) {
                     serviceList = new ArrayList();
                 }
@@ -151,7 +151,7 @@ public class Service_DAOImpl implements Service_DAO {
                 result.setServiceID(rs.getString("serviceID"));
                 result.setSpeciality(specialityDAO.readSpeciality(rs.getString("specialityID")));
                 result.setServiceName(rs.getString("serviceName"));
-                result.setServicePrice(rs.getInt("servicePrice"));
+                result.setServicePrice(rs.getBigDecimal("servicePrice"));
 
                 if (serviceList == null) {
                     serviceList = new ArrayList();
@@ -197,7 +197,7 @@ public class Service_DAOImpl implements Service_DAO {
                 result.setServiceID(rs.getString("serviceID"));
                 result.setSpeciality(spec);
                 result.setServiceName(rs.getString("serviceName"));
-                result.setServicePrice(rs.getInt("servicePrice"));
+                result.setServicePrice(rs.getBigDecimal("servicePrice"));
                 if (serviceList == null) {
                     serviceList = new ArrayList();
                 }
@@ -233,7 +233,7 @@ public class Service_DAOImpl implements Service_DAO {
             stm = con.prepareStatement(UPDATE_SERVICE);
             stm.setString(1, serviceDTO.getSpeciality().getSpecialityID());
             stm.setString(2, serviceDTO.getServiceName());
-            stm.setInt(3, serviceDTO.getServicePrice());
+            stm.setBigDecimal(3, serviceDTO.getServicePrice());
             stm.setString(4, serviceDTO.getServiceID());
 
             rowsAffected = stm.executeUpdate();
