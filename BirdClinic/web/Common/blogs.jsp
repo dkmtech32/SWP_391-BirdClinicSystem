@@ -18,33 +18,29 @@
             <!-- Breadcrumb -->
             <jsp:include page="../Common/breadcrumb.jsp"/>
             <!-- /Breadcrumb -->
-            <div class="container-fluid">
-                <section class="blogs-body">
-                    <div class="blogs-container row">
-                        <!-- start of card -->
-                        <c:forEach var="card" items="${blog.getLisofBlog('available')}">
-                            <div class="blog-container">
-                                <img src="data:images/jpg;base64,${card.thumbnail}" draggable="false"/>
-                                <div class="desc-container">
-                                    <h5 class="blog-title">${card.title}</h5>
-                                    <div class="date-write">
-                                        <span>${card.date}</span>
-                                        <span style="float: right">${card.author}</span>
+            <div class="container pt-5">
+                <div class="d-flex flex-column text-center mb-5">
+                    <h4 class="text-secondary mb-3">Bird Blog</h4>
+                    <h1 class="display-4 m-0"><span class="text-primary">Updates</span> From Blog</h1>
+                </div>
+                <div class="row pb-3">
+                    <c:forEach var="card" items="${blog.getLisofBlog('available')}">
+                        <div class="col-lg-4 mb-4">
+                            <div class="card border-0 mb-2">
+                                <img class="card-img-top" src="data:images/jpg;base64,${card.thumbnail}" alt="" />
+                                <div class="card-body bg-light p-4">
+                                    <h4 class="card-title text-truncate">${card.title}</h4>
+                                    <div class="d-flex mb-3">
+                                        <small class="mr-2">${card.date}</small>
+                                        <small class="mr-2">${card.author}</small>
                                     </div>
-                                    <div class="blog-description">
-                                        ${card.briefinfo}
-                                    </div>
-                                </div>
-                                <div class="button-container">
-                                    <a href="MainController?action=view_blog_detail&blog_id=${card.blogid}">
-                                        <button>Read more</button>
-                                    </a>
+                                    <p>${card.briefinfo}</p>
+                                    <a class="font-weight-bold" href="MainController?action=view_blog_detail&blog_id=${card.blogid}">Read More</a>
                                 </div>
                             </div>
-                        </c:forEach>
-                        <!-- end of card -->
-                    </div>
-                </section>
+                        </div>
+                    </c:forEach>
+                </div>
             </div>
             <!-- Footer -->
             <jsp:include page="../Common/footer.jsp"/>
