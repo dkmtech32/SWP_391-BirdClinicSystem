@@ -53,42 +53,32 @@
                             ${detail.inconclusion}
                         </div>
                     </div>
-                    <section class="section-more">
+                    <div class="container pt-5">
                         <div class="heading"> 
                             <h2>MORE BLOGS & TIPS</h2>
                             <div>
                                 <h1>Discover more valuable insights!</h1>
                             </div>
                         </div>
-                        <div class="blogs-container">
-                            <div id="blogs-slider" class="blogs-slider">
-                                <c:forEach var="card" items="${blog.getLisofBlog('available')}">
-                                    <!-- start item -->
-                                    <div class="blog">
-                                        <div class="img-container">
-                                            <img style="" src="data:images/jpg;base64,${card.thumbnail}" draggable="false"/>
-                                        </div>
-                                        <div class="desc-container">
-                                            <h5 class="blog-title">${card.title}</h5>
-                                            <div class="date-write">
-                                                <span>May, - ${card.date}</span>
-                                                <span>${card.author}</span>
+                        <div class="row pb-3">
+                            <c:forEach var="card" items="${blog.getLisofBlog('available')}">
+                                <div class="col-lg-4 mb-4">
+                                    <div class="card border-0 mb-2">
+                                        <img class="card-img-top" src="data:images/jpg;base64,${card.thumbnail}" alt="" />
+                                        <div class="card-body bg-light p-4">
+                                            <h4 class="card-title text-truncate">${card.title}</h4>
+                                            <div class="d-flex mb-3">
+                                                <small class="mr-2">${card.date}</small>
+                                                <small class="mr-2">${card.author}</small>
                                             </div>
-                                            <div class="blog-description">
-                                                ${card.briefinfo}
-                                            </div>
-                                            <div class="button-container">
-                                                <a href="MainController?action=view_blog_detail&blog_id=${card.blogid}">
-                                                    <button>Read more</button>
-                                                </a>
-                                            </div>
+                                            <p>${card.briefinfo}</p>
+                                            <a class="font-weight-bold" href="MainController?action=view_blog_detail&blog_id=${card.blogid}">Read More</a>
                                         </div>
                                     </div>
-                                    <!-- end item -->
-                                </c:forEach>
-                            </div>
+                                </div>
+                            </c:forEach>
                         </div>
-                    </section>
+                    </div>
                 </c:if>
             </div>
 
