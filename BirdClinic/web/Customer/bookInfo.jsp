@@ -169,7 +169,7 @@
                                     <!-- Booking Doctor Info -->
                                     <div class="booking-doc-info">
                                         <a href="doctor-profile.jsp" class="booking-doc-img">
-                                            <img src="assets/img/logo.png" alt="User Image" />
+                                            <img src="${requestScope.doctorID}" alt="User Image" />
                                         </a>
                                         <div class="booking-info">
                                             <h4><a href="doctor-profile.jsp">BirdLover Clinic</a></h4>
