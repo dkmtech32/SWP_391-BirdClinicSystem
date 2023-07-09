@@ -583,4 +583,28 @@ public class GeneralServicesImpl implements GeneralServices {
         return filteredAppointments;
     }
 
+    @Override
+    public List<AppointmentDTO> getAppointmentsByFilter(String filter)
+            throws SQLException, AppointmentDoesNotExistException {
+        List<AppointmentDTO> result = null;
+
+        try {
+            if (filter != null) {
+                if (filter.trim().equals("upcoming")) {
+                    result = appointmentDAO.readAppointmentByStatus("confirm");
+                    result = filterAppointmentsByDate(
+                            result,
+                            new Date(System.currentTimeMillis()),
+                            new Date(System.currentTimeMillis() + 86400000)
+                    );
+                } else {
+                    result = appointmentDAO.readAppointmentByStatus(filter);
+                }
+            }
+        } catch (NoSuchRecordExists ex) {
+            throw new AppointmentDoesNotExistException(ex.getMessage());
+        }
+        return result;
+    }
+
 }

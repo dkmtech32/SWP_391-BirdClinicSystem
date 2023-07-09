@@ -33,10 +33,13 @@ public interface StaffServices extends GeneralServices {
     boolean updateAppointmentPayment(String appointmentID, String payment) throws AppointmentDoesNotExistException, SQLException;
 
     boolean updateService_(String serviceID, float servicePrice, String serviceName) throws ServiceDoesNotExistException, SQLException;
-    
+
     List<FeedbackDTO> getCustomerFeedbacks(String customerID) throws SQLException;
-    
+
     boolean addBlog(Map<String, String[]> args) throws BlogAlreadyExistsException, SQLException;
-    
+
     boolean editBlog(Map<String, String[]> args) throws BlogDoesNotExistException, SQLException;
+
+    List<DoctorDTO> getDoctorBySpeciality(String specialityID) throws DoctorDoesNotExistException, SQLException;
+
 }
