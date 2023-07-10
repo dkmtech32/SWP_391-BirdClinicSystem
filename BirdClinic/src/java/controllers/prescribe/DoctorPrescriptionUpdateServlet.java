@@ -89,7 +89,6 @@ public class DoctorPrescriptionUpdateServlet extends HttpServlet {
 
                 case "submit":
                     medRec = service.updateRecord(args, medRec);
-                    recMed = service.updatePrescription(args, medRec, recMed);
                     if (service.prescribe(medRec, recMed)) {
                         session.removeAttribute("medicalRecord");
                         if (recMed != null) {

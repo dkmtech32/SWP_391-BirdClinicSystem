@@ -47,7 +47,7 @@ public class StaffDashboardAppointmentsServlet extends HttpServlet {
                 filter = "upcoming";
             }
             List<AppointmentDTO> apps = service.getAppointmentsByFilter(filter);
-            if (filter.equals("processing")) {
+            if (filter.equals("processing") || filter.equals("upcoming")) {
                 List<List<DoctorDTO>> appDocs = new ArrayList<>();
                 for (AppointmentDTO app : apps) {
                     List<DoctorDTO> doctorList = null;

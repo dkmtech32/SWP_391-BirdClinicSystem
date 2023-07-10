@@ -26,7 +26,7 @@
 
                 <hr>
             </div>
-            <form class="container-fluid p-5 mt-4" id="prescriptionForm" action="<c:url value='/Doctor/Prescription/Update'/>" method="post">
+            <div class="container-fluid p-5 mt-4" id="prescriptionForm" action="<c:url value='/Doctor/Prescription/Update'/>" method="post">
                 <div class="card">
                     <div class="card-body">                      
                         <div class="row">
@@ -191,64 +191,64 @@
                                                             </a>
                                                         </td>
                                                     </tr>
-
                                                 </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
+                                <form action="<c:url value='/Doctor/Prescription/Update'/>" method="post">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="form-group">
+                                                <label>Note</label>
+                                                <textarea class="form-control" name="doctor-notes" rows="4" placeholder="Note for bird" ></textarea>
+                                            </div>
+                                        </div>
 
-                                <div class="row">
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="form-group">													                                            
+                                                <label>Diagnosis</label>
+                                                <input class="form-control" name="diagnosis"/>                                       
+                                            </div>
+                                        </div>
 
-
-                                    <div class="col-md-6 col-sm-12">
-                                        <div class="form-group">
-                                            <label>Note</label>
-                                            <textarea class="form-control" name="prescriptionNote" rows="4" placeholder="Note for bird" ></textarea>
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="form-group">
+                                                <label>Treatment days</label>
+                                                <input class="form-control" name="treatment-days" type="number"> 
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-6 col-sm-12">
-                                        <div class="form-group">													                                            
-                                            <label>Diagnosis</label>
-                                            <input class="form-control" name="diagnosis"/>                                       
-                                        </div>
-                                    </div>
-
-                                    <h4 class="card-title">Treatment days</h4>						
-                                    <div class="col-md-12 col-sm-12">
-                                        <div class="form-group">
-                                            <input class="form-control" name="treatmentDays" type="number"> 
-                                        </div>
-                                    </div>
-
+                                    <button type="submit" name="action" value="submit" class="btn btn-dark d-flex justify-content-center mx-auto mt-2">
+                                        Submit
+                                    </button>
+                                </form>
                             </div>
+
                         </div>
-
                     </div>
-                </div>
-            </div>     
+                </div>     
 
-            <button type="submit" name="action" value="submit" class="btn btn-dark d-flex justify-content-center mx-auto mt-2">
-                Submit
-            </button>
-        </form>
+                <button type="submit" name="action" value="submit" class="btn btn-dark d-flex justify-content-center mx-auto mt-2">
+                    Submit
+                </button>
+            </div>
 
-        <!-- /Page Content -->
+            <!-- /Page Content -->
 
-        <!-- Footer -->
-        <jsp:include page="../Common/footer.jsp"/>
-        <!-- /Footer -->
-    </div>
-    <!-- /Main Wrapper -->
+            <!-- Footer -->
+            <jsp:include page="../Common/footer.jsp"/>
+            <!-- /Footer -->
+        </div>
+        <!-- /Main Wrapper -->
 
-    <!-- Script -->
-    <jsp:include page="../Common/script.jsp"/>
-    <script>
-        $(document).ready(function () {
-            $('.js-example-basic-single').select2();
-        });
-    </script>
-    <!-- /Script -->
-</body>
+        <!-- Script -->
+        <jsp:include page="../Common/script.jsp"/>
+        <script>
+            $(document).ready(function () {
+                $('.js-example-basic-single').select2();
+            });
+        </script>
+        <!-- /Script -->
+    </body>
 </html>

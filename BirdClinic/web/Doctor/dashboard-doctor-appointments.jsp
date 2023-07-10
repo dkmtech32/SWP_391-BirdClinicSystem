@@ -72,7 +72,7 @@
                                                         <td class="text-right">
                                                             <div class="table-action">
                                                                 <a href="<c:url value="/View/Appointment?appointmentID=${appointment.appointmentID}"/>" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                <a href="<c:url value='/Doctor/Prescription?appointmentID=${appointment.appointmentID}'/>" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
+                                                                <a href="<c:url value='/Doctor/Prescription?appointmentID=${appointment.appointmentID}&new=new'/>" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
                                                             </div>
                                                         </td>
 
