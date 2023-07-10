@@ -5,10 +5,17 @@
  */
 package services.admin;
 
+import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import models.appointment.AppointmentDTO;
 import models.exceptions.NoSuchRecordExists;
 import models.exceptions.RecordAlreadyExists;
+import models.feedback.FeedbackDTO;
 import models.images.ImageDTO;
 import models.speciality.SpecialityDTO;
 import models.users.UserDTO;
@@ -183,4 +190,62 @@ public class AdminServicesImpl extends GeneralServicesImpl {
 
         return result;
     }
+
+    public List<AppointmentDTO> getAllAppsOfDoctor(String doctorID) throws SQLException, AccountDoesNotExistException {
+        List<AppointmentDTO> result = null;
+
+        try {
+            result = appointmentDAO.readAppointmentByDoctor(doctorID);
+        } catch (NoSuchRecordExists ex) {
+            result = null;
+        }
+
+        return result;
+    }
+
+    public List<FeedbackDTO> getAllFeedbackOfDoctor(String doctorID) throws SQLException, AccountDoesNotExistException {
+        List<FeedbackDTO> result = null;
+
+        try {
+            result = feedbackDAO.readFeedbackByDoctor(doctorID);
+        } catch (NoSuchRecordExists ex) {
+            result = null;
+        }
+
+        return result;
+    }
+
+    public List<BigDecimal> getAllRatingsFromDoctor() throws SQLException, AccountDoesNotExistException {
+        List<BigDecimal> result = null;
+
+        List<DoctorDTO> doctors = super.getAllDoctors();
+        for (DoctorDTO doctor : doctors) {
+            if (result == null) {
+                result = new ArrayList<>();
+            }
+            result.add(super.getDoctorRatings(doctor.getUserID()));
+        }
+        return result;
+    }
+
+    public List<Integer> getAllAppNumberFromDoctor() throws SQLException, AccountDoesNotExistException {
+        List<Integer> result = null;
+
+        List<DoctorDTO> doctors = super.getAllDoctors();
+        try {
+            for (DoctorDTO doctor : doctors) {
+
+                if (result == null) {
+                    result = new ArrayList<>();
+                }
+                result.add(appointmentDAO.readAppointmentByDoctor(doctor.getUserID()).size());
+            }
+        } catch (NoSuchRecordExists ex) {
+            throw new AccountDoesNotExistException(ex.getMessage());
+        }
+
+        return result;
+    }
+    
+    
 }

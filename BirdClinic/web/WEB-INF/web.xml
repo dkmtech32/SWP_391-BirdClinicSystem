@@ -309,10 +309,6 @@
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>IntroServlet</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>ViewBlogServlet</servlet-name>
         <url-pattern>/Blog</url-pattern>
     </servlet-mapping>
