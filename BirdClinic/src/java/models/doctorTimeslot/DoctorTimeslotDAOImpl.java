@@ -42,6 +42,9 @@ public class DoctorTimeslotDAOImpl implements DoctorTimeslotDAO {
     private static final String DELETE_DOCTIME
             = "delete from DoctorTimeSlot "
             + "where doctorID = ? and timeSlotID = ?";
+    private static final String DROP_DOCTOR
+            = "delete from DoctorTimeSlot "
+            + "where doctorID = ?";
 
     public DoctorTimeslotDAOImpl(TimeslotDAO timeslotDAO, DoctorDAO doctorDAO) {
         this.timeslotDAO = timeslotDAO;
@@ -140,6 +143,31 @@ public class DoctorTimeslotDAOImpl implements DoctorTimeslotDAO {
             if (result == 0) {
                 throw new DoctorNotInTimeslotException();
             }
+        } finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+
+        return result;
+    }
+    
+    @Override
+    public int dropDoctor(String doctorID)
+            throws SQLException, NoSuchRecordExists {
+        Connection con = null;
+        PreparedStatement stm = null;
+        int result = 0;
+
+        try {
+            con = DBUtils.getConnection();
+            stm = con.prepareStatement(DROP_DOCTOR);
+            stm.setString(1, doctorID);
+
+            result = stm.executeUpdate();
         } finally {
             if (stm != null) {
                 stm.close();
