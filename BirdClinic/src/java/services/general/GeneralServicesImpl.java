@@ -600,11 +600,11 @@ public class GeneralServicesImpl implements GeneralServices {
         try {
             if (filter != null) {
                 if (filter.trim().equals("upcoming")) {
-//                    result = appointmentDAO.;
+                    result = appointmentDAO.readAllAppointments();
                     result = filterAppointmentsByDate(
                             result,
                             new Date(System.currentTimeMillis()),
-                            new Date(System.currentTimeMillis() + 86400000)
+                            new Date(System.currentTimeMillis() + 86400000*7)
                     );
                 } else {
                     result = appointmentDAO.readAppointmentByStatus(filter);
