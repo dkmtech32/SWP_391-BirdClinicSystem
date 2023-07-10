@@ -25,7 +25,7 @@
                         <td>${med.medicine.medicineName}</td>
                         <td>${med.quantity} (${med.medicine.unit})</td>
                         <!--                    <td></td>  chưa có, này nghĩa là đơn vị (2 viên, 2 gram, vv) -->
-                        <td>${med.description}</td>
+                        <td>${med.description_}</td>
                     </tr>
                 </c:forEach>
             </tbody>

@@ -604,7 +604,7 @@ public class GeneralServicesImpl implements GeneralServices {
         try {
             if (filter != null) {
                 if (filter.trim().equals("upcoming")) {
-                    result = appointmentDAO.readAppointmentByStatus("confirm");
+//                    result = appointmentDAO.;
                     result = filterAppointmentsByDate(
                             result,
                             new Date(System.currentTimeMillis()),

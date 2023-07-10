@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
     <body>
@@ -16,7 +18,7 @@
                             <div class="form-group">
                                 <div class="change-avatar">
                                     <div class="profile-img">
-                                        <img src="../assets/images/client/${appointment.bird.customer.image.imageURLName}" alt="User Image" />
+                                        <img src="<c:url value='../assets/images/client/${appointment.bird.customer.image.imageURLName}'/>" alt="User Image" />
                                     </div>
                                 </div>
                             </div>
