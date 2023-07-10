@@ -88,4 +88,6 @@ public interface GeneralServices extends Serializable {
     
     List<AppointmentDTO> getAppointmentsByFilter(String filter) 
             throws SQLException, AppointmentDoesNotExistException;
+    
+    List<BlogDTO> viewAllBlog() throws SQLException, BlogDoesNotExistException;
 }

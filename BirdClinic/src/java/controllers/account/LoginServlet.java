@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String url = "/Common/login.jsp";
 
-        response.sendRedirect(request.getContextPath() + url);
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     /**

@@ -30,6 +30,8 @@ import models.service_.Service_DTO;
 import models.timeslot.TimeslotDTO;
 import models.users.UserDTO;
 import models.users.customer.CustomerDTO;
+import models.users.doctor.DoctorDTO;
+import services.doctor.DoctorDoesNotExistException;
 import services.general.AccountAlreadyExistsException;
 import services.general.AccountDoesNotExistException;
 import services.general.AppointmentDoesNotExistException;
@@ -364,5 +366,18 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
         }
 
         return result;
+    }
+    
+    @Override
+    public List<DoctorDTO> getDoctorBySpeciality(String specialityID) throws DoctorDoesNotExistException, SQLException {
+        List<DoctorDTO> docs = null;
+
+        try {
+            docs = doctorDAO.readDoctorsBySpeciality(specialityID);
+        } catch (NoSuchRecordExists ex) {
+            throw new DoctorDoesNotExistException(ex.getMessage());
+        }
+
+        return docs;
     }
 }
