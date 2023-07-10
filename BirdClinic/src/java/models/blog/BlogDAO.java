@@ -22,6 +22,8 @@ public interface BlogDAO extends Serializable {
     BlogDTO readBlog(String blogID) throws NoSuchRecordExists, SQLException;
 
     int updateBlog(BlogDTO blog) throws NoSuchRecordExists, SQLException;
-    
+
     List<BlogDTO> readTopThreeBlogs() throws NoSuchRecordExists, SQLException;
+
+    List<BlogDTO> readAllBlogs() throws NoSuchRecordExists, SQLException;
 }
