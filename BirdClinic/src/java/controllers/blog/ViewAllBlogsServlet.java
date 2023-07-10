@@ -3,20 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.account;
+package controllers.blog;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import models.blog.BlogDTO;
+import services.general.BlogDoesNotExistException;
+import services.general.GeneralServices;
 
 /**
  *
  * @author Admin
  */
-public class LogoutServlet extends HttpServlet {
+public class ViewAllBlogsServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -27,7 +32,27 @@ public class LogoutServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession(true);
+        GeneralServices accountService = (GeneralServices) session.getAttribute("service");
+        String url = "/Common/blog-list.jsp";
 
+        try {
+            List<BlogDTO> blogs = accountService.viewAllBlog();
+            request.setAttribute("blogs", blogs);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (BlogDoesNotExistException ex) {
+            ex.printStackTrace();
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -39,15 +64,7 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String url = "/login";
-        try {
-            HttpSession session = request.getSession();
-            session.invalidate();
-            url = "/";
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -61,15 +78,7 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String url = "/login";
-        try {
-            HttpSession session = request.getSession();
-            session.invalidate();
-            url = "/";
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -80,6 +89,6 @@ public class LogoutServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }
+    }// </editor-fold>
 
 }

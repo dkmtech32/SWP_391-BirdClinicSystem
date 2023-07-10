@@ -3,28 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.dashboard.staff;
+package controllers.account;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import services.doctor.DoctorDoesNotExistException;
-import services.general.AppointmentDoesNotExistException;
-import services.staff.ServiceDoesNotExistException;
-import services.staff.StaffServices;
+import services.general.AccountAlreadyExistsException;
+import services.general.GeneralServices;
+import services.general.PasswordNotStrongException;
+import services.general.PasswordsNotEqualException;
 
 /**
  *
  * @author Admin
  */
-public class StaffDashboardServicesUpdateServlet extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -37,7 +35,9 @@ public class StaffDashboardServicesUpdateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/Dashboard/Services").forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        String url = "/Common/register.jsp";
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     /**
@@ -52,21 +52,24 @@ public class StaffDashboardServicesUpdateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-
+        String url = "/Common/register.jsp";
+        HttpSession session = request.getSession(true);
+        GeneralServices accountService = (GeneralServices) session.getAttribute("service");
+        Map<String, String[]> args = request.getParameterMap();
+        
         try {
-            StaffServices service = (StaffServices) session.getAttribute("service");
-            String serviceID = request.getParameter("serviceID");
-            BigDecimal price = BigDecimal.valueOf(Float.valueOf(request.getParameter("service-price")));
-            String name = request.getParameter("name");
-            service.updateService_(serviceID, price.floatValue(), name);
-
-        } catch (ServiceDoesNotExistException ex) {
+            accountService.register(args);
+            url = "Common/login.jsp";
+        } catch (AccountAlreadyExistsException ex) {
+            ex.printStackTrace();
+        } catch (PasswordsNotEqualException ex) {
             ex.printStackTrace();
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } catch (PasswordNotStrongException ex) {
+            ex.printStackTrace();
         } finally {
-            request.getRequestDispatcher("/Dashboard/Services").forward(request, response);
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 

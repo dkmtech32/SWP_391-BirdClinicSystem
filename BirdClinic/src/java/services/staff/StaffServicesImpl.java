@@ -228,8 +228,7 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
     }
 
     @Override
-    public boolean addBlog(Map<String, String[]> args) throws BlogAlreadyExistsException, SQLException {
-        boolean result = false;
+    public BlogDTO addBlog(Map<String, String[]> args) throws BlogAlreadyExistsException, SQLException {
 
         String title = Utils.getFromMap(args, "blog-title", "");
         String content = Utils.getFromMap(args, "blog-content", "");
@@ -238,9 +237,9 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
         Timestamp uploadTime = new Timestamp(System.currentTimeMillis());
         String blogID = Utils.hash(title + author + category + uploadTime.toString());
 
+        BlogDTO blog = null;
         try {
-            BlogDTO blog = new BlogDTOImpl();
-
+            blog = new BlogDTOImpl();
             blog.setBlogID(blogID);
             blog.setBlogContent(content);
             blog.setTitle(title);
@@ -248,40 +247,35 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
             blog.setUploadDatetime(uploadTime);
 
             blogDAO.insertBlog(blog);
-            result = true;
         } catch (RecordAlreadyExists ex) {
             throw new BlogAlreadyExistsException(ex.getMessage());
         }
 
-        return result;
+        return blog;
     }
 
     @Override
-    public boolean editBlog(Map<String, String[]> args) throws BlogDoesNotExistException, SQLException {
-        boolean result = false;
-
+    public BlogDTO editBlog(Map<String, String[]> args) throws BlogDoesNotExistException, SQLException {
         String title = Utils.getFromMap(args, "blog-title", "");
         String content = Utils.getFromMap(args, "blog-content", "");
         String category = Utils.getFromMap(args, "category", "");
-        Timestamp uploadTime = new Timestamp(System.currentTimeMillis());
-        String blogID = Utils.hash(title + category + uploadTime.toString());
+        String blogID = Utils.getFromMap(args, "blogID", "");
+
+        BlogDTO blog = null;
 
         try {
-            BlogDTO blog = new BlogDTOImpl();
+            blog = blogDAO.readBlog(blogID);
 
-            blog.setBlogID(blogID);
             blog.setBlogContent(content);
             blog.setTitle(title);
             blog.setCategory(category);
-            blog.setUploadDatetime(uploadTime);
 
-            blogDAO.insertBlog(blog);
-            result = true;
-        } catch (RecordAlreadyExists ex) {
+            blogDAO.updateBlog(blog);
+        } catch (NoSuchRecordExists ex) {
             throw new BlogDoesNotExistException(ex.getMessage());
         }
 
-        return result;
+        return blog;
     }
 
     @Override

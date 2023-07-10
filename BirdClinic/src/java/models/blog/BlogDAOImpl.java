@@ -28,6 +28,10 @@ public class BlogDAOImpl implements BlogDAO {
             = "SELECT TOP 3 blogID, title, uploadDatetime, category, blogContent "
             + "FROM Blog "
             + "ORDER BY uploadDatetime DESC";
+    
+    private static final String READ_ALL_BLOGS
+            = "SELECT TOP 3 blogID, title, uploadDatetime, category, blogContent "
+            + "FROM Blog ";
 
     @Override
     public BlogDTO readBlog(String blogID) throws NoSuchRecordExists, SQLException {
@@ -141,6 +145,46 @@ public class BlogDAOImpl implements BlogDAO {
             con = DBUtils.getConnection();
             stm = con.createStatement();
             rs = stm.executeQuery(READ_TOP_THREE_BLOGS);
+
+            while (rs.next()) {
+                BlogDTO blog = new BlogDTOImpl();
+                blog.setBlogID(rs.getString("blogID"));
+                blog.setTitle(rs.getString("title"));
+                blog.setUploadDatetime(rs.getTimestamp("uploadDatetime"));
+                blog.setCategory(rs.getString("category"));
+                blog.setBlogContent(rs.getString("blogContent"));
+                blogs.add(blog);
+            }
+
+            if (blogs.isEmpty()) {
+                throw new NoSuchBlogExistsException();
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+
+        return blogs;
+    }
+    
+    @Override
+    public List<BlogDTO> readAllBlogs() throws NoSuchRecordExists, SQLException {
+        Connection con = null;
+        Statement stm = null;
+        ResultSet rs = null;
+        List<BlogDTO> blogs = new ArrayList<>();
+
+        try {
+            con = DBUtils.getConnection();
+            stm = con.createStatement();
+            rs = stm.executeQuery(READ_ALL_BLOGS);
 
             while (rs.next()) {
                 BlogDTO blog = new BlogDTOImpl();
