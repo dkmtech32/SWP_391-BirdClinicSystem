@@ -39,9 +39,14 @@ public class DoctorPrescriptionServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         String url = "/Doctor/add-prescription.jsp";
+        String a = request.getParameter("new");
         try {
             DoctorServices service = (DoctorServices) session.getAttribute("service");
             Map<String, String[]> args = request.getParameterMap();
+            if (a!=null) {
+                session.removeAttribute("medicalRecord");
+            }
+            
             MedicalRecordDTO medRec = (MedicalRecordDTO) session.getAttribute("medicalRecord");
             List<MedicineDTO> medicines = (List<MedicineDTO>) session.getAttribute("medicines");
             if (medRec == null) {
