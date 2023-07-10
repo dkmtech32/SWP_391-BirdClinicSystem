@@ -18,14 +18,14 @@
                         <span></span>
                     </span>
                 </a>
-                <a href="../Common/index.jsp" class="navbar-brand logo">
-                    <img src="../assets/img/logo.png" class="img-fluid" alt="Logo" />
+                <a href="<c:url value="../Common/index.jsp"/>" class="navbar-brand logo">
+                    <img src="<c:url value="../assets/img/logo.png"/>" class="img-fluid" alt="Logo" />
                 </a>
             </div>
             <div class="main-menu-wrapper">
                 <div class="menu-header">
                     <a href="index.jsp" class="menu-logo">
-                        <img src="../assets/img/logo.png" class="img-fluid" alt="Logo" />
+                        <img src="<c:url value="../assets/img/logo.png"/>" class="img-fluid" alt="Logo" />
                     </a>
                     <a id="menu_close" class="menu-close" href="javascript:void(0);">
                         <i class="fas fa-times"></i>
@@ -118,7 +118,7 @@
                                 <img src="../assets/images/${sessionScope.service.currentUser.image.imageURLName}" alt="User Image" class="avatar-img rounded-circle" />
                             </div>
                             <div class="user-text">
-                                <h6>${sessionScope.currentUser.fullName}</h6>
+                                <h6>${sessionScope.service.currentUser.fullName}</h6>
                                 <p class="text-muted mb-0">${sessionScope.service.currentUser.displayRole}</p>
                             </div>
                         </div>
