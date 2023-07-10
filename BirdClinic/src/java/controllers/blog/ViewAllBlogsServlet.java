@@ -3,28 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.dashboard.staff;
+package controllers.blog;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import models.appointment.AppointmentDTO;
-import models.users.doctor.DoctorDTO;
-import services.doctor.DoctorDoesNotExistException;
-import services.general.AppointmentDoesNotExistException;
-import services.staff.StaffServices;
+import models.blog.BlogDTO;
+import services.general.BlogDoesNotExistException;
+import services.general.GeneralServices;
 
 /**
  *
  * @author Admin
  */
-public class StaffDashboardAppointmentsServlet extends HttpServlet {
+public class ViewAllBlogsServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,36 +35,20 @@ public class StaffDashboardAppointmentsServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        String url = "/Staff/dashboard-staff-appointments.jsp";
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession(true);
+        GeneralServices accountService = (GeneralServices) session.getAttribute("service");
+        String url = "/Common/blog-list.jsp";
+
         try {
-            StaffServices service = (StaffServices) session.getAttribute("service");
-            String filter = request.getParameter("filter");
-            if (filter == null || filter.trim().equals("")) {
-                filter = "upcoming";
-            }
-            List<AppointmentDTO> apps = service.getAppointmentsByFilter(filter);
-            if (filter.equals("processing")) {
-                List<List<DoctorDTO>> appDocs = new ArrayList<>();
-                for (AppointmentDTO app : apps) {
-                    List<DoctorDTO> doctorList = null;
-                    if (app.getDoctor() == null) {
-                        doctorList = service.getDoctorBySpeciality(app.getService_().getSpeciality().getSpecialityID());
-                    }
-                    appDocs.add(doctorList);
-                }
-                request.setAttribute("doctorList", appDocs);
-            }
-            request.setAttribute("appointments", apps);
+            List<BlogDTO> blogs = accountService.viewAllBlog();
+            request.setAttribute("blogs", blogs);
         } catch (SQLException ex) {
             ex.printStackTrace();
-        } catch (AppointmentDoesNotExistException ex) {
-            ex.printStackTrace();
-        } catch (DoctorDoesNotExistException ex) {
+        } catch (BlogDoesNotExistException ex) {
             ex.printStackTrace();
         } finally {
-            request.setAttribute("url", url);
-            request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 

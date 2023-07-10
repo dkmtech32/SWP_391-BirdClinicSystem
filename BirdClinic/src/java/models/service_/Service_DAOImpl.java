@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import models.exceptions.NoSuchRecordExists;
+import models.exceptions.RecordAlreadyExists;
 import models.speciality.SpecialityDAO;
 import models.speciality.SpecialityDTO;
 import utils.DBUtils;
@@ -43,6 +44,10 @@ public class Service_DAOImpl implements Service_DAO {
             + "serviceName = ?, "
             + "servicePrice = ? "
             + "WHERE serviceID = ?";
+    private static final String INSERT_SERVICE
+            = "INSERT INTO Service_ (serviceID, specialityID, serviceName, servicePrice) "
+            + "VALUES (?, ?, ?, ?)";
+
     private final SpecialityDAO specialityDAO;
 
     public Service_DAOImpl(SpecialityDAO specialityDAO) {
@@ -240,6 +245,37 @@ public class Service_DAOImpl implements Service_DAO {
 
             if (rowsAffected == 0) {
                 throw new NoSuchService_ExistsException();
+            }
+        } finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+
+        return rowsAffected;
+    }
+    
+    @Override
+    public int insertService(Service_DTO serviceDTO) throws RecordAlreadyExists, SQLException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        int rowsAffected = 0;
+
+        try {
+            con = DBUtils.getConnection();
+            stm = con.prepareStatement(INSERT_SERVICE);
+            stm.setString(1, serviceDTO.getServiceID());
+            stm.setString(2, serviceDTO.getSpeciality().getSpecialityID());
+            stm.setString(3, serviceDTO.getServiceName());
+            stm.setBigDecimal(4, serviceDTO.getServicePrice());
+
+            rowsAffected = stm.executeUpdate();
+
+            if (rowsAffected == 0) {
+                throw new Service_AlreadyExistsException();
             }
         } finally {
             if (stm != null) {

@@ -3,24 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.dashboard.staff;
+package controllers.blog;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import services.doctor.DoctorDoesNotExistException;
-import services.general.AppointmentDoesNotExistException;
+import models.blog.BlogDTO;
+import services.staff.BlogAlreadyExistsException;
 import services.staff.StaffServices;
 
 /**
  *
  * @author Admin
  */
-public class StaffDashboardAppointmentsUpdateServlet extends HttpServlet {
+public class WriteBlogServlet extends HttpServlet {
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -33,7 +34,9 @@ public class StaffDashboardAppointmentsUpdateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/Dashboard/Appointments").forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        String url = "/Staff/blog-write.jsp";
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     /**
@@ -50,35 +53,24 @@ public class StaffDashboardAppointmentsUpdateServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
 
+        Map<String, String[]> args = request.getParameterMap();
+        String blogID = "";
+
         try {
             StaffServices service = (StaffServices) session.getAttribute("service");
-            String appointmentID = request.getParameter("appointmentID");
-            String action = request.getParameter("action");
+            BlogDTO blog = service.addBlog(args);
+            blogID = blog.getBlogID();
 
-            switch (action.toLowerCase()) {
-                case "cancel":
-                    service.cancelAppointment(appointmentID);
-                    break;
-                case "update":
-                    String doctorID = request.getParameter("doctorID");
-                    String payment = request.getParameter("payment");
-                    if (doctorID != null) {
-                        service.updateAppointmentDoctor(appointmentID, doctorID);
-                    }
-                    if (payment != null) {
-                        service.updateAppointmentPayment(appointmentID, payment);
-                    }
-                    service.updateAppointment(appointmentID);
-                    break;
-            }
-        } catch (DoctorDoesNotExistException ex) {
-            ex.printStackTrace();
-        } catch (AppointmentDoesNotExistException ex) {
+        } catch (BlogAlreadyExistsException ex) {
             ex.printStackTrace();
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
-            request.getRequestDispatcher("/Dashboard/Appointments").forward(request, response);
+            if (blogID.trim().equals("")) {
+                request.getRequestDispatcher("/Blog/All").forward(request, response);
+            } else {
+                request.getRequestDispatcher("/Blog?blogID=" + blogID).forward(request, response);
+            }
         }
     }
 

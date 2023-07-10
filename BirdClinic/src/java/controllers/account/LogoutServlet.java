@@ -28,7 +28,6 @@ public class LogoutServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -41,13 +40,13 @@ public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = request.getContextPath() + "/Common/login.jsp";
+        String url = "/login";
         try {
             HttpSession session = request.getSession();
             session.invalidate();
-            url = request.getContextPath() + "/Common/index.jsp";
+            url = "/";
         } finally {
-            response.sendRedirect(url);
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 
@@ -62,7 +61,15 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendError(405);
+        response.setContentType("text/html;charset=UTF-8");
+        String url = "/login";
+        try {
+            HttpSession session = request.getSession();
+            session.invalidate();
+            url = "/";
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
+        }
     }
 
     /**
@@ -73,6 +80,6 @@ public class LogoutServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }
