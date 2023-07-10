@@ -15,17 +15,20 @@
                 <h4 class="mb-4">Patient Appointment</h4>
                 <div class="appointment-tab">
                     <!-- Appointment Tab -->
-<!--                    <ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#upcoming-appointments" data-toggle="tab">Upcoming</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#today-appointments" data-toggle="tab">Checked In</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#done-appointments" data-toggle="tab">Done</a>
-                        </li>
-                    </ul>-->
+                    <div>
+                        <a href="<c:url value="/Dashboard/Appointments?filter=upcoming"/>" >Upcoming</a>
+                        <form action="<c:url value="/Dashboard/Appointments"/>" method="get">
+                            <select onchange="updateFormAction()" name="filter">
+                                <option value="">--</option>
+                                <option value="processing">Processing</option>
+                                <option value="confirm">Confirmed</option>
+                                <option value="check-in">Checked-in</option>
+                                <option value="cancelled">Canceled</option>
+                                <option value="complete">Completed</option>
+                            </select>
+                        </form>
+                        <a href="/Dashboard/Appointments?filter=complete" >Completed</a>
+                    </div>
                     <!-- /Appointment Tab -->
 
                     <div class="tab-content">
@@ -41,7 +44,8 @@
                                                     <th>Appointment Date</th>
                                                     <th>Bird Name</th>
                                                     <th>Bird Breed</th>
-                                                    <th class="text-center">Service</th>
+                                                    <th>Service</th>
+                                                    <th>Status</th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
@@ -67,11 +71,27 @@
                                                         </td>
                                                         <td>${appointment.bird.breed}</td>
                                                         <td>${appointment.service_.serviceName}</td>
+                                                        <c:choose>
+                                                            <c:when test="${appointment.appStatus =='processing'}">
+                                                                <td><span class="badge badge-pill bg-warning-light">Processing</span></td>
+                                                            </c:when>
+                                                            <c:when test="${appointment.appStatus =='confirm'}">
+                                                                <td><span class="badge badge-pill bg-success-light">Confirmed</span></td>
+                                                            </c:when>
+                                                            <c:when test="${appointment.appStatus =='check-in'}">
+                                                                <td><span class="badge badge-pill bg-purple-light">Check In</span></td>
+                                                            </c:when>
+                                                            <c:when test="${appointment.appStatus =='complete'}">
+                                                                <td><span class="badge badge-pill bg-primary-light">Completed</span></td>
+                                                            </c:when>
+                                                            <c:when test="${appointment.appStatus =='cancelled'}">
+                                                                <td><span class="badge badge-pill bg-danger-light">Canceled</span></td>
+                                                            </c:when>
+                                                        </c:choose>
 
                                                         <td class="text-right">
                                                             <div class="table-action">
                                                                 <a href="<c:url value="/View/Appointment?appointmentID=${appointment.appointmentID}"/>" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                <a href="<c:url value='/Doctor/Prescription?appointmentID=${appointment.appointmentID}&new=new'/>" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
                                                             </div>
                                                         </td>
 
@@ -83,7 +103,7 @@
                                 </div>
                             </div>
                         </div>
-                       
+
 
                         <!-- /Done Appointment Tab -->
                     </div>
@@ -91,4 +111,13 @@
             </div>
         </div>
     </div>
+    <script>
+        function updateFormAction() {
+            var filterValue = document.querySelector('select[name="filter"]').value;
+            var form = document.querySelector('form');
+            var baseUrl = form.action.split('?')[0]; // Get the base URL without query parameters
+            form.action = baseUrl + '?filter=' + encodeURIComponent(filterValue);
+            form.submit();
+        }
+    </script>
 </html>
