@@ -10,22 +10,23 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import models.appointment.AppointmentDTO;
 import models.exceptions.NoSuchRecordExists;
 import models.exceptions.RecordAlreadyExists;
-import models.feedback.FeedbackDTO;
 import models.images.ImageDTO;
+import models.service_.Service_DTO;
 import models.speciality.SpecialityDTO;
 import models.users.UserDTO;
 import models.users.UserDTOImpl;
+import models.users.customer.CustomerDTO;
 import models.users.doctor.DoctorDTO;
 import models.users.doctor.DoctorDTOImpl;
 import services.general.AccountAlreadyExistsException;
 import services.general.AccountDoesNotExist;
 import services.general.AccountDoesNotExistException;
+import services.general.AppointmentDoesNotExistException;
 import services.general.GeneralServicesImpl;
+import services.staff.ServiceDoesNotExistException;
 import utils.Utils;
 
 /**
@@ -191,30 +192,6 @@ public class AdminServicesImpl extends GeneralServicesImpl {
         return result;
     }
 
-    public List<AppointmentDTO> getAllAppsOfDoctor(String doctorID) throws SQLException, AccountDoesNotExistException {
-        List<AppointmentDTO> result = null;
-
-        try {
-            result = appointmentDAO.readAppointmentByDoctor(doctorID);
-        } catch (NoSuchRecordExists ex) {
-            result = null;
-        }
-
-        return result;
-    }
-
-    public List<FeedbackDTO> getAllFeedbackOfDoctor(String doctorID) throws SQLException, AccountDoesNotExistException {
-        List<FeedbackDTO> result = null;
-
-        try {
-            result = feedbackDAO.readFeedbackByDoctor(doctorID);
-        } catch (NoSuchRecordExists ex) {
-            result = null;
-        }
-
-        return result;
-    }
-
     public List<BigDecimal> getAllRatingsFromDoctor() throws SQLException, AccountDoesNotExistException {
         List<BigDecimal> result = null;
 
@@ -228,24 +205,51 @@ public class AdminServicesImpl extends GeneralServicesImpl {
         return result;
     }
 
-    public List<Integer> getAllAppNumberFromDoctor() throws SQLException, AccountDoesNotExistException {
-        List<Integer> result = null;
-
-        List<DoctorDTO> doctors = super.getAllDoctors();
+    public List<AppointmentDTO> getAllAppointments() throws SQLException, AppointmentDoesNotExistException {
+        List<AppointmentDTO> result = null;
+        
         try {
-            for (DoctorDTO doctor : doctors) {
-
-                if (result == null) {
-                    result = new ArrayList<>();
-                }
-                result.add(appointmentDAO.readAppointmentByDoctor(doctor.getUserID()).size());
-            }
+            result = appointmentDAO.readAllAppointments();
         } catch (NoSuchRecordExists ex) {
-            throw new AccountDoesNotExistException(ex.getMessage());
+            throw new AppointmentDoesNotExistException(ex.getMessage());
         }
-
+        
         return result;
     }
     
+    public List<CustomerDTO> getAllCustomer() throws SQLException, AccountDoesNotExistException {
+        List<CustomerDTO> result = null;
+        
+        try {
+            result = customerDAO.readAllCustomers();
+        } catch (NoSuchRecordExists ex) {
+            throw new AccountDoesNotExistException(ex.getMessage());
+        }
+        
+        return result;
+    }
     
+    public List<UserDTO> getAllUsers() throws SQLException, AccountDoesNotExistException {
+        List<UserDTO> result = null;
+        
+        try {
+            result = userDAO.readAllUsers();
+        } catch (NoSuchRecordExists ex) {
+            throw new AccountDoesNotExistException(ex.getMessage());
+        }
+        
+        return result;
+    }
+    
+    public List<Service_DTO> getAllServices() throws SQLException, ServiceDoesNotExistException {
+        List<Service_DTO> result = null;
+        
+        try {
+            result = serviceDAO.readAllService_();
+        } catch (NoSuchRecordExists ex) {
+            throw new ServiceDoesNotExistException(ex.getMessage());
+        }
+        
+        return result;
+    }
 }

@@ -188,6 +188,10 @@
         <servlet-name>WriteBlogServlet</servlet-name>
         <servlet-class>controllers.blog.WriteBlogServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminDashboardAccountsServlet</servlet-name>
+        <servlet-class>controllers.dashboard.admin.AdminDashboardAccountsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Common/login</url-pattern>
@@ -323,6 +327,10 @@
     <servlet-mapping>
         <servlet-name>WriteBlogServlet</servlet-name>
         <url-pattern>/Blog/Write</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminDashboardAccountsServlet</servlet-name>
+        <url-pattern>/Admin/Dashboard/Accounts</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

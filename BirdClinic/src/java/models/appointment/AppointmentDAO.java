@@ -23,6 +23,9 @@ public interface AppointmentDAO extends Serializable {
 
     List<AppointmentDTO> readListOfAppointment(List<String> appointmentIDs)
             throws NoSuchRecordExists, SQLException;
+    
+    List<AppointmentDTO> readAllAppointments()
+            throws NoSuchRecordExists, SQLException;
 
     List<AppointmentDTO> readAppointmentByBird(String birdID)
             throws NoSuchRecordExists, SQLException;
