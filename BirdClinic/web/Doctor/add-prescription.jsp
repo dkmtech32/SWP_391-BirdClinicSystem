@@ -26,7 +26,7 @@
 
                 <hr>
             </div>
-            <div class="container-fluid p-5 mt-4" id="prescriptionForm">
+            <div class="container-fluid p-5 mt-4" id="prescriptionForm" action="<c:url value='/Doctor/Prescription/Update'/>" method="post">
                 <div class="card">
                     <div class="card-body">                      
                         <div class="row">
@@ -135,7 +135,7 @@
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group card-label">
                                                     <label>Medicine name</label>
-                                                    <select class="js-example-basic-single" name="state">
+                                                    <select class="js-example-basic-single" name="medicineID">
                                                         <c:forEach var="list" items="${sessionScope.medicines}">
                                                             <option value="${list.medicineID}">${list.medicineName} (${list.unit})</option>                           
                                                         </c:forEach>
@@ -191,22 +191,38 @@
                                                             </a>
                                                         </td>
                                                     </tr>
-
                                                 </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
+                                <form action="<c:url value='/Doctor/Prescription/Update'/>" method="post">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="form-group">
+                                                <label>Note</label>
+                                                <textarea class="form-control" name="doctor-notes" rows="4" placeholder="Note for bird" ></textarea>
+                                            </div>
+                                        </div>
 
-                                <div class="info-widget">
-                                    <h4 class="card-title">Notes</h4>						
-                                    <div class="col-md-12 col-sm-12">
-                                        <div class="form-group">													
-                                            <textarea class="form-control" name="prescriptionNote" rows="4" placeholder="Note for bird" ></textarea>
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="form-group">													                                            
+                                                <label>Diagnosis</label>
+                                                <input class="form-control" name="diagnosis"/>                                       
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="form-group">
+                                                <label>Treatment days</label>
+                                                <input class="form-control" name="treatment-days" type="number"> 
+                                            </div>
                                         </div>
                                     </div>
-
-                                </div>
+                                    <button type="submit" name="action" value="submit" class="btn btn-dark d-flex justify-content-center mx-auto mt-2">
+                                        Submit
+                                    </button>
+                                </form>
                             </div>
 
                         </div>

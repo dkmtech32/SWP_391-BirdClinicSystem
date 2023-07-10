@@ -12,8 +12,10 @@
             <h2>Payment</h2>
             <div class="payment-method">
                 <h4>Payment Method</h4> 
-                <div class="form-control select w-75">
-                    ${appoitment.payment}
+                <div class="form-control select w-75" name="payment">
+                    <option value="cash" >cash</option>
+                    <option value="banking account">banking account</option>
+                    <option value="credit card">credit card</option>                    
                 </div>
             </div>
             <div class="booking-item-wrap-in-appointments-details">

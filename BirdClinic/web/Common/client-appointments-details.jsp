@@ -36,7 +36,10 @@
                             <jsp:include page="../Common/appointment-general-info.jsp"/>
                             <jsp:include page="../Common/appointment-medicine-list.jsp"/>                       
                         </div>
-                        <jsp:include page="../Customer/give-feedback.jsp"/>
+                            <c:if test="${requestScope.appointment.bird.customer.userID.equals(sessionScope.service.currentUser.userID)&& empty requestScope.feedback && requestScope.appointment.appStatus.equals('complete')}">
+
+                            <jsp:include page="../Customer/give-feedback.jsp"/>
+                        </c:if>
                         <jsp:include page="../Common/owner-feedback.jsp"/>  
                         <!-- chỉ hiện khi user đưa feedback rồi-->
 

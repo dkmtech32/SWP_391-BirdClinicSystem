@@ -13,7 +13,7 @@
             <h2>General Information</h2>
             <thead>
                 <tr>
-                    <th>Date of diagnosis</th>
+                    <th>Date of Appointment</th>
                     <th>Appointment Time</th>
                     <th>Service</th>
                     <th>Owner's Note</th>
@@ -24,7 +24,7 @@
             <tbody>
                 <tr >
                     <td>${appointment.appTime}</td>
-                    <td>${medicalRecord.recordTime}</td>
+                    <td>${appointment.timeslot.timeSlot}</td>
                     <td>${appointment.service_.serviceName}</td>
                     <td style="word-wrap: break-word; max-width: 300px;">${appointment.notes}</td> <!-- chưa có -->
                     <td>${medicalRecord.diagnosis}</td>
