@@ -15,8 +15,6 @@ import java.util.Map;
 import models.appointment.AppointmentDAO;
 import models.appointment.AppointmentDAOImpl;
 import models.appointment.AppointmentDTO;
-import models.appointmentCancel.AppointmentCancelDAO;
-import models.appointmentCancel.AppointmentCancelDAOImpl;
 import models.bird.BirdDAO;
 import models.bird.BirdDAOImpl;
 import models.bird.BirdDTO;
@@ -84,7 +82,6 @@ public class GeneralServicesImpl implements GeneralServices {
     protected final CustomerDAO customerDAO;
     protected final DoctorTimeslotDAO doctorTimeslotDAO;
     protected final FeedbackDAO feedbackDAO;
-    protected final AppointmentCancelDAO appointmentCancelDAO;
     protected final BlogDAO blogDAO;
 
     protected UserDTO currentUser;
@@ -104,7 +101,6 @@ public class GeneralServicesImpl implements GeneralServices {
         recordMedicineDAO = new RecordMedicineDAOImpl(medicalRecordDAO, medicineDAO);
         doctorTimeslotDAO = new DoctorTimeslotDAOImpl(timeslotDAO, doctorDAO);
         feedbackDAO = new FeedbackDAOImpl(appointmentDAO);
-        appointmentCancelDAO = new AppointmentCancelDAOImpl(appointmentDAO);
         blogDAO = new BlogDAOImpl();
     }
 
