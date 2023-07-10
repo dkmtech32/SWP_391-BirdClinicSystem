@@ -37,7 +37,9 @@
                             <jsp:include page="../Common/appointment-medicine-list.jsp"/>                       
                         </div>
                         <jsp:include page="../Customer/give-feedback.jsp"/>
-                        <!-- <jsp:include page="../Common/owner-feedback.jsp"/>  chỉ hiện khi user đưa feedback rồi -->
+                        <jsp:include page="../Common/owner-feedback.jsp"/>  
+                        <!-- chỉ hiện khi user đưa feedback rồi-->
+
                         <jsp:include page="../Common/payment-info.jsp"/>
                     </div>
                 </div>
