@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
 import models.exceptions.NoSuchRecordExists;
+import models.exceptions.RecordAlreadyExists;
 
 /**
  *
@@ -30,4 +31,7 @@ public interface Service_DAO extends Serializable {
     
     int updateService(Service_DTO service) 
             throws NoSuchRecordExists, SQLException;
+    
+    int insertService(Service_DTO service) 
+            throws RecordAlreadyExists, SQLException;
 }

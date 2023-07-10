@@ -532,6 +532,19 @@ public class GeneralServicesImpl implements GeneralServices {
 
         return blog;
     }
+    
+    @Override
+    public List<BlogDTO> viewAllBlog() throws SQLException, BlogDoesNotExistException {
+        List<BlogDTO> blogs = null;
+        
+        try {
+            blogs = blogDAO.readAllBlogs();
+        } catch (NoSuchRecordExists ex) {
+            throw new BlogDoesNotExistException(ex.getMessage());
+        }
+        
+        return blogs;
+    }
 
     @Override
     public List<BlogDTO> viewIntroBlogs() throws SQLException {
