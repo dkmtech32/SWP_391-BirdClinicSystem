@@ -184,8 +184,7 @@
                                                         <td data-field="unit">${list.medicine.unit}</td>
                                                         <td data-field="description">${list.description_}</td>
                                                         <td>											
-                                                            <a class="button button-small edit" title="Delete" href="<c:url value='/Doctor/Prescription/Update?action=remove&'/>">
-                                                                
+                                                            <a class="button button-small edit" title="Delete" href="<c:url value='/Doctor/Prescription/Update?action=remove'/>">                                                                
                                                                 <i class="fa fa-trash"></i>
                                                             </a>
                                                         </td>
