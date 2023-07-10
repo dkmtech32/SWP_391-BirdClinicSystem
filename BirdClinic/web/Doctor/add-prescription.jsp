@@ -26,7 +26,7 @@
 
                 <hr>
             </div>
-            <div class="container-fluid p-5 mt-4" id="prescriptionForm">
+            <form class="container-fluid p-5 mt-4" id="prescriptionForm" action="<c:url value='/Doctor/Prescription/Update'/>" method="post">
                 <div class="card">
                     <div class="card-body">                      
                         <div class="row">
@@ -135,7 +135,7 @@
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group card-label">
                                                     <label>Medicine name</label>
-                                                    <select class="js-example-basic-single" name="state">
+                                                    <select class="js-example-basic-single" name="medicineID">
                                                         <c:forEach var="list" items="${sessionScope.medicines}">
                                                             <option value="${list.medicineID}">${list.medicineName} (${list.unit})</option>                           
                                                         </c:forEach>
@@ -198,41 +198,57 @@
                                     </div>
                                 </div>
 
-                                <div class="info-widget">
-                                    <h4 class="card-title">Notes</h4>						
-                                    <div class="col-md-12 col-sm-12">
-                                        <div class="form-group">													
+                                <div class="row">
+
+
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label>Note</label>
                                             <textarea class="form-control" name="prescriptionNote" rows="4" placeholder="Note for bird" ></textarea>
                                         </div>
                                     </div>
 
-                                </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">													                                            
+                                            <label>Diagnosis</label>
+                                            <input class="form-control" name="diagnosis"/>                                       
+                                        </div>
+                                    </div>
+
+                                    <h4 class="card-title">Treatment days</h4>						
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="form-group">
+                                            <input class="form-control" name="treatmentDays" type="number"> 
+                                        </div>
+                                    </div>
+
                             </div>
-
                         </div>
+
                     </div>
-                </div>     
+                </div>
+            </div>     
 
-                <button type="submit" name="action" value="submit" class="btn btn-dark d-flex justify-content-center mx-auto mt-2">
-                    Submit
-                </button>
-            </div>
+            <button type="submit" name="action" value="submit" class="btn btn-dark d-flex justify-content-center mx-auto mt-2">
+                Submit
+            </button>
+        </form>
 
-            <!-- /Page Content -->
+        <!-- /Page Content -->
 
-            <!-- Footer -->
-            <jsp:include page="../Common/footer.jsp"/>
-            <!-- /Footer -->
-        </div>
-        <!-- /Main Wrapper -->
+        <!-- Footer -->
+        <jsp:include page="../Common/footer.jsp"/>
+        <!-- /Footer -->
+    </div>
+    <!-- /Main Wrapper -->
 
-        <!-- Script -->
-        <jsp:include page="../Common/script.jsp"/>
-        <script>
-            $(document).ready(function () {
-                $('.js-example-basic-single').select2();
-            });
-        </script>
-        <!-- /Script -->
-    </body>
+    <!-- Script -->
+    <jsp:include page="../Common/script.jsp"/>
+    <script>
+        $(document).ready(function () {
+            $('.js-example-basic-single').select2();
+        });
+    </script>
+    <!-- /Script -->
+</body>
 </html>
