@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.dashboard.staff;
+package controllers.account;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -15,17 +15,42 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import services.doctor.DoctorDoesNotExistException;
-import services.general.AppointmentDoesNotExistException;
-import services.staff.ServiceDoesNotExistException;
-import services.staff.StaffServices;
+import models.blog.BlogDTO;
+import services.general.GeneralServices;
 
 /**
  *
  * @author Admin
  */
-public class StaffDashboardServicesUpdateServlet extends HttpServlet {
+public class IntroServlet extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        GeneralServices accountService = (GeneralServices) session.getAttribute("service");
+        String url = "/Common/index.jsp";
+        
+        try {
+            List<BlogDTO> blogs = accountService.viewIntroBlogs();
+            request.setAttribute("intro-blogs", blogs);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -37,7 +62,7 @@ public class StaffDashboardServicesUpdateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/Dashboard/Services").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -51,23 +76,7 @@ public class StaffDashboardServicesUpdateServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-
-        try {
-            StaffServices service = (StaffServices) session.getAttribute("service");
-            String serviceID = request.getParameter("serviceID");
-            BigDecimal price = BigDecimal.valueOf(Float.valueOf(request.getParameter("service-price")));
-            String name = request.getParameter("name");
-            service.updateService_(serviceID, price.floatValue(), name);
-
-        } catch (ServiceDoesNotExistException ex) {
-            ex.printStackTrace();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            request.getRequestDispatcher("/Dashboard/Services").forward(request, response);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -78,6 +87,6 @@ public class StaffDashboardServicesUpdateServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }
+    }// </editor-fold>
 
 }

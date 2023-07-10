@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import models.appointment.AppointmentDTO;
+import models.blog.BlogDTO;
 import models.feedback.FeedbackDTO;
 import models.service_.Service_DTO;
 import models.users.doctor.DoctorDTO;
@@ -37,9 +38,9 @@ public interface StaffServices extends GeneralServices {
 
     List<FeedbackDTO> getCustomerFeedbacks(String customerID) throws SQLException;
 
-    boolean addBlog(Map<String, String[]> args) throws BlogAlreadyExistsException, SQLException;
+    BlogDTO addBlog(Map<String, String[]> args) throws BlogAlreadyExistsException, SQLException;
 
-    boolean editBlog(Map<String, String[]> args) throws BlogDoesNotExistException, SQLException;
+    BlogDTO editBlog(Map<String, String[]> args) throws BlogDoesNotExistException, SQLException;
 
     List<DoctorDTO> getDoctorBySpeciality(String specialityID) throws DoctorDoesNotExistException, SQLException;
 

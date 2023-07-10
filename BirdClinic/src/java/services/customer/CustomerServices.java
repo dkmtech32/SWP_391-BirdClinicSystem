@@ -12,6 +12,8 @@ import models.appointment.AppointmentAlreadyExistsException;
 import models.appointment.AppointmentDTO;
 import models.bird.BirdAlreadyExistsException;
 import models.bird.BirdDTO;
+import models.users.doctor.DoctorDTO;
+import services.doctor.DoctorDoesNotExistException;
 import services.general.AppointmentDoesNotExistException;
 import services.general.BirdDoesNotExistException;
 import services.general.GeneralServices;
@@ -38,4 +40,6 @@ public interface CustomerServices extends GeneralServices {
             throws SQLException, AppointmentDoesNotExistException;
 
     boolean addFeedback(Map<String, String[]> args) throws AppointmentDoesNotExistException, SQLException;
+    
+    List<DoctorDTO> getDoctorBySpeciality(String specialityID) throws DoctorDoesNotExistException, SQLException;
 }
