@@ -349,9 +349,12 @@
                                                             <div class="d-flex justify-content-between align-items-center mb-3">
                                                                 <div class="mb-0 position-relative">
                                                                     <select class="form-select form-control" id="yearchart">
-                                                                        <option selected>2020</option>
-                                                                        <option value="2019">2019</option>
-                                                                        <option value="2018">2018</option>
+                                                                        <option value="" data-service-price='-'>--</option>
+                                                                        <c:forEach var="doctor" items="${doctorList}">
+                                                                            <option value="${doctor.userID}" >
+                                                                                ${doctor.fullName}
+                                                                            </option>
+                                                                        </c:forEach>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -366,19 +369,32 @@
                                                 <div class="col-xl-4 col-lg-5 mt-4">
                                                     <div class="card shadow border-0 p-4">
                                                         <div class="d-flex justify-content-between align-items-center mb-3">
-                                                            <div class="mb-0 position-relative">
-                                                                <select class="form-select form-control" id="dailychart">
-                                                                    <option selected>Today</option>
-                                                                    <option value="2019">Yesterday</option>
-                                                                </select>
+                                                            <div style="width: 27rem; height: 20rem">
+                                                                <canvas id="piechart"></canvas>
                                                             </div>
-                                                        </div>
-                                                        <div style="width: 30rem; height: 30rem">
-                                                            <canvas id="piechart"></canvas>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <!--end col-->
+                                            </div>
+                                            <div class="col-xl-12 col-lg-7 mt-4">
+                                                <div class="card shadow border-0 p-4">
+                                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                                        <div class="mb-0 position-relative">
+                                                            <select class="form-select form-control" id="dailychart">
+                                                                <option value="" data-service-price='-'>--</option>
+                                                                <c:forEach var="doctor" items="${doctorList}">
+                                                                    <option value="${doctor.userID}" >
+                                                                        ${doctor.fullName}
+                                                                    </option>
+                                                                </c:forEach>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div style="width: 90rem; height: 50rem">
+                                                        <canvas id="doctor_number_appointment"></canvas>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -390,14 +406,17 @@
                                                             <div class="d-flex justify-content-between align-items-center mb-3">
                                                                 <div class="mb-0 position-relative">
                                                                     <select class="form-select form-control" id="yearchart2">
-                                                                        <option selected>2020</option>
-                                                                        <option value="2019">2019</option>
-                                                                        <option value="2018">2018</option>
+                                                                        <option value="" data-service-price='-'>--</option>
+                                                                        <c:forEach var="service" items="${serviceList}">
+                                                                            <option value="${service.serviceID}" >
+                                                                                ${service.serviceName}
+                                                                            </option>
+                                                                        </c:forEach>
                                                                     </select>
                                                                 </div>
                                                             </div>
                                                             <div style="width: 200rem; height: 30rem">
-                                                                <canvas id="myChart2"></canvas>
+                                                                <canvas id="serviceIncomeByMonth"></canvas>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -407,15 +426,9 @@
                                                 <div class="col-xl-4 col-lg-5 mt-4">
                                                     <div class="card shadow border-0 p-4">
                                                         <div class="d-flex justify-content-between align-items-center mb-3">
-                                                            <div class="mb-0 position-relative">
-                                                                <select class="form-select form-control" id="dailychart2">
-                                                                    <option selected>Today</option>
-                                                                    <option value="2019">Yesterday</option>
-                                                                </select>
+                                                            <div style="width: 30rem; height: 30rem">
+                                                                <canvas id="barChartHighestServiceIncome"></canvas>
                                                             </div>
-                                                        </div>
-                                                        <div style="width: 30rem; height: 30rem">
-                                                            <canvas id="piechart2"></canvas>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -430,33 +443,33 @@
                                                         <div class="justify-content-between align-items-center mb-3">
                                                             <div class="d-flex justify-content-between align-items-center mb-3">
                                                                 <div class="mb-0 position-relative">
-                                                                    <select class="form-select form-control" id="yearchart3">
-                                                                        <option selected>2020</option>
-                                                                        <option value="2019">2019</option>
-                                                                        <option value="2018">2018</option>
+                                                                    Select month
+                                                                    <select class="form-select form-control" id="dailychart">
+                                                                        <option selected>January</option>
+                                                                        <option>February</option>
+                                                                        <option>March</option>
+                                                                        <option>April</option>
+                                                                        <option>May</option>
+                                                                        <option>June</option>
+                                                                        <option>July</option>
+                                                                        <option>August</option>
+                                                                        <option>September</option>
+                                                                        <option>October</option>
+                                                                        <option>November</option>
+                                                                        <option>December</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="mb-0 position-relative">
+                                                                    Select year
+                                                                    <select class="form-select form-control" id="dailychart">
+                                                                        <option selected>2023</option>
+                                                                        <option>2022</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                            <div style="width: 200rem; height: 30rem">
-                                                                <canvas id="myChart3"></canvas>
+                                                            <div style="width: 90rem; height: 50rem; margin-left: 20rem;">
+                                                                <canvas id="pieChartBooking"></canvas>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!--end col-->
-
-                                                <div class="col-xl-4 col-lg-5 mt-4">
-                                                    <div class="card shadow border-0 p-4">
-                                                        <div class="d-flex justify-content-between align-items-center mb-3">
-                                                            <div class="mb-0 position-relative">
-                                                                <select class="form-select form-control" id="dailychart3">
-                                                                    <option selected>Today</option>
-                                                                    <option value="2019">Yesterday</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div style="width: 30rem; height: 30rem">
-                                                            <canvas id="piechart3"></canvas>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -500,24 +513,24 @@
             // Sample data for the chart
             const data = {
             labels: [
-                "January",
-                "February",
-                "March",
-                "April",
-                "May",
-                "June",
-                "July",
-                "August",
-                "September",
-                "October",
-                "November",
-                "December"
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"
             ],
-            datasets: [
-                {
+                    datasets: [
+                    {
                     data: [
-                        <c:forEach items="${doctor}" value="doctorID" var="doctor" varStatus="status">
-                            ${doctorRating}${!status.last ? ',' : ''}
+                        <c:forEach items="${doctorRatingbyMonth}" var="doctor" varStatus="status">
+                            ${doctor.rating}${!status.last ? ',' : ''}
                         </c:forEach>
                     ],
                     backgroundColor: [
@@ -537,46 +550,53 @@
                         "rgba(25, 25, 25, 255)"
                     ],
                     borderWidth: 1
-                }
-            ]
+                    }
+                ]
             };
             // Chart configuration
             const config = {
-            type: "line",
-                    data: data,
-                    options: {
+                type: "line",
+                data: data,
+                options: {
                     // scales: {
                     //   x: {
                     //     type: "category",
                     //   },
                     // },
                     plugins: {
-                    title: {
-                    display: true,
-                            text: "Monthly sales",
+                        title: {
+                            display: true,
+                            text: "Doctor's average rating by month",
                             font: {
-                            size: 25,
+                                size: 25,
                             },
+                        },
                     },
-                    },
-                            layout: {
-                            margin: {
+                    layout: {
+                        margin: {
                             left: 70,
-                                    right: 50,
-                                    bottom: 50,
-                                    top: 50,
-                            },
-                            },
+                            right: 50,
+                            bottom: 50,
+                            top: 50,
+                        },
                     },
+                },
             };
             const barChartData = {
-            labels: ["Tai", "Nhi", "Yen", "Tien", "Thao"],
-                    datasets: [
+                labels: [
+                    <c:forEach items="${highestRated}" var="doctor" varStatus="status">
+                        ${doctor.highestRatedDoctor}${!status.last ? ',' : ''}
+                    </c:forEach>
+                ],
+                datasets: [
                     {
                     label: "Population",
-                            label: "Area",
-                            data: [10, 20, 45, 23, 27],
-                            backgroundColor: [
+                    data: [
+                        <c:forEach items="${highestRated}" var="doctor" varStatus="status">
+                            ${doctor.highestRatedPoint}${!status.last ? ',' : ''}
+                        </c:forEach>
+                    ],
+                    backgroundColor: [
                                     "rgba(75, 192, 192, 0.6)",
                                     "rgba(250,225,169,255)",
                                     "rgba(4,43,99,255)",
@@ -598,35 +618,35 @@
             };
             // Chart configuration
             const configBarChart = {
-            type: "bar",
-                    data: barChartData,
-                    options: {
+                type: "bar",
+                data: barChartData,
+                options: {
                     // scales: {
                     //   x: {
                     //     type: "category",
                     //   },
                     // },
                     plugins: {
-                    title: {
-                    display: true,
-                            text: "Monthly sales",
+                        title: {
+                            display: true,
+                            text: "Top 5 highest rated doctors",
                             font: {
-                            size: 25,
+                                size: 25,
                             },
+                        },
                     },
-                    },
-                            layout: {
-                            margin: {
+                    layout: {
+                        margin: {
                             left: 70,
-                                    right: 50,
-                                    bottom: 50,
-                                    top: 50,
-                            },
-                            },
+                            right: 50,
+                            bottom: 50,
+                            top: 50,
+                        },
                     },
+                },
             };
             const barChartNumberAppointmentData = {
-            labels: [
+                labels: [
                     "January",
                     "February",
                     "March",
@@ -639,61 +659,65 @@
                     "October",
                     "November",
                     "December",
-            ],
+                ],
                     datasets: [
                     {
-                    data: [1.5, 2, 4.5, 3, 2.5, 5, 3.5, 1, 2, 4, 3.5, 4],
-                            backgroundColor: [
-                                    "rgba(75, 192, 192, 0.6)",
-                                    "rgba(250,225,169,255)",
-                                    "rgba(4,43,99,255)",
-                                    "#6c2b2d",
-                                    "rgba(221,44,44,255)",
-                                    "rgba(25,25,25,255)",
-                            ],
-                            borderColor: [
-                                    "rgba(75, 192, 192, 0.6)",
-                                    "rgba(250,225,169,255)",
-                                    "rgba(4,43,99,255)",
-                                    "#6c2b2d",
-                                    "rgba(221,44,44,255)",
-                                    "rgba(25,25,25,255)",
-                            ],
-                            borderWidth: 1,
+                        data: [
+                            <c:forEach items="${numberOfAppointMent}" var="doctor" varStatus="status">
+                                ${doctor.appoitmentByMonth}${!status.last ? ',' : ''}
+                            </c:forEach>
+                        ],
+                        backgroundColor: [
+                            "rgba(75, 192, 192, 0.6)",
+                            "rgba(250,225,169,255)",
+                            "rgba(4,43,99,255)",
+                            "#6c2b2d",
+                            "rgba(221,44,44,255)",
+                            "rgba(25,25,25,255)",
+                        ],
+                        borderColor: [
+                            "rgba(75, 192, 192, 0.6)",
+                            "rgba(250,225,169,255)",
+                            "rgba(4,43,99,255)",
+                            "#6c2b2d",
+                            "rgba(221,44,44,255)",
+                            "rgba(25,25,25,255)",
+                        ],
+                        borderWidth: 1,
                     },
-                    ],
+                ],
             };
             // Chart configuration
             const configAppointmentNumberBarChart = {
-            type: "bar",
-                    data: barChartNumberAppointmentData,
-                    options: {
+                type: "bar",
+                data: barChartNumberAppointmentData,
+                options: {
                     // scales: {
                     //   x: {
                     //     type: "category",
                     //   },
                     // },
                     plugins: {
-                    title: {
-                    display: true,
+                        title: {
+                            display: true,
                             text: "Doctor's number of appointment by month",
-                            font: {
-                            size: 25,
+                            font:{
+                                size: 25,
                             },
+                        },
                     },
-                    },
-                            layout: {
-                            margin: {
+                    layout: {
+                        margin: {
                             left: 70,
-                                    right: 50,
-                                    bottom: 50,
-                                    top: 50,
-                            },
-                            },
+                            right: 50,
+                            bottom: 50,
+                            top: 50,
+                        },
                     },
+                },
             };
             const barChartServiceIncomeByMonth = {
-            labels: [
+                labels:[
                     "January",
                     "February",
                     "March",
@@ -706,64 +730,191 @@
                     "October",
                     "November",
                     "December",
-            ],
-                    datasets: [
+                ],
+                datasets: [
                     {
-                    data: [1.5, 2, 4.5, 3, 2.5, 5, 3.5, 1, 2, 4, 3.5, 4],
-                            backgroundColor: [
-                                    "rgba(75, 192, 192, 0.6)",
-                                    "rgba(250,225,169,255)",
-                                    "rgba(4,43,99,255)",
-                                    "#6c2b2d",
-                                    "rgba(221,44,44,255)",
-                                    "rgba(25,25,25,255)",
-                            ],
-                            borderColor: [
-                                    "rgba(75, 192, 192, 0.6)",
-                                    "rgba(250,225,169,255)",
-                                    "rgba(4,43,99,255)",
-                                    "#6c2b2d",
-                                    "rgba(221,44,44,255)",
-                                    "rgba(25,25,25,255)",
-                            ],
-                            borderWidth: 1,
+                        data: [
+                            <c:forEach items="${numberOfAppoitment}" var="service" varStatus="status">
+                                ${service.numberOfAppointment}${!status.last ? ',' : ''}
+                            </c:forEach>
+                        ],
+                        backgroundColor: [
+                            "rgba(75, 192, 192, 0.6)",
+                            "rgba(250,225,169,255)",
+                            "rgba(4,43,99,255)",
+                            "#6c2b2d",
+                            "rgba(221,44,44,255)",
+                            "rgba(25,25,25,255)",
+                        ],
+                        borderColor: [
+                            "rgba(75, 192, 192, 0.6)",
+                            "rgba(250,225,169,255)",
+                            "rgba(4,43,99,255)",
+                            "#6c2b2d",
+                            "rgba(221,44,44,255)",
+                            "rgba(25,25,25,255)",
+                        ],
+                        borderWidth: 1,
                     },
-                    ],
+                ],
             };
             // Chart configuration
             const configServiceIncomeByMonth = {
-            type: "bar",
-                    data: barChartServiceIncomeByMonth,
-                    options: {
+                type: "bar",
+                data: barChartServiceIncomeByMonth,
+                options: {
                     // scales: {
                     //   x: {
                     //     type: "category",
                     //   },
                     // },
                     plugins: {
-                    title: {
-                    display: true,
-                            text: "Doctor's number of appointment by month",
+                        title: {
+                            display: true,
+                            text: "Service's imcome by month (by USD $)",
                             font: {
-                            size: 25,
+                                size: 25,
                             },
+                        },
                     },
-                    },
-                            layout: {
-                            margin: {
+                    layout: {
+                        margin: {
                             left: 70,
-                                    right: 50,
-                                    bottom: 50,
-                                    top: 50,
-                            },
-                            },
+                            right: 50,
+                            bottom: 50,
+                            top: 50,
+                        },
                     },
+                },
+            };
+            const barChartTopIncomeService = {
+                labels: [
+                    <c:forEach items="${highestIncome}" var="service" varStatus="status">
+                        ${service.highestIncomeService}${!status.last ? ',' : ''}
+                    </c:forEach>
+                ],
+                datasets: [
+                    {
+                        label: "",
+                        data: [
+                            <c:forEach items="${highestRated}" var="service" varStatus="status">
+                                ${service.highestIncomePoint}${!status.last ? ',' : ''}
+                            </c:forEach>
+                        ],
+                        backgroundColor: [
+                            "rgba(75, 192, 192, 0.6)",
+                            "rgba(250,225,169,255)",
+                            "rgba(4,43,99,255)",
+                            "#6c2b2d",
+                            "rgba(221,44,44,255)",
+                            "rgba(25,25,25,255)",
+                        ],
+                        borderColor: [
+                            "rgba(75, 192, 192, 0.6)",
+                            "rgba(250,225,169,255)",
+                            "rgba(4,43,99,255)",
+                            "#6c2b2d",
+                            "rgba(221,44,44,255)",
+                            "rgba(25,25,25,255)",
+                        ],
+                        borderWidth: 1,
+                    },
+                ],
+            };
+            // Chart configuration
+            const configBarChartTopIncomeService = {
+                type: "bar",
+                data: barChartTopIncomeService,
+                options: {
+                    // scales: {
+                    //   x: {
+                    //     type: "category",
+                    //   },
+                    // },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: "Top 5 highest rated doctors",
+                            font: {
+                                size: 25,
+                            },
+                        },
+                    },
+                    layout: {
+                        margin: {
+                            left: 70,
+                            right: 50,
+                            bottom: 50,
+                            top: 50,
+                        },
+                    },
+                },
+            };
+            
+            const pieChartBookingData = {
+                labels: ["Processing", "Confirmed", "Checked In", "Completed", "Canceled"],
+                datasets: [
+                    {
+                        label: "",
+                        data: [
+                            <c:forEach items="${highestRated}" var="service" varStatus="status">
+                                ${service.highestIncomePoint}${!status.last ? ',' : ''}
+                            </c:forEach>
+                        ],
+                        backgroundColor: [
+                            "#f39c12",
+                            "#26af48",
+                            "#2196f3",
+                            "##c580ff",
+                            "#e63c3c",
+                        ],
+                        borderColor: [
+                            "#f39c12",
+                            "#26af48",
+                            "#2196f3",
+                            "#c580ff",
+                            "#e63c3c",
+                        ],
+                        borderWidth: 1,
+                    },
+                ],
+            };
+            // Chart configuration
+            const configPieChartBooking = {
+                type: "pie",
+                data: pieChartBookingData,
+                options: {
+                    // scales: {
+                    //   x: {
+                    //     type: "category",
+                    //   },
+                    // },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: "Top 5 highest rated doctors",
+                            font: {
+                                size: 25,
+                            },
+                        },
+                    },
+                    layout: {
+                        margin: {
+                            left: 70,
+                            right: 50,
+                            bottom: 50,
+                            top: 50,
+                        },
+                    },
+                },
             };
             // Create a new instance of Chart
             const myChart = new Chart(document.getElementById("myChart"), config);
             const piechart = new Chart(document.getElementById("piechart"), configBarChart);
             const doctor_number_appointment = new Chart(document.getElementById("doctor_number_appointment"), configAppointmentNumberBarChart);
             const serviceIncomeByMonth = new Chart(document.getElementById("serviceIncomeByMonth"), configServiceIncomeByMonth);
+            const barChartHighestServiceIncome = new Chart(document.getElementById("barChartHighestServiceIncome"), configBarChartTopIncomeService);
+            const pieChartBooking = new Chart(document.getElementById("pieChartBooking"), configPieChartBooking);
         </script>
         <!-- Script -->
         <jsp:include page="../Common/script.jsp"/>
