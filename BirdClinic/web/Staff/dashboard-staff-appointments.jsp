@@ -60,10 +60,10 @@
                                                     <tr>
                                                         <td>
                                                             <h2 class="table-avatar">
-                                                                <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
-                                                                    <img class="avatar-img rounded-circle" src="../assets/images/client/${appointment.bird.customer.image.imageURLName}" alt="User Image" />
+                                                                <a href="" class="avatar avatar-sm mr-2">
+                                                                    <img class="avatar-img rounded-circle" src="<c:url value="/assets/images/client/${appointment.bird.customer.image.imageURLName}"/>" alt="User Image" />
                                                                 </a>
-                                                                <a href="doctor-profile.jsp">${appointment.bird.customer.fullName} </a> 
+                                                                <a href="">${appointment.bird.customer.fullName} </a> 
                                                             </h2>
                                                         </td>
                                                         <td>${appointment.appTime}<span class="d-block text-info">${appointment.timeslot.timeSlot}</span></td>
@@ -89,14 +89,26 @@
                                                             </c:when>
                                                         </c:choose>
 
-                                                        <td>
-                                                            <c:if test="${appointment.appStatus =='processing'||appointment.appStatus =='confirm'}">
-                                                                <select class="form-select" name="doctorID" onchange="changeDoctorSelection(this)" >
-                                                                    <option>--</option>
+                                                        <td >
+                                                            <c:if test="${appointment.appStatus =='processing'}">
+                                                                <select style="width:200px; max-width: 200px; white-space: nowrap;
+                                                                        overflow: hidden;
+                                                                        " id="${appointment.appointmentID}" class="form-select" name="doctorID" onchange="changeDoctorSelection(this)" >
+                                                                    <option value="">--</option>
                                                                     <c:forEach var="doc" items="${docSpec[appointment.service_.speciality.specialityID]}">
                                                                         <option value="${doc.userID}"<c:if test="${not empty appointment.doctor && appointment.doctor.userID.equals(doc.userID)}"> selected</c:if> >${doc.fullName}</option>
                                                                     </c:forEach>
                                                                 </select>   
+                                                            </c:if>
+                                                            <c:if test="${appointment.appStatus =='confirm'}">
+                                                                <form action="<c:url value="/Dashboard/Appointments/updateApp"/>" name="docForm" method="get">
+                                                                    <input name="appointmentID" style="display: none" value="${appointment.appointmentID}" />
+                                                                    <select class="form-select" name="doctorID" onchange="updateDoctorAction()">
+                                                                        <c:forEach var="docs" items="${docSpec[appointment.service_.speciality.specialityID]}">
+                                                                            <option value="${docs.userID}"<c:if test="${not empty appointment.doctor && appointment.doctor.userID.equals(docs.userID)}"> selected</c:if> >${docs.fullName}</option>
+                                                                        </c:forEach>
+                                                                    </select>
+                                                                </form>
                                                             </c:if>
 
                                                         </td>
@@ -110,9 +122,9 @@
 
                                                             <td class="text-right">
                                                                 <form action="<c:url value="/Dashboard/Appointments/updateApp"/>" name="docForm" method="get">
-                                                                    <input type="hidden" id="doctorIDParam" name="doctorID" value="">
-                                                                    <input type="hidden" id="doctorIDParam" name="action" value="update">
-                                                                    <input type="hidden" id="doctorIDParam" name="appointmentID" value="${appointment.appointmentID}">
+                                                                    <input type="hidden" id="hidden${appointment.appointmentID}" name="doctorID" <c:if test="${not empty appointment.doctor}"> value="${appointment.doctor.userID}"</c:if> required>
+                                                                        <input type="hidden"  name="action" value="update">
+                                                                        <input type="hidden" class="appID" name="appointmentID" value="${appointment.appointmentID}">
                                                                     <button class=" btn btn-sm bg-success-light" type="submit">
                                                                         <i class="fa fa-check"></i>
                                                                         Confirm
@@ -126,7 +138,7 @@
                                                             <td class="text-right">
 
                                                                 <div class="table-action">
-                                                                    <a href="<c:url value="/Staff/Dashboard/Appointments/Update?appointmentID=${appointment.appointmentID}&action=cancel"/>" class="btn btn-sm bg-danger-light"> <i class="fa fa-times"></i> Cancel </a>
+                                                                    <a href="<c:url value="/Staff/Dashboard/Appointments/updateApp?appointmentID=${appointment.appointmentID}&action=cancel"/>" class="btn btn-sm bg-danger-light"> <i class="fa fa-times"></i> Cancel </a>
                                                                 </div>
                                                             </td>
                                                         </c:if>
@@ -135,7 +147,7 @@
                                                             <td class="text-right">
 
                                                                 <div class="table-action">
-                                                                    <a href="<c:url value="/Staff/Dashboard/Appointments/Update?appointmentID=${appointment.appointmentID}&action=update"/>" class="btn btn-sm bg-warning-light"> <i class="fa fa-check"></i> Confirm </a>
+                                                                    <a href="<c:url value="/Staff/Dashboard/Appointments/updateApp?appointmentID=${appointment.appointmentID}&action=update"/>" class="btn btn-sm bg-warning-light"> <i class="fa fa-check"></i> Check-in </a>
                                                                 </div>
                                                             </td>
                                                         </c:if>
@@ -163,24 +175,26 @@
             form.action = baseUrl + '?filter=' + encodeURIComponent(filterValue);
             form.submit();
         }
-//        function updateDoctorAction() {
-//            var form = document.forms["docForm"];
-//            var appointmentID = form.elements["appointmentID"].value;
-//            var doctorID = form.elements["doctorID"].value;
-//
-//            // Build the URL with the required parameters
-//            var url = form.action + "?appointmentID=" + encodeURIComponent(appointmentID) +
-//                    "&doctorID=" + encodeURIComponent(doctorID) +
-//                    "&action=update";
-//
-//            // Redirect to the updated URL
-//            window.location.href = url;
-//
-//            return false; // Prevents the default form submission
-//        }
+        function updateDoctorAction() {
+            var form = document.forms["docForm"];
+            var appointmentID = form.elements["appointmentID"].value;
+            var doctorID = form.elements["doctorID"].value;
+
+            // Build the URL with the required parameters
+            var url = form.action + "?appointmentID=" + encodeURIComponent(appointmentID) +
+                    "&doctorID=" + encodeURIComponent(doctorID) +
+                    "&action=update";
+
+            // Redirect to the updated URL
+            window.location.href = url;
+
+            return false; // Prevents the default form submission
+        }
         function changeDoctorSelection(selectElement) {
             var selectedValue = selectElement.value;
-            document.getElementById("doctorIDParam").value = selectedValue;
+            var appID = selectElement.id;
+            console.log("hidden" + appID);
+            document.getElementById("hidden" + appID).value = selectedValue;
         }
     </script>
 </html>
