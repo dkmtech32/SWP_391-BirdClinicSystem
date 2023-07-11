@@ -8,8 +8,6 @@ package controllers.dashboard.customer;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,14 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.appointment.AppointmentDTO;
 import services.customer.CustomerServices;
-import services.general.AppointmentDoesNotExistException;
 
 /**
  *
  * @author Admin
  */
 public class CustomerDashboardAppointmentsServlet extends HttpServlet {
-    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,13 +34,17 @@ public class CustomerDashboardAppointmentsServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         String url = "/Customer/dashboard-customer-appointments.jsp";
+        String filter = request.getParameter("filter");
+        if (filter == null || filter.trim().equals("")) {
+            filter = "upcoming";
+        }
         try {
             CustomerServices service = (CustomerServices) session.getAttribute("service");
-            List<AppointmentDTO> apps = service.getAppointmentsByFilter("");
+            List<AppointmentDTO> apps = service.getAppointmentsByFilter(filter);
             request.setAttribute("appointments", apps);
         } catch (SQLException ex) {
             ex.printStackTrace();

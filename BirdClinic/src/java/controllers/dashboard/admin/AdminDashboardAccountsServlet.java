@@ -6,10 +6,16 @@
 package controllers.dashboard.admin;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import models.users.UserDTO;
+import services.admin.AdminServices;
+import services.general.AccountDoesNotExistException;
 
 /**
  *
@@ -28,7 +34,22 @@ public class AdminDashboardAccountsServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        String url = "/Admin/dashboard-admin-accounts.jsp";
+        try {
+            AdminServices admin = (AdminServices) session.getAttribute("service");
+            String filter = request.getParameter("filter");
+            List<UserDTO> users = admin.getAllUsers();
+            request.setAttribute("accounts", users);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (AccountDoesNotExistException ex) {
+            ex.printStackTrace();
+        } finally {
+            request.setAttribute("url", url);
+            request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
