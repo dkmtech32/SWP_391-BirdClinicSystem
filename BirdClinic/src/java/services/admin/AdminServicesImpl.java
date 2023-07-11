@@ -6,6 +6,7 @@
 package services.admin;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ import models.speciality.SpecialityDTO;
 import models.users.UserDTO;
 import models.users.UserDTOImpl;
 import models.users.customer.CustomerDTO;
+import models.users.customer.CustomerDTOImpl;
 import models.users.doctor.DoctorDTO;
 import models.users.doctor.DoctorDTOImpl;
 import services.general.AccountAlreadyExistsException;
@@ -33,7 +35,7 @@ import utils.Utils;
  *
  * @author Admin
  */
-public class AdminServicesImpl extends GeneralServicesImpl {
+public class AdminServicesImpl extends GeneralServicesImpl implements AdminServices {
 
     public AdminServicesImpl(UserDTO user) throws AccountDoesNotExist {
         if (user.getUserRole().toLowerCase().equals("admin")) {
@@ -43,6 +45,7 @@ public class AdminServicesImpl extends GeneralServicesImpl {
         }
     }
 
+    @Override
     public DoctorDTO createDoctor(Map<String, String[]> args)
             throws AccountAlreadyExistsException, SQLException {
         //assumption: args have all key-value pairs
@@ -91,7 +94,50 @@ public class AdminServicesImpl extends GeneralServicesImpl {
 
         return result;
     }
+    
+    @Override
+    public CustomerDTO createCustomer(Map<String, String[]> args)
+            throws AccountAlreadyExistsException, SQLException {
+        CustomerDTO result = null;
+        String username = args.get("username")[0];
+        String password = args.get("password")[0];
+        String email = args.get("email")[0];
+        String role = args.get("role")[0];
+        String phoneNumber = args.get("phone-number")[0];
+        String gender = args.get("gender")[0];
+        String address = args.get("customer-address")[0];
+        Date dob = Date.valueOf(args.get("dob")[0]);
 
+        try {
+
+            String rPassword = Utils.hash(password);
+            String userID = Utils.hash(email + username);
+            result = new CustomerDTOImpl();
+            result.setUserID(userID);
+            result.setEmail(email);
+            result.setUserName(username);
+            result.setUserPassword(rPassword);
+            result.setGender(gender);
+            result.setUserRole(role);
+            ImageDTO image = imageDAO.readImage("whfnhfn3ga98h943ghjanfueafa92rhf");
+            result.setImage(image);
+            result.setStatus_(true);
+            result.setPhoneNumber(phoneNumber);
+            result.setCustomerAddress(address);
+            result.setDob(dob);
+
+            customerDAO.insertCustomer(result);
+
+        } catch (RecordAlreadyExists ex) {
+            throw new AccountAlreadyExistsException(ex.getMessage());
+        } catch (NoSuchRecordExists ex) {
+            throw new SQLException(ex.getMessage());
+        }
+
+        return result;
+    }
+
+    @Override
     public UserDTO createStaffAdmin(Map<String, String[]> args)
             throws AccountAlreadyExistsException, SQLException {
         //assumption: args have all 4 key-value pairs
@@ -130,13 +176,14 @@ public class AdminServicesImpl extends GeneralServicesImpl {
         return result;
     }
 
+    @Override
     public boolean toggleAccountStatus(String userID) throws AccountDoesNotExistException, SQLException {
         boolean result = false;
 
         try {
             UserDTO user = userDAO.readUser(userID);
             String status = user.isStatus_() ? "banned" : "active";
-            result = userDAO.updateUserRole(userID, status) > 0;
+            result = userDAO.updateUserStatus(userID, status) > 0;
         } catch (NoSuchRecordExists ex) {
             throw new AccountDoesNotExistException(ex.getMessage());
         }
@@ -144,6 +191,7 @@ public class AdminServicesImpl extends GeneralServicesImpl {
         return result;
     }
 
+    @Override
     public boolean changeDoctorInfo(Map<String, String[]> args) throws SQLException, AccountDoesNotExistException {
         boolean result = false;
 
@@ -171,6 +219,7 @@ public class AdminServicesImpl extends GeneralServicesImpl {
         return result;
     }
 
+    @Override
     public boolean changeDoctorTimeslots(Map<String, String[]> args) throws SQLException, AccountDoesNotExistException {
         boolean result = false;
 
@@ -192,6 +241,7 @@ public class AdminServicesImpl extends GeneralServicesImpl {
         return result;
     }
 
+    @Override
     public List<BigDecimal> getAllRatingsFromDoctor() throws SQLException, AccountDoesNotExistException {
         List<BigDecimal> result = null;
 
@@ -205,6 +255,7 @@ public class AdminServicesImpl extends GeneralServicesImpl {
         return result;
     }
 
+    @Override
     public List<AppointmentDTO> getAllAppointments() throws SQLException, AppointmentDoesNotExistException {
         List<AppointmentDTO> result = null;
         
@@ -217,6 +268,7 @@ public class AdminServicesImpl extends GeneralServicesImpl {
         return result;
     }
     
+    @Override
     public List<CustomerDTO> getAllCustomer() throws SQLException, AccountDoesNotExistException {
         List<CustomerDTO> result = null;
         
@@ -229,6 +281,7 @@ public class AdminServicesImpl extends GeneralServicesImpl {
         return result;
     }
     
+    @Override
     public List<UserDTO> getAllUsers() throws SQLException, AccountDoesNotExistException {
         List<UserDTO> result = null;
         
@@ -241,6 +294,7 @@ public class AdminServicesImpl extends GeneralServicesImpl {
         return result;
     }
     
+    @Override
     public List<Service_DTO> getAllServices() throws SQLException, ServiceDoesNotExistException {
         List<Service_DTO> result = null;
         
