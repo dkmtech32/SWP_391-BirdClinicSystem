@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import services.general.AccountDoesNotExist;
+import services.general.AccountDoesNotExistException;
 import services.general.GeneralServices;
 import services.general.PasswordNotStrongException;
 import services.general.PasswordsEqualException;
@@ -75,7 +75,7 @@ public class UpdatePasswordServlet extends HttpServlet {
             service.updateAccountPassword(nPassword);
             url = "/Dashboard/Appointments";
             request.setAttribute("success-message", "Password changed.");
-        } catch (AccountDoesNotExist ex) {
+        } catch (AccountDoesNotExistException ex) {
             ex.printStackTrace();
             request.setAttribute("error-message", "Current password does not match. Please try again.");
         } catch (SQLException ex) {
