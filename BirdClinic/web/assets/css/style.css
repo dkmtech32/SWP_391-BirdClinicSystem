@@ -6939,13 +6939,13 @@ html.menu-opened body {
 }*/
 /* birdlist & assignbird (remove later) */
 
-.bird-information-boxes .col-md-6{
+.bird-information-boxes .col-12{
     display: flex;
 }
-.bird-information-boxes .col-md-6 .information{
+.bird-information-boxes .col-12 .information{
     margin-left: 0.5rem;
 }
-.bird-information-boxes .col-md-6 .title{
+.bird-information-boxes .col-12 .title{
     font-weight: 700;
 }
 .bird-info{
