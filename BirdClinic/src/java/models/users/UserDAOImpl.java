@@ -62,7 +62,7 @@ public class UserDAOImpl implements UserDAO {
             + "where userID = ?";
     private static final String UPDATE_USER_STATUS
             = "update Users "
-            + "set userRole = ? "
+            + "set status_ = ? "
             + "where userID = ?";
     private static final String UPDATE_USER_PASSWORD
             = "update Users "
@@ -315,7 +315,7 @@ public class UserDAOImpl implements UserDAO {
     }
     
     @Override
-    public int updateUserRole(String userID, String status) throws NoSuchRecordExists, SQLException {
+    public int updateUserStatus(String userID, String status) throws NoSuchRecordExists, SQLException {
         Connection con = null;
         PreparedStatement stm = null;
         int result = 0;

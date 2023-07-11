@@ -36,9 +36,13 @@ public class DoctorDashboardAppointmentsServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         String url = "/Doctor/dashboard-doctor-appointments.jsp";
+        String filter = request.getParameter("filter");
+        if (filter == null || filter.trim().equals("")) {
+            filter = "upcoming";
+        }
         try {
             DoctorServices service = (DoctorServices) session.getAttribute("service");
-            List<AppointmentDTO> apps = service.getAppointmentsByFilter("");
+            List<AppointmentDTO> apps = service.getAppointmentsByFilter(filter);
             request.setAttribute("appointments", apps);
         } catch (SQLException ex) {
             ex.printStackTrace();
