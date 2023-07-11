@@ -71,7 +71,7 @@
                             </div>
                         </div>
                         <a class="dropdown-item" href="<c:url value="/Dashboard/Appointments"/>">Dashboard</a>
-                        <a class="dropdown-item" href="<c:url value="/Update/Profile"/>">Profile Settings</a>
+                        <a class="dropdown-item" href="<c:url value="/View/Customer?userID=${sessionScope.service.currentUser.userID}"/>">My Profile</a>
                         <a class="dropdown-item" href="<c:url value="/logout"/>">Logout</a>
                     </div>
                 </li>

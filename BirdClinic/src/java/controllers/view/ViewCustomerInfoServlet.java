@@ -37,7 +37,7 @@ public class ViewCustomerInfoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "/Common/customer-profile.jsp";
+        String url = "/Common/customer-info.jsp";
         HttpSession session = request.getSession();
 
         String userID = request.getParameter("userID");
