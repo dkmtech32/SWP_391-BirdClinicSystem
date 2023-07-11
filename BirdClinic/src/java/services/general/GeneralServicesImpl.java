@@ -631,4 +631,17 @@ public class GeneralServicesImpl implements GeneralServices {
 
         return apps;
     }
+    
+    @Override
+    public List<AppointmentDTO> getCustomerAppointments(String customerID) throws AccountDoesNotExistException, SQLException {
+        List<AppointmentDTO> apps = null;
+
+        try {
+            apps = appointmentDAO.readAppointmentByCustomer(customerID);
+        } catch (NoSuchRecordExists ex) {
+            throw new AccountDoesNotExistException(ex.getMessage());
+        }
+
+        return apps;
+    }
 }

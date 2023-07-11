@@ -8,13 +8,12 @@ package controllers.view;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import models.appointment.AppointmentDTO;
 import models.bird.BirdDTO;
 import models.users.customer.CustomerDTO;
 import services.general.AccountDoesNotExistException;
@@ -49,6 +48,8 @@ public class ViewCustomerInfoServlet extends HttpServlet {
             request.setAttribute("birds", birds);
             CustomerDTO customer = service.getCustomerInfo(userID);
             request.setAttribute("customer", customer);
+            List<AppointmentDTO> apps = service.getCustomerAppointments(userID);
+            request.setAttribute("appointments", apps);
         } catch (ClassCastException ex) {
             url = "/login";
         } catch (SQLException ex) {

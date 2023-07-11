@@ -38,7 +38,7 @@ public class ViewDoctorInfoServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         response.setContentType("text/html;charset=UTF-8");
-        String url = "/Common/profile-doctor.jsp";
+        String url = "/Common/doctor-info.jsp";
         HttpSession session = request.getSession();
         
         String userID = request.getParameter("userID");
