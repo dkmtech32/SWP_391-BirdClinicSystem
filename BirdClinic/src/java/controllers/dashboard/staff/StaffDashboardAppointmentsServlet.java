@@ -7,8 +7,6 @@ package controllers.dashboard.staff;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
@@ -18,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.appointment.AppointmentDTO;
 import models.users.doctor.DoctorDTO;
-import services.general.AppointmentDoesNotExistException;
 import services.staff.StaffServices;
 
 /**

@@ -38,6 +38,9 @@ public interface AppointmentDAO extends Serializable {
 
     List<AppointmentDTO> readAppointmentByTimeslot(String timeslotID)
             throws NoSuchRecordExists, SQLException;
+    
+    List<AppointmentDTO> readAppointmentByDate(Date before, Date after)
+            throws NoSuchRecordExists, SQLException;
 
     List<AppointmentDTO> readAppointmentByStatus(String status) throws NoSuchRecordExists, SQLException;
 
