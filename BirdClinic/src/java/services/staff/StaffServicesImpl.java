@@ -24,7 +24,7 @@ import models.speciality.NoSuchSpecialityExistsException;
 import models.users.UserDTO;
 import models.users.doctor.DoctorDTO;
 import services.doctor.DoctorDoesNotExistException;
-import services.general.AccountDoesNotExist;
+import services.general.AccountDoesNotExistException;
 import services.general.AppointmentDoesNotExistException;
 import services.general.BlogDoesNotExistException;
 import services.general.GeneralServicesImpl;
@@ -36,11 +36,11 @@ import utils.Utils;
  */
 public class StaffServicesImpl extends GeneralServicesImpl implements StaffServices {
 
-    public StaffServicesImpl(UserDTO user) throws AccountDoesNotExist {
+    public StaffServicesImpl(UserDTO user) throws AccountDoesNotExistException {
         if (user.getUserRole().toLowerCase().equals("staff")) {
             this.currentUser = user;
         } else {
-            throw new AccountDoesNotExist();
+            throw new AccountDoesNotExistException();
         }
     }
 

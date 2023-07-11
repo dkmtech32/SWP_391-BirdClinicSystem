@@ -105,10 +105,6 @@
         <servlet-class>controllers.dashboard.UpdateProfileServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ViewAccountServlet</servlet-name>
-        <servlet-class>controllers.view.ViewAccountInfoServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ViewCustomerProfileServlet</servlet-name>
         <servlet-class>controllers.view.ViewCustomerInfoServlet</servlet-class>
     </servlet>
@@ -247,10 +243,6 @@
     <servlet-mapping>
         <servlet-name>UpdateProfileServlet</servlet-name>
         <url-pattern>/Update/Profile</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ViewAccountServlet</servlet-name>
-        <url-pattern>/View/Account</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ViewCustomerProfileServlet</servlet-name>
