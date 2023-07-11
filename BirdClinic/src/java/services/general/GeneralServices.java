@@ -90,4 +90,6 @@ public interface GeneralServices extends Serializable {
             throws SQLException;
     
     List<BlogDTO> viewAllBlog() throws SQLException, BlogDoesNotExistException;
+    
+    List<AppointmentDTO> getBirdAppointments(String birdID) throws BirdDoesNotExistException, SQLException;
 }

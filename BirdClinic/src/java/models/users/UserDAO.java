@@ -46,5 +46,5 @@ public interface UserDAO extends Serializable {
     List<UserDTO> readUserByRole(String userRole) 
             throws NoSuchRecordExists, SQLException;
     
-    int updateUserRole(String userID, String status) throws NoSuchRecordExists, SQLException;
+    int updateUserStatus(String userID, String status) throws NoSuchRecordExists, SQLException;
 }

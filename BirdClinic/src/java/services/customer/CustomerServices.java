@@ -5,7 +5,6 @@
  */
 package services.customer;
 
-import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +21,7 @@ import services.general.GeneralServices;
  *
  * @author Admin
  */
-public interface CustomerServices extends GeneralServices, Serializable {
+public interface CustomerServices extends GeneralServices {
 
     boolean addBird(Map<String, String[]> args) throws BirdAlreadyExistsException, SQLException;
 
