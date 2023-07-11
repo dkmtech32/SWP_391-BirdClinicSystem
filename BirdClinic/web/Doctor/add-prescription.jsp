@@ -26,7 +26,7 @@
 
                 <hr>
             </div>
-            <div class="container-fluid p-5 mt-4" id="prescriptionForm" action="<c:url value='/Doctor/Prescription/Update'/>" method="post">
+            <div class="container-fluid p-5 mt-4" id="prescriptionForm" >
                 <div class="card">
                     <div class="card-body">                      
                         <div class="row">
@@ -229,9 +229,7 @@
                     </div>
                 </div>     
 
-                <button type="submit" name="action" value="submit" class="btn btn-dark d-flex justify-content-center mx-auto mt-2">
-                    Submit
-                </button>
+                
             </div>
 
             <!-- /Page Content -->

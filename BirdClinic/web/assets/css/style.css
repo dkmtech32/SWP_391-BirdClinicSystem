@@ -5141,7 +5141,7 @@ html.menu-opened body {
 .profile-det-info h3 {
     font-size: 17px;
     text-overflow: ellipsis;
-    white-space: nowrap;
+/*    white-space: nowrap;*/
     overflow: hidden;
 }
 .patient-details h5 {
