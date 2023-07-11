@@ -10,7 +10,8 @@ import java.math.RoundingMode;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import models.appointment.AppointmentDAO;
@@ -556,7 +557,7 @@ public class GeneralServicesImpl implements GeneralServices {
         return blog;
     }
 
-    protected List<AppointmentDTO> filterAppointmentsByStatus(List<AppointmentDTO> appointments, String status) {
+    private List<AppointmentDTO> filterAppointmentsByStatus(List<AppointmentDTO> appointments, String status) {
         List<AppointmentDTO> filteredAppointments = new ArrayList<>();
 
         appointments.stream().filter((appointment)
@@ -568,24 +569,12 @@ public class GeneralServicesImpl implements GeneralServices {
         return filteredAppointments;
     }
 
-    protected List<AppointmentDTO> filterAppointmentsByStatuses(List<AppointmentDTO> appointments, List<String> statusList) {
-        List<AppointmentDTO> filteredAppointments = new ArrayList<>();
-
-        appointments.stream().filter((appointment)
-                -> (statusList.contains(appointment.getAppStatus()))).forEachOrdered((appointment)
-                -> {
-            filteredAppointments.add(appointment);
-        });
-
-        return filteredAppointments;
-    }
-
-    protected List<AppointmentDTO> filterAppointmentsByDate(List<AppointmentDTO> appointments, Date startDate, Date endDate) {
+    private List<AppointmentDTO> filterAppointmentsByDate(List<AppointmentDTO> appointments, Date startDate, Date endDate) {
         List<AppointmentDTO> filteredAppointments = new ArrayList<>();
 
         appointments.forEach((appointment) -> {
             Date appTime = appointment.getAppTime();
-            if (appTime.after(startDate) && appTime.before(endDate)) {
+            if ((appTime.after(startDate) || appTime.equals(startDate)) && (appTime.before(endDate) || appTime.equals(endDate))) {
                 filteredAppointments.add(appointment);
             }
         });
@@ -593,26 +582,39 @@ public class GeneralServicesImpl implements GeneralServices {
         return filteredAppointments;
     }
 
+    protected List<AppointmentDTO> getAppByFilter(List<AppointmentDTO> apps, String filter)
+            throws SQLException {
+        List<AppointmentDTO> result = null;
+
+        if (filter == null || filter.trim().equals("")) {
+            if (filter.trim().equals("upcoming")) {
+                Date today = new Date(System.currentTimeMillis());
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(today);
+                calendar.add(Calendar.DATE, 7);
+                Date nextWeek = new Date(calendar.getTime().getTime());
+
+                result = filterAppointmentsByDate(apps, today, nextWeek);
+            } else {
+                result = filterAppointmentsByStatus(apps, filter);
+            }
+        } else {
+            result = apps;
+        }
+        Collections.sort(result);
+        return result;
+    }
+
     @Override
     public List<AppointmentDTO> getAppointmentsByFilter(String filter)
-            throws SQLException, AppointmentDoesNotExistException {
+            throws SQLException {
         List<AppointmentDTO> result = null;
 
         try {
-            if (filter != null) {
-                if (filter.trim().equals("upcoming")) {
-                    result = appointmentDAO.readAllAppointments();
-                    result = filterAppointmentsByDate(
-                            result,
-                            new Date(System.currentTimeMillis()),
-                            new Date(System.currentTimeMillis() + 86400000 * 7)
-                    );
-                } else {
-                    result = appointmentDAO.readAppointmentByStatus(filter);
-                }
-            }
+            result = getAppByFilter(appointmentDAO.readAllAppointments(), filter);
+
         } catch (NoSuchRecordExists ex) {
-            throw new AppointmentDoesNotExistException(ex.getMessage());
+            result = null;
         }
         return result;
     }
