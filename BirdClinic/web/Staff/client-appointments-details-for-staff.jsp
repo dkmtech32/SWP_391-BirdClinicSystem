@@ -65,7 +65,6 @@
             </div>
         </div>
     </div>
-    <jsp:include page="../Common/script.jsp"/>
 </body>
 </html>
 

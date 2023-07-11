@@ -25,7 +25,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <!-- Profile Sidebar -->
-                        <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+                        <div class="col-md-4 col-lg-3 col-xl-2 theiaStickySidebar">
                             <div class="profile-sidebar">
                                 <div class="widget-profile pro-widget-content">
                                     <div class="profile-info-widget">
