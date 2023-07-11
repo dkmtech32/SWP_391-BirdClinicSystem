@@ -36,7 +36,19 @@ public class UpdateBlogServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = "/Staff/blog-update.jsp";
-        request.getRequestDispatcher(url).forward(request, response);
+        String blogID = request.getParameter("blogID");
+        HttpSession session = request.getSession();
+        try {
+            StaffServices service = (StaffServices) session.getAttribute("service");
+            BlogDTO blog = service.viewBlog(blogID);
+            request.setAttribute("blog", blog);
+        } catch (BlogDoesNotExistException ex) {
+            ex.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
+        }
     }
 
     /**
@@ -66,11 +78,8 @@ public class UpdateBlogServlet extends HttpServlet {
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
-            if (blogID.trim().equals("")) {
-                request.getRequestDispatcher("/Blog/All").forward(request, response);
-            } else {
-                request.getRequestDispatcher("/Blog?blogID=" + blogID).forward(request, response);
-            }
+            request.getRequestDispatcher("/Blog?blogID=" + blogID).forward(request, response);
+
         }
     }
 
