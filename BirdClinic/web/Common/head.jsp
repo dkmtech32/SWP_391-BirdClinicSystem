@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
 
     <!-- Favicons -->
-    <link href='<c:url value="/assets/img/favicon.png"/>' rel="icon" />
+    <link href='<c:url value="/assets/images/favicon.svg"/>' rel="icon" />
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href='<c:url value="/assets/css/bootstrap.min.css"/>' />

@@ -31,16 +31,32 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="booking-doc-info">
-                                        <a href="doctor-profile.html" class="booking-doc-img">
-                                            <img src="../assets/images/doctors/${requestScope.doctor.image.imageURLName}" alt="User Image" />
-                                        </a>
-                                        <div class="booking-info">
-                                            <h4><a href="doctor-profile.html">${requestScope.doctor.fullName}</a></h4>                                          
-                                            <p class="text-muted mb-0"><i class="fa-regular fa-hourglass-half"></i> ${requestScope.doctor.yearsOfExperience} (years of EXP)</p>
-                                            <p class="text-muted mb-0" style="text-transform: capitalize">${requestScope.doctor.speciality.specialityName}</p>
-                                        </div>
-                                    </div>
+                                    <c:choose>
+                                        <c:when test="${not empty param.doctorID}">
+                                            <div class="booking-doc-info">
+                                                <a href="doctor-profile.html" class="booking-doc-img">
+                                                    <img src="<c:url value="/assets/images/doctors/${requestScope.doctor.image.imageURLName}"/>" alt="${requestScope.doctor.userName}" />
+                                                </a>
+                                                <div class="booking-info">
+                                                    <h4><a href="doctor-profile.html">${requestScope.doctor.fullName}</a></h4>                                          
+                                                    <p class="text-muted mb-0"><i class="fa-regular fa-hourglass-half"></i> ${requestScope.doctor.yearsOfExperience} (years of EXP)</p>
+                                                    <p class="text-muted mb-0" style="text-transform: capitalize">${requestScope.doctor.speciality.specialityName}</p>
+                                                </div>
+                                            </div>
+                                        </c:when>
+                                        <c:when test="${empty param.doctorID}">
+                                            <div class="booking-doc-info">
+                                                <a href="doctor.html" class="booking-doc-img">
+                                                    <img src="<c:url value="/assets/images/favicon.svg"/>" alt="User Image" />
+                                                </a>
+                                                <div class="booking-info">
+                                                    <h4><a href="doctor-profile.html">BirdLover Clinic</a></h4>                                          
+                                                    <p class="text-muted mb-0"><i class="fas fa-map-marker-alt"></i> Dong Da district, Hanoi city</p>
+                                                </div>
+                                            </div>
+                                        </c:when>
+                                    </c:choose>
+
                                 </div>
                             </div>
 
@@ -124,7 +140,7 @@
                                                                                     </c:when>
                                                                                     <c:when test="${!isLate}">
                                                                                         <a class="timing-occupied">
-                                                                                           <span>${timeslot.timeSlot}</span> 
+                                                                                            <span>${timeslot.timeSlot}</span> 
                                                                                         </a>
                                                                                     </c:when>
                                                                                 </c:choose>
