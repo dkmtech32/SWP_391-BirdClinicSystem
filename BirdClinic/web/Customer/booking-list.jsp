@@ -96,7 +96,7 @@
                                                                                                 </ul>-->
                                                 <div class="row row-sm">
                                                     <div class="col-6">
-                                                        <a href="<c:url value="doctor-profile.jsp?doctorID=${doctor.userID}"/>" class="btn view-btn">View Profile</a>
+                                                        <a href="<c:url value="/View/Doctor?userID=${doctor.userID}"/>" class="btn view-btn">View Profile</a>
                                                     </div>
                                                     <div class="col-6">
                                                         <a href="<c:url value="/Customer/prepareDatetime?doctorID=${doctor.userID}"/>" class="btn book-btn">Book Now</a>
