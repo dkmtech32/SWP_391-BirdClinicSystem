@@ -8,6 +8,8 @@ package controllers.dashboard.customer;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.appointment.AppointmentDTO;
 import services.customer.CustomerServices;
+import services.general.AppointmentDoesNotExistException;
 
 /**
  *
@@ -40,7 +43,7 @@ public class CustomerDashboardAppointmentsServlet extends HttpServlet {
         String url = "/Customer/dashboard-customer-appointments.jsp";
         try {
             CustomerServices service = (CustomerServices) session.getAttribute("service");
-            List<AppointmentDTO> apps = service.getCustomerAppointments();
+            List<AppointmentDTO> apps = service.getAppointmentsByFilter("");
             request.setAttribute("appointments", apps);
         } catch (SQLException ex) {
             ex.printStackTrace();
