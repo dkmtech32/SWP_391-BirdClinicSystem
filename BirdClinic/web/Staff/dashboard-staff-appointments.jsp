@@ -47,15 +47,16 @@
                                                     <tr>
                                                         <th>Customer Name</th>
                                                         <th>Date & time</th>
-                                                        <th style="width:150px; max-width: 150px;">Bird Name</th>
-                                                        <th>Bird Breed</th>
                                                         <th>Service</th>
                                                         <th>Status</th>
+                                                        <th>Doctor</th>
                                                         <th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+
                                                 <c:forEach var="appointment" items="${requestScope.appointments}">
+
                                                     <tr>
                                                         <td>
                                                             <h2 class="table-avatar">
@@ -66,18 +67,8 @@
                                                             </h2>
                                                         </td>
                                                         <td>${appointment.appTime}<span class="d-block text-info">${appointment.timeslot.timeSlot}</span></td>
-                                                        <td style="width:150px; max-width: 150px; white-space: nowrap;
-                                                            overflow: hidden;
-                                                            text-overflow: ellipsis">
-                                                            <h2 class="table-avatar">
-                                                                <a href="<c:url value="/View/Bird?birdID=${appointment.bird.birdID}"/>" class="avatar avatar-sm mr-2"
-                                                                   ><img class="avatar-img rounded-circle" src="../assets/images/bird/${appointment.bird.image.imageURLName}" alt="User Image"
-                                                                      /></a>
-                                                                <a href="<c:url value="/View/Bird?birdID=${appointment.bird.birdID}"/>">${appointment.bird.birdFullname}</a>
-                                                            </h2>
-                                                        </td>
-                                                        <td>${appointment.bird.breed}</td>
-                                                        <td style="width:150px; max-width: 150px; white-space: nowrap;
+
+                                                        <td style="width:200px; max-width: 200px; white-space: nowrap;
                                                             overflow: hidden;
                                                             text-overflow: ellipsis">${appointment.service_.serviceName}</td>
                                                         <c:choose>
@@ -98,25 +89,48 @@
                                                             </c:when>
                                                         </c:choose>
 
+                                                        <td>
+                                                            <c:if test="${appointment.appStatus =='processing'||appointment.appStatus =='confirm'}">
+                                                                <form action="<c:url value="/Dashboard/Appointments"/>" method="get">
+                                                                    <select class="form-select" name="doctorID">
+                                                                        <c:forEach var="doc" items="${docSpec[appointment.service_.speciality.specialityID]}">
+                                                                            <option value="${doc.userID}">${doc.fullName}</option>
+                                                                        </c:forEach>
+                                                                    </select>
+                                                                </form>
+                                                            </c:if>
+
+                                                        </td>
                                                         <td class="text-right">
                                                             <div class="table-action">
                                                                 <a href="<c:url value="/View/Appointment?appointmentID=${appointment.appointmentID}"/>" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                             </div>
                                                         </td>
-                                                        <td class="text-right">
-                                                            <c:if test="${appointment.appStatus.equals('processing')}">
+                                                        <c:if test="${appointment.appStatus.equals('processing')}">
+
+                                                            <td class="text-right">
                                                                 <div class="table-action">
                                                                     <a href="<c:url value="/Staff/Dashboard/Appointments/Update?appointmentID=${appointment.appointmentID}&action=update"/>" class="btn btn-sm bg-success-light"> <i class="fa fa-check"></i> Confirm </a>
                                                                 </div>
-                                                            </c:if>
-                                                        </td>
-                                                        <td class="text-right">
-                                                            <c:if test="${appointment.appStatus.equals('processing')}">
+                                                            </td>
+                                                        </c:if>
+
+                                                        <c:if test="${appointment.appStatus.equals('processing')}">
+                                                            <td class="text-right">
+
                                                                 <div class="table-action">
                                                                     <a href="<c:url value="/Staff/Dashboard/Appointments/Update?appointmentID=${appointment.appointmentID}&action=cancel"/>" class="btn btn-sm bg-danger-light"> <i class="fa fa-times"></i> Cancel </a>
                                                                 </div>
-                                                            </c:if>
-                                                        </td>
+                                                            </td>
+                                                        </c:if>
+                                                        <c:if test="${appointment.appStatus.equals('confirm')}">
+                                                            <td class="text-right">
+
+                                                                <div class="table-action">
+                                                                    <a href="<c:url value="/Staff/Dashboard/Appointments/Update?appointmentID=${appointment.appointmentID}&action=update"/>" class="btn btn-sm bg-warning-light"> <i class="fa fa-check"></i> Confirm </a>
+                                                                </div>
+                                                            </td>
+                                                        </c:if>
                                                     </tr>
                                                 </c:forEach>
                                             </tbody>
@@ -136,6 +150,13 @@
     <script>
         function updateFormAction() {
             var filterValue = document.querySelector('select[name="filter"]').value;
+            var form = document.querySelector('form');
+            var baseUrl = form.action.split('?')[0]; // Get the base URL without query parameters
+            form.action = baseUrl + '?filter=' + encodeURIComponent(filterValue);
+            form.submit();
+        }
+        function updateDoctorAction() {
+            var filterValue = document.querySelector('select[name="doctorID"]').value;
             var form = document.querySelector('form');
             var baseUrl = form.action.split('?')[0]; // Get the base URL without query parameters
             form.action = baseUrl + '?filter=' + encodeURIComponent(filterValue);
