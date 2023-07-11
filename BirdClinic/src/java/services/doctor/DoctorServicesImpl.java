@@ -140,14 +140,14 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
     }
 
     @Override
-    public List<AppointmentDTO> getDoctorAppointments() throws SQLException {
+    public List<AppointmentDTO> getAppointmentsByFilter(String filter)
+            throws SQLException {
         List<AppointmentDTO> apps = null;
 
         try {
-            apps = appointmentDAO.readAppointmentByDoctor(this.currentUser.getUserID());
-//            apps = filterAppointmentsByStatus(apps, "check-in");
+            apps = super.getAppByFilter(appointmentDAO.readAppointmentByDoctor(currentUser.getUserID()), filter);
         } catch (NoSuchRecordExists ex) {
-            throw new SQLException(ex.getMessage());
+            apps = null;
         }
 
         return apps;
