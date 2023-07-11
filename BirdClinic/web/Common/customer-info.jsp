@@ -31,7 +31,7 @@
                                         <div class="form-group">
                                             <div class="change-avatar">
                                                 <div class="profile-img">
-                                                    <img src="<c:url value='../assets/images/client/${requestScope.user.image.imageURLName}'/>" alt="User Image" />
+                                                    <img src="<c:url value='../assets/images/client/${requestScope.customer.image.imageURLName}'/>" alt="User Image" />
                                                 </div>
                                             </div>
                                         </div>
@@ -39,7 +39,7 @@
                                     <div class="col-12 col-md-5">
                                         <div class="form-group">
                                             <label>Full Name</label>
-                                            <div class="form-control">${requestScope.user.fullName}</div>
+                                            <div class="form-control">${requestScope.customer.fullName}</div>
                                         </div>
                                     </div>
 
@@ -47,26 +47,26 @@
                                         <div class="form-group">
                                             <label>Date of Birth</label>
                                             <div class="cal-icon">
-                                                <div class="form-control datetimepicker">${requestScope.user.dob}</div>
+                                                <div class="form-control datetimepicker">${requestScope.customer.dob}</div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-12">
                                         <div class="form-group">
                                             <label>Address</label>
-                                            <div class="form-control">${requestScope.user.customerAddress}</div>
+                                            <div class="form-control">${requestScope.customer.customerAddress}</div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <div class="form-control">${requestScope.user.email}</div>
+                                            <div class="form-control">${requestScope.customer.email}</div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="form-group">
                                             <label>Mobile</label>
-                                            <div class="form-control">${requestScope.user.phoneNumber}</div> 
+                                            <div class="form-control">${requestScope.customer.phoneNumber}</div> 
                                         </div>
                                     </div>
                                 </div>
@@ -82,7 +82,6 @@
                                                 <th>Bird</th>
                                                 <th>Service</th>
                                                 <th>Status</th>
-                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -116,17 +115,7 @@
                                                             <td><span class="badge badge-pill bg-danger-light">Canceled</span></td>
                                                         </c:when>
                                                     </c:choose>
-                                                    <td class="text-right">
-                                                        <div class="table-action">
-                                                            <c:if test="${appointment.appStatus =='processing'}">
-                                                                <a href="<c:url value="/Dashboard/Appointments/Cancel?appointmentID=${appointment.appointmentID}"/>" class="btn btn-sm bg-danger-light"> 
-                                                                    <i class="fa fa-times"></i> Cancel 
-                                                                </a>
-                                                            </c:if>
-                                                            <!--                                                                                    <a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>-->
-                                                            <a href="<c:url value="/View/Appointment?appointmentID=${appointment.appointmentID}"/>" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                        </div>
-                                                    </td>
+                                                    
 
                                                 </tr>
                                             </c:forEach>
