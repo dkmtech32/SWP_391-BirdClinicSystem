@@ -45,29 +45,17 @@ public class StaffDashboardAppointmentsServlet extends HttpServlet {
             StaffServices service = (StaffServices) session.getAttribute("service");
             String filter = request.getParameter("filter");
             if (filter == null || filter.trim().equals("")) {
-                filter = "upcoming";
+                filter = "processing";
             }
             List<AppointmentDTO> apps = service.getAppointmentsByFilter(filter);
-
-            List<List<DoctorDTO>> docList = new ArrayList<>();
+            Map<String, List<DoctorDTO>> doctorSpecialities = null;
             if (filter.equals("processing") || filter.equals("upcoming")) {
-                Map<String, List<DoctorDTO>> doctorSpecialities = service.getDoctorBySpeciality();
-                for (AppointmentDTO app : apps) {
-                    if (app.getDoctor() != null) {
-                        docList.add(null);
-                    } else {
-                        docList.add(doctorSpecialities.get(app.getService_().getSpeciality().getSpecialityID()));
-                    }
-                }
-            } else {
-                docList = new ArrayList<>(Collections.nCopies(apps.size(), null));
+                doctorSpecialities = service.getDoctorBySpeciality();
             }
 
-            request.setAttribute("docList", docList);
+            request.setAttribute("docSpec", doctorSpecialities);
             request.setAttribute("appointments", apps);
         } catch (SQLException ex) {
-            ex.printStackTrace();
-        } catch (AppointmentDoesNotExistException ex) {
             ex.printStackTrace();
         } finally {
             request.setAttribute("url", url);

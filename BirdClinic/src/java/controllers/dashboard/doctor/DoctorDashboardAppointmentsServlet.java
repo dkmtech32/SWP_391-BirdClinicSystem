@@ -38,7 +38,7 @@ public class DoctorDashboardAppointmentsServlet extends HttpServlet {
         String url = "/Doctor/dashboard-doctor-appointments.jsp";
         try {
             DoctorServices service = (DoctorServices) session.getAttribute("service");
-            List<AppointmentDTO> apps = service.getDoctorAppointments();
+            List<AppointmentDTO> apps = service.getAppointmentsByFilter("");
             request.setAttribute("appointments", apps);
         } catch (SQLException ex) {
             ex.printStackTrace();
