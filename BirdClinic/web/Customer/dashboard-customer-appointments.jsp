@@ -17,7 +17,6 @@
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab">Appointments</a>
                         </li>
-                        
                     </ul>
                 </nav>
                 <!-- /Tab Menu -->

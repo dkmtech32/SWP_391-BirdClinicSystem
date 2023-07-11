@@ -51,8 +51,9 @@
                                                 </a>
                                                 <div class="booking-info">
                                                     <h4><a href="doctor-profile.html">BirdLover Clinic</a></h4>                                          
-                                                    <p class="text-muted mb-0"><i class="fas fa-map-marker-alt"></i> Dong Da district, Hanoi city</p>
-                                                </div>
+                                                    <div class="clinic-details">
+                                                        <p class="doc-location"><i class="fas fa-map-marker-alt"></i> Long Bien, Hanoi</p>
+                                                    </div>                                                </div>
                                             </div>
                                         </c:when>
                                     </c:choose>

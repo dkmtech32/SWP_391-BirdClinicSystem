@@ -36,14 +36,18 @@
                             <jsp:include page="../Common/appointment-general-info.jsp"/>
                             <jsp:include page="../Common/appointment-medicine-list.jsp"/>                       
                         </div>
-                            <c:if test="${requestScope.appointment.bird.customer.userID.equals(sessionScope.service.currentUser.userID)&& empty requestScope.feedback && requestScope.appointment.appStatus.equals('complete')}">
-
+                        <c:if test="${requestScope.appointment.bird.customer.userID.equals(sessionScope.service.currentUser.userID)&& empty requestScope.feedback && requestScope.appointment.appStatus.equals('complete')}">
                             <jsp:include page="../Customer/give-feedback.jsp"/>
                         </c:if>
-                        <jsp:include page="../Common/owner-feedback.jsp"/>  
+                        <div class="row">
+                        <c:if test="${not empty requestScope.feedback}">
+                            <jsp:include page="../Common/owner-feedback.jsp"/>  
+                        </c:if>
                         <!-- chỉ hiện khi user đưa feedback rồi-->
-
-                        <jsp:include page="../Common/payment-info.jsp"/>
+                        <c:if test="${requestScope.appointment.appStatus=='complete'}">
+                            <jsp:include page="../Common/payment-info.jsp"/>
+                        </c:if>
+                        </div>
                     </div>
                 </div>
             </div>
