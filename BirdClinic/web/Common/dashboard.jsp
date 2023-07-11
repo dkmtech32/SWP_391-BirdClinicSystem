@@ -50,10 +50,19 @@
                                     <nav class="dashboard-menu">
                                         <ul>
                                             <li class="active">
-                                                <a href="<c:url value="/Dashboard/Appointments"/>">
+                                                <c:if test="${service.currentUser.userRole!='staff'}">
+                                                   <a href="<c:url value="/Dashboard/Appointments"/>">
                                                     <i class="fas fa-columns"></i>
                                                     <span>Dashboard</span>
-                                                </a>
+                                                </a> 
+                                                </c:if>
+                                                <c:if test="${service.currentUser.userRole=='staff'}">
+                                                   <a href="<c:url value="/Dashboard/Appointments?filter=processing"/>">
+                                                    <i class="fas fa-columns"></i>
+                                                    <span>Dashboard</span>
+                                                </a> 
+                                                </c:if>
+                                                
                                             </li>
                                             <li>
                                                 <a href="<c:url value="/Update/Profile"/>">
