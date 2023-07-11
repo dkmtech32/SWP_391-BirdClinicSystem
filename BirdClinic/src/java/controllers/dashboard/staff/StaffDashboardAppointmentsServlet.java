@@ -8,7 +8,9 @@ package controllers.dashboard.staff;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.appointment.AppointmentDTO;
 import models.users.doctor.DoctorDTO;
-import services.doctor.DoctorDoesNotExistException;
 import services.general.AppointmentDoesNotExistException;
 import services.staff.StaffServices;
 
@@ -47,23 +48,26 @@ public class StaffDashboardAppointmentsServlet extends HttpServlet {
                 filter = "upcoming";
             }
             List<AppointmentDTO> apps = service.getAppointmentsByFilter(filter);
+
+            List<List<DoctorDTO>> docList = new ArrayList<>();
             if (filter.equals("processing") || filter.equals("upcoming")) {
-                List<List<DoctorDTO>> appDocs = new ArrayList<>();
+                Map<String, List<DoctorDTO>> doctorSpecialities = service.getDoctorBySpeciality();
                 for (AppointmentDTO app : apps) {
-                    List<DoctorDTO> doctorList = null;
-                    if (app.getDoctor() == null) {
-                        doctorList = service.getDoctorBySpeciality(app.getService_().getSpeciality().getSpecialityID());
+                    if (app.getDoctor() != null) {
+                        docList.add(null);
+                    } else {
+                        docList.add(doctorSpecialities.get(app.getService_().getSpeciality().getSpecialityID()));
                     }
-                    appDocs.add(doctorList);
                 }
-                request.setAttribute("doctorList", appDocs);
+            } else {
+                docList = new ArrayList<>(Collections.nCopies(apps.size(), null));
             }
+
+            request.setAttribute("docList", docList);
             request.setAttribute("appointments", apps);
         } catch (SQLException ex) {
             ex.printStackTrace();
         } catch (AppointmentDoesNotExistException ex) {
-            ex.printStackTrace();
-        } catch (DoctorDoesNotExistException ex) {
             ex.printStackTrace();
         } finally {
             request.setAttribute("url", url);
