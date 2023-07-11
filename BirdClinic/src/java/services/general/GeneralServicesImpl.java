@@ -557,7 +557,7 @@ public class GeneralServicesImpl implements GeneralServices {
         return blog;
     }
 
-    private List<AppointmentDTO> filterAppointmentsByStatus(List<AppointmentDTO> appointments, String status) {
+    protected List<AppointmentDTO> filterAppointmentsByStatus(List<AppointmentDTO> appointments, String status) {
         List<AppointmentDTO> filteredAppointments = new ArrayList<>();
 
         appointments.stream().filter((appointment)
@@ -569,7 +569,7 @@ public class GeneralServicesImpl implements GeneralServices {
         return filteredAppointments;
     }
 
-    private List<AppointmentDTO> filterAppointmentsByDate(List<AppointmentDTO> appointments, Date startDate, Date endDate) {
+    protected List<AppointmentDTO> filterAppointmentsByDate(List<AppointmentDTO> appointments, Date startDate, Date endDate) {
         List<AppointmentDTO> filteredAppointments = new ArrayList<>();
 
         appointments.forEach((appointment) -> {
@@ -582,38 +582,22 @@ public class GeneralServicesImpl implements GeneralServices {
         return filteredAppointments;
     }
 
-    protected List<AppointmentDTO> getAppByFilter(List<AppointmentDTO> apps, String filter)
-            throws SQLException {
-        List<AppointmentDTO> result = null;
-
-        if (filter == null || filter.trim().equals("")) {
-
-            result = apps;
-
-        } else {
-            if (filter.trim().equals("upcoming")) {
-                Date today = new Date(System.currentTimeMillis());
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(today);
-                calendar.add(Calendar.DATE, 7);
-                Date nextWeek = new Date(calendar.getTime().getTime());
-
-                result = filterAppointmentsByDate(apps, today, nextWeek);
-            } else {
-                result = filterAppointmentsByStatus(apps, filter);
-            }
-        }
-        Collections.sort(result);
-        return result;
-    }
-
     @Override
     public List<AppointmentDTO> getAppointmentsByFilter(String filter)
             throws SQLException {
         List<AppointmentDTO> result = null;
 
         try {
-            result = getAppByFilter(appointmentDAO.readAllAppointments(), filter);
+            if (filter.equals("upcoming")) {
+                Date today = new Date(System.currentTimeMillis());
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(today);
+                calendar.add(Calendar.DATE, 7);
+                Date nextWeek = new Date(calendar.getTime().getTime());
+                result = appointmentDAO.readAppointmentByDate(today, nextWeek);
+            } else {
+                result = appointmentDAO.readAppointmentByStatus(filter);
+            }
 
         } catch (NoSuchRecordExists ex) {
             result = null;
