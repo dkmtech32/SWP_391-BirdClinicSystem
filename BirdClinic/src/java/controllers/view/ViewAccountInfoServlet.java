@@ -34,7 +34,7 @@ public class ViewAccountInfoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "/Common/account-info.jsp";
+        String url = "/Common/customer-info.jsp";
         HttpSession session = request.getSession();
         GeneralServices service = (GeneralServices) session.getAttribute("service");
         String userID = request.getParameter("userID");
