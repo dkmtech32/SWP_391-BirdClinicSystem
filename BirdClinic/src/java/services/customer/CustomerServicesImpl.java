@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 import models.appointment.AppointmentAlreadyExistsException;
@@ -118,7 +119,16 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
         List<AppointmentDTO> apps;
 
         try {
-            apps = super.getAppByFilter(appointmentDAO.readAppointmentByCustomer(customerID), filter);
+            if (filter.equals("upcoming")) {
+                Date today = new Date(System.currentTimeMillis());
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(today);
+                calendar.add(Calendar.DATE, 7);
+                Date nextWeek = new Date(calendar.getTime().getTime());
+                apps = super.filterAppointmentsByDate(appointmentDAO.readAppointmentByCustomer(customerID), today, nextWeek);
+            } else {
+                apps = super.filterAppointmentsByStatus(appointmentDAO.readAppointmentByCustomer(customerID), filter);
+            }
         } catch (NoSuchRecordExists ex) {
             apps = null;
         }

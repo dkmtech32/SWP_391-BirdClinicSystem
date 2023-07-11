@@ -5,9 +5,11 @@
  */
 package services.doctor;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 import models.appointment.AppointmentDTO;
@@ -142,14 +144,23 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
     @Override
     public List<AppointmentDTO> getAppointmentsByFilter(String filter)
             throws SQLException {
-        List<AppointmentDTO> apps = null;
+        String doctorID = currentUser.getUserID();
+        List<AppointmentDTO> apps;
 
         try {
-            apps = super.getAppByFilter(appointmentDAO.readAppointmentByDoctor(currentUser.getUserID()), filter);
+            if (filter.equals("upcoming")) {
+                Date today = new Date(System.currentTimeMillis());
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(today);
+                calendar.add(Calendar.DATE, 7);
+                Date nextWeek = new Date(calendar.getTime().getTime());
+                apps = super.filterAppointmentsByDate(appointmentDAO.readAppointmentByDoctor(doctorID), today, nextWeek);
+            } else {
+                apps = super.filterAppointmentsByStatus(appointmentDAO.readAppointmentByDoctor(doctorID), filter);
+            }
         } catch (NoSuchRecordExists ex) {
             apps = null;
         }
-
         return apps;
     }
     
