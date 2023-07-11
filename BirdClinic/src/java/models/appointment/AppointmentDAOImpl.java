@@ -53,6 +53,10 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             = "SELECT appointmentID, birdID, doctorID, timeSlotID, serviceID, appTime, notes, payment, appStatus "
             + "FROM Appointment "
             + "WHERE timeSlotID = ?;";
+    private static final String READ_APPOINTMENT_BY_DATE
+            = "SELECT appointmentID, birdID, doctorID, timeSlotID, serviceID, appTime, notes, payment, appStatus "
+            + "FROM Appointment "
+            + "WHERE appTime between ? 00:00:00 and ? 23:59:59.999;";
     private static final String DELETE_APPOINTMENT
             = "DELETE FROM Appointment "
             + "WHERE appointmentID = ?";
@@ -359,7 +363,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 } else {
                     appointment.setDoctor(null);
                 }
-                appointment.setTimeslot(timeslotDAO.readTimeSlot(rs.getString("timeslotID")));
+                appointment.setTimeslot(timeslot);
                 appointment.setService_(service_DAO.readService_(rs.getString("serviceID")));
                 appointment.setAppTime(rs.getDate("appTime"));
                 appointment.setNotes(rs.getString("notes"));
@@ -660,6 +664,60 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 }
                 appointmentList.add(appointment);
             }
+            if (appointmentList == null || appointmentList.isEmpty()) {
+                throw new NoSuchAppointmentsExistsException();
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+
+        return appointmentList;
+    }
+
+    @Override
+    public List<AppointmentDTO> readAppointmentByDate(Date before, Date after) throws NoSuchRecordExists, SQLException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        List<AppointmentDTO> appointmentList = null;
+
+        try {
+            con = DBUtils.getConnection();
+            stm = con.prepareStatement(READ_APPOINTMENT_BY_DATE);
+            stm.setDate(1, before);
+            stm.setDate(2, after);
+            rs = stm.executeQuery();
+
+            while (rs.next()) {
+                AppointmentDTO appointment = new AppointmentDTOImpl();
+                appointment.setAppointmentID(rs.getString("appointmentID"));
+                appointment.setBird(birdDAO.readBird(rs.getString("birdID")));
+                if (rs.getString("doctorID") != null) {
+                    appointment.setDoctor(doctorDAO.readDoctor(rs.getString("doctorID")));
+                } else {
+                    appointment.setDoctor(null);
+                }
+                appointment.setTimeslot(timeslotDAO.readTimeSlot(rs.getString("timeslotID")));
+                appointment.setService_(service_DAO.readService_(rs.getString("serviceID")));
+                appointment.setAppTime(rs.getDate("appTime"));
+                appointment.setNotes(rs.getString("notes"));
+                appointment.setPayment(rs.getString("payment"));
+                appointment.setAppStatus(rs.getString("appStatus"));
+
+                if (appointmentList == null) {
+                    appointmentList = new ArrayList<>();
+                }
+                appointmentList.add(appointment);
+            }
+
             if (appointmentList == null || appointmentList.isEmpty()) {
                 throw new NoSuchAppointmentsExistsException();
             }
