@@ -5,11 +5,11 @@
  */
 package services.customer;
 
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import models.appointment.AppointmentAlreadyExistsException;
-import models.appointment.AppointmentDTO;
 import models.bird.BirdAlreadyExistsException;
 import models.bird.BirdDTO;
 import models.users.doctor.DoctorDTO;
@@ -22,15 +22,13 @@ import services.general.GeneralServices;
  *
  * @author Admin
  */
-public interface CustomerServices extends GeneralServices {
+public interface CustomerServices extends GeneralServices, Serializable {
 
     boolean addBird(Map<String, String[]> args) throws BirdAlreadyExistsException, SQLException;
 
     boolean bookAppointment(Map<String, String> args) throws AppointmentAlreadyExistsException, SQLException;
 
     boolean deleteBird(String birdID) throws BirdDoesNotExistException, SQLException;
-
-    List<AppointmentDTO> getCustomerAppointments() throws SQLException;
 
     List<BirdDTO> getCustomerBirds() throws SQLException;
 

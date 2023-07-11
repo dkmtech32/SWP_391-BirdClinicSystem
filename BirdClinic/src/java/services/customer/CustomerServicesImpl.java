@@ -11,8 +11,6 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import models.appointment.AppointmentAlreadyExistsException;
 import models.appointment.AppointmentDTO;
 import models.appointment.AppointmentDTOImpl;
@@ -33,7 +31,6 @@ import models.users.customer.CustomerDTO;
 import models.users.doctor.DoctorDTO;
 import services.doctor.DoctorDoesNotExistException;
 import services.general.AccountAlreadyExistsException;
-import services.general.AccountDoesNotExistException;
 import services.general.AppointmentDoesNotExistException;
 import services.general.GeneralServicesImpl;
 import services.general.BirdDoesNotExistException;
@@ -115,12 +112,13 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
     }
 
     @Override
-    public List<AppointmentDTO> getCustomerAppointments() throws SQLException {
+    public List<AppointmentDTO> getAppointmentsByFilter(String filter)
+            throws SQLException {
         String customerID = currentUser.getUserID();
         List<AppointmentDTO> apps;
 
         try {
-            apps = appointmentDAO.readAppointmentByCustomer(customerID);
+            apps = super.getAppByFilter(appointmentDAO.readAppointmentByCustomer(customerID), filter);
         } catch (NoSuchRecordExists ex) {
             apps = null;
         }
