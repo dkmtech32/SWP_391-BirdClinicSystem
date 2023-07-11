@@ -8,6 +8,8 @@ package services.staff;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import models.appointment.AppointmentDTO;
@@ -292,15 +294,22 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
     }
 
     @Override
-    public List<DoctorDTO> getDoctorBySpeciality(String specialityID) throws DoctorDoesNotExistException, SQLException {
-        List<DoctorDTO> docs = null;
-
-        try {
-            docs = doctorDAO.readDoctorsBySpeciality(specialityID);
-        } catch (NoSuchRecordExists ex) {
-            throw new DoctorDoesNotExistException(ex.getMessage());
+    public Map<String, List<DoctorDTO>> getDoctorBySpeciality() throws SQLException {
+        Map<String, List<DoctorDTO>> doctorBySpeciality = null;
+        
+        List<DoctorDTO> doctors = getAllDoctors();
+        doctorBySpeciality = new HashMap<>();
+        for (DoctorDTO doctor : doctors) {
+            List<DoctorDTO> docList = doctorBySpeciality.get(doctor.getSpeciality().getSpecialityID());
+            if (docList == null) {
+                docList = new ArrayList<>();
+                docList.add(doctor);
+                doctorBySpeciality.put(doctor.getSpeciality().getSpecialityID(), docList);
+            } else {
+                doctorBySpeciality.get(doctor.getSpeciality().getSpecialityID()).add(doctor);
+            }
         }
 
-        return docs;
+        return doctorBySpeciality;
     }
 }
