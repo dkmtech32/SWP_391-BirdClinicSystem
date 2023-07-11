@@ -14,6 +14,7 @@ import java.util.Map;
 import models.appointment.AppointmentDTO;
 import models.exceptions.NoSuchRecordExists;
 import models.exceptions.RecordAlreadyExists;
+import models.feedback.FeedbackDTO;
 import models.images.ImageDTO;
 import models.service_.Service_DTO;
 import models.speciality.SpecialityDTO;
@@ -24,7 +25,6 @@ import models.users.customer.CustomerDTOImpl;
 import models.users.doctor.DoctorDTO;
 import models.users.doctor.DoctorDTOImpl;
 import services.general.AccountAlreadyExistsException;
-import services.general.AccountDoesNotExist;
 import services.general.AccountDoesNotExistException;
 import services.general.AppointmentDoesNotExistException;
 import services.general.GeneralServicesImpl;
@@ -37,11 +37,11 @@ import utils.Utils;
  */
 public class AdminServicesImpl extends GeneralServicesImpl implements AdminServices {
 
-    public AdminServicesImpl(UserDTO user) throws AccountDoesNotExist {
+    public AdminServicesImpl(UserDTO user) throws AccountDoesNotExistException {
         if (user.getUserRole().toLowerCase().equals("admin")) {
             this.currentUser = user;
         } else {
-            throw new AccountDoesNotExist();
+            throw new AccountDoesNotExistException();
         }
     }
 
@@ -250,7 +250,8 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
             if (result == null) {
                 result = new ArrayList<>();
             }
-            result.add(super.getDoctorRatings(doctor.getUserID()));
+            List<FeedbackDTO> feedbacks = super.getDoctorFeedbacks(doctor.getUserID());
+            result.add(super.getDoctorRatings(feedbacks));
         }
         return result;
     }

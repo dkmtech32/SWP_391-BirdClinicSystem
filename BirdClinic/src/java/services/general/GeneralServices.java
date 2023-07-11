@@ -21,6 +21,7 @@ import models.service_.Service_DTO;
 import models.speciality.SpecialityDTO;
 import models.timeslot.TimeslotDTO;
 import models.users.UserDTO;
+import models.users.customer.CustomerDTO;
 import models.users.doctor.DoctorDTO;
 
 /**
@@ -33,7 +34,7 @@ public interface GeneralServices extends Serializable {
 
     UserDTO getCurrentUser();
 
-    boolean login(String username, String password) throws AccountDoesNotExist, SQLException;
+    boolean login(String username, String password) throws AccountDoesNotExistException, SQLException;
 
     AppointmentDTO viewAppointment(String appointmentID) throws SQLException, AppointmentDoesNotExistException;
 
@@ -56,19 +57,21 @@ public interface GeneralServices extends Serializable {
             throws SQLException;
 
     List<Service_DTO> getServices(String doctorID)
-            throws SQLException, AccountDoesNotExist;
+            throws SQLException, AccountDoesNotExistException;
 
     TimeslotDTO getTimeslot(String TimeslotID) throws SQLException;
 
     boolean updateAccount(Map<String, String[]> args)
             throws AccountAlreadyExistsException, SQLException;
 
-    boolean enableAccount(String userID) throws AccountDoesNotExist, SQLException;
+    boolean enableAccount(String userID) throws AccountDoesNotExistException, SQLException;
 
     boolean updateAccountPassword(String nPassword)
-            throws PasswordNotStrongException, AccountDoesNotExist, SQLException;
+            throws PasswordNotStrongException, AccountDoesNotExistException, SQLException;
 
-    DoctorDTO getDoctorInfo(String doctorID) throws SQLException, AccountDoesNotExist;
+    DoctorDTO getDoctorInfo(String doctorID) throws SQLException, AccountDoesNotExistException;
+    
+    CustomerDTO getCustomerInfo(String customerID) throws SQLException, AccountDoesNotExistException;
 
     List<SpecialityDTO> getSpecialities()
             throws SQLException;
@@ -78,7 +81,7 @@ public interface GeneralServices extends Serializable {
 
     List<FeedbackDTO> getDoctorFeedbacks(String doctorID) throws SQLException;
 
-    BigDecimal getDoctorRatings(String doctorID) throws SQLException;
+    BigDecimal getDoctorRatings(List<FeedbackDTO> feedbacks) throws SQLException;
 
     List<BirdDTO> getCustomerBirds(String customerID) throws SQLException;
 
