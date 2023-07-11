@@ -66,11 +66,10 @@
                                                     <tr>
                                                         <td>
                                                             <h2 class="table-avatar">
-                                                                <a href="" class="avatar avatar-sm mr-2">
+                                                                <a href="<c:url value="/View/Customer?userID=${appointment.bird.customer.userID}"/>" class="avatar avatar-sm mr-2">
                                                                     <img class="avatar-img rounded-circle" src="<c:url value="/assets/images/client/${appointment.bird.customer.image.imageURLName}"/>" alt="User Image" />
                                                                 </a>
-                                                                <a style="width:130px; max-width: 130px; white-space: nowrap;
-                                                                   overflow: hidden;" href="">${appointment.bird.customer.fullName} </a> 
+                                                                <a href="<c:url value="/View/Customer?userID=${appointment.bird.customer.userID}"/>">${appointment.bird.customer.fullName} </a> 
                                                             </h2>
                                                         </td>
                                                         <td>${appointment.appTime}<span class="d-block text-info">${appointment.timeslot.timeSlot}</span></td>
@@ -99,9 +98,7 @@
 
                                                         <td >
                                                             <c:if test="${appointment.appStatus =='processing'}">
-                                                                <select style="width:200px; max-width: 200px; white-space: nowrap;
-                                                                        overflow: hidden;
-                                                                        " id="${appointment.appointmentID}" class="form-select" name="doctorID" onchange="changeDoctorSelection(this)">
+                                                                <select id="${appointment.appointmentID}" class="form-select" name="doctorID" onchange="changeDoctorSelection(this)">
                                                                     <option value="">--</option>
                                                                     <c:forEach var="doc" items="${docSpec[appointment.service_.speciality.specialityID]}">
                                                                         <option value="${doc.userID}"<c:if test="${not empty appointment.doctor && appointment.doctor.userID.equals(doc.userID)}"> selected</c:if> >${doc.fullName}</option>
@@ -138,18 +135,24 @@
                                                         <c:if test="${appointment.appStatus.equals('processing')}">
 
                                                             <td class="text-right">
-                                                                <form action="<c:url value="/Dashboard/Appointments/updateApp"/>" name="docForm" method="get">
-                                                                    <input type="hidden" id="hidden${appointment.appointmentID}" name="doctorID" <c:if test="${not empty appointment.doctor}"> value="${appointment.doctor.userID}"</c:if> required>
-                                                                        <input type="hidden"  name="action" value="update">
-                                                                        <input type="hidden"  name="filter" value="confirm">
-                                                                        <input type="hidden" class="appID" name="appointmentID" value="${appointment.appointmentID}">
-                                                                    <button class=" btn btn-sm bg-success-light" type="submit">
-                                                                        <i class="fa fa-check"></i>
-                                                                        Confirm
-                                                                    </button>
-                                                                </form>
+                                                                <div class="table-action">
+                                                                    <form  action="<c:url value="/Dashboard/Appointments/updateApp"/>" name="docForm" method="get">
+                                                                        <input type="hidden" id="hidden${appointment.appointmentID}" name="doctorID" <c:if test="${not empty appointment.doctor}"> value="${appointment.doctor.userID}"</c:if> required>
+                                                                            <input type="hidden"  name="action" value="update">
+                                                                            <input type="hidden"  name="filter" value="confirm">
+                                                                            <input type="hidden" class="appID" name="appointmentID" value="${appointment.appointmentID}">
+                                                                        <button class=" btn btn-sm bg-success-light" type="submit">
+                                                                            <i class="fa fa-check"></i>
+                                                                            Confirm
+                                                                        </button>
+                                                                    </form>
+                                                                </div>
                                                             </td>
-
+                                                            <td class="text-right">
+                                                                <div class="table-action">
+                                                                    <a href="<c:url value="/Dashboard/Appointments/updateApp?appointmentID=${appointment.appointmentID}&action=cancel"/>" class="btn btn-sm bg-danger-light"> <i class="fa fa-times"></i> Cancel </a>
+                                                                </div>
+                                                            </td>
                                                         </c:if>
 
                                                         <c:if test="${appointment.appStatus.equals('check-in')}">
@@ -168,18 +171,8 @@
                                                             </td>
                                                         </c:if>
 
-                                                        <c:if test="${appointment.appStatus.equals('processing')}">
-                                                            <td class="text-right">
-
-                                                                <div class="table-action">
-                                                                    <a href="<c:url value="/Dashboard/Appointments/updateApp?appointmentID=${appointment.appointmentID}&action=cancel"/>" class="btn btn-sm bg-danger-light"> <i class="fa fa-times"></i> Cancel </a>
-                                                                </div>
-                                                            </td>
-                                                        </c:if>
-
                                                         <c:if test="${appointment.appStatus.equals('confirm')}">
                                                             <td class="text-right">
-
                                                                 <div class="table-action">
                                                                     <a href="<c:url value="/Dashboard/Appointments/updateApp?appointmentID=${appointment.appointmentID}&action=update&filter=check-in"/>" class="btn btn-sm bg-warning-light"> <i class="fa fa-check"></i> Check-in </a>
                                                                 </div>
