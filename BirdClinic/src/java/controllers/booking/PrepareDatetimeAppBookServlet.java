@@ -20,7 +20,6 @@ import javax.servlet.http.HttpSession;
 import models.timeslot.TimeslotDTO;
 import models.users.doctor.DoctorDTO;
 import services.customer.CustomerServices;
-import services.general.AccountDoesNotExist;
 import services.general.AccountDoesNotExistException;
 import utils.Utils;
 
@@ -30,7 +29,6 @@ import utils.Utils;
  */
 public class PrepareDatetimeAppBookServlet extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -112,13 +110,11 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
         } catch (SQLException ex) {
             ex.printStackTrace();
             url = "/Customer/booking-list.jsp";
-        } catch (AccountDoesNotExist ex) {
+        } catch (AccountDoesNotExistException ex) {
 
             ex.printStackTrace();
             request.setAttribute("error-message", ex.toString());
             url = "/Customer/booking-list.jsp";
-        } catch (AccountDoesNotExistException ex) {
-            ex.printStackTrace();
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

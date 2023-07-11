@@ -8,11 +8,15 @@ package controllers.view;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import models.feedback.FeedbackDTO;
+import models.users.doctor.DoctorDTO;
+import services.general.AccountDoesNotExistException;
 import services.general.GeneralServices;
 
 /**
@@ -34,20 +38,26 @@ public class ViewDoctorInfoServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         response.setContentType("text/html;charset=UTF-8");
-        String url = "/View/Account";
+        String url = "/Common/profile-doctor.jsp";
         HttpSession session = request.getSession();
         
         String userID = request.getParameter("userID");
         
         try {
             GeneralServices service = (GeneralServices) session.getAttribute("service");
-            BigDecimal ratings = service.getDoctorRatings(userID);
+            DoctorDTO doctor = service.getDoctorInfo(userID);
+            List<FeedbackDTO> feedbacks = service.getDoctorFeedbacks(doctor.getUserID());
+            BigDecimal ratings = service.getDoctorRatings(feedbacks);
+            request.setAttribute("feedbacks", feedbacks);
             request.setAttribute("ratings", ratings);
+            request.setAttribute("doctor", doctor);
         } catch (ClassCastException ex) {
             url = "/login";
         } catch (SQLException ex) {
             ex.printStackTrace();
             request.setAttribute("error-message", "Something is wrong. Please try again.");
+        } catch (AccountDoesNotExistException ex) {
+            ex.printStackTrace();
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
