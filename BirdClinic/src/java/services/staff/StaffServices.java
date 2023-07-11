@@ -42,7 +42,7 @@ public interface StaffServices extends GeneralServices {
 
     BlogDTO editBlog(Map<String, String[]> args) throws BlogDoesNotExistException, SQLException;
 
-    List<DoctorDTO> getDoctorBySpeciality(String specialityID) throws DoctorDoesNotExistException, SQLException;
+    Map<String, List<DoctorDTO>> getDoctorBySpeciality() throws SQLException;
 
     List<Service_DTO> getService_BySpeciality(String specialityID) throws SQLException, ServiceDoesNotExistException;
 

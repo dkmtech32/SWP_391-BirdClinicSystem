@@ -10,6 +10,7 @@ import java.math.RoundingMode;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import models.appointment.AppointmentDAO;
@@ -528,17 +529,17 @@ public class GeneralServicesImpl implements GeneralServices {
 
         return blog;
     }
-    
+
     @Override
     public List<BlogDTO> viewAllBlog() throws SQLException, BlogDoesNotExistException {
         List<BlogDTO> blogs = null;
-        
+
         try {
             blogs = blogDAO.readAllBlogs();
         } catch (NoSuchRecordExists ex) {
             throw new BlogDoesNotExistException(ex.getMessage());
         }
-        
+
         return blogs;
     }
 
@@ -604,7 +605,7 @@ public class GeneralServicesImpl implements GeneralServices {
                     result = filterAppointmentsByDate(
                             result,
                             new Date(System.currentTimeMillis()),
-                            new Date(System.currentTimeMillis() + 86400000*7)
+                            new Date(System.currentTimeMillis() + 86400000 * 7)
                     );
                 } else {
                     result = appointmentDAO.readAppointmentByStatus(filter);
@@ -615,5 +616,4 @@ public class GeneralServicesImpl implements GeneralServices {
         }
         return result;
     }
-
 }
