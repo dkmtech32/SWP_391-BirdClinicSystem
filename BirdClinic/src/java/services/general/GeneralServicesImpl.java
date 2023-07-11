@@ -14,6 +14,8 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.appointment.AppointmentDAO;
 import models.appointment.AppointmentDAOImpl;
 import models.appointment.AppointmentDTO;
@@ -602,6 +604,20 @@ public class GeneralServicesImpl implements GeneralServices {
         } catch (NoSuchRecordExists ex) {
             result = null;
         }
+        Collections.sort(result);
         return result;
+    }
+    
+    @Override
+    public List<AppointmentDTO> getBirdAppointments(String birdID) throws BirdDoesNotExistException, SQLException {
+        List<AppointmentDTO> apps = null;
+        
+        try {
+            apps = appointmentDAO.readAppointmentByBird(birdID);
+        } catch (NoSuchRecordExists ex) {
+            throw new BirdDoesNotExistException(ex.getMessage());
+        }
+        
+        return apps;
     }
 }
