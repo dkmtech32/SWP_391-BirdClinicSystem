@@ -22,7 +22,7 @@
                                 <a class="nav-link <c:if test="${param.filter.equals('complete')}">active</c:if> "  href="<c:url value="/Dashboard/Appointments?filter=complete"/>" >Completed</a>
                             </li>
                             <li class="nav-item">
-                                <form class="nav-link" action="<c:url value="/Dashboard/Appointments"/>" method="get">
+                                <form class="nav-link" action="<c:url value="/Dashboard/Appointments"/>" name="filterForm" method="get">
                                 <select onchange="updateFormAction()" name="filter">
                                     <option value="">--</option>
                                     <option value="processing" <c:if test="${param.filter.equals('processing')}">selected</c:if>>Processing</option>
@@ -91,13 +91,12 @@
 
                                                         <td>
                                                             <c:if test="${appointment.appStatus =='processing'||appointment.appStatus =='confirm'}">
-                                                                <form action="<c:url value="/Dashboard/Appointments"/>" method="get">
-                                                                    <select class="form-select" name="doctorID">
-                                                                        <c:forEach var="doc" items="${docSpec[appointment.service_.speciality.specialityID]}">
-                                                                            <option value="${doc.userID}">${doc.fullName}</option>
-                                                                        </c:forEach>
-                                                                    </select>
-                                                                </form>
+                                                                <select class="form-select" name="doctorID" onchange="changeDoctorSelection(this)" >
+                                                                    <option>--</option>
+                                                                    <c:forEach var="doc" items="${docSpec[appointment.service_.speciality.specialityID]}">
+                                                                        <option value="${doc.userID}"<c:if test="${not empty appointment.doctor && appointment.doctor.userID.equals(doc.userID)}"> selected</c:if> >${doc.fullName}</option>
+                                                                    </c:forEach>
+                                                                </select>   
                                                             </c:if>
 
                                                         </td>
@@ -106,13 +105,21 @@
                                                                 <a href="<c:url value="/View/Appointment?appointmentID=${appointment.appointmentID}"/>" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                             </div>
                                                         </td>
+
                                                         <c:if test="${appointment.appStatus.equals('processing')}">
 
                                                             <td class="text-right">
-                                                                <div class="table-action">
-                                                                    <a href="<c:url value="/Staff/Dashboard/Appointments/Update?appointmentID=${appointment.appointmentID}&action=update"/>" class="btn btn-sm bg-success-light"> <i class="fa fa-check"></i> Confirm </a>
-                                                                </div>
+                                                                <form action="<c:url value="/Dashboard/Appointments/updateApp"/>" name="docForm" method="get">
+                                                                    <input type="hidden" id="doctorIDParam" name="doctorID" value="">
+                                                                    <input type="hidden" id="doctorIDParam" name="action" value="update">
+                                                                    <input type="hidden" id="doctorIDParam" name="appointmentID" value="${appointment.appointmentID}">
+                                                                    <button class=" btn btn-sm bg-success-light" type="submit">
+                                                                        <i class="fa fa-check"></i>
+                                                                        Confirm
+                                                                    </button>
+                                                                </form>
                                                             </td>
+
                                                         </c:if>
 
                                                         <c:if test="${appointment.appStatus.equals('processing')}">
@@ -123,6 +130,7 @@
                                                                 </div>
                                                             </td>
                                                         </c:if>
+
                                                         <c:if test="${appointment.appStatus.equals('confirm')}">
                                                             <td class="text-right">
 
@@ -150,17 +158,29 @@
     <script>
         function updateFormAction() {
             var filterValue = document.querySelector('select[name="filter"]').value;
-            var form = document.querySelector('form');
+            var form = document.querySelector('form[name="filterForm"]');
             var baseUrl = form.action.split('?')[0]; // Get the base URL without query parameters
             form.action = baseUrl + '?filter=' + encodeURIComponent(filterValue);
             form.submit();
         }
-        function updateDoctorAction() {
-            var filterValue = document.querySelector('select[name="doctorID"]').value;
-            var form = document.querySelector('form');
-            var baseUrl = form.action.split('?')[0]; // Get the base URL without query parameters
-            form.action = baseUrl + '?filter=' + encodeURIComponent(filterValue);
-            form.submit();
+//        function updateDoctorAction() {
+//            var form = document.forms["docForm"];
+//            var appointmentID = form.elements["appointmentID"].value;
+//            var doctorID = form.elements["doctorID"].value;
+//
+//            // Build the URL with the required parameters
+//            var url = form.action + "?appointmentID=" + encodeURIComponent(appointmentID) +
+//                    "&doctorID=" + encodeURIComponent(doctorID) +
+//                    "&action=update";
+//
+//            // Redirect to the updated URL
+//            window.location.href = url;
+//
+//            return false; // Prevents the default form submission
+//        }
+        function changeDoctorSelection(selectElement) {
+            var selectedValue = selectElement.value;
+            document.getElementById("doctorIDParam").value = selectedValue;
         }
     </script>
 </html>

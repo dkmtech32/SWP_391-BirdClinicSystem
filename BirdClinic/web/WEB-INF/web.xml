@@ -298,7 +298,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>StaffDashboardAppointmentsUpdateServlet</servlet-name>
-        <url-pattern>/Staff/Dashboard/Appointments/Update</url-pattern>
+        <url-pattern>/Staff/Dashboard/Appointments/updateApp</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>StaffDashboardServicesServlet</servlet-name>
