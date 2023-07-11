@@ -587,6 +587,10 @@ public class GeneralServicesImpl implements GeneralServices {
         List<AppointmentDTO> result = null;
 
         if (filter == null || filter.trim().equals("")) {
+
+            result = apps;
+
+        } else {
             if (filter.trim().equals("upcoming")) {
                 Date today = new Date(System.currentTimeMillis());
                 Calendar calendar = Calendar.getInstance();
@@ -598,8 +602,6 @@ public class GeneralServicesImpl implements GeneralServices {
             } else {
                 result = filterAppointmentsByStatus(apps, filter);
             }
-        } else {
-            result = apps;
         }
         Collections.sort(result);
         return result;
