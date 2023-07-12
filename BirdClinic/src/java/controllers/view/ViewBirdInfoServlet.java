@@ -29,7 +29,7 @@ public class ViewBirdInfoServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "/Common/bird-info.jsp";
+        String url = "/Common/bird-details.jsp";
         HttpSession session = request.getSession();
         GeneralServices service = (GeneralServices) session.getAttribute("service");
         String birdID = request.getParameter("birdID");

@@ -52,19 +52,7 @@
 
             <!-- Start Page Content -->
             <main class="page-content bg-light">
-                <div class="top-header">
-                    <div class="header-bar d-flex justify-content-between border-bottom">
-                        <div class="d-flex align-items-center">
-                            <a href="#" class="logo-icon">
-                                <img src="assets/images/logo-icon.png" height="30" class="small" alt />
-                                <span class="big">
-                                    <img src="assets/images/logo-dark.png" height="24" class="logo-light-mode" alt />
-                                    <img src="assets/images/logo-light.png" height="24" class="logo-dark-mode" alt />
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <jsp:include page="../Admin/admin-dropdown-menu.jsp"/>
 
                 <div class="container-fluid">
                     <div class="layout-specing">
@@ -77,7 +65,7 @@
                             <div class="avatar-profile d-flex margin-nagative mt-n5 position-relative ps-3">
                                 <img src="assets/images/doctors/01.jpg" class="rounded-circle shadow-md avatar avatar-medium" alt />
                                 <div class="mt-4 ms-3 pt-3">
-                                    <h5 class="mt-3 mb-1">${doctor.doctor}</h5>
+                                    <h5 class="mt-3 mb-1">${user.fullName}</h5> 
                                     <p class="text-muted mb-0">Doctor</p>
                                 </div>
                             </div>
@@ -109,136 +97,127 @@
 
                                         <div class="tab-content mt-2" id="pills-tabContent">											
                                             <div class="tab-pane fade" id="pills-timetable" role="tabpanel" aria-labelledby="timetable-tab">
-                                                <div class="row">
-                                                    <div class="col-lg-4 col-md-12">
-                                                        <div class="card border-0 p-3 rounded shadow">
-                                                            <ul class="list-unstyled mb-0">
-                                                                <li class="d-flex justify-content-between mt-2">
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-                                                                        <p class="text-muted mb-0"><i class="ri-time-fill text-primary align-middle h5 mb-0"></i> Monday</p>
-                                                                    </div>
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-
-                                                                        <div class="text-primary mb-0 d-flex align-items-center">
-                                                                            <span class="m-2 text-dark">Time:</span>
-                                                                            <div class="flex-grow-1">
-                                                                                <select class="form-control time-during select2input" name="time2">
-                                                                                    <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
-                                                                                    <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-                                                                                    <option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
-                                                                                    <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>																			
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                </li>
-                                                                <li class="d-flex justify-content-between mt-2">
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-                                                                        <p class="text-muted mb-0"><i class="ri-time-fill text-primary align-middle h5 mb-0"></i>Tuesday</p>
-                                                                    </div>
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-
-                                                                        <div class="text-primary mb-0 d-flex align-items-center">
-                                                                            <span class="m-2 text-dark">Time:</span>
-                                                                            <div class="flex-grow-1">
-                                                                                <select class="form-control time-during select2input" name="time2">
-                                                                                    <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
-                                                                                    <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-                                                                                    <option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
-                                                                                    <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>																			
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                </li>
-                                                            </ul>
+                                                <div class="card booking-schedule schedule-widget">
+                                                    <!-- Schedule Header -->
+                                                    <div class="schedule-header">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <!-- Day Slot -->
+                                                                <div class="day-slot">
+                                                                    <ul>
+                                                                        <li>
+                                                                            <span>Mon</span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <span>Tue</span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <span>Wed</span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <span>Thu</span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <span>Fri</span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <span>Sat</span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <span>Sun</span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <!-- /Day Slot -->
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <!--end col-->
+                                                    <!-- /Schedule Header -->
 
-                                                    <div class="col-lg-4 col-md-12">
-                                                        <div class="card border-0 p-3 rounded shadow">
-                                                            <ul class="list-unstyled mb-0">
-                                                                <li class="d-flex justify-content-between mt-2">
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-                                                                        <p class="text-muted mb-0"><i class="ri-time-fill text-primary align-middle h5 mb-0"></i>Wednesday</p>
-                                                                    </div>
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-
-                                                                        <div class="text-primary mb-0 d-flex align-items-center">
-                                                                            <span class="m-2 text-dark">Time:</span>
-                                                                            <div class="flex-grow-1">
-                                                                                <select class="form-control time-during select2input" name="time2">
-                                                                                    <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
-                                                                                    <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-                                                                                    <option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
-                                                                                    <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>																			
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                </li>
-                                                                <li class="d-flex justify-content-between mt-2">
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-                                                                        <p class="text-muted mb-0"><i class="ri-time-fill text-primary align-middle h5 mb-0"></i>Thursday</p>
-                                                                    </div>
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-
-                                                                        <div class="text-primary mb-0 d-flex align-items-center">
-                                                                            <span class="m-2 text-dark">Time:</span>
-                                                                            <div class="flex-grow-1">
-                                                                                <select class="form-control time-during select2input" name="time2">
-                                                                                    <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
-                                                                                    <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-                                                                                    <option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
-                                                                                    <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>																			
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                </li>
-                                                            </ul>
+                                                    <!-- Schedule Content -->
+                                                    <div class="schedule-cont">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <!-- Time Slot -->
+                                                                <div class="time-slot">
+                                                                    <ul class="clearfix">
+                                                                        <li>
+                                                                            <a class="timing"><span>7:00</span></a>
+                                                                            <a class="timing"><span>8:00</span></a>
+                                                                            <a class="timing"><span>9:00</span></a>
+                                                                            <a class="timing"><span>10:00</span></a>
+                                                                            <a class="timing"><span>13:00</span></a>
+                                                                            <a class="timing"><span>14:00</span></a>
+                                                                            <a class="timing"><span>15:00</span></a>
+                                                                            <a class="timing"><span>16:00</span></a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="timing"><span>7:00</span></a>
+                                                                            <a class="timing"><span>8:00</span></a>
+                                                                            <a class="timing"><span>9:00</span></a>
+                                                                            <a class="timing"><span>10:00</span></a>
+                                                                            <a class="timing"><span>13:00</span></a>
+                                                                            <a class="timing"><span>14:00</span></a>
+                                                                            <a class="timing"><span>15:00</span></a>
+                                                                            <a class="timing"><span>16:00</span></a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="timing"><span>7:00</span></a>
+                                                                            <a class="timing"><span>8:00</span></a>
+                                                                            <a class="timing"><span>9:00</span></a>
+                                                                            <a class="timing"><span>10:00</span></a>
+                                                                            <a class="timing"><span>13:00</span></a>
+                                                                            <a class="timing"><span>14:00</span></a>
+                                                                            <a class="timing"><span>15:00</span></a>
+                                                                            <a class="timing"><span>16:00</span></a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="timing"><span>7:00</span></a>
+                                                                            <a class="timing"><span>8:00</span></a>
+                                                                            <a class="timing"><span>9:00</span></a>
+                                                                            <a class="timing"><span>10:00</span></a>
+                                                                            <a class="timing"><span>13:00</span></a>
+                                                                            <a class="timing"><span>14:00</span></a>
+                                                                            <a class="timing"><span>15:00</span></a>
+                                                                            <a class="timing"><span>16:00</span></a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="timing"><span>7:00</span></a>
+                                                                            <a class="timing"><span>8:00</span></a>
+                                                                            <a class="timing"><span>9:00</span></a>
+                                                                            <a class="timing"><span>10:00</span></a>
+                                                                            <a class="timing"><span>13:00</span></a>
+                                                                            <a class="timing"><span>14:00</span></a>
+                                                                            <a class="timing"><span>15:00</span></a>
+                                                                            <a class="timing"><span>16:00</span></a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="timing"><span>7:00</span></a>
+                                                                            <a class="timing"><span>8:00</span></a>
+                                                                            <a class="timing"><span>9:00</span></a>
+                                                                            <a class="timing"><span>10:00</span></a>
+                                                                            <a class="timing"><span>13:00</span></a>
+                                                                            <a class="timing"><span>14:00</span></a>
+                                                                            <a class="timing"><span>15:00</span></a>
+                                                                            <a class="timing"><span>16:00</span></a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="timing"><span>7:00</span></a>
+                                                                            <a class="timing"><span>8:00</span></a>
+                                                                            <a class="timing"><span>9:00</span></a>
+                                                                            <a class="timing"><span>10:00</span></a>
+                                                                            <a class="timing"><span>13:00</span></a>
+                                                                            <a class="timing"><span>14:00</span></a>
+                                                                            <a class="timing"><span>15:00</span></a>
+                                                                            <a class="timing"><span>16:00</span></a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <!-- /Time Slot -->
+                                                            </div>
                                                         </div>
                                                     </div>
-
-                                                    <div class="col-lg-4 col-md-12">
-                                                        <div class="card border-0 p-3 rounded shadow">
-                                                            <ul class="list-unstyled mb-0">
-                                                                <li class="d-flex justify-content-between mt-2">
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-                                                                        <p class="text-muted mb-0"><i class="ri-time-fill text-primary align-middle h5 mb-0"></i>Friday</p>
-                                                                    </div>
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-
-                                                                        <div class="text-primary mb-0 d-flex align-items-center">
-                                                                            <span class="m-2 text-dark">Time:</span>
-                                                                            <div class="flex-grow-1">
-                                                                                <select class="form-control time-during select2input" name="time2">
-                                                                                    <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
-                                                                                    <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-                                                                                    <option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
-                                                                                    <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>																			
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                </li>
-                                                                <li class="d-flex justify-content-between mt-2">
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-                                                                        <p class="text-muted mb-0"><i class="ri-time-fill text-primary align-middle h5 mb-0"></i>Saturday</p>
-                                                                    </div>
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-
-                                                                        <div class="text-primary mb-0 d-flex align-items-center">
-                                                                            <span class="m-2 text-dark">Time:</span>
-                                                                            <div class="flex-grow-1">
-                                                                                <select class="form-control time-during select2input" name="time2">
-                                                                                    <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
-                                                                                    <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-                                                                                    <option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
-                                                                                    <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>																			
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                                    <!-- /Schedule Content -->
                                                 </div>
                                                 <div class="col-sm-12" style="margin-top: 1rem;">
                                                     <input type="submit" class="rounded btn btn-primary" value="Save" />
@@ -288,7 +267,7 @@
                                                                             </div>
                                                                         </div>
                                                                         <!--end col-->
-                                                                        
+
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
                                                                                 <label class="form-label">Username</label>
@@ -315,7 +294,7 @@
 
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
-                                                                                <label class="form-label">Gender</label>
+                                                                                <label class="form-label">${user.gender}</label>
                                                                                 <select class="form-control time-during">
                                                                                     <option value="">Male</option>
                                                                                     <option value="">Female</option>
