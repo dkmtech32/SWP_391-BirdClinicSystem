@@ -1,4 +1,4 @@
-﻿
+﻿/*CREATE DATABASE SWP391 before execute scripts*/
 CREATE TABLE Images (
   imageID CHAR(32) NOT NULL,
   imageURLName varchar(50) NOT NULL,
