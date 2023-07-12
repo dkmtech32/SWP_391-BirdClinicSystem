@@ -14,14 +14,14 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import models.appointment.AppointmentDAO;
 import models.appointment.AppointmentDAOImpl;
 import models.appointment.AppointmentDTO;
+import models.bird.BirdAlreadyExistsException;
 import models.bird.BirdDAO;
 import models.bird.BirdDAOImpl;
 import models.bird.BirdDTO;
+import models.bird.BirdDTOImpl;
 import models.blog.BlogDAO;
 import models.blog.BlogDAOImpl;
 import models.blog.BlogDTO;
@@ -126,22 +126,29 @@ public class GeneralServicesImpl implements GeneralServices {
     }
 
     @Override
-    public boolean register(Map<String, String[]> args)
+    public CustomerDTO createAccount(Map<String, String[]> args)
             throws AccountAlreadyExistsException, PasswordsNotEqualException, PasswordNotStrongException, SQLException {
         //assumption: args have all 4 key-value pairs
         String username = Utils.getFromMap(args, "username", "");
+        String fullName = Utils.getFromMap(args, "fullName", "");
+
         String uPassword = Utils.getFromMap(args, "password", "");
         String cPassword = Utils.getFromMap(args, "repeat-password", "");
         String email = Utils.getFromMap(args, "email", "");
-        boolean result = false;
+        String gender = Utils.getFromMap(args, "gender", "");
+        String address = Utils.getFromMap(args, "address", "");
+        Date dob = Date.valueOf(Utils.getFromMap(args, "dob", ""));
+        String phone = Utils.getFromMap(args, "phone", "");
+
+        CustomerDTO result = null;
 
         try {
             if (!uPassword.equals(cPassword)) {
                 throw new PasswordsNotEqualException();
             }
-            if (Utils.checkPassword(uPassword)) {
-                throw new PasswordNotStrongException();
-            }
+//            if (Utils.checkPassword(uPassword)) {
+//                throw new PasswordNotStrongException();
+//            }
 
             if (userDAO.readUserByEmailUserName(email, username) != null) {
                 throw new AccountAlreadyExistsException();
@@ -153,23 +160,76 @@ public class GeneralServicesImpl implements GeneralServices {
             customer.setUserID(userID);
             customer.setEmail(email);
             customer.setUserName(username);
+            customer.setFullName(fullName);
             customer.setUserPassword(rPassword);
-            customer.setGender("unknown"); //default
+            customer.setGender(gender);
             customer.setUserRole("customer"); //only allow customer registration - other accs must be done by admin
             ImageDTO image = imageDAO.readImage("whfnhfn3ga98h943ghjanfueafa92rhf"); //default image
             customer.setImage(image);
-            customer.setStatus_(false); //default
+            customer.setStatus_(true); //default
 
             //customer info
-            customer.setCustomerAddress(null);
-            customer.setDob(null);
-            customer.setPhoneNumber(null);
+            customer.setCustomerAddress(address);
+            customer.setDob(dob);
+            customer.setPhoneNumber(phone);
 
-            result = customerDAO.insertCustomer(customer) > 0;
-        } catch (RecordAlreadyExists ex) {
-            throw new AccountAlreadyExistsException(ex.getMessage());
+            result = customer;
         } catch (NoSuchRecordExists ex) {
             //no image -> db error
+            throw new SQLException(ex.getMessage());
+        }
+
+        return result;
+    }
+
+    @Override
+    public BirdDTO createBird(Map<String, String[]> args, CustomerDTO customer) throws BirdAlreadyExistsException, SQLException {
+        BirdDTO result = null;
+
+        try {
+            BirdDTO bird = new BirdDTOImpl();
+
+            ImageDTO image = imageDAO.readImage("05b5b4345d8ac2f73ece3df15be03230"); //default
+
+            String birdFullname = args.get("bird-full-name")[0];
+            String birdGender = args.get("bird-gender")[0];
+            String breed = args.get("breed")[0];
+            String band_chip = args.get("band_chip")[0];
+            float birdWeight = Float.parseFloat(args.get("bird-weight")[0]) / 1000;
+            Date hatchingDate = Date.valueOf(args.get("hatching-date")[0]);
+            String featherColor = args.get("feather-color")[0];
+
+            bird.setBirdID(Utils.hash(customer.getUserID() + image.getImageID() + String.valueOf(System.currentTimeMillis())));
+
+            bird.setCustomer(customer);
+            bird.setImage(image);
+
+            bird.setImage(image);
+            bird.setBirdFullname(birdFullname);
+            bird.setBirdGender(birdGender);
+            bird.setBreed(breed);
+            bird.setBand_Chip(band_chip);
+            bird.setBirdWeight(birdWeight);
+            bird.setSexingMethod("");
+            bird.setMedicalHistory(null);
+            bird.setHatchingDate(hatchingDate);
+            bird.setFeatherColor(featherColor);
+            result = bird;
+        } catch (NoSuchRecordExists ex) {
+            throw new SQLException(ex.getMessage());
+        }
+
+        return result;
+    }
+
+    @Override
+    public boolean register(CustomerDTO account, BirdDTO bird) throws SQLException {
+        boolean result = false;
+
+        try {
+            result = customerDAO.insertCustomer(account) > 0;
+            result = result && birdDAO.insertBird(bird) > 0;
+        } catch (RecordAlreadyExists ex) {
             throw new SQLException(ex.getMessage());
         }
 
@@ -244,6 +304,21 @@ public class GeneralServicesImpl implements GeneralServices {
         try {
             if (currentUser != null) {
                 medicalRecord = medicalRecordDAO.readMedicalRecordByAppointment(appointmentID);
+            }
+        } catch (NoSuchRecordExists ex) {
+            medicalRecord = null;
+        }
+
+        return medicalRecord;
+    }
+    
+    @Override
+    public List<MedicalRecordDTO> viewMedicalRecordOfBird(String birdID) throws SQLException {
+        List<MedicalRecordDTO> medicalRecord = null;
+
+        try {
+            if (currentUser != null) {
+                medicalRecord = medicalRecordDAO.readMedicalRecordByBird(birdID);
             }
         } catch (NoSuchRecordExists ex) {
             medicalRecord = null;
@@ -462,7 +537,7 @@ public class GeneralServicesImpl implements GeneralServices {
 
         return doctor;
     }
-    
+
     @Override
     public CustomerDTO getCustomerInfo(String customerID) throws SQLException, AccountDoesNotExistException {
         CustomerDTO customer = null;
@@ -631,7 +706,7 @@ public class GeneralServicesImpl implements GeneralServices {
 
         return apps;
     }
-    
+
     @Override
     public List<AppointmentDTO> getCustomerAppointments(String customerID) throws AccountDoesNotExistException, SQLException {
         List<AppointmentDTO> apps = null;

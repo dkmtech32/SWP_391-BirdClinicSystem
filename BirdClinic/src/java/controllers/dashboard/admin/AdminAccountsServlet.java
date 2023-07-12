@@ -21,7 +21,7 @@ import services.general.AccountDoesNotExistException;
  *
  * @author Admin
  */
-public class AdminDashboardAccountsServlet extends HttpServlet {
+public class AdminAccountsServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,11 +36,11 @@ public class AdminDashboardAccountsServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        String url = "/Admin/dashboard-admin-accounts.jsp";
+        String url = "/Admin/admin-home-page-accounts.jsp";
         try {
             AdminServices admin = (AdminServices) session.getAttribute("service");
             String filter = request.getParameter("filter");
-            List<UserDTO> users = admin.getAllUsers();
+            List<UserDTO> users = admin.getUsersByFilter(filter);
             request.setAttribute("accounts", users);
         } catch (SQLException ex) {
             ex.printStackTrace();

@@ -37,4 +37,7 @@ public interface DoctorTimeslotDAO extends Serializable {
     
     int dropDoctor(String doctorID)
             throws SQLException, NoSuchRecordExists;
+    
+    int insertMultipleDoctorTimeslots(String doctorID, String[] timeslotIDs)
+            throws SQLException, RecordAlreadyExists;
 }
