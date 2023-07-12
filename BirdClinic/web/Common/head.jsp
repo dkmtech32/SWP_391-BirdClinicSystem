@@ -37,8 +37,6 @@
     <!-- Datetimepicker CSS -->
     <link rel="stylesheet" href="<c:url value='/assets/css/bootstrap-datetimepicker.min.css'/>" />
 
-        <link rel="stylesheet" href="<c:url value='/assets/css/style.min.css'/>" />
-
     <!-- Main CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap"
           rel="stylesheet" />
