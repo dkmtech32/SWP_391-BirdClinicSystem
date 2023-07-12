@@ -40,9 +40,6 @@
                                     <img src="../assets/images/logo-light.png" height="24" class="logo-dark-mode" alt />
                                 </span>
                             </a>
-                            <a id="close-sidebar" class="btn btn-icon btn-pills btn-soft-primary ms-2" href="#">
-                                <i class="uil uil-bars"></i>
-                            </a>
                         </div>
 
                         <ul class="list-unstyled mb-0">
@@ -237,7 +234,7 @@
                                                                     <tr>
                                                                         <td>
                                                                             <h2 class="table-avatar">
-                                                                                <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                                <a href="dr-profile.jsp" class="avatar avatar-sm mr-2">
                                                                                     <img class="avatar-img rounded-circle" src="${doctor.userImg}" alt="User Image" />
                                                                                 </a>
                                                                             </h2>
@@ -250,7 +247,7 @@
                                                                         <td>${doctor.degree}</td>
                                                                         <td>
                                                                             <div class="table-action">
-                                                                                <a href=";" class="btn btn-sm bg-danger-light">Delete</a>
+                                                                                <a href="" class="btn btn-sm bg-danger-light">Delete</a>
                                                                                 <c:choose>
                                                                                     <c:when test="${user.status_ =='true'}">
                                                                                         <a href="" class="btn btn-sm bg-primary-light">Ban</a>
@@ -259,13 +256,18 @@
                                                                                         <a href="" class="btn btn-sm bg-primary-light">Active</a>
                                                                                     </c:when>
                                                                                 </c:choose>
-                                                                                <a href="javascript:void(0);" class="btn btn-sm bg-info-light">View</a>
+                                                                                <a href="dr-profile.jsp" class="btn btn-sm bg-info-light">View</a>
                                                                             </div>
                                                                         </td>
                                                                     </tr>
                                                                 </c:forEach>
                                                             </tbody>
                                                         </table>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <a href="add-doctor.jsp" class="btn btn-primary">Add more doctor+</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -307,7 +309,7 @@
                                                                         <td></td>
                                                                         <td>
                                                                             <div class="table-action">
-                                                                                <a href="javascript:void(0);" class="btn btn-sm bg-danger-light">Delete</a>
+                                                                                <a href="" class="btn btn-sm bg-danger-light">Delete</a>
                                                                                 <c:choose>
                                                                                     <c:when test="${user.status_ =='true'}">
                                                                                         <a href="" class="btn btn-sm bg-primary-light">Ban</a>
@@ -316,13 +318,18 @@
                                                                                         <a href="" class="btn btn-sm bg-primary-light">Active</a>
                                                                                     </c:when>
                                                                                 </c:choose>
-                                                                                <a href="javascript:void(0);" class="btn btn-sm bg-info-light">View</a>
+                                                                                <a href="staff-profile.jsp" class="btn btn-sm bg-info-light">View</a>
                                                                             </div>
                                                                         </td>
                                                                     </tr>
                                                                 </c:forEach>
                                                             </tbody>
                                                         </table>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <a href="add-staff.jsp" class="btn btn-primary">Add more staff+</a>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -374,13 +381,18 @@
                                                                                         <a href="" class="btn btn-sm bg-primary-light">Active</a>
                                                                                     </c:when>
                                                                                 </c:choose>
-                                                                                <a href="javascript:void(0);" class="btn btn-sm bg-info-light">View</a>
+                                                                                <a href="customer-profile.jsp" class="btn btn-sm bg-info-light">View</a>
                                                                             </div>
                                                                         </td>
                                                                     </tr>
                                                                 </c:forEach>
                                                             </tbody>
                                                         </table>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <a href="add-customer.jsp" class="btn btn-primary">Add more customer+</a>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
