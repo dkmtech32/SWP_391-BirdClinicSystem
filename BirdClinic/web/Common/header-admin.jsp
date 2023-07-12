@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -105,7 +106,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link header-login" href="login.html">login / Signup </a>
+                    <a class="nav-link header-login" href="<c:url value="/logout"/>">">Logout</a>
                 </li>
             </ul>
         </nav>
