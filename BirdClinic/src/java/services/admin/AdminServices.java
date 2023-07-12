@@ -40,7 +40,7 @@ public interface AdminServices extends GeneralServices {
 
     List<CustomerDTO> getAllCustomer() throws SQLException, AccountDoesNotExistException;
 
-    List<BigDecimal> getAllRatingsFromDoctor() throws SQLException, AccountDoesNotExistException;
+//    List<BigDecimal> getAllRatingsFromDoctor() throws SQLException, AccountDoesNotExistException;
 
     List<Service_DTO> getAllServices() throws SQLException, ServiceDoesNotExistException;
 
@@ -48,4 +48,5 @@ public interface AdminServices extends GeneralServices {
 
     boolean toggleAccountStatus(String userID) throws AccountDoesNotExistException, SQLException;
     
+    List<UserDTO> getUsersByFilter(String filter) throws SQLException, AccountDoesNotExistException;
 }

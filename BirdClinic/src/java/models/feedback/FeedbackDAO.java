@@ -29,4 +29,6 @@ public interface FeedbackDAO extends Serializable {
     int deleteFeedback(String feedbackID) throws SQLException, NoSuchRecordExists;
     
     int updateFeedback(FeedbackDTO feedback) throws SQLException, NoSuchRecordExists;
+    
+    List<FeedbackDTO> readAllFeedback() throws SQLException, NoSuchRecordExists;
 }
