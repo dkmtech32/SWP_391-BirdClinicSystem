@@ -52,8 +52,9 @@
                                                 <div class="booking-info">
                                                     <h4><a href="doctor-profile.html">BirdLover Clinic</a></h4>                                          
                                                     <div class="clinic-details">
-                                                        <p class="doc-location"><i class="fas fa-map-marker-alt"></i> Long Bien, Hanoi</p>
-                                                    </div>                                                </div>
+                                                        <p class="doc-location"><i class="fas fa-map-marker-alt"></i> District 1, Ho Chi Minh City</p>
+                                                    </div>                                                
+                                                </div>
                                             </div>
                                         </c:when>
                                     </c:choose>

@@ -43,14 +43,27 @@
                                         <tbody>
                                             <c:forEach var="appointment" items="${requestScope.appointments}">
                                                 <tr>
-                                                    <td>
-                                                        <h2 class="table-avatar">
-                                                            <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
-                                                                <img class="avatar-img rounded-circle" src="../assets/images/doctors/${appointment.doctor.image.imageURLName}" alt="User Image" />
-                                                            </a>
-                                                            <a href="doctor-profile.jsp">${appointment.doctor.fullName} <span>${doctor.speciality.specialityName}</span></a> 
-                                                        </h2>
-                                                    </td>
+                                                    <c:if test="${not empty appointment.doctor}">
+                                                        <td>
+                                                            <h2 class="table-avatar">
+                                                                <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                    <img class="avatar-img rounded-circle" src="<c:url value="/assets/images/doctors/${appointment.doctor.image.imageURLName}"/>" alt="User Image" />
+                                                                </a>
+                                                                <a href="doctor-profile.jsp">${appointment.doctor.fullName} <span style="text-transform: capitalize">${appointment.doctor.speciality.specialityName}</span></a> 
+                                                            </h2>
+                                                        </td>
+                                                    </c:if> 
+                                                    <c:if test="${ empty appointment.doctor}">
+                                                        <td>
+                                                            <h2 class="table-avatar">
+                                                                <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                    <img class="avatar-img rounded-circle" src="<c:url value="/assets/images/favicon.svg"/>" alt="User Image" />
+                                                                </a>
+                                                                <a href="doctor-profile.jsp">BirdLover Clinic <span >District 1, Ho Chi Minh City</span></a> 
+                                                            </h2>
+                                                        </td>
+                                                    </c:if>
+
                                                     <td>${appointment.appTime}<span class="d-block text-info">${appointment.timeslot.timeSlot}</span></td>
                                                     <td>
                                                         <h2 class="table-avatar">
@@ -90,7 +103,7 @@
                                                             <a href="<c:url value="/View/Appointment?appointmentID=${appointment.appointmentID}"/>" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                         </div>
                                                     </td>
-                                                    
+
                                                 </tr>
                                             </c:forEach>
                                         </tbody>
