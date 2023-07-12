@@ -228,9 +228,7 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
             String[] timeslots = args.get("timeslots");
 
             doctorTimeslotDAO.dropDoctor(doctorID);
-            for (String timeslotID : timeslots) {
-                result = doctorTimeslotDAO.insertDoctorTimeslot(doctorID, timeslotID) > 0;
-            }
+            doctorTimeslotDAO.insertMultipleDoctorTimeslots(doctorID, timeslots);
 
         } catch (NoSuchRecordExists ex) {
             throw new AccountDoesNotExistException(ex.getMessage());
