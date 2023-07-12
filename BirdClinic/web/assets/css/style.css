@@ -3573,6 +3573,7 @@ html.menu-opened body {
     position: relative;
     text-decoration: none;
     margin-top: 1rem;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
 }
 .time-slot li .timing-occupied{
     background-color: white;
@@ -3606,6 +3607,7 @@ html.menu-opened body {
     background-color: #e46333;
     border: 1px solid #e46333;
     color: #fff;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
 }
 .time-slot li .timing.selected::before {
     color: #fff;

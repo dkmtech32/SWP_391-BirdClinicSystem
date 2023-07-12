@@ -49,7 +49,7 @@ public class AdminAccountsServlet extends HttpServlet {
             ex.printStackTrace();
         } finally {
             request.setAttribute("url", url);
-            request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 
