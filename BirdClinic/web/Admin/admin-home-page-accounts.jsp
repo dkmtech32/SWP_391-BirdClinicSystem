@@ -8,27 +8,15 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <jsp:include page="../Common/header-admin.jsp"/>
-    <body>
-        <!-- Main Wrapper -->
+    <jsp:include page="../Common/head.jsp"/>
 
+    <body>
         <jsp:include page="../Admin/loader.jsp"/>
 
         <div class="page-wrapper doctris-theme toggled">
             <jsp:include page="../Admin/sidebar.jsp"/>
             <!-- sidebar-wrapper  -->
 
-            <!-- Start Page Content -->
-            <!--            <div class="search-bar p-0 d-none d-lg-block ms-2">
-                            <div id="search" class="menu-search mb-0">
-                                <form role="search" method="get" id="searchform" class="searchform">
-                                    <div>
-                                        <input type="text" class="form-control border rounded-pill" name="s" id="s" placeholder="Search Keywords..." />
-                                        <input type="submit" id="searchsubmit" value="Search" />
-                                    </div>
-                                </form>
-                            </div>
-                        </div>-->
             <main class="page-content bg-light">
                 <div class="top-header">
                     <div class="header-bar d-flex justify-content-between border-bottom">
@@ -200,204 +188,75 @@
                                     <nav class="user-tabs">
                                         <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
                                             <li class="nav-item">
+                                                <a class="nav-link active" href="<c:url value="/Admin/Accounts"/>" data-bs-toggle="pill">All</a>
+                                            </li>
+                                            <li class="nav-item">
                                                 <a class="nav-link active" href="<c:url value="/Admin/Accounts?filter=doctor"/>" data-bs-toggle="pill">Doctors</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#pat_medical_records" data-bs-toggle="pill">Staff</a>
+                                                <a class="nav-link" href="<c:url value="/Admin/Accounts?filter=staff"/>" data-bs-toggle="pill">Staff</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#pat_billing" data-bs-toggle="pill">Customers</a>
+                                                <a class="nav-link" href="<c:url value="/Admin/Accounts?filter=customer"/>" data-bs-toggle="pill">Customers</a>
                                             </li>
                                         </ul>
                                     </nav>
                                     <div class="tab-content pt-0">
                                         <!-- Appointment Tab -->
-                                        <div id="pat_appointments" class="tab-pane fade show active">
+                                        <div id="" class="tab-pane fade show active">
                                             <div class="card card-table mb-0">
                                                 <div class="card-body">
                                                     <div class="table-responsive">
                                                         <table class="table table-hover table-center mb-0">
                                                             <thead>
                                                                 <tr>
-                                                                    <th style="width: 20rem;">Doctor's Image</th>
+                                                                    <th style="width: 20rem;">User's Image</th>
                                                                     <th></th>
-                                                                    <th style="width: 20rem;">Doctor's Name</th>
+                                                                    <th style="width: 20rem;">User's Full Name</th>
                                                                     <th></th>
-                                                                    <th style="width: 20rem;">Specialty</th>
+                                                                    <th style="width: 20rem;">Email</th>
                                                                     <th></th>
-                                                                    <th style="width: 20rem;">Degree</th> 
+                                                                    <th style="width: 20rem;">Gender</th> 
                                                                     <th></th>                                 
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <c:forEach var="doctor" items="${doctor}">
+                                                                <c:forEach items="${accounts}" var="user">
                                                                     <tr>
                                                                         <td>
                                                                             <h2 class="table-avatar">
-                                                                                <a href="dr-profile.jsp" class="avatar avatar-sm mr-2">
-                                                                                    <img class="avatar-img rounded-circle" src="${doctor.userImg}" alt="User Image" />
+                                                                                <a href="" class="avatar avatar-sm mr-2">
+                                                                                    <img class="avatar-img rounded-circle" src="${user.image.imageURLName}" alt="User Image" />
                                                                                 </a>
                                                                             </h2>
                                                                         </td>                                    
                                                                         <td></td>
-                                                                        <td>${doctor.userName}</td>
+                                                                        <td>${user.fullName}</td>
                                                                         <td></td>
-                                                                        <td>${doctor.speciality}</td>
+                                                                        <td>${user.email}</td>
                                                                         <td></td>
-                                                                        <td>${doctor.degree}</td>
+                                                                        <td>${user.gender}</td>
                                                                         <td>
                                                                             <div class="table-action">
-                                                                                <a href="" class="btn btn-sm bg-danger-light">Delete</a>
                                                                                 <c:choose>
                                                                                     <c:when test="${user.status_}">
-                                                                                        <a href="" class="btn btn-sm bg-primary-light">Ban</a>
+                                                                                        <a href="<c:url value="/Admin/Accounts/Toggle"/>" class="btn btn-sm bg-primary-light">Ban</a>
                                                                                     </c:when>
                                                                                     <c:when test="${!user.status_}">
-                                                                                        <a href="" class="btn btn-sm bg-primary-light">Active</a>
+                                                                                        <a href="<c:url value="/Admin/Accounts/Toggle"/>" class="btn btn-sm bg-primary-light">Active</a>
                                                                                     </c:when>
                                                                                 </c:choose>
-                                                                                <a href="dr-profile.jsp" class="btn btn-sm bg-info-light">View</a>
                                                                             </div>
                                                                         </td>
                                                                     </tr>
                                                                 </c:forEach>
                                                             </tbody>
                                                         </table>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <a href="add-doctor.jsp" class="btn btn-primary">Add more doctor+</a>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <!-- Medical Records Tab -->
-                                        <div id="pat_medical_records" class="tab-pane fade">
-                                            <div class="card card-table mb-0">
-                                                <div class="card-body">
-                                                    <div class="table-responsive">
-                                                        <table class="table table-hover table-center mb-0">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th style="width: 20rem;">Staff's Image</th>
-                                                                    <th></th>
-                                                                    <th style="width: 20rem;"></th>
-                                                                    <th></th>
-                                                                    <th style="width: 20rem;">Staff's Name</th>
-                                                                    <th></th>
-                                                                    <th style="width: 20rem;"></th> 
-                                                                    <th></th>                                 
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <c:forEach var="staff" items="${staff}">
-                                                                    <tr>
-                                                                        <td>
-                                                                            <h2 class="table-avatar">
-                                                                                <a href="staff-profile.jsp" class="avatar avatar-sm mr-2">
-                                                                                    <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-07.jpg" alt="User Image" />
-                                                                                </a>
-                                                                            </h2>
-                                                                        </td>                                    
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                        <td>${user.userName}</td>
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                        <td>
-                                                                            <div class="table-action">
-                                                                                <a href="" class="btn btn-sm bg-danger-light">Delete</a>
-                                                                                <c:choose>
-                                                                                    <c:when test="${user.status_ =='true'}">
-                                                                                        <a href="" class="btn btn-sm bg-primary-light">Ban</a>
-                                                                                    </c:when>
-                                                                                    <c:when test="${user.status_ =='False'}">
-                                                                                        <a href="" class="btn btn-sm bg-primary-light">Active</a>
-                                                                                    </c:when>
-                                                                                </c:choose>
-                                                                                <a href="staff-profile.jsp" class="btn btn-sm bg-info-light">View</a>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                </c:forEach>
-                                                            </tbody>
-                                                        </table>
-                                                        <div class="row">
-                                                            <div class="col-sm-12">
-                                                                <a href="add-staff.jsp" class="btn btn-primary">Add more staff+</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /Medical Records Tab -->
-
-                                        <!-- Billing Tab -->
-                                        <div id="pat_billing" class="tab-pane fade">
-                                            <div class="card card-table mb-0">
-                                                <div class="card-body">
-                                                    <div class="table-responsive">
-                                                        <table class="table table-hover table-center mb-0">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th style="width: 20rem;">Customer's Image</th>
-                                                                    <th></th>
-                                                                    <th style="width: 20rem;"></th>
-                                                                    <th></th>
-                                                                    <th style="width: 20rem;">Customer's Name</th>
-                                                                    <th></th>
-                                                                    <th style="width: 20rem;"></th> 
-                                                                    <th></th>                                 
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <c:forEach>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <h2 class="table-avatar">
-                                                                                <a href="doctor-profile.html" class="avatar avatar-sm mr-2">
-                                                                                    <img class="avatar-img rounded-circle" src="assets/img/doctors/doctor-thumb-07.jpg" alt="User Image" />
-                                                                                </a>
-                                                                            </h2>
-                                                                        </td>                                    
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                        <td>${user.userName}</td>
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                        <td>
-                                                                            <div class="table-action">
-                                                                                <a href="javascript:void(0);" class="btn btn-sm bg-danger-light">Delete</a>
-                                                                                <c:choose>
-                                                                                    <c:when test="${user.status_ =='true'}">
-                                                                                        <a href="" class="btn btn-sm bg-primary-light">Ban</a>
-                                                                                    </c:when>
-                                                                                    <c:when test="${user.status_ =='False'}">
-                                                                                        <a href="" class="btn btn-sm bg-primary-light">Active</a>
-                                                                                    </c:when>
-                                                                                </c:choose>
-                                                                                <a href="customer-profile.jsp" class="btn btn-sm bg-info-light">View</a>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                </c:forEach>
-                                                            </tbody>
-                                                        </table>
-                                                        <div class="row">
-                                                            <div class="col-sm-12">
-                                                                <a href="add-customer.jsp" class="btn btn-primary">Add more customer+</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /Billing Tab -->
                                     </div>
                                 </div>
                             </div>
@@ -411,7 +270,7 @@
         </div>
 
         <!-- Script -->
-        <jsp:include page="../Common/script.jsp"/>
+        <jsp:include page="/Common/script.jsp"/>
         <!-- /Script -->
     </body>
 </html>

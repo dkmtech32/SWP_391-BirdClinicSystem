@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : script
     Created on : Jun 20, 2023, 10:21:47 PM
     Author     : Legion
@@ -35,6 +35,26 @@
     <!-- Custom JS -->
     <script src="<c:url value='/assets/js/script.js'/>"></script>
     <script src="<c:url value='/assets/css/style.css'/>"></script>
-    <script src="<c:url value='/assets/js/bootstrap.bundle.min.js'/>"></script>
+    <script src=<c:url value='/assets/js/bootstrap.bundle.min.js'/>></script>
+    <script src=<c:url value="/assets/js/bootstrap.bundle.min.js"/>></script>
+
+    <script src=<c:url value="/assets/js/simplebar.min.js"/>></script>
+
+    <script src="<c:url value="/assets/js/apexcharts.min.js" />"></script>
+
+    <script src="<c:url value="/assets/js/columnchart.init.js"/>"></script>
+
+    <script src="<c:url var="featherUrl" value="/assets/js/feather.min.js" />"></script>
+
+    <script src="<c:url var="appUrl" value="/assets/js/app.js"/>"></script>
+
+    <script src="<c:url value="/assets/plugins/theia-sticky-sidebar/ResizeSensor.js" />"></script>
+
+    <script src=<c:url value="/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js" />></script>
+
+    <script src= <c:url var="bootstrapMinUrl" value="/assets/js/bootstrap.min.js" />></script>
+
+    <script src=<c:url value="/assets/js/popper.min.js" />></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>    
 </html>
 
