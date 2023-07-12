@@ -149,7 +149,7 @@ public class MedicalRecordDAOImpl implements MedicalRecordDAO {
         try {
             List<AppointmentDTO> appointments = appointmentDAO.readAppointmentByBird(birdID);
             con = DBUtils.getConnection();
-            stm = con.prepareStatement(READ_MEDICAL_RECORD);
+            stm = con.prepareStatement(READ_MEDICAL_RECORD_BY_APPOINTMENT);
 
             for (AppointmentDTO appointment : appointments) {
                 stm.setString(1, appointment.getAppointmentID());
