@@ -190,7 +190,7 @@
 
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
-                                                                                <label class="form-label">Gender</label>
+                                                                                <label class="form-label">${user.gender}</label>
                                                                                 <select class="form-control time-during">
                                                                                     <option value="">Male</option>
                                                                                     <option value="">Female</option>

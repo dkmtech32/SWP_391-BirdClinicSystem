@@ -8,7 +8,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <jsp:include page="../Common/head-admin.jsp"/>
     <body>
         <!-- Main Wrapper -->
 
@@ -18,17 +17,6 @@
             <jsp:include page="../Admin/sidebar.jsp"/>
             <!-- sidebar-wrapper  -->
 
-            <!-- Start Page Content -->
-<!--            <div class="search-bar p-0 d-none d-lg-block ms-2">
-                <div id="search" class="menu-search mb-0">
-                    <form role="search" method="get" id="searchform" class="searchform">
-                        <div>
-                            <input type="text" class="form-control border rounded-pill" name="s" id="s" placeholder="Search Keywords..." />
-                            <input type="submit" id="searchsubmit" value="Search" />
-                        </div>
-                    </form>
-                </div>
-            </div>-->
             <main class="page-content bg-light">
                 <div class="top-header">
                     <div class="header-bar d-flex justify-content-between border-bottom">
