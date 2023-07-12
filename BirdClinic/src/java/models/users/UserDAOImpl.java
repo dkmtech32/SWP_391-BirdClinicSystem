@@ -41,7 +41,7 @@ public class UserDAOImpl implements UserDAO {
             = "select userID, imageID, userName, userPassword, fullName, "
             + "gender, email, phoneNumber, status_ "
             + "from Users "
-            + "where userRole = ?";
+            + "where userRole like ?";
     private static final String LOGIN_USER
             = "select userID, imageID, fullName, "
             + "gender, email, userRole, phoneNumber, status_ "
@@ -174,7 +174,7 @@ public class UserDAOImpl implements UserDAO {
         try {
             con = DBUtils.getConnection();
             stm = con.prepareStatement(READ_ALL_USER_BY_ROLE);
-            stm.setString(1, userRole);
+            stm.setString(1, "%"+userRole+"%");
             rs = stm.executeQuery();
 
             while (rs.next()) {
