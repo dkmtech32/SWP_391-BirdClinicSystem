@@ -87,10 +87,10 @@
                         <div class="submit-section mt-4">
                             <button type="submit" class="btn btn-primary submit-btn">Save Changes</button>
                         </div>
+                    </div>
                 </form>
                 <!-- /Profile Settings Form -->
             </div>
         </div>
     </div>
-</div>
 </html>
