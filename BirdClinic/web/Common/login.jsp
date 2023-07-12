@@ -44,7 +44,7 @@
                                                 <a class="forgot-link" href="forgot-password.jsp">Forgot Password ?</a>
                                             </div>
                                             <button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Login</button>
-                                            <div class="login-or">
+<!--                                            <div class="login-or">
                                                 <span class="or-line"></span>
                                                 <span class="span-or">or</span>
                                             </div>
@@ -55,7 +55,7 @@
                                                 <div class="col-6">
                                                     <a href="#" class="btn btn-google btn-block"><i class="fab fa-google mr-1"></i> Login</a>
                                                 </div>
-                                            </div>
+                                            </div>-->
                                             <div class="text-center dont-have">Don’t have an account? <a href="register.jsp">Register</a></div>
                                         </form>
                                     </div>

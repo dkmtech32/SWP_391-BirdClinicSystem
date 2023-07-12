@@ -36,45 +36,6 @@
                 <li>
                     <a href="<c:url value='index.jsp' />">Home</a>
                 </li>
-                <li class="has-submenu active">
-                    <a href="#">Doctors <i class="fas fa-chevron-down"></i></a>
-                    <ul class="submenu">
-                        <li class="active"><a href="<c:url value='doctor-dashboard.jsp' />">Doctor Dashboard</a></li>
-                        <li><a href="<c:url value='appointments.jsp' />">Appointments</a></li>
-                        <li><a href="<c:url value='schedule-timings.jsp' />">Schedule Timing</a></li>
-                        <li><a href="<c:url value='my-patients.jsp' />">Patients List</a></li>
-                        <li><a href="<c:url value='patient-profile.jsp' />">Patients Profile</a></li>
-                        <li><a href="<c:url value='chat-doctor.jsp' />">Chat</a></li>
-                        <li><a href="<c:url value='invoices.jsp' />">Invoices</a></li>
-                        <li><a href="<c:url value='doctor-profile-settings.jsp' />">Profile Settings</a></li>
-                        <li><a href="<c:url value='reviews.jsp' />">Reviews</a></li>
-                        <li><a href="<c:url value='doctor-register.jsp' />">Doctor Register</a></li>
-                    </ul>
-                </li>
-                <li class="has-submenu">
-                    <a href="#">Pages <i class="fas fa-chevron-down"></i></a>
-                    <ul class="submenu">
-                        <li><a href="<c:url value='voice-call.jsp' />">Voice Call</a></li>
-                        <li><a href="<c:url value='video-call.jsp' />">Video Call</a></li>
-                        <li><a href="<c:url value='search.jsp' />">Search Doctors</a></li>
-                        <li><a href="<c:url value='calendar.jsp' />">Calendar</a></li>
-                        <li><a href="<c:url value='components.jsp' />">Components</a></li>
-                        <li class="has-submenu">
-                            <a href="<c:url value='invoices.jsp' />">Invoices</a>
-                            <ul class="submenu">
-                                <li><a href="<c:url value='invoices.jsp' />">Invoices</a></li>
-                                <li><a href="<c:url value='invoice-view.jsp' />">Invoice View</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="<c:url value='blank-page.jsp' />">Starter Page</a></li>
-                        <li><a href="<c:url value='login.jsp' />">Login</a></li>
-                        <li><a href="<c:url value='register.jsp' />">Register</a></li>
-                        <li><a href="<c:url value='forgot-password.jsp' />">Forgot Password</a
-                                            </ul>
-                </li>
-                <li class="login-link">
-                    <a href="<c:url value='login.jsp' />">Login / Signup</a>
-                </li>
             </ul>
         </div>
         <ul class="nav header-navbar-rht">

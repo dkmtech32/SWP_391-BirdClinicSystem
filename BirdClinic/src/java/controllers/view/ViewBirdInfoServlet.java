@@ -7,11 +7,13 @@ package controllers.view;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import models.appointment.AppointmentDTO;
 import models.bird.BirdDTO;
 import services.general.BirdDoesNotExistException;
 import services.general.GeneralServices;
@@ -33,7 +35,9 @@ public class ViewBirdInfoServlet extends HttpServlet {
         
         try {
             BirdDTO bird = service.viewBird(birdID);
+            List<AppointmentDTO> apps = service.getBirdAppointments(birdID);
             request.setAttribute("bird", bird);
+            request.setAttribute("appointments", apps);
         } catch (SQLException ex) {
             ex.printStackTrace();
             request.setAttribute("error-message", "Something is wrong. Please try again.");

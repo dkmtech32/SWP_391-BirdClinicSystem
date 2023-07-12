@@ -13,7 +13,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import models.appointment.AppointmentDTO;
 import models.bird.BirdDTO;
+import models.users.customer.CustomerDTO;
+import services.general.AccountDoesNotExistException;
 import services.general.GeneralServices;
 
 /**
@@ -34,20 +37,26 @@ public class ViewCustomerInfoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "/View/Account";
+        String url = "/Common/customer-info.jsp";
         HttpSession session = request.getSession();
-        
+
         String userID = request.getParameter("userID");
-        
+
         try {
             GeneralServices service = (GeneralServices) session.getAttribute("service");
             List<BirdDTO> birds = service.getCustomerBirds(userID);
             request.setAttribute("birds", birds);
+            CustomerDTO customer = service.getCustomerInfo(userID);
+            request.setAttribute("customer", customer);
+            List<AppointmentDTO> apps = service.getCustomerAppointments(userID);
+            request.setAttribute("appointments", apps);
         } catch (ClassCastException ex) {
             url = "/login";
         } catch (SQLException ex) {
             ex.printStackTrace();
             request.setAttribute("error-message", "Something is wrong. Please try again.");
+        } catch (AccountDoesNotExistException ex) {
+            ex.printStackTrace();
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

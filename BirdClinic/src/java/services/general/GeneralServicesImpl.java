@@ -9,13 +9,16 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.appointment.AppointmentDAO;
 import models.appointment.AppointmentDAOImpl;
 import models.appointment.AppointmentDTO;
-import models.appointmentCancel.AppointmentCancelDAO;
-import models.appointmentCancel.AppointmentCancelDAOImpl;
 import models.bird.BirdDAO;
 import models.bird.BirdDAOImpl;
 import models.bird.BirdDTO;
@@ -83,7 +86,6 @@ public class GeneralServicesImpl implements GeneralServices {
     protected final CustomerDAO customerDAO;
     protected final DoctorTimeslotDAO doctorTimeslotDAO;
     protected final FeedbackDAO feedbackDAO;
-    protected final AppointmentCancelDAO appointmentCancelDAO;
     protected final BlogDAO blogDAO;
 
     protected UserDTO currentUser;
@@ -103,13 +105,12 @@ public class GeneralServicesImpl implements GeneralServices {
         recordMedicineDAO = new RecordMedicineDAOImpl(medicalRecordDAO, medicineDAO);
         doctorTimeslotDAO = new DoctorTimeslotDAOImpl(timeslotDAO, doctorDAO);
         feedbackDAO = new FeedbackDAOImpl(appointmentDAO);
-        appointmentCancelDAO = new AppointmentCancelDAOImpl(appointmentDAO);
         blogDAO = new BlogDAOImpl();
     }
 
     @Override
     public boolean login(String username, String password)
-            throws AccountDoesNotExist, SQLException {
+            throws AccountDoesNotExistException, SQLException {
         password = Utils.hash(password);
         boolean result = false;
         try {
@@ -119,7 +120,7 @@ public class GeneralServicesImpl implements GeneralServices {
                 result = true;
             }
         } catch (NoSuchRecordExists ex) {
-            throw new AccountDoesNotExist(ex.getMessage());
+            throw new AccountDoesNotExistException(ex.getMessage());
         }
         return result;
     }
@@ -176,7 +177,7 @@ public class GeneralServicesImpl implements GeneralServices {
     }
 
     @Override
-    public boolean enableAccount(String userID) throws AccountDoesNotExist, SQLException {
+    public boolean enableAccount(String userID) throws AccountDoesNotExistException, SQLException {
         boolean result = false;
 
         try {
@@ -186,7 +187,7 @@ public class GeneralServicesImpl implements GeneralServices {
                 result = userDAO.updateUser(user) > 0;
             }
         } catch (NoSuchRecordExists ex) {
-            throw new AccountDoesNotExist(ex.getMessage());
+            throw new AccountDoesNotExistException(ex.getMessage());
         }
 
         return result;
@@ -335,7 +336,7 @@ public class GeneralServicesImpl implements GeneralServices {
 
     @Override
     public List<Service_DTO> getServices(String doctorID)
-            throws SQLException, AccountDoesNotExist {
+            throws SQLException, AccountDoesNotExistException {
         List<Service_DTO> services = null;
 
         try {
@@ -346,7 +347,7 @@ public class GeneralServicesImpl implements GeneralServices {
                 services = serviceDAO.readServiceBySpeciality(spec.getSpecialityID());
             }
         } catch (NoSuchRecordExists ex) {
-            throw new AccountDoesNotExist(ex.getMessage());
+            throw new AccountDoesNotExistException(ex.getMessage());
         }
 
         return services;
@@ -431,24 +432,23 @@ public class GeneralServicesImpl implements GeneralServices {
 
     @Override
     public boolean updateAccountPassword(String nPassword)
-            throws PasswordNotStrongException, AccountDoesNotExist, SQLException {
+            throws PasswordNotStrongException, AccountDoesNotExistException, SQLException {
         boolean result = false;
 
         try {
-            
 
             nPassword = Utils.hash(nPassword);
             result = userDAO.updateUserPassword(currentUser.getUserID(), nPassword) > 0;
 
         } catch (NoSuchRecordExists ex) {
-            throw new AccountDoesNotExist(ex.getMessage());
+            throw new AccountDoesNotExistException(ex.getMessage());
         }
 
         return result;
     }
 
     @Override
-    public DoctorDTO getDoctorInfo(String doctorID) throws SQLException, AccountDoesNotExist {
+    public DoctorDTO getDoctorInfo(String doctorID) throws SQLException, AccountDoesNotExistException {
         DoctorDTO doctor = null;
 
         try {
@@ -457,10 +457,26 @@ public class GeneralServicesImpl implements GeneralServices {
                 doctor.setUserName(null);
             }
         } catch (NoSuchRecordExists ex) {
-            throw new AccountDoesNotExist(ex.getMessage());
+            throw new AccountDoesNotExistException(ex.getMessage());
         }
 
         return doctor;
+    }
+    
+    @Override
+    public CustomerDTO getCustomerInfo(String customerID) throws SQLException, AccountDoesNotExistException {
+        CustomerDTO customer = null;
+
+        try {
+            if (customerID != null && !customerID.trim().equals("")) {
+                customer = customerDAO.readCustomer(customerID);
+                customer.setUserName(null);
+            }
+        } catch (NoSuchRecordExists ex) {
+            throw new AccountDoesNotExistException(ex.getMessage());
+        }
+
+        return customer;
     }
 
     @Override
@@ -477,32 +493,14 @@ public class GeneralServicesImpl implements GeneralServices {
     }
 
     @Override
-    public List<FeedbackDTO> getCustomerFeedbacks(String customerID) throws SQLException {
-        List<FeedbackDTO> feedbacks = null;
-
-        try {
-            feedbacks = feedbackDAO.readFeedbackByCustomer(customerID);
-        } catch (NoSuchRecordExists ex) {
-            feedbacks = null;
-        }
-
-        return feedbacks;
-    }
-
-    @Override
-    public BigDecimal getDoctorRatings(String doctorID) throws SQLException {
+    public BigDecimal getDoctorRatings(List<FeedbackDTO> feedbacks) throws SQLException {
         BigDecimal ratings = BigDecimal.ZERO;
-        try {
-            List<FeedbackDTO> feedbacks = feedbackDAO.readFeedbackByDoctor(doctorID);
-            for (FeedbackDTO feedback : feedbacks) {
-                ratings = feedback.getRating().add(ratings);
-            }
-            if (ratings.compareTo(BigDecimal.ZERO) > 0) {
-                ratings = ratings.divide(BigDecimal.valueOf(feedbacks.size()));
-                ratings.setScale(2, RoundingMode.HALF_DOWN);
-            }
-        } catch (NoSuchRecordExists ex) {
-            ratings = BigDecimal.ZERO;
+        for (FeedbackDTO feedback : feedbacks) {
+            ratings = feedback.getRating().add(ratings);
+        }
+        if (ratings.compareTo(BigDecimal.ZERO) > 0) {
+            ratings = ratings.divide(BigDecimal.valueOf(feedbacks.size()));
+            ratings.setScale(2, RoundingMode.HALF_DOWN);
         }
 
         return ratings;
@@ -532,28 +530,118 @@ public class GeneralServicesImpl implements GeneralServices {
 
         return result;
     }
-    
+
+    @Override
     public BlogDTO viewBlog(String blogID) throws SQLException, BlogDoesNotExistException {
         BlogDTO blog = null;
-        
+
         try {
             blog = blogDAO.readBlog(blogID);
         } catch (NoSuchRecordExists ex) {
             throw new BlogDoesNotExistException(ex.getMessage());
         }
-        
+
         return blog;
     }
-    
+
+    @Override
+    public List<BlogDTO> viewAllBlog() throws SQLException, BlogDoesNotExistException {
+        List<BlogDTO> blogs = null;
+
+        try {
+            blogs = blogDAO.readAllBlogs();
+        } catch (NoSuchRecordExists ex) {
+            throw new BlogDoesNotExistException(ex.getMessage());
+        }
+
+        return blogs;
+    }
+
+    @Override
     public List<BlogDTO> viewIntroBlogs() throws SQLException {
         List<BlogDTO> blog = null;
-        
+
         try {
             blog = blogDAO.readTopThreeBlogs();
         } catch (NoSuchRecordExists ex) {
             throw new SQLException(ex.getMessage());
         }
-        
+
         return blog;
+    }
+
+    protected List<AppointmentDTO> filterAppointmentsByStatus(List<AppointmentDTO> appointments, String status) {
+        List<AppointmentDTO> filteredAppointments = new ArrayList<>();
+
+        appointments.stream().filter((appointment)
+                -> (appointment.getAppStatus().equals(status))).forEachOrdered((appointment)
+                -> {
+            filteredAppointments.add(appointment);
+        });
+
+        return filteredAppointments;
+    }
+
+    protected List<AppointmentDTO> filterAppointmentsByDate(List<AppointmentDTO> appointments, Date startDate, Date endDate) {
+        List<AppointmentDTO> filteredAppointments = new ArrayList<>();
+
+        appointments.forEach((appointment) -> {
+            Date appTime = appointment.getAppTime();
+            if ((appTime.after(startDate) || appTime.equals(startDate)) && (appTime.before(endDate) || appTime.equals(endDate))) {
+                filteredAppointments.add(appointment);
+            }
+        });
+
+        return filteredAppointments;
+    }
+
+    @Override
+    public List<AppointmentDTO> getAppointmentsByFilter(String filter)
+            throws SQLException {
+        List<AppointmentDTO> result = null;
+
+        try {
+            if (filter.equals("upcoming")) {
+                Date today = new Date(System.currentTimeMillis());
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(today);
+                calendar.add(Calendar.DATE, 7);
+                Date nextWeek = new Date(calendar.getTime().getTime());
+                result = appointmentDAO.readAppointmentByDate(today, nextWeek);
+            } else {
+                result = appointmentDAO.readAppointmentByStatus(filter);
+            }
+
+        } catch (NoSuchRecordExists ex) {
+            result = null;
+        }
+        Collections.sort(result);
+        return result;
+    }
+
+    @Override
+    public List<AppointmentDTO> getBirdAppointments(String birdID) throws BirdDoesNotExistException, SQLException {
+        List<AppointmentDTO> apps = null;
+
+        try {
+            apps = appointmentDAO.readAppointmentByBird(birdID);
+        } catch (NoSuchRecordExists ex) {
+            throw new BirdDoesNotExistException(ex.getMessage());
+        }
+
+        return apps;
+    }
+    
+    @Override
+    public List<AppointmentDTO> getCustomerAppointments(String customerID) throws AccountDoesNotExistException, SQLException {
+        List<AppointmentDTO> apps = null;
+
+        try {
+            apps = appointmentDAO.readAppointmentByCustomer(customerID);
+        } catch (NoSuchRecordExists ex) {
+            throw new AccountDoesNotExistException(ex.getMessage());
+        }
+
+        return apps;
     }
 }

@@ -21,7 +21,7 @@ import services.customer.CustomerServices;
  * @author Admin
  */
 public class CustomerDashboardAppointmentsServlet extends HttpServlet {
-    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,13 +34,17 @@ public class CustomerDashboardAppointmentsServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         String url = "/Customer/dashboard-customer-appointments.jsp";
+        String filter = request.getParameter("filter");
+        if (filter == null || filter.trim().equals("")) {
+            filter = "upcoming";
+        }
         try {
             CustomerServices service = (CustomerServices) session.getAttribute("service");
-            List<AppointmentDTO> apps = service.getCustomerAppointments();
+            List<AppointmentDTO> apps = service.getAppointmentsByFilter(filter);
             request.setAttribute("appointments", apps);
         } catch (SQLException ex) {
             ex.printStackTrace();

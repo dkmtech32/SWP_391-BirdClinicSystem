@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.users.UserDTO;
-import services.general.AccountDoesNotExist;
+import services.general.AccountDoesNotExistException;
 import services.admin.AdminServicesImpl;
 import services.customer.CustomerServicesImpl;
 import services.doctor.DoctorServicesImpl;
@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String url = "/Common/login.jsp";
 
-        response.sendRedirect(request.getContextPath() + url);
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     /**
@@ -86,7 +86,7 @@ public class LoginServlet extends HttpServlet {
 
                 url = "/Common/index.jsp";
             }
-        } catch (AccountDoesNotExist ex) {
+        } catch (AccountDoesNotExistException ex) {
             ex.printStackTrace();
             request.setAttribute("message", "Either password or username is wrong. Please try again.");
         } catch (SQLException ex) {

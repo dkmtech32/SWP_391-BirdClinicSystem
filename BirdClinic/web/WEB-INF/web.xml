@@ -105,10 +105,6 @@
         <servlet-class>controllers.dashboard.UpdateProfileServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ViewAccountServlet</servlet-name>
-        <servlet-class>controllers.view.ViewAccountInfoServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ViewCustomerProfileServlet</servlet-name>
         <servlet-class>controllers.view.ViewCustomerInfoServlet</servlet-class>
     </servlet>
@@ -147,6 +143,50 @@
     <servlet>
         <servlet-name>CustomerAddFeedbackServlet</servlet-name>
         <servlet-class>controllers.feedback.CustomerAddFeedbackServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StaffDashboardAppointmentsServlet</servlet-name>
+        <servlet-class>controllers.dashboard.staff.StaffDashboardAppointmentsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StaffDashboardAppointmentsUpdateServlet</servlet-name>
+        <servlet-class>controllers.dashboard.staff.StaffDashboardAppointmentsUpdateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StaffDashboardServicesServlet</servlet-name>
+        <servlet-class>controllers.dashboard.staff.StaffDashboardServicesServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StaffDashboardServicesUpdateServlet</servlet-name>
+        <servlet-class>controllers.dashboard.staff.StaffDashboardServicesUpdateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>controllers.account.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>IntroServlet</servlet-name>
+        <servlet-class>controllers.account.IntroServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewBlogServlet</servlet-name>
+        <servlet-class>controllers.blog.ViewBlogServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewAllBlogsServlet</servlet-name>
+        <servlet-class>controllers.blog.ViewAllBlogsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateBlogServlet</servlet-name>
+        <servlet-class>controllers.blog.UpdateBlogServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>WriteBlogServlet</servlet-name>
+        <servlet-class>controllers.blog.WriteBlogServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminDashboardAccountsServlet</servlet-name>
+        <servlet-class>controllers.dashboard.admin.AdminDashboardAccountsServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -205,10 +245,6 @@
         <url-pattern>/Update/Profile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ViewAccountServlet</servlet-name>
-        <url-pattern>/View/Account</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>ViewCustomerProfileServlet</servlet-name>
         <url-pattern>/View/Customer</url-pattern>
     </servlet-mapping>
@@ -247,6 +283,46 @@
     <servlet-mapping>
         <servlet-name>CustomerAddFeedbackServlet</servlet-name>
         <url-pattern>/Customer/Feedback</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaffDashboardAppointmentsServlet</servlet-name>
+        <url-pattern>/Staff/Dashboard/Appointments</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaffDashboardAppointmentsUpdateServlet</servlet-name>
+        <url-pattern>/Staff/Dashboard/Appointments/updateApp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaffDashboardServicesServlet</servlet-name>
+        <url-pattern>/Staff/Dashboard/Service</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaffDashboardServicesUpdateServlet</servlet-name>
+        <url-pattern>/Staff/Dashboard/Services/Update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewBlogServlet</servlet-name>
+        <url-pattern>/Blog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewAllBlogsServlet</servlet-name>
+        <url-pattern>/Blog/All</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateBlogServlet</servlet-name>
+        <url-pattern>/Blog/Update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WriteBlogServlet</servlet-name>
+        <url-pattern>/Blog/Write</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminDashboardAccountsServlet</servlet-name>
+        <url-pattern>/Admin/Dashboard/Accounts</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

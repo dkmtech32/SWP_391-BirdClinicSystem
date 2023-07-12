@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package services.general;
+package models.blog;
 
 import models.exceptions.NoSuchRecordExists;
 
@@ -11,23 +11,23 @@ import models.exceptions.NoSuchRecordExists;
  *
  * @author Admin
  */
-public class AccountDoesNotExist extends NoSuchRecordExists {
+public class NoSuchBlogExistsException extends NoSuchRecordExists {
 
     /**
-     * Creates a new instance of <code>AccountNotExistException</code> without
+     * Creates a new instance of <code>NoSuchBlogExistsException</code> without
      * detail message.
      */
-    public AccountDoesNotExist() {
-        super("Username or password do not match");
+    public NoSuchBlogExistsException() {
+        super("Blog");
     }
 
     /**
-     * Constructs an instance of <code>AccountNotExistException</code> with the
+     * Constructs an instance of <code>NoSuchBlogExistsException</code> with the
      * specified detail message.
      *
      * @param msg the detail message.
      */
-    public AccountDoesNotExist(String msg) {
+    public NoSuchBlogExistsException(String msg) {
         super(msg);
     }
 }

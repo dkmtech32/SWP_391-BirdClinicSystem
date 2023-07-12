@@ -4,23 +4,27 @@
     Author     : ASUS
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <body>
-        <div class="booking-summary-in-appointments-details">
+        <div class="col-md-6">
             <h2>Payment</h2>
             <div class="payment-method">
                 <h4>Payment Method</h4> 
-                <div class="form-control select w-75">
-                    ${appoitment.payment}
+                <div class="form-control w-50" name="payment">
+                    <p>${appointment.payment}</p>
                 </div>
             </div>
             <div class="booking-item-wrap-in-appointments-details">
                 <ul class="booking-fee-in-appointments-details">
-                    <li>Service Fee<span>${medicinie.serviceFee}</span></li>
-                    <li>Booking Fee<span>${medicinie.bookingFee}</span></li>
-                    <li>Medicine Fee<span>${medicinie.medicinePriceTotal}</span></li>
+                    <li>Service Fee<span>${appointment.service_.servicePrice}</span></li>
+                    <li>Booking Fee<span>$10</span></li>
+                    <li>Medicine Fee
+                            <c:forEach var="med" items="${recMed}">
+                                <span>${med.medicine.medicinePrice.floatValue()}</span>
+                            </c:forEach>
+                        </li>
                 </ul>
                 <div class="booking-total-in-appointments-details">
                     <ul class="booking-total-list-in-appointments-details">
@@ -32,5 +36,4 @@
                 </div>
             </div>
         </div>
-    </body>
 </html>

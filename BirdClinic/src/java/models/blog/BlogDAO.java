@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
 import models.exceptions.NoSuchRecordExists;
+import models.exceptions.RecordAlreadyExists;
 
 /**
  *
@@ -16,11 +17,13 @@ import models.exceptions.NoSuchRecordExists;
  */
 public interface BlogDAO extends Serializable {
 
-    void insertBlog(BlogDTO blog) throws SQLException;
+    int insertBlog(BlogDTO blog) throws RecordAlreadyExists, SQLException;
 
     BlogDTO readBlog(String blogID) throws NoSuchRecordExists, SQLException;
 
     int updateBlog(BlogDTO blog) throws NoSuchRecordExists, SQLException;
-    
+
     List<BlogDTO> readTopThreeBlogs() throws NoSuchRecordExists, SQLException;
+
+    List<BlogDTO> readAllBlogs() throws NoSuchRecordExists, SQLException;
 }

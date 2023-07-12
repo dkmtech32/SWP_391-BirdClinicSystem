@@ -68,8 +68,6 @@ public class MedicineDTOImpl implements MedicineDTO {
     public void setUnit(String unit) {
         this.unit = unit;
     }
-    
-    
 
     @Override
     public int hashCode() {

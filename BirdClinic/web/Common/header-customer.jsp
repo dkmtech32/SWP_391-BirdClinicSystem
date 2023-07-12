@@ -34,46 +34,7 @@
                 <ul class="main-nav">
                     <li>
                         <a href="index.jsp">Home</a>
-                    </li>
-                    <li class="has-submenu active">
-                        <a href="#">Owner<i class="fas fa-chevron-down"></i></a>
-                        <ul class="submenu">
-                            <li><a href="search.jsp">Search Doctor</a></li>
-                            <li><a href="doctor-profile.jsp">Doctor Profile</a></li>
-                            <li><a href="<c:url value="/Customer/prepareDocs"/>">Booking</a></li>
-                            <li><a href="checkout.jsp">Checkout</a></li>
-                            <li><a href="booking-success.jsp">Booking Success</a></li>
-                            <li><a href="patient-dashboard.jsp">Patient Dashboard</a></li>
-                            <li><a href="favourites.jsp">Favorites</a></li>
-                            <li><a href="chat.jsp">Chat</a></li>
-                            <li><a href="profile-settings.jsp">Profile Settings</a></li>
-                            <li><a href="change-password.jsp">Change Password</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-submenu">
-                        <a href="#">Pages <i class="fas fa-chevron-down"></i></a>
-                        <ul class="submenu">
-                            <li><a href="voice-call.jsp">Voice Call</a></li>
-                            <li><a href="video-call.jsp">Video Call</a></li>
-                            <li><a href="search.jsp">Search Doctors</a></li>
-                            <li><a href="calendar.jsp">Calendar</a></li>
-                            <li><a href="components.jsp">Components</a></li>
-                            <li class="has-submenu">
-                                <a href="invoices.jsp">Invoices</a>
-                                <ul class="submenu">
-                                    <li><a href="invoices.jsp">Invoices</a></li>
-                                    <li><a href="invoice-view.jsp">Invoice View</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="blank-page.jsp">Starter Page</a></li>
-                            <li><a href="login.jsp">Login</a></li>
-                            <li><a href="register.jsp">Register</a></li>
-                            <li><a href="forgot-password.jsp">Forgot Password</a></li>
-                        </ul>
-                    </li>
-                    <li class="login-link">
-                        <a href="login.jsp">Login /Signup</a>
-                    </li>
+                    </li>                    
                 </ul>
             </div>
             <ul class="nav header-navbar-rht">
@@ -110,7 +71,7 @@
                             </div>
                         </div>
                         <a class="dropdown-item" href="<c:url value="/Dashboard/Appointments"/>">Dashboard</a>
-                        <a class="dropdown-item" href="<c:url value="/Update/Profile"/>">Profile Settings</a>
+                        <a class="dropdown-item" href="<c:url value="/View/Customer?userID=${sessionScope.service.currentUser.userID}"/>">My Profile</a>
                         <a class="dropdown-item" href="<c:url value="/logout"/>">Logout</a>
                     </div>
                 </li>
