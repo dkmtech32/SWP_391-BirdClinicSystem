@@ -8,7 +8,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <jsp:include page="../Common/head-admin.jsp"/>
+    <jsp:include page="../Common/header-admin.jsp"/>
     <body>
         <!-- Main Wrapper -->
 
@@ -33,13 +33,13 @@
                 <div class="top-header">
                     <div class="header-bar d-flex justify-content-between border-bottom">
                         <div class="d-flex align-items-center">
-                            <a href="#" class="logo-icon">
-                                <img src="../assets/images/logo-icon.png" height="30" class="small" alt />
+                            <button type="button" class="logo-icon">
+                                <img src="<c:url value="/assets/images/logo-icon.png"/>" height="30" class="small" alt />
                                 <span class="big">
-                                    <img src="../assets/images/logo-dark.png" height="24" class="logo-light-mode" alt />
-                                    <img src="../assets/images/logo-light.png" height="24" class="logo-dark-mode" alt />
+                                    <img src="<c:url value="/assets/images/logo-dark.png"/>" height="24" class="logo-light-mode" alt />
+                                    <img src="<c:url value="/assets/images/logo-light.png"/>" height="24" class="logo-dark-mode" alt />
                                 </span>
-                            </a>
+                            </button>
                         </div>
 
                         <ul class="list-unstyled mb-0">
@@ -52,7 +52,7 @@
                                         aria-haspopup="true"
                                         aria-expanded="false"
                                         >
-                                        <img src="../assets/images/doctors/01.jpg" class="avatar avatar-ex-small rounded-circle" alt />
+                                        <img src="<c:url value="/assets/images/doctors/01.jpg"/>" class="avatar avatar-ex-small rounded-circle" alt />
                                     </button>
                                     <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow border-0 mt-3 py-3" style="min-width: 200px">
                                         <a class="dropdown-item d-flex align-items-center text-dark" href="https://shreethemes.in/doctris/layouts/admin/profile.html">
@@ -200,7 +200,7 @@
                                     <nav class="user-tabs">
                                         <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
                                             <li class="nav-item">
-                                                <a class="nav-link active" href="#pat_appointments" data-bs-toggle="pill">Doctors</a>
+                                                <a class="nav-link active" href="<c:url value="/Admin/Accounts?filter=doctor"/>" data-bs-toggle="pill">Doctors</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" href="#pat_medical_records" data-bs-toggle="pill">Staff</a>
@@ -249,10 +249,10 @@
                                                                             <div class="table-action">
                                                                                 <a href="" class="btn btn-sm bg-danger-light">Delete</a>
                                                                                 <c:choose>
-                                                                                    <c:when test="${user.status_ =='true'}">
+                                                                                    <c:when test="${user.status_}">
                                                                                         <a href="" class="btn btn-sm bg-primary-light">Ban</a>
                                                                                     </c:when>
-                                                                                    <c:when test="${user.status_ =='False'}">
+                                                                                    <c:when test="${!user.status_}">
                                                                                         <a href="" class="btn btn-sm bg-primary-light">Active</a>
                                                                                     </c:when>
                                                                                 </c:choose>
