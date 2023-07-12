@@ -39,7 +39,7 @@ public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "/Common/create-user.jsp";
+        String url = "/Common/login";
         request.getRequestDispatcher(url).forward(request, response);
     }
 
@@ -55,7 +55,7 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "/Common/create-bird.jsp";
+        String url = "/Common/login";
         HttpSession session = request.getSession(true);
         GeneralServices accountService = (GeneralServices) session.getAttribute("service");
         Map<String, String[]> args = request.getParameterMap();
@@ -68,7 +68,7 @@ public class RegisterServlet extends HttpServlet {
                     accountService.register(customer, bird);
                 }
             }
-            url = "/login";
+            url = "/Common/login";
         } catch (AccountAlreadyExistsException ex) {
             ex.printStackTrace();
         } catch (PasswordsNotEqualException ex) {
