@@ -40,7 +40,7 @@ public class ViewBirdInfoServlet extends HttpServlet {
             List<MedicalRecordDTO> medRec = service.viewMedicalRecordOfBird(birdID);
             request.setAttribute("bird", bird);
             request.setAttribute("appointments", apps);
-            request.setAttribute("medical-records", medRec);
+            request.setAttribute("medicalrecords", medRec);
         } catch (SQLException ex) {
             ex.printStackTrace();
             request.setAttribute("error-message", "Something is wrong. Please try again.");

@@ -46,20 +46,20 @@
                                                     <c:if test="${not empty appointment.doctor}">
                                                         <td>
                                                             <h2 class="table-avatar">
-                                                                <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                <a href="<c:url value="/View/Doctor?userID=${appointment.doctor.userID}"/>" class="avatar avatar-sm mr-2">
                                                                     <img class="avatar-img rounded-circle" src="<c:url value="/assets/images/doctors/${appointment.doctor.image.imageURLName}"/>" alt="User Image" />
                                                                 </a>
-                                                                <a href="doctor-profile.jsp">${appointment.doctor.fullName} <span style="text-transform: capitalize">${appointment.doctor.speciality.specialityName}</span></a> 
+                                                                <a href="<c:url value="/View/Doctor?userID=${appointment.doctor.userID}"/>">${appointment.doctor.fullName} <span style="text-transform: capitalize">${appointment.doctor.speciality.specialityName}</span></a> 
                                                             </h2>
                                                         </td>
                                                     </c:if> 
                                                     <c:if test="${ empty appointment.doctor}">
                                                         <td>
                                                             <h2 class="table-avatar">
-                                                                <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                <a href="" class="avatar avatar-sm mr-2">
                                                                     <img class="avatar-img rounded-circle" src="<c:url value="/assets/images/favicon.svg"/>" alt="User Image" />
                                                                 </a>
-                                                                <a href="doctor-profile.jsp">BirdLover Clinic <span >District 1, Ho Chi Minh City</span></a> 
+                                                                    <a href="">BirdLover Clinic <span >District 1, Ho Chi Minh City</span></a> 
                                                             </h2>
                                                         </td>
                                                     </c:if>

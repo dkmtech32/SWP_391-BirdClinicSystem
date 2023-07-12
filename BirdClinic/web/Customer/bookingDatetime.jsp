@@ -34,11 +34,11 @@
                                     <c:choose>
                                         <c:when test="${not empty param.doctorID}">
                                             <div class="booking-doc-info">
-                                                <a href="doctor-profile.html" class="booking-doc-img">
+                                                <a href="<c:url value="/View/Doctor?userID=${requestScope.doctor.userID}"/>" class="booking-doc-img">
                                                     <img src="<c:url value="/assets/images/doctors/${requestScope.doctor.image.imageURLName}"/>" alt="${requestScope.doctor.userName}" />
                                                 </a>
                                                 <div class="booking-info">
-                                                    <h4><a href="doctor-profile.html">${requestScope.doctor.fullName}</a></h4>                                          
+                                                    <h4><a href="<c:url value="/View/Doctor?userID=${requestScope.doctor.userID}"/>">${requestScope.doctor.fullName}</a></h4>                                          
                                                     <p class="text-muted mb-0"><i class="fa-regular fa-hourglass-half"></i> ${requestScope.doctor.yearsOfExperience} (years of EXP)</p>
                                                     <p class="text-muted mb-0" style="text-transform: capitalize">${requestScope.doctor.speciality.specialityName}</p>
                                                 </div>
@@ -46,11 +46,11 @@
                                         </c:when>
                                         <c:when test="${empty param.doctorID}">
                                             <div class="booking-doc-info">
-                                                <a href="doctor.html" class="booking-doc-img">
+                                                <a href="" class="booking-doc-img">
                                                     <img src="<c:url value="/assets/images/favicon.svg"/>" alt="User Image" />
                                                 </a>
                                                 <div class="booking-info">
-                                                    <h4><a href="doctor-profile.html">BirdLover Clinic</a></h4>                                          
+                                                    <h4><a href="">BirdLover Clinic</a></h4>                                          
                                                     <div class="clinic-details">
                                                         <p class="doc-location"><i class="fas fa-map-marker-alt"></i> District 1, Ho Chi Minh City</p>
                                                     </div>                                                

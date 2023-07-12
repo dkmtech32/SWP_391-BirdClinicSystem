@@ -162,27 +162,27 @@
                                                         <table class="table table-hover table-center mb-0">
                                                             <thead>
                                                                 <tr>
-                                                                    <th class="text-center">Appointment Time</th>
+                                                                    <th class="text-center">Diagnosis</th>
                                                                     <th></th>
-                                                                    <th class="text-center">Service</th>
+                                                                    <th class="text-center">Treatment days</th>
                                                                     <th></th>
-                                                                    <th class="text-center">Doctor</th>
+                                                                    <th class="text-center">Doctor's note</th>
                                                                     <th></th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <c:forEach var="app" items="${appointments}">
+                                                                <c:forEach var="medRec" items="${medicalrecords}">
                                                                     <tr> <!-- làm vòng lặp xổ tất cả danh sách medical record của con chim này -->
 
-                                                                        <td class="text-center">${app.appTime}</td>
+                                                                        <td class="text-center">${medRec.diagnosis}</td>
                                                                         <td></td>
-                                                                        <td class="text-center">${app.service_.serviceName}</td>
+                                                                        <td class="text-center">${medRec.treatmentDays}</td>
                                                                         <td></td>
-                                                                        <td class="text-center">${app.doctor.fullName}</td>
+                                                                        <td class="text-center">${medRec.doctorNotes}</td>
                                                                         <td></td>
                                                                         <td class="text-right">
                                                                             <div class="table-action">
-                                                                                <a href="<c:url value="/View/Appointment?appointmentID=${app.appointmentID}"/>" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                                                
                                                                             </div>
                                                                         </td>
                                                                     </tr>
