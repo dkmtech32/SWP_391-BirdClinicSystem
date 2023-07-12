@@ -6,22 +6,20 @@
 package controllers.dashboard.admin;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import models.users.UserDTO;
+import models.appointment.AppointmentDTO;
 import services.admin.AdminServices;
-import services.general.AccountDoesNotExistException;
 
 /**
  *
  * @author Admin
  */
-public class AdminAccountsServlet extends HttpServlet {
+public class AdminStaticsticsServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,21 +34,22 @@ public class AdminAccountsServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        String url = "/Admin/admin-home-page-accounts.jsp";
-        try {
-            AdminServices admin = (AdminServices) session.getAttribute("service");
-            String filter = request.getParameter("filter");
-            if (filter == null) filter = "";
-            List<UserDTO> users = admin.getUsersByFilter(filter);
-            request.setAttribute("accounts", users);
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } catch (AccountDoesNotExistException ex) {
-            ex.printStackTrace();
-        } finally {
-            request.setAttribute("url", url);
-            request.getRequestDispatcher(url).forward(request, response);
-        }
+        String url = "/Admin/admin-home-page-charts.jsp";
+        
+//        try {
+//            AdminServices admin = (AdminServices) session.getAttribute("service");
+//            String chartOption = request.getParameter("chart-option");
+//            switch (chartOption) {
+//                case "doctor":
+//                    request.setAttribute("appointments", admin.getAllAppointments());
+//                    request.setAttribute("doctorRatings", admin.getAllRatingsFromDoctor());
+//                    break;
+//                case "services":
+//                    break;
+//                case "booking":
+//                    break;
+//            }
+//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
