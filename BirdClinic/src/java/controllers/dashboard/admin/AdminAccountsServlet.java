@@ -7,16 +7,13 @@ package controllers.dashboard.admin;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import models.timeslot.TimeslotDTO;
-import models.users.doctor.DoctorDTO;
+import models.users.UserDTO;
 import services.admin.AdminServices;
 import services.general.AccountDoesNotExistException;
 
@@ -24,8 +21,39 @@ import services.general.AccountDoesNotExistException;
  *
  * @author Admin
  */
-public class AdminDashboardDoctorsUpdateInfoServlet extends HttpServlet {
+public class AdminAccountsServlet extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        String url = "/Admin/admin-home-page-accounts.jsp";
+        try {
+            AdminServices admin = (AdminServices) session.getAttribute("service");
+            String filter = request.getParameter("filter");
+            if (filter == null) filter = "userRole";
+            List<UserDTO> users = admin.getUsersByFilter(filter);
+            request.setAttribute("accounts", users);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (AccountDoesNotExistException ex) {
+            ex.printStackTrace();
+        } finally {
+            request.setAttribute("url", url);
+            request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -37,22 +65,7 @@ public class AdminDashboardDoctorsUpdateInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        AdminServices admin = (AdminServices) session.getAttribute("service");
-        String doctorID = request.getParameter("doctorID");
-        String url = "/View/Doctor?doctorID=" + doctorID;
-        try {
-            DoctorDTO doctor = admin.getDoctorInfo(doctorID);
-            request.setAttribute("doctor", doctor);
-            url = "/Admin/update-doctor-info.jsp";
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } catch (AccountDoesNotExistException ex) {
-            ex.printStackTrace();
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -66,21 +79,7 @@ public class AdminDashboardDoctorsUpdateInfoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        String doctorID = request.getParameter("doctorID");
-        String url = "/View/Doctor?doctorID=" + doctorID;
-        try {
-            AdminServices admin = (AdminServices) session.getAttribute("service");
-            Map<String, String[]> args = request.getParameterMap();
-            admin.changeDoctorInfo(args);
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } catch (AccountDoesNotExistException ex) {
-            ex.printStackTrace();
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
-        }
+        processRequest(request, response);
     }
 
     /**

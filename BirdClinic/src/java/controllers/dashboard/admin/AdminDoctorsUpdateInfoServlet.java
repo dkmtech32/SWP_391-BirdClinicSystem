@@ -6,8 +6,8 @@
 package controllers.dashboard.admin;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
@@ -24,7 +24,7 @@ import services.general.AccountDoesNotExistException;
  *
  * @author Admin
  */
-public class AdminDashboardDoctorsUpdateTimeslotServlet extends HttpServlet {
+public class AdminDoctorsUpdateInfoServlet extends HttpServlet {
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -42,20 +42,10 @@ public class AdminDashboardDoctorsUpdateTimeslotServlet extends HttpServlet {
         AdminServices admin = (AdminServices) session.getAttribute("service");
         String doctorID = request.getParameter("doctorID");
         String url = "/View/Doctor?doctorID=" + doctorID;
-        
-        String[] weekdays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-        request.setAttribute("weekdays", weekdays);
         try {
             DoctorDTO doctor = admin.getDoctorInfo(doctorID);
             request.setAttribute("doctor", doctor);
-            
-            List<List<TimeslotDTO>> timeslots = admin.getTimeslotsByWeekday(doctorID);
-            request.setAttribute("doctorTimeslots", timeslots);
-            
-            List<List<TimeslotDTO>> timeslotsAll = admin.getTimeslotsByWeekday(null);
-            request.setAttribute("allTimeslots", timeslotsAll);
-            
-            url = "/Admin/update-doctor-timeslot.jsp";
+            url = "/Admin/update-doctor-info.jsp";
         } catch (SQLException ex) {
             ex.printStackTrace();
         } catch (AccountDoesNotExistException ex) {
@@ -83,7 +73,7 @@ public class AdminDashboardDoctorsUpdateTimeslotServlet extends HttpServlet {
         try {
             AdminServices admin = (AdminServices) session.getAttribute("service");
             Map<String, String[]> args = request.getParameterMap();
-            admin.changeDoctorTimeslots(args);
+            admin.changeDoctorInfo(args);
         } catch (SQLException ex) {
             ex.printStackTrace();
         } catch (AccountDoesNotExistException ex) {
@@ -91,7 +81,6 @@ public class AdminDashboardDoctorsUpdateTimeslotServlet extends HttpServlet {
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
-
     }
 
     /**
@@ -102,6 +91,6 @@ public class AdminDashboardDoctorsUpdateTimeslotServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }
+    }// </editor-fold>
 
 }

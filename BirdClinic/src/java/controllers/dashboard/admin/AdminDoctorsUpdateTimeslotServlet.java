@@ -6,12 +6,17 @@
 package controllers.dashboard.admin;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import models.timeslot.TimeslotDTO;
+import models.users.doctor.DoctorDTO;
 import services.admin.AdminServices;
 import services.general.AccountDoesNotExistException;
 
@@ -19,7 +24,7 @@ import services.general.AccountDoesNotExistException;
  *
  * @author Admin
  */
-public class AdminDashboardAccountsToggleServlet extends HttpServlet {
+public class AdminDoctorsUpdateTimeslotServlet extends HttpServlet {
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -32,7 +37,32 @@ public class AdminDashboardAccountsToggleServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/Dashboard/Accounts").forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        AdminServices admin = (AdminServices) session.getAttribute("service");
+        String doctorID = request.getParameter("doctorID");
+        String url = "/View/Doctor?doctorID=" + doctorID;
+        
+        String[] weekdays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+        request.setAttribute("weekdays", weekdays);
+        try {
+            DoctorDTO doctor = admin.getDoctorInfo(doctorID);
+            request.setAttribute("doctor", doctor);
+            
+            List<List<TimeslotDTO>> timeslots = admin.getTimeslotsByWeekday(doctorID);
+            request.setAttribute("doctorTimeslots", timeslots);
+            
+            List<List<TimeslotDTO>> timeslotsAll = admin.getTimeslotsByWeekday(null);
+            request.setAttribute("allTimeslots", timeslotsAll);
+            
+            url = "/Admin/update-doctor-timeslot.jsp";
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (AccountDoesNotExistException ex) {
+            ex.printStackTrace();
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
+        }
     }
 
     /**
@@ -48,17 +78,20 @@ public class AdminDashboardAccountsToggleServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
+        String doctorID = request.getParameter("doctorID");
+        String url = "/View/Doctor?doctorID=" + doctorID;
         try {
             AdminServices admin = (AdminServices) session.getAttribute("service");
-            String id = request.getParameter("userID");
-            admin.toggleAccountStatus(id);
+            Map<String, String[]> args = request.getParameterMap();
+            admin.changeDoctorTimeslots(args);
         } catch (SQLException ex) {
             ex.printStackTrace();
         } catch (AccountDoesNotExistException ex) {
             ex.printStackTrace();
         } finally {
-            request.getRequestDispatcher("/Dashboard/Accounts").forward(request, response);
+            request.getRequestDispatcher(url).forward(request, response);
         }
+
     }
 
     /**

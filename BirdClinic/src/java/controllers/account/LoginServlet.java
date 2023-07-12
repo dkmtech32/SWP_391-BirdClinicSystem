@@ -67,15 +67,19 @@ public class LoginServlet extends HttpServlet {
                 switch (currentUser.getUserRole().toLowerCase()) {
                     case "customer":
                         accountService = new CustomerServicesImpl(currentUser);
+                        url = "/Common/index.jsp";
                         break;
                     case "doctor":
                         accountService = new DoctorServicesImpl(currentUser);
+                        url = "/Dashboard/Appointments";
                         break;
                     case "staff":
                         accountService = new StaffServicesImpl(currentUser);
+                        url = "/Dashboard/Appointments";
                         break;
                     case "admin":
                         accountService = new AdminServicesImpl(currentUser);
+                        url = "/Admin/Accounts";
                         break;
                 }
                 session.setAttribute("service", accountService);
@@ -83,18 +87,15 @@ public class LoginServlet extends HttpServlet {
                 if (remember != null && !remember.trim().equals("")) {
                     //cookies
                 }
-
-                url = "/Common/index.jsp";
             }
         } catch (AccountDoesNotExistException ex) {
             ex.printStackTrace();
-            request.setAttribute("message", "Either password or username is wrong. Please try again.");
+            request.setAttribute("error-message", "Either password or username is wrong. Please try again.");
         } catch (SQLException ex) {
             ex.printStackTrace();
-            request.setAttribute("message", "Something went wrong. Please try again.");
-            url = "/Common/index.jsp";
+            url = "/Common/error.html";
         } finally {
-            response.sendRedirect(request.getContextPath() + url);
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 
