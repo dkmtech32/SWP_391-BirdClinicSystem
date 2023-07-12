@@ -98,7 +98,7 @@
 
                                                         <td >
                                                             <c:if test="${appointment.appStatus =='processing'}">
-                                                                <select id="${appointment.appointmentID}" class="form-select" name="doctorID" onchange="changeDoctorSelection(this)">
+                                                                <select style="width: 200px; max-width: 200px" id="${appointment.appointmentID}" class="form-select" name="doctorID" onchange="changeDoctorSelection(this)">
                                                                     <option value="">--</option>
                                                                     <c:forEach var="doc" items="${docSpec[appointment.service_.speciality.specialityID]}">
                                                                         <option value="${doc.userID}"<c:if test="${not empty appointment.doctor && appointment.doctor.userID.equals(doc.userID)}"> selected</c:if> >${doc.fullName}</option>

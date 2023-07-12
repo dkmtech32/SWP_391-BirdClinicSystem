@@ -103,10 +103,10 @@ public class CustomerDAOImpl extends UserDAOImpl implements CustomerDAO {
                 stm.setDate(2, customer.getDob());
                 stm.setString(3, customer.getCustomerAddress());
 
-                result = stm.executeUpdate();
+                result += stm.executeUpdate();
             }
             
-            if (result == 1) throw new CustomerAlreadyExistsException();
+            if (result <= 1) throw new CustomerAlreadyExistsException();
         } finally {
             if (stm != null) {
                 stm.close();
