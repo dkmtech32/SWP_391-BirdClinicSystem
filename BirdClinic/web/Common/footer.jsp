@@ -5,8 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+
 
 
     <footer class="footer">
@@ -153,4 +152,3 @@
 				</div>
 				<!-- /Footer Bottom -->
 			</footer>
-</html>

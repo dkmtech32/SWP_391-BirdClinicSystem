@@ -40,13 +40,13 @@
                             <jsp:include page="../Customer/give-feedback.jsp"/>
                         </c:if>
                         <div class="row">
-                        <c:if test="${not empty requestScope.feedback}">
-                            <jsp:include page="../Common/owner-feedback.jsp"/>  
-                        </c:if>
-                        <!-- chỉ hiện khi user đưa feedback rồi-->
-                        <c:if test="${requestScope.appointment.appStatus=='complete'}">
-                            <jsp:include page="../Common/payment-info.jsp"/>
-                        </c:if>
+                            <c:if test="${not empty requestScope.feedback}">
+                                <jsp:include page="../Common/owner-feedback.jsp"/>  
+                            </c:if>
+                            <!-- chỉ hiện khi user đưa feedback rồi-->
+                            <c:if test="${requestScope.appointment.appStatus=='complete'}">
+                                <jsp:include page="../Common/payment-info.jsp"/>
+                            </c:if>
                         </div>
                     </div>
                 </div>
@@ -57,8 +57,8 @@
             <jsp:include page="../Common/footer.jsp"/>
             <!-- /Footer -->
         </div>
-    </div>
-</div>
-<jsp:include page="../Common/script.jsp"/>
-</body>
+
+        <jsp:include page="../Common/script.jsp"/>
+        
+    </body>
 </html>

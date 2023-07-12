@@ -5143,7 +5143,7 @@ html.menu-opened body {
 .profile-det-info h3 {
     font-size: 17px;
     text-overflow: ellipsis;
-/*    white-space: nowrap;*/
+    /*    white-space: nowrap;*/
     overflow: hidden;
 }
 .patient-details h5 {
@@ -7905,4 +7905,38 @@ section .heading h2 {
     object-position: center;
     width: 75rem;
     height: 50rem;
+}
+.payment-method {
+    margin-bottom: 20px;
+}
+
+.payment-method h4 {
+    font-size: 18px;
+    font-weight: bold;
+}
+.booking-item-wrap-in-appointments-details ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.booking-item-wrap-in-appointments-details li {
+    margin-bottom: 10px;
+    justify-content: space-between;
+    display: flex;
+}
+
+.booking-item-wrap-in-appointments-details span {
+    font-weight: bold;
+}
+
+.booking-total-in-appointments-details .booking-total-list-in-appointments-details li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.booking-total-in-appointments-details .booking-total-list-in-appointments-details span.total-cost-in-appointments-details {
+    font-weight: bold;
+    font-size: 18px;
 }
