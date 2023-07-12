@@ -60,6 +60,10 @@ public class UserDAOImpl implements UserDAO {
             + "set imageID = ?, userName = ?, fullName = ?, "
             + "gender = ?, email = ?, userRole = ?, phoneNumber = ?, status_ = ? "
             + "where userID = ?";
+    private static final String UPDATE_USER_STATUS
+            = "update Users "
+            + "set status_ = ? "
+            + "where userID = ?";
     private static final String UPDATE_USER_PASSWORD
             = "update Users "
             + "set userPassword = ? "
@@ -229,7 +233,7 @@ public class UserDAOImpl implements UserDAO {
             stm.setString(7, user.getEmail());
             stm.setString(8, user.getUserRole());
             stm.setString(9, user.getPhoneNumber());
-            stm.setString(10, user.isStatus_()?"active":"banned");
+            stm.setString(10, user.isStatus_() ? "active" : "banned");
 
             result = stm.executeUpdate();
 
@@ -291,8 +295,36 @@ public class UserDAOImpl implements UserDAO {
             stm.setString(5, user.getEmail());
             stm.setString(6, user.getUserRole());
             stm.setString(7, user.getPhoneNumber());
-            stm.setString(8, user.isStatus_()?"active":"banned");
+            stm.setString(8, user.isStatus_() ? "active" : "banned");
             stm.setString(9, user.getUserID());
+
+            result = stm.executeUpdate();
+            if (result == 0) {
+                throw new NoSuchUserExistsException();
+            }
+        } finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+
+        return result;
+    }
+    
+    @Override
+    public int updateUserStatus(String userID, String status) throws NoSuchRecordExists, SQLException {
+        Connection con = null;
+        PreparedStatement stm = null;
+        int result = 0;
+
+        try {
+            con = DBUtils.getConnection();
+            stm = con.prepareStatement(UPDATE_USER_STATUS);
+            stm.setString(1, status);
+            stm.setString(2, userID);
 
             result = stm.executeUpdate();
             if (result == 0) {

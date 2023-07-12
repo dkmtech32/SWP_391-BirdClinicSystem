@@ -25,7 +25,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <!-- Profile Sidebar -->
-                        <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+                        <div class="col-md-4 col-lg-3 col-xl-2 theiaStickySidebar">
                             <div class="profile-sidebar">
                                 <div class="widget-profile pro-widget-content">
                                     <div class="profile-info-widget">
@@ -50,10 +50,19 @@
                                     <nav class="dashboard-menu">
                                         <ul>
                                             <li class="active">
-                                                <a href="<c:url value="/Dashboard/Appointments"/>">
+                                                <c:if test="${service.currentUser.userRole!='staff'}">
+                                                   <a href="<c:url value="/Dashboard/Appointments"/>">
                                                     <i class="fas fa-columns"></i>
                                                     <span>Dashboard</span>
-                                                </a>
+                                                </a> 
+                                                </c:if>
+                                                <c:if test="${service.currentUser.userRole=='staff'}">
+                                                   <a href="<c:url value="/Dashboard/Appointments?filter=processing"/>">
+                                                    <i class="fas fa-columns"></i>
+                                                    <span>Dashboard</span>
+                                                </a> 
+                                                </c:if>
+                                                
                                             </li>
                                             <li>
                                                 <a href="<c:url value="/Update/Profile"/>">

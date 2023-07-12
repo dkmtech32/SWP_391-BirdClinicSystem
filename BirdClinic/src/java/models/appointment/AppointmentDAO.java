@@ -11,37 +11,47 @@ import java.sql.SQLException;
 import java.util.List;
 import models.exceptions.NoSuchRecordExists;
 import models.exceptions.RecordAlreadyExists;
+
 /**
  *
  * @author Admin
  */
 public interface AppointmentDAO extends Serializable {
-    AppointmentDTO readAppointment(String appointmentID) 
+
+    AppointmentDTO readAppointment(String appointmentID)
+            throws NoSuchRecordExists, SQLException;
+
+    List<AppointmentDTO> readListOfAppointment(List<String> appointmentIDs)
             throws NoSuchRecordExists, SQLException;
     
-    List<AppointmentDTO> readListOfAppointment(List<String> appointmentIDs) 
+    List<AppointmentDTO> readAllAppointments()
+            throws NoSuchRecordExists, SQLException;
+
+    List<AppointmentDTO> readAppointmentByBird(String birdID)
+            throws NoSuchRecordExists, SQLException;
+
+    List<AppointmentDTO> readAppointmentByDoctor(String doctorID)
+            throws NoSuchRecordExists, SQLException;
+
+    List<AppointmentDTO> readAppointmentByCustomer(String customerID)
+            throws NoSuchRecordExists, SQLException;
+
+    List<AppointmentDTO> readAppointmentByTimeslot(String timeslotID)
             throws NoSuchRecordExists, SQLException;
     
-    List<AppointmentDTO> readAppointmentByBird(String birdID) 
+    List<AppointmentDTO> readAppointmentByDate(Date before, Date after)
             throws NoSuchRecordExists, SQLException;
-    
-    List<AppointmentDTO> readAppointmentByDoctor(String doctorID) 
-            throws NoSuchRecordExists, SQLException;
-    
-    List<AppointmentDTO> readAppointmentByCustomer(String customerID) 
-            throws NoSuchRecordExists, SQLException;
-    
-    List<AppointmentDTO> readAppointmentByTimeslot(String timeslotID) 
-            throws NoSuchRecordExists, SQLException;
-    
+
+    List<AppointmentDTO> readAppointmentByStatus(String status) throws NoSuchRecordExists, SQLException;
+
     AppointmentDTO readAppointmentByDocTime(String doctorID, String timeslotID, Date appDate)
             throws NoSuchRecordExists, SQLException;
-    
+
     int deleteAppointment(String appointmentID) throws NoSuchRecordExists, SQLException;
-    
+
     int insertAppointment(AppointmentDTO appointment) throws RecordAlreadyExists, SQLException;
-    
+
     int updateAppointment(AppointmentDTO appointment) throws NoSuchRecordExists, SQLException;
-    
+
     int updateAppointmentStatus(String appointmentID, String status) throws NoSuchRecordExists, SQLException;
 }

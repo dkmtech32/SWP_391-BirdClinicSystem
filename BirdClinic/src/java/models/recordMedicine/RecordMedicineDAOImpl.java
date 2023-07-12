@@ -68,7 +68,7 @@ public class RecordMedicineDAOImpl implements RecordMedicineDAO {
                 RecordMedicineDTO recMed = new RecordMedicineDTOImpl();
                 recMed.setMedicalRecord(medRec);
                 recMed.setMedicine(medDAO.readMedicine(rs.getString("medicineID")));
-                recMed.setDescription_(rs.getString("description"));
+                recMed.setDescription_(rs.getString("description_"));
                 recMed.setQuantity(rs.getInt("quantity"));
 
                 result.add(recMed);

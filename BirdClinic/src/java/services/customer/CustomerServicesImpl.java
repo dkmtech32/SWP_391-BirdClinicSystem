@@ -9,10 +9,9 @@ import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import models.appointment.AppointmentAlreadyExistsException;
 import models.appointment.AppointmentDTO;
 import models.appointment.AppointmentDTOImpl;
@@ -30,8 +29,9 @@ import models.service_.Service_DTO;
 import models.timeslot.TimeslotDTO;
 import models.users.UserDTO;
 import models.users.customer.CustomerDTO;
+import models.users.doctor.DoctorDTO;
+import services.doctor.DoctorDoesNotExistException;
 import services.general.AccountAlreadyExistsException;
-import services.general.AccountDoesNotExistException;
 import services.general.AppointmentDoesNotExistException;
 import services.general.GeneralServicesImpl;
 import services.general.BirdDoesNotExistException;
@@ -113,12 +113,22 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
     }
 
     @Override
-    public List<AppointmentDTO> getCustomerAppointments() throws SQLException {
+    public List<AppointmentDTO> getAppointmentsByFilter(String filter)
+            throws SQLException {
         String customerID = currentUser.getUserID();
         List<AppointmentDTO> apps;
 
         try {
-            apps = appointmentDAO.readAppointmentByCustomer(customerID);
+            if (filter.equals("upcoming")) {
+                Date today = new Date(System.currentTimeMillis());
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(today);
+                calendar.add(Calendar.DATE, 7);
+                Date nextWeek = new Date(calendar.getTime().getTime());
+                apps = super.filterAppointmentsByDate(appointmentDAO.readAppointmentByCustomer(customerID), today, nextWeek);
+            } else {
+                apps = super.filterAppointmentsByStatus(appointmentDAO.readAppointmentByCustomer(customerID), filter);
+            }
         } catch (NoSuchRecordExists ex) {
             apps = null;
         }
@@ -364,5 +374,18 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
         }
 
         return result;
+    }
+    
+    @Override
+    public List<DoctorDTO> getDoctorBySpeciality(String specialityID) throws DoctorDoesNotExistException, SQLException {
+        List<DoctorDTO> docs = null;
+
+        try {
+            docs = doctorDAO.readDoctorsBySpeciality(specialityID);
+        } catch (NoSuchRecordExists ex) {
+            throw new DoctorDoesNotExistException(ex.getMessage());
+        }
+
+        return docs;
     }
 }

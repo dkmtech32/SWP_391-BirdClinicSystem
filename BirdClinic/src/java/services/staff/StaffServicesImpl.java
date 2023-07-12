@@ -7,16 +7,26 @@ package services.staff;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import models.appointment.AppointmentDTO;
+import models.blog.BlogDTO;
+import models.blog.BlogDTOImpl;
 import models.exceptions.NoSuchRecordExists;
+import models.exceptions.RecordAlreadyExists;
+import models.feedback.FeedbackDTO;
 import models.service_.Service_DTO;
+import models.service_.Service_DTOImpl;
+import models.speciality.NoSuchSpecialityExistsException;
 import models.users.UserDTO;
 import models.users.doctor.DoctorDTO;
 import services.doctor.DoctorDoesNotExistException;
-import services.general.AccountDoesNotExist;
+import services.general.AccountDoesNotExistException;
 import services.general.AppointmentDoesNotExistException;
+import services.general.BlogDoesNotExistException;
 import services.general.GeneralServicesImpl;
 import utils.Utils;
 
@@ -26,11 +36,11 @@ import utils.Utils;
  */
 public class StaffServicesImpl extends GeneralServicesImpl implements StaffServices {
 
-    public StaffServicesImpl(UserDTO user) throws AccountDoesNotExist {
+    public StaffServicesImpl(UserDTO user) throws AccountDoesNotExistException {
         if (user.getUserRole().toLowerCase().equals("staff")) {
             this.currentUser = user;
         } else {
-            throw new AccountDoesNotExist();
+            throw new AccountDoesNotExistException();
         }
     }
 
@@ -175,12 +185,131 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
 
         return result;
     }
-    
-    public boolean addBlog(Map<String, String[]> args) throws BlogAlreadyExistsException, SQLException {
+
+    @Override
+    public List<Service_DTO> getService_BySpeciality(String specialityID) throws SQLException, ServiceDoesNotExistException {
+        List<Service_DTO> services = null;
+
+        try {
+            if (specialityID != null) {
+                services = serviceDAO.readServiceBySpeciality(specialityID);
+            } else {
+                services = serviceDAO.readAllService_();
+            }
+        } catch (NoSuchRecordExists ex) {
+            throw new ServiceDoesNotExistException(ex.getMessage());
+        }
+
+        return services;
+    }
+
+    @Override
+    public boolean addService(Map<String, String[]> args) throws ServiceAlreadyExistsException, SQLException {
         boolean result = false;
-        
-        String title = Utils.getFromMap(args, "title", "");
-        
+
+        try {
+            String specialityID = Utils.getFromMap(args, "specialityID", "");
+            String serviceName = Utils.getFromMap(args, "service-name", "");
+            BigDecimal servicePrice = BigDecimal.valueOf(Float.valueOf(Utils.getFromMap(args, "service-price", "")));
+            String serviceID = Utils.hash(specialityID + serviceName);
+
+            Service_DTO service = new Service_DTOImpl();
+            service.setServiceID(serviceID);
+            service.setServiceName(serviceName);
+            service.setSpeciality(specialityDAO.readSpeciality(specialityID));
+            service.setServicePrice(servicePrice);
+
+            result = serviceDAO.insertService(service) > 0;
+        } catch (NoSuchSpecialityExistsException ex) {
+            throw new SQLException(ex.getMessage());
+        } catch (RecordAlreadyExists ex) {
+            throw new ServiceAlreadyExistsException(ex.getMessage());
+        }
+
         return result;
+    }
+
+    @Override
+    public BlogDTO addBlog(Map<String, String[]> args) throws BlogAlreadyExistsException, SQLException {
+
+        String title = Utils.getFromMap(args, "blog-title", "");
+        String content = Utils.getFromMap(args, "blog-content", "");
+        String author = currentUser.getFullName();
+        String category = Utils.getFromMap(args, "category", "");
+        Timestamp uploadTime = new Timestamp(System.currentTimeMillis());
+        String blogID = Utils.hash(title + author + category + uploadTime.toString());
+
+        BlogDTO blog = null;
+        try {
+            blog = new BlogDTOImpl();
+            blog.setBlogID(blogID);
+            blog.setBlogContent(content);
+            blog.setTitle(title);
+            blog.setCategory(category);
+            blog.setUploadDatetime(uploadTime);
+
+            blogDAO.insertBlog(blog);
+        } catch (RecordAlreadyExists ex) {
+            throw new BlogAlreadyExistsException(ex.getMessage());
+        }
+
+        return blog;
+    }
+
+    @Override
+    public BlogDTO editBlog(Map<String, String[]> args) throws BlogDoesNotExistException, SQLException {
+        String title = Utils.getFromMap(args, "blog-title", "");
+        String content = Utils.getFromMap(args, "blog-content", "");
+        String category = Utils.getFromMap(args, "category", "");
+        String blogID = Utils.getFromMap(args, "blogID", "");
+
+        BlogDTO blog = null;
+
+        try {
+            blog = blogDAO.readBlog(blogID);
+
+            blog.setBlogContent(content);
+            blog.setTitle(title);
+            blog.setCategory(category);
+
+            blogDAO.updateBlog(blog);
+        } catch (NoSuchRecordExists ex) {
+            throw new BlogDoesNotExistException(ex.getMessage());
+        }
+
+        return blog;
+    }
+
+    @Override
+    public List<FeedbackDTO> getCustomerFeedbacks(String customerID) throws SQLException {
+        List<FeedbackDTO> feedbacks = null;
+
+        try {
+            feedbacks = feedbackDAO.readFeedbackByCustomer(customerID);
+        } catch (NoSuchRecordExists ex) {
+            feedbacks = null;
+        }
+
+        return feedbacks;
+    }
+
+    @Override
+    public Map<String, List<DoctorDTO>> getDoctorBySpeciality() throws SQLException {
+        Map<String, List<DoctorDTO>> doctorBySpeciality = null;
+        
+        List<DoctorDTO> doctors = getAllDoctors();
+        doctorBySpeciality = new HashMap<>();
+        for (DoctorDTO doctor : doctors) {
+            List<DoctorDTO> docList = doctorBySpeciality.get(doctor.getSpeciality().getSpecialityID());
+            if (docList == null) {
+                docList = new ArrayList<>();
+                docList.add(doctor);
+                doctorBySpeciality.put(doctor.getSpeciality().getSpecialityID(), docList);
+            } else {
+                doctorBySpeciality.get(doctor.getSpeciality().getSpecialityID()).add(doctor);
+            }
+        }
+
+        return doctorBySpeciality;
     }
 }

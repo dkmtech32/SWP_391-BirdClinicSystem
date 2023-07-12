@@ -5,9 +5,11 @@
  */
 package services.doctor;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 import models.appointment.AppointmentDTO;
@@ -44,9 +46,9 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
     }
 
     @Override
-    public boolean updateRecord(Map<String, String[]> args, MedicalRecordDTO medicalRecord)
+    public MedicalRecordDTO updateRecord(Map<String, String[]> args, MedicalRecordDTO medicalRecord)
             throws AppointmentDoesNotExistException, SQLException {
-        boolean result = false;
+        MedicalRecordDTO result = null;
 
         try {
             if (medicalRecord == null) {
@@ -54,7 +56,7 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
                 String appointmentID = Utils.getFromMap(args, "appointmentID", "");
                 medicalRecord.setAppointment(appointmentDAO.readAppointment(appointmentID));
                 medicalRecord.setMedicalRecordID(Utils.hash(appointmentID));
-                result = true;
+                result = medicalRecord;
             } else {
                 int treatmentDays = Integer.parseInt(Utils.getFromMap(
                         args,
@@ -67,7 +69,7 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
                 medicalRecord.setTreatmentDays(treatmentDays);
                 medicalRecord.setDoctorNotes(doctorNotes);
 
-                result = true;
+                result = medicalRecord;
             }
         } catch (NoSuchRecordExists ex) {
             throw new AppointmentDoesNotExistException(ex.getMessage());
@@ -77,12 +79,12 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
     }
 
     @Override
-    public boolean updatePrescription(
+    public List<RecordMedicineDTO> updatePrescription(
             Map<String, String[]> args,
             MedicalRecordDTO medRec,
             List<RecordMedicineDTO> prescription)
             throws MedicineDoesNotExistException, SQLException {
-        boolean result = false;
+        List<RecordMedicineDTO> result = null;
 
         try {
             String medicineID = Utils.getFromMap(args, "medicineID", "");
@@ -110,7 +112,7 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
             } else {
                 prescription.add(recMed);
             }
-            result = true;
+            result = prescription;
 
         } catch (NoSuchRecordExists ex) {
             throw new MedicineDoesNotExistException(ex.getMessage());
@@ -140,15 +142,25 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
     }
 
     @Override
-    public List<AppointmentDTO> getDoctorAppointments() throws SQLException {
-        List<AppointmentDTO> apps = null;
+    public List<AppointmentDTO> getAppointmentsByFilter(String filter)
+            throws SQLException {
+        String doctorID = currentUser.getUserID();
+        List<AppointmentDTO> apps;
 
         try {
-            apps = appointmentDAO.readAppointmentByDoctor(this.currentUser.getUserID());
+            if (filter.equals("upcoming")) {
+                Date today = new Date(System.currentTimeMillis());
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(today);
+                calendar.add(Calendar.DATE, 7);
+                Date nextWeek = new Date(calendar.getTime().getTime());
+                apps = super.filterAppointmentsByDate(appointmentDAO.readAppointmentByDoctor(doctorID), today, nextWeek);
+            } else {
+                apps = super.filterAppointmentsByStatus(appointmentDAO.readAppointmentByDoctor(doctorID), filter);
+            }
         } catch (NoSuchRecordExists ex) {
-            throw new SQLException(ex.getMessage());
+            apps = null;
         }
-
         return apps;
     }
     

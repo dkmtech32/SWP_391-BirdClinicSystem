@@ -8,7 +8,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <div class="col-md-7 col-lg-8 col-xl-9">
+    <div class="col-md-8 col-lg-9 col-xl-10">
         <div class="card">
             <div class="card-body pt-0">
                 <!-- Tab Menu -->
@@ -17,7 +17,6 @@
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab">Appointments</a>
                         </li>
-                        
                     </ul>
                 </nav>
                 <!-- /Tab Menu -->

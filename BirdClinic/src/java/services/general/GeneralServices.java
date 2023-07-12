@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import models.appointment.AppointmentDTO;
 import models.bird.BirdDTO;
+import models.blog.BlogDTO;
 import models.feedback.FeedbackDTO;
 import models.medicalRecord.MedicalRecordDTO;
 import models.recordMedicine.RecordMedicineDTO;
@@ -20,6 +21,7 @@ import models.service_.Service_DTO;
 import models.speciality.SpecialityDTO;
 import models.timeslot.TimeslotDTO;
 import models.users.UserDTO;
+import models.users.customer.CustomerDTO;
 import models.users.doctor.DoctorDTO;
 
 /**
@@ -32,7 +34,7 @@ public interface GeneralServices extends Serializable {
 
     UserDTO getCurrentUser();
 
-    boolean login(String username, String password) throws AccountDoesNotExist, SQLException;
+    boolean login(String username, String password) throws AccountDoesNotExistException, SQLException;
 
     AppointmentDTO viewAppointment(String appointmentID) throws SQLException, AppointmentDoesNotExistException;
 
@@ -41,10 +43,10 @@ public interface GeneralServices extends Serializable {
     MedicalRecordDTO viewMedicalRecord(String appointmentID) throws SQLException;
 
     List<RecordMedicineDTO> viewRecordMeds(String medicalRecordID) throws SQLException;
-    
+
     FeedbackDTO viewFeedback(String appointmentID) throws SQLException;
-    
-    UserDTO viewAccount(String userID)throws AccountDoesNotExistException, SQLException;
+
+    UserDTO viewAccount(String userID) throws AccountDoesNotExistException, SQLException;
 
     boolean register(Map<String, String[]> args)
             throws AccountAlreadyExistsException, PasswordsNotEqualException, SQLException, PasswordNotStrongException;
@@ -55,31 +57,44 @@ public interface GeneralServices extends Serializable {
             throws SQLException;
 
     List<Service_DTO> getServices(String doctorID)
-            throws SQLException, AccountDoesNotExist;
+            throws SQLException, AccountDoesNotExistException;
 
     TimeslotDTO getTimeslot(String TimeslotID) throws SQLException;
 
     boolean updateAccount(Map<String, String[]> args)
             throws AccountAlreadyExistsException, SQLException;
 
-    boolean enableAccount(String userID) throws AccountDoesNotExist, SQLException;
+    boolean enableAccount(String userID) throws AccountDoesNotExistException, SQLException;
 
     boolean updateAccountPassword(String nPassword)
-            throws PasswordNotStrongException, AccountDoesNotExist, SQLException;
+            throws PasswordNotStrongException, AccountDoesNotExistException, SQLException;
 
-    DoctorDTO getDoctorInfo(String doctorID) throws SQLException, AccountDoesNotExist;
+    DoctorDTO getDoctorInfo(String doctorID) throws SQLException, AccountDoesNotExistException;
+    
+    CustomerDTO getCustomerInfo(String customerID) throws SQLException, AccountDoesNotExistException;
 
     List<SpecialityDTO> getSpecialities()
             throws SQLException;
-    
-    boolean isDoctorFree(String doctorID, String timeslotID, Date appDate) 
+
+    boolean isDoctorFree(String doctorID, String timeslotID, Date appDate)
             throws SQLException, AccountDoesNotExistException;
-    
+
     List<FeedbackDTO> getDoctorFeedbacks(String doctorID) throws SQLException;
-    
-    List<FeedbackDTO> getCustomerFeedbacks(String customerID) throws SQLException;
-    
-    BigDecimal getDoctorRatings(String doctorID) throws SQLException;
+
+    BigDecimal getDoctorRatings(List<FeedbackDTO> feedbacks) throws SQLException;
 
     List<BirdDTO> getCustomerBirds(String customerID) throws SQLException;
+
+    BlogDTO viewBlog(String blogID) throws SQLException, BlogDoesNotExistException;
+
+    List<BlogDTO> viewIntroBlogs() throws SQLException;
+    
+    List<AppointmentDTO> getAppointmentsByFilter(String filter) 
+            throws SQLException;
+    
+    List<BlogDTO> viewAllBlog() throws SQLException, BlogDoesNotExistException;
+    
+    List<AppointmentDTO> getBirdAppointments(String birdID) throws BirdDoesNotExistException, SQLException;
+
+    List<AppointmentDTO> getCustomerAppointments(String customerID) throws AccountDoesNotExistException, SQLException;
 }

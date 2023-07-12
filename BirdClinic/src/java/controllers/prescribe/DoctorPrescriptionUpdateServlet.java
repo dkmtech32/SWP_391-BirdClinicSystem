@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -39,9 +41,26 @@ public class DoctorPrescriptionUpdateServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        HttpSession session = request.getSession();
         String url = "/Doctor/Prescription";
-        request.getRequestDispatcher(url).forward(request, response);
+
+        //delete
+        try {
+            DoctorServices service = (DoctorServices) session.getAttribute("service");
+            MedicalRecordDTO medRec = (MedicalRecordDTO) session.getAttribute("medicalRecord");
+            List<RecordMedicineDTO> recMed = (List<RecordMedicineDTO>) session.getAttribute("prescription");
+            Map<String, String[]> args = request.getParameterMap();
+            
+            //delete
+            service.updatePrescription(args, medRec, recMed);
+            session.setAttribute("prescription", recMed);
+        } catch (MedicineDoesNotExistException ex) {
+            ex.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
+        }
     }
 
     /**
@@ -69,8 +88,7 @@ public class DoctorPrescriptionUpdateServlet extends HttpServlet {
             switch (action) {
 
                 case "submit":
-                    service.updateRecord(args, medRec);
-                    service.updatePrescription(args, medRec, recMed);
+                    medRec = service.updateRecord(args, medRec);
                     if (service.prescribe(medRec, recMed)) {
                         session.removeAttribute("medicalRecord");
                         if (recMed != null) {
@@ -81,14 +99,7 @@ public class DoctorPrescriptionUpdateServlet extends HttpServlet {
                     url = "/View/Appointment?appointmentID=" + medRec.getAppointment().getAppointmentID();
                     break;
                 case "add":
-                    service.updatePrescription(args, medRec, recMed);
-                    session.setAttribute("prescription", recMed);
-                    break;
-                case "remove":
-                    service.updateRecord(args, medRec);
-                    session.setAttribute("medicalRecord", medRec);
-                    args.put("quantity", new String[]{"-" + args.get("quantity")[0]});
-                    service.updatePrescription(args, medRec, recMed);
+                    recMed = service.updatePrescription(args, medRec, recMed);
                     session.setAttribute("prescription", recMed);
                     break;
             }

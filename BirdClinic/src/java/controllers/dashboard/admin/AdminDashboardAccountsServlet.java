@@ -3,24 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.view;
+package controllers.dashboard.admin;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.users.UserDTO;
+import services.admin.AdminServices;
 import services.general.AccountDoesNotExistException;
-import services.general.GeneralServices;
 
 /**
  *
  * @author Admin
  */
-public class ViewAccountInfoServlet extends HttpServlet {
+public class AdminDashboardAccountsServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,24 +35,20 @@ public class ViewAccountInfoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "/Common/account-info.jsp";
         HttpSession session = request.getSession();
-        GeneralServices service = (GeneralServices) session.getAttribute("service");
-        String userID = request.getParameter("userID");
-        
+        String url = "/Admin/dashboard-admin-accounts.jsp";
         try {
-            UserDTO user = service.viewAccount(userID);
-            
-            request.setAttribute("user", user);
+            AdminServices admin = (AdminServices) session.getAttribute("service");
+            String filter = request.getParameter("filter");
+            List<UserDTO> users = admin.getAllUsers();
+            request.setAttribute("accounts", users);
         } catch (SQLException ex) {
             ex.printStackTrace();
-            request.setAttribute("error-message", "Something is wrong. Please try again.");
         } catch (AccountDoesNotExistException ex) {
             ex.printStackTrace();
-            url = request.getRequestURI().substring(request.getContextPath().length()-1);
-            request.setAttribute("error-message", "Account does not exist. Please try again");
         } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+            request.setAttribute("url", url);
+            request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);
         }
     }
 

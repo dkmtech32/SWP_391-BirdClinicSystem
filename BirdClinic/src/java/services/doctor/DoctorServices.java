@@ -5,29 +5,26 @@
  */
 package services.doctor;
 
-import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
-import models.appointment.AppointmentDTO;
 import models.medicalRecord.MedicalRecordDTO;
 import models.medicine.MedicineDTO;
 import models.recordMedicine.RecordMedicineDTO;
 import services.general.AppointmentDoesNotExistException;
+import services.general.GeneralServices;
 
 /**
  *
  * @author Admin
  */
-public interface DoctorServices {
-
-    List<AppointmentDTO> getDoctorAppointments() throws SQLException;
+public interface DoctorServices extends GeneralServices{
 
     boolean prescribe(MedicalRecordDTO medRec, List<RecordMedicineDTO> recMeds) throws MedicalRecordAlreadyExistsException, SQLException;
 
-    boolean updatePrescription(Map<String, String[]> args, MedicalRecordDTO medRec, List<RecordMedicineDTO> prescription) throws MedicineDoesNotExistException, SQLException;
+    List<RecordMedicineDTO> updatePrescription(Map<String, String[]> args, MedicalRecordDTO medRec, List<RecordMedicineDTO> prescription) throws MedicineDoesNotExistException, SQLException;
 
-    boolean updateRecord(Map<String, String[]> args, MedicalRecordDTO medicalRecord) throws AppointmentDoesNotExistException, SQLException;
+    MedicalRecordDTO updateRecord(Map<String, String[]> args, MedicalRecordDTO medicalRecord) throws AppointmentDoesNotExistException, SQLException;
     
     List<MedicineDTO> getAllMedicine() throws SQLException;
 }
