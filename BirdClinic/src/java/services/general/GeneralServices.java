@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import models.appointment.AppointmentDTO;
+import models.bird.BirdAlreadyExistsException;
 import models.bird.BirdDTO;
 import models.blog.BlogDTO;
 import models.feedback.FeedbackDTO;
@@ -47,9 +48,13 @@ public interface GeneralServices extends Serializable {
     FeedbackDTO viewFeedback(String appointmentID) throws SQLException;
 
     UserDTO viewAccount(String userID) throws AccountDoesNotExistException, SQLException;
+    
+    BirdDTO createBird(Map<String, String[]> args, CustomerDTO customer) throws BirdAlreadyExistsException, SQLException;
 
-    boolean register(Map<String, String[]> args)
+    CustomerDTO createAccount(Map<String, String[]> args)
             throws AccountAlreadyExistsException, PasswordsNotEqualException, SQLException, PasswordNotStrongException;
+    
+    boolean register(CustomerDTO account, BirdDTO bird) throws SQLException;
 
     List<DoctorDTO> getAllDoctors() throws SQLException;
 

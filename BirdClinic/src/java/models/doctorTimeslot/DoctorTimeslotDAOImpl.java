@@ -1,4 +1,4 @@
-     /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -154,7 +154,7 @@ public class DoctorTimeslotDAOImpl implements DoctorTimeslotDAO {
 
         return result;
     }
-    
+
     @Override
     public int dropDoctor(String doctorID)
             throws SQLException, NoSuchRecordExists {
@@ -209,6 +209,36 @@ public class DoctorTimeslotDAOImpl implements DoctorTimeslotDAO {
         return result;
     }
 
+    public int insertMultipleDoctorTimeslots(String doctorID, String[] timeslotIDs)
+            throws SQLException, RecordAlreadyExists {
+        Connection con = null;
+        PreparedStatement stm = null;
+        int result = 0;
+
+        try {
+            con = DBUtils.getConnection();
+            stm = con.prepareStatement(INSERT_DOCTIME);
+            stm.setString(1, doctorID);
+            for (String timeslotID : timeslotIDs) {
+                stm.setString(2, timeslotID);
+
+                result += stm.executeUpdate();
+                if (result == 0) {
+                    throw new DoctorAlreadyInTimeslotException();
+                }
+            }
+        } finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+
+        return result;
+    }
+
     @Override
     public List<List<TimeslotDTO>> readDoctorTimeslotByDoctorGrouped(String doctorID)
             throws SQLException, NoSuchRecordExists {
@@ -239,7 +269,7 @@ public class DoctorTimeslotDAOImpl implements DoctorTimeslotDAO {
                 for (TimeslotDTO timeslot : timeslots) {
                     timeslotsByWeekday.get(weekdays.indexOf(timeslot.getDay_())).add(timeslot);
                 }
-                
+
                 for (int i = 0; i < 7; i++) {
                     Collections.sort(timeslotsByWeekday.get(i));
                 }
