@@ -26,7 +26,8 @@
                 </div>
             </div>
 
-            <form class="d-flex justify-content-center" action="<c:url value="/register"/>" method="post" >
+            <form class="d-flex justify-content-center needs-validation" action="<c:url value="/register"/>" method="post" 
+                  novalidate >
                 <div class="card w-50 active">
                     <div class="card-header">
                         <h3 class="text-center">Step 1: Enter your Personal Information</h3>
@@ -61,14 +62,15 @@
                                 <div class="form-group">
                                     <label>Date of Birth</label>
 
-                                    <input type="date" name="dob" class="form-control" />
+                                    <input type="date" name="dob" required class="form-control" />
+        <div class="invalid-feedback"></div>
 
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label>Gender</label>
-                                    <select class="form-control" name="gender">
+                                    <select class="form-control" name="gender" required>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
                                         <option value="unknown">Others</option>
@@ -78,34 +80,34 @@
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label>Email </label>
-                                    <input type="email" name="email" class="form-control" placeholder="email@example.com" />
+                                    <input type="email" name="email" class="form-control" required placeholder="email@example.com" />
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label>Username </label>
-                                    <input type="text" name="username" class="form-control" placeholder="" />
+                                    <input type="text" name="username" class="form-control" required placeholder="" />
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label>Mobile</label>
-                                    <input type="text" name="phone" placeholder="+1 202-555-0125" class="form-control" />
+                                    <input type="text" name="phone" placeholder="+1 202-555-0125" required class="form-control" />
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Address</label>
-                                    <input type="text" name="address" class="form-control" placeholder="123 Pham Van Hai" />
+                                    <input type="text" name="address" class="form-control" required placeholder="123 Pham Van Hai" />
                                 </div>
                             </div>
 
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input type="password" name="password" class="form-control" placeholder="" />
+                                    <input type="password" name="password" class="form-control" placeholder="" required minlength="8" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" />
                                     <div class="col-auto mt-2 p-0">
-                                        <span id="passwordHelpInline" class="text-muted"> Must be 8-20 characters long. </span>
+                                        <span id="passwordHelpInline" class="text-muted"> Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters </span>
                                     </div>
                                 </div>
                             </div>
@@ -241,8 +243,56 @@
             e.preventDefault();
             step2Card.classList.remove('active');
             step1Card.classList.add('active');
-        });</script>
+        });
+    </script>
+    <script>
+        // Custom JavaScript validation
+        (function () {
+            'use strict';
 
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation');
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms).forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+
+        // Go back to the previous step
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <script>
+    // Custom JavaScript validation
+    (function () {
+        'use strict';
+
+        // Retrieve the input element and add event listener
+        var dobInput = document.querySelector('input[name="dob"]');
+        dobInput.addEventListener('input', validateDateOfBirth);
+
+        function validateDateOfBirth() {
+            var selectedDate = new Date(dobInput.value);
+            var currentDate = new Date();
+            var minimumDate = new Date(currentDate.getFullYear() - 13, currentDate.getMonth(), currentDate.getDate());
+
+            if (selectedDate > minimumDate) {
+                dobInput.setCustomValidity("You must be at least 13 years old.");
+            } else {
+                dobInput.setCustomValidity('');
+            }
+        }
+    })();
+</script>
     <!-- /Script -->
 </body>
 </html>
