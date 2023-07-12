@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
 
     <!-- Favicons -->
-    <link href='<c:url value="/assets/img/favicon.png"/>' rel="icon" />
+    <link href='<c:url value="/assets/images/favicon.svg"/>' rel="icon" />
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href='<c:url value="/assets/css/bootstrap.min.css"/>' />
@@ -32,6 +32,8 @@
     <link rel="stylesheet" href="<c:url value='/assets/plugins/fontawesome/css/all.min.css'/>" />
     <link rel="stylesheet" href="<c:url value='/assets/plugins/fontawesome/css/regular.min.css'/>" />
 
+    <!-- Fancybox CSS -->
+    <link rel="stylesheet" href="<c:url value="/assets/plugins/fancybox/jquery.fancybox.min.css"/>" />
     <!-- Datetimepicker CSS -->
     <link rel="stylesheet" href="<c:url value='/assets/css/bootstrap-datetimepicker.min.css'/>" />
 
