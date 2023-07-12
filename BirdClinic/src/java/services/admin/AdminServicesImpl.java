@@ -9,8 +9,11 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.appointment.AppointmentDTO;
 import models.exceptions.NoSuchRecordExists;
 import models.exceptions.RecordAlreadyExists;
@@ -94,7 +97,7 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
 
         return result;
     }
-    
+
     @Override
     public CustomerDTO createCustomer(Map<String, String[]> args)
             throws AccountAlreadyExistsException, SQLException {
@@ -239,70 +242,106 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
         return result;
     }
 
-    @Override
-    public List<BigDecimal> getAllRatingsFromDoctor() throws SQLException, AccountDoesNotExistException {
-        List<BigDecimal> result = null;
+//    @Override
+    public Map<DoctorDTO, BigDecimal> getAllRatingsFromDoctor() throws SQLException {
+        Map<DoctorDTO, List<BigDecimal>> ratingsMap = new HashMap<>();
+        Map<DoctorDTO, BigDecimal> averageRatings = null;
+        try {
+            List<FeedbackDTO> feedbackList = feedbackDAO.readAllFeedback();
 
-        List<DoctorDTO> doctors = super.getAllDoctors();
-        for (DoctorDTO doctor : doctors) {
-            if (result == null) {
-                result = new ArrayList<>();
+            // Calculate sum of ratings for each doctor
+            for (FeedbackDTO feedback : feedbackList) {
+                DoctorDTO doctor = feedback.getAppointment().getDoctor();
+                BigDecimal rating = feedback.getRating();
+
+                List<BigDecimal> ratings = ratingsMap.getOrDefault(doctor, new ArrayList<>());
+                ratings.add(rating);
+                ratingsMap.put(doctor, ratings);
             }
-            List<FeedbackDTO> feedbacks = super.getDoctorFeedbacks(doctor.getUserID());
-            result.add(super.getDoctorRatings(feedbacks));
+
+            averageRatings = new HashMap<>();
+            // Calculate average ratings for each doctor
+            for (Map.Entry<DoctorDTO, List<BigDecimal>> entry : ratingsMap.entrySet()) {
+                DoctorDTO doctor = entry.getKey();
+                List<BigDecimal> ratings = entry.getValue();
+
+                BigDecimal sum = BigDecimal.ZERO;
+                for (BigDecimal rating : ratings) {
+                    sum = sum.add(rating);
+                }
+
+                BigDecimal average = sum.divide(new BigDecimal(ratings.size()), 2, BigDecimal.ROUND_HALF_UP);
+                averageRatings.put(doctor, average);
+            }
+        } catch (NoSuchRecordExists ex) {
+            throw new SQLException(ex.getMessage());
         }
-        return result;
+
+        return averageRatings;
     }
 
     @Override
     public List<AppointmentDTO> getAllAppointments() throws SQLException, AppointmentDoesNotExistException {
         List<AppointmentDTO> result = null;
-        
+
         try {
             result = appointmentDAO.readAllAppointments();
         } catch (NoSuchRecordExists ex) {
             throw new AppointmentDoesNotExistException(ex.getMessage());
         }
-        
+
         return result;
     }
-    
+
     @Override
     public List<CustomerDTO> getAllCustomer() throws SQLException, AccountDoesNotExistException {
         List<CustomerDTO> result = null;
-        
+
         try {
             result = customerDAO.readAllCustomers();
         } catch (NoSuchRecordExists ex) {
             throw new AccountDoesNotExistException(ex.getMessage());
         }
-        
+
         return result;
     }
-    
+
     @Override
     public List<UserDTO> getAllUsers() throws SQLException, AccountDoesNotExistException {
         List<UserDTO> result = null;
-        
+
         try {
             result = userDAO.readAllUsers();
         } catch (NoSuchRecordExists ex) {
             throw new AccountDoesNotExistException(ex.getMessage());
         }
-        
+
         return result;
     }
-    
+
+    @Override
+    public List<UserDTO> getUsersByFilter(String filter) throws SQLException, AccountDoesNotExistException {
+        List<UserDTO> result = null;
+
+        try {
+            result = userDAO.readUserByRole(filter);
+        } catch (NoSuchRecordExists ex) {
+            throw new AccountDoesNotExistException(ex.getMessage());
+        }
+
+        return result;
+    }
+
     @Override
     public List<Service_DTO> getAllServices() throws SQLException, ServiceDoesNotExistException {
         List<Service_DTO> result = null;
-        
+
         try {
             result = serviceDAO.readAllService_();
         } catch (NoSuchRecordExists ex) {
             throw new ServiceDoesNotExistException(ex.getMessage());
         }
-        
+
         return result;
     }
 }

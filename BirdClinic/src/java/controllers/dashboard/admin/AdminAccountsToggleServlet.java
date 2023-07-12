@@ -19,7 +19,7 @@ import services.general.AccountDoesNotExistException;
  *
  * @author Admin
  */
-public class AdminDashboardAccountsToggleServlet extends HttpServlet {
+public class AdminAccountsToggleServlet extends HttpServlet {
 
     /**
      * Handles the HTTP <code>GET</code> method.

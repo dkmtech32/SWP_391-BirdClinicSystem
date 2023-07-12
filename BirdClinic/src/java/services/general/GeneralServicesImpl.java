@@ -14,8 +14,6 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import models.appointment.AppointmentDAO;
 import models.appointment.AppointmentDAOImpl;
 import models.appointment.AppointmentDTO;
@@ -306,6 +304,21 @@ public class GeneralServicesImpl implements GeneralServices {
         try {
             if (currentUser != null) {
                 medicalRecord = medicalRecordDAO.readMedicalRecordByAppointment(appointmentID);
+            }
+        } catch (NoSuchRecordExists ex) {
+            medicalRecord = null;
+        }
+
+        return medicalRecord;
+    }
+    
+    @Override
+    public List<MedicalRecordDTO> viewMedicalRecordOfBird(String birdID) throws SQLException {
+        List<MedicalRecordDTO> medicalRecord = null;
+
+        try {
+            if (currentUser != null) {
+                medicalRecord = medicalRecordDAO.readMedicalRecordByBird(birdID);
             }
         } catch (NoSuchRecordExists ex) {
             medicalRecord = null;

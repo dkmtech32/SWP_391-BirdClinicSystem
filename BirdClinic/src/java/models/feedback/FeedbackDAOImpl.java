@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +31,9 @@ public class FeedbackDAOImpl implements FeedbackDAO {
             = "SELECT feedbackID, appointmentID, feedbackContent, title, feedbackTime, rating "
             + "FROM Feedback "
             + "WHERE feedbackID = ?";
+    private static final String READ_ALL_FEEDBACK
+            = "SELECT feedbackID, appointmentID, feedbackContent, title, feedbackTime, rating "
+            + "FROM Feedback ";
     private static final String READ_FEEDBACK_BY_APPOINTMENT
             = "SELECT feedbackID, appointmentID, feedbackContent, title, feedbackTime, rating "
             + "FROM Feedback "
@@ -67,7 +71,7 @@ public class FeedbackDAOImpl implements FeedbackDAO {
                 feedback.setFeedbackTime(rs.getTimestamp("feedbackTime"));
                 feedback.setRating(rs.getBigDecimal("rating"));
             }
-            
+
             if (feedback == null) {
                 throw new NoSuchFeedbackExistsException();
             }
@@ -148,15 +152,60 @@ public class FeedbackDAOImpl implements FeedbackDAO {
                     feedback.setFeedbackContent(rs.getString("feedbackContent"));
                     feedback.setTitle(rs.getString("title"));
                     feedback.setFeedbackTime(rs.getTimestamp("feedbackTime"));
-                feedback.setRating(rs.getBigDecimal("rating"));
+                    feedback.setRating(rs.getBigDecimal("rating"));
                     if (result == null) {
                         result = new ArrayList<>();
                     }
                     result.add(feedback);
                 }
             }
+
+            if (result == null || result.isEmpty()) {
+                throw new NoSuchFeedbackExistsException();
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public List<FeedbackDTO> readAllFeedback() throws SQLException, NoSuchRecordExists {
+        Connection con = null;
+        Statement stm = null;
+        ResultSet rs = null;
+        List<FeedbackDTO> result = null;
+
+        try {
+            con = DBUtils.getConnection();
+            stm = con.createStatement();
+            rs = stm.executeQuery(READ_ALL_FEEDBACK);
             
-            if (result == null || result.isEmpty()) throw new NoSuchFeedbackExistsException(); 
+            while (rs.next()) {
+                FeedbackDTO feedback = new FeedbackDTOImpl();
+                feedback.setFeedbackID(rs.getString("feedbackID"));
+                feedback.setAppointment(appointmentDAO.readAppointment(rs.getString("appointmentID")));
+                feedback.setFeedbackContent(rs.getString("feedbackContent"));
+                feedback.setTitle(rs.getString("title"));
+                feedback.setFeedbackTime(rs.getTimestamp("feedbackTime"));
+                feedback.setRating(rs.getBigDecimal("rating"));
+                if (result == null) {
+                    result = new ArrayList<>();
+                }
+                result.add(feedback);
+            }
+
+            if (result == null || result.isEmpty()) {
+                throw new NoSuchFeedbackExistsException();
+            }
         } finally {
             if (rs != null) {
                 rs.close();
@@ -193,15 +242,17 @@ public class FeedbackDAOImpl implements FeedbackDAO {
                     feedback.setFeedbackContent(rs.getString("feedbackContent"));
                     feedback.setTitle(rs.getString("title"));
                     feedback.setFeedbackTime(rs.getTimestamp("feedbackTime"));
-                feedback.setRating(rs.getBigDecimal("rating"));
+                    feedback.setRating(rs.getBigDecimal("rating"));
                     if (result == null) {
                         result = new ArrayList<>();
                     }
                     result.add(feedback);
                 }
             }
-            
-            if (result == null || result.isEmpty()) throw new NoSuchFeedbackExistsException(); 
+
+            if (result == null || result.isEmpty()) {
+                throw new NoSuchFeedbackExistsException();
+            }
         } finally {
             if (rs != null) {
                 rs.close();
@@ -232,8 +283,10 @@ public class FeedbackDAOImpl implements FeedbackDAO {
             stm.setBigDecimal(6, feedback.getRating());
 
             result = stm.executeUpdate();
-            
-            if (result == 0) throw new FeedbackAlreadyExistsException();
+
+            if (result == 0) {
+                throw new FeedbackAlreadyExistsException();
+            }
         } finally {
             if (stm != null) {
                 stm.close();
@@ -256,8 +309,10 @@ public class FeedbackDAOImpl implements FeedbackDAO {
             stm.setString(1, feedbackID);
 
             result = stm.executeUpdate();
-            
-            if (result == 0) throw new NoSuchFeedbackExistsException();
+
+            if (result == 0) {
+                throw new NoSuchFeedbackExistsException();
+            }
         } finally {
             if (stm != null) {
                 stm.close();
@@ -283,8 +338,10 @@ public class FeedbackDAOImpl implements FeedbackDAO {
             stm.setString(4, feedback.getFeedbackID());
 
             result = stm.executeUpdate();
-            
-            if (result == 0) throw new NoSuchFeedbackExistsException();
+
+            if (result == 0) {
+                throw new NoSuchFeedbackExistsException();
+            }
         } finally {
             if (stm != null) {
                 stm.close();

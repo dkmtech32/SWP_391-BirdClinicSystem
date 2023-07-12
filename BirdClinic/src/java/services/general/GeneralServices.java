@@ -102,4 +102,6 @@ public interface GeneralServices extends Serializable {
     List<AppointmentDTO> getBirdAppointments(String birdID) throws BirdDoesNotExistException, SQLException;
 
     List<AppointmentDTO> getCustomerAppointments(String customerID) throws AccountDoesNotExistException, SQLException;
+    
+    List<MedicalRecordDTO> viewMedicalRecordOfBird(String birdID) throws SQLException;
 }
