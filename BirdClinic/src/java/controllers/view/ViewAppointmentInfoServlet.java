@@ -47,7 +47,10 @@ public class ViewAppointmentInfoServlet extends HttpServlet {
         try {
             AppointmentDTO appointment = service.viewAppointment(appointmentID);
             MedicalRecordDTO medRec = service.viewMedicalRecord(appointmentID);
-            List<RecordMedicineDTO> recMed = service.viewRecordMeds(medRec.getMedicalRecordID());
+            List<RecordMedicineDTO> recMed = null;
+            if (medRec != null) {
+                recMed = service.viewRecordMeds(medRec.getMedicalRecordID());
+            }
             FeedbackDTO feedback = service.viewFeedback(appointmentID);
             request.setAttribute("appointment", appointment);
             request.setAttribute("medicalRecord", medRec);
