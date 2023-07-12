@@ -35,5 +35,6 @@
     <!-- Custom JS -->
     <script src="<c:url value='/assets/js/script.js'/>"></script>
     <script src="<c:url value='/assets/css/style.css'/>"></script>
+    <script src="<c:url value='/assets/js/bootstrap.bundle.min.js'/>"></script>
 </html>
 

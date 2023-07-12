@@ -185,8 +185,28 @@
         <servlet-class>controllers.blog.WriteBlogServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AdminDashboardAccountsServlet</servlet-name>
-        <servlet-class>controllers.dashboard.admin.AdminDashboardAccountsServlet</servlet-class>
+        <servlet-name>AdminAccountsServlet</servlet-name>
+        <servlet-class>controllers.dashboard.admin.AdminAccountsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminAccountsToggleServlet</servlet-name>
+        <servlet-class>controllers.dashboard.admin.AdminAccountsToggleServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminAccountsCreateServlet</servlet-name>
+        <servlet-class>controllers.dashboard.admin.AdminAccountsCreateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminDoctorsUpdate</servlet-name>
+        <servlet-class>controllers.dashboard.admin.AdminDoctorsUpdateInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminDoctorsUpdateTimeslotServlet</servlet-name>
+        <servlet-class>controllers.dashboard.admin.AdminDoctorsUpdateTimeslotServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminChartsServlet</servlet-name>
+        <servlet-class>controllers.dashboard.admin.AdminStaticsticsServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -321,8 +341,28 @@
         <url-pattern>/Blog/Write</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AdminDashboardAccountsServlet</servlet-name>
-        <url-pattern>/Admin/Dashboard/Accounts</url-pattern>
+        <servlet-name>AdminAccountsServlet</servlet-name>
+        <url-pattern>/Admin/Accounts</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminAccountsToggleServlet</servlet-name>
+        <url-pattern>/Admin/Accounts/Toggle</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminAccountsCreateServlet</servlet-name>
+        <url-pattern>/Admin/Accounts/Create</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminDoctorsUpdate</servlet-name>
+        <url-pattern>/Admin/Doctors/Update/Info</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminDoctorsUpdateTimeslotServlet</servlet-name>
+        <url-pattern>/Admin/Doctors/Update/Timeslot</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminChartsServlet</servlet-name>
+        <url-pattern>/Admin/Charts</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
