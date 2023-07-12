@@ -106,7 +106,7 @@ public class CustomerDAOImpl extends UserDAOImpl implements CustomerDAO {
                 result += stm.executeUpdate();
             }
             
-            if (result <= 1) throw new CustomerAlreadyExistsException();
+            if (result == 0) throw new CustomerAlreadyExistsException();
         } finally {
             if (stm != null) {
                 stm.close();

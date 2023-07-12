@@ -40,6 +40,7 @@ public class AdminAccountsServlet extends HttpServlet {
         try {
             AdminServices admin = (AdminServices) session.getAttribute("service");
             String filter = request.getParameter("filter");
+            if (filter == null) filter = "userRole";
             List<UserDTO> users = admin.getUsersByFilter(filter);
             request.setAttribute("accounts", users);
         } catch (SQLException ex) {
