@@ -20,7 +20,7 @@ import services.general.AccountAlreadyExistsException;
  *
  * @author Admin
  */
-public class AdminDashboardAccountsCreateServlet extends HttpServlet {
+public class AdminAccountsCreateServlet extends HttpServlet {
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -33,7 +33,12 @@ public class AdminDashboardAccountsCreateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/Admin/create-account.jsp").forward(request, response);
+        String role = request.getParameter("userRole");
+        String url = "/Admin/add-staff.jsp";
+        if (role.equals("doctor")) {
+            url = "/Admin/add-doctor.jsp";
+        }
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     /**
@@ -58,14 +63,12 @@ public class AdminDashboardAccountsCreateServlet extends HttpServlet {
                 case "doctor":
                     admin.createDoctor(args);
                     break;
-                case "customer":
-                    admin.createCustomer(args);
-                    break;
                 case "admin":
                 case "staff":
                     admin.createStaffAdmin(args);
+                    break;
             }
-            url = "/Dashboard/Accounts";
+            url = "/Admin/Accounts";
         } catch (SQLException ex) {
             ex.printStackTrace();
         } catch (AccountAlreadyExistsException ex) {
@@ -74,6 +77,7 @@ public class AdminDashboardAccountsCreateServlet extends HttpServlet {
             request.getRequestDispatcher(url).forward(request, response);
         }
     }
+
     @Override
     public String getServletInfo() {
         return "Short description";
