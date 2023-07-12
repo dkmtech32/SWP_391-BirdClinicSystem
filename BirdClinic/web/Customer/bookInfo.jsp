@@ -17,7 +17,7 @@
                 var servicePrice = $(this).children('option:selected').data('service-price');
 
                 // Update the service fee text
-                $('#serviceFee').text(servicePrice);
+                $('#serviceFee').text("$"+servicePrice);
             });
 
             // Handle initial selection
@@ -192,7 +192,7 @@
                                                 <div class="booking-info">
                                                     <h4><a href="doctor-profile.html">BirdLover Clinic</a></h4>                                          
                                                     <div class="clinic-details">
-                                                        <p class="doc-location"><i class="fas fa-map-marker-alt"></i> Long Bien, Hanoi</p>
+                                                        <p class="doc-location"><i class="fas fa-map-marker-alt"></i> District 1, Ho Chi Minh City</p>
                                                     </div>
                                                 </div>
                                             </div>
