@@ -44,15 +44,14 @@
 
     <script src="<c:url value="/assets/js/columnchart.init.js"/>"></script>
 
-    <script src="<c:url var="featherUrl" value="/assets/js/feather.min.js" />"></script>
+    <script src="<c:url value="/assets/js/feather.min.js" />"></script>
 
-    <script src="<c:url var="appUrl" value="/assets/js/app.js"/>"></script>
+    <script src="<c:url value="/assets/js/app.js"/>"></script>
 
     <script src="<c:url value="/assets/plugins/theia-sticky-sidebar/ResizeSensor.js" />"></script>
 
     <script src=<c:url value="/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js" />></script>
 
-    <script src= <c:url var="bootstrapMinUrl" value="/assets/js/bootstrap.min.js" />></script>
 
     <script src=<c:url value="/assets/js/popper.min.js" />></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>    

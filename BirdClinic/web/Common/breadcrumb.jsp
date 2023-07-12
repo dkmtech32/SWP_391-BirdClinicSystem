@@ -15,11 +15,10 @@
                 <div class="col-md-12 col-12">
                     <nav aria-label="breadcrumb" class="page-breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Doctor</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Appointment</li>
+                            <li class="breadcrumb-item " aria-current="page"></li>
                         </ol>
                     </nav>
-                    <h2 class="breadcrumb-title">Prescription</h2>
+                    <h2 class="breadcrumb-title"></h2>
                 </div>
             </div>
         </div>
