@@ -55,6 +55,7 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String url = "/Common/login";
         HttpSession session = request.getSession(true);
         GeneralServices accountService = (GeneralServices) session.getAttribute("service");
