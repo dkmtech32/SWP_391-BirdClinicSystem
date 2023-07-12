@@ -38,7 +38,7 @@ public class DoctorDashboardAppointmentsServlet extends HttpServlet {
         String url = "/Doctor/dashboard-doctor-appointments.jsp";
         String filter = request.getParameter("filter");
         if (filter == null || filter.trim().equals("")) {
-            filter = "upcoming";
+            filter = "check-in";
         }
         try {
             DoctorServices service = (DoctorServices) session.getAttribute("service");
