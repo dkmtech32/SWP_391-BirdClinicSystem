@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.timeslot.TimeslotDTO;
-import models.users.doctor.DoctorDTO;
 import services.customer.CustomerServices;
 import services.general.AccountDoesNotExistException;
 import utils.Utils;

@@ -188,6 +188,22 @@
         <servlet-name>AdminDashboardAccountsServlet</servlet-name>
         <servlet-class>controllers.dashboard.admin.AdminDashboardAccountsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminDashboardAccountsToggleServlet</servlet-name>
+        <servlet-class>controllers.dashboard.admin.AdminDashboardAccountsToggleServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminDashboardAccountsCreateServlet</servlet-name>
+        <servlet-class>controllers.dashboard.admin.AdminDashboardAccountsCreateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminDashboardDoctorsUpdate</servlet-name>
+        <servlet-class>controllers.dashboard.admin.AdminDashboardDoctorsUpdateInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminDashboardDoctorsUpdateTimeslotServlet</servlet-name>
+        <servlet-class>controllers.dashboard.admin.AdminDashboardDoctorsUpdateTimeslotServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Common/login</url-pattern>
@@ -323,6 +339,22 @@
     <servlet-mapping>
         <servlet-name>AdminDashboardAccountsServlet</servlet-name>
         <url-pattern>/Admin/Dashboard/Accounts</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminDashboardAccountsToggleServlet</servlet-name>
+        <url-pattern>/Admin/Dashboard/Accounts/Toggle</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminDashboardAccountsCreateServlet</servlet-name>
+        <url-pattern>/Admin/Dashboard/Accounts/Create</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminDashboardDoctorsUpdate</servlet-name>
+        <url-pattern>/Admin/Dashboard/Doctors/Update/Info</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminDashboardDoctorsUpdateTimeslotServlet</servlet-name>
+        <url-pattern>/Admin/Dashboard/Doctors/Update/Timeslot</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

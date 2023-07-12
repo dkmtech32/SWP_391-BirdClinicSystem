@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.account;
+package controllers.dashboard.admin;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -13,19 +13,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import models.bird.BirdAlreadyExistsException;
-import models.bird.BirdDTO;
-import models.users.customer.CustomerDTO;
+import services.admin.AdminServices;
 import services.general.AccountAlreadyExistsException;
-import services.general.GeneralServices;
-import services.general.PasswordNotStrongException;
-import services.general.PasswordsNotEqualException;
 
 /**
  *
  * @author Admin
  */
-public class RegisterServlet extends HttpServlet {
+public class AdminDashboardAccountsCreateServlet extends HttpServlet {
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -38,9 +33,7 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String url = "/Common/create-user.jsp";
-        request.getRequestDispatcher(url).forward(request, response);
+        request.getRequestDispatcher("/Admin/create-account.jsp").forward(request, response);
     }
 
     /**
@@ -55,40 +48,32 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "/Common/create-bird.jsp";
-        HttpSession session = request.getSession(true);
-        GeneralServices accountService = (GeneralServices) session.getAttribute("service");
-        Map<String, String[]> args = request.getParameterMap();
-        
+        HttpSession session = request.getSession();
+        String url = "/Admin/create-account.jsp";
         try {
-            CustomerDTO customer = accountService.createAccount(args);
-            if (customer != null) {
-                BirdDTO bird = accountService.createBird(args, customer);
-                if (bird != null) {
-                    accountService.register(customer, bird);
-                }
+            AdminServices admin = (AdminServices) session.getAttribute("service");
+            String role = request.getParameter("userRole");
+            Map<String, String[]> args = request.getParameterMap();
+            switch (role) {
+                case "doctor":
+                    admin.createDoctor(args);
+                    break;
+                case "customer":
+                    admin.createCustomer(args);
+                    break;
+                case "admin":
+                case "staff":
+                    admin.createStaffAdmin(args);
             }
-            url = "/login";
-        } catch (AccountAlreadyExistsException ex) {
-            ex.printStackTrace();
-        } catch (PasswordsNotEqualException ex) {
-            ex.printStackTrace();
+            url = "/Dashboard/Accounts";
         } catch (SQLException ex) {
             ex.printStackTrace();
-        } catch (PasswordNotStrongException ex) {
-            ex.printStackTrace();
-        } catch (BirdAlreadyExistsException ex) {
+        } catch (AccountAlreadyExistsException ex) {
             ex.printStackTrace();
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
