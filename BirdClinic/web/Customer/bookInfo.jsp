@@ -107,7 +107,7 @@
                                                         <select class="form-control" name="birdID" required="required">
                                                             <option value="">--</option>
                                                             <c:forEach var="bird" items="${birds}" >
-                                                                 <!-- Default option with empty value -->
+                                                                <!-- Default option with empty value -->
                                                                 <option value="${bird.birdID}">${bird.birdFullname}</option>
                                                             </c:forEach>
                                                         </select>
@@ -168,17 +168,36 @@
                                 </div>
                                 <div class="card-body">
                                     <!-- Booking Doctor Info -->
-                                    <div class="booking-doc-info">
-                                        <a href="doctor-profile.jsp" class="booking-doc-img">
-                                            <img src="../assets/images/doctors/${doctor.image.imageURLName}" alt="User Image" />
-                                        </a>
-                                        <div class="booking-info">
-                                            <h4><a href="doctor-profile.jsp">${doctor.fullName}</a></h4>
-                                            <div class="clinic-details">
-                                                <p class="doc-location"><i class="fas fa-map-marker-alt"></i> Long Bien, Hanoi</p>
+                                    <c:choose>
+                                        <c:when test="${not empty param.doctorID}">
+
+                                            <div class="booking-doc-info">
+                                                <a href="doctor-profile.jsp" class="booking-doc-img">
+                                                    <img src="../assets/images/doctors/${doctor.image.imageURLName}" alt="User Image" />
+                                                </a>
+                                                <div class="booking-info">
+                                                    <h4><a href="doctor-profile.jsp">${doctor.fullName}</a></h4>
+                                                    <div class="clinic-details">
+                                                        <p class="doc-location"><i class="fas fa-map-marker-alt"></i> Long Bien, Hanoi</p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                        </c:when>
+                                        <c:when test="${empty param.doctorID}">
+
+                                            <div class="booking-doc-info">
+                                                <a href="doctor-profile.jsp" class="booking-doc-img">
+                                                    <img src="<c:url value="/assets/images/favicon.svg"/>" alt="User Image" />
+                                                </a>
+                                                <div class="booking-info">
+                                                    <h4><a href="doctor-profile.html">BirdLover Clinic</a></h4>                                          
+                                                    <div class="clinic-details">
+                                                        <p class="doc-location"><i class="fas fa-map-marker-alt"></i> Long Bien, Hanoi</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </c:when>
+                                    </c:choose>
                                     <!-- Booking Doctor Info -->
 
                                     <div class="booking-summary">

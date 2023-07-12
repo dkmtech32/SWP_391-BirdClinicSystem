@@ -256,6 +256,7 @@ VALUES
 	('rfhiarebfniuaerhnfuah9f48h34f843', 'bs8.png'),
 	('fherajfhriuehfraufha94hf98fh93hf', 'bs9.png'),
 	('fnerajfha974fhy4973haf9ha49hf338', 'bs10.jpg'),
+	('0fe30e1ff175eb1c538613084ab12417', 'bs11.jpg'),
     ('fafnbuhfauhfweoufha8hfa9hfa48hf8', 'Chimyen.png'),
     ('avewifbaiuwefnwajenfhiuahenf998f', 'Chimcongxanh.jpg'),
 	('fewabf9qb439fufh9h438q9h34fq34t4', 'Chimen.jpg'),
@@ -331,6 +332,7 @@ VALUES
 	('21fc9daf44e2637d7972bd248c83577d', 'rfhiarebfniuaerhnfuah9f48h34f843', 'nhiluoman19rty', '5f4dcc3b5aa765d61d8327deb882cf99', N'Lương Mẫn Nhi', '0556475242', 'female', 'nhiluoman19@gmail.com', 'doctor', 'active' ),
 	('01c1fa1b81297a2de21056f35303ad84', 'fherajfhriuehfraufha94hf98fh93hf', 'kietnganhmin47', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Minh Anh Kiệt', '0556253524', 'male', 'kietnganhmin47@gmail.com', 'doctor', 'active' ),
 	('fe30e1ff175e10b1c538613084ab2417', 'fnerajfha974fhy4973haf9ha49hf338', 'thaodothithu64', '5f4dcc3b5aa765d61d8327deb882cf99', N'Đoàn Thị Thu Thảo', '0534719873', 'male', 'thaodothithu64@gmail.com', 'doctor', 'active' ),
+	('0fe30e1ff175eb1c538613084ab12417', '0fe30e1ff175eb1c538613084ab12417', 'thaodothithu64', '5f4dcc3b5aa765d61d8327deb882cf99', N'Đoàn Thị Thu Thảo', '0534719873', 'male', 'thaodothithu64@gmail.com', 'doctor', 'active' ),
 	('hebrf38f7h348fb384fb38ybf38byfr3', 'f7384hfw34f38wb4fw38h4f03h43f93f', 'dongovan456qwer', '5f4dcc3b5aa765d61d8327deb882cf99', N'Ngô Văn Đô', '0512345469', 'male', 'dongovan456@gmail.com', 'staff', 'active' ),
 	('f7834yf8h3w9b93wfb943hf943f934hf', 'ngseriug908hg93h4g934nf34f938f4h', 'thaongthiphuong6969', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Thị Phương Thảo', '0705536741', 'female', 'thaongthiphuong6969@gmail.com', 'staff', 'active' );
 
@@ -389,7 +391,8 @@ VALUES
 	('1c38dd30f9e415b3a34879be077381ce' , '8c15dfb7f4f3d4789ed0c043b1512e34' , 45 , N'phó giáo sư' , N'thạc sĩ' , 20 ),
 	('21fc9daf44e2637d7972bd248c83577d' , 'e6157a31d2c5e20dc446f4f42fc0d40f' , 50 , N'phó giáo sư' , N'thạc sĩ' , 25 ),
 	('01c1fa1b81297a2de21056f35303ad84' , '52f6743e4719de9a35e1e2e1c09d6d52' , 55 , N'giáo sư' , N'tiến sĩ' , 30 ),
-	('fe30e1ff175e10b1c538613084ab2417' , '52f6743e4719de9a35e1e2e1c09d6d52' , 46 , '' , N'tiến sĩ' , 19 );
+	('fe30e1ff175e10b1c538613084ab2417' , '52f6743e4719de9a35e1e2e1c09d6d52' , 46 , '' , N'tiến sĩ' , 19 ),
+	('0fe30e1ff175eb1c538613084ab12417' , 'bfiwafjnbeaffaiuwhfa9fhawfa56565' , 56 , N'giáo sư' , N'tiến sĩ' , 31 );
 	
 INSERT INTO TimeSlot (timeSlotID, timeSlot, day_)
 VALUES
@@ -1104,7 +1107,62 @@ FROM
     FROM TimeSlot
     WHERE day_ = 'Friday'
 ) AS subquery
+WHERE row_num <= 8
+
+
+
+
+
+UNION ALL
+SELECT doctorID, timeSlotID
+FROM
+(
+    -- Monday
+    SELECT '0fe30e1ff175eb1c538613084ab12417' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
+    FROM TimeSlot
+    WHERE day_ = 'Monday'
+) AS subquery
+WHERE row_num <= 8
+UNION ALL
+SELECT doctorID, timeSlotID
+FROM
+(
+    -- Tuesday
+    SELECT '0fe30e1ff175eb1c538613084ab12417' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
+    FROM TimeSlot
+    WHERE day_ = 'Tuesday'
+) AS subquery
+WHERE row_num <= 8
+UNION ALL
+SELECT doctorID, timeSlotID
+FROM
+(    -- Wednesday
+    SELECT '0fe30e1ff175eb1c538613084ab12417' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
+    FROM TimeSlot
+    WHERE day_ = 'Wednesday'
+) AS subquery
+WHERE row_num <= 8
+UNION ALL
+SELECT doctorID, timeSlotID
+FROM
+(
+    -- Thursday
+    SELECT '0fe30e1ff175eb1c538613084ab12417' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
+    FROM TimeSlot
+    WHERE day_ = 'Thursday'
+) AS subquery
+WHERE row_num <= 8
+UNION ALL
+SELECT doctorID, timeSlotID
+FROM
+(
+    -- Friday
+    SELECT '0fe30e1ff175eb1c538613084ab12417' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
+    FROM TimeSlot
+    WHERE day_ = 'Friday'
+) AS subquery
 WHERE row_num <= 8;
+
 INSERT INTO Medicine (medicineID,medicineName,medicinePrice, unit)
 VALUES
 	('1a27a82eb264532c271baf05c7a6e10d','Penicillin','53.01', 'pill packet'),
@@ -1179,42 +1237,45 @@ VALUES
 	('95b579fe61c622b5c50def9dccb66bdc' , '507c2afab061a1c2cf1dee7142e557be', '9eae70b054be6eba305323d8c9106cfb', 'e2283b7f6695530a79793e3fe172155c' , 'c739c1e62319f52411908f874c0698bf' , '2023-01-02' , '',  'banking account', 'complete'),
 	('86ae960dc44eba248c481d76520846c3' , '15d35bb9396992d02127345380e38d73', 'c8aa14ffb7da0912c84635aa2ee0bb62', '657be9bfb1eed80938b24e3b154863cb'  , 'a074614583162a3d58b89c13699d70a1' , '2023-01-03' , '',  'cash', 'complete'),
 	('801b58e3d0b00f7f9f9eac80058f99f0' , 'e9e0f3bcddc65940e089972ce4088e59' , 'dd0e3f50648088bfecc501f809a06ca8', 'c789ff5a8a615b3cbd55b12d431c1a51' , 'cd9bfc9d6bb22a47f6dcdc2a5c99b2fd' , '2023-01-04' , '' , 'banking account' , 'complete'),
-	('ca768c1b1876a2f286496e62666dfada' , '2e4076dd7f277dc8f29b4cdb922052c0' , '62fe46dae9470f311d52973a6eeb6a1a', '3cd774fd522ed4a7b81dc2e3ed0373bd' , '744722e0fb1eb8e7f4fc5c4682159800' , '2023-01-05' , '' , 'banking account' , 'check-in'),
+	('ca768c1b1876a2f286496e62666dfada' , '2e4076dd7f277dc8f29b4cdb922052c0' , '62fe46dae9470f311d52973a6eeb6a1a', '3cd774fd522ed4a7b81dc2e3ed0373bd' , '744722e0fb1eb8e7f4fc5c4682159800' , '2023-01-05' , '' , 'banking account' , 'complete'),
 	('0a7a30124b6b4f266459a6b69677152c' , '27009754484e5b64300b05706c954565' , '9c6189a20beb35a93df963e3b48eb9b0', '8accf3a256bcc4e7335afe49531eaac6' , '84fbf5e32cfdb21cf48721cf849b0c20' , '2023-01-06' , '' , 'banking account' , 'complete'),
 	('ebcf025d47ee19d929f6707029df09d0' , '49f34170b6590fea6bce454059764c12' , '1c38dd30f9e415b3a34879be077381ce', 'b02c69a820861a57ac38b4282399335c' , '517d8993ec9bcdb8c33fc50ea7ec5da8' , '2023-01-07' , '' , 'banking account' , 'complete'),
 	('b7e4621ca7d7273ea67ba0b40992d189' , '2e9d61c3330f9e10e3a0bc3fb8a4b4a2' , '21fc9daf44e2637d7972bd248c83577d', '5c4960d3243606ca79b7692f8a4c9957' , '291129122c3e6bbbd76a76b428f2809a' , '2023-01-08' , '' , 'cash' , 'complete'),
-	('35847b5a3a8de7e0af06281b1d889bcf' , 'e939af928268bda5f11f7bf215d452eb' , '01c1fa1b81297a2de21056f35303ad84', '71071e13d9c8cd2902737b7e39f32a5a' , '52b7bedca394c621f40a99d03a564341' , '2023-02-09' , '' , 'banking account' , 'confirm'),
+	('35847b5a3a8de7e0af06281b1d889bcf' , 'e939af928268bda5f11f7bf215d452eb' , '01c1fa1b81297a2de21056f35303ad84', '71071e13d9c8cd2902737b7e39f32a5a' , '52b7bedca394c621f40a99d03a564341' , '2023-02-09' , '' , 'banking account' , 'complete'),
 	('ca05b981160139795fbf616bfd5d491b' , '43e02d9e3ce088b73229155e462e32d9' , 'fe30e1ff175e10b1c538613084ab2417', '68e185b8d481c5652842b42ef66b3210' , 'e41d8b0c31b65cc94f5eb4bbb7b76907' , '2023-02-10' , '' , 'cash' , 'complete'),
 	('3967200752865b1bb65a63f386925d14' , '00c38b52d5cdedc2667af4a83e346a85' , 'ae114dac5897fbcfd25797bf4be08fd3', 'b02c69a820861a57ac38b4282399335c' , '507e4c66da1ccd4fcf621069065494bc' , '2023-02-11' , '' , 'banking account' , 'cancelled'),
-	('943b4c67a61164d245ea5af7f3848a37' , '1587900aee161437134c2e2479de5b64' , '9eae70b054be6eba305323d8c9106cfb', '12bc604e930e56d53915a09b61bc459a' , 'f8c17d469d7dfd4fa84eae659923536b' , '2023-03-12' , '' , 'banking account' , 'confirm'),
-	('040c93cff9c0cc5cd6d008fb02e17b69' , '277dd0cf43f2cc494be796373fd7bf2b' , 'c8aa14ffb7da0912c84635aa2ee0bb62', '5c9ba69a58918129f033a2c25e250584' , 'c739c1e62319f52411908f874c0698bf' , '2023-03-13' , '' , 'cash' , 'confirm'),
-	('3841cd8942a581d2092ff1d3739fcebc' , '08605ccab7ad051603412533c59e46c7' , 'dd0e3f50648088bfecc501f809a06ca8', '7b84cc4412f9e9a4213a9f979be42063' , 'a074614583162a3d58b89c13699d70a1' , '2023-03-14' , '' , 'banking account' , 'confirm'),
-	('4a160bb951e81bb14485ab90391d0c58' , 'acdbf948aa576959e791abe5ec2f124d' , '62fe46dae9470f311d52973a6eeb6a1a', '86fc882bb1aadc489464a8ecb5f43a30' , 'cd9bfc9d6bb22a47f6dcdc2a5c99b2fd' , '2023-03-15' , '' , 'banking account' , 'check-in'),
+	('943b4c67a61164d245ea5af7f3848a37' , '1587900aee161437134c2e2479de5b64' , '9eae70b054be6eba305323d8c9106cfb', '12bc604e930e56d53915a09b61bc459a' , 'f8c17d469d7dfd4fa84eae659923536b' , '2023-03-12' , '' , 'banking account' , 'complete'),
+	('040c93cff9c0cc5cd6d008fb02e17b69' , '277dd0cf43f2cc494be796373fd7bf2b' , 'c8aa14ffb7da0912c84635aa2ee0bb62', '5c9ba69a58918129f033a2c25e250584' , 'c739c1e62319f52411908f874c0698bf' , '2023-03-13' , '' , 'cash' , 'complete'),
+	('3841cd8942a581d2092ff1d3739fcebc' , '08605ccab7ad051603412533c59e46c7' , 'dd0e3f50648088bfecc501f809a06ca8', '7b84cc4412f9e9a4213a9f979be42063' , 'a074614583162a3d58b89c13699d70a1' , '2023-03-14' , '' , 'banking account' , 'complete'),
+	('4a160bb951e81bb14485ab90391d0c58' , 'acdbf948aa576959e791abe5ec2f124d' , '62fe46dae9470f311d52973a6eeb6a1a', '86fc882bb1aadc489464a8ecb5f43a30' , 'cd9bfc9d6bb22a47f6dcdc2a5c99b2fd' , '2023-03-15' , '' , 'banking account' , 'complete'),
 	('0bb8e03d00ecc7642c5142de8f12a335' , '4b4c133439471c8d694b5c3e47edb446' , '9c6189a20beb35a93df963e3b48eb9b0', '85688ffa8d935b9da96e2a680aaa4e34' , '744722e0fb1eb8e7f4fc5c4682159800' , '2023-04-16' , '' , 'banking account' , 'cancelled'),
-	('aeed52468a0d9880fa013c611816e897' , '0d0dd3c14756ae8316e7054b205896c9' , '1c38dd30f9e415b3a34879be077381ce', 'a54060a06aa0e97217726362a5b580d3' , '84fbf5e32cfdb21cf48721cf849b0c20' , '2023-04-17' , '' , 'cash' , 'confirm'),
-	('cde92de8a056398e6a281dba87bdffb1' , '861c51821e55ecad053b072323fac994' , '21fc9daf44e2637d7972bd248c83577d', '657be9bfb1eed80938b24e3b154863cb' , '517d8993ec9bcdb8c33fc50ea7ec5da8' , '2023-04-18' , '' , 'banking account' , 'processing'),
-	('6c3b331b0cde4d503944f2f16f979c93' , '380965fe9f1584559ea8a90b9c8d680c' , '01c1fa1b81297a2de21056f35303ad84', '0227321c75909512447393796f173788' , '291129122c3e6bbbd76a76b428f2809a' , '2023-04-19' , '' , 'cash' , 'confirm'),
-	('b6b447b56dbe005a626c4b5e3fdb97be' , '17787dd14e0fda883a36016cada64123' , 'fe30e1ff175e10b1c538613084ab2417', '4db7ce38baceaddfc93e9bdcfe0a7f57' , '52b7bedca394c621f40a99d03a564341' , '2023-04-20' , '' , 'banking account' , 'confirm'),
-	('a61de36f81c0f699a8653863ea9e3d2f' , 'd5ea83ec7f100a6803bd39e14c619299' , 'ae114dac5897fbcfd25797bf4be08fd3', 'a2855125bdc9e06b5313b3f827f07705' , 'e41d8b0c31b65cc94f5eb4bbb7b76907' , '2023-05-21' , '' , 'cash' , 'confirm'),
-	('47b601885ddc891de11eb62451a97b43' , '25c448b0241244364f7653f08cb8aff6' , '9eae70b054be6eba305323d8c9106cfb', '1468c48caf3c8acd45c13732fa1c7797' , '507e4c66da1ccd4fcf621069065494bc' , '2023-05-22' , '' , 'banking account' , 'check-in'),
-	('2f7294ec43136a43ca696ad6f06e1635' , 'bc0b9fe1f4df72fa1289f4437e6a3953' , 'c8aa14ffb7da0912c84635aa2ee0bb62', 'c397d73df0a2ad5dcb930bd8d26cc2f6' , 'f8c17d469d7dfd4fa84eae659923536b' , '2023-05-23' , '' , 'cash' , 'check-in'),
-	('090f345a844fedfb9ca86ff69b59d969' , '43aaf0240284fd15416b429bed0ef321' , 'dd0e3f50648088bfecc501f809a06ca8', '86fc882bb1aadc489464a8ecb5f43a30' , 'c739c1e62319f52411908f874c0698bf' , '2023-05-24' , '' , 'cash' , 'check-in'),
-	('d2601ee48263e69982e4dbd809c0358a' , 'ca8406790940dec227193cc7dca16212' , '62fe46dae9470f311d52973a6eeb6a1a', '516ab8138f50bbbb0be18ceed38b6ad3' , 'a074614583162a3d58b89c13699d70a1' , '2023-05-25' , '' , 'banking account' , 'confirm'),
-	('e221bebf131b7773da0045982e018fba' , '752ee3ce65129a7bd54292accb28983e' , '9c6189a20beb35a93df963e3b48eb9b0', 'a54060a06aa0e97217726362a5b580d3' , 'cd9bfc9d6bb22a47f6dcdc2a5c99b2fd' , '2023-06-26' , '' , 'cash' , 'confirm'),
-	('85c10fd22fe836139fd76fbaee831673' , 'c91f8b119029caa4ec2046bcc5c69bb5' , '1c38dd30f9e415b3a34879be077381ce', '657be9bfb1eed80938b24e3b154863cb' , '744722e0fb1eb8e7f4fc5c4682159800' , '2023-06-27' , '' , 'banking account' , 'confirm'),
+	('aeed52468a0d9880fa013c611816e897' , '0d0dd3c14756ae8316e7054b205896c9' , '1c38dd30f9e415b3a34879be077381ce', 'a54060a06aa0e97217726362a5b580d3' , '84fbf5e32cfdb21cf48721cf849b0c20' , '2023-04-17' , '' , 'cash' , 'complete'),
+	('cde92de8a056398e6a281dba87bdffb1' , '861c51821e55ecad053b072323fac994' , '21fc9daf44e2637d7972bd248c83577d', '657be9bfb1eed80938b24e3b154863cb' , '517d8993ec9bcdb8c33fc50ea7ec5da8' , '2023-04-18' , '' , 'banking account' , 'complete'),
+	('6c3b331b0cde4d503944f2f16f979c93' , '380965fe9f1584559ea8a90b9c8d680c' , '01c1fa1b81297a2de21056f35303ad84', '0227321c75909512447393796f173788' , '291129122c3e6bbbd76a76b428f2809a' , '2023-04-19' , '' , 'cash' , 'complete'),
+	('b6b447b56dbe005a626c4b5e3fdb97be' , '17787dd14e0fda883a36016cada64123' , 'fe30e1ff175e10b1c538613084ab2417', '4db7ce38baceaddfc93e9bdcfe0a7f57' , '52b7bedca394c621f40a99d03a564341' , '2023-04-20' , '' , 'banking account' , 'complete'),
+	('a61de36f81c0f699a8653863ea9e3d2f' , 'd5ea83ec7f100a6803bd39e14c619299' , 'ae114dac5897fbcfd25797bf4be08fd3', 'a2855125bdc9e06b5313b3f827f07705' , 'e41d8b0c31b65cc94f5eb4bbb7b76907' , '2023-05-21' , '' , 'cash' , 'complete'),
+	('47b601885ddc891de11eb62451a97b43' , '25c448b0241244364f7653f08cb8aff6' , '9eae70b054be6eba305323d8c9106cfb', '1468c48caf3c8acd45c13732fa1c7797' , '507e4c66da1ccd4fcf621069065494bc' , '2023-05-22' , '' , 'banking account' , 'complete'),
+	('2f7294ec43136a43ca696ad6f06e1635' , 'bc0b9fe1f4df72fa1289f4437e6a3953' , 'c8aa14ffb7da0912c84635aa2ee0bb62', 'c397d73df0a2ad5dcb930bd8d26cc2f6' , 'f8c17d469d7dfd4fa84eae659923536b' , '2023-05-23' , '' , 'cash' , 'complete'),
+	('090f345a844fedfb9ca86ff69b59d969' , '43aaf0240284fd15416b429bed0ef321' , 'dd0e3f50648088bfecc501f809a06ca8', '86fc882bb1aadc489464a8ecb5f43a30' , 'c739c1e62319f52411908f874c0698bf' , '2023-05-24' , '' , 'cash' , 'complete'),
+	('d2601ee48263e69982e4dbd809c0358a' , 'ca8406790940dec227193cc7dca16212' , '62fe46dae9470f311d52973a6eeb6a1a', '516ab8138f50bbbb0be18ceed38b6ad3' , 'a074614583162a3d58b89c13699d70a1' , '2023-05-25' , '' , 'banking account' , 'complete'),
+	('e221bebf131b7773da0045982e018fba' , '752ee3ce65129a7bd54292accb28983e' , '9c6189a20beb35a93df963e3b48eb9b0', 'a54060a06aa0e97217726362a5b580d3' , 'cd9bfc9d6bb22a47f6dcdc2a5c99b2fd' , '2023-06-26' , '' , 'cash' , 'complete'),
+	('85c10fd22fe836139fd76fbaee831673' , 'c91f8b119029caa4ec2046bcc5c69bb5' , '1c38dd30f9e415b3a34879be077381ce', '657be9bfb1eed80938b24e3b154863cb' , '744722e0fb1eb8e7f4fc5c4682159800' , '2023-06-27' , '' , 'banking account' , 'complete'),
 	('7caa694dda6e1cf8c0993cf301c84bba' , '16c5bd4d79c66e16042bee6bbf128c6f' , '21fc9daf44e2637d7972bd248c83577d', '0227321c75909512447393796f173788' , '84fbf5e32cfdb21cf48721cf849b0c20' , '2023-06-28' , '' , 'banking account' , 'cancelled'),
-	('b7ad6a62013acd21497265b6f7ff74eb' , '56a7207dd933fe09f539083edb711548' , '01c1fa1b81297a2de21056f35303ad84', '9eea7e14fbd37b455d69e7114399aa0a' , '517d8993ec9bcdb8c33fc50ea7ec5da8' , '2023-06-29' , '' , 'banking account' , 'confirm'),
-	('3427f117121dd0789b94a37ef63b64dc' , '6a045cdabdccb76073091f263cbf3e52' , 'fe30e1ff175e10b1c538613084ab2417', '8e397cbb235075a9cb231b2c3b316011' , '291129122c3e6bbbd76a76b428f2809a' , '2023-06-30' , '' , 'banking account' , 'confirm'),
-	('81c0f699a861de36fea9e653863a3d2f' , '25c448b0241244364f7653f08cb8aff6' , '62fe46dae9470f311d52973a6eeb6a1a', '0d5408947d23dd60557de6b616352275' , '507e4c66da1ccd4fcf621069065494bc' , '2023-08-01' , '' , 'cash' , 'processing'),
-	('985ddc8a97245147b60181de11eb6b43' , 'd5ea83ec7f100a6803bd39e14c619299' , '1c38dd30f9e415b3a34879be077381ce', '9436e53cce52225010e09858fc287123' , '507e4c66da1ccd4fcf621069065494bc' , '2023-08-02' , '' , 'banking account' , 'processing'),
-	('ec436f0ca64396ad2f6e16136a437295' , 'ca8406790940dec227193cc7dca16212' , 'fe30e1ff175e10b1c538613084ab2417', '4db7ce38baceaddfc93e9bdcfe0a7f57' , '52b7bedca394c621f40a99d03a564341' , '2023-08-03' , '' , 'cash' , 'processing'),
-	('edf345a8f69ca86f0fb90944fb59d969' , 'c91f8b119029caa4ec2046bcc5c69bb5' , 'ae114dac5897fbcfd25797bf4be08fd3', '7be65563411c5ce7cd508f04c8a54ecb' , '517d8993ec9bcdb8c33fc50ea7ec5da8' , '2023-08-04' , '' , 'cash' , 'processing'),
-	('e4c03e6998de4826309bd8d2601e258a' , 'bc0b9fe1f4df72fa1289f4437e6a3953' , '62fe46dae9470f311d52973a6eeb6a1a', 'b02c69a820861a57ac38b4282399335c' , 'c739c1e62319f52411908f874c0698bf' , '2023-08-05' , '' , 'banking account' , 'processing'),
+	('b7ad6a62013acd21497265b6f7ff74eb' , '56a7207dd933fe09f539083edb711548' , '01c1fa1b81297a2de21056f35303ad84', '9eea7e14fbd37b455d69e7114399aa0a' , '517d8993ec9bcdb8c33fc50ea7ec5da8' , '2023-06-29' , '' , 'banking account' , 'complete'),
+	('3427f117121dd0789b94a37ef63b64dc' , '6a045cdabdccb76073091f263cbf3e52' , 'fe30e1ff175e10b1c538613084ab2417', '8e397cbb235075a9cb231b2c3b316011' , '291129122c3e6bbbd76a76b428f2809a' , '2023-06-30' , '' , 'banking account' , 'complete'),
+	('b7ad6137ff75b214972a6acd6206f4eb' , '16c5bd4d79c66e16042bee6bbf128c6f' , '0fe30e1ff175eb1c538613084ab12417', 'b82fece225c99d7b1faa427866745620' , 'e41d8b0c31b65cc94f5eb4bbb7b76907' , '2023-07-02' , '' , 'banking account' , 'complete'),
+	('f1174d213346307894a92d177efbb6dc' , '752ee3ce65129a7bd54292accb28983e' , '0fe30e1ff175eb1c538613084ab12417', '9eea7e14fbd37b455d69e7114399aa0a' , 'e41d8b0c31b65cc94f5eb4bbb7b76907' , '2023-07-03' , '' , 'banking account' , 'complete'),
+	('81c0f699a861de36fea9e653863a3d2f' , '25c448b0241244364f7653f08cb8aff6' , '62fe46dae9470f311d52973a6eeb6a1a', '0d5408947d23dd60557de6b616352275' , '507e4c66da1ccd4fcf621069065494bc' , '2023-08-01' , '' , 'cash' , 'check-in'),
+	('985ddc8a97245147b60181de11eb6b43' , 'd5ea83ec7f100a6803bd39e14c619299' , '1c38dd30f9e415b3a34879be077381ce', '9436e53cce52225010e09858fc287123' , '507e4c66da1ccd4fcf621069065494bc' , '2023-08-02' , '' , 'banking account' , 'check-in'),
+	('ec436f0ca64396ad2f6e16136a437295' , 'ca8406790940dec227193cc7dca16212' , 'fe30e1ff175e10b1c538613084ab2417', '4db7ce38baceaddfc93e9bdcfe0a7f57' , '52b7bedca394c621f40a99d03a564341' , '2023-08-03' , '' , 'cash' , 'confirm'),
+	('edf345a8f69ca86f0fb90944fb59d969' , 'c91f8b119029caa4ec2046bcc5c69bb5' , 'ae114dac5897fbcfd25797bf4be08fd3', '7be65563411c5ce7cd508f04c8a54ecb' , '517d8993ec9bcdb8c33fc50ea7ec5da8' , '2023-08-04' , '' , 'cash' , 'confirm'),
+	('e4c03e6998de4826309bd8d2601e258a' , 'bc0b9fe1f4df72fa1289f4437e6a3953' , '62fe46dae9470f311d52973a6eeb6a1a', 'b02c69a820861a57ac38b4282399335c' , 'c739c1e62319f52411908f874c0698bf' , '2023-08-05' , '' , 'banking account' , 'confirm'),
 	('13e25982e018f21bda01bebf077734ba' , '6a045cdabdccb76073091f263cbf3e52' , '9eae70b054be6eba305323d8c9106cfb', '5a71a95534bbd12150558baa83f945de' , 'cd9bfc9d6bb22a47f6dcdc2a5c99b2fd' , '2023-08-06' , '' , 'cash' , 'processing'),
 	('d76836859ffbaee831c10fd22fe13673' , '43aaf0240284fd15416b429bed0ef321' , '1c38dd30f9e415b3a34879be077381ce', '4e4b39473c2dfc3e918ee79b1c28fc6f' , '744722e0fb1eb8e7f4fc5c4682159800' , '2023-08-07' , '' , 'banking account' , 'processing'),
 	('e199d87ca6943ccf8cdac4bbaa6f3010' , '56a7207dd933fe09f539083edb711548' , '62fe46dae9470f311d52973a6eeb6a1a', '8e397cbb235075a9cb231b2c3b316011' , '84fbf5e32cfdb21cf48721cf849b0c20' , '2023-09-01' , '' , 'banking account' , 'processing'),
 	('13acd6206f7ff75bb7ad6214972a64eb' , '16c5bd4d79c66e16042bee6bbf128c6f' , '01c1fa1b81297a2de21056f35303ad84', '92d969030097f06af642a4577606afe0' , '517d8993ec9bcdb8c33fc50ea7ec5da8' , '2023-09-02' , '' , 'banking account' , 'processing'),
 	('3346307894a7f1171217efbb64d92ddc' , '752ee3ce65129a7bd54292accb28983e' , 'fe30e1ff175e10b1c538613084ab2417', 'a2855125bdc9e06b5313b3f827f07705' , '291129122c3e6bbbd76a76b428f2809a' , '2023-09-03' , '' , 'banking account' , 'processing');
+
 
 INSERT INTO MedicalRecord (medicalRecordID, appointmentID, recordTime, diagnosis, treatmentDays, doctorNotes)
 VALUES
@@ -1228,12 +1289,10 @@ VALUES
 	('21def0e373e1e8d57d1ab5f339726167' , 'b7e4621ca7d7273ea67ba0b40992d189' , '2023-01-09' , N'dị vật trong dạ dày', 1, ''),
 	('ff398a2c8cdd28c7c9e31446c0e2a629' , '35847b5a3a8de7e0af06281b1d889bcf' , '2023-02-10' , N'chăm sóc', 0 , '' ),
 	('753906196d6e7bdd8f8d874efaacfa8d' , 'ca05b981160139795fbf616bfd5d491b' , '2023-02-11' , N'xác định giới tính', 3, '' ),
-	('9a590d8f7d706608bc3081a042d2e0dc' , '3967200752865b1bb65a63f386925d14' , '2023-02-12' , N'chích vaccine', 3, '' ),
 	('4aa48bfce29088db4424a1b921e2be55' , '943b4c67a61164d245ea5af7f3848a37' , '2023-03-13' , N'Bệnh cảm cúm', 0 , '' ),
 	('154aa8864b0445239a1c8cf636ce8164' , '040c93cff9c0cc5cd6d008fb02e17b69' , '2023-03-14' , N'Bệnh cầu trùng', 2, '' ),
 	('b72e56f3705781fdfaa652dabbefd8b4' , '3841cd8942a581d2092ff1d3739fcebc' , '2023-03-15' , N'chấn thương phần đầu', 3, '' ),
 	('96f71fd09596eeda17b234c2a87b783f' , '4a160bb951e81bb14485ab90391d0c58' , '2023-03-16' , N'thiếu vitamin D', 3, '' ),
-	('c26b9ff4973daa21f4ec2fa61207639f' , '0bb8e03d00ecc7642c5142de8f12a335' , '2023-04-17' , N'nội trú', 3, '' ),
 	('de9aa8254527b52b336a60f9373740ea' , 'aeed52468a0d9880fa013c611816e897' , '2023-04-18' , N'mỏ bị gãy', 2, '' ),
 	('737cebac25159c2b8e46f50881a7abcb' , 'cde92de8a056398e6a281dba87bdffb1' , '2023-04-19' , N'gắn chip', 3, '' ),
 	('1450707c9e9a8ea70f8d341e19e5a9bb' , '6c3b331b0cde4d503944f2f16f979c93' , '2023-04-20' , N'dị vật ở ngực', 2, ''),
@@ -1245,8 +1304,9 @@ VALUES
 	('8c6abf5a30122f683a29871b67190785' , 'd2601ee48263e69982e4dbd809c0358a' , '2023-05-26' , N'khối u ở chân', 5, '' ),
 	('65a4f559051183b9a50cda6876422baa' , 'e221bebf131b7773da0045982e018fba' , '2023-06-27' , N'thiếu vitamin E', 3, '' ),
 	('5fe272ab8622289deb002353518c8941' , '85c10fd22fe836139fd76fbaee831673' , '2023-06-28' , N'nội trú', 1, '' ),
-	('3db65ac8adaadf9ff8fc0d6ef26111a6' , '7caa694dda6e1cf8c0993cf301c84bba' , '2023-06-29' , N'bị chấn thương chân trái', 3 , '' ),
-	('ffd4d1092d5e6de12dc9d4fe82c4029e' , 'b7ad6a62013acd21497265b6f7ff74eb' , '2023-06-30' , N'gắn chip', 2 , '' ),
+	('5e6c49d4fffd4d10de12dc2de829029e' , 'b7ad6a62013acd21497265b6f7ff74eb' , '2023-07-06' , N'xác định giới tính', 2 , '' ),
+	('6b0653af50c61fe6c3ab725522421692' , 'b7ad6137ff75b214972a6acd6206f4eb' , '2023-07-07' , N'xác định giới tính', 2, '' ),
+	('ffd4d1092d5e6de12dc9d4fe82c4029e' , 'f1174d213346307894a92d177efbb6dc' , '2023-06-30' , N'gắn chip', 2 , '' ),
 	('52f50c616b0653a3fab725e6c2421692' , '3427f117121dd0789b94a37ef63b64dc' , '2023-07-01' , N'không phát hiện dị vật', 2, '' );
 
 INSERT INTO RecordServices (medicalRecordID, serviceID)
@@ -1261,12 +1321,10 @@ VALUES
 	( '21def0e373e1e8d57d1ab5f339726167' , '291129122c3e6bbbd76a76b428f2809a' ),
 	( 'ff398a2c8cdd28c7c9e31446c0e2a629' , '52b7bedca394c621f40a99d03a564341' ),
 	( '753906196d6e7bdd8f8d874efaacfa8d' , 'e41d8b0c31b65cc94f5eb4bbb7b76907' ),
-	( '9a590d8f7d706608bc3081a042d2e0dc' , '507e4c66da1ccd4fcf621069065494bc' ),
 	( '4aa48bfce29088db4424a1b921e2be55' , 'f8c17d469d7dfd4fa84eae659923536b' ),
 	( '154aa8864b0445239a1c8cf636ce8164' , 'c739c1e62319f52411908f874c0698bf' ),
 	( 'b72e56f3705781fdfaa652dabbefd8b4' , 'a074614583162a3d58b89c13699d70a1' ),
 	( '96f71fd09596eeda17b234c2a87b783f' , 'cd9bfc9d6bb22a47f6dcdc2a5c99b2fd' ),
-	( 'c26b9ff4973daa21f4ec2fa61207639f' , '744722e0fb1eb8e7f4fc5c4682159800' ),
 	( 'de9aa8254527b52b336a60f9373740ea' , '84fbf5e32cfdb21cf48721cf849b0c20' ),
 	( '737cebac25159c2b8e46f50881a7abcb' , '517d8993ec9bcdb8c33fc50ea7ec5da8' ),
 	( '1450707c9e9a8ea70f8d341e19e5a9bb' , '291129122c3e6bbbd76a76b428f2809a' ),
@@ -1278,7 +1336,8 @@ VALUES
 	( '8c6abf5a30122f683a29871b67190785' , 'a074614583162a3d58b89c13699d70a1' ),
 	( '65a4f559051183b9a50cda6876422baa' , 'cd9bfc9d6bb22a47f6dcdc2a5c99b2fd' ),
 	( '5fe272ab8622289deb002353518c8941' , '744722e0fb1eb8e7f4fc5c4682159800' ),
-	( '3db65ac8adaadf9ff8fc0d6ef26111a6' , '84fbf5e32cfdb21cf48721cf849b0c20' ),
+	( '5e6c49d4fffd4d10de12dc2de829029e' , 'e41d8b0c31b65cc94f5eb4bbb7b76907' ),
+	( '6b0653af50c61fe6c3ab725522421692' , 'e41d8b0c31b65cc94f5eb4bbb7b76907' ),
 	( 'ffd4d1092d5e6de12dc9d4fe82c4029e' , '517d8993ec9bcdb8c33fc50ea7ec5da8' ),
 	( '52f50c616b0653a3fab725e6c2421692' , '291129122c3e6bbbd76a76b428f2809a' );
 
@@ -1324,10 +1383,7 @@ VALUES
 ('8c6abf5a30122f683a29871b67190785', '9faeec1795e05223ab80bf4d06971616', 8 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
 ('8c6abf5a30122f683a29871b67190785', '9e9af1d637a369cdaf6bac028b8bd813', 8 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
 ('65a4f559051183b9a50cda6876422baa', '2b1937a02cb1cc8255ecfeb8dc38c5d2', 6 , N'sáng: 1, trưa: 0, chiều: 1, tối: 0'),
-('65a4f559051183b9a50cda6876422baa', '5f7fb0d98491f5efdf52623a7d4839aa', 8 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('3db65ac8adaadf9ff8fc0d6ef26111a6', 'd0141bd1067e2f534fd908b54a72a1ff', 4 , N'sáng: 1, trưa: 0, chiều: 0, tối: 1'),
-('3db65ac8adaadf9ff8fc0d6ef26111a6', '9dc94408c0e9b062a5cdd03830011d72', 6 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
-('3db65ac8adaadf9ff8fc0d6ef26111a6', '7c7f0e401b7926cb956e1e798e7d6664', 8 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0');
+('65a4f559051183b9a50cda6876422baa', '5f7fb0d98491f5efdf52623a7d4839aa', 8 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0');
 
 INSERT INTO Feedback (feedbackID, appointmentID, feedbackContent, title, feedbackTime, rating)	
 VALUES
@@ -1341,12 +1397,12 @@ VALUES
 	( '6b608c52effdd5d149613fd5ebf4c55c' , 'b7e4621ca7d7273ea67ba0b40992d189' , N'Phòng khám này cung cấp các dịch vụ y tế tạm được, chỉ phục vụ cho các nhu cầu y tế, không có quá nhiều dịch vụ.' , N'Dịch vụ Y tế tạm được' , GETDATE(), 3 ),
 	( 'e4da29dfa2d7f2e893b7068eba2f2665' , '35847b5a3a8de7e0af06281b1d889bcf' , N'Phòng khám vượt trội trong giao tiếp. Các bác sĩ và nhân viên chăm chú lắng nghe những lo lắng của tôi và truyền đạt rõ ràng, đảm bảo rằng tôi hiểu rõ quá trình điều trị và bất kỳ bước tiếp theo cần thiết nào.' , N'Giao tiếp xuất sắc' , GETDATE(), 5 ),
 	( 'c208fe80be67e0ac443894edf9048959' , 'ca05b981160139795fbf616bfd5d491b' , N'Phòng khám cung cấp dịch vụ chăm sóc cá nhân phù hợp với từng nhu cầu của bệnh nhân. Họ đã dành thời gian để hiểu hoàn cảnh đặc biệt của chim tôi, đảm bảo một kế hoạch điều trị cá nhân và hiệu quả.' , N'Chăm sóc cá nhân' , GETDATE(), 5 ),
-	( 'd968f7543b03fafc1e2c306edbe73cd5' , '3967200752865b1bb65a63f386925d14' , N'Tôi đánh giá cao cách tiếp cận toàn diện của phòng khám đối với sức khỏe. Họ nhấn mạnh các biện pháp phòng ngừa, khuyến nghị về lối sống và các liệu pháp bổ sung bên cạnh các phương pháp điều trị y tế truyền thống.' , N'Phương pháp tiếp cận toàn diện đối với sức khỏe' , GETDATE(), 5 ),
+	( 'd968f7543b03fafc1e2c306edbe73cd5' , 'b7ad6a62013acd21497265b6f7ff74eb' , N'Tôi đánh giá cao cách tiếp cận toàn diện của phòng khám đối với sức khỏe. Họ nhấn mạnh các biện pháp phòng ngừa, khuyến nghị về lối sống và các liệu pháp bổ sung bên cạnh các phương pháp điều trị y tế truyền thống.' , N'Phương pháp tiếp cận toàn diện đối với sức khỏe' , GETDATE(), 5 ),
 	( '95e8fffd6181170d848151e13d25c397' , '943b4c67a61164d245ea5af7f3848a37' , N'Phòng khám có một bầu không khí tích cực và chào đón khiến tôi cảm thấy thoải mái ngay lập tức. Những nụ cười thân thiện và môi trường hỗ trợ đã góp phần tạo nên trải nghiệm không căng thẳng.' , N'bầu không khí tích cực' , GETDATE(), 5 ),
 	( 'bfbc8861190e55a089b0c4afc1c41a07' , '040c93cff9c0cc5cd6d008fb02e17b69' , N'Phòng khám duy trì thực hành giá cả minh bạch. Họ cung cấp giải thích chi tiết về các chi phí liên quan, đảm bảo không có bất ngờ hoặc phí ẩn.' , 'Định giá minh bạch' , GETDATE(), 5 ),
 	( '4dcb301699e281d9eda42ee915f8c91d' , '3841cd8942a581d2092ff1d3739fcebc' , N'Các quy trình theo dõi hiệu quả của phòng khám đã gây ấn tượng với tôi. Họ nhanh chóng lên lịch cho bất kỳ cuộc hẹn tiếp theo cần thiết nào và đảm bảo sự chăm sóc liên tục.' , N'Quy trình theo dõi hiệu quả' , GETDATE(), 5 ),
 	( '3f8c2d5acfcad832c564afe05fdc4dd2' , '4a160bb951e81bb14485ab90391d0c58' , N'Phòng khám này tích hợp công nghệ hiện đại vào thực hành của họ. Từ hồ sơ y tế điện tử đến các công cụ chẩn đoán tiên tiến, cam kết đổi mới của họ là điều hiển nhiên.' , N'Tích Hợp Công Nghệ Hiện Đại' , GETDATE(), 5 ),
-	( '1c693b7b7f4f3967d56242710d4a6925' , '0bb8e03d00ecc7642c5142de8f12a335' , N'Các nhân viên điều dưỡng tại phòng khám này được đào tạo bài bản và chu đáo. Họ đã cung cấp dịch vụ chăm sóc tuyệt vời và luôn sẵn sàng giải quyết bất kỳ mối lo ngại nào.' , N'Nhân viên điều dưỡng được đào tạo bài bản' , GETDATE(), 4 ),
+	( '1c693b7b7f4f3967d56242710d4a6925' , 'b7ad6137ff75b214972a6acd6206f4eb' , N'Các nhân viên điều dưỡng tại phòng khám này được đào tạo bài bản và chu đáo. Họ đã cung cấp dịch vụ chăm sóc tuyệt vời và luôn sẵn sàng giải quyết bất kỳ mối lo ngại nào.' , N'Nhân viên điều dưỡng được đào tạo bài bản' , GETDATE(), 4 ),
 	( '02025191b401a33ee5d5dbf672b0d9cd' , 'aeed52468a0d9880fa013c611816e897' , N'Phòng khám đặt trọng tâm mạnh mẽ vào lời khuyên dành cho chim. Họ cung cấp cho tôi những thông tin có giá trị về tình trạng của chim, giúp tôi đưa ra những quyết định sáng suốt về sức khỏe của chim.' , N'Chú trọng vào lời khuyên chăm sóc chim' , GETDATE(), 5),
 	( 'f31300a92d53523f7c9e63f082429559' , 'cde92de8a056398e6a281dba87bdffb1' , N'Vị trí thuận tiện của phòng khám làm cho nó dễ dàng tiếp cận. Vị trí gần với phương tiện giao thông công cộng và nhiều lựa chọn đỗ xe là một sự thuận tiện tuyệt vời.' , N'Vị trí thuận tiện' , GETDATE(), 5 ),
 	( '021c8752a33aa45ffaabbc24b9718c65' , '6c3b331b0cde4d503944f2f16f979c93' , N'Phòng khám nuôi dưỡng một môi trường tôn trọng và không phán xét. Các nhân viên đối xử với mọi người một cách đàng hoàng và tôn trọng, tạo ra một không gian an toàn cho chim.' , N'Môi trường tôn trọng và không phán xét' , GETDATE(), 4.5 ),
@@ -1358,8 +1414,7 @@ VALUES
 	( '288269426198f8724d0da8a362f7cc2d' , 'd2601ee48263e69982e4dbd809c0358a' , N'Phòng khám vượt trội trong quản lý đau. Họ cung cấp các phương pháp điều trị và trị liệu hiệu quả làm giảm đáng kể sự khó chịu của chim.' , 'Quản lý cơn đau hiệu quả' , GETDATE(), 5 ),
 	( '6d8e4dfa0f9a9938e767039bba8c43b4' , 'e221bebf131b7773da0045982e018fba' , N'Khu vực chờ của phòng khám được chào đón và thoải mái. Bầu không khí dễ chịu và các tiện nghi chu đáo đã giúp tạo ra một bầu không khí thoải mái.' , N'Khu vực chờ thoải mái' , GETDATE(), 5 ),
 	( 'af5013fa896bf00600b23c7a8b4995d4' , '85c10fd22fe836139fd76fbaee831673' , N'Tôi rất ấn tượng bởi hiệu quả của phòng khám trong việc cung cấp kết quả xét nghiệm. Họ cung cấp thông tin cập nhật nhanh chóng, đảm bảo các quyết định kịp thời liên quan đến điều trị tiếp theo, nếu cần.' , N'Kết quả kiểm tra nhanh chóng' , GETDATE(), 5 ),
-	( '79fbd660392170136d71bf85a359acd2' , '7caa694dda6e1cf8c0993cf301c84bba' , N'Phòng khám hợp tác với các chuyên gia trong các lĩnh vực y tế khác nhau, đảm bảo chim được chăm sóc toàn diện.' , N'Hợp tác với Chuyên gia' , GETDATE(), 5 ),
-	( '4b9e4136b9380ce6264eba99e7cbecaa' , 'b7ad6a62013acd21497265b6f7ff74eb' , N'Dịch vụ chăm sóc hậu phẫu của phòng khám thật đặc biệt. Các nhân viên cung cấp các hướng dẫn rõ ràng về chăm sóc sau điều trị và sẵn sàng giải đáp mọi thắc mắc hoặc lo lắng.' , N'Chăm sóc hỗ trợ sau thủ thuật' , GETDATE(), 4.5 ),
+	( '4b9e4136b9380ce6264eba99e7cbecaa' , 'f1174d213346307894a92d177efbb6dc' , N'Dịch vụ chăm sóc hậu phẫu của phòng khám thật đặc biệt. Các nhân viên cung cấp các hướng dẫn rõ ràng về chăm sóc sau điều trị và sẵn sàng giải đáp mọi thắc mắc hoặc lo lắng.' , N'Chăm sóc hỗ trợ sau thủ thuật' , GETDATE(), 4.5 ),
 	( 'bc049c5b9cc23a7252cd02aaef7d6571' , '3427f117121dd0789b94a37ef63b64dc' , N'Phòng khám này thể hiện cam kết cải tiến liên tục. Họ tích cực tìm kiếm phản hồi từ khách hàng để nâng cao dịch vụ của họ và trải nghiệm tổng thể của khách hàng và chim.' , N'Cam kết cải tiến liên tục' , GETDATE(), 4.5);
 
 INSERT INTO Blog (blogID, title, uploadDatetime, category, blogContent)
@@ -1857,5 +1912,8 @@ Bạn cứ tiếp tục cho đến khi chim bổi đã được thuần, thuần
 Với cách nuôi chào mào bổi thành mồi mà chúng tôi đề cập đến trong bài viết trên hi vọng sẽ giúp ích được cho anh chị em có thể thuần hóa được một chú bổi với tỷ lệ thành công cao nhất.
 
 ');
+
+
+
 
 

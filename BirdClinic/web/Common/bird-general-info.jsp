@@ -17,7 +17,7 @@
                         <div class="widget-profile pro-widget-content">
                                     <div class="profile-info-widget">
                                         <a href="#" class="booking-doc-img">
-                                            <img src="<c:url value='../assets/images/bird/${appointment.bird.image.imageURLName}'/>" alt="User Image">
+                                            <img src="<c:url value='/assets/images/bird/${appointment.bird.image.imageURLName}'/>" alt="User Image">
                                         </a>
                                         <div class="profile-det-info">
                                             <h3>${appointment.bird.birdFullname}</h3>
