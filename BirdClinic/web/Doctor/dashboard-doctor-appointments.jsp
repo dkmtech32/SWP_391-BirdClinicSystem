@@ -48,7 +48,7 @@
                                                         <td>
                                                             <h2 class="table-avatar">
                                                                 <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
-                                                                    <img class="avatar-img rounded-circle" src="../assets/images/client/${appointment.bird.customer.image.imageURLName}" alt="User Image" />
+                                                                    <img class="avatar-img rounded-circle" src="<c:url value="/assets/images/client/${appointment.bird.customer.image.imageURLName}"/>" alt="User Image" />
                                                                 </a>
                                                                 <a href="doctor-profile.jsp">${appointment.bird.customer.fullName} </a> 
                                                             </h2>
@@ -57,7 +57,7 @@
                                                         <td>
                                                             <h2 class="table-avatar">
                                                                 <a href="<c:url value="/View/Bird?birdID=${appointment.bird.birdID}"/>" class="avatar avatar-sm mr-2"
-                                                                   ><img class="avatar-img rounded-circle" src="../assets/images/bird/${appointment.bird.image.imageURLName}" alt="User Image"
+                                                                   ><img class="avatar-img rounded-circle" src="<c:url value="/assets/images/bird/${appointment.bird.image.imageURLName}"/>" alt="User Image"
                                                                       /></a>
                                                                 <a href="<c:url value="/View/Bird?birdID=${appointment.bird.birdID}"/>">${appointment.bird.birdFullname}</a>
                                                             </h2>

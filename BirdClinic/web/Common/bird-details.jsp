@@ -103,9 +103,9 @@
                                                             <thead>
                                                                 <tr>
                                                                     <th class="text-center">Appointment Date</th>
-                                                                  
+
                                                                     <th class="text-center">Service</th>
-                                                                  
+
                                                                     <th class="text-center">Doctor</th>
                                                                     <th class="text-center">Action</th>
                                                                 </tr>
@@ -115,11 +115,11 @@
                                                                     <tr> <!-- làm vòng lặp xổ tất cả danh sách medical record của con chim này -->
 
                                                                         <td class="text-center">${app.appTime}</td>
-                                                                      
+
                                                                         <td class="text-center">${app.service_.serviceName}</td>
-                                                                       
+
                                                                         <td class="text-center">${app.doctor.fullName}</td>
-                                                                       
+
                                                                         <td class="text-center">
                                                                             <div class="table-action">
                                                                                 <a href="<c:url value="/View/Appointment?appointmentID=${app.appointmentID}"/>" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
@@ -163,11 +163,12 @@
                                                             <thead>
                                                                 <tr>
                                                                     <th class="text-center">Diagnosis</th>
-                                                                    
+
                                                                     <th class="text-center">Treatment days</th>
-                                                                   
+
                                                                     <th class="text-center">Doctor's note</th>
-                                                                   
+                                                                    <th class="text-center">Date</th>
+
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -175,16 +176,12 @@
                                                                     <tr> <!-- làm vòng lặp xổ tất cả danh sách medical record của con chim này -->
 
                                                                         <td class="text-center">${medRec.diagnosis}</td>
-                                                                   
+
                                                                         <td class="text-center">${medRec.treatmentDays}</td>
-                                                                     
+
                                                                         <td class="text-center">${medRec.doctorNotes}</td>
-                                                                   
-                                                                        <td class="text-right">
-                                                                            <div class="table-action">
-                                                                                
-                                                                            </div>
-                                                                        </td>
+
+                                                                        <td class="text-center">${medRec.recordTime.toString().split(" ")[0]}</td>
                                                                     </tr>
                                                                 </c:forEach>
 
