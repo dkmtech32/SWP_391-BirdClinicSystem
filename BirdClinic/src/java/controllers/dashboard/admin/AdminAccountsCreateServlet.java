@@ -33,12 +33,12 @@ public class AdminAccountsCreateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String role = request.getParameter("userRole");
-        String url = "/Admin/add-staff.jsp";
-        if (role.equals("doctor")) {
-            url = "/Admin/add-doctor.jsp";
-        }
-        request.getRequestDispatcher(url).forward(request, response);
+//        String role = request.getParameter("userRole");
+//        String url = "/Admin/add-staff.jsp";
+//        if (role.equals("doctor")) {
+//            url = "/Admin/add-doctor.jsp";
+//        }
+//        request.getRequestDispatcher("/Admin/add-doctor.jsp").forward(request, response);
     }
 
     /**

@@ -48,7 +48,6 @@ public class AdminAccountsServlet extends HttpServlet {
         } catch (AccountDoesNotExistException ex) {
             ex.printStackTrace();
         } finally {
-            request.setAttribute("url", url);
             request.getRequestDispatcher(url).forward(request, response);
         }
     }
