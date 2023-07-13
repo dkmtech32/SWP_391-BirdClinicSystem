@@ -19,7 +19,7 @@
             <div id="header-carousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="w-100" src="../assets/img/bposter1.jpg" alt="Image" />
+                        <img class="w-100" src="<c:url value="/assets/img/bposter1.jpg"/>" alt="Image" />
                         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 900px">
                                 <h3 class="text-white mb-3 d-none d-sm-block">Best Bird Services</h3>
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="w-100" src="../assets/img/bposter2.jpg" alt="Image" />
+                        <img class="w-100" src="<c:url value="/assets/img/bposter2.jpg"/>" alt="Image" />
                         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 900px">
                                 <h3 class="text-white mb-3 d-none d-sm-block">Best Bird Services</h3>
@@ -99,7 +99,7 @@
                     <div class="col-lg-5">
                         <div class="row px-3">
                             <div class="col-12 p-0">
-                                <img class="img-fluid w-100 h-100" src="../assets/img/about-1.jpg" alt="" />
+                                <img class="img-fluid w-100 h-100" src="<c:url value="/assets/img/about-1.jpg"/>" alt="" />
                             </div>
                         </div>
                     </div>
@@ -188,7 +188,7 @@
             <div class="row pb-3">
                 <div class="col-lg-4 mb-4">
                     <div class="card border-0 mb-2">
-                        <img class="card-img-top" src="../assets/img/blog-1.jpg" alt="" />
+                        <img class="card-img-top" src="<c:url value="/assets/img/blog-1.jpg"/>" alt="" />
                         <div class="card-body bg-light p-4">
                             <h4 class="card-title text-truncate">Valuable Experiences in Raising Parakeets</h4>
                             <div class="d-flex mb-3">
@@ -205,7 +205,7 @@
                 </div>
                 <div class="col-lg-4 mb-4">
                     <div class="card border-0 mb-2">
-                        <img class="card-img-top" src="../assets/img/about-2.jpg" alt="" />
+                        <img class="card-img-top" src="<c:url value="/assets/img/about-2.jpg"/>" alt="" />
                         <div class="card-body bg-light p-4">
                             <h4 class="card-title text-truncate">Proper Techniques for Raising Mockingbirds</h4>
                             <div class="d-flex mb-3">
@@ -222,7 +222,7 @@
                 </div>
                 <div class="col-lg-4 mb-4">
                     <div class="card border-0 mb-2">
-                        <img class="card-img-top" src="../assets/img/blog-1.jpg" alt="" />
+                        <img class="card-img-top" src="<c:url value="/assets/img/blog-1.jpg"/>" alt="" />
                         <div class="card-body bg-light p-4">
                             <h4 class="card-title text-truncate">Types of Food for Pet Birds and Considerations</h4>
                             <div class="d-flex mb-3">
