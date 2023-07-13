@@ -220,7 +220,7 @@
                                                                         <th></th>
                                                                         <th style="width: 20rem;">Email</th>
                                                                         <th></th>
-                                                                        <th style="width: 20rem;">Gender</th> 
+                                                                        <th style="width: 20rem;">Role</th> 
                                                                         <th></th>                                 
                                                                     </tr>
                                                                 </thead>
@@ -231,26 +231,26 @@
                                                                             <c:choose>
                                                                                 <c:when test="${user.userRole=='customer'}" >
                                                                                     <h2 class="table-avatar">
-                                                                                        <a href="" class="avatar avatar-sm mr-2">
+                                                                                        <a href="<c:url value="/View/Customer?userID=${user.userID}"/>" class="avatar avatar-sm mr-2">
                                                                                             <img class="avatar-img rounded-circle" style="width: 4rem; height: 4rem;" src="<c:url value="/assets/images/client/${user.image.imageURLName}"/>" alt="User Image" />
                                                                                         </a>
                                                                                     </h2>
                                                                                 </c:when>
                                                                                 <c:when test="${user.userRole=='doctor'}" >
                                                                                     <h2 class="table-avatar">
-                                                                                        <a href="" class="avatar avatar-sm mr-2">
+                                                                                        <a href="<c:url value="/View/Doctor?userID=${user.userID}"/>" class="avatar avatar-sm mr-2">
                                                                                             <img class="avatar-img rounded-circle" style="width: 4rem; height: 4rem;" src="<c:url value="/assets/images/doctors/${user.image.imageURLName}"/>" alt="User Image" />
                                                                                         </a>
                                                                                     </h2>
                                                                                 </c:when>
                                                                                 <c:when test="${user.userRole=='staff'}" >
                                                                                     <h2 class="table-avatar">
-                                                                                        <a href="" class="avatar avatar-sm mr-2">
+                                                                                        <a class="avatar avatar-sm mr-2" href="<c:url value="/Admin/staff-profile.jsp"/>">
                                                                                             <img class="avatar-img rounded-circle" style="width: 4rem; height: 4rem;" src="<c:url value="/assets/images/${user.image.imageURLName}"/>" alt="User Image" />
-                                                                                        </a>
+                                                                                        </a>    
                                                                                     </h2>
                                                                                 </c:when>
-                                                                                
+
                                                                             </c:choose>
 
                                                                         </td>                                    
@@ -259,15 +259,15 @@
                                                                         <td></td>
                                                                         <td>${user.email}</td>
                                                                         <td></td>
-                                                                        <td>${user.gender}</td>
+                                                                        <td>${user.displayRole}</td>
                                                                         <td>
                                                                             <div class="table-action">
                                                                                 <c:choose>
                                                                                     <c:when test="${user.status_}">
-                                                                                        <a href="<c:url value="/Admin/Accounts/Toggle"/>" class="btn btn-sm bg-primary-light">Ban</a>
-                                                                                    </c:when>
+                                                                                        <a href="<c:url value="/Admin/Accounts/Toggle?userID=${user.userID}"/>" class="btn btn-danger" style="width:103.8px">Ban</a>
+                                                                                    </c:when> 
                                                                                     <c:when test="${!user.status_}">
-                                                                                        <a href="<c:url value="/Admin/Accounts/Toggle"/>" class="btn btn-sm bg-primary-light">Active</a>
+                                                                                        <a href="<c:url value="/Admin/Accounts/Toggle?userID=${user.userID}"/>" class="btn btn-success">Activate</a>
                                                                                     </c:when>
                                                                                 </c:choose>
                                                                             </div>
