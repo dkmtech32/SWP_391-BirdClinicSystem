@@ -64,7 +64,7 @@
 
                                         <div class="tab-content mt-2" id="pills-tabContent">											
                                             <div class="tab-pane fade" id="pills-timetable" role="tabpanel" aria-labelledby="timetable-tab">
-                                                <div class="card booking-schedule schedule-widget">
+                                                <div class="card booking-schedule schedule-widget" style="width: 82rem">
                                                     <!-- Schedule Header -->
                                                     <div class="schedule-header">
                                                         <div class="row">
@@ -401,7 +401,14 @@
             <!--End page-content" -->
         </div>
         <!-- page-wrapper -->
-
+        <script>
+            var timingElements = document.getElementsByClassName("timing");
+            for (var i = 0; i < timingElements.length; i++) {
+                timingElements[i].addEventListener("click", function() {
+                    this.classList.toggle("selected");
+                });
+            }
+        </script>
         <!-- Script -->
         <jsp:include page="../Admin/script-admin.jsp"/>
         <!-- /Script -->
