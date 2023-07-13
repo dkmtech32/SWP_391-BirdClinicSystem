@@ -117,7 +117,7 @@
 
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label class="form-label">Dr Email</label>
+                                                    <label class="form-label">Email</label>
                                                     <input name="email" id="email" type="email" class="form-control"/>
                                                 </div>
                                             </div>
@@ -126,14 +126,14 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Phone</label>
-                                                    <input name="number" id="number" type="text" class="form-control"/>
+                                                    <input name="phone-number" id="number" type="text" class="form-control"/>
                                                 </div>
                                             </div>
                                             <!--end col-->
 
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label class="form-label">Gender</label>
+                                                    <label name="gender" class="form-label">Gender</label>
                                                     <select class="form-control">
                                                         <option value="">Male</option>
                                                         <option value="">Female</option>
@@ -143,10 +143,24 @@
 
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label class="form-label">Date of Birth</label>
-                                                    <input name="date" id="number" type="date" class="form-control" />
+                                                    <label class="form-label">Password</label>
+                                                    <input name="password" id="text" type="text" class="form-control"/>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Doctor Age</label>
+                                                    <input name="doctor-age" id="text" type="text" class="form-control"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Specialty</label>
+                                                    <input name="specialityID" id="text" type="text" class="form-control"/>
+                                                </div>
+                                            </div> 
 
                                             <div class="col-md-6">
                                                 <div class="mb-3">
@@ -158,7 +172,14 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Academic Title</label>
-                                                    <input name="date" id="text" type="text" class="form-control"/>
+                                                    <input name="academic-title" id="text" type="text" class="form-control"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Years of experience</label>
+                                                    <input name="years-of-experience" id="text" type="text" class="form-control"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -174,40 +195,52 @@
                                     </form>
                                 </div>
                             </div>
-                            <!--end col-->
+                            <!--end row-->
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <input type="submit" id="submit" name="send" class="btn btn-primary" value="Save changes" />
+                                </div>
+                                <!--end col-->
+                            </div>
+                            <!--end row-->
+                            </form>
                         </div>
-                        <!--end row-->
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
+        </div>
+    </div>
+    <!--end container-->
+
+    <!-- Footer Start -->
+    <footer class="bg-white shadow py-3">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col">
+                    <div class="text-sm-start text-center">
+                        <p class="mb-0 text-muted">
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>
+                            © BirdLover
+                        </p>
                     </div>
                 </div>
-                <!--end container-->
-
-                <!-- Footer Start -->
-                <footer class="bg-white shadow py-3">
-                    <div class="container-fluid">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <div class="text-sm-start text-center">
-                                    <p class="mb-0 text-muted">
-                                        <script>
-                                            document.write(new Date().getFullYear());
-                                        </script>
-                                        © BirdLover
-                                    </p>
-                                </div>
-                            </div>
-                            <!--end col-->
-                        </div>
-                        <!--end row-->
-                    </div>
-                    <!--end container-->
-                </footer>
-                <!--end footer-->
-                <!-- End -->
-            </main>
-            <!--End page-content" -->
+                <!--end col-->
+            </div>
+            <!--end row-->
         </div>
-        <!-- Script -->
-        <jsp:include page="../Admin/script-admin.jsp"/>
-        <!-- /Script -->
-    </body>
+        <!--end container-->
+    </footer>
+    <!--end footer-->
+    <!-- End -->
+</main>
+<!--End page-content" -->
+</div>
+<!-- Script -->
+<jsp:include page="../Admin/script-admin.jsp"/>
+<!-- /Script -->
+</body>
 </html>
