@@ -30,9 +30,9 @@ public class AdminAccountsToggleServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/Dashboard/Accounts").forward(request, response);
+        request.getRequestDispatcher("/Admin/Accounts").forward(request, response);
     }
 
     /**
@@ -44,20 +44,21 @@ public class AdminAccountsToggleServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         try {
             AdminServices admin = (AdminServices) session.getAttribute("service");
             String id = request.getParameter("userID");
-            admin.toggleAccountStatus(id);
+            boolean result = admin.toggleAccountStatus(id);
+            System.out.println(result);
         } catch (SQLException ex) {
             ex.printStackTrace();
         } catch (AccountDoesNotExistException ex) {
             ex.printStackTrace();
         } finally {
-            request.getRequestDispatcher("/Dashboard/Accounts").forward(request, response);
+            request.getRequestDispatcher("/Admin/Accounts").forward(request, response);
         }
     }
 
