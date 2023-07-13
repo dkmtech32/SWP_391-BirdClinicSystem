@@ -14,5 +14,6 @@
     <script src="<c:url value='/assets/js/apexcharts.min.js'/>"></script>
     <script src="<c:url value='/assets/js/columnchart.init.js'/>"></script>
     <script src="<c:url value='/assets/js/feather.min.js'/>"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <script src="<c:url value='/assets/css/phucCSS.css'/>"></script>
 </html>
