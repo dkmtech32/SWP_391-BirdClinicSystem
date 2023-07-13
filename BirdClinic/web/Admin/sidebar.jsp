@@ -30,7 +30,6 @@
                     <a href="javascript:void(0)"><i class="uil fa-solid fa-user-doctor me-2 d-inline-block"></i>Doctors</a>
                     <div class="sidebar-submenu">
                         <ul>
-                            <li><a href="doctor-list.jsp">Doctors List</a></li>
                             <li><a href="add-doctor.jsp">Add Doctor</a></li>
                             <li><a href="dr-profile.jsp">Doctor Profile</a></li>
                         </ul>
@@ -41,7 +40,6 @@
                     <a href="javascript:void(0)"><i class="uil uil-user me-2 d-inline-block"></i>Staffs</a>
                     <div class="sidebar-submenu">
                         <ul>
-                            <li><a href="staff-list.jsp">Staffs List</a></li>
                             <li><a href="add-staff.jsp">Add Staff</a></li>
                             <li><a href="staff-profile.jsp">Staffs Profile</a></li>
                         </ul>
