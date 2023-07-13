@@ -75,8 +75,8 @@
                         <div class="card card-table mb-0">
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-hover table-center mb-0">
-                                        <thead>
+                                    <table class="table table-hover table-center mb-0" >
+                                        <thead class="table-dark">
                                             <tr>
                                                 <th>Appointment Date</th>
                                                 <th>Bird</th>

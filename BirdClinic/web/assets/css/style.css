@@ -272,6 +272,8 @@ table.table td h2 span {
 }
 .table thead {
     border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+    background-color: #e46333;
+    color: white
 }
 .table thead tr th {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -316,6 +318,7 @@ table.table td h2 span {
 }
 .card-table .card-body .table > thead > tr > th {
     border-top: 0;
+    
 }
 .card-table .table tr td:first-child,
 .card-table .table tr th:first-child {
