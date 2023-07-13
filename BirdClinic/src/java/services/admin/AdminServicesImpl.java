@@ -57,6 +57,7 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
         String academicTitle = args.get("academic-title")[0];
         String degree = args.get("degree")[0];
         String gender = args.get("gender")[0];
+        String fullName = args.get("full-name")[0];
         int docAge = Integer.parseInt(args.get("doctor-age")[0]);
         String specialityID = args.get("specialityID")[0];
         int yOE = Integer.parseInt(args.get("years-of-experience")[0]);
@@ -69,6 +70,7 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
             String userID = Utils.hash(email + username + String.valueOf(System.currentTimeMillis()));
             result = new DoctorDTOImpl();
             result.setUserID(userID);
+            result.setFullName(fullName);
             result.setEmail(email);
             result.setUserName(username);
             result.setUserPassword(rPassword);
@@ -107,6 +109,7 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
         String phoneNumber = args.get("phone-number")[0];
         String gender = args.get("gender")[0];
         String address = args.get("customer-address")[0];
+        String fullName = args.get("full-name")[0];
         Date dob = Date.valueOf(args.get("dob")[0]);
 
         try {
@@ -114,6 +117,7 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
             String rPassword = Utils.hash(password);
             String userID = Utils.hash(email + username);
             result = new CustomerDTOImpl();
+            result.setFullName(fullName);
             result.setUserID(userID);
             result.setEmail(email);
             result.setUserName(username);
@@ -124,6 +128,7 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
             result.setImage(image);
             result.setStatus_(true);
             result.setPhoneNumber(phoneNumber);
+            
             result.setCustomerAddress(address);
             result.setDob(dob);
 
@@ -148,6 +153,7 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
         String email = args.get("email")[0];
         String role = args.get("role")[0];
         String phoneNumber = args.get("phone-number")[0];
+        String fullName = args.get("full-name")[0];
         String gender = args.get("gender")[0];
 
         try {
@@ -161,6 +167,7 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
             result.setUserPassword(rPassword);
             result.setGender(gender);
             result.setUserRole(role);
+            result.setFullName(fullName);
             ImageDTO image = imageDAO.readImage("whfnhfn3ga98h943ghjanfueafa92rhf");
             result.setImage(image);
             result.setStatus_(true);
