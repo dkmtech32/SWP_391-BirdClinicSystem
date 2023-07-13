@@ -103,11 +103,11 @@
                                                             <thead>
                                                                 <tr>
                                                                     <th class="text-center">Appointment Date</th>
-                                                                    <th></th>
+                                                                  
                                                                     <th class="text-center">Service</th>
-                                                                    <th></th>
+                                                                  
                                                                     <th class="text-center">Doctor</th>
-                                                                    <th></th>
+                                                                    <th class="text-center">Action</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -115,12 +115,12 @@
                                                                     <tr> <!-- làm vòng lặp xổ tất cả danh sách medical record của con chim này -->
 
                                                                         <td class="text-center">${app.appTime}</td>
-                                                                        <td></td>
+                                                                      
                                                                         <td class="text-center">${app.service_.serviceName}</td>
-                                                                        <td></td>
+                                                                       
                                                                         <td class="text-center">${app.doctor.fullName}</td>
-                                                                        <td></td>
-                                                                        <td class="text-right">
+                                                                       
+                                                                        <td class="text-center">
                                                                             <div class="table-action">
                                                                                 <a href="<c:url value="/View/Appointment?appointmentID=${app.appointmentID}"/>" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                                             </div>
@@ -163,11 +163,11 @@
                                                             <thead>
                                                                 <tr>
                                                                     <th class="text-center">Diagnosis</th>
-                                                                    <th></th>
+                                                                    
                                                                     <th class="text-center">Treatment days</th>
-                                                                    <th></th>
+                                                                   
                                                                     <th class="text-center">Doctor's note</th>
-                                                                    <th></th>
+                                                                   
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -175,11 +175,11 @@
                                                                     <tr> <!-- làm vòng lặp xổ tất cả danh sách medical record của con chim này -->
 
                                                                         <td class="text-center">${medRec.diagnosis}</td>
-                                                                        <td></td>
+                                                                   
                                                                         <td class="text-center">${medRec.treatmentDays}</td>
-                                                                        <td></td>
+                                                                     
                                                                         <td class="text-center">${medRec.doctorNotes}</td>
-                                                                        <td></td>
+                                                                   
                                                                         <td class="text-right">
                                                                             <div class="table-action">
                                                                                 
