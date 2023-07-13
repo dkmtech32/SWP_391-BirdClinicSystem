@@ -167,6 +167,7 @@
                                                                     <th class="text-center">Treatment days</th>
 
                                                                     <th class="text-center">Doctor's note</th>
+                                                                    
                                                                     <th class="text-center">Date</th>
 
                                                                 </tr>
