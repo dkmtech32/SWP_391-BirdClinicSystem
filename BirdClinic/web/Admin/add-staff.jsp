@@ -54,7 +54,7 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Full Name</label>
-                                                    <input name="name" id="name" type="text" class="form-control"/>
+                                                    <input name="full-name" id="name" type="text" class="form-control"/>
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -62,7 +62,7 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">User Name</label>
-                                                    <input name="name" id="name2" type="text" class="form-control"/>
+                                                    <input name="username" id="name2" type="text" class="form-control"/>
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -78,29 +78,34 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Phone</label>
-                                                    <input name="number" id="number" type="text" class="form-control"/>
+                                                    <input name="phone-number" id="number" type="text" class="form-control"/>
                                                 </div>
                                             </div>
-                                            <!--end col-->
+                                            
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Password</label>
+                                                    <input name="password" id="number" type="text" class="form-control"/>
+                                                </div>
+                                            </div>
 
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label class="form-label">Gender</label>
+                                                    <label name="gender" class="form-label">Gender</label>
                                                     <select class="form-control time-during">
                                                         <option value="">Male</option>
                                                         <option value="">Female</option>
                                                     </select>
                                                 </div>
                                             </div>
-
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Date of Birth</label>
-                                                    <input name="date" id="number" type="date" class="form-control"/>
-                                                </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Role</label>
+                                                <input name="role" id="number" type="text" class="form-control"/>
                                             </div>
                                         </div>
-                                        <!--end row-->
 
                                         <div class="row">
                                             <div class="col-sm-12">
