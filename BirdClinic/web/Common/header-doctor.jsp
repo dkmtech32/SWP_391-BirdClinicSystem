@@ -45,7 +45,7 @@
                 </div>
                 <div class="header-contact-detail">
                     <p class="contact-header">Contact</p>
-                    <p class="contact-info-header">+1 315 369 5943</p>
+                    <p class="contact-info-header">+84 093 388 8555</p>
                 </div>
             </li>
 
