@@ -42,7 +42,7 @@
                                         aria-haspopup="true"
                                         aria-expanded="false"
                                         >
-                                        <img src="assets/images/doctors/01.jpg" class="avatar avatar-ex-small rounded-circle" alt />
+                                        <img src="<c:url var="assets/images/doctors/01.jpg"/>" class="avatar avatar-ex-small rounded-circle" alt />
                                     </button>
                                     <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow border-0 mt-3 py-3" style="min-width: 200px">
                                         <a class="dropdown-item d-flex align-items-center text-dark" href="https://shreethemes.in/doctris/layouts/admin/profile.html">
@@ -102,7 +102,7 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Full Name</label>
-                                                    <input name="name" id="name" type="text" class="form-control"/>
+                                                    <input name="full-name" id="name" type="text" class="form-control"/>
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -110,7 +110,7 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">User Name</label>
-                                                    <input name="name" id="name2" type="text" class="form-control"/>
+                                                    <input name="username" id="name2" type="text" class="form-control"/>
                                                 </div>
                                             </div>
                                             <!--end col-->
