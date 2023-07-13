@@ -13,7 +13,7 @@
         <!-- Main Wrapper -->
         <div class="main-wrapper">
             <!-- Header -->
-            <jsp:include page="../Common/header-guest.jsp"/>
+            <jsp:include page="../Common/header.jsp"/>
             <!--/Header -->
 
             <!-- Breadcrumb -->
@@ -29,12 +29,12 @@
                             <div class="doctor-widget">
                                 <div class="doc-info-left">
                                     <div class="doctor-img">
-                                        <img src="<c:url value="/assets/images/doctors/${requestScope.user.image.imageURLName}"/>" class="img-fluid" alt="${requestScope.user.userName}" />
+                                        <img src="<c:url value="/assets/images/doctors/${requestScope.doctor.image.imageURLName}"/>" class="img-fluid" alt="${requestScope.doctor.userName}" />
                                     </div>
                                     <div class="doc-info-cont">
-                                        <h4 class="doc-name">${requestScope.user.fullName}</h4>
-                                        <p class="doc-speciality">${requestScope.user.academicTitle}</p>
-                                        <p class="doc-department">${requestScope.user.speciality.specialityName}</p>
+                                        <h4 class="doc-name">${requestScope.doctor.fullName}</h4>
+                                        <p class="doc-speciality">${requestScope.doctor.academicTitle} ${requestScope.doctor.degree} </p>
+                                        <p class="doc-department">${requestScope.doctor.speciality.specialityName}</p>
                                         <c:choose>
                                             <c:when test="${requestScope.ratings.floatValue() <=1}">
                                                 <div class="rating">
@@ -131,7 +131,7 @@
                                 </div>
                                 <div class="doc-info-right">
                                     <div class="clinic-booking">
-                                        <a class="apt-btn" href="booking.html">Book Appointment</a>
+                                        <a class="apt-btn" href="<c:url value="/Customer/prepareDatetime?doctorID=${requestScope.doctor.userID}"/>">Book Appointment</a>
                                     </div>
                                 </div>
                             </div>

@@ -8,7 +8,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <jsp:include page="../Common/head.jsp"/>
+    <jsp:include page="../Admin/head-admin.jsp"/>
 
     <body>
         <jsp:include page="../Admin/loader.jsp"/>
@@ -22,7 +22,7 @@
                     <div class="header-bar d-flex justify-content-between border-bottom">
                         <div class="d-flex align-items-center">
                             <button type="button" class="logo-icon">
-                                <img src="<c:url value="/assets/images/logo-icon.png"/>" height="30" class="small" alt />
+                                <img src="<c:url value="/assets/images/${sessionScope.service.currentUser.image.imageURLName}"/>" height="30" class="small" alt />
                                 <span class="big">
                                     <img src="<c:url value="/assets/images/logo-dark.png"/>" height="24" class="logo-light-mode" alt />
                                     <img src="<c:url value="/assets/images/logo-light.png"/>" height="24" class="logo-dark-mode" alt />
@@ -40,24 +40,22 @@
                                         aria-haspopup="true"
                                         aria-expanded="false"
                                         >
-                                        <img src="<c:url value="/assets/images/doctors/01.jpg"/>" class="avatar avatar-ex-small rounded-circle" alt />
+                                        <img src="<c:url value="/assets/images/${sessionScope.service.currentUser.image.imageURLName}"/>" class="avatar avatar-ex-small rounded-circle" alt />
                                     </button>
                                     <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow border-0 mt-3 py-3" style="min-width: 200px">
                                         <a class="dropdown-item d-flex align-items-center text-dark" href="https://shreethemes.in/doctris/layouts/admin/profile.html">
-                                            <img src="../assets/images/doctors/01.jpg" class="avatar avatar-md-sm rounded-circle border shadow" alt />
+                                            <img src="<c:url value="/assets/images/${sessionScope.service.currentUser.image.imageURLName}"/>" class="avatar avatar-md-sm rounded-circle border shadow" alt />
                                             <div class="flex-1 ms-2">
-                                                <span class="d-block mb-1">Calvin Carlo</span>
-                                                <small class="text-muted">Orthopedic</small>
+                                                <span class="d-block mb-1">${sessionScope.service.currentUser.fullName}</span>
+                                                <small class="text-muted">${sessionScope.service.currentUser.userRole}</small>
                                             </div>
                                         </a>
-                                        <a class="dropdown-item text-dark" href="admin-home-page-charts.jsp"
+                                        <a class="dropdown-item text-dark" href="<c:url value="/Admin/Charts"/>"
                                            ><span class="mb-0 d-inline-block me-1"><i class="uil uil-dashboard align-middle h6"></i></span> Dashboard</a
                                         >
-                                        <a class="dropdown-item text-dark" href="admin-profile.jsp"
-                                           ><span class="mb-0 d-inline-block me-1"><i class="uil uil-setting align-middle h6"></i></span> Profile Settings</a
-                                        >
+
                                         <div class="dropdown-divider border-top"></div>
-                                        <a class="dropdown-item text-dark" href="../Common/index.jsp"
+                                        <a class="dropdown-item text-dark" href="<c:url value="/logout"/>"
                                            ><span class="mb-0 d-inline-block me-1"><i class="uil uil-sign-out-alt align-middle h6"></i></span> Logout</a
                                         >
                                     </div>
@@ -72,163 +70,189 @@
                         <nav class="user-tabs">
                             <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="admin-home-page-accounts.jsp">Accounts</a>
+                                    <a class="nav-link active" href="admin-home-page-accounts.jsp">Accounts</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="admin-home-page-charts.jsp">Statistics</a>
+                                    <a class="nav-link" href="admin-home-page-charts.jsp">Statistics</a>
                                 </li>
                             </ul>
                         </nav>
-                        <div class="row">
-                            <div class="col-xl-2 col-lg-4 col-md-4 mt-4">
-                                <div
-                                    class="card features feature-primary rounded border-0 shadow p-4"
-                                    >
-                                    <div class="d-flex align-items-center">
-                                        <div class="icon text-center rounded-md">
-                                            <i class="uil uil-bed h3 mb-0"></i>
-                                        </div>
-                                        <div class="flex-1 ms-2">
-                                            <h5 class="mb-0">558</h5>
-                                            <p class="text-muted mb-0">Patients</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end col-->
-
-                            <div class="col-xl-2 col-lg-4 col-md-4 mt-4">
-                                <div
-                                    class="card features feature-primary rounded border-0 shadow p-4"
-                                    >
-                                    <div class="d-flex align-items-center">
-                                        <div class="icon text-center rounded-md">
-                                            <i class="uil uil-file-medical-alt h3 mb-0"></i>
-                                        </div>
-                                        <div class="flex-1 ms-2">
-                                            <h5 class="mb-0">$2164</h5>
-                                            <p class="text-muted mb-0">Avg. costs</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end col-->
-
-                            <div class="col-xl-2 col-lg-4 col-md-4 mt-4">
-                                <div
-                                    class="card features feature-primary rounded border-0 shadow p-4"
-                                    >
-                                    <div class="d-flex align-items-center">
-                                        <div class="icon text-center rounded-md">
-                                            <i class="uil uil-social-distancing h3 mb-0"></i>
-                                        </div>
-                                        <div class="flex-1 ms-2">
-                                            <h5 class="mb-0">112</h5>
-                                            <p class="text-muted mb-0">Staff Members</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end col-->
-
-                            <div class="col-xl-2 col-lg-4 col-md-4 mt-4">
-                                <div
-                                    class="card features feature-primary rounded border-0 shadow p-4"
-                                    >
-                                    <div class="d-flex align-items-center">
-                                        <div class="icon text-center rounded-md">
-                                            <i class="uil uil-ambulance h3 mb-0"></i>
-                                        </div>
-                                        <div class="flex-1 ms-2">
-                                            <h5 class="mb-0">16</h5>
-                                            <p class="text-muted mb-0">Vehicles</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end col-->
-
-                            <div class="col-xl-2 col-lg-4 col-md-4 mt-4">
-                                <div
-                                    class="card features feature-primary rounded border-0 shadow p-4"
-                                    >
-                                    <div class="d-flex align-items-center">
-                                        <div class="icon text-center rounded-md">
-                                            <i class="uil uil-medkit h3 mb-0"></i>
-                                        </div>
-                                        <div class="flex-1 ms-2">
-                                            <h5 class="mb-0">220</h5>
-                                            <p class="text-muted mb-0">Appointment</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end col-->
-
-                            <div class="col-xl-2 col-lg-4 col-md-4 mt-4">
-                                <div
-                                    class="card features feature-primary rounded border-0 shadow p-4"
-                                    >
-                                    <div class="d-flex align-items-center">
-                                        <div class="icon text-center rounded-md">
-                                            <i class="uil uil-medical-drip h3 mb-0"></i>
-                                        </div>
-                                        <div class="flex-1 ms-2">
-                                            <h5 class="mb-0">10</h5>
-                                            <p class="text-muted mb-0">Operations</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end col-->
-                        </div>
+                        <!--                        <div class="row">
+                                                    <div class="col-xl-2 col-lg-4 col-md-4 mt-4">
+                                                        <div
+                                                            class="card features feature-primary rounded border-0 shadow p-4"
+                                                            >
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="icon text-center rounded-md">
+                                                                    <i class="uil uil-bed h3 mb-0"></i>
+                                                                </div>
+                                                                <div class="flex-1 ms-2">
+                                                                    <h5 class="mb-0">558</h5>
+                                                                    <p class="text-muted mb-0">Patients</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    end col
+                        
+                                                    <div class="col-xl-2 col-lg-4 col-md-4 mt-4">
+                                                        <div
+                                                            class="card features feature-primary rounded border-0 shadow p-4"
+                                                            >
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="icon text-center rounded-md">
+                                                                    <i class="uil uil-file-medical-alt h3 mb-0"></i>
+                                                                </div>
+                                                                <div class="flex-1 ms-2">
+                                                                    <h5 class="mb-0">$2164</h5>
+                                                                    <p class="text-muted mb-0">Avg. costs</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    end col
+                        
+                                                    <div class="col-xl-2 col-lg-4 col-md-4 mt-4">
+                                                        <div
+                                                            class="card features feature-primary rounded border-0 shadow p-4"
+                                                            >
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="icon text-center rounded-md">
+                                                                    <i class="uil uil-social-distancing h3 mb-0"></i>
+                                                                </div>
+                                                                <div class="flex-1 ms-2">
+                                                                    <h5 class="mb-0">112</h5>
+                                                                    <p class="text-muted mb-0">Staff Members</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    end col
+                        
+                                                    <div class="col-xl-2 col-lg-4 col-md-4 mt-4">
+                                                        <div
+                                                            class="card features feature-primary rounded border-0 shadow p-4"
+                                                            >
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="icon text-center rounded-md">
+                                                                    <i class="uil uil-ambulance h3 mb-0"></i>
+                                                                </div>
+                                                                <div class="flex-1 ms-2">
+                                                                    <h5 class="mb-0">16</h5>
+                                                                    <p class="text-muted mb-0">Vehicles</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    end col
+                        
+                                                    <div class="col-xl-2 col-lg-4 col-md-4 mt-4">
+                                                        <div
+                                                            class="card features feature-primary rounded border-0 shadow p-4"
+                                                            >
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="icon text-center rounded-md">
+                                                                    <i class="uil uil-medkit h3 mb-0"></i>
+                                                                </div>
+                                                                <div class="flex-1 ms-2">
+                                                                    <h5 class="mb-0">220</h5>
+                                                                    <p class="text-muted mb-0">Appointment</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    end col
+                        
+                                                    <div class="col-xl-2 col-lg-4 col-md-4 mt-4">
+                                                        <div
+                                                            class="card features feature-primary rounded border-0 shadow p-4"
+                                                            >
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="icon text-center rounded-md">
+                                                                    <i class="uil uil-medical-drip h3 mb-0"></i>
+                                                                </div>
+                                                                <div class="flex-1 ms-2">
+                                                                    <h5 class="mb-0">10</h5>
+                                                                    <p class="text-muted mb-0">Operations</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    end col
+                                                </div>-->
                         <div class="chart-tab-container">
                             <div class="chart-tab">
                                 <div class="col-md-12">
                                     <nav class="user-tabs">
                                         <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
                                             <li class="nav-item">
-                                                <a class="nav-link active" href="<c:url value="/Admin/Accounts"/>" data-bs-toggle="pill">All</a>
+                                                <a class="nav-link 
+                                                   <c:if test="${empty param.filter}">
+                                                       active
+                                                   </c:if>
+                                                   " href="<c:url value="/Admin/Accounts"/>" >All
+                                                </a>
                                             </li>
+
                                             <li class="nav-item">
-                                                <a class="nav-link active" href="<c:url value="/Admin/Accounts?filter=doctor"/>" data-bs-toggle="pill">Doctors</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="<c:url value="/Admin/Accounts?filter=staff"/>" data-bs-toggle="pill">Staff</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="<c:url value="/Admin/Accounts?filter=customer"/>" data-bs-toggle="pill">Customers</a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                    <div class="tab-content pt-0">
-                                        <!-- Appointment Tab -->
-                                        <div id="" class="tab-pane fade show active">
-                                            <div class="card card-table mb-0">
-                                                <div class="card-body">
-                                                    <div class="table-responsive">
-                                                        <table class="table table-hover table-center mb-0">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th style="width: 20rem;">User's Image</th>
-                                                                    <th></th>
-                                                                    <th style="width: 20rem;">User's Full Name</th>
-                                                                    <th></th>
-                                                                    <th style="width: 20rem;">Email</th>
-                                                                    <th></th>
-                                                                    <th style="width: 20rem;">Gender</th> 
-                                                                    <th></th>                                 
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
+                                                <a class="nav-link <c:if test="${param.filter.equals('doctor')}">active</c:if>" href="<c:url value="/Admin/Accounts?filter=doctor"/>">Doctors</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link <c:if test="${param.filter.equals('staff')}">active</c:if>" href="<c:url value="/Admin/Accounts?filter=staff"/>">Staff</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link <c:if test="${param.filter.equals('customer')}">active</c:if>" href="<c:url value="/Admin/Accounts?filter=customer"/>" >Customers</a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                        <div class="tab-content pt-0">
+                                            <!-- Appointment Tab -->
+                                            <div id="" class="tab-pane fade show active">
+                                                <div class="card card-table mb-0">
+                                                    <div class="card-body">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-hover table-center mb-0">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th style="width: 20rem;">User's Image</th>
+                                                                        <th></th>
+                                                                        <th style="width: 20rem;">User's Full Name</th>
+                                                                        <th></th>
+                                                                        <th style="width: 20rem;">Email</th>
+                                                                        <th></th>
+                                                                        <th style="width: 20rem;">Gender</th> 
+                                                                        <th></th>                                 
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
                                                                 <c:forEach items="${accounts}" var="user">
                                                                     <tr>
                                                                         <td>
-                                                                            <h2 class="table-avatar">
-                                                                                <a href="" class="avatar avatar-sm mr-2">
-                                                                                    <img class="avatar-img rounded-circle" src="${user.image.imageURLName}" alt="User Image" />
-                                                                                </a>
-                                                                            </h2>
+                                                                            <c:choose>
+                                                                                <c:when test="${user.userRole=='customer'}" >
+                                                                                    <h2 class="table-avatar">
+                                                                                        <a href="" class="avatar avatar-sm mr-2">
+                                                                                            <img class="avatar-img rounded-circle" style="width: 4rem; height: 4rem;" src="<c:url value="/assets/images/client/${user.image.imageURLName}"/>" alt="User Image" />
+                                                                                        </a>
+                                                                                    </h2>
+                                                                                </c:when>
+                                                                                <c:when test="${user.userRole=='doctor'}" >
+                                                                                    <h2 class="table-avatar">
+                                                                                        <a href="" class="avatar avatar-sm mr-2">
+                                                                                            <img class="avatar-img rounded-circle" style="width: 4rem; height: 4rem;" src="<c:url value="/assets/images/doctors/${user.image.imageURLName}"/>" alt="User Image" />
+                                                                                        </a>
+                                                                                    </h2>
+                                                                                </c:when>
+                                                                                <c:when test="${user.userRole=='staff'}" >
+                                                                                    <h2 class="table-avatar">
+                                                                                        <a href="" class="avatar avatar-sm mr-2">
+                                                                                            <img class="avatar-img rounded-circle" style="width: 4rem; height: 4rem;" src="<c:url value="/assets/images/${user.image.imageURLName}"/>" alt="User Image" />
+                                                                                        </a>
+                                                                                    </h2>
+                                                                                </c:when>
+                                                                                
+                                                                            </c:choose>
+
                                                                         </td>                                    
                                                                         <td></td>
                                                                         <td>${user.fullName}</td>
@@ -267,10 +291,11 @@
                 </div>
                 <!-- End -->
                 <!--End page-content" -->
+            </main>
         </div>
 
         <!-- Script -->
-        <jsp:include page="/Common/script.jsp"/>
+        <jsp:include page="../Admin/script-admin.jsp"/>
         <!-- /Script -->
     </body>
 </html>

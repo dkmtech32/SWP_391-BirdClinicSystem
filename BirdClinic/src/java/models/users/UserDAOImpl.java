@@ -39,7 +39,7 @@ public class UserDAOImpl implements UserDAO {
             + "from Users ";
     private static final String READ_ALL_USER_BY_ROLE
             = "select userID, imageID, userName, userPassword, fullName, "
-            + "gender, email, phoneNumber, status_ "
+            + "gender, email, phoneNumber, status_, userRole "
             + "from Users "
             + "where userRole like ?";
     private static final String LOGIN_USER
@@ -185,7 +185,7 @@ public class UserDAOImpl implements UserDAO {
                 result.setEmail(rs.getString("email"));
                 result.setUserPassword(null);
                 result.setGender(rs.getString("gender"));
-                result.setUserRole(userRole);
+                result.setUserRole(rs.getString("userRole"));
                 result.setUserName(rs.getString("userName"));
                 result.setStatus_(rs.getString("status_").equals("active"));
                 result.setPhoneNumber(rs.getString("phoneNumber"));

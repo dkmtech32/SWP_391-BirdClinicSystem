@@ -452,6 +452,6 @@
         <!-- Profile End -->
         <!-- Modal end -->
 
-        <jsp:include page="../Common/script.jsp"/>
+        <jsp:include page="../Admin/script-admin.jsp"/>
     </body>
 </html>
