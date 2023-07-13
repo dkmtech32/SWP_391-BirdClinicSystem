@@ -232,21 +232,21 @@
                                                                                 <c:when test="${user.userRole=='customer'}" >
                                                                                     <h2 class="table-avatar">
                                                                                         <a href="" class="avatar avatar-sm mr-2">
-                                                                                            <img class="avatar-img rounded-circle" src="<c:url value="/assets/images/client/${user.image.imageURLName}"/>" alt="User Image" />
+                                                                                            <img class="avatar-img rounded-circle" style="width: 4rem; height: 4rem;" src="<c:url value="/assets/images/client/${user.image.imageURLName}"/>" alt="User Image" />
                                                                                         </a>
                                                                                     </h2>
                                                                                 </c:when>
                                                                                 <c:when test="${user.userRole=='doctor'}" >
                                                                                     <h2 class="table-avatar">
                                                                                         <a href="" class="avatar avatar-sm mr-2">
-                                                                                            <img class="avatar-img rounded-circle" src="<c:url value="/assets/images/doctors/${user.image.imageURLName}"/>" alt="User Image" />
+                                                                                            <img class="avatar-img rounded-circle" style="width: 4rem; height: 4rem;" src="<c:url value="/assets/images/doctors/${user.image.imageURLName}"/>" alt="User Image" />
                                                                                         </a>
                                                                                     </h2>
                                                                                 </c:when>
                                                                                 <c:when test="${user.userRole=='staff'}" >
                                                                                     <h2 class="table-avatar">
                                                                                         <a href="" class="avatar avatar-sm mr-2">
-                                                                                            <img class="avatar-img rounded-circle" src="<c:url value="/assets/images/${user.image.imageURLName}"/>" alt="User Image" />
+                                                                                            <img class="avatar-img rounded-circle" style="width: 4rem; height: 4rem;" src="<c:url value="/assets/images/${user.image.imageURLName}"/>" alt="User Image" />
                                                                                         </a>
                                                                                     </h2>
                                                                                 </c:when>
