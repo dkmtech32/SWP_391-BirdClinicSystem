@@ -210,37 +210,36 @@
                     <!--end col-->
                 </div>
                 <!--end row-->
-        </div>
-    </div>
-    <!--end container-->
 
-    <!-- Footer Start -->
-    <footer class="bg-white shadow py-3">
-        <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col">
-                    <div class="text-sm-start text-center">
-                        <p class="mb-0 text-muted">
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script>
-                            © BirdLover
-                        </p>
+                <!--end container-->
+
+                <!-- Footer Start -->
+                <footer class="bg-white shadow py-3">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="text-sm-start text-center">
+                                    <p class="mb-0 text-muted">
+                                        <script>
+                                            document.write(new Date().getFullYear());
+                                        </script>
+                                        © BirdLover
+                                    </p>
+                                </div>
+                            </div>
+                            <!--end col-->
+                        </div>
+                        <!--end row-->
                     </div>
-                </div>
-                <!--end col-->
-            </div>
-            <!--end row-->
+                    <!--end container-->
+                </footer>
+                <!--end footer-->
+                <!-- End -->
+            </main>
+            <!--End page-content" -->
         </div>
-        <!--end container-->
-    </footer>
-    <!--end footer-->
-    <!-- End -->
-</main>
-<!--End page-content" -->
-</div>
-<!-- Script -->
-<jsp:include page="../Admin/script-admin.jsp"/>
-<!-- /Script -->
-</body>
+        <!-- Script -->
+        <jsp:include page="../Admin/script-admin.jsp"/>
+        <!-- /Script -->
+    </body>
 </html>

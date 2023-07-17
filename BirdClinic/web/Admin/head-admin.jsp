@@ -42,6 +42,9 @@
         />
     <!-- SLIDER -->
     <link href="<c:url value="/assets/css/tiny-slider.css"/>" rel="stylesheet" />
+
+    <link href="<c:url value='/assets/css/phucCSS.css'/>" rel="stylesheet" />
+
     <!-- Css -->
     <link
         href="<c:url value="/assets/css/style.min.css"/>"
