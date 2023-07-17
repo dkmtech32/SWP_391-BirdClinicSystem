@@ -57,6 +57,8 @@
                                                         <th>Rating</th>
                                                         </c:if>
                                                     <th></th>
+                                                     <th></th>
+                                                      <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
