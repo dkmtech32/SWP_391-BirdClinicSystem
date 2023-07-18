@@ -18,13 +18,13 @@
                         <span></span>
                     </span>
                 </a>
-                <a href="<c:url value='/Common/index.jsp'/>" class="navbar-brand logo">
+                <a href="<c:url value='/intro'/>" class="navbar-brand logo">
                     <img src="<c:url value='/assets/img/logo.png'/>" class="img-fluid" alt="Logo" />
                 </a>
             </div>
             <div class="main-menu-wrapper">
                 <div class="menu-header">
-                    <a href="<c:url value='/Common/index.jsp'/>" class="menu-logo">
+                    <a href="<c:url value='/intro'/>" class="menu-logo">
                         <img src="../assets/img/logo.png" class="img-fluid" alt="Logo" />
                     </a>
                     <a id="menu_close" class="menu-close" href="javascript:void(0);">
@@ -33,7 +33,7 @@
                 </div>
                 <ul class="main-nav">
                     <li>
-                        <a href="<c:url value='/Common/index.jsp'/>">Home</a>
+                        <a href="<c:url value='/intro'/>">Home</a>
                     </li>                    
                 </ul>
             </div>

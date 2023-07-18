@@ -42,7 +42,7 @@ public class IntroServlet extends HttpServlet {
         
         try {
             List<BlogDTO> blogs = accountService.viewIntroBlogs();
-            request.setAttribute("intro-blogs", blogs);
+            request.setAttribute("blogs", blogs);
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
