@@ -349,7 +349,7 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
             String appointmentID = args.getOrDefault("appointmentID", new String[]{""})[0];
             String feedbackContent = args.getOrDefault("feedbackContent", new String[]{""})[0];
             String title = args.getOrDefault("title", new String[]{""})[0];
-            BigDecimal rating = BigDecimal.valueOf(Long.valueOf(args.getOrDefault("rating", new String[]{""})[0]), 2);
+            BigDecimal rating = BigDecimal.valueOf(Double.valueOf(args.getOrDefault("rating", new String[]{"0"})[0]));
             Timestamp feedbackTime = new Timestamp(System.currentTimeMillis());
 
             FeedbackDTO feedback = new FeedbackDTOImpl();

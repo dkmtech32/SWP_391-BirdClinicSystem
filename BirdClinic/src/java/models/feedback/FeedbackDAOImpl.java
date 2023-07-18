@@ -44,7 +44,7 @@ public class FeedbackDAOImpl implements FeedbackDAO {
             + "WHERE feedbackID = ?";
     private static final String INSERT_FEEDBACK
             = "INSERT INTO Feedback (feedbackID, appointmentID, feedbackContent, title, feedbackTime, rating) "
-            + "VALUES (?, ?, ?, ?, ?)";
+            + "VALUES (?, ?, ?, ?, ?, ?)";
     private static final String DELETE_FEEDBACK
             = "DELETE FROM Feedback "
             + "WHERE feedbackID = ?";
