@@ -30,9 +30,9 @@
                         <div class="card bg-white rounded shadow overflow-hidden mt-4 border-0">
                             <div class="p-5 bg-primary bg-gradient"></div>
                             <div class="avatar-profile d-flex margin-nagative mt-n5 position-relative ps-3">
-                                <img src="assets/images/doctors/01.jpg" class="rounded-circle shadow-md avatar avatar-medium" alt />
+                                <img src="<c:url value="/assets/images/doctors/${doctor.image.imageURLName}"/>" class="rounded-circle shadow-md avatar avatar-medium" alt />
                                 <div class="mt-4 ms-3 pt-3">
-                                    <h5 class="mt-3 mb-1">${user.fullName}</h5> 
+                                    <h5 class="mt-3 mb-1">${doctor.fullName}</h5> 
                                     <p class="text-muted mb-0">Doctor</p>
                                 </div>
                             </div>
@@ -205,15 +205,12 @@
                                                             <div class="p-4">
                                                                 <div class="row align-items-center">
                                                                     <div class="col-lg-2 col-md-4">
-                                                                        <img src="assets/images/doctors/01.jpg" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt />
+                                                                        <img src="<c:url value="/assets/images/doctors/${doctor.image.imageURLName}"/>" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt />
                                                                     </div>
-                                                                    <!--end col-->
+                                                                    <!-- này là avatar của doctor-->
 
                                                                     <div class="col-lg-5 col-md-8 text-center text-md-start mt-4 mt-sm-0">
-                                                                        <h6 class>Upload your picture</h6>
-                                                                        <p class="text-muted mb-0">
-                                                                            For best results, use an image at least 256px by 256px in either .jpg or .png format
-                                                                        </p>
+                                                                        <h6>Upload your picture</h6>
                                                                     </div>
                                                                     <!--end col-->
 
@@ -230,23 +227,15 @@
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
                                                                                 <label class="form-label">Full Name</label>
-                                                                                <input name="name" id="name" type="text" class="form-control" value="${user.fullName}"/>
+                                                                                <div class="form-control">${doctor.fullName}</div>
                                                                             </div>
                                                                         </div>
                                                                         <!--end col-->
 
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
-                                                                                <label class="form-label">Username</label>
-                                                                                <input name="name" id="name2" type="text" class="form-control" value="${user.userName}"/>
-                                                                            </div>
-                                                                        </div>
-                                                                        <!--end col-->
-
-                                                                        <div class="col-md-6">
-                                                                            <div class="mb-3">
-                                                                                <label class="form-label">Staff Email</label>
-                                                                                <input name="email" id="email" type="email" class="form-control" value="${user.email}" />
+                                                                                <label class="form-label">Email</label>
+                                                                                <div class="form-control">${doctor.email}</div>
                                                                             </div>
                                                                         </div>
                                                                         <!--end col-->
@@ -254,25 +243,15 @@
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
                                                                                 <label class="form-label">Phone</label>
-                                                                                <input name="number" id="number" type="text" class="form-control"  value="${user.phoneNumber}"/>
+                                                                                <div class="form-control">${doctor.phoneNumber}</div>
                                                                             </div>
                                                                         </div>
                                                                         <!--end col-->
 
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
-                                                                                <label class="form-label">${user.gender}</label>
-                                                                                <select class="form-control time-during">
-                                                                                    <option value="">Male</option>
-                                                                                    <option value="">Female</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="col-md-6">
-                                                                            <div class="mb-3">
-                                                                                <label class="form-label">Date of Birth</label>
-                                                                                <input name="date" id="number" type="date" class="form-control" value="${appointment.bird.customer.dob}"/>
+                                                                                <label class="form-label">Gender</label>
+                                                                                <div class="form-control">${doctor.gender}</div>
                                                                             </div>
                                                                         </div>
 
@@ -287,6 +266,20 @@
                                                                             <div class="mb-3">
                                                                                 <label class="form-label">Academic Title</label>
                                                                                 <input name="date" id="text" type="text" class="form-control" value="${doctor.academicTitle}"/>								
+                                                                            </div>
+                                                                        </div>
+                                                                            
+                                                                        <div class="col-md-6">
+                                                                            <div class="mb-3">
+                                                                                <label class="form-label">Year of experience</label>
+                                                                                <input name="date" id="text" type="text" class="form-control" value="${doctor.yearsOfExperience}"/>								
+                                                                            </div>
+                                                                        </div>
+                                                                            
+                                                                        <div class="col-md-6">
+                                                                            <div class="mb-3">
+                                                                                <label class="form-label">Doctor Age</label>
+                                                                                <input name="date" id="text" type="text" class="form-control" value="${doctor.docAge}"/>								
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -307,51 +300,22 @@
 
                                                     <div class="col-lg-6">
                                                         <div class="rounded shadow mt-4">
-                                                            <div class="p-4 border-bottom">
-                                                                <h6 class="mb-0">Reset password:</h6>
-                                                            </div>
-
-                                                            <div class="p-4">
-                                                                <form>
-                                                                    <div class="row">
-
-                                                                        <div class="col-lg-12">
-                                                                            <div class="mb-3">
-                                                                                <label class="form-label">New password :</label>
-                                                                                <input type="password" class="form-control" placeholder="New password" required />
-                                                                            </div>
-                                                                        </div>
-                                                                        <!--end col-->
-
-                                                                        <div class="col-lg-12">
-                                                                            <div class="mb-3">
-                                                                                <label class="form-label">Re-type New password :</label>
-                                                                                <input type="password" class="form-control" placeholder="Re-type New password" required />
-                                                                            </div>
-                                                                        </div>
-                                                                        <!--end col-->
-
-                                                                        <div class="col-lg-12 mt-2 mb-0">
-                                                                            <button class="btn btn-primary">Save password</button>
-                                                                        </div>
-                                                                        <!--end col-->
-                                                                    </div>
-                                                                    <!--end row-->
-                                                                </form>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="rounded shadow mt-4">
                                                             <div class="p-4">
                                                                 <div class="p-4 border-bottom">
                                                                     <h5 class="mb-0 text-danger">Account disable:</h5>
                                                                 </div>
 
                                                                 <div class="p-4">
-                                                                    <h6 class="mb-0 fw-normal">Do you want to delete the account? Please press below "Delete" button</h6>
+                                                                    <h6 class="mb-0 fw-normal">If you want to ban/active this account, press the button Ban/Active below </h6>
                                                                     <div class="mt-4">
-                                                                        <button class="btn btn-danger">Delete Account</button>
-                                                                        <button class="btn btn-primary">Ban</button>
+                                                                        <c:choose>
+                                                                            <c:when test="${user.status_}">
+                                                                                <button class="btn btn-primary">Ban</button>
+                                                                            </c:when>
+                                                                            <c:when test="${!user.status_}">
+                                                                                <button class="btn btn-primary">Active</button>
+                                                                            </c:when>
+                                                                        </c:choose>
                                                                     </div>
                                                                     <!--end col-->
                                                                 </div>

@@ -77,109 +77,7 @@
                                 </li>
                             </ul>
                         </nav>
-                        <!--                        <div class="row">
-                                                    <div class="col-xl-2 col-lg-4 col-md-4 mt-4">
-                                                        <div
-                                                            class="card features feature-primary rounded border-0 shadow p-4"
-                                                            >
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="icon text-center rounded-md">
-                                                                    <i class="uil uil-bed h3 mb-0"></i>
-                                                                </div>
-                                                                <div class="flex-1 ms-2">
-                                                                    <h5 class="mb-0">558</h5>
-                                                                    <p class="text-muted mb-0">Patients</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    end col
                         
-                                                    <div class="col-xl-2 col-lg-4 col-md-4 mt-4">
-                                                        <div
-                                                            class="card features feature-primary rounded border-0 shadow p-4"
-                                                            >
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="icon text-center rounded-md">
-                                                                    <i class="uil uil-file-medical-alt h3 mb-0"></i>
-                                                                </div>
-                                                                <div class="flex-1 ms-2">
-                                                                    <h5 class="mb-0">$2164</h5>
-                                                                    <p class="text-muted mb-0">Avg. costs</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    end col
-                        
-                                                    <div class="col-xl-2 col-lg-4 col-md-4 mt-4">
-                                                        <div
-                                                            class="card features feature-primary rounded border-0 shadow p-4"
-                                                            >
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="icon text-center rounded-md">
-                                                                    <i class="uil uil-social-distancing h3 mb-0"></i>
-                                                                </div>
-                                                                <div class="flex-1 ms-2">
-                                                                    <h5 class="mb-0">112</h5>
-                                                                    <p class="text-muted mb-0">Staff Members</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    end col
-                        
-                                                    <div class="col-xl-2 col-lg-4 col-md-4 mt-4">
-                                                        <div
-                                                            class="card features feature-primary rounded border-0 shadow p-4"
-                                                            >
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="icon text-center rounded-md">
-                                                                    <i class="uil uil-ambulance h3 mb-0"></i>
-                                                                </div>
-                                                                <div class="flex-1 ms-2">
-                                                                    <h5 class="mb-0">16</h5>
-                                                                    <p class="text-muted mb-0">Vehicles</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    end col
-                        
-                                                    <div class="col-xl-2 col-lg-4 col-md-4 mt-4">
-                                                        <div
-                                                            class="card features feature-primary rounded border-0 shadow p-4"
-                                                            >
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="icon text-center rounded-md">
-                                                                    <i class="uil uil-medkit h3 mb-0"></i>
-                                                                </div>
-                                                                <div class="flex-1 ms-2">
-                                                                    <h5 class="mb-0">220</h5>
-                                                                    <p class="text-muted mb-0">Appointment</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    end col
-                        
-                                                    <div class="col-xl-2 col-lg-4 col-md-4 mt-4">
-                                                        <div
-                                                            class="card features feature-primary rounded border-0 shadow p-4"
-                                                            >
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="icon text-center rounded-md">
-                                                                    <i class="uil uil-medical-drip h3 mb-0"></i>
-                                                                </div>
-                                                                <div class="flex-1 ms-2">
-                                                                    <h5 class="mb-0">10</h5>
-                                                                    <p class="text-muted mb-0">Operations</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    end col
-                                                </div>-->
                         <div class="chart-tab-container">
                             <div class="chart-tab">
                                 <div class="col-md-12">
@@ -260,6 +158,16 @@
                                                                         <td>${user.email}</td>
                                                                         <td></td>
                                                                         <td>${user.displayRole}</td>
+                                                                        <td>
+                                                                            <c:choose>
+                                                                                <c:when test="${user.userRole =='doctor'}">
+                                                                                    <a href="<c:url value="/View/Doctor?userID=${user.userID}"/>" class="btn btn-danger" style="width:103.8px">View</a>
+                                                                                </c:when>
+                                                                                <c:when test="${user.userRole =='customer'}">
+                                                                                    <a href="<c:url value="/View/Customer?userID=${user.userID}"/>" class="btn btn-danger" style="width:103.8px">View</a>
+                                                                                </c:when>
+                                                                            </c:choose>
+                                                                        </td>
                                                                         <td>
                                                                             <div class="table-action">
                                                                                 <c:choose>
