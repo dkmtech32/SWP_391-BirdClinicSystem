@@ -27,8 +27,8 @@
                     <a href="javascript:void(0)"><i class="uil fa-solid fa-user-doctor me-2 d-inline-block"></i>Doctors</a>
                     <div class="sidebar-submenu">
                         <ul>
-                            <li><a href="<c:url value="/Admin/add-doctor.jsp"/>">Add Doctor</a></li>
-                            <li><a href="<c:url value="/Admin/dr-profile.jsp"/>">Doctor Profile</a></li>
+                            <li><a href="<c:url value="/Admin/Accounts/Create"/>">Add Doctor</a></li>
+                            
                         </ul>
                     </div>
                 </li>
@@ -38,7 +38,7 @@
                     <div class="sidebar-submenu">
                         <ul>
                             <li><a href="<c:url value="/Admin/Accounts/Create?userRole=staff"/>">Add Staff</a></li>
-                            <li><a href="staff-profile.jsp">Staffs Profile</a></li>
+                            
                         </ul>
                     </div>
                 </li>

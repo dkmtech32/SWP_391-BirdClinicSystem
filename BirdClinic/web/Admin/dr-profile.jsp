@@ -222,7 +222,7 @@
                                                                 </div>
                                                                 <!--end row-->
 
-                                                                <form class="mt-4">
+                                                                <form class="mt-4" method='POST' action="<c:url value="/Admin/Doctors/Update/Info?doctorID=${doctor.userID}"/>">
                                                                     <div class="row">
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
@@ -265,21 +265,66 @@
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
                                                                                 <label class="form-label">Academic Title</label>
-                                                                                <input name="date" id="text" type="text" class="form-control" value="${doctor.academicTitle}"/>								
+                                                                                <input name="academic-title" id="text" type="text" class="form-control" value="${doctor.academicTitle}"/>								
                                                                             </div>
                                                                         </div>
                                                                             
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
                                                                                 <label class="form-label">Year of experience</label>
-                                                                                <input name="date" id="text" type="text" class="form-control" value="${doctor.yearsOfExperience}"/>								
+                                                                                <input name="years-of-experience" id="text" type="text" class="form-control" value="${doctor.yearsOfExperience}"/>								
                                                                             </div>
                                                                         </div>
                                                                             
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
                                                                                 <label class="form-label">Doctor Age</label>
-                                                                                <input name="date" id="text" type="text" class="form-control" value="${doctor.docAge}"/>								
+                                                                                <input name="age" id="text" type="text" class="form-control" value="${doctor.docAge}"/>								
+                                                                            </div>
+                                                                        </div>
+                                                                            
+                                                                        <div class="col-md-6">
+                                                                            <div class="mb-3">
+                                                                                <label class="form-label">Specialty</label>
+                                                                                <select class="form-control" name="specialityID" type="select">
+                                                                                    ${doctor.speciality.specialityName}
+                                                                                    <option value="4a30b3f33f96b639ab20dce9f0b8b8db" 
+                                                                                        <c:if test="${doctor.speciality.specialityID.equals('4a30b3f33f96b639ab20dce9f0b8b8db')}">
+                                                                                            selected
+                                                                                        </c:if>>
+                                                                                        image analysation
+                                                                                    </option>
+                                                                                    <option value="52f6743e4719de9a35e1e2e1c09d6d52" 
+                                                                                        <c:if test="${doctor.speciality.specialityID.equals('52f6743e4719de9a35e1e2e1c09d6d52')}">
+                                                                                            selected
+                                                                                        </c:if>>
+                                                                                        surgery
+                                                                                    </option>
+                                                                                    <option value="7e2dc1364e2e1bdc9efc1669a17a9e45" 
+                                                                                        <c:if test="${doctor.speciality.specialityID.equals('7e2dc1364e2e1bdc9efc1669a17a9e45')}">
+                                                                                            selected
+                                                                                        </c:if>>
+                                                                                        beautify
+                                                                                    </option>
+                                                                                    <option value="8c15dfb7f4f3d4789ed0c043b1512e34" 
+                                                                                        <c:if test="${doctor.speciality.specialityID.equals('8c15dfb7f4f3d4789ed0c043b1512e34')}">
+                                                                                            selected
+                                                                                        </c:if>>
+                                                                                        resuscitation
+                                                                                    </option>
+                                                                                    <option value="bfiwafjnbeaffaiuwhfa9fhawfa56565" 
+                                                                                        <c:if test="${doctor.speciality.specialityID.equals('bfiwafjnbeaffaiuwhfa9fhawfa56565')}">
+                                                                                            selected
+                                                                                        </c:if>>
+                                                                                        genetics
+                                                                                    </option>
+                                                                                    <option value="e6157a31d2c5e20dc446f4f42fc0d40f" 
+                                                                                        <c:if test="${doctor.speciality.specialityID.equals('e6157a31d2c5e20dc446f4f42fc0d40f')}">
+                                                                                            selected
+                                                                                        </c:if>>
+                                                                                        general
+                                                                                    </option>
+                                                                                </select>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -287,7 +332,7 @@
 
                                                                     <div class="row">
                                                                         <div class="col-sm-12">
-                                                                            <input type="submit" id="submit" name="send" class="btn btn-primary" value="Save changes" />
+                                                                            <input type="submit" class="btn btn-primary" value="Save changes" />
                                                                         </div>
                                                                     </div>
                                                                     <!--end row-->
