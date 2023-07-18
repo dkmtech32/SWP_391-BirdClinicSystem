@@ -60,7 +60,6 @@
             </div>
         </div>
         <!-- /Home Banner -->
-
         <!-- Availabe Features -->
 
         <section class="section section-specialities" style="padding: 0;">
@@ -179,6 +178,7 @@
         </div>
         <!-- Services End -->
 
+
         <!-- blog Section -->
         <div class="container pt-5">
             <div class="d-flex flex-column text-center mb-5">
@@ -186,57 +186,27 @@
                 <h1 class="display-4 m-0"><span class="text-primary">Updates</span> From Blog</h1>
             </div>
             <div class="row pb-3">
-                <div class="col-lg-4 mb-4">
-                    <div class="card border-0 mb-2">
-                        <img class="card-img-top" src="<c:url value="/assets/img/blog-1.jpg"/>" alt="" />
-                        <div class="card-body bg-light p-4">
-                            <h4 class="card-title text-truncate">Valuable Experiences in Raising Parakeets</h4>
-                            <div class="d-flex mb-3">
-                                <small class="mr-2"><i class="fa fa-user text-muted"></i> Admin</small>
-                                <small class="mr-2"><i class="fa fa-folder text-muted"></i> Web Design</small>
-                                <small class="mr-2"><i class="fa fa-comments text-muted"></i> 15</small>
+                <c:forEach items="${blogs}" var="blog">
+                    <div class="col-lg-4 mb-4">
+                        <div class="card border-0 mb-2">
+                            <img class="card-img-top" src="<c:url value="/assets/img/blog-1.jpg"/>" alt="" />
+                            <div class="card-body bg-light p-4">
+                                <h4 class="card-title text-truncate">${blog.title}</h4>
+                                <div class="d-flex mb-3">
+                                    <!--                                <small class="mr-2"><i class="fa fa-user text-muted"></i> Admin</small>-->
+                                    <small class="mr-2"><i class="fa fa-folder text-muted"></i>${blog.category}</small>
+                                    <small class="mr-2"><i class="fa fa-calendar text-muted"></i> ${blog.uploadDatetime.toString().split(' ')[0]}</small>
+                                </div>
+                                <p>Raising birds requires a wealth of knowledge to ensure their optimal development. 
+                                    This article shares valuable experiences passed down by experienced bird owners. 
+                                    If you are currently raising a parakeet, this article is for you.</p>
+                                <a class="font-weight-bold" href="blog-detail.jsp">Read More</a>
                             </div>
-                            <p>Raising birds requires a wealth of knowledge to ensure their optimal development. 
-                                This article shares valuable experiences passed down by experienced bird owners.
-                                If you are currently raising a parakeet, this article is for you.</p>
-                            <a class="font-weight-bold" href="blog-detail.jsp">Read More</a>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="card border-0 mb-2">
-                        <img class="card-img-top" src="<c:url value="/assets/img/about-2.jpg"/>" alt="" />
-                        <div class="card-body bg-light p-4">
-                            <h4 class="card-title text-truncate">Proper Techniques for Raising Mockingbirds</h4>
-                            <div class="d-flex mb-3">
-                                <small class="mr-2"><i class="fa fa-user text-muted"></i> Admin</small>
-                                <small class="mr-2"><i class="fa fa-folder text-muted"></i> Web Design</small>
-                                <small class="mr-2"><i class="fa fa-comments text-muted"></i> 15</small>
-                            </div>
-                            <p>If you are an enthusiast of raising pet birds and are considering owning a mockingbird 
-                                for entertainment purposes, but unsure about how to properly care for them, don't worry.
-                                This article provides all the information about the techniques for raising mockingbirds. Please refer to it.</p>
-                            <a class="font-weight-bold" href="blog-detail.jsp">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="card border-0 mb-2">
-                        <img class="card-img-top" src="<c:url value="/assets/img/blog-1.jpg"/>" alt="" />
-                        <div class="card-body bg-light p-4">
-                            <h4 class="card-title text-truncate">Types of Food for Pet Birds and Considerations</h4>
-                            <div class="d-flex mb-3">
-                                <small class="mr-2"><i class="fa fa-user text-muted"></i> Admin</small>
-                                <small class="mr-2"><i class="fa fa-folder text-muted"></i> Web Design</small>
-                                <small class="mr-2"><i class="fa fa-comments text-muted"></i> 15</small>
-                            </div>
-                            <p>Pet birds have special nutritional needs to maintain good health and proper growth. To ensure 
-                                the health and physical condition of your pet bird, you should provide them with a complete, 
-                                diverse, and balanced diet. Here are some types of food for pet birds and considerations when feeding them.</p>
-                            <a class="font-weight-bold" href="blog-detail.jsp">Read More</a>
-                        </div>
-                    </div>
-                </div>
+                </c:forEach>
+
+
             </div>
         </div>
         <!-- blog Section -->

@@ -342,7 +342,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>WriteBlogServlet</servlet-name>
-        <url-pattern>/Blog/Write</url-pattern>
+        <url-pattern>/Staff/Blog/Write</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminAccountsServlet</servlet-name>
@@ -371,6 +371,10 @@
     <servlet-mapping>
         <servlet-name>ImageController</servlet-name>
         <url-pattern>/image/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IntroServlet</servlet-name>
+        <url-pattern>/intro</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
