@@ -17,7 +17,6 @@
 <!-- Datetimepicker JS -->
 <script src="<c:url value='/assets/js/moment.min.js'/>"></script>
 <script src="<c:url value='/assets/js/bootstrap-datetimepicker.min.js'/>"></script>
-
 <!-- Timeslot -->
 <script src="<c:url value='/assets/plugins/date-timeslot-picker-modified/datetime-slot-picker.js'/>"></script>
 
@@ -25,8 +24,6 @@
 <script src="<c:url value='/assets/plugins/theia-sticky-sidebar/ResizeSensor.js'/>"></script>
 <script src="<c:url value='/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js'/>"></script>
 
-<!-- Blog - Summernote -->
-<script src="<c:url value="/assets/plugins/summernote-0.8.18-dist/summernote-bs4.js"/>"></script>
 <!-- Custom JS -->
 <script src="<c:url value='/assets/js/script.js'/>"></script>
 <script src="<c:url value='/assets/js/bootstrap.bundle.min.js'/>"></script>
