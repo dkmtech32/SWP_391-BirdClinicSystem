@@ -45,7 +45,7 @@ public class AdminDoctorsUpdateInfoServlet extends HttpServlet {
         try {
             DoctorDTO doctor = admin.getDoctorInfo(doctorID);
             request.setAttribute("doctor", doctor);
-            url = "/Admin/update-doctor-info.jsp";
+            url = "/Admin/dr-profile.jsp";
         } catch (SQLException ex) {
             ex.printStackTrace();
         } catch (AccountDoesNotExistException ex) {
