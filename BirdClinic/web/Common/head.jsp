@@ -12,7 +12,6 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href='<c:url value="/assets/css/bootstrap.min.css"/>' />
-
     <!-- Flaticon Font -->
     <link href="<c:url value='/assets/plugins/flaticon/font/flaticon.css'/>" rel="stylesheet" />
 
@@ -34,9 +33,11 @@
     <!-- Datetimepicker CSS -->
     <link rel="stylesheet" href="<c:url value='/assets/css/bootstrap-datetimepicker.min.css'/>" />
 
-    <!-- Blog - Summernote -->
-    <link href="<c:url value="/assets/plugins/summernote-0.8.18-dist/summernote-bs4.css"/>" rel="stylesheet">
+    <script src="<c:url value="/assets/js/jquery.min.js"/>"></script>
+    <script src="<c:url value="/assets/js/ckeditor.js"/>"></script>
 
+    <!-- include Bootstrap-wysiwyg! css/js -->
+    <link href="<c:url value="/assets/plugins/bootstrap-wysiwyg-2.0-dev/css/style.css"/>" rel="stylesheet">
     <!-- Main CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap"
           rel="stylesheet" />

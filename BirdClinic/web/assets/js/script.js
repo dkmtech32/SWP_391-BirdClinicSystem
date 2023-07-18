@@ -476,8 +476,4 @@ function confirmDelete() {
 
 
 //blog
-$(document).ready(function () {
-    $('#summernote').summernote();
-});
-
 //$('.summernote').summernote({ dialogsInBody: true, });
