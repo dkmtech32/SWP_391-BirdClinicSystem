@@ -28,7 +28,7 @@
                     <div class="sidebar-submenu">
                         <ul>
                             <li><a href="<c:url value="/Admin/add-doctor.jsp"/>">Add Doctor</a></li>
-                            <li><a href="dr-profile.jsp">Doctor Profile</a></li>
+                            <li><a href="<c:url value="/Admin/dr-profile.jsp"/>">Doctor Profile</a></li>
                         </ul>
                     </div>
                 </li>
