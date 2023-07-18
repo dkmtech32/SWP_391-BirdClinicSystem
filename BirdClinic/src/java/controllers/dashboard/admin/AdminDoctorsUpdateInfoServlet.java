@@ -69,7 +69,7 @@ public class AdminDoctorsUpdateInfoServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         String doctorID = request.getParameter("doctorID");
-        String url = "/View/Doctor?doctorID=" + doctorID;
+        String url = "/View/Doctor?userID=" + doctorID;
         try {
             AdminServices admin = (AdminServices) session.getAttribute("service");
             Map<String, String[]> args = request.getParameterMap();

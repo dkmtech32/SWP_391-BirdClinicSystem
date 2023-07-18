@@ -128,7 +128,7 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
             result.setImage(image);
             result.setStatus_(true);
             result.setPhoneNumber(phoneNumber);
-            
+
             result.setCustomerAddress(address);
             result.setDob(dob);
 
@@ -205,14 +205,13 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
 
         try {
             String doctorID = args.get("doctorID")[0];
-            String academicTitle = args.get("academic-title")[0];
-            String degree = args.get("degree")[0];
-            int docAge = Integer.parseInt(args.get("doctor-age")[0]);
-            String specialityID = args.get("specialityID")[0];
-            int yOE = Integer.parseInt(args.get("years-of-experience")[0]);
-            SpecialityDTO speciality = specialityDAO.readSpeciality(specialityID);
-
             DoctorDTO doctor = doctorDAO.readDoctor(doctorID);
+            String academicTitle = Utils.getFromMap(args, "academic-title", doctor.getAcademicTitle());
+            String degree = Utils.getFromMap(args, "degree", doctor.getDegree());
+            int docAge = Integer.parseInt(Utils.getFromMap(args, "age", String.valueOf(doctor.getDocAge())));
+            String specialityID = Utils.getFromMap(args, "specialityID", doctor.getAcademicTitle());
+            int yOE = Integer.parseInt(Utils.getFromMap(args, "years-of-experience", String.valueOf(doctor.getYearsOfExperience())));
+            SpecialityDTO speciality = specialityDAO.readSpeciality(specialityID);
             doctor.setAcademicTitle(academicTitle);
             doctor.setDegree(degree);
             doctor.setDocAge(docAge);
