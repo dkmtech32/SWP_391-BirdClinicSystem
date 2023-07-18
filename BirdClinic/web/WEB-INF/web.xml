@@ -208,6 +208,10 @@
         <servlet-name>AdminChartsServlet</servlet-name>
         <servlet-class>controllers.dashboard.admin.AdminStaticsticsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ImageController</servlet-name>
+        <servlet-class>controllers.image.ImageController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Common/login</url-pattern>
@@ -363,6 +367,10 @@
     <servlet-mapping>
         <servlet-name>AdminChartsServlet</servlet-name>
         <url-pattern>/Admin/Charts</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ImageController</servlet-name>
+        <url-pattern>/image/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
