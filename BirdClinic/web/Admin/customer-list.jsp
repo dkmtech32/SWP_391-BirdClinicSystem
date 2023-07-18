@@ -8,7 +8,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <jsp:include page="../Common/head-admin.jsp"/>
+    <jsp:include page="../Admin/head-admin.jsp"/>
     <body>
         <!-- Main Wrapper -->
         <!-- Loader -->
@@ -67,17 +67,12 @@
                                                                 <div class="p-4">
                                                                     <div class="row align-items-center">
                                                                         <div class="col-lg-2 col-md-4">
-                                                                            <img src="${user.image}" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt/>
+                                                                            <img src="<c:url value="/assets/images/client/${customer.image.imageURLName}"/>" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt/>
                                                                         </div>
                                                                         <!--end col-->
 
                                                                         <div class="col-lg-5 col-md-8 text-center text-md-start mt-4 mt-sm-0">
                                                                             <h6 class>Upload your picture</h6>
-                                                                            <p class="text-muted mb-0">
-                                                                                For best results, use an image at
-                                                                                least 256px by 256px in either .jpg or
-                                                                                .png format
-                                                                            </p>
                                                                         </div>
                                                                         <!--end col-->
 
@@ -88,28 +83,20 @@
                                                                     </div>
                                                                     <!--end row-->
 
-                                                                    <form class="mt-4">
+                                                                   <form class="mt-4">
                                                                         <div class="row">
                                                                             <div class="col-md-6">
                                                                                 <div class="mb-3">
                                                                                     <label class="form-label">Full Name</label>
-                                                                                    <input name="name" id="name" type="text" class="form-control" value="${user.fullName}"/>
+                                                                                    <div class="form-control">${customer.fullName}</div>
                                                                                 </div>
                                                                             </div>
                                                                             <!--end col-->
 
                                                                             <div class="col-md-6">
                                                                                 <div class="mb-3">
-                                                                                    <label class="form-label">User Name</label>
-                                                                                    <input name="name" id="name2" type="text" class="form-control" value="${user.userName}"/>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="col-md-6">
-                                                                                <div class="mb-3">
-                                                                                    <label class="form-label">Customer Email</label
-                                                                                    >
-                                                                                    <input name="email" id="email" type="email" class="form-control" value="${user.email}"/>
+                                                                                    <label class="form-label">Email</label>
+                                                                                    <div class="form-control">${customer.email}</div>
                                                                                 </div>
                                                                             </div>
                                                                             <!--end col-->
@@ -117,25 +104,15 @@
                                                                             <div class="col-md-6">
                                                                                 <div class="mb-3">
                                                                                     <label class="form-label">Phone</label>
-                                                                                    <input name="number" id="number" type="text" class="form-control" value="${user.phoneNumber}"/>
+                                                                                    <div class="form-control">${customer.phoneNumber}</div>
                                                                                 </div>
                                                                             </div>
                                                                             <!--end col-->
 
                                                                             <div class="col-md-6">
                                                                                 <div class="mb-3">
-                                                                                    <label class="form-label">${user.gender}</label>
-                                                                                    <select class="form-control time-during">
-                                                                                        <option value="">Male</option>
-                                                                                        <option value="">Female</option>
-                                                                                    </select>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="col-md-6">
-                                                                                <div class="mb-3">
-                                                                                    <label class="form-label">Date of Birth</label>
-                                                                                    <input name="date" id="number" type="date" class="form-control" value="${appointment.bird.customer.dob}"/>
+                                                                                    <label class="form-label">Gender</label>
+                                                                                    <div class="form-control">${customer.gender}</div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -156,42 +133,6 @@
                                                         <!--end col-->
 
                                                         <div class="col-lg-6">
-                                                            <div class="rounded shadow mt-4">
-                                                                <div class="p-4 border-bottom">
-                                                                    <h6 class="mb-0">Reset password:</h6>
-                                                                </div>
-
-                                                                <div class="p-4">
-                                                                    <form>
-                                                                        <div class="row">
-                                                                            <div class="col-lg-12">
-                                                                                <div class="mb-3">
-                                                                                    <label class="form-label">New password :</label>
-                                                                                    <input type="password" class="form-control" placeholder="New password" required/>
-                                                                                </div>
-                                                                            </div>
-                                                                            <!--end col-->
-
-                                                                            <div class="col-lg-12">
-                                                                                <div class="mb-3">
-                                                                                    <label class="form-label">Re-type New password :</label>
-                                                                                    <input type="password" class="form-control" placeholder="Re-type New password" required />
-                                                                                </div>
-                                                                            </div>
-                                                                            <!--end col-->
-
-                                                                            <div class="col-lg-12 mt-2 mb-0">
-                                                                                <button class="btn btn-primary">
-                                                                                    Save password
-                                                                                </button>
-                                                                            </div>
-                                                                            <!--end col-->
-                                                                        </div>
-                                                                        <!--end row-->
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-
                                                             <div class="rounded shadow mt-4">
                                                                 <div class="p-4">
                                                                     <div class="p-4 border-bottom">
@@ -248,13 +189,13 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <c:forEach>
+                                                                    <c:forEach items="${birds}" var="bird">
                                                                         <tr>
                                                                             <td class="py-3">
-                                                                                <a href="#" class="text-dark">
+                                                                                <a href="" class="text-dark">
                                                                                     <div class="d-flex align-items-center">
                                                                                         <img
-                                                                                            src="assets/images/bird/bird-3.jpg"
+                                                                                            src="<c:url value="/assets/images/bird/${bird.image.imageURLName}"/>"
                                                                                             class="avatar avatar-md-sm rounded-circle shadow"
                                                                                             alt
                                                                                             />
@@ -262,7 +203,7 @@
                                                                                     </div>
                                                                                 </a>
                                                                             </td>
-                                                                            <td class="p-3">${bird.band_chip}</td>
+                                                                            <td class="p-3">${bird.band_Chip}</td>
                                                                             <td class="p-3">${bird.breed}</td>
                                                                             <td class="p-3">${bird.birdGender}</td>
                                                                             <td class="p-3">${bird.featherColor}</td>

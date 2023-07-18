@@ -574,7 +574,7 @@ public class GeneralServicesImpl implements GeneralServices {
             ratings = feedback.getRating().add(ratings);
         }
         if (ratings.compareTo(BigDecimal.ZERO) > 0) {
-            ratings = ratings.divide(BigDecimal.valueOf(feedbacks.size()));
+            ratings = ratings.divide(BigDecimal.valueOf(feedbacks.size()), 2, RoundingMode.HALF_UP);
             ratings.setScale(2, RoundingMode.HALF_DOWN);
         }
 
