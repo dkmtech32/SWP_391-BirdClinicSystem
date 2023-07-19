@@ -318,7 +318,7 @@ table.table td h2 span {
 }
 .card-table .card-body .table > thead > tr > th {
     border-top: 0;
-    
+
 }
 .card-table .table tr td:first-child,
 .card-table .table tr th:first-child {
@@ -7958,4 +7958,21 @@ thead {
     width: calc( 100% - 1em ) scrollbar is average 1em/16px width, remove it from thead width 
 }*/
 
-.editor {overflow:scroll; max-height:300px}
+.ck-editor {
+    height: 500px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    overflow:scroll; 
+    max-height:300px;
+}
+
+/* Styling the editor content area */
+.ck-editor__editable {
+    min-height: 300px; /* Set the minimum height of the content area */
+    font-family: Arial, sans-serif; /* Example font family */
+    font-size: 14px; /* Example font size */
+    color: #333; /* Example text color */
+    line-height: 1.6; /* Example line height */
+}
