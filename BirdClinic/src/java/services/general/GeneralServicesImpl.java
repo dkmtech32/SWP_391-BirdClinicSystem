@@ -570,6 +570,7 @@ public class GeneralServicesImpl implements GeneralServices {
     @Override
     public BigDecimal getDoctorRatings(List<FeedbackDTO> feedbacks) throws SQLException {
         BigDecimal ratings = BigDecimal.ZERO;
+        if (feedbacks == null) return ratings;
         for (FeedbackDTO feedback : feedbacks) {
             ratings = feedback.getRating().add(ratings);
         }

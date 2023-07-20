@@ -42,7 +42,7 @@
                                         aria-haspopup="true"
                                         aria-expanded="false"
                                         >
-                                        <img src="<c:url var="assets/images/doctors/01.jpg"/>" class="avatar avatar-ex-small rounded-circle" alt />
+                                        <img src="<c:url value="assets/images/doctors/01.jpg"/>" class="avatar avatar-ex-small rounded-circle" alt />
                                     </button>
                                     <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow border-0 mt-3 py-3" style="min-width: 200px">
                                         <a class="dropdown-item d-flex align-items-center text-dark" href="https://shreethemes.in/doctris/layouts/admin/profile.html">
@@ -93,7 +93,8 @@
                                     </div>
                                     <!--end row-->
 
-                                    <form class="mt-4">
+                                    <form class="mt-4" method="POST" action="<c:url value="/Admin/Accounts/Create"/>">
+                                        <input value="doctor" name="userRole" hidden="hidden"/>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
@@ -130,9 +131,9 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label name="gender" class="form-label">Gender</label>
-                                                    <select class="form-control">
-                                                        <option value="">Male</option>
-                                                        <option value="">Female</option>
+                                                    <select class="form-control" id="gender" name="gender">
+                                                        <option value="male">Male</option>
+                                                        <option value="female">Female</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -140,21 +141,28 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Password</label>
-                                                    <input name="password" id="text" type="text" class="form-control"/>
+                                                    <input name="password" id="text" type="password" class="form-control"/>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Doctor Age</label>
-                                                    <input name="doctor-age" id="text" type="text" class="form-control"/>
+                                                    <input name="doctor-age" id="text" type="number" class="form-control"/>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Specialty</label>
-                                                    <input name="specialityID" id="text" type="text" class="form-control"/>
+                                                    <select class="form-control" id="speciality" name="specialityID">
+                                                        <option value="4a30b3f33f96b639ab20dce9f0b8b8db">image analysation</option>
+                                                        <option value="52f6743e4719de9a35e1e2e1c09d6d52">surgery</option>
+                                                        <option value="7e2dc1364e2e1bdc9efc1669a17a9e45">beautify</option>
+                                                        <option value="8c15dfb7f4f3d4789ed0c043b1512e34">resuscitation</option>
+                                                        <option value="bfiwafjnbeaffaiuwhfa9fhawfa56565">genetics</option>
+                                                        <option value="e6157a31d2c5e20dc446f4f42fc0d40f">general</option>
+                                                    </select>
                                                 </div>
                                             </div> 
 
@@ -175,7 +183,7 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Years of experience</label>
-                                                    <input name="years-of-experience" id="text" type="text" class="form-control"/>
+                                                    <input name="years-of-experience" id="text" type="number" class="form-control"/>
                                                 </div>
                                             </div>
                                         </div>
