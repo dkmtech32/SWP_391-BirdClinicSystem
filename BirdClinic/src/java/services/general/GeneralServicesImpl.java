@@ -105,7 +105,7 @@ public class GeneralServicesImpl implements GeneralServices {
         recordMedicineDAO = new RecordMedicineDAOImpl(medicalRecordDAO, medicineDAO);
         doctorTimeslotDAO = new DoctorTimeslotDAOImpl(timeslotDAO, doctorDAO);
         feedbackDAO = new FeedbackDAOImpl(appointmentDAO);
-        blogDAO = new BlogDAOImpl();
+        blogDAO = new BlogDAOImpl(imageDAO);
     }
 
     @Override

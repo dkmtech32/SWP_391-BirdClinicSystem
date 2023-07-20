@@ -9,30 +9,35 @@ import java.util.ArrayList;
 import java.util.List;
 import models.exceptions.NoSuchRecordExists;
 import models.exceptions.RecordAlreadyExists;
+import models.images.ImageDAO;
 import utils.DBUtils;
 
 public class BlogDAOImpl implements BlogDAO {
 
+    private final ImageDAO imageDAO;
     private static final String READ_BLOG
-            = "SELECT blogID, title, uploadDatetime, category,  blogContent "
+            = "SELECT blogID, title, uploadDatetime, category,  blogContent, imageID, _description "
             + "FROM Blog "
             + "WHERE blogID = ?";
     private static final String INSERT_BLOG
-            = "INSERT INTO Blog (blogID, title, uploadDatetime, category, blogContent) "
-            + "VALUES (?, ?, ?, ?, ?)";
+            = "INSERT INTO Blog (blogID, title, uploadDatetime, category, blogContent, imageID, _description) "
+            + "VALUES (?, ?, ?, ?, ?, ?, ?)";
     private static final String UPDATE_BLOG
             = "UPDATE Blog "
-            + "SET title = ?, category = ?, blogContent = ? "
+            + "SET title = ?, category = ?, blogContent = ?, imageID = ?, _description = ?,  "
             + "WHERE blogID = ?";
     private static final String READ_TOP_THREE_BLOGS
-            = "SELECT TOP 3 blogID, title, uploadDatetime, category, blogContent "
+            = "SELECT TOP 3 blogID, title, uploadDatetime, category, blogContent, imageID, _description "
             + "FROM Blog "
             + "ORDER BY uploadDatetime DESC";
-    
     private static final String READ_ALL_BLOGS
-            = "SELECT blogID, title, uploadDatetime, category, blogContent "
+            = "SELECT blogID, title, uploadDatetime, category, blogContent, imageID, _description "
             + "FROM Blog ";
 
+    public BlogDAOImpl(ImageDAO imageDAO) {
+        this.imageDAO = imageDAO;
+    }
+    
     @Override
     public BlogDTO readBlog(String blogID) throws NoSuchRecordExists, SQLException {
         Connection con = null;
@@ -53,6 +58,8 @@ public class BlogDAOImpl implements BlogDAO {
                 blog.setUploadDatetime(rs.getTimestamp("uploadDatetime"));
                 blog.setCategory(rs.getString("category"));
                 blog.setBlogContent(rs.getString("blogContent"));
+                blog.setDescription(rs.getString("_description"));
+                blog.setThumbnail(imageDAO.readImage(rs.getString("imageID")));
             }
 
             if (blog == null) {
@@ -87,6 +94,8 @@ public class BlogDAOImpl implements BlogDAO {
             stm.setTimestamp(3, blog.getUploadDatetime());
             stm.setString(4, blog.getCategory());
             stm.setString(5, blog.getBlogContent());
+            stm.setString(6, blog.getDescription());
+            stm.setString(7, blog.getThumbnail().getImageID());
             result = stm.executeUpdate();
             if (result == 0) {
                 throw new BlogAlreadyExistsException();
@@ -115,7 +124,9 @@ public class BlogDAOImpl implements BlogDAO {
             stm.setTimestamp(2, blog.getUploadDatetime());
             stm.setString(3, blog.getCategory());
             stm.setString(4, blog.getBlogContent());
-            stm.setString(5, blog.getBlogID());
+            stm.setString(5, blog.getDescription());
+            stm.setString(6, blog.getThumbnail().getImageID());
+            stm.setString(7, blog.getBlogID());
 
             rowsAffected = stm.executeUpdate();
 
@@ -153,6 +164,8 @@ public class BlogDAOImpl implements BlogDAO {
                 blog.setUploadDatetime(rs.getTimestamp("uploadDatetime"));
                 blog.setCategory(rs.getString("category"));
                 blog.setBlogContent(rs.getString("blogContent"));
+                blog.setDescription(rs.getString("_description"));
+                blog.setThumbnail(imageDAO.readImage(rs.getString("imageID")));
                 blogs.add(blog);
             }
 
@@ -173,7 +186,7 @@ public class BlogDAOImpl implements BlogDAO {
 
         return blogs;
     }
-    
+
     @Override
     public List<BlogDTO> readAllBlogs() throws NoSuchRecordExists, SQLException {
         Connection con = null;
@@ -193,6 +206,8 @@ public class BlogDAOImpl implements BlogDAO {
                 blog.setUploadDatetime(rs.getTimestamp("uploadDatetime"));
                 blog.setCategory(rs.getString("category"));
                 blog.setBlogContent(rs.getString("blogContent"));
+                blog.setDescription(rs.getString("_description"));
+                blog.setThumbnail(imageDAO.readImage(rs.getString("imageID")));
                 blogs.add(blog);
             }
 
