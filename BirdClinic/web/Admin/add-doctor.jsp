@@ -48,18 +48,15 @@
                                         <a class="dropdown-item d-flex align-items-center text-dark" href="https://shreethemes.in/doctris/layouts/admin/profile.html">
                                             <img src="assets/images/doctors/01.jpg" class="avatar avatar-md-sm rounded-circle border shadow" alt />
                                             <div class="flex-1 ms-2">
-                                                <span class="d-block mb-1">Calvin Carlo</span>
-                                                <small class="text-muted">Orthopedic</small>
+                                                <span class="d-block mb-1"></span>
                                             </div>
                                         </a>
-                                        <a class="dropdown-item text-dark" href="admin-home-page.html"
+                                        <a class="dropdown-item text-dark" href="<c:url value="/Admin/Charts"/>"
                                            ><span class="mb-0 d-inline-block me-1"><i class="uil uil-dashboard align-middle h6"></i></span> Dashboard</a
                                         >
-                                        <a class="dropdown-item text-dark" href="dr-profile.html"
-                                           ><span class="mb-0 d-inline-block me-1"><i class="uil uil-setting align-middle h6"></i></span> Profile Settings</a
-                                        >
+
                                         <div class="dropdown-divider border-top"></div>
-                                        <a class="dropdown-item text-dark" href="lock-screen.html"
+                                        <a class="dropdown-item text-dark" href="<c:url value="/logout"/>"
                                            ><span class="mb-0 d-inline-block me-1"><i class="uil uil-sign-out-alt align-middle h6"></i></span> Logout</a
                                         >
                                     </div>
@@ -85,8 +82,7 @@
                                         <!--end col-->
 
                                         <div class="col-lg-5 col-md-8 text-center text-md-start mt-4 mt-sm-0">
-                                            <h5 class>Upload your picture</h5>
-                                            <p class="text-muted mb-0">For best results, use an image at least 600px by 600px in either .jpg or .png format</p>
+                                            <h5>Upload your picture</h5>
                                         </div>
                                         <!--end col-->
 
