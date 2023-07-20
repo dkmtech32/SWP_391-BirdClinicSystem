@@ -27,7 +27,7 @@
                                 <h4 class="text-white mb-3 d-none d-sm-block">BirdLove Veterinary Clinic</h4>
                                 <h4 class="text-white mb-3 d-none d-sm-block">Trusted Bird Clinic Providing the Best Veterinary Services and Top-notch Veterinary Team</h4>
                                 <!-- <a href="booking.jsp" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Book Now</a> -->
-                                <a href="service-list.jsp" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn
+                                <a href="<c:url value="/Blog/All"/>" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn
                                     More</a>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                                 <h4 class="text-white mb-3 d-none d-sm-block">BirdLove Veterinary Clinic</h4>
                                 <h4 class="text-white mb-3 d-none d-sm-block">a Reliable Place for Pet Check-ups and Treatment</h4>
                                 <!-- <a href="" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Book Now</a> -->
-                                <a href="service-list.jsp" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn
+                                <a href="<c:url value="/Blog/All"/>" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn
                                     More</a>
                             </div>
                         </div>
@@ -93,7 +93,7 @@
                                 <h5><i class="fa fa-check-double text-secondary mr-3"></i>24/7 Customer Support</h5>
                             </li>
                         </ul>
-                        <a href="service-list.jsp" class="btn btn-lg btn-primary mt-3 px-4">Learn More</a>
+                        <a href="<c:url value="/Blog/All"/>" class="btn btn-lg btn-primary mt-3 px-4">Learn More</a>
                     </div>
                     <div class="col-lg-5">
                         <div class="row px-3">
@@ -170,7 +170,7 @@
                             <h3 class="mb-3">Bird Vaccination</h3>
                             <p>BirdLove offers a comprehensive range of vaccines available worldwide for pets. 
                                 Our vaccine suppliers are based in Europe and the United States</p>
-                            <a class="text-uppercase font-weight-bold" href="service-detail.jsp">Read More</a>
+                            <a class="text-uppercase font-weight-bold" href="">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -189,7 +189,7 @@
                 <c:forEach items="${blogs}" var="blog">
                     <div class="col-lg-4 mb-4">
                         <div class="card border-0 mb-2">
-                            <img class="card-img-top" src="<c:url value="/assets/img/${blog.thumbnail.imageURLName}"/>" alt="" />
+                            <img class="card-img-top" src="<c:url value="/assets/images/blog/${blog.thumbnail.imageURLName}"/>" alt="" />
                             <div class="card-body bg-light p-4">
                                 <h4 class="card-title text-truncate">${blog.title}</h4>
                                 <div class="d-flex mb-3">

@@ -141,7 +141,7 @@
                                                                                         </a>
                                                                                     </h2>
                                                                                 </c:when>
-                                                                                <c:when test="${user.userRole=='staff'}" >
+                                                                                <c:when test="${user.userRole=='staff'||user.userRole=='admin'}" >
                                                                                     <h2 class="table-avatar">
                                                                                         <a class="avatar avatar-sm mr-2" href="<c:url value="/Admin/staff-profile.jsp"/>">
                                                                                             <img class="avatar-img rounded-circle" style="object-fit: cover; width: 4rem; height: 4rem;" src="<c:url value="/assets/images/${user.image.imageURLName}"/>" alt="User Image" />
@@ -171,7 +171,7 @@
                                                                         <td>
                                                                             <div class="table-action">
                                                                                 <c:choose>
-                                                                                    <c:when test="${user.status_}">
+                                                                                    <c:when test="${user.status_&& user.userRole!='admin'}">
                                                                                         <a href="<c:url value="/Admin/Accounts/Toggle?userID=${user.userID}"/>" class="btn btn-danger" style="width:103.8px">Ban</a>
                                                                                     </c:when> 
                                                                                     <c:when test="${!user.status_}">
