@@ -50,5 +50,24 @@ public class CustomerDTOImpl extends UserDTOImpl implements CustomerDTO {
         this.customerAddress = customerAddress;
     }
     
+    @Override
+    public CustomerDTO copyUser() {
+        CustomerDTO customer = new CustomerDTOImpl();
+        customer.copyUser(this);
+        customer.setDob(this.getDob());
+        customer.setCustomerAddress(customerAddress);
+        return customer;
+    }
     
+    @Override
+    public void copyUser(UserDTO user) {
+        try {
+            CustomerDTO customer = (CustomerDTO) user;
+            super.copyUser(user);
+            this.setCustomerAddress(customer.getCustomerAddress());
+            this.setDob(customer.getDob());
+        } catch (ClassCastException ex) {
+            ex.printStackTrace();
+        }
+    }
 }

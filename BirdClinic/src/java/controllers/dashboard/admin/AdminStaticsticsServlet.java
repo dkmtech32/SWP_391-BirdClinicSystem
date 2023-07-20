@@ -6,7 +6,10 @@
 package controllers.dashboard.admin;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.appointment.AppointmentDTO;
 import services.admin.AdminServices;
+import services.general.AppointmentDoesNotExistException;
 
 /**
  *
@@ -36,20 +40,26 @@ public class AdminStaticsticsServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String url = "/Admin/admin-home-page-charts.jsp";
         
-//        try {
-//            AdminServices admin = (AdminServices) session.getAttribute("service");
-//            String chartOption = request.getParameter("chart-option");
-//            switch (chartOption) {
-//                case "doctor":
-//                    request.setAttribute("appointments", admin.getAllAppointments());
-//                    request.setAttribute("doctorRatings", admin.getAllRatingsFromDoctor());
-//                    break;
-//                case "services":
-//                    break;
-//                case "booking":
-//                    break;
-//            }
-//        }
+        try {
+            AdminServices admin = (AdminServices) session.getAttribute("service");
+            String chartOption = request.getParameter("chart-option");
+            switch (chartOption) {
+                case "doctor":
+                    request.setAttribute("appointments", admin.getAllAppointments());
+//                    request.setAttribute("doctorRatings", admin);
+                    break;
+                case "services":
+                    break;
+                case "booking":
+                    break;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminStaticsticsServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (AppointmentDoesNotExistException ex) {
+            Logger.getLogger(AdminStaticsticsServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
