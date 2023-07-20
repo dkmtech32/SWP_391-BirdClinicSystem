@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.appointment.AppointmentDTO;
 import models.bird.BirdDTO;
+import models.users.UserDTO;
 import models.users.customer.CustomerDTO;
 import services.general.AccountDoesNotExistException;
 import services.general.GeneralServices;
@@ -44,6 +45,10 @@ public class ViewCustomerInfoServlet extends HttpServlet {
 
         try {
             GeneralServices service = (GeneralServices) session.getAttribute("service");
+            UserDTO user = service.getCurrentUser();
+            if (user.getUserRole().equals("admin")) {
+                url = "/Admin/customer-list.jsp";
+            }
             List<BirdDTO> birds = service.getCustomerBirds(userID);
             request.setAttribute("birds", birds);
             CustomerDTO customer = service.getCustomerInfo(userID);

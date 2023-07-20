@@ -35,7 +35,7 @@ public class WriteBlogServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "/Staff/blog-write.jsp";
+        String url = "/Staff/write-blog.jsp";
         request.getRequestDispatcher(url).forward(request, response);
     }
 

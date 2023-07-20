@@ -318,7 +318,7 @@ table.table td h2 span {
 }
 .card-table .card-body .table > thead > tr > th {
     border-top: 0;
-    
+
 }
 .card-table .table tr td:first-child,
 .card-table .table tr th:first-child {
@@ -3564,7 +3564,7 @@ html.menu-opened body {
 }
 /*#e9e9e9*/
 .time-slot li .timing {
-    background-color: #e9e9e9;
+    background-color: white;
     border: 1px solid #e9e9e9;
     border-radius: 3px;
     color: #757575;
@@ -3579,7 +3579,7 @@ html.menu-opened body {
     transition: background-color 0.2s, border-color 0.2s, color 0.2s;
 }
 .time-slot li .timing-occupied{
-    background-color: white;
+    background-color: #e9e9e9;
     border: 1px solid #e9e9e9;
     border-radius: 3px;
     color: #757575;
@@ -7957,3 +7957,22 @@ thead, tbody tr {
 thead {
     width: calc( 100% - 1em ) scrollbar is average 1em/16px width, remove it from thead width 
 }*/
+
+.ck-editor {
+    height: 500px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    overflow:scroll; 
+    max-height:300px;
+}
+
+/* Styling the editor content area */
+.ck-editor__editable {
+    min-height: 300px; /* Set the minimum height of the content area */
+    font-family: Arial, sans-serif; /* Example font family */
+    font-size: 14px; /* Example font size */
+    color: #333; /* Example text color */
+    line-height: 1.6; /* Example line height */
+}

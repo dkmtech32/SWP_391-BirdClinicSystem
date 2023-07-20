@@ -30,7 +30,7 @@ public class BlogDAOImpl implements BlogDAO {
             + "ORDER BY uploadDatetime DESC";
     
     private static final String READ_ALL_BLOGS
-            = "SELECT TOP 3 blogID, title, uploadDatetime, category, blogContent "
+            = "SELECT blogID, title, uploadDatetime, category, blogContent "
             + "FROM Blog ";
 
     @Override

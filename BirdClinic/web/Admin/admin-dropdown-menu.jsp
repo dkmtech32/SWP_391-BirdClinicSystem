@@ -44,9 +44,6 @@
                                 <a class="dropdown-item text-dark" href="<c:url value="/admin-home-page-accounts.jsp"/>"
                                    ><span class="mb-0 d-inline-block me-1"><i class="uil uil-dashboard align-middle h6"></i></span> Dashboard</a
                                 >
-                                <a class="dropdown-item text-dark" href="<c:url value="/admin-profile.jsp.jsp"/>"
-                                   ><span class="mb-0 d-inline-block me-1"><i class="uil uil-setting align-middle h6"></i></span> Profile Settings</a
-                                >
                                 <div class="dropdown-divider border-top"></div>
                                 <a class="dropdown-item text-dark" href="<c:url value="/logout"/>"
                                    ><span class="mb-0 d-inline-block me-1"><i class="uil uil-sign-out-alt align-middle h6"></i></span> Logout</a
