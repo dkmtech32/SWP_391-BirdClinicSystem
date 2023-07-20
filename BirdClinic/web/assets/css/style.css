@@ -7959,13 +7959,13 @@ thead {
 }*/
 
 .ck-editor {
-    height: 500px;
+    height: 300px;
     border: 1px solid #ddd;
     padding: 10px;
     border-radius: 5px;
     background-color: #f9f9f9;
     overflow:scroll; 
-    max-height:300px;
+    max-height:800px;
 }
 
 /* Styling the editor content area */

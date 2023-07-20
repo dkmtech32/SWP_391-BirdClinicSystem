@@ -26,15 +26,22 @@
                 <div class="row pb-3">
                     <c:forEach var="card" items="${blogs}">
                         <div class="col-lg-4 mb-4">
-                            <div class="card border-0 mb-2">
-                                <div class="card-body bg-light p-4">
-                                    <h4 class="card-title text-truncate">${card.title}</h4>
-                                    <div class="d-flex mb-3">
-                                        <small class="mr-2">${card.uploadDatetime.toString().split(' ')[0]}</small>
+                            <div class="card border rounded mb-2" style="min-height: 450px">
+                                <img class="card-img-top" src="<c:url value="/assets/images/blog/${card.thumbnail.imageURLName}"/>" style="height: 200px; object-fit: cover" />
+                                <div class="card-body p-3" style="background-color: #eaeaea ">
+                                    <h4 class="card-title h5">${card.title}</h4>
+                                    <div class=" m-3">
+                                        <small class="mr-2"><i class="fa fa-folder text-muted"></i> ${card.category}</small>
+                                        <small class="mr-2"><i class="fa fa-calendar text-muted"></i> ${card.uploadDatetime.toString().split(' ')[0]}</small>
                                     </div>
-                                    <a class="font-weight-bold" href="">Read More</a>
+                                    <p class="small d-inline-block text-truncate" style="display: -webkit-box !important;
+                                       -webkit-line-clamp: 3;
+                                       -webkit-box-orient: vertical;
+                                       white-space: normal;">${card.description}</p>
+                                    <a class="font-weight-bold" href="<c:url value="/Blog?blogID=${card.blogID}"/>">Read More</a>
                                 </div>
                             </div>
+                            
                         </div>
                     </c:forEach>
                 </div>
