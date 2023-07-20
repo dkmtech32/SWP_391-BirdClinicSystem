@@ -7,6 +7,7 @@ package models.blog;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import models.images.ImageDTO;
 
 /**
  *
@@ -20,6 +21,10 @@ public interface BlogDTO extends Serializable {
 
     String getCategory();
 
+    String getDescription();
+
+    ImageDTO getThumbnail();
+
     String getTitle();
 
     Timestamp getUploadDatetime();
@@ -29,6 +34,10 @@ public interface BlogDTO extends Serializable {
     void setBlogID(String blogID);
 
     void setCategory(String category);
+
+    void setDescription(String description);
+
+    void setThumbnail(ImageDTO thumbnail);
 
     void setTitle(String title);
 

@@ -201,16 +201,22 @@ CREATE TABLE Feedback (
 
 CREATE TABLE Blog (
   blogID CHAR(32) NOT NULL,
+  imageID CHAR(32) NOT NULL,
   title NVARCHAR(100) NOT NULL,
   uploadDatetime DATETIME NOT NULL,
   category NVARCHAR(50) NOT NULL,
   _description VARCHAR(1000) NOT NULL,
   blogContent NVARCHAR(MAX) NOT NULL,
   CONSTRAINT PK_Blog PRIMARY KEY CLUSTERED 
-(
-	blogID ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
+  (
+    blogID ASC
+  ) WITH (
+    PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF,
+    IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON,
+    ALLOW_PAGE_LOCKS = ON
+  ) ON [PRIMARY],
+  CONSTRAINT FK_Blog_Images FOREIGN KEY (imageID) REFERENCES Images(imageID)
+) ON [PRIMARY];
 GO
 
 INSERT INTO Images(imageID, imageURLName)
@@ -287,8 +293,70 @@ VALUES
 	('6d47ad177fb45c2d87e1b54fc363676b', 'chimdopruoicamden.png'),
 	('25abf9603856427e295b7bd1137fd04a', 'chimvetnammy.png'),
 	('ed1ed3634186fc66ee692da3ba98272f', 'chimsonca.png'),
-	('e47ccaddaa9e2cd4c25e84cae624b077', 'chimvanganh.png');
-
+	('e47ccaddaa9e2cd4c25e84cae624b077', 'chimvanganh.png'),
+	('6EF02AE8CD5103C4C74B8CAAF1471D90', 'blog1_1.jpg'),
+	('A1DD1CA0BD74BB2124FE2DA1DBE6AA70', 'blog1_2.jpg'),
+	('B380D7222B8087CEB9A77BE7E5C6D674', 'blog1_3.jpg'),
+	('1633ADA5AEBDB9440C68C44F0A78E8EB', 'blog1_4.jpg'),
+	('74BA3D05A528CB49F527559465BC577A', 'blog1_5.jpg'),
+	('FA883DBE3F3AA53D38495AFF57C1BDBF', 'blog1_6.jpg'),
+	('0F716E92BB955B5116129AB0EADCD694', 'blog1_7.jpg'),
+	('DFAD9B5C12187AD55B9A3B71702173FD', 'blog1_8.jpg'),
+	('3D3955297F0E9453621E4521F39CB6A9', 'blog1_9.jpg'),
+	('A5B46B0BE55F8F58150695E37716B424', 'blog2_1.jpg'),
+	('5C929AD2D6F33380FC8187CABB79E048', 'blog2_2.jpg'),
+	('ECDFB7EDE4B9ED4AE2941A580141A6B7', 'blog3_1.jpg'),
+	('F58150695E37716A5B46B0BE55F8B424', 'blog3_2.jpg'),
+	('5C929AD2CABB79ED6F33380FC8187048', 'blog3_3.jpg'),
+	('882BDE1798D4D1516641A2D190D58CAC', 'blog3_4.jpg'),
+	('70B14F3F23D45B12F60A483831B662B4', 'blog3_5.jpg'),
+	('042F820E781DA9CAA2E793F643B536BB', 'blog3_6.jpg'),
+	('3C2E0D1CFC3BC009465195E4B5AEC73F', 'blog4_1.jpg'),
+	('AADE06E1F2DC45CABC65C7B73EC87C83', 'blog4_2.jpg'),
+	('48051656AB52050E0BB8D82FE0A243E0', 'blog5_1.jpg'),
+	('2B5FD6349E04AB0C1099C266B2A62704', 'blog5_2.jpg'),
+	('0EF12921626248169E12EBFCE6FFE810', 'blog6_1.jpg'),
+	('4D907821573A6FB1DC1574827DA9514B', 'blog6_2.jpg'),
+	('5010DD042DF3EC8733B0CD78AAFD4E5C', 'blog6_3.jpg'),
+	('CFC93FBCA0A3EF7A4799EFBBB0571F77', 'blog6_4.jpg'),
+	('53007B37778C4C4F6CCFDC1467A1F5DC', 'blog6_5.jpg'),
+	('8FD8C5E01EC4F0757015A9AFC4C82D3D', 'blog6_6.jpg'),
+	('7966D1174214B297382CA2D017E49A7E', 'blog6_7.jpg'),
+	('835B9D2F2AD156412DEF8907E47B0C1C', 'blog6_8.jpg'),
+	('0D22C5422C970064C3FE7856F16A9118', 'blog6_9.jpg'),
+	('00DB5DAF82D7F818D6AB6A466AF7BEE4', 'blog6_10.jpg'),
+	('76FA6E278CE75EB33427682E6C0C360D', 'blog7.jpg'),
+	('B7B7A82190F83DF905868B2C1A45CC9B', 'blog8_1.jpg'),
+	('D5A47A681E03A039DE4DC09B75C0FE82', 'blog8_2.jpg'),
+	('AB8EF54222AF80947BD5BCBA22C8C8C5', 'blog9_1.jpg'),
+	('B5894B161BAC1B56627E885461AC366E', 'blog9_2.jpg'),
+	('7B4AC716D9608C09401B25D55D657DF5', 'blog10_1.jpg'),
+	('64947A9C9DDEBF65E48B683464B7FBC3', 'blog10_2.jpg'),
+	('76F3486A7C1E2A8071EB93571BCAD878', 'blog11_1.jpg'),
+	('59D5DFD007E115968AE004645CA789EA', 'blog11_2.jpg'),
+	('DEE0822E0D723293B16ABCFE332C8C51', 'blog11_3.jpg'),
+	('15B6C07558ADDED547DB03751982107C', 'blog11_4.jpg'),
+	('9AE0A7526A29D99AF4B88A5BE60F07D5', 'blog11_5.jpg'),
+	('4716AE87BD0DC2493651AE62F82CED2C', 'blog11_6.jpg'),
+	('80DD1B254C7CE466164EAABD64E657CE', 'blog11_7.jpg'),
+	('1F6690A61373CDBD24B1513F09065E3B', 'blog11_8.jpg'),
+	('DF30ECFBE3530A0ABFDEE6618FB2CF48', 'blog12_1.jpg'),
+	('15F5C2BCEC0BC8554F7F105AA6528C51', 'blog12_2.jpg'),
+	('1562B2EC846A0E0694B14CFF54E5C232', 'blog12_3.jpg'),
+	('2D95D21497BC068A970A015E2057D367', 'blog12_4.jpg'),
+	('955014699BCDDC9163EBF859E2E97AD3', 'blog13_1.jpg'),
+	('7A07BA85FEBCA8A149A01893F84A2AB8', 'blog13_2.jpg'),
+	('B7B7A82190F81A45C3DF905868B2CC9B', 'blog13_3.jpg'),
+	('DA039DE4DC09B5A47A681E0375C0FE82', 'blog14_1.jpg'),
+	('F80947BD5BCAB8EF54222ABA22C8C8C5', 'blog14_2.jpg'),
+	('1BAC1B56627B5894B16E885461AC366E', 'blog14_3.jpg'),
+	('D9608C097B4AC716401B25D55D657DF5', 'blog15_1.jpg'),
+	('64965E48B6834647A9C9DDEBF4B7FBC3', 'blog15_2.jpg'),
+	('7C1E2A8076F3486A71EB93571BCAD878', 'blog15_3.jpg'),
+	('530A0ABFDEDF30ECFBE3E6618FB2CF48', 'blog16.jpg'),
+	('F0757015A9AF8FD8C5E01EC4C4C82D3D', 'blog17_1.jpg'),
+	('14B297382C7966D11742A2D017E49A7E', 'blog17_2.jpg');
+	
 -- Insert data into the Users table
 INSERT INTO Users (userID, imageID, userName, userPassword, fullName, phoneNumber, gender, email, userRole, status_)
 VALUES
@@ -1417,9 +1485,9 @@ VALUES
 	( '1c693b7b7f4f3967d56242710d4a6925' , 'b7ad6137ff75b214972a6acd6206f4eb' , N'Các nhân viên điều dưỡng tại phòng khám này được đào tạo bài bản và chu đáo. Họ đã cung cấp dịch vụ chăm sóc tuyệt vời và luôn sẵn sàng giải quyết bất kỳ mối lo ngại nào.' , N'Nhân viên điều dưỡng được đào tạo bài bản' , GETDATE(), 4 ),
 	( '4b9e4136b9380ce6264eba99e7cbecaa' , 'f1174d213346307894a92d177efbb6dc' , N'Dịch vụ chăm sóc hậu phẫu của phòng khám thật đặc biệt. Các nhân viên cung cấp các hướng dẫn rõ ràng về chăm sóc sau điều trị và sẵn sàng giải đáp mọi thắc mắc hoặc lo lắng.' , N'Chăm sóc hỗ trợ sau thủ thuật' , GETDATE(), 4.5 );
 
-INSERT INTO Blog (blogID, title, uploadDatetime, category, _description , blogContent)
+INSERT INTO Blog (blogID, imageID, title, uploadDatetime, category, _description , blogContent)
 VALUES
-	( '36c8417c829ea8b07014eb3ca7946fb0', N'Những kinh nghiệm quý báu khi nuôi chim sâu xanh', GETDATE(), N'kinh nghiệm nuôi chim', N'Ngoài việc được biết đến là một loài chim
+	( '36c8417c829ea8b07014eb3ca7946fb0', '6EF02AE8CD5103C4C74B8CAAF1471D90', N'Những kinh nghiệm quý báu khi nuôi chim sâu xanh', GETDATE(), N'kinh nghiệm nuôi chim', N'Ngoài việc được biết đến là một loài chim
 	có ích cho cuộc sống con người. Chim sâu xanh còn được biết đến là một loại chim cảnh. Mặc dù việc nuôi chim sâu xanh không phải là khó nhưng cũng đòi hỏi ở người nuôi sự tỉ 
 	mỉ kì công.
 	Nhưng nếu bạn là một người có tình cảm đặc biệt với những chú chim này thì đó không phải là vấn đề gì quá khó khăn. Để giúp bạn có thêm kinh nghiệm trong việc chăm sóc 
@@ -1478,7 +1546,7 @@ Thời gian đầu bạn gần như không cần phải lo lắng bất cứ m�
 Trong khoảng thời gian từ 2 tuần bạn nên tách chim sau con và có thể tự chăm sóc cho chúng ăn được rồi. Khi bạn chăm sóc những chú chim sâu nhỏ thì bố mẹ của chúng phục hồi lại sức khỏe để chuẩn bị cho một sinh sản kế tiếp. Như vậy đến đây về cơ bản là cách nuôi chim sâu xanh sinh sản đã thành công và bạn chắc chắn sẽ cảm thấy rất vui với những thành quả mà mình có thể đạt được
 
 Hi vọng rằng với những kinh nghiệm nuôi chim sâu đầu xanh mà chúng tôi mang đến cho các bạn sẽ góp phần mang đến cho các bạn những kinh nghiệm quý giá nhất. Ngoài ra chúng tôi cũng man tới cho bạn những kinh nghiệm để nuôi chi sâu xanh đẻ. Đừng quên ghé thăm Chú Gióng mỗi ngày để cập nhật nhiều thông tin cũng như kinh nghiệm nuôi chim sâu xanh. Chúc các bạn thành công trong việc chăm sóc chú chim sâu xanh để đạt được chất lượng cao nhất. Hẹn gặp lại các bạn ở bài viết tới.'),
-	( '40f3cc38ef656d749d2e2a368b59711e', N'Cách phân biệt chim sâu xanh trống mái chính xác nhất',  GETDATE(), N'phân biệt chim',
+	( '40f3cc38ef656d749d2e2a368b59711e', 'A5B46B0BE55F8F58150695E37716B424', N'Cách phân biệt chim sâu xanh trống mái chính xác nhất',  GETDATE(), N'phân biệt chim',
 	N'Việc phân biệt chim sâu xanh đối khó vì chúng khá giống nhau, vì bộ long chúng chưa hoàn thiện nên các bạn chỉ nhìn đảo qua một vài lần và so sánh. Không nên nhìn chằm chằm vào 1 con, nhìn lâu sinh ra hiện tượng hoa mắt, cuối cùng là con nào cũng như nhau, nên không phân biệt được. Mời bạn theo giỏi bài viết sau đây để nhận biết chim sâu xanh trống mái một cách chính xác nhất.
 
 ', N'Cách phân biệt chim sâu xanh trống mái chuẩn nhất
@@ -1502,7 +1570,7 @@ Bạn có tin không những chú chim sâu xanh cũng có chim ái nam ái nữ
 Ngoài ra để phân biệt chim sâu đầu xanh trống mai cũng còn một cách nữa. Nhưng cách này có một nhược điểm là không thể phân biệt được những chú chim khi chưa cất giọng hót. Nhưng dù trống hay mái những chú chim này bắt buộc phải sở hữu được một ngoại hình cân đối với dáng chuẩn, lông phải mượt không bị xoắn vào nhau. Đôi mắt có hồn và phải có chiều sâu, toàn thân không được có bất cứ một tật lỗi nào.
 
 Hi vọng rằng với những kinh nghiệm trên giúp bạn có thể lựa chọn một chú chim sâu xanh trông mái như ý. Nếu bạn nào biết thêm những kinh nghiệm hay hơn nữa thì có thể chia sẻ để mọi người cùng tham khảo. Mong rằng loài chim sâu nhỏ nhắn xinh đẹp hót hay này sẽ mang đến cho những người yêu chim cảnh những giây phút bình an sảng khoái và tĩnh lặng nhất trong tâm hồn. Cảm ơn các bạn đả đọc bài viết và đừng quên hãy luôn ghé thăm wedsite Chú Gióng để cập nhật thêm nhiều thông tin về loài chim sâu nhé.'),
-	( 'ff9086582c62af630123c568ca5db776', N'Top 6 Loài chim cảnh biết nói thông minh nhất thế giới', GETDATE(), N'Top loài chim', N'Sự ưu ái đặc biệt mà tạo hóa giành tặng cho cuộc sống của chúng ta chính là những chú chim cảnh biết nói. Bởi ngoài một vẻ đẹp rất hấp dẫn chúng cũng có thể bắt chước được tiếng người một cách rất chuẩn xác. Bạn có tò mò và muốn biết những chú chim cảnh thông minh này không? Hãy theo dõi bài viết dưới đây của chúng tôi nhé. Hãy đến với top 6 Loài chim cảnh biết nói thông minh nhất thế giới.',
+	( 'ff9086582c62af630123c568ca5db776', '882BDE1798D4D1516641A2D190D58CAC', N'Top 6 Loài chim cảnh biết nói thông minh nhất thế giới', GETDATE(), N'Top loài chim', N'Sự ưu ái đặc biệt mà tạo hóa giành tặng cho cuộc sống của chúng ta chính là những chú chim cảnh biết nói. Bởi ngoài một vẻ đẹp rất hấp dẫn chúng cũng có thể bắt chước được tiếng người một cách rất chuẩn xác. Bạn có tò mò và muốn biết những chú chim cảnh thông minh này không? Hãy theo dõi bài viết dưới đây của chúng tôi nhé. Hãy đến với top 6 Loài chim cảnh biết nói thông minh nhất thế giới.',
 N'1. Chim Yến Phụng.
 	Yến Phụng là một loài chim cực kì thông minh và có khả năng bất bước tiếng người cực kì giỏi. Chỉ cần chủ nhân của chúng dành nhiều thời gian để dạy dỗ chúng có thể nhớ 
 	được rất nhiều từ. 
@@ -1514,7 +1582,7 @@ N'1. Chim Yến Phụng.
 	chúng có thể nói cả ngày không chán. 
 	Chúng sở hữu một màu lông xanh đen với chiếc mở màu được tô điểm bới lông sọc vàng. Thức ăn yêu thích của loài Yểng này là côn trùng và trái cây. 
 	Đây cũng là một loại chim cảnh rất được ưa chuộng tại Việt Nam'),
-	( '9b5aefbcffbf716f526dda302be5cdef' , N'Nuôi chim họa mi quan trọng nhất điều gì' , GETDATE() , N'kinh nghiệm nuôi chim' ,
+	( '9b5aefbcffbf716f526dda302be5cdef' , '3C2E0D1CFC3BC009465195E4B5AEC73F', N'Nuôi chim họa mi quan trọng nhất điều gì' , GETDATE() , N'kinh nghiệm nuôi chim' ,
 N'Thật sự thiếu sót nếu bạn đang nuôi chim họa mi mà không biết đến những điều cần đặc biệt lưu ý trong quá trình nuôi dưỡng chúng. Trong việc chuẩn bị, chọn lựa thức ăn đến vệ sinh lồng nhốt, chăm sóc chim non, vv… đều cần có những kinh nghiệm riêng, không phải ai cũng nắm rõ, cũng xuất phát từ tình cảm đặc biệt mà chúng tôi dành cho họa mi và với mong muốn sẽ mang đến cho mọi người những bí quyết nuôi chim họa mi quan trọng nhất. Tất tần tất những điều quan trọng nhất về việc nuôi chim này sẽ được chúng tôi gửi đến trong bài viết dưới đây',
 
 N'Những lưu ý quan trọng trong việc nuôi chim họa mi. 
@@ -1537,7 +1605,7 @@ Y học thú y phát triển cũng đồng nghĩa với việc bạn sẽ dễ d
 Lời khuyên mà chúng tôi dành cho bạn chính là nên lựa chọn những chú chim đã được nuôi dưỡng qua để trải nghiệm. Bởi nếu bạn chưa có 1 chút kinh nghiệm nào mà nuôi họa mi con ngay thì chắc chắn sẽ gặp rất nhiều khó khăn. Chim họa mi khi được thuần thân thiện là vậy nhưng mới thì rất sợ tiếp xúc với con người. Nó sẽ chẳng có được một tâm lý tốt nhất nếu như bạn chưa có nhiều kinh nghiệm. Hơn nữa việc nuôi chim từ nhỏ phải trải qua một quá trình dài. Nếu không được chăm sóc kĩ càng sẽ có rất nhiều tật lỗi và giọng ca cũng chẳng thể nào xếp vào hàng danh ca được.
 
 Hi vọng rằng những bí quyết nuôi chim hoạ mi mà chúng tôi sưu tầm từ những cao nhân chim cảnh sẽ phần nào giúp ích cho mọi người. Nhất là với những người đang mong muốn trở thành nghệ nhân, chỉ cần với tình yêu và phương pháo nuôi đúng kỹ thuật việc sỡ hữu một chú chim khỏe mạnh sẽ chẳng còn là vấn đề với các bạn. Hi vọng bài viết này sẽ giúp các bạn thành công trong việc nuôi một chú chim họa mi mà bạn yêu mến. Chúc các bạn may mắn'),
-	( 'b1fa395c5fa8c10d20990274f0e57a85' , N'Những điều thú vị về tiếng chim hoạ mi hót' , GETDATE() , N'Những điều thú vị' ,
+	( 'b1fa395c5fa8c10d20990274f0e57a85' , '2B5FD6349E04AB0C1099C266B2A62704', N'Những điều thú vị về tiếng chim hoạ mi hót' , GETDATE() , N'Những điều thú vị' ,
 	N'Bất kì một người nuôi chim nào cũng mong muốn được nghe thứ âm thanh tuyệt vời ấy nhất là vào mỗi buổi sáng. Thứ âm thanh mà loại chim này mang lại cho người nghe cảm giác thoải mái, thư giản sau một ngày làm việc. Ẩn sâu trong tiếng hót mê hoặc ấy là những câu chuyện được giới chơi chim truyền lại. Vậy câu chuyện đó là gì? Hãy cùng tìm hiểu những điều thú vị trong tiếng hót của chim hoạ mi.',
 
 N' Nguồn gốc tiếng hót chim hoa mi qua câu truyện đầy thú vị.
@@ -1555,7 +1623,7 @@ Chim hoạ mi hót dường như còn chất chứa bao nỗi niềm, những bu
 Chim hoạ mi hót cũng là một dấu hiệu để con người có thể nhận biết về thời tiết. Nếu giữa đêm khoảng 3 giờ sáng bạn bị đánh thức bởi tiếng to vang thì chắc chắn ngày hôm đó sẽ có thay đổi về thời tiết. Còn khoảng 6,7 giờ sáng thấy chim hoa mi hót hay, hót nhiều thì chẳng còn gì tuyệt vời hơn bởi hôm ấy là một ngày đẹp trời. Thú vị hơn mỗi khi chăm bẵm chúng cho chúng ăn rồi lại được nghe chúng hót lúc bầy giờ người nuôi chim mới có thể cảm nhận hết được cái ân cái tình của loài chim này.
 
 Nhìn chung, chim họa my có lối sống khá tình cảm, tuy khó nuôi nhưng nuôi chim hoạ mi hót và hót hay thì lại càng khó. Chính vì vậy hãy chỉ nuôi khi bạn có tình yêu bất tận với chúng, có sự thấu hiểu với chúng.'),
-	( 'db635b18aeddd06818d3eaee86183bab' , N'Top 5 loài chim chào mào hót hay được các đại gia săn lùng hiện nay' , GETDATE() , N'Top loài chim' , 
+	( 'db635b18aeddd06818d3eaee86183bab' , '5010DD042DF3EC8733B0CD78AAFD4E5C', N'Top 5 loài chim chào mào hót hay được các đại gia săn lùng hiện nay' , GETDATE() , N'Top loài chim' , 
 	N'Hiện nay thú vui sưu tầm và chăm sóc chim đang được các bạn trẻ và những doanh nhân thành đạt để mắt tới trong đó phải nói đến chim chào mào. Những chú chim chào mào hót hay thuộc hàng độc nhất vô nhị luôn được các đại gia săn đón và sẵn sàng chi với số tiền kết xù để sở hữu. Sở hữu chim hiếm còn thể hiện đẳng cấp của mình trong thú vui chơi chim và trong cuộc sống, góp phần không nhỏ giúp các doanh nhân thành đạt trong công việc.
 
 Cho dù đang ở giữa thời buổi kinh tế khó khăn nhưng chẳng thể ngăn nổi cách mà các đại gia bạo chi, thậm chí có những người còn sẵn sàng bỏ ra số tiền lên đến cả trăm triệu cho những sự độc lạ của những chú chào mào quý hiếm này. Chắc chắn rằng quý độc giả cũng đang rất nóng lòng muốn biết tại sao những chú chim này lại trở thành niềm ao ước thầm của nhiều đại gia đến vậy. Cùng chúng tôi theo dõi trong bài viết dưới đây nhé.
@@ -1631,7 +1699,7 @@ Việc đem chim đi tập luyện thường xuyên không chỉ giúp cho chào
 
 Chúng tôi tin chắc rằng tất cả những điều này sẽ chẳng còn là vấn đề khi bạn sở hữu được một chú chim chào mào với giọng hót hay. Vào mỗi sớm mai thức dậy, bạn được nghe những âm thanh thánh thót được phát ra từ chính những chú chim mà mình dày công chăm bẵm thì còn gì tuyệt vời hơn nữa. Chúc bạn luôn vui và thành công với niềm đam mê của mình.
 '),
-	( 'a66a0292d3af450e99bd42136898c36b' , N'Chế độ dinh dưỡng cho chim chào mào đấu hót' , GETDATE() , N'kinh nghiệm nuôi chim' , 
+	( 'a66a0292d3af450e99bd42136898c36b' , '76FA6E278CE75EB33427682E6C0C360D', N'Chế độ dinh dưỡng cho chim chào mào đấu hót' , GETDATE() , N'kinh nghiệm nuôi chim' , 
 N'Như chúng ta đã biết, hiện nay thú vui chơi chim chào mào đặc biệt nở rộ trong những năm gần đây. Đây là dòng chim dễ nuôi, thức ăn chủ yếu là hoa quả, trái cây, đôi lúc là một ít cám thôi cũng đủ sống rồi. Thế nhưng để chăm ra một em chào mào căng lửa thì đã khó, nuôi ra một chú chào mào để đấu hót còn khó hơn bội phần. Thông qua bài viết này, Chú Gióng sẽ gửi đến bạn đọc cách nuôi chào mào thi đấu một cách đơn giản và dễ dàng nhất.',
 
 N'1. Thức ăn chính
@@ -1646,7 +1714,7 @@ Nước uống sạch là đủ rồi, không cần phải đun sôi để ngu�
 Ngoài ra để chú chim của bạn khỏe mạnh mỗi ngày thì cần phải bổ sung chất vi chất dinh dưỡng - vô thuốc nữa. Tuy nhiên đây là con dao hai lưỡi, khi sử dụng thuốc phải hết sức cẩn thận và theo dõi sát sao bầy chim, phải hiểu thật rõ thì mới làm tránh những trường hợp đáng tiếc xảy ra.
 
 Như vậy là chúng ta vừa điểm qua chế độ dinh dưỡng cho chim chào mào đấu hót, thiết nghĩ đây là những điều căn bản và cần thiết cho độc giả để tìm hiểu về cách nuôi chào mào thi đấu. Nuôi chim cảnh không chỉ giúp không gian gia đình thêm vui vẻ rộn ràng, khiến người nuôi chim giải tỏa căng thẳng sau những giờ làm việc mệt mỏi mà còn là một thú chơi hái ra tiền. Chúc các bạn thành công.'),
-	( '0aa6e189009d5d7cf2a981e8387fff4d' , N'Kỹ thuật nuôi chim chào mào sinh sản và chăm sóc chào mào đẻ tốt nhất' , GETDATE() , N'kinh nghiệm nuôi chim' , 
+	( '0aa6e189009d5d7cf2a981e8387fff4d' , 'B7B7A82190F83DF905868B2C1A45CC9B', N'Kỹ thuật nuôi chim chào mào sinh sản và chăm sóc chào mào đẻ tốt nhất' , GETDATE() , N'kinh nghiệm nuôi chim' , 
 N'Để phục vụ cho mục đích kinh doanh chim cảnh từ thú vui của chính bản thân mình và đã thành công, đó là áp dụng kỹ thuật nuôi chim chào mào sinh sản . Nếu như bạn muốn nuôi chim để sinh sản không phải để kinh doanh mà chị để phục vụ cho thú chơi của mình thì cũng hoàn toàn có thể. Nuôi chim chào mào sinh sản cũng không phải là điều gì đó quá khó nhưng cũng cần phải tuân theo một số những bước cơ bản để giúp những bạn đang có ý định có thể nắm bắt được những bước tốt nhất thì ở trong bài viết ngày hôm nay Chú Gióng sẽ giới thiệu đến các bạn những kỹ thuật nuôi chim chào mào đẻ tốt nhất.',
 
 N'Kỹ thuật nuôi chim chào mào sinh sản 
@@ -1666,7 +1734,7 @@ Khi giai đoạn những chú chim chào mào non bắt đầu học hót và tr
 
 Trên đây là tất cả những kỹ thuật nuôi chim chào mào sinh sản mà chúng tôi mang đến cho bạn. Hi vọng rằng bạn sẽ tuân thủ theo những kỹ thuật này để cho những chú chim của bạn có thể phát triển một cách đầy đủ nhất chúc bạn sẽ thuận lợi hơn cho việc kinh doanh hoặc là có thể sở hữu được cho mình những chú chim chào mào chất lượng phục vụ cho thú chơi của bạn sau này. Nếu như bạn thành công thì đừng quên chia sẻ với chúng tôi để những người khác có thể áp dụng bạn nhé. Hãy ghé thăm Chú Gióng thường xuyên để cập nhật cho mình những thông tin bổ ích nhé.
 '),
-	( '3f37126f037169bb080a309c88524d38' , N'Cách lựa chọn chim chào mào đẹp nhất hiện nay' , GETDATE() , N'cách chọn chim' , 
+	( '3f37126f037169bb080a309c88524d38' , 'AB8EF54222AF80947BD5BCBA22C8C8C5', N'Cách lựa chọn chim chào mào đẹp nhất hiện nay' , GETDATE() , N'cách chọn chim' , 
 N'Khi việc chơi chào mào đã trở nên quá phổ biến thì người chơi lại muốn hướng đến một yêu cầu mới, khắt khe hơn. Do đó cách chọn chim chào mào đẹp nhất là một trong những tiêu chí hàng đầu mà những người yệu chim cảnh quan tâm nhất. Để giúp bạn có được một chú chim chào mào đẹp, thì hôm nay Chú Gióng xin chia sẻ với các bạn những cách lựa chọn chim chào mào đẹp nhất:',
 
 N'Cách lựa chọn chim chào mào đẹp nhất hiện nay
@@ -1706,7 +1774,7 @@ Khi lựa chọn một chú chào mào đẹp theo cánh chim không được ch
 Cũng giống như bất kỳ loại động vật nào khác mà ngay cả con người chúng ta cũng vậy nếu như muốn di chuyển nhanh nhẹn thanh thoát được thì bắt buộc phải có một đôi chân khỏe. Còn về tiêu chí lựa chọn chào mào đẹp theo chân những chú chim chào mào nào sở hữu một đôi chân cao thì rất nhanh nhẹn và linh hoạt .Tuy nhiên những chú chim sở hữu được một đôi chân cao cao này thì không phải lúc nào chúng ta có thể tìm được. Chưa kể đến những chú chào mào bổi thì việc huấn luyện những chú chim này cũng rất khó khăn bởi như bạn biết để nuôi được một chú chim bổi cho đến khi chúng thuần và có thể đưa ra trường thi đấu được cũng phải mất 3 đến 4 năm
 
 Vậy ở trong bài viết trên Chúng tôi đã mách cho bạn cách chọn chim chào mào đẹp theo đúng tiêu chí của những người am hiểu về chim cảnh. Với những cách lựa chọn trên, Chú Gióng hi vọng sẽ giúp bạn chọn được một chú chim chào mào thật đẹp, bên cạnh đó giúp các bạn có thêm kinh nghiệm chăm sóc chúng. Cảm ơn các bạn đã quam tâm theo dõi bài viết.'),
-	( '0251849dac885e1123e573388a937b6d' , N'Cách chăm chào mào bổi tốt nhất' , GETDATE() , N'kinh nghiệm nuôi chim' , 
+	( '0251849dac885e1123e573388a937b6d' , '64947A9C9DDEBF65E48B683464B7FBC3', N'Cách chăm chào mào bổi tốt nhất' , GETDATE() , N'kinh nghiệm nuôi chim' , 
 	N'Cách chăm chào mào bổi luôn được sự quan tâm rất lớn từ thế giới những người yêu chim. Bởi đơn giản đây là dòng chim khó nuôi, cần sự tinh tế và kinh nghiệm lâu năm của người chăm sóc. Chim chào mào bổi sau khi huấn luyện xong nếu thành công bạn sẽ có những chú chim tuyệt vời nhất, vời hình thế vóc dáng lực lượng, oai phong và giọng hót hàng ngày cực nịnh người.
 	Nhưng ngược lại nếu bạn bỏ qua và không quan tâm đến khoảng thời gian này chúng sẽ nhanh chóng xuống dốc, thậm chí là chết dễ dàng. Hãy cùng chúng tôi tìm hiểu Cách chăm chào mào bổi tốt nhất dưới đây và rút ra bài học cho bản thân mình nhé!',
 
@@ -1720,7 +1788,7 @@ Chim chào mào cần lượng thức ăn khôn nhiều nhưng liên tục. Bạ
 
 Thời gian đầu chim chào mào bổi hơi nhát nên bạn đừng quá lo lắng nếu chúng khôn hót, hoặc không nhanh nhẹn như bình thường. Sau khoảng 1 tháng chim sẽ bắt đầu dạn dĩ dần.
 Cách chăm chào mào bổi  cần người chủ rất khéo léo vì cần nâng niu, cất lồng chim khi nào. vì vậy bạn hãy nhớ một vài quy tắc đơn giản trên nhé. Ngoài ra, khi chim đã dạn hãy để chim nơi yên tĩnh, it người qua lại để chúng tự do hót. Chúc bạn có những phút giây thoải mái nhất.'),
-	( 'b17fbe0d73b2ebacedfb6ac1b284767c' , N'Tổng hợp các loài chim cảnh đẹp mà dân chơi yêu thích' , GETDATE() , N'Top loài chim' , 
+	( 'b17fbe0d73b2ebacedfb6ac1b284767c' , 'DEE0822E0D723293B16ABCFE332C8C51', N'Tổng hợp các loài chim cảnh đẹp mà dân chơi yêu thích' , GETDATE() , N'Top loài chim' , 
 N'Trong giới chim cảnh người ta thường đồn đại và chia sẽ với nhau một số loại chim cảnh đẹp, hót hay và phổ biến tại Việt Nam. Nếu không sở hữu ngoại hình bắt mắt thì chắc hẵn loài chim này sẽ có giọng hót thanh thót, làm say đắm lòng người . Bạn đã biết những loài chim được yêu thích nhất là những loài nào chưa? nếu chưa thì hãy theo dõi cùng chúng tôi trong bài Viết dưới đây nhé.
 
 Những loài chim cảnh quý mà dân chơi yêu thích',
@@ -1757,7 +1825,7 @@ Sở hữu ngoại hình không khác là mấy so với chú chi sâu thông th
 
 Đối với những loài chim đã nêu trên, mỗi loài đều có điểm riêng biệt của chúng khi có loài mang diện mạo hoàn hảo, thế nhưng lại có loài lại có được giọng hót say đắm. Và cũng chính bởi những đặc điểm này đã khiến cho những chú chim cảnh đẹp luôn được các dân chơi yêu mến và săn lùng. 
 '),
-	( 'adc8a1de829b5aca8cd6f8a94b4dbf0d' , N'Chia sẻ cách nuôi chim họa mi bổi' , GETDATE() , N'kinh nghiệm nuôi chim' , 
+	( 'adc8a1de829b5aca8cd6f8a94b4dbf0d' , '15F5C2BCEC0BC8554F7F105AA6528C51', N'Chia sẻ cách nuôi chim họa mi bổi' , GETDATE() , N'kinh nghiệm nuôi chim' , 
 	N'Chim họa mi nổi tiếng là loài chim khó thuần, đặc biệt đối với họa mi bổi thì việc thuần hóa chúng là một việc khó khăn đòi hỏi tính kiên trì và thời gian. Nhưng nếu như bạn thành công thì chắc chắn rằng kết qua sẽ khiến bạn cảm thấy vô cùng hài lòng. Dưới đây xin chia sẻ với bạn cách nuôi chim họa mi bổi, đặc biệt lưu ý với loại chim này bạn cần nhiều thời gian và không thể đốt cháy giai đoạn được. 
 	Chim họa mi bổi sống quen với môi trường hoang dã',
 
@@ -1781,7 +1849,7 @@ Trong thời gian sau khi chim đã dạn, người nuôi vẫn nên trùm lồn
 
 Tóm lại, việc chăm sóc và thuần một chú chim họa mi bổi rất vất vả và người nuôi mất rất nhiều thời gian theo đó là sự tỉ mỉ và kiên trì. Nếu bạn là một người thật tâm huyết với chú chim của mình, nhất định khi trải qua một thời gian chăn sóc thì chú họa mi sẽ cất cao tiếng hót mỗi ngày. Tuy sẽ mất thời gian dài từ 6 – 8 tháng, cũng có thể là một năm tùy từng con chim, nhưng cuối cùng bạn sẽ thực sự cảm nhận được sự thú vị trong quá trình thuần hóa chim họa mi và hạnh phúc khi được thưởng thức tiếng chim hót mỗi ngày.
 '),
-	( '48981d702b321f55a52652da71155e67' , N'Tuân thủ những cách chăm sóc họa mi căng lửa' , GETDATE() , N'kinh nghiệm nuôi chim' , 
+	( '48981d702b321f55a52652da71155e67' , '7A07BA85FEBCA8A149A01893F84A2AB8', N'Tuân thủ những cách chăm sóc họa mi căng lửa' , GETDATE() , N'kinh nghiệm nuôi chim' , 
 	N'Việc nuôi dưỡng và chăm sóc chim họa mi luôn giữ được phong độ là một điều tuy đơn giản nhưng không phải ai cũng có thể làm được vì đây là công việc nhẹ nhàng nhưng cần sự tỉ mỉ và kiên trì cao. Bài viết này xin bổ xung những cách chăm sóc chim họa mi căng lửa để bạn đọc tham khảo và áp dụng.',
 
 	N'Với những người nuôi chim họa mi, gặp phải trường hợp chim lên lửa, xuống lửa thất thường, ngày thì nghe hót rất nhiều, ngày thì không nghe thấy chim hót lần nào… đó là việc hết sức bình thường khi người nuôi chim họa mi không có các kĩ năng và chưa đủ kinh nghiệm giữ lửa cho họa mi. Những điều ảnh hưởng lớn nhất tới tạo lửa và giữ lửa cho chim mà bạn cần lưu ý như : môi trường sống, chế độ dinh dưỡng, cách chăm sóc..
@@ -1802,7 +1870,7 @@ Một vài điều về những thay đổi theo mùa của chim họa mi bạn 
 
 Chúc bạn sẽ đúc rút được nhiều cách chăm sóc họa mi căng lửa trong quá trình nuôi chim đầy thú vị của mình!
 '),
-	( '309d3c8fc90b2cf25bf851f62e428ec7' , N'Kĩ thuật và những cách nuôi chim họa mi hót nhiều' , GETDATE() , N'kinh nghiệm nuôi chim' , N'
+	( '309d3c8fc90b2cf25bf851f62e428ec7' , '1BAC1B56627B5894B16E885461AC366E', N'Kĩ thuật và những cách nuôi chim họa mi hót nhiều' , GETDATE() , N'kinh nghiệm nuôi chim' , N'
 	Hiện nay trào lưu nuôi chim được lan rộng mạnh mẻ, hiển nhiên những kinh nghiệm mà các tay chơi lão luyện làm như thế nào để chim hót nhiều cũng đã được truyền lại. 
 	Tuy nhiên, hôm nay hãy để chúng tôi bật mí những “bí kíp” dưới đây để thuần hóa chim họa mi được thành công hơn nhé!',
 	
@@ -1823,7 +1891,7 @@ Kĩ năng để có một con chim họa mi hót giọng thánh thót và nhiề
 Ngoài ra việc tắm nắng, tắm nước cho chim cũng là một việc quan trọng và không được quên vệ sinh lồng chim sạch sẽ.
 Trên đây là những chia sẻ về kinh nghiệm cách chăm sóc chim họa mi hót , bạn tham khảo và làm theo để nuôi chim thành công, lúc nào cũng được thưởng thức tiếng chim họa mi quanh nhà bạn.
 	'),
-	( 'e9dd9c14ec255e2700d76c05c70d0236' , N'Kỹ thuật thuần hóa chim họa mi mộc' , GETDATE() , N'kinh nghiệm nuôi chim' , N'
+	( 'e9dd9c14ec255e2700d76c05c70d0236' , 'D9608C097B4AC716401B25D55D657DF5', N'Kỹ thuật thuần hóa chim họa mi mộc' , GETDATE() , N'kinh nghiệm nuôi chim' , N'
 	Loài chim họa mi không những hót hay mà nhờ bản tính dữ tợn, hung hăng mà chim họa mi còn dùng để chiến đấu. Vậy việc thuần hóa một con chim họa mi "mộc" mới bắt về từ rừng thật sự không hề dơn giản. 
 
 Sau khi đem chim mộc về phủ kín áo lồng để mở chữ A hoặc rộng hơn cũng không sau, để chỗ tối quay ra chỗ có ánh sáng và có người đi lại, việc này sẽ giúp  cho chú chim nhát thấy tự tin hơn ai khi nhìn không thấy ai. Sau 2,3 ngày cho chim ra chỗ sáng hơn, nếu thấy chim đứng không nhảy lung tung thì bạn đã thành công.',
@@ -1866,7 +1934,7 @@ Cách chăm sóc chinh họa mi và thuần hóa chúng cần phải kiên nhẫ
 Hy vọng qua bài viết này bạn có thể có thêm kinh nghiệm để chăm sóc chim họa mi và thuần hóa chúng. 
 
 	'),
-	( '553acd22fd496a02446c6258b3ba027e' , N'Cách chăm sóc chim chào mào thay lông chuẩn kỹ thuật nhất' , GETDATE() , N'kinh nghiệm nuôi chim' , N'
+	( '553acd22fd496a02446c6258b3ba027e' , '530A0ABFDEDF30ECFBE3E6618FB2CF48', N'Cách chăm sóc chim chào mào thay lông chuẩn kỹ thuật nhất' , GETDATE() , N'kinh nghiệm nuôi chim' , N'
 	Khi những chiếc lông đầu tiên rớt xuống báo hiệu những chú chào mào đáng yêu của bạn sắp trút bỏ một bộ lông cũ kĩ trên người để khoác một bộ lông hoàn hảo hơn trước. Lúc này cách chăm sóc chim chào mào thay lông đòi hỏi phải cầu kì và chính xác hơn rất nhiều. Để giúp các bạn có được những cách chăm sóc chim khoa học nhất mời các bạn theo dõi bài viết dưới đây của chúng tôi',
 
 N'Cách chăm sóc chim chào mào thay lông
@@ -1889,7 +1957,7 @@ Những chú chim bổi được nuôi dưỡng trong tự nhiên sau khi thuầ
 
 Hi vọng rằng với những cách chăm sóc chim chào mào thay lông trong bài viết trên sẽ giúp cho anh em có thể giúp cho những chú chim quý của mình có được một bộ lông tốt nhất. Chúc anh em nghệ nhân thành công và sở hữu được chú chim đẹp nhất
 '),
-	( 'd6d001e31f4065bbe402bc2eac44ca22' , N'Những kinh nghiệm vàng trong cách nuôi chào mào bổi thành mồi' , GETDATE() , N'kinh nghiệm nuôi chim' , N'
+	( 'd6d001e31f4065bbe402bc2eac44ca22' , 'F0757015A9AF8FD8C5E01EC4C4C82D3D', N'Những kinh nghiệm vàng trong cách nuôi chào mào bổi thành mồi' , GETDATE() , N'kinh nghiệm nuôi chim' , N'
 	Một khi chú chào mào bổi chất lượng được huấn luyện thành công thì chắn chắc rằng sẽ là một đối thú đáng gờm và bản lĩnh trong các trường, hội thi chim. Chính vì vậy nhưng chú chim này nhận được rất nhiều sự quan tâm của các cao thủ lão làng cũng như những người chơi mới muốn thử sức. Cách nuôi chào mào bổi thành mồi không khó đòi hỏi chủ nhân của chúng phải thành thục những bước dưới đây',
 
 N'Cách nuôi chào mào bổi thành mồi
