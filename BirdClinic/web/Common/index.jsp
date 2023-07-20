@@ -189,16 +189,14 @@
                 <c:forEach items="${blogs}" var="blog">
                     <div class="col-lg-4 mb-4">
                         <div class="card border-0 mb-2">
-                            <img class="card-img-top" src="<c:url value="/assets/img/blog-1.jpg"/>" alt="" />
+                            <img class="card-img-top" src="<c:url value="/assets/img/${blog.thumbnail.imageURLName}"/>" alt="" />
                             <div class="card-body bg-light p-4">
                                 <h4 class="card-title text-truncate">${blog.title}</h4>
                                 <div class="d-flex mb-3">
                                     <small class="mr-2"><i class="fa fa-folder text-muted"></i>${blog.category}</small>
                                     <small class="mr-2"><i class="fa fa-calendar text-muted"></i> ${blog.uploadDatetime.toString().split(' ')[0]}</small>
                                 </div>
-                                <p>Raising birds requires a wealth of knowledge to ensure their optimal development. 
-                                    This article shares valuable experiences passed down by experienced bird owners. 
-                                    If you are currently raising a parakeet, this article is for you.</p>
+                                <p>${blog.description}</p>
                                 <a class="font-weight-bold" href="<c:url value="/Blog?blogID=${blog.blogID}"/>">Read More</a>
                             </div>
                         </div>
