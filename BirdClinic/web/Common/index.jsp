@@ -193,20 +193,17 @@
                             <div class="card-body bg-light p-4">
                                 <h4 class="card-title text-truncate">${blog.title}</h4>
                                 <div class="d-flex mb-3">
-                                    <!--                                <small class="mr-2"><i class="fa fa-user text-muted"></i> Admin</small>-->
                                     <small class="mr-2"><i class="fa fa-folder text-muted"></i>${blog.category}</small>
                                     <small class="mr-2"><i class="fa fa-calendar text-muted"></i> ${blog.uploadDatetime.toString().split(' ')[0]}</small>
                                 </div>
                                 <p>Raising birds requires a wealth of knowledge to ensure their optimal development. 
                                     This article shares valuable experiences passed down by experienced bird owners. 
                                     If you are currently raising a parakeet, this article is for you.</p>
-                                <a class="font-weight-bold" href="blog-detail.jsp">Read More</a>
+                                <a class="font-weight-bold" href="<c:url value="/Blog?blogID=${blog.blogID}"/>">Read More</a>
                             </div>
                         </div>
                     </div>
                 </c:forEach>
-
-
             </div>
         </div>
         <!-- blog Section -->

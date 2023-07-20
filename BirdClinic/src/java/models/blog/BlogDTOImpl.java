@@ -10,6 +10,7 @@ package models.blog;
  * @author Admin
  */
 import java.sql.Timestamp;
+import models.images.ImageDTO;
 
 public class BlogDTOImpl implements BlogDTO {
     private String blogID;
@@ -17,17 +18,13 @@ public class BlogDTOImpl implements BlogDTO {
     private Timestamp uploadDatetime;
     private String category;
     private String blogContent;
+    private String _description;
+    private ImageDTO thumbnail;
 
     public BlogDTOImpl() {
     }
 
-    public BlogDTOImpl(String blogID, String title, Timestamp uploadDatetime, String category, String blogContent) {
-        this.blogID = blogID;
-        this.title = title;
-        this.uploadDatetime = uploadDatetime;
-        this.category = category;
-        this.blogContent = blogContent;
-    }
+    
 
     @Override
     public String getBlogID() {
@@ -78,5 +75,27 @@ public class BlogDTOImpl implements BlogDTO {
     public void setBlogContent(String blogContent) {
         this.blogContent = blogContent;
     }
+
+    @Override
+    public String getDescription() {
+        return _description;
+    }
+
+    @Override
+    public void setDescription(String _description) {
+        this._description = _description;
+    }
+
+    @Override
+    public ImageDTO getThumbnail() {
+        return thumbnail;
+    }
+
+    @Override
+    public void setThumbnail(ImageDTO thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+    
+    
 }
 

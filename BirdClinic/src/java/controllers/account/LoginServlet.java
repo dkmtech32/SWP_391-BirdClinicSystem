@@ -67,7 +67,7 @@ public class LoginServlet extends HttpServlet {
                 switch (currentUser.getUserRole().toLowerCase()) {
                     case "customer":
                         accountService = new CustomerServicesImpl(currentUser);
-                        url = "/Common/index.jsp";
+                        url = "/intro";
                         break;
                     case "doctor":
                         accountService = new DoctorServicesImpl(currentUser);
