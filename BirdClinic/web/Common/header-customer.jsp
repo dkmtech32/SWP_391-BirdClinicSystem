@@ -37,7 +37,9 @@
                     <li>
                         <a href="<c:url value="/intro"/>">Home</a>
                     </li>
-                    
+                    <li>
+                        <a href="<c:url value='/Blog/All' />">Blogs</a>
+                    </li>
                     <li>
                         <a href="<c:url value="/Dashboard/Appointments?filter=processing"/>">Dashboard</a>
                     </li>

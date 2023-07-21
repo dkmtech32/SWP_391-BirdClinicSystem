@@ -39,6 +39,9 @@
                                        -webkit-box-orient: vertical;
                                        white-space: normal;">${card.description}</p>
                                     <a class="font-weight-bold" href="<c:url value="/Blog?blogID=${card.blogID}"/>">Read More</a>
+                                    <c:if test="${sessionScope.service.currentUser.userRole=='staff'}">
+                                        <a class="font-weight-bold float-right" href="<c:url value="/Blog/Update?blogID=${card.blogID}"/>">Edit</a>
+                                    </c:if>
                                 </div>
                             </div>
                             
