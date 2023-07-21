@@ -32,24 +32,20 @@
                     </a>
                 </div>
                 <ul class="main-nav">
-
-
+                   
+                    
                     <li>
                         <a href="<c:url value="/intro"/>">Home</a>
                     </li>
-
-                    <li>
-                        <a href="<c:url value='/Blog/All' />">Blogs</a>
-                    </li>
-
+                    
                     <li>
                         <a href="<c:url value="/Dashboard/Appointments?filter=processing"/>">Dashboard</a>
                     </li>
-
+                    
                     <li>
                         <a href="<c:url value="/Update/Profile"/>">Profile Settings</a>
                     </li>
-
+                    
                     <li>
                         <a href="<c:url value="/logout"/>">Logout</a>
                     </li>
