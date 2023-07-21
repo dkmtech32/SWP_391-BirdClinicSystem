@@ -24,7 +24,7 @@
             </div>
             <div class="main-menu-wrapper">
                 <div class="menu-header">
-                    <a href="index.jsp" class="menu-logo">
+                    <a href="<c:url value="/intro"/>" class="menu-logo">
                         <img src="<c:url value="/assets/img/logo.png"/>" class="img-fluid" alt="Logo" />
                     </a>
                     <a id="menu_close" class="menu-close" href="javascript:void(0);">
@@ -32,8 +32,22 @@
                     </a>
                 </div>
                 <ul class="main-nav">
+                   
+                    
                     <li>
-                        <a href="index.jsp">Home</a>
+                        <a href="<c:url value="/intro"/>">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="<c:url value="/Dashboard/Appointments?filter=processing"/>">Dashboard</a>
+                    </li>
+                    
+                    <li>
+                        <a href="<c:url value="/Update/Profile"/>">Profile Settings</a>
+                    </li>
+                    
+                    <li>
+                        <a href="<c:url value="/logout"/>">Logout</a>
                     </li>
                 </ul>
             </div>
