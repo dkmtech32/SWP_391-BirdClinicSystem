@@ -99,7 +99,7 @@
                                                         </c:choose>
 
                                                         <td >
-                                                            <c:if test="${appointment.appStatus =='processing'}">
+                                                            <c:if test="${appointment.appStatus =='processing'||appointment.appStatus =='confirm' }">
                                                                 <select style="width: 200px; max-width: 200px" id="${appointment.appointmentID}" class="form-select" name="doctorID" onchange="changeDoctorSelection(this)">
                                                                     <option value="">--</option>
                                                                     <c:forEach var="doc" items="${docSpec[appointment.service_.speciality.specialityID]}">
@@ -107,7 +107,7 @@
                                                                     </c:forEach>
                                                                 </select>   
                                                             </c:if>
-                                                            <c:if test="${appointment.appStatus !='processing'}">
+                                                            <c:if test="${appointment.appStatus !='processing' && appointment.appStatus !='confirm'}">
                                                                 <h2  class="table-avatar">
                                                                     <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
                                                                         <img class="avatar-img rounded-circle" src="<c:url value="/assets/images/doctors/${appointment.doctor.image.imageURLName}"/>" alt="User Image" />

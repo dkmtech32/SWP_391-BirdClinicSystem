@@ -46,7 +46,7 @@
                                                     <td>
                                                         <h2 class="table-avatar">
                                                             <a href="" class="avatar avatar-sm mr-2">
-                                                                <img class="avatar-img rounded-circle" src="../assets/images/bird/${bird.image.imageURLName}" alt="User Image" />
+                                                                <img class="avatar-img rounded-circle" src="<c:url value="/assets/images/bird/${bird.image.imageURLName}"/>" alt="User Image" />
                                                             </a>
                                                             <a href="">${bird.birdFullname}</a>
                                                         </h2>
