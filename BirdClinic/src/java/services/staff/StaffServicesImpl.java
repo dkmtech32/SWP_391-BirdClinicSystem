@@ -235,6 +235,7 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
         String title = Utils.getFromMap(args, "blog-title", "");
         String content = Utils.getFromMap(args, "blog-content", "");
         String author = currentUser.getFullName();
+        String description = Utils.getFromMap(args, "_description", "");
         String category = Utils.getFromMap(args, "category", "");
         Timestamp uploadTime = new Timestamp(System.currentTimeMillis());
         String blogID = Utils.hash(title + author + category + uploadTime.toString());
@@ -245,9 +246,9 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
             blog.setBlogID(blogID);
             blog.setBlogContent(content);
             blog.setTitle(title);
+            blog.setDescription(description);
             blog.setCategory(category);
             blog.setUploadDatetime(uploadTime);
-
             blogDAO.insertBlog(blog);
         } catch (RecordAlreadyExists ex) {
             throw new BlogAlreadyExistsException(ex.getMessage());
@@ -260,6 +261,7 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
     public BlogDTO editBlog(Map<String, String[]> args) throws BlogDoesNotExistException, SQLException {
         String title = Utils.getFromMap(args, "blog-title", "");
         String content = Utils.getFromMap(args, "blog-content", "");
+        String description = Utils.getFromMap(args, "_description", "");
         String category = Utils.getFromMap(args, "category", "");
         String blogID = Utils.getFromMap(args, "blogID", "");
 
@@ -271,6 +273,7 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
             blog.setBlogContent(content);
             blog.setTitle(title);
             blog.setCategory(category);
+            blog.setDescription(description);
 
             blogDAO.updateBlog(blog);
         } catch (NoSuchRecordExists ex) {
@@ -296,7 +299,7 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
     @Override
     public Map<String, List<DoctorDTO>> getDoctorBySpeciality() throws SQLException {
         Map<String, List<DoctorDTO>> doctorBySpeciality = null;
-        
+
         List<DoctorDTO> doctors = getAllDoctors();
         doctorBySpeciality = new HashMap<>();
         for (DoctorDTO doctor : doctors) {

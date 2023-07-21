@@ -30,20 +30,20 @@
                         </div>
                         <div class="mb-5 form-group col-md-7" >
                             <label for="title">Title</label>
-                            <input class="form-control" type="text" id="title"/>
+                            <input class="form-control" type="text" id="title" name="blog-title"/>
                         </div>
                         <div class="mb-5 form-group col-md-3" >
                             <label for="category">Category</label>
-                            <input class="form-control" type="text" id="category"/>
+                            <input class="form-control" type="text" id="category" name="category"/>
                         </div>
                     </div>
                     <div class="mb-5 form-group " >
-                            <label for="description">Description</label>
-                            <textarea class="form-control" rows="3" type="text" id="description"></textarea>
-                        </div>
+                        <label for="description">Description</label>
+                        <textarea class="form-control" rows="3" type="text" id="description" name="_description"></textarea>
+                    </div>
                     <div class="mb-5 form-group ">
                         <label for="editor">Content</label>
-                        <textarea id="editor" class="editor" style=""></textarea>
+                        <textarea id="editor" class="editor" style="" name="blog-content"></textarea>
                     </div>
 
 
@@ -86,7 +86,7 @@
                                 this.appendChild(hiddenInput);
 
                                 // Now submit the form
-                                //                    this.submit();
+                                this.submit();
                             }
                         });
                     })
