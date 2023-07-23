@@ -5,6 +5,7 @@
  */
 package services.customer;
 
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.sql.Date;
@@ -35,6 +36,7 @@ import services.general.AccountAlreadyExistsException;
 import services.general.AppointmentDoesNotExistException;
 import services.general.GeneralServicesImpl;
 import services.general.BirdDoesNotExistException;
+import services.general.ImageAlreadyExistsException;
 import utils.Utils;
 
 /**
@@ -190,7 +192,7 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
     }
 
     @Override
-    public boolean addBird(Map<String, String[]> args)
+    public boolean addBird(Map<String, String[]> args, InputStream file)
             throws BirdAlreadyExistsException, SQLException {
         boolean result = false;
 
@@ -204,7 +206,7 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
             String birdGender = args.get("bird-gender")[0];
             String breed = args.get("breed")[0];
             String band_chip = args.get("band_chip")[0];
-            float birdWeight = Float.parseFloat(args.get("bird-weight")[0])/1000;
+            float birdWeight = Float.parseFloat(args.get("bird-weight")[0]) / 1000;
             Date hatchingDate = Date.valueOf(args.get("hatching-date")[0]);
             String featherColor = args.get("feather-color")[0];
 
@@ -255,16 +257,15 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
     }
 
     @Override
-    public boolean updateBird(Map<String, String[]> args)
+    public boolean updateBird(Map<String, String[]> args, InputStream file)
             throws BirdDoesNotExistException, SQLException {
         boolean result = false;
 
         try {
             String birdID = args.get("birdID")[0];
             BirdDTO bird = birdDAO.readBird(birdID);
-
-            String imageID = Utils.getFromMap(args, "imageID", bird.getImage().getImageID());
-            ImageDTO image = imageDAO.readImage(imageID);
+            String filetype = Utils.getFromMap(args, "filetype", ".jpg");
+            String path = Utils.getFromMap(args, "path", "");
             CustomerDTO customer = (CustomerDTO) this.currentUser;
 
             String birdFullname = Utils.getFromMap(args, "bird-full-name", bird.getBirdFullname());
@@ -278,9 +279,12 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
             String featherColor = Utils.getFromMap(args, "feather-color", bird.getFeatherColor());
 
             bird.setCustomer(customer);
-            bird.setImage(image);
+            if (file != null) {
+                String imageURLName = bird.getBirdID()+ filetype;
+                ImageDTO image = addImage(file, path, imageURLName);
+                bird.setImage(image);
+            }
             bird.setBirdID(birdID);
-            bird.setImage(image);
             bird.setBirdFullname(birdFullname);
             bird.setBirdGender(birdGender);
             bird.setBreed(breed);
@@ -292,7 +296,7 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
             bird.setFeatherColor(featherColor);
 
             result = birdDAO.updateBird(bird) > 0;
-        } catch (NoSuchRecordExists ex) {
+        } catch (NoSuchRecordExists | ImageAlreadyExistsException ex) {
             throw new BirdDoesNotExistException(ex.getMessage());
         }
 
@@ -307,37 +311,32 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
         try {
             AppointmentDTO appointment = appointmentDAO.readAppointment(appointmentID);
             result = super.changeAppointmentStatus(appointmentID, "cancelled");
-//            if (result) {
-//                AppointmentCancelDTO appCancel = new AppointmentCancelDTOImpl();
-//                appCancel.setAppointment(appointment);
-////                appCancel.setReason(reason);
-//                appointmentCancelDAO.insertAppointmentCancel(appCancel);
-//            }
         } catch (NoSuchRecordExists ex) {
             throw new AppointmentDoesNotExistException(ex.getMessage());
         }
         return result;
 
     }
-    
+
     @Override
-    public boolean updateAccount(Map<String, String[]> args)
+    public boolean updateAccount(Map<String, String[]> args, InputStream file)
             throws AccountAlreadyExistsException, SQLException {
-        boolean result = super.updateAccount(args);
-        
+        boolean result = super.updateAccount(args, file);
+
         if (result) {
-            CustomerDTO customer = (CustomerDTO)this.currentUser.copyUser();
+            CustomerDTO customer = (CustomerDTO) this.currentUser.copyUser();
             String customerAddress = Utils.getFromMap(args, "customer-address", customer.getCustomerAddress());
-            if (!customerAddress.equals(customer.getCustomerAddress())) {
-                customer.setCustomerAddress(customerAddress);
-            }
+            Date dob = Date.valueOf(Utils.getFromMap(args, "dob", customer.getDob().toString()));
+            customer.setCustomerAddress(customerAddress);
+            customer.setDob(dob);
+
             try {
                 result = customerDAO.updateCustomer(customer) > 0;
             } catch (NoSuchRecordExists ex) {
                 throw new AccountAlreadyExistsException(ex.getMessage());
             }
         }
-        
+
         return result;
     }
 
@@ -375,7 +374,7 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
 
         return result;
     }
-    
+
     @Override
     public List<DoctorDTO> getDoctorBySpeciality(String specialityID) throws DoctorDoesNotExistException, SQLException {
         List<DoctorDTO> docs = null;

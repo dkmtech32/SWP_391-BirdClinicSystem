@@ -7,23 +7,19 @@ package controllers.image;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 /**
  *
  * @author Admin
  */
 @MultipartConfig
-public class ImageController extends HttpServlet {
-    private final static String PATH = "D:/work/FPT/2023_Summer/SWP391/images";
+public class ImageServlet extends HttpServlet {
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -37,11 +33,13 @@ public class ImageController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String pathInfo = request.getPathInfo();
-        String filename = pathInfo.substring(pathInfo.lastIndexOf("/")+1);
-        
-        String path = PATH;
-        File file = new File(path + "/" + request.getPathInfo(), filename);
-        
+        String filename = pathInfo.substring(pathInfo.lastIndexOf("/") + 1);
+
+        String path = this.getServletContext().getInitParameter("PATH");
+        String filepath = path + request.getPathInfo().replace("/", "\\");
+        File file = new File(filepath, filename);
+        boolean test = file.canRead();
+
         response.setHeader("Content-Type", getServletContext().getMimeType(filename));
         response.setHeader("Content-Length", String.valueOf(file.length()));
         response.setHeader("Content-Disposition", "inline; filename=\"" + filename + "\"");
@@ -60,17 +58,11 @@ public class ImageController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String pathInfo = request.getPathInfo();
-        String filename = pathInfo.substring(pathInfo.lastIndexOf("/")+1);
-        
-        String path = PATH;
-        File file = new File(path + "/" + request.getPathInfo(), filename);
-        file.createNewFile();
-        
-        Part filePart = request.getPart("file");
-        InputStream fileContent = filePart.getInputStream();
-        
-        Files.copy(fileContent, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
-        
+        String filename = pathInfo.substring(pathInfo.lastIndexOf("/") + 1);
+
+        String path = this.getServletContext().getInitParameter("PATH");
+        File file = new File(path + "\\" + request.getPathInfo(), filename);
+
         response.setHeader("Content-Type", getServletContext().getMimeType(filename));
         response.setHeader("Content-Length", String.valueOf(file.length()));
         response.setHeader("Content-Disposition", "inline; filename=\"" + filename + "\"");

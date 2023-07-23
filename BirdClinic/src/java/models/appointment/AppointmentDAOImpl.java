@@ -56,7 +56,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     private static final String READ_APPOINTMENT_BY_DATE
             = "SELECT appointmentID, birdID, doctorID, timeSlotID, serviceID, appTime, notes, payment, appStatus "
             + "FROM Appointment "
-            + "WHERE appTime between ? 00:00:00 and ? 23:59:59.999;";
+            + "WHERE appTime between ? and ?";
     private static final String DELETE_APPOINTMENT
             = "DELETE FROM Appointment "
             + "WHERE appointmentID = ?";

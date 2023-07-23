@@ -5,6 +5,7 @@
  */
 package services.general;
 
+import java.io.InputStream;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -49,9 +50,9 @@ public interface GeneralServices extends Serializable {
 
     UserDTO viewAccount(String userID) throws AccountDoesNotExistException, SQLException;
     
-    BirdDTO createBird(Map<String, String[]> args, CustomerDTO customer) throws BirdAlreadyExistsException, SQLException;
+    BirdDTO createBird(Map<String, String[]> args, CustomerDTO customer, InputStream imageFile) throws BirdAlreadyExistsException, SQLException;
 
-    CustomerDTO createAccount(Map<String, String[]> args)
+    CustomerDTO createAccount(Map<String, String[]> args, InputStream file)
             throws AccountAlreadyExistsException, PasswordsNotEqualException, SQLException, PasswordNotStrongException;
     
     boolean register(CustomerDTO account, BirdDTO bird) throws SQLException;
@@ -66,7 +67,7 @@ public interface GeneralServices extends Serializable {
 
     TimeslotDTO getTimeslot(String TimeslotID) throws SQLException;
 
-    boolean updateAccount(Map<String, String[]> args)
+    boolean updateAccount(Map<String, String[]> args, InputStream file)
             throws AccountAlreadyExistsException, SQLException;
 
     boolean enableAccount(String userID) throws AccountDoesNotExistException, SQLException;

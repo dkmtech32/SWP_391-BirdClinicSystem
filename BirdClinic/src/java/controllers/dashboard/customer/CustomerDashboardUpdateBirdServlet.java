@@ -6,13 +6,16 @@
 package controllers.dashboard.customer;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.Map;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import services.customer.CustomerServices;
 import services.general.BirdDoesNotExistException;
 
@@ -20,6 +23,7 @@ import services.general.BirdDoesNotExistException;
  *
  * @author Admin
  */
+@MultipartConfig
 public class CustomerDashboardUpdateBirdServlet extends HttpServlet {
 
     /**
@@ -57,10 +61,17 @@ public class CustomerDashboardUpdateBirdServlet extends HttpServlet {
         String url = "/Customer/update-bird.jsp";
         HttpSession session = request.getSession();
         CustomerServices service = (CustomerServices) session.getAttribute("service");
-        Map<String, String[]> params = request.getParameterMap();
-
+        Map<String, String[]> args = request.getParameterMap();
+        Part birdImg = request.getPart("bird-image");
+        InputStream birdIS = null;
+        String path = request.getServletContext().getInitParameter("PATH");
         try {
-            service.updateBird(params);
+            if (birdImg != null) {
+                birdIS = birdImg.getInputStream();
+                args.put("filename", new String[]{birdImg.getSubmittedFileName()});
+                args.put("path", new String[]{path + "\\bird\\"});
+            }
+            service.updateBird(args, birdIS);
         } catch (BirdDoesNotExistException ex) {
             ex.printStackTrace();
             request.setAttribute("error-message", "Bird does not exist. Please try again.");

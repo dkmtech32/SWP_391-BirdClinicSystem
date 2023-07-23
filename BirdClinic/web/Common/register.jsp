@@ -26,7 +26,7 @@
                 </div>
             </div>
 
-            <form class="d-flex justify-content-center needs-validation" action="<c:url value="/register"/>" method="post" 
+            <form enctype="multipart/form-data" class="d-flex justify-content-center needs-validation" action="<c:url value="/register"/>" method="post" 
                   novalidate >
                 <div class="card w-50 active needs-validation" novalidate>
                     <div class="card-header">
@@ -44,7 +44,7 @@
                                         <div class="upload-img">
                                             <div class="change-photo-btn">
                                                 <span><i class="fa fa-upload"></i> Upload Photo</span>
-                                                <input type="file" class="upload" />
+                                                <input name="user-image" id="user-image" type="file" class="upload"/>
                                             </div>
                                             <small class="form-text text-muted">Allowed JPG, GIF or PNG. Max size of 2MB</small>
                                         </div>
@@ -140,7 +140,7 @@
                                         <div class="upload-img">
                                             <div class="change-photo-btn">
                                                 <span><i class="fa fa-upload"></i> Upload Photo</span>
-                                                <input type="file" class="upload" />
+                                                <input name="bird-image" id="bird-image" type="file" class="upload" />
                                             </div>
                                             <small class="form-text text-muted">Allowed JPG, GIF or PNG. Max size of 2MB</small>
                                         </div>
@@ -306,8 +306,6 @@
     }
   });
     </script>
-    
-
     <!-- /Script -->
 </body>
 </html>

@@ -5,6 +5,7 @@
  */
 package services.admin;
 
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -47,7 +48,7 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
     }
 
     @Override
-    public DoctorDTO createDoctor(Map<String, String[]> args)
+    public DoctorDTO createDoctor(Map<String, String[]> args, InputStream file)
             throws AccountAlreadyExistsException, SQLException {
         //assumption: args have all key-value pairs
         DoctorDTO result = null;
@@ -99,7 +100,7 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
     }
 
     @Override
-    public CustomerDTO createCustomer(Map<String, String[]> args)
+    public CustomerDTO createCustomer(Map<String, String[]> args, InputStream file)
             throws AccountAlreadyExistsException, SQLException {
         CustomerDTO result = null;
         String username = args.get("username")[0];
@@ -144,7 +145,7 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
     }
 
     @Override
-    public UserDTO createStaffAdmin(Map<String, String[]> args)
+    public UserDTO createStaffAdmin(Map<String, String[]> args, InputStream file)
             throws AccountAlreadyExistsException, SQLException {
         //assumption: args have all 4 key-value pairs
         UserDTO result = null;
