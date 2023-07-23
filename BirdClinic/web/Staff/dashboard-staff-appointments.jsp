@@ -73,7 +73,7 @@
                                                         <td>
                                                             <h2 class="table-avatar">
                                                                 <a href="<c:url value="/View/Customer?userID=${appointment.bird.customer.userID}"/>" class="avatar avatar-sm mr-2">
-                                                                    <img class="avatar-img rounded-circle" src="<c:url value="/assets/images/customer/${appointment.bird.customer.image.imageURLName}"/>" alt="User Image" />
+                                                                    <img class="avatar-img rounded-circle" src="<c:url value="/images/customer/${appointment.bird.customer.image.imageURLName}"/>" alt="User Image" />
                                                                 </a>
                                                                 <a href="<c:url value="/View/Customer?userID=${appointment.bird.customer.userID}"/>">${appointment.bird.customer.fullName} </a> 
                                                             </h2>
@@ -114,7 +114,7 @@
                                                             <c:if test="${appointment.appStatus !='processing' && appointment.appStatus !='confirm'}">
                                                                 <h2  class="table-avatar">
                                                                     <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
-                                                                        <img class="avatar-img rounded-circle" src="<c:url value="/assets/images/doctors/${appointment.doctor.image.imageURLName}"/>" alt="User Image" />
+                                                                        <img class="avatar-img rounded-circle" src="<c:url value="/images/doctors/${appointment.doctor.image.imageURLName}"/>" alt="User Image" />
                                                                     </a>
                                                                     <a style="width:100px; max-width: 100px; white-space: nowrap;
                                                                        overflow: hidden;" href="doctor-profile.jsp">${appointment.doctor.fullName} <span>${doctor.speciality.specialityName}</span></a> 

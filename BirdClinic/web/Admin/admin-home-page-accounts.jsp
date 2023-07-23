@@ -22,10 +22,10 @@
                     <div class="header-bar d-flex justify-content-between border-bottom">
                         <div class="d-flex align-items-center">
                             <button type="button" class="logo-icon">
-                                <img src="<c:url value="/assets/images/${sessionScope.service.currentUser.image.imageURLName}"/>" height="30" class="small" alt />
+                                <img src="<c:url value="/images/${sessionScope.service.currentUser.image.imageURLName}"/>" height="30" class="small" alt />
                                 <span class="big">
-                                    <img src="<c:url value="/assets/images/logo-dark.png"/>" height="24" class="logo-light-mode" alt />
-                                    <img src="<c:url value="/assets/images/logo-light.png"/>" height="24" class="logo-dark-mode" alt />
+                                    <img src="<c:url value="/images/logo-dark.png"/>" height="24" class="logo-light-mode" alt />
+                                    <img src="<c:url value="/images/logo-light.png"/>" height="24" class="logo-dark-mode" alt />
                                 </span>
                             </button>
                         </div>
@@ -40,11 +40,11 @@
                                         aria-haspopup="true"
                                         aria-expanded="false"
                                         >
-                                        <img src="<c:url value="/assets/images/${sessionScope.service.currentUser.image.imageURLName}"/>" class="avatar avatar-ex-small rounded-circle" alt />
+                                        <img src="<c:url value="/images/${sessionScope.service.currentUser.image.imageURLName}"/>" class="avatar avatar-ex-small rounded-circle" alt />
                                     </button>
                                     <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow border-0 mt-3 py-3" style="min-width: 200px">
                                         <a class="dropdown-item d-flex align-items-center text-dark" href="https://shreethemes.in/doctris/layouts/admin/profile.html">
-                                            <img src="<c:url value="/assets/images/${sessionScope.service.currentUser.image.imageURLName}"/>" class="avatar avatar-md-sm rounded-circle border shadow" alt />
+                                            <img src="<c:url value="/images/${sessionScope.service.currentUser.image.imageURLName}"/>" class="avatar avatar-md-sm rounded-circle border shadow" alt />
                                             <div class="flex-1 ms-2">
                                                 <span class="d-block mb-1">${sessionScope.service.currentUser.fullName}</span>
                                                 <small class="text-muted">${sessionScope.service.currentUser.userRole}</small>
@@ -130,21 +130,21 @@
                                                                                 <c:when test="${user.userRole=='customer'}" >
                                                                                     <h2 class="table-avatar">
                                                                                         <a href="<c:url value="/View/Customer?userID=${user.userID}"/>" class="avatar avatar-sm mr-2">
-                                                                                            <img class="avatar-img rounded-circle" style="object-fit: cover; width: 4rem; height: 4rem;" src="<c:url value="/assets/images/customer/${user.image.imageURLName}"/>" alt="User Image" />
+                                                                                            <img class="avatar-img rounded-circle" style="object-fit: cover; width: 4rem; height: 4rem;" src="<c:url value="/images/customer/${user.image.imageURLName}"/>" alt="User Image" />
                                                                                         </a>
                                                                                     </h2>
                                                                                 </c:when>
                                                                                 <c:when test="${user.userRole=='doctor'}" >
                                                                                     <h2 class="table-avatar">
                                                                                         <a href="<c:url value="/View/Doctor?userID=${user.userID}"/>" class="avatar avatar-sm mr-2">
-                                                                                            <img class="avatar-img rounded-circle" style="object-fit: cover; width: 4rem; height: 4rem;" src="<c:url value="/assets/images/doctors/${user.image.imageURLName}"/>" alt="User Image" />
+                                                                                            <img class="avatar-img rounded-circle" style="object-fit: cover; width: 4rem; height: 4rem;" src="<c:url value="/images/doctors/${user.image.imageURLName}"/>" alt="User Image" />
                                                                                         </a>
                                                                                     </h2>
                                                                                 </c:when>
                                                                                 <c:when test="${user.userRole=='staff'||user.userRole=='admin'}" >
                                                                                     <h2 class="table-avatar">
                                                                                         <a class="avatar avatar-sm mr-2" href="<c:url value="/Admin/staff-profile.jsp"/>">
-                                                                                            <img class="avatar-img rounded-circle" style="object-fit: cover; width: 4rem; height: 4rem;" src="<c:url value="/assets/images/${user.image.imageURLName}"/>" alt="User Image" />
+                                                                                            <img class="avatar-img rounded-circle" style="object-fit: cover; width: 4rem; height: 4rem;" src="<c:url value="/images/${user.image.imageURLName}"/>" alt="User Image" />
                                                                                         </a>    
                                                                                     </h2>
                                                                                 </c:when>

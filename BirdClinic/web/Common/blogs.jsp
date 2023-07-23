@@ -27,7 +27,7 @@
                     <c:forEach var="card" items="${blogs}">
                         <div class="col-lg-4 mb-4">
                             <div class="card border rounded mb-2" style="min-height: 450px">
-                                <img class="card-img-top" src="<c:url value="/assets/images/blog/${card.thumbnail.imageURLName}"/>" style="height: 200px; object-fit: cover" />
+                                <img class="card-img-top" src="<c:url value="/images/blog/${card.thumbnail.imageURLName}"/>" style="height: 200px; object-fit: cover" />
                                 <div class="card-body p-3" style="background-color: #eaeaea ">
                                     <h4 class="card-title h5">${card.title}</h4>
                                     <div class=" m-3">

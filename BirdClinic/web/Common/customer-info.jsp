@@ -31,7 +31,7 @@
                                         <div class="form-group">
                                             <div class="change-avatar">
                                                 <div class="profile-img">
-                                                    <img src="<c:url value='../assets/images/customer/${requestScope.customer.image.imageURLName}'/>" alt="User Image" />
+                                                    <img src="<c:url value='../images/customer/${requestScope.customer.image.imageURLName}'/>" alt="User Image" />
                                                 </div>
                                             </div>
                                         </div>
@@ -92,7 +92,7 @@
                                                     <td>
                                                         <h2 class="table-avatar">
                                                             <a href="<c:url value="/View/Bird?birdID=${appointment.bird.birdID}"/>" class="avatar avatar-sm mr-2"
-                                                               ><img class="avatar-img rounded-circle" src="../assets/images/bird/${appointment.bird.image.imageURLName}" alt="User Image"
+                                                               ><img class="avatar-img rounded-circle" src="../images/bird/${appointment.bird.image.imageURLName}" alt="User Image"
                                                                   /></a>
                                                             <a href="<c:url value="/View/Bird?birdID=${appointment.bird.birdID}"/>">${appointment.bird.birdFullname}</a>
                                                         </h2>
@@ -135,7 +135,7 @@
                                             <div class="widget-profile pro-widget-content">
                                                 <div class="profile-info-widget">
                                                     <a href="#" class="booking-doc-img">
-                                                        <img src="<c:url value='../assets/images/bird/${bird.image.imageURLName}'/>" alt="User Image">
+                                                        <img src="<c:url value='../images/bird/${bird.image.imageURLName}'/>" alt="User Image">
                                                     </a>
                                                     <div class="profile-det-info">
                                                         <h3>${bird.birdFullname}</h3>

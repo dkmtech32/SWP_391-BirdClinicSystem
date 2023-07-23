@@ -35,7 +35,7 @@
                                         <c:when test="${not empty param.doctorID}">
                                             <div class="booking-doc-info">
                                                 <a href="<c:url value="/View/Doctor?userID=${requestScope.doctor.userID}"/>" class="booking-doc-img">
-                                                    <img src="<c:url value="/assets/images/doctors/${requestScope.doctor.image.imageURLName}"/>" alt="${requestScope.doctor.userName}" />
+                                                    <img src="<c:url value="/images/doctors/${requestScope.doctor.image.imageURLName}"/>" alt="${requestScope.doctor.userName}" />
                                                 </a>
                                                 <div class="booking-info">
                                                     <h4><a href="<c:url value="/View/Doctor?userID=${requestScope.doctor.userID}"/>">${requestScope.doctor.fullName}</a></h4>                                          

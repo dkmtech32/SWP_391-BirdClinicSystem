@@ -189,7 +189,7 @@
                 <c:forEach items="${blogs}" var="blog">
                     <div class="col-lg-4 mb-4">
                         <div class="card border-0 mb-2">
-                            <img class="card-img-top" src="<c:url value="/assets/images/blog/${blog.thumbnail.imageURLName}"/>" alt="" />
+                            <img class="card-img-top" src="<c:url value="/images/blog/${blog.thumbnail.imageURLName}"/>" alt="" />
                             <div class="card-body bg-light p-4">
                                 <h4 class="card-title text-truncate">${blog.title}</h4>
                                 <div class="d-flex mb-3">

@@ -173,7 +173,7 @@
 
                                             <div class="booking-doc-info">
                                                 <a href="doctor-profile.jsp" class="booking-doc-img">
-                                                    <img src="../assets/images/doctors/${doctor.image.imageURLName}" alt="User Image" />
+                                                    <img src="../images/doctors/${doctor.image.imageURLName}" alt="User Image" />
                                                 </a>
                                                 <div class="booking-info">
                                                     <h4><a href="doctor-profile.jsp">${doctor.fullName}</a></h4>

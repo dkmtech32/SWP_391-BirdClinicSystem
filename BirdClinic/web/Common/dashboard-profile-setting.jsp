@@ -27,17 +27,17 @@
                             <div class="col-lg-2 col-md-4">
                                 <c:choose>
                                     <c:when test="${sessionScope.service.currentUser.userRole =='customer'}">
-                                        <img src="../assets/images/customer/${sessionScope.service.currentUser.image.imageURLName}"
+                                        <img src="../images/customer/${sessionScope.service.currentUser.image.imageURLName}"
                                              class="avatar avatar-md-md rounded-pill shadow mx-auto d-block"
                                              alt />
                                     </c:when>
                                         <c:when test="${sessionScope.service.currentUser.userRole =='staff'}">
-                                        <img src="../assets/images/${sessionScope.service.currentUser.image.imageURLName}"
+                                        <img src="../images/${sessionScope.service.currentUser.image.imageURLName}"
                                              class="avatar avatar-md-md rounded-pill shadow mx-auto d-block"
                                              alt />
                                     </c:when>
                                         <c:when test="${sessionScope.service.currentUser.userRole =='doctor'}">
-                                            <img src="../assets/images/doctors/${sessionScope.service.currentUser.image.imageURLName}"
+                                            <img src="../images/doctors/${sessionScope.service.currentUser.image.imageURLName}"
                                              class="avatar avatar-md-md rounded-pill shadow mx-auto d-block"
                                              alt />
                                     </c:when>

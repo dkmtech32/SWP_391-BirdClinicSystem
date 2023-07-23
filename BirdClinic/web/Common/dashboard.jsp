@@ -31,13 +31,13 @@
                                     <div class="profile-info-widget">
                                         <a href="#" class="booking-doc-img">
                                             <c:if test="${service.currentUser.userRole=='customer'}">
-                                                <img src="<c:url value='/assets/images/customer/${service.currentUser.image.imageURLName}'/>" alt="User Image" />
+                                                <img src="<c:url value='/images/customer/${service.currentUser.image.imageURLName}'/>" alt="User Image" />
                                             </c:if>
                                             <c:if test="${service.currentUser.userRole=='doctor'}">
-                                                <img src="<c:url value='/assets/images/doctors/${service.currentUser.image.imageURLName}'/>" alt="User Image" />
+                                                <img src="<c:url value='/images/doctors/${service.currentUser.image.imageURLName}'/>" alt="User Image" />
                                             </c:if>
                                             <c:if test="${service.currentUser.userRole=='staff'}">
-                                                <img src="<c:url value='/assets/images/${service.currentUser.image.imageURLName}'/>" alt="User Image" />
+                                                <img src="<c:url value='/images/${service.currentUser.image.imageURLName}'/>" alt="User Image" />
                                             </c:if>
 
                                         </a>

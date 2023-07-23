@@ -67,13 +67,13 @@
             <li class="nav-item dropdown has-arrow logged-item">
                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                     <span class="user-img">
-                        <img class="rounded-circle" src="<c:url value='/assets/images/doctors/${service.currentUser.image.imageURLName}' />" width="31" alt="Darren Elder" />
+                        <img class="rounded-circle" src="<c:url value='/images/doctors/${service.currentUser.image.imageURLName}' />" width="31" alt="Darren Elder" />
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <div class="user-header">
                         <div class="avatar avatar-sm">
-                            <img src="<c:url value='/assets/images/doctors/${service.currentUser.image.imageURLName}'/>" alt="User Image" class="avatar-img rounded-circle" />
+                            <img src="<c:url value='/images/doctors/${service.currentUser.image.imageURLName}'/>" alt="User Image" class="avatar-img rounded-circle" />
                         </div>
                         <div class="user-text">
                             <h6>${service.currentUser.fullName}</h6>
