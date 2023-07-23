@@ -40,6 +40,7 @@ public class AdminAccountsServlet extends HttpServlet {
         try {
             AdminServices admin = (AdminServices) session.getAttribute("service");
             String filter = request.getParameter("filter");
+            if (filter == null) filter = "";
             List<UserDTO> users = admin.getUsersByFilter(filter);
             request.setAttribute("accounts", users);
         } catch (SQLException ex) {
@@ -47,8 +48,7 @@ public class AdminAccountsServlet extends HttpServlet {
         } catch (AccountDoesNotExistException ex) {
             ex.printStackTrace();
         } finally {
-            request.setAttribute("url", url);
-            request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 

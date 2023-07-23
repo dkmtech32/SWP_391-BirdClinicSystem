@@ -32,7 +32,7 @@
                         <!-- /Profile Settings Form -->
                     </div>
                     <div class="prescription">
-                        <div class="col-md-12">
+                        <div class="row">
                             <jsp:include page="../Common/appointment-general-info.jsp"/>
                             <jsp:include page="../Common/appointment-medicine-list.jsp"/>                       
                         </div>
@@ -40,14 +40,37 @@
                             <jsp:include page="../Customer/give-feedback.jsp"/>
                         </c:if>
                         <div class="row">
-                        <c:if test="${not empty requestScope.feedback}">
-                            <jsp:include page="../Common/owner-feedback.jsp"/>  
-                        </c:if>
-                        <!-- chỉ hiện khi user đưa feedback rồi-->
-                        <c:if test="${requestScope.appointment.appStatus=='complete'}">
-                            <jsp:include page="../Common/payment-info.jsp"/>
-                        </c:if>
+                            <c:if test="${not empty requestScope.feedback}">
+                                <jsp:include page="../Common/owner-feedback.jsp"/>  
+                            </c:if>
+                            <!-- chỉ hiện khi user đưa feedback rồi-->
+                           
+                                <jsp:include page="../Common/payment-info.jsp"/>
+                            
                         </div>
+                        <c:if test="${requestScope.appointment.appStatus=='check-in' && sessionScope.service.currentUser.userRole=='staff'}">
+
+
+                            <select style="width:200px; max-width: 200px; white-space: nowrap;
+                                    overflow: hidden;" id="${appointment.payment}" class="form-select" name="payment" onchange="changePaymentSelection(this)" required>
+                                <option value="">--</option>
+                                <option value="cash">Cash</option>
+                                <option value="banking account">Banking</option>
+                                <option value="credit card">Credit Card</option>
+                            </select>  
+
+
+                            <form action="<c:url value="/Dashboard/Appointments/updateApp"/>" name="docForm" method="get">
+                                <input type="hidden" id="hidden${appointment.payment}" name="payment" <c:if test="${not empty appointment.payment}"> value="${appointment.payment}"</c:if> required>
+                                    <input type="hidden"  name="action" value="update">
+                                    <input type="hidden"  name="filter" value="complete">
+                                    <input type="hidden" class="appID" name="appointmentID" value="${appointment.appointmentID}">
+                                <button class=" btn btn-sm bg-success-light" type="submit">
+                                    <i class="fa fa-check"></i>
+                                    Check-out
+                                </button>
+                            </form> 
+                        </c:if>
                     </div>
                 </div>
             </div>
@@ -57,8 +80,15 @@
             <jsp:include page="../Common/footer.jsp"/>
             <!-- /Footer -->
         </div>
-    </div>
-</div>
-<jsp:include page="../Common/script.jsp"/>
-</body>
+        <script>
+            function changePaymentSelection(selectElement) {
+                var selectedValue = selectElement.value;
+                var payment = selectElement.id;
+                console.log("hidden" + payment);
+                document.getElementById("hidden" + payment).value = selectedValue;
+            }
+        </script>
+        <jsp:include page="../Common/script.jsp"/>
+
+    </body>
 </html>

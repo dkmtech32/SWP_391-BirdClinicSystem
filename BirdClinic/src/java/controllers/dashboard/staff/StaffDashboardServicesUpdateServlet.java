@@ -8,15 +8,11 @@ package controllers.dashboard.staff;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import services.doctor.DoctorDoesNotExistException;
-import services.general.AppointmentDoesNotExistException;
 import services.staff.ServiceDoesNotExistException;
 import services.staff.StaffServices;
 

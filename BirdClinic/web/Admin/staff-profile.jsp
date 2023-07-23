@@ -8,40 +8,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Doctris - Doctor Appointment Booking System</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Premium Bootstrap 4 Landing Page Template" />
-        <meta name="keywords" content="Appointment, Booking, System, Dashboard, Health" />
-        <meta name="author" content="Shreethemes" />
-        <meta name="email" content="support@shreethemes.in" />
-        <meta name="website" content="admin-home-page.html" />
-        <meta name="Version" content="v1.2.0" />
-        <!-- favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico.png" />
-        <!-- Bootstrap -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-            />
-        <!-- Select2 -->
-        <link href="assets/css/select2.min.css" rel="stylesheet" />
-        <!-- simplebar -->
-        <link href="assets/css/simplebar.css" rel="stylesheet" type="text/css" />
-        <!-- SLIDER -->
-        <link href="assets/css/tiny-slider.css" rel="stylesheet" />
-        <!-- Icons -->
-        <link href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/remixicon.css" rel="stylesheet" type="text/css" />
-        <link href="https://unicons.iconscout.com/release/v3.0.6/css/line.css" rel="stylesheet" />
-        <!-- Css -->
-        <link href="assets/css/style.min.css" rel="stylesheet" type="text/css" id="theme-opt" />
-    </head>
+    <jsp:include page="../Admin/head-admin.jsp"/>
     <body>
         <!-- Main Wrapper -->
 
@@ -112,7 +79,7 @@
                         <div class="card bg-white rounded shadow overflow-hidden mt-4 border-0">
                             <div class="p-5 bg-primary bg-gradient"></div>
                             <div class="avatar-profile d-flex margin-nagative mt-n5 position-relative ps-3">
-                                <img src="assets/images/client/02.jpg" class="rounded-circle shadow-md avatar avatar-medium" alt />
+                                <img src="assets/images/customer/02.jpg" class="rounded-circle shadow-md avatar avatar-medium" alt />
                                 <div class="mt-4 ms-3 pt-3">
                                     <h5 class="mt-3 mb-1">Mrs.Kim</h5>
                                     <p class="text-muted mb-0">Staff</p>
@@ -135,7 +102,7 @@
                                                             <div class="p-4">
                                                                 <div class="row align-items-center">
                                                                     <div class="col-lg-2 col-md-4">
-                                                                        <img src="assets/images/client/02.jpg" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt />
+                                                                        <img src="assets/images/customer/02.jpg" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt />
                                                                     </div>
                                                                     <!--end col-->
 
@@ -190,7 +157,7 @@
 
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
-                                                                                <label class="form-label">Gender</label>
+                                                                                <label class="form-label">${user.gender}</label>
                                                                                 <select class="form-control time-during">
                                                                                     <option value="">Male</option>
                                                                                     <option value="">Female</option>
@@ -318,7 +285,7 @@
         <!-- page-wrapper -->
 
         <!-- Script -->
-        <jsp:include page="../Common/script.jsp"/>
+        <jsp:include page="../Admin/script-admin.jsp"/>
         <!-- /Script -->
     </body>
 </html>

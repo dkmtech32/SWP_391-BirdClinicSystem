@@ -29,7 +29,7 @@ public class ViewBirdInfoServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "/Common/bird-info.jsp";
+        String url = "/Common/bird-details.jsp";
         HttpSession session = request.getSession();
         GeneralServices service = (GeneralServices) session.getAttribute("service");
         String birdID = request.getParameter("birdID");
@@ -40,7 +40,7 @@ public class ViewBirdInfoServlet extends HttpServlet {
             List<MedicalRecordDTO> medRec = service.viewMedicalRecordOfBird(birdID);
             request.setAttribute("bird", bird);
             request.setAttribute("appointments", apps);
-            request.setAttribute("medical-records", medRec);
+            request.setAttribute("medicalrecords", medRec);
         } catch (SQLException ex) {
             ex.printStackTrace();
             request.setAttribute("error-message", "Something is wrong. Please try again.");

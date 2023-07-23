@@ -6,21 +6,26 @@
 package controllers.dashboard.customer;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import services.customer.CustomerServices;
 
 /**
  *
  * @author Admin
  */
+@MultipartConfig
 public class CustomerDashboardInsertBirdServlet extends HttpServlet {
-    
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -57,9 +62,17 @@ public class CustomerDashboardInsertBirdServlet extends HttpServlet {
         HttpSession session = request.getSession();
         CustomerServices service = (CustomerServices) session.getAttribute("service");
         Map<String, String[]> params = request.getParameterMap();
-
+        Map<String, String[]> args = new HashMap<>(params);
+        Part birdImg = request.getPart("bird-image");
+        InputStream birdIS = null;
+        String path = request.getServletContext().getInitParameter("PATH");
         try {
-            service.addBird(params);
+            if (birdImg != null && birdImg.getSize()>0L) {
+                birdIS = birdImg.getInputStream();
+                args.put("filename", new String[]{birdImg.getSubmittedFileName()});
+                args.put("path", new String[]{path + "\\bird\\"});
+            }
+            service.addBird(args, birdIS);
         } catch (SQLException ex) {
             ex.printStackTrace();
             request.setAttribute("error-message", "Something went wrong. Please try again.");
@@ -68,7 +81,7 @@ public class CustomerDashboardInsertBirdServlet extends HttpServlet {
             request.setAttribute("error-message", "Bird already exists. Please try again.");
         } finally {
             request.setAttribute("url", url);
-            response.sendRedirect(request.getContextPath()+"/Dashboard/Birds");
+            response.sendRedirect(request.getContextPath() + "/Dashboard/Birds");
         }
     }
 

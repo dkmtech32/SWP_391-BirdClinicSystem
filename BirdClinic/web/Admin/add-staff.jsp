@@ -8,38 +8,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Doctris - Doctor Appointment Booking System</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Premium Bootstrap 4 Landing Page Template" />
-        <meta name="keywords" content="Appointment, Booking, System, Dashboard, Health" />
-        <meta name="author" content="Shreethemes" />
-        <meta name="email" content="support@shreethemes.in" />
-        <meta name="website" content="admin-home-page.html" />
-        <meta name="Version" content="v1.2.0" />
-        <!-- favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico.png" />
-        <!-- Bootstrap -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-            />
-        <!-- simplebar -->
-        <link href="assets/css/simplebar.css" rel="stylesheet" type="text/css" />
-        <!-- Select2 -->
-        <link href="assets/css/select2.min.css" rel="stylesheet" />
-        <!-- Icons -->
-        <link href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/remixicon.css" rel="stylesheet" type="text/css" />
-        <link href="https://unicons.iconscout.com/release/v3.0.6/css/line.css" rel="stylesheet" />
-        <!-- Css -->
-        <link href="assets/css/style.min.css" rel="stylesheet" type="text/css" id="theme-opt" />
-    </head>
+    <jsp:include page="../Admin/head-admin.jsp"/>
     <body>
         <!-- Main Wrapper -->
         <jsp:include page="../Admin/loader.jsp"/>
@@ -50,54 +19,7 @@
 
             <!-- Start Page Content -->
             <main class="page-content bg-light">
-                <div class="top-header">
-                    <div class="header-bar d-flex justify-content-between border-bottom">
-                        <div class="d-flex align-items-center">
-                            <a href="#" class="logo-icon">
-                                <img src="assets/images/logo-icon.png" height="30" class="small" alt />
-                                <span class="big">
-                                    <img src="assets/images/logo-dark.png" height="24" class="logo-light-mode" alt />
-                                    <img src="assets/images/logo-light.png" height="24" class="logo-dark-mode" alt />
-                                </span>
-                            </a>
-                        </div>
-
-                        <ul class="list-unstyled mb-0">
-                            <li class="list-inline-item mb-0 ms-1">
-                                <div class="dropdown dropdown-primary">
-                                    <button
-                                        type="button"
-                                        class="btn btn-pills btn-soft-primary dropdown-toggle p-0"
-                                        data-bs-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false"
-                                        >
-                                        <img src="assets/images/doctors/01.jpg" class="avatar avatar-ex-small rounded-circle" alt />
-                                    </button>
-                                    <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow border-0 mt-3 py-3" style="min-width: 200px">
-                                        <a class="dropdown-item d-flex align-items-center text-dark" href="https://shreethemes.in/doctris/layouts/admin/profile.html">
-                                            <img src="assets/images/doctors/01.jpg" class="avatar avatar-md-sm rounded-circle border shadow" alt />
-                                            <div class="flex-1 ms-2">
-                                                <span class="d-block mb-1">Calvin Carlo</span>
-                                                <small class="text-muted">Orthopedic</small>
-                                            </div>
-                                        </a>
-                                        <a class="dropdown-item text-dark" href="admin-home-page-account.jsp"
-                                           ><span class="mb-0 d-inline-block me-1"><i class="uil uil-dashboard align-middle h6"></i></span> Dashboard</a
-                                        >
-                                        <a class="dropdown-item text-dark" href="dr-profile.jsp"
-                                           ><span class="mb-0 d-inline-block me-1"><i class="uil uil-setting align-middle h6"></i></span> Profile Settings</a
-                                        >
-                                        <div class="dropdown-divider border-top"></div>
-                                        <a class="dropdown-item text-dark" href="lock-screen.jsp"
-                                           ><span class="mb-0 d-inline-block me-1"><i class="uil uil-sign-out-alt align-middle h6"></i></span> Logout</a
-                                        >
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <jsp:include page="../Admin/admin-dropdown-menu.jsp"/>
 
                 <div class="container-fluid">
                     <div class="layout-specing">
@@ -110,7 +32,7 @@
                                 <div class="card border-0 p-4 rounded shadow">
                                     <div class="row align-items-center">
                                         <div class="col-lg-2 col-md-4">
-                                            <img src="assets/images/client/02.jpg" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt />
+                                            <img src="assets/images/customer/02.jpg" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt />
                                         </div>
                                         <!--end col-->
 
@@ -127,12 +49,13 @@
                                     </div>
                                     <!--end row-->
 
-                                    <form class="mt-4">
+                                    <form class="mt-4" method="POST" action="<c:url value="/Admin/Accounts/Create"/>">
+                                        <input value="staff" name="userRole" hidden="hidden"/>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Full Name</label>
-                                                    <input name="name" id="name" type="text" class="form-control"/>
+                                                    <input name="full-name" id="name" type="text" class="form-control" required/>
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -140,7 +63,7 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">User Name</label>
-                                                    <input name="name" id="name2" type="text" class="form-control"/>
+                                                    <input name="username" id="name2" type="text" class="form-control" required/>
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -148,7 +71,7 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Email</label>
-                                                    <input name="email" id="email" type="email" class="form-control"/>
+                                                    <input name="email" id="email" type="email" class="form-control" required/>
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -156,33 +79,31 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Phone</label>
-                                                    <input name="number" id="number" type="text" class="form-control"/>
+                                                    <input name="phone-number" id="number" type="text" class="form-control" required/>
                                                 </div>
                                             </div>
-                                            <!--end col-->
 
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label class="form-label">Gender</label>
-                                                    <select class="form-control time-during">
-                                                        <option value="">Male</option>
-                                                        <option value="">Female</option>
+                                                    <label class="form-label">Password</label>
+                                                    <input name="password" id="text" type="password" class="form-control" required/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label  class="form-label">Gender</label>
+                                                    <select name="gender" class="form-control time-during" required>
+                                                        <option value="male">Male</option>
+                                                        <option value="female">Female</option>
                                                     </select>
                                                 </div>
                                             </div>
-
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Date of Birth</label>
-                                                    <input name="date" id="number" type="date" class="form-control"/>
-                                                </div>
-                                            </div>
                                         </div>
-                                        <!--end row-->
 
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <input type="submit" id="submit" name="send" class="btn btn-primary" value="Save changes" />
+                                                <input type="submit" id="submit" name="send" class="btn btn-primary" value="Create" />
                                             </div>
                                         </div>
                                         <!--end row-->
@@ -224,7 +145,7 @@
             <!--End page-content" -->
         </div>
         <!-- Script -->
-        <jsp:include page="../Common/script.jsp"/>
+        <jsp:include page="../Admin/script-admin.jsp"/>
         <!-- /Script -->
     </body>
 </html>

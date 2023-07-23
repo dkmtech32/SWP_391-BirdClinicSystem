@@ -201,15 +201,22 @@ CREATE TABLE Feedback (
 
 CREATE TABLE Blog (
   blogID CHAR(32) NOT NULL,
+  imageID CHAR(32) NOT NULL,
   title NVARCHAR(100) NOT NULL,
   uploadDatetime DATETIME NOT NULL,
   category NVARCHAR(50) NOT NULL,
+  _description VARCHAR(1000) NOT NULL,
   blogContent NVARCHAR(MAX) NOT NULL,
   CONSTRAINT PK_Blog PRIMARY KEY CLUSTERED 
-(
-	blogID ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
+  (
+    blogID ASC
+  ) WITH (
+    PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF,
+    IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON,
+    ALLOW_PAGE_LOCKS = ON
+  ) ON [PRIMARY],
+  CONSTRAINT FK_Blog_Images FOREIGN KEY (imageID) REFERENCES Images(imageID)
+) ON [PRIMARY];
 GO
 
 INSERT INTO Images(imageID, imageURLName)
@@ -282,12 +289,74 @@ VALUES
 	('e28e1458f599f2391b91bfd61338483e', 'chimbimbipdongduong.png'),
 	('84cb52eda2e4f0b66f8509c37e857e8c', 'chimsaobungden.png'),
 	('8721d5a5f3f44bd01529d24dcf519239', 'chimchiavoihongtrang.png'),
-	('66a5473e01debb47bff7f215d6c4a228', 'Chimcatmindoro.png'),
-	('6d47ad177fb45c2d87e1b54fc363676b', 'Chimdopruoicamden.png'),
+	('66a5473e01debb47bff7f215d6c4a228', 'chimcatmindoro.png'),
+	('6d47ad177fb45c2d87e1b54fc363676b', 'chimdopruoicamden.png'),
 	('25abf9603856427e295b7bd1137fd04a', 'chimvetnammy.png'),
-	('ed1ed3634186fc66ee692da3ba98272f' , 'chimsonca.png'),
-	('e47ccaddaa9e2cd4c25e84cae624b077' , 'chimvanganh.png');
-
+	('ed1ed3634186fc66ee692da3ba98272f', 'chimsonca.png'),
+	('e47ccaddaa9e2cd4c25e84cae624b077', 'chimvanganh.png'),
+	('6EF02AE8CD5103C4C74B8CAAF1471D90', 'blog1_1.jpg'),
+	('A1DD1CA0BD74BB2124FE2DA1DBE6AA70', 'blog1_2.jpg'),
+	('B380D7222B8087CEB9A77BE7E5C6D674', 'blog1_3.jpg'),
+	('1633ADA5AEBDB9440C68C44F0A78E8EB', 'blog1_4.jpg'),
+	('74BA3D05A528CB49F527559465BC577A', 'blog1_5.jpg'),
+	('FA883DBE3F3AA53D38495AFF57C1BDBF', 'blog1_6.jpg'),
+	('0F716E92BB955B5116129AB0EADCD694', 'blog1_7.jpg'),
+	('DFAD9B5C12187AD55B9A3B71702173FD', 'blog1_8.jpg'),
+	('3D3955297F0E9453621E4521F39CB6A9', 'blog1_9.jpg'),
+	('A5B46B0BE55F8F58150695E37716B424', 'blog2_1.jpg'),
+	('5C929AD2D6F33380FC8187CABB79E048', 'blog2_2.jpg'),
+	('ECDFB7EDE4B9ED4AE2941A580141A6B7', 'blog3_1.jpg'),
+	('F58150695E37716A5B46B0BE55F8B424', 'blog3_2.jpg'),
+	('5C929AD2CABB79ED6F33380FC8187048', 'blog3_3.jpg'),
+	('882BDE1798D4D1516641A2D190D58CAC', 'blog3_4.jpg'),
+	('70B14F3F23D45B12F60A483831B662B4', 'blog3_5.jpg'),
+	('042F820E781DA9CAA2E793F643B536BB', 'blog3_6.jpg'),
+	('3C2E0D1CFC3BC009465195E4B5AEC73F', 'blog4_1.jpg'),
+	('AADE06E1F2DC45CABC65C7B73EC87C83', 'blog4_2.jpg'),
+	('48051656AB52050E0BB8D82FE0A243E0', 'blog5_1.jpg'),
+	('2B5FD6349E04AB0C1099C266B2A62704', 'blog5_2.jpg'),
+	('0EF12921626248169E12EBFCE6FFE810', 'blog6_1.jpg'),
+	('4D907821573A6FB1DC1574827DA9514B', 'blog6_2.jpg'),
+	('5010DD042DF3EC8733B0CD78AAFD4E5C', 'blog6_3.jpg'),
+	('CFC93FBCA0A3EF7A4799EFBBB0571F77', 'blog6_4.jpg'),
+	('53007B37778C4C4F6CCFDC1467A1F5DC', 'blog6_5.jpg'),
+	('8FD8C5E01EC4F0757015A9AFC4C82D3D', 'blog6_6.jpg'),
+	('7966D1174214B297382CA2D017E49A7E', 'blog6_7.jpg'),
+	('835B9D2F2AD156412DEF8907E47B0C1C', 'blog6_8.jpg'),
+	('0D22C5422C970064C3FE7856F16A9118', 'blog6_9.jpg'),
+	('00DB5DAF82D7F818D6AB6A466AF7BEE4', 'blog6_10.jpg'),
+	('76FA6E278CE75EB33427682E6C0C360D', 'blog7.jpg'),
+	('B7B7A82190F83DF905868B2C1A45CC9B', 'blog8_1.jpg'),
+	('D5A47A681E03A039DE4DC09B75C0FE82', 'blog8_2.jpg'),
+	('AB8EF54222AF80947BD5BCBA22C8C8C5', 'blog9_1.jpg'),
+	('B5894B161BAC1B56627E885461AC366E', 'blog9_2.jpg'),
+	('7B4AC716D9608C09401B25D55D657DF5', 'blog10_1.jpg'),
+	('64947A9C9DDEBF65E48B683464B7FBC3', 'blog10_2.jpg'),
+	('76F3486A7C1E2A8071EB93571BCAD878', 'blog11_1.jpg'),
+	('59D5DFD007E115968AE004645CA789EA', 'blog11_2.jpg'),
+	('DEE0822E0D723293B16ABCFE332C8C51', 'blog11_3.jpg'),
+	('15B6C07558ADDED547DB03751982107C', 'blog11_4.jpg'),
+	('9AE0A7526A29D99AF4B88A5BE60F07D5', 'blog11_5.jpg'),
+	('4716AE87BD0DC2493651AE62F82CED2C', 'blog11_6.jpg'),
+	('80DD1B254C7CE466164EAABD64E657CE', 'blog11_7.jpg'),
+	('1F6690A61373CDBD24B1513F09065E3B', 'blog11_8.jpg'),
+	('DF30ECFBE3530A0ABFDEE6618FB2CF48', 'blog12_1.jpg'),
+	('15F5C2BCEC0BC8554F7F105AA6528C51', 'blog12_2.jpg'),
+	('1562B2EC846A0E0694B14CFF54E5C232', 'blog12_3.jpg'),
+	('2D95D21497BC068A970A015E2057D367', 'blog12_4.jpg'),
+	('955014699BCDDC9163EBF859E2E97AD3', 'blog13_1.jpg'),
+	('7A07BA85FEBCA8A149A01893F84A2AB8', 'blog13_2.jpg'),
+	('B7B7A82190F81A45C3DF905868B2CC9B', 'blog13_3.jpg'),
+	('DA039DE4DC09B5A47A681E0375C0FE82', 'blog14_1.jpg'),
+	('F80947BD5BCAB8EF54222ABA22C8C8C5', 'blog14_2.jpg'),
+	('1BAC1B56627B5894B16E885461AC366E', 'blog14_3.jpg'),
+	('D9608C097B4AC716401B25D55D657DF5', 'blog15_1.jpg'),
+	('64965E48B6834647A9C9DDEBF4B7FBC3', 'blog15_2.jpg'),
+	('7C1E2A8076F3486A71EB93571BCAD878', 'blog15_3.jpg'),
+	('530A0ABFDEDF30ECFBE3E6618FB2CF48', 'blog16.jpg'),
+	('F0757015A9AF8FD8C5E01EC4C4C82D3D', 'blog17_1.jpg'),
+	('14B297382C7966D11742A2D017E49A7E', 'blog17_2.jpg');
+	
 -- Insert data into the Users table
 INSERT INTO Users (userID, imageID, userName, userPassword, fullName, phoneNumber, gender, email, userRole, status_)
 VALUES
@@ -1279,7 +1348,7 @@ VALUES
 INSERT INTO MedicalRecord (medicalRecordID, appointmentID, recordTime, diagnosis, treatmentDays, doctorNotes)
 VALUES
 	('3b153a85daab45c693cdd0e1f02631c9' , 'a6a837e5d05e57e160dea29c335f30d0', '2023-01-02', N'không phát hiện bất thường', 3, ''),
-	('87599195136fd0440b341eed32d36c84' , '95b579fe61c622b5c50def9dccb66bdc', '2023-01-03', N'Thiếu hụt dinh dưỡng', 4, ''),
+	('87599195136fd0440b341eed32d36c84' , '95b579fe61c622b5c50def9dccb66bdc', '2023-01-04', N'Thiếu hụt dinh dưỡng', 4, ''),
 	('4d0ac1b5e6f8e2e4ee256c4c2031b1d2' , '86ae960dc44eba248c481d76520846c3', '2023-01-04', N'chấn thương chân', 2 , ''),
 	('b356f8672801e4820bd72b17dbda7764' , '801b58e3d0b00f7f9f9eac80058f99f0' , '2023-01-05' , N'thiếu vitamin A' , 3, ''),
 	('a0540a74c856251ad819d931fee6b078' , 'ca768c1b1876a2f286496e62666dfada' , '2023-01-06' , N'nội trú', 1 , ''),
@@ -1287,7 +1356,7 @@ VALUES
 	('2f6c8e2ec915f490a91c6c7e888126f6' , 'ebcf025d47ee19d929f6707029df09d0' , '2023-01-08', N'gắn chip', 3, ''),
 	('21def0e373e1e8d57d1ab5f339726167' , 'b7e4621ca7d7273ea67ba0b40992d189' , '2023-01-09' , N'dị vật trong dạ dày', 1, ''),
 	('ff398a2c8cdd28c7c9e31446c0e2a629' , '35847b5a3a8de7e0af06281b1d889bcf' , '2023-02-10' , N'chăm sóc', 0 , '' ),
-	('753906196d6e7bdd8f8d874efaacfa8d' , 'ca05b981160139795fbf616bfd5d491b' , '2023-02-11' , N'xác định giới tính', 3, '' ),
+	('753906196d6e7bdd8f8d874efaacfa8d' , 'ca05b981160139795fbf616bfd5d491b' , '2023-02-13' , N'xác định giới tính', 3, '' ),
 	('4aa48bfce29088db4424a1b921e2be55' , '943b4c67a61164d245ea5af7f3848a37' , '2023-03-13' , N'Bệnh cảm cúm', 0 , '' ),
 	('154aa8864b0445239a1c8cf636ce8164' , '040c93cff9c0cc5cd6d008fb02e17b69' , '2023-03-14' , N'Bệnh cầu trùng', 2, '' ),
 	('b72e56f3705781fdfaa652dabbefd8b4' , '3841cd8942a581d2092ff1d3739fcebc' , '2023-03-15' , N'chấn thương phần đầu', 3, '' ),
@@ -1416,107 +1485,104 @@ VALUES
 	( '1c693b7b7f4f3967d56242710d4a6925' , 'b7ad6137ff75b214972a6acd6206f4eb' , N'Các nhân viên điều dưỡng tại phòng khám này được đào tạo bài bản và chu đáo. Họ đã cung cấp dịch vụ chăm sóc tuyệt vời và luôn sẵn sàng giải quyết bất kỳ mối lo ngại nào.' , N'Nhân viên điều dưỡng được đào tạo bài bản' , GETDATE(), 4 ),
 	( '4b9e4136b9380ce6264eba99e7cbecaa' , 'f1174d213346307894a92d177efbb6dc' , N'Dịch vụ chăm sóc hậu phẫu của phòng khám thật đặc biệt. Các nhân viên cung cấp các hướng dẫn rõ ràng về chăm sóc sau điều trị và sẵn sàng giải đáp mọi thắc mắc hoặc lo lắng.' , N'Chăm sóc hỗ trợ sau thủ thuật' , GETDATE(), 4.5 );
 
-INSERT INTO Blog (blogID, title, uploadDatetime, category, blogContent)
+INSERT INTO Blog (blogID, imageID, title, uploadDatetime, category, _description , blogContent)
 VALUES
-	( '36c8417c829ea8b07014eb3ca7946fb0', N'Những kinh nghiệm quý báu khi nuôi chim sâu xanh', GETDATE(), N'kinh nghiệm nuôi chim', N'Ngoài việc được biết đến là một loài chim
-	có ích cho cuộc sống con người. Chim sâu xanh còn được biết đến là một loại chim cảnh. Mặc dù việc nuôi chim sâu xanh không phải là khó nhưng cũng đòi hỏi ở người nuôi sự tỉ 
-	mỉ kì công.
-	Nhưng nếu bạn là một người có tình cảm đặc biệt với những chú chim này thì đó không phải là vấn đề gì quá khó khăn. Để giúp bạn có thêm kinh nghiệm trong việc chăm sóc 
-	những chú chim đáng yêu này mời bạn theo dõi bài viết của chúng tôi dưới đây.
-	1. Những kinh nghiệm quý giá khi nuôi chim sâu xanh
-1.1 Chim sâu xanh ăn gì
-Nghe tên gọi thôi là chúng ta có thể đoán được loài chim cảnh nhỏ nhắn đáng yêu này thích ăn gì rồi phải không nào. Chúng có thể ăn được các loại sâu tồn tại trong thiên nhiên vì đây là một loại thức ăn chính để chúng tồn tại. Tuy nhiên trong điều kiện nuôi nhốt ở trong lồng ngoài việc cho ăn các loài sâu trong tự nhiên ra. Thì bạn cần phải bổ sung cho chúng thêm một số thức ăn khác như trứng kiến, hoặc cám. Những loại thức ăn này đều có thể mang tới cho chúng được một chế độ dinh dưỡng hợp lý để chúng có thể phát triển toàn diện nhất.
+	( '36c8417c829ea8b07014eb3ca7946fb0', '6EF02AE8CD5103C4C74B8CAAF1471D90', N'Valuable experiences when raising blue worms', GETDATE(), N'bird farming experience', N'In addition to being known as a bird
+beneficial to human life. Blue worm is also known as an ornamental bird. Although raising blue worms is not difficult, it also requires the owner to be careful
+meticulous feat.<br>
+But if you are a person who has a special affection for these birds, it is not a problem. To help you gain more experience in caring
+These lovely birds invite you to follow our article below.<br>',
+	N'1. Valuable experiences when raising blueworms<br>
+1.1 What do green worms eat<br>
+Just hearing the name, we can guess what this lovely pet bird likes to eat, right? They can eat worms that exist in nature because this is a main food for them to survive. However, in captivity, in addition to feeding the worms in the wild. Then you need to supplement them with some other food such as ant eggs, or bran. These foods can give them a reasonable diet so that they can develop to the fullest extent.<br>
 
-1.2. Lồng nuôi cho chim sâu xanh
-Lồng nuôi cho chi sâu xanh tốt nhất là nên chọn lông tre có chiều cao vừa phải vì như chúng ta đã biết thì kích thước của chim sâu xanh khá nhỏ nên nếu không lựa chọn được lồng hợp lý sẽ khó có thể mang tới cho chúng môt cuộc sống thoải mái nhất. Bên trong lồng nên để 1 khay đựng cám ( loại cám mà bạn hay mua ở những của hàng chim) một khay đựng sâu khô để đảm bảo được lượng thức ăn cho chúng. Ngoài ra một điều kiện bắt buộc phải có đó chính là nước nước, nếu bạn ở thành thị nước máy thì bạn nên xử lý qua để bớt clo. Mặc dù món ăn khoái khẩu của loài chim này là sâu tuy nhiên sâu mà chúng ta mua tại các cửa hàng không thể chất lượng bằng sâu mà chúng tự kiếm trong thiên nhiên được nên phải hạn chế và cho chúng ăn một số lượng cụ thể đừng lạm dụng sẽ khiến cho sức khỏe của chúng không được ổn định
+1.2. Breeding cages for blue worms
+It is best to choose a bamboo cage with a moderate height because, as we all know, the size of blue worms is quite small, so if you do not choose a reasonable cage, it will be difficult to give them the most comfortable life. Inside the cage, you should put a tray of bran (the type of bran that you often buy at bird stores) and a tray of dry worms to ensure the amount of food for them. In addition, a must-have condition is water. If you live in urban areas, tap water should be treated to reduce chlorine. Although this bird''s favorite food is worms, the worms that we buy at stores cannot be of the same quality as the worms that they get in nature, so we must limit and feed them a specific amount, do not abuse it will make their health unstable<br>
 
-1.3 Cách nuôi chim sâu đầu xanh con
-Khi bạn bắt được chim sâu đầu xanh non thì đỏi hỏi quá trình chăm sóc phức tạp hơn một chút. Bạn phải giành thời gian để đút cho chúng ăn vì lúc này chúng chưa thể tự ăn được như những chú chim trưởng thành khác. Nhưng đây cũng được coi là một trong những giai đoạn tuyệt vời nhất của người chơi chim. Bởi nó sẽ là một chất keo kết dính để khiến cho tình cảm của bạn và những chú chim này được kết nối. Giai đoạn này thức ăn tốt nhất cho chim sâu non là cào cào. Bạn cũng đừng quên cho chúng uống nước. Những chú chim non 1 ngày ăn rất nhiều lần nên bạn hãy để ý nếu không muốn chúng lả đi vì đói.
+1.3 How to raise baby blue-headed worm<br>
+When you catch young blue-headed worms, the care process is a bit more complicated. You have to take time to feed them because at this time they can''t eat by themselves like other adult birds. But this is also considered one of the greatest stages of birdwatchers. Because it will be a glue to make your feelings and these birds connected. At this stage, the best food for young birds is locusts. Don''t forget to give them water too. Young birds eat many times a day, so be careful if you don''t want them to faint from hunger.<br>
 
-Sau khoảng thời gian hơn 1 tháng là những chú chim này đã đủ lông đủ cánh, việc ăn uống và bay nhảy chúng đều có thể chủ động được rồi. Việc chăm sóc của bạn cũng không còn quá vất cả như trước nữa. Chính vì vậy lúc này bạn chỉ cần chuẩn bị đầy đủ thức ăn cho chúng, nhớ là phải thường xuyên tiếp xúc với chúng để chúng không nhát người nhé
+After a period of more than 1 month, these birds have enough feathers and wings, eating and flying they can all be active. Your care is also not so hard as before. That''s why now you just need to prepare enough food for them, remember to regularly interact with them so that they are not shy<br>
 
-1.4 cách nuôi chim sâu xanh khi mới bẫy được
-Nhiều người chia sẻ rằng họ không thể nuôi được những chú chim sâu mà họ bẫy được. Thật ra cũng không có gì quá khó. Đầu tiên bạn cần trùm 1 chiếc áo lồng và để  trong khoảng thời gian 2 ngày Nhớ là trong đó bạn phải chuẩn bị đầy đủ thức ăn cho chúng đầy đủ. Hãy để ý đến lượng thức ăn nếu như bạn thấy thức ăn mà bạn chuẩn bị trong lông bị vơi đi chứng tỏ là chúng đã chịu ăn và chắn chắn chúng sẽ sống. Cứ để đó trong khoảng 2 ngày rồi từ từ tháo áo lồng ra nhớ là giai đoạn này.
+1.4 ways to raise green worms when they are newly caught<br>
+Many people share that they cannot keep the worms that they trap. Actually, nothing is too difficult. First you need to cover a cage and leave it for a period of 2 days. Remember that you must prepare enough food for them. Pay attention to the amount of food if you see that the food you prepare in the feathers is reduced, it means that they are willing to eat and they will definitely live. Leave it there for about 2 days and then slowly remove the cage, remember this stage.<br>
 
-Bạn nên chỉ hé một chút để chúng tập làm quen dần, thậm chí nhiều con sẽ phá phách, bay nhảy lung tung dẫn đến chảy máu nhưng bạn đừng lo. Tiếu đến vài ngày sau bạn lại hé áo lồng thêm 1 chút nữa sau đó quay cho áo lồng đi mọi hướng. Thỉnh thoảng hướng đến nơi có nhiều người qua lại. Chúng sẽ sợ hãi mà nhảy nhót lung tung thậm chí là phá phách, nhưng chắc chắn là một thời gian chúng sẽ quen và sẽ trở lại là một chú chim hiền lành ngoan ngoãn.
+You should only open a little to let them get used to it, even many children will destroy, fly around leading to bleeding, but don''t worry. After a few days, you open the cage a little more and then turn the cage to go in all directions. Occasionally head to a place with a lot of people passing by. They will be scared and jump around and even wreak havoc, but surely after a while they will get used to it and will return to being a gentle and docile bird.<br>
 
-Bước tiếp theo là bạn vào cám cho chim ăn. Bạn cần chuẩn bị 3 cóng. 1 cái để dựng nước cong lại  2 cóng cong lại chia để tỉ lệ sâu và cám trộn lẫn với nhau. Đầu tiên chúng sẽ ko hót nhưng khoảng 1 vài tuần khi đã quen với cuộc sống trong lồng thì bạn hoàn toàn có thể lắng nghe tiếng chim sâu xanh hót đấy
+The next step is to feed the birds. You need to prepare 3 cues. 1 to set up the water to bend 2 again to divide the ratio of worms and bran to mix together. At first they won''t sing, but after a few weeks, once you get used to life in the cage, you can completely listen to the blue worms singing.<br>
 
-2. Kinh nghiệm nuôi chim sâu xanh đẻ
-Để có thể giúp bạn tự mình cho ra đời được những chú chim sâu non để phục vụ một cách tối đa cho thú vui của mình. Chúng tôi cũng mang đến cho bạn cách nuôi chim sâu xanh để đây là một trong những kỹ thuật mà nhiều người đã sử dụng và rất thành công. 
+2. bird farming experience green worm spawn<br>
+To be able to help you give birth to your own baby worms to maximize your enjoyment. We also bring you how to raise blue worms so this is one of the techniques that many people have used and been very successful. <br>
 
-2.1 Lồng và vị trí đặt cho chim sâu xanh đẻ
-- Về cơ bản về việc chọn lồng chim nuôi chim sâu xanh đẻ cũng không khác quá nhiều so với việc bạn nuôi chim sâu xanh đấu cội. Khi lựa chọn lồng thì bạn cũng chỉ nên lựa chọn một loại lồng có khoảng cách nan vừa phải kích thước lồng cũng không cần quá cao đủ để chúng có thể hoạt động được ột cách thoải mái nhất mà lại không thoái được ra ngoài.
+2.1 Cages and locations for blue worms to lay<br>
+- Basically, choosing a bird cage to raise blue worms is not too different from that of raising blue worms against the roots. When choosing a cage, you should also choose a cage with a moderate distance between the spokes, and the size of the cage does not need to be too high so that they can operate most comfortably without withdrawing.<br>
 
-Tuy nhiên bạn đặc biệt phải lưu ý rằng khi nuôi chim sâu xanh đẻ việc lựa chọn vị trí đặt lồng cũng như việc che chắn lòng là một trong những yếu tố vô cùng quan trọng. Với bản năng của mình chúng sẽ rất nhạy cảm với môi trường xung quanh.  Về cơ bản thì bạn phải che đậy một cách tỉ mỉ để chúng cảm thấy an tâm nhất. Các vị trí để che lồng gần như là tất cả bạn chỉ bỏ trốn phần cửa để tiện việc cho ăn cũng như tiện cho việc chúng tắm và sưởi năng, đỉnh lồng thì bạn cũng nên che lại 50%
+However, you must especially note that when raising blueworms, the choice of the location of the cage as well as the protection of the heart is one of the extremely important factors. With their instincts, they will be very sensitive to their surroundings. Basically, you have to cover it up meticulously to make them feel the most secure. The positions to cover the cage are almost all you only need to hide from the door to facilitate feeding as well as for them to bathe and heat, the top of the cage should also be covered by 50%.<br>
+- About the placement of the cage you need to consider in the time they mate and lay only when they feel it''s a safe spot do they start spawning. So in the way of raising blue worms, it is not exaggerated to say that this is one of the decisive criteria for the success of breeding blue worms if the cage location is arranged in the most scientific way, it is not too far away to welcome the baby birds born.<br>
 
-- Về vị trí đặt lồng bạn cần phải cân nhắc trong thời gian chúng ghép cặp và đẻ chỉ khi nào chúng cảm thấy đó là một vị trí an toàn chúng mới bắt đầu sinh sản. Vì vậy trong cách nuôi chim sâu xanh đẻ không ngoa khi nói rằng đây là một trong những tiêu chí quyết định đến sự thành công trong việc nuôi chim sâu xanh đẻ nếu vị trí lồng được bài trí một cách khoa học nhất việc đón những chú chim nhỏ ra đời sẽ không còn quá xa.
+2.2 How to arrange cages for blue worms to lay<br>
+Because it is a cage designed specifically for laying worms, so in the outer cage as well as the food trough, there is a slight difference in the layout in the lap, which is that you should leave a basket so that the worms can nest. And don''t forget to give them some straw so they can build and line the nest. In addition, in the way of hanging bird cages for nesting birds, the most ideal location must be out of the wind, not to be too strong, but not so tilted because if you mean it, you can cause the eggs to fall out.<br>
 
-2.2 Cách bài trí lồng cho chim sâu xanh đẻ
-Vì là lồng thiết kế dành riêng cho loại chim sâu đẻ chính vì vậy mà trong lồng ngoài cóng nước cũng như máng đựng thức thức ăn thì trong cách bài trí trong lòng cũng có một chút khác biệt đó chính là việc bạn nên để một chiếc rổ để cho chim sâu có thể làm tổ. Và bạn cũng đừng quên để cho chúng chút rơm dạ để chúng có thể xây và lót tổ. Ngoài ra trong cách treo lồng chim dành cho chim sâu làm tổ thì vị trí lý tưởng nhất phải khuất gió không được để gió mạnh quá mà không được treo nghiêng như vậy vì nếu như bạn theo nghĩa sẽ có thể khiến cho trứng chim bị rơi ra ngoài.
+According to long-time bird breeders, if you stay at the place where the bird cage is hanging, it is a location with trees, it will be very suitable to help the birds be more confident in breeding.<br>
 
+2.3 How to choose blue worms for pairing<br>
+About how to choose blueworms for pairing and breeding, you also need to consider it. Priority is given to selecting blue worms that have been in captivity for a while because they are used to the captive environment by this time, so it is not too difficult if successful pairing is also the time when they will proceed to reproduce.<br>
 
+In addition, to be able to pair up for blue worms to reproduce, bird owners can completely use a bird trapped in the forest. Birds trapped in the forest will bring extremely wonderful qualities. However, the time it takes to raise blueworms to breed for these birds is considered to be quite long, so it requires bird owners to have a perseverance.<br>
 
-Theo như những người nuôi chim sâu xanh sinh sản lâu năm cho biết rằng nếu như ở tại vị trí treo lồng chim là những vị trí có cây cối lúc này sẽ rất thích hợp để giúp cho những chú chim có thể tự tin hơn trong việc sinh sản.
+Another way of pairing blueworms that breed differently than many people apply is to catch a whole pair in the wild for these birds, it only takes time for them to get used to the new environment, and their pairing and breeding will definitely be successful.<br>
 
-2.3 Cách lựa chọn chim sâu xanh ghép cặp
-Về cách lựa chọn chim sâu xanh để ghép cặp và sinh sản thì bạn cũng cần phải cân nhắc nên. Ưu tiên để lựa chọn những chú chim sâu xanh đã có thờ một thời gian nuôi nhốt ở trong lồng vì lúc này chúng đã quen với môi trường nuôi nhốt nên cũng không quá khó khăn nếu như bắt cặp thành công thì cũng là lúc mà chúng sẽ tiến hành sinh sản.
+2.4 Food for blue worms to breed<br>
+Basically the food for breeding blueworms also includes fresh lips and bran. First of all about fresh bait, it is clear that this is definitely one of the necessary foods to help birds get the most nutrients. As for bird bran, you should choose bird feeds specifically for breeding birds. The nutritional ingredients in these brans will also ensure that the birds can be born from good eggs. In addition, if you have a separate recipe, you can completely make the bran yourself to give them the most complete.<br>
 
-Ngoài ra để có thể ghép cặp cho chim sâu xanh sinh sản thì người nuôi chim hoàn toàn có thể sử dụng một chú chim được bẫy ở ngoài rừng. Những chú chim được bẫy ở ngoài rừng vệ sẽ mang đến những tố chất cực kỳ tuyệt vời. Tuy nhiên thời gian để nuôi chim sâu xanh sinh sản đối với những chú chim này được đánh giá là khá lâu vậy đòi hỏi người nuôi chim để có được một sự kiên trì.
+During incubation, you should not disturb them. At this time you should also prepare them with an abundant amount of food because when they see that the amount of food is enough for them to nourish them. They will be more confident to be able to focus on incubating the eggs. Absolutely do not let any kind of dangerous object near their nest or it will make them panic and ready to leave the nest.<br>
 
-Một cách ghép cặp chim sâu xanh sinh sản khác đi rất nhiều người áp dụng đó chính là việc bắt cả một cặp ở ngoài thiên nhiên đối với những cặp chim này chỉ mất thời gian để cho chúng quen với môi trường mới có việc ghép cặp và sinh sản của chúng chắc chắn sẽ thành công.
+2.5 Separation of young worms<br>
+At first, you almost don''t need to worry about anything but providing them with adequate nutrition and food to feed them because being in the nursing stage of blue worms is one of the stages that makes them feel tired as well as exhausted a lot of energy. Therefore, the amount of food at this time must also be increased as well as more fresh foods should be added so that they can recover their energy.<br>
 
-2.4 Thức ăn cho chim sâu xanh sinh sản
-Về cơ bản thức ăn để nuôi chim sâu xanh sinh sản cũng bao gồm môi tươi và các loại cám. Trước tiên về mồi tươi thì là điều rõ ràng rồi đây chắc chắn là một trong những loại thức ăn cần thiết để giúp cho những chú chim có đủ chất dinh dưỡng nhất. Còn đối với các loại cám chim thì bạ nên lựa chọn những loại cám chim dành riêng cho chim sinh sản. Các thành phần dinh dưỡng trong các loại cám này cũng sẽ đảm bảo cho những chú chim có thể cho ra đời từ những quả trứng tốt  Ngoài ra nếu bạn có được một công thức nào riêng biệt bạn hoàn toàn có thể tự tay làm cám để cho chúng được đầy đủ nhất.
+In a period of 2 weeks you should separate the birds after the baby and can take care of them and feed them. When you take care of the little worms, their parents restore their health to prepare for the next spawning. So coming here is basically a successful way to breed blue worms and you will definitely feel very happy with the results that you can achieve.<br>
 
-Trong quá trình chim ấp bạn đừng nên làm phiền chúng. Lúc này bạn cũng nên chuẩn bị cho chúng một lượng thức ăn dồi dào vì khi chúng thấy lượng thức ăn là đủ để chúng nuôi dưỡng con. Chúng sẽ tự tin hơn để có thể tập trung vào việc ấp trứng. Tuyệt đối đừng để cho bất kỳ một loại vật nào nguy hiểm đến gần tổ chim của chúng nếu không sẽ làm chúng hoảng loạn và sẵn sàng bỏ tổ.
+Hopefully, with the deep blue-headed bird farming experiences we bring to you, it will contribute to bringing you the most valuable experiences. In addition, we also bring you experiences to raise green worms. Don''t forget to visit Chu Giong every day to update more information as well as deep green bird farming experience. Wish you success in taking care of the blue worm to achieve the highest quality. See you in the next post.')
+,( '40f3cc38ef656d749d2e2a368b59711e', 'A5B46B0BE55F8F58150695E37716B424', N'The most accurate way to distinguish deep blue birds with roofs',  GETDATE(), N'distinguish birds',
+	N'Distinguishing blue worms is difficult because they are quite similar, because their dragons are not complete, so you only need to look at the island a few times and compare. Do not stare at one animal, looking at it for a long time will cause a phenomenon of dizziness, in the end, each child is the same, so it is impossible to distinguish. Please follow the following article well to identify the blue worm with the most accurate roof.<br>
 
-2.5 Tách chim sâu non
-Thời gian đầu bạn gần như không cần phải lo lắng bất cứ một điều gì ngoài việc nạn cung cấp cho chúng đầy đủ dinh dưỡng và thức ăn để cho chúng nuôi con vì ở trong giai đoạn nuôi con của chim sâu xanh là một trong những giai đoạn khiến cho chúng cảm thấy mệt mỏi cũng như cạn kệt rất nhiều sinh lực. Vì vậy là lượng thức ăn trong thời điểm này cũng phải được tăng cũng như nên bổ sung thêm nhiều các loại thức ăn tươi để cho chúng có thể hồi phục được năng lượng.
+', N'How to distinguish the most standard blue worm bird<br>
+1. Distinguish deep blue head passing drum, roof.<br>
 
-Trong khoảng thời gian từ 2 tuần bạn nên tách chim sau con và có thể tự chăm sóc cho chúng ăn được rồi. Khi bạn chăm sóc những chú chim sâu nhỏ thì bố mẹ của chúng phục hồi lại sức khỏe để chuẩn bị cho một sinh sản kế tiếp. Như vậy đến đây về cơ bản là cách nuôi chim sâu xanh sinh sản đã thành công và bạn chắc chắn sẽ cảm thấy rất vui với những thành quả mà mình có thể đạt được
+With flying worms, distinguishing birds is not the simplest thing, especially for those who do not have too much experience. The reason this is so difficult is because when birds are moving, they are perfecting their plumage. You can tell the blue worm from the roof by looking at the border of the feathers on the front of the chest. If a bird has a dark black chest and two tail feathers that are longer than elsewhere, it''s a male. In contrast, the blue worms, the feathers on the chest border will be much lighter without 2 strands like the male bird.<br>
+2. Deeply distinguish the green head of the drum, the roof<br>
 
-Hi vọng rằng với những kinh nghiệm nuôi chim sâu đầu xanh mà chúng tôi mang đến cho các bạn sẽ góp phần mang đến cho các bạn những kinh nghiệm quý giá nhất. Ngoài ra chúng tôi cũng man tới cho bạn những kinh nghiệm để nuôi chi sâu xanh đẻ. Đừng quên ghé thăm Chú Gióng mỗi ngày để cập nhật nhiều thông tin cũng như kinh nghiệm nuôi chim sâu xanh. Chúc các bạn thành công trong việc chăm sóc chú chim sâu xanh để đạt được chất lượng cao nhất. Hẹn gặp lại các bạn ở bài viết tới.'),
-	( '40f3cc38ef656d749d2e2a368b59711e', N'Cách phân biệt chim sâu xanh trống mái chính xác nhất',  GETDATE(), N'phân biệt chim',
-	N'Việc phân biệt chim sâu xanh đối khó vì chúng khá giống nhau, vì bộ long chúng chưa hoàn thiện nên các bạn chỉ nhìn đảo qua một vài lần và so sánh. Không nên nhìn chằm chằm vào 1 con, nhìn lâu sinh ra hiện tượng hoa mắt, cuối cùng là con nào cũng như nhau, nên không phân biệt được. Mời bạn theo giỏi bài viết sau đây để nhận biết chim sâu xanh trống mái một cách chính xác nhất.
+It is not too difficult to distinguish blue worms from male and female because they have acquired the most complete plumage. At this time, distinguishing male and female birds no longer makes it difficult for you. Whether you are a seasoned professional birder or a beginner, it is easier than ever to recognize. There are 2 very important characteristics and if you want to know correctly, you must pay attention.<br>
+- Feathers: You notice the 2 feathers in front of the bird''s neck, if the birds are dark black, it is definitely a male bird. As for the female birds, their plumage is very light in color. Not too difficult, right?<br>
 
-Cách phân biệt chim sâu xanh trống mái chuẩn nhất
-1. Phân biệt sâu đầu xanh chuyền trống, mái.
+- Mop tail: This is a feature that can give an accuracy rate of 99.9%. Because birds with reed tails are completely empty. You pay close attention to the tail of the bird, the male birds often have 2 tail feathers in the middle, and the characteristics of these feathers are always much longer than the rest of the feathers. The blue worms are different if they don''t have these 2 strands, if they do, the survival rate is also very low<br>
+'),
+	( 'ff9086582c62af630123c568ca5db776', '882BDE1798D4D1516641A2D190D58CAC', N'Top 6 most intelligent talking birds in the world', GETDATE(), N'top birds', N'The special favor that nature gives to our lives is the talking birds. Because in addition to a very attractive beauty, they can also imitate human voices very accurately. Are you curious and want to know these intelligent birds? Follow our article below. Come to the top 6 most intelligent talking birds in the world.',
+N'Top smartest talking birds in the world.<br>
+1. Bird''s Nest.<br>
 
-Với những chú chim sâu đang bay chuyển thì việc phân biệt chim không phải là điều đơn giản nhất là đối với những người không có quá nhiều kinh nghiệm. Sở dĩ việc này rất khó bởi lúc chim đang chuyển là lúc chúng đang hoàn thiện về bộ lông. Bạn có thể phân biệt chim sâu xanh trông mái bằng cách nhìn viền lông trước ngực. Nếu chú chim nào có ngực đen đậm cùng với đó 2 sợi lông đuôi dài hơn so với lông ở những chỗ khác thì đó là chú chim trống. Còn ngược lại những chú chim sâu xanh thì lông ở viền ngực sẽ nhạt hơn rất nhiều không có 2 sợi như chú chim trống.
+Yen Phung is an extremely intelligent bird and has the ability to ignore human voices extremely well. As long as their owners spend a lot of time teaching them, they can remember a lot of words. They are also very gentle and friendly to people, especially possessing a very eye-catching colorful plumage, so they are often chosen to be house birds. According to experienced people, a male bird''s nest has the ability to imitate and pronounce more accurately than female parrots.<br>
+2. Canaries.<br>
 
-Theo những người có kinh nghiệm trong việc lựa chọn chim sâu chuyền trông mái để lại rằng. Khi nhìn thì không nên nhìn quá chăm chú vào một con sẽ mất đi cảm giác và khi mất đi cảm giác rồi thì sẽ chẳng thể phân biệt được một cách chính xác nhất
-2. Phân biệt sâu đầu xanh bổi trống, mái
+Among the ornamental birds that know how to connect, Yeng is the most appreciated for his ability to pronounce words correctly and unexpectedly. This bird is also very quick to talk, when caught up, they can talk all day without getting bored. They possess a blue-black coat color with a colored opening adorned with yellow striped feathers. This cane''s favorite food is insects and fruit. This is also a very popular ornamental bird in Vietnam<br>
+3. African Gray Parrot.<br>
 
-Việc phân biệt chim sâu xanh trống mái bổi thì không quá khó khăn vì chúng đã có được một bộ lông hoàn chỉnh nhất. Khi này việc phân biệt chim trống mái không còn làm khó được bạn. Cho dù bạn là tay chơi chim chuyên nghiệp lão làng hay những người mới bắt đầu vào nghề cũng có thể nhận biết dễ dàng hơn bao giờ hết. Có 2 đặc điểm rất quan trọng và nếu muốn nhận biết chính xác được thì bạn phải để ý.
+If you ask which is the most intelligent and talking bird in the world, surely no other ornamental bird can match the African gray parrot. They are endowed with an understanding and imitating human voices very well. In particular, they only stick with a single owner. Not only can they imitate the human voice, this African gray parrot is also so intelligent that when in the wild, they can imitate many different sounds to deceive their enemies.<br>
+4. Cockatoos<br>
 
+If trained properly, this parrot can speak human language very accurately. They can also mimic a wide variety of sounds. If they hear sounds with a constant frequency, they can repeat them very accurately. According to experience, there are some lovers of talking birds when teaching this cockatoo to maintain the same intonation as at the beginning, so they will be easier.<br>
+5. Indian Ring Parakeet<br>
 
+Although it is not a common ornamental bird in our country, it must be affirmed that this is one of the most outstanding individuals in the parrot species. They are very intelligent and inquisitive, their ability to remember words is also very good when they can learn about 300 words. They can reproduce human voices when heard over and over again at the highest frequency. They can even speak human language when listening to music. This parrot is also quite popular in the world.<br>
 
-- Lông kiềng: Bạn để ý đến 2 viền lông ở trước cổ chim nếu những chú chim có màu đen đậm thì chắc chắn nó là một chú chim trống. Còn những chú chim mái thì bộ lông của chúng có màu rất nhạt. Không quá khó khăn phải không nào
+6. Eclectus Parrot<br>
 
-- Đuôi lau : Đây là một đặc điểm có thể cho tỉ lệ chính xác đến 99,9%. Bởi những chú chim sở hữu đuôi lau thì hoàn toàn là trống. Bạn để ý kĩ phần duôi của chim những chú chim trống thường có 2 sợi lông đuôi ở giữa, và đặc điểm của những sợi lông này luôn dài hơn rất nhiều so với những chiếc lông còn lại khác. Những chú chim sâu xanh mái thì khác chúng không có 2 sợi này nếu mà có thì tỉ lệ tồn tại cũng rất thấp
+It seems that the parrot family is quite a part of the group of the most intelligent and talking birds in the world. The Eclectus Parrot is also one of the ornamental birds that has the ability to imitate human language quite well. They can imitate most things they hear in daily life and even pronounce them correctly. They are so smart that they can memorize and sing an entire song. As a playful, inquisitive bird, they don''t just imitate human voices. Any sound that makes them feel immediately attracted to them will sound very accurately.
+'),
+	( '9b5aefbcffbf716f526dda302be5cdef' , '3C2E0D1CFC3BC009465195E4B5AEC73F', N'What is the most important thing about raising nightingales?' , GETDATE() , N'bird farming experience' ,
+N'Thật sự thiếu sót nếu bạn đang nuôi chim họa mi mà không biết đến những điều cần đặc biệt lưu ý trong quá trình nuôi dưỡng chúng. Trong việc chuẩn bị, chọn lựa thức ăn đến vệ sinh lồng nhốt, chăm sóc chim non, vv… đều cần có những kinh nghiệm riêng, không phải ai cũng nắm rõ, cũng xuất phát từ tình cảm đặc biệt mà chúng tôi dành cho họa mi và với mong muốn sẽ mang đến cho mọi người những bí quyết nuôi chim họa mi quan trọng nhất. Tất tần tất những điều quan trọng nhất về việc nuôi chim này sẽ được chúng tôi gửi đến trong bài viết dưới đây',
 
-Bạn có tin không những chú chim sâu xanh cũng có chim ái nam ái nữ đấy. Những chú chim này sở hữu một bộ đuôi không khác gì chim mái nhưng lại có 2 viền rất đậm giống như đặc điểm nhận dạng của chim trống. Đây là một loại chim sâu mà người ta cực kì ưa chuộng nếu như không muốn nói là săn lùng. Những chú chim này có nết chơi cực kì dữ, nó có thể hót đấu không biết mệt mỏi. Tỉ lệ những chú chim sở hữu nết chơi này là 9/10. Nên những chú chim này thường được những người sành chim sử dụng làm chim mồi. 
-
-Ngoài ra để phân biệt chim sâu đầu xanh trống mai cũng còn một cách nữa. Nhưng cách này có một nhược điểm là không thể phân biệt được những chú chim khi chưa cất giọng hót. Nhưng dù trống hay mái những chú chim này bắt buộc phải sở hữu được một ngoại hình cân đối với dáng chuẩn, lông phải mượt không bị xoắn vào nhau. Đôi mắt có hồn và phải có chiều sâu, toàn thân không được có bất cứ một tật lỗi nào.
-
-Hi vọng rằng với những kinh nghiệm trên giúp bạn có thể lựa chọn một chú chim sâu xanh trông mái như ý. Nếu bạn nào biết thêm những kinh nghiệm hay hơn nữa thì có thể chia sẻ để mọi người cùng tham khảo. Mong rằng loài chim sâu nhỏ nhắn xinh đẹp hót hay này sẽ mang đến cho những người yêu chim cảnh những giây phút bình an sảng khoái và tĩnh lặng nhất trong tâm hồn. Cảm ơn các bạn đả đọc bài viết và đừng quên hãy luôn ghé thăm wedsite Chú Gióng để cập nhật thêm nhiều thông tin về loài chim sâu nhé.'),
-	( 'ff9086582c62af630123c568ca5db776', N'Top những loài chim cảnh biết nói thông minh nhất thế giới', GETDATE(), N'Top loài chim',
-N'1. Chim Yến Phụng.
-	Yến Phụng là một loài chim cực kì thông minh và có khả năng bất bước tiếng người cực kì giỏi. Chỉ cần chủ nhân của chúng dành nhiều thời gian để dạy dỗ chúng có thể nhớ 
-	được rất nhiều từ. 
-	Chúng cũng rất hiền lành và thân thiện với con người đặc biệt sở hữu một bộ lông sặc sỡ rất bắt mắt nên thường được lựa chọn để làm chim cảnh trong nhà. 
-	Theo những người có kinh nghiệm nhận xét rằng một chú Vẹt Yến Phụng đực có khả năng bắt chước và phát âm chuẩn xác hơn so với những chú Vẹt Cái
-2. Yểng.
-	Trong số những loại chim cảnh biết nối thì Yểng được đánh giá cao nhất về khả năng phát âm chính xác và chuẩn về ngữ điều đến bất ngờ. Loài chim này cũng rất mau mồm mau 
-	miêng lúc hứng lên
-	chúng có thể nói cả ngày không chán. 
-	Chúng sở hữu một màu lông xanh đen với chiếc mở màu được tô điểm bới lông sọc vàng. Thức ăn yêu thích của loài Yểng này là côn trùng và trái cây. 
-	Đây cũng là một loại chim cảnh rất được ưa chuộng tại Việt Nam'),
-	( '9b5aefbcffbf716f526dda302be5cdef' , N'Nuôi chim họa mi quan trọng nhất điều gì' , GETDATE() , N'kinh nghiệm nuôi chim' ,
-N'Thật sự thiếu sót nếu bạn đang nuôi chim họa mi mà không biết đến những điều cần đặc biệt lưu ý trong quá trình nuôi dưỡng chúng. Trong việc chuẩn bị, chọn lựa thức ăn đến vệ sinh lồng nhốt, chăm sóc chim non, vv… đều cần có những kinh nghiệm riêng, không phải ai cũng nắm rõ, cũng xuất phát từ tình cảm đặc biệt mà chúng tôi dành cho họa mi và với mong muốn sẽ mang đến cho mọi người những bí quyết nuôi chim họa mi quan trọng nhất. Tất tần tất những điều quan trọng nhất về việc nuôi chim này sẽ được chúng tôi gửi đến trong bài viết dưới đây
-
-Những lưu ý quan trọng trong việc nuôi chim họa mi. 
+N'Những lưu ý quan trọng trong việc nuôi chim họa mi. 
 1. Về thức ăn dành cho chim họa mi.
 
 Đúc kết kinh nghiệm từ những người nuôi chim họa mi trên khắp cả nước thức ăn dành cho chim họa mi đóng một vai trò không hề nhỏ quyết định đến ngoại hình, tính cách và giọng hót của chim. Vốn dĩ là một loài chim ở rừng núi họa mi tự nhiên ăn khá tạp chúng thích ăn côn trùng. Khi được thuần hóa và trở thành chim cảnh trong nhà thì chim được người nuôi cho ăn cám và giới chơi chim nói rằng nếu đã cho chim ăn cám thì mãi mãi chỉ cho chim ăn cám. Lượng thức ăn bên ngoài khác như thịt, trừng kiến...bổ xung khi chim cần đến dinh dưỡng cao hơn trong các giai đoạn phát triển. Ngoài ra chất lượng thức ăn dành cho họa mi cũng có những yêu cầu khắt khe. Gạo cho họa i ăn phải trắng, phải thơm ngon tuyệt đối không được mốc. Có như thế chim mới luôn khỏe mạnh. 
@@ -1536,15 +1602,15 @@ Y học thú y phát triển cũng đồng nghĩa với việc bạn sẽ dễ d
 Lời khuyên mà chúng tôi dành cho bạn chính là nên lựa chọn những chú chim đã được nuôi dưỡng qua để trải nghiệm. Bởi nếu bạn chưa có 1 chút kinh nghiệm nào mà nuôi họa mi con ngay thì chắc chắn sẽ gặp rất nhiều khó khăn. Chim họa mi khi được thuần thân thiện là vậy nhưng mới thì rất sợ tiếp xúc với con người. Nó sẽ chẳng có được một tâm lý tốt nhất nếu như bạn chưa có nhiều kinh nghiệm. Hơn nữa việc nuôi chim từ nhỏ phải trải qua một quá trình dài. Nếu không được chăm sóc kĩ càng sẽ có rất nhiều tật lỗi và giọng ca cũng chẳng thể nào xếp vào hàng danh ca được.
 
 Hi vọng rằng những bí quyết nuôi chim hoạ mi mà chúng tôi sưu tầm từ những cao nhân chim cảnh sẽ phần nào giúp ích cho mọi người. Nhất là với những người đang mong muốn trở thành nghệ nhân, chỉ cần với tình yêu và phương pháo nuôi đúng kỹ thuật việc sỡ hữu một chú chim khỏe mạnh sẽ chẳng còn là vấn đề với các bạn. Hi vọng bài viết này sẽ giúp các bạn thành công trong việc nuôi một chú chim họa mi mà bạn yêu mến. Chúc các bạn may mắn'),
-	( 'b1fa395c5fa8c10d20990274f0e57a85' , N'Những điều thú vị về tiếng chim hoạ mi hót' , GETDATE() , N'Những điều thú vị' ,
-	N'Bất kì một người nuôi chim nào cũng mong muốn được nghe thứ âm thanh tuyệt vời ấy nhất là vào mỗi buổi sáng. Thứ âm thanh mà loại chim này mang lại cho người nghe cảm giác thoải mái, thư giản sau một ngày làm việc. Ẩn sâu trong tiếng hót mê hoặc ấy là những câu chuyện được giới chơi chim truyền lại. Vậy câu chuyện đó là gì? Hãy cùng tìm hiểu những điều thú vị trong tiếng hót của chim hoạ mi.
+	( 'b1fa395c5fa8c10d20990274f0e57a85' , '2B5FD6349E04AB0C1099C266B2A62704', N'Interesting facts about birds about the nightingale singing' , GETDATE() , N'Interesting facts about birds' ,
+	N'Bất kì một người nuôi chim nào cũng mong muốn được nghe thứ âm thanh tuyệt vời ấy nhất là vào mỗi buổi sáng. Thứ âm thanh mà loại chim này mang lại cho người nghe cảm giác thoải mái, thư giản sau một ngày làm việc. Ẩn sâu trong tiếng hót mê hoặc ấy là những câu chuyện được giới chơi chim truyền lại. Vậy câu chuyện đó là gì? Hãy cùng tìm hiểu Interesting facts about birds trong tiếng hót của chim hoạ mi.',
 
-Nguồn gốc tiếng hót chim hoa mi qua câu truyện đầy thú vị.
+N' Nguồn gốc tiếng hót chim hoa mi qua câu truyện đầy thú vị.
 Từ thuở xa xưa, mọi loài trên thế gian đều được thượng đế ban tặng cho một đặc điểm riêng biệt. Với hoa hồng thì chẳng gì hấp dẫn hơn với vẻ đẹp hương sắc. Đại bàng thì được ưu ái với ngoại hình dũng mãnh, sự mạnh mẽ xé tan bầu trời, đến cây cỏ thôi cũng có những sức hút ma mị làm vương vấn xuyến sao loài người… Chỉ duy nhất chim họa mi là chẳng có gì cả. Loài chim này vốn dĩ rất tự tin khi phải khoác trên mình bộ lông nâu xám tẻ nhat. Càng tự ti hơn nữa khi giọng hót của chúng chỉ là những tiếng kêu khàn khàn chẳng mang nổi 1 âm sắc. Dù rất cố gắng bắt chước giọng hót của những loại chim khác nhưng kết quả chỉ là sự bất lực. Nó rất khao khát để có được một giọng hót hay, nó mong muốn điều đó một cách tha thiết và sẵn sàng đổi bằng chính mạng sống của bản thân mình.
 
 Quá xấu hổ về bản thân, nó cất cánh bay đi trong sự vô vọng, càng bay nó càng thấy mọi thứ trên thế gian này đều đẹp ngoại trừ nó. Cứ như vậy nó mang theo nỗi lòng nặng trĩu nhưng rồi từ trên cao nó nhìn thấy một bông hoa rực rỡ nằm sâu trong thân cây xấu xí đầy gai. Vẻ đẹp cảu bông hoa đó đã khơi dậy cho nó một sức sống diệu kì. Chim họa mi lao xuống như một mũi tên bất chấp nguy hiểm chỉ với mong ước được chiêm ngưỡng vẻ đẹp đó. Những chiếc gái sắc nhọn đã khiến cho lồng ngực của nó bắt đầu rỉ máu. Dường như thời điểm đó đã lay động đến trái tim của nó, trong lúc đau đớn nhất chim họa mi cất tiếng hót. Tiếng hót ấy trong như nước chảy, ngân nga vút lên lan tỏa khắp đất trời, nó hót như chưa bao giờ được hót, hót đến khi những giọt máu cuối cùng rỉ xuống khiến nó chết vì kiệt sức. Và từ đó chim họa mi được biết tới là loài chim có chất giọng hay nhất trần gian.
 
-Những điều thú vị khác về tiếng hót chim họa mi
+Interesting facts about birds khác về tiếng hót chim họa mi
 Câu truyện thú vị đó dường như đã ăn sâu vào tiềm thức của những người đam mê chim chân chính và cũng 1 phần có thể lý giải được tại sao người ta lại yêu họa mi đến như thế.  Vốn dĩ là một loài chim rụt rè nhút nhát, chim họa mi chỉ cất cao tiếng hát khi nó cảm thấy có cảm hứng cảm thấy mọi thứ xung quanh nó đều tốt đẹp.
 
 điều thú vị về chim hoạ mi hót.
@@ -1553,13 +1619,13 @@ Chim hoạ mi hót dường như còn chất chứa bao nỗi niềm, những bu
 
 Chim hoạ mi hót cũng là một dấu hiệu để con người có thể nhận biết về thời tiết. Nếu giữa đêm khoảng 3 giờ sáng bạn bị đánh thức bởi tiếng to vang thì chắc chắn ngày hôm đó sẽ có thay đổi về thời tiết. Còn khoảng 6,7 giờ sáng thấy chim hoa mi hót hay, hót nhiều thì chẳng còn gì tuyệt vời hơn bởi hôm ấy là một ngày đẹp trời. Thú vị hơn mỗi khi chăm bẵm chúng cho chúng ăn rồi lại được nghe chúng hót lúc bầy giờ người nuôi chim mới có thể cảm nhận hết được cái ân cái tình của loài chim này.
 
-Nhìn chung, chim họa my có lối sống khá tình cảm, tuy khó nuôi nhưng nuôi chim hoạ mi hót và hót hay thì lại càng khó. Chính vì vậy hãy chỉ nuôi khi bạn có tình yêu bất tận với chúng, có sự thấu hiểu với chúng. '),
-	( 'db635b18aeddd06818d3eaee86183bab' , N'Top 5 loài chim chào mào hót hay được các đại gia săn lùng hiện nay' , GETDATE() , N'Top loài chim' , 
+Nhìn chung, chim họa my có lối sống khá tình cảm, tuy khó nuôi nhưng nuôi chim hoạ mi hót và hót hay thì lại càng khó. Chính vì vậy hãy chỉ nuôi khi bạn có tình yêu bất tận với chúng, có sự thấu hiểu với chúng.'),
+	( 'db635b18aeddd06818d3eaee86183bab' , '5010DD042DF3EC8733B0CD78AAFD4E5C', N'Top 5 species of birds that greet and sing or are hunted by giants today' , GETDATE() , N'top birds' , 
 	N'Hiện nay thú vui sưu tầm và chăm sóc chim đang được các bạn trẻ và những doanh nhân thành đạt để mắt tới trong đó phải nói đến chim chào mào. Những chú chim chào mào hót hay thuộc hàng độc nhất vô nhị luôn được các đại gia săn đón và sẵn sàng chi với số tiền kết xù để sở hữu. Sở hữu chim hiếm còn thể hiện đẳng cấp của mình trong thú vui chơi chim và trong cuộc sống, góp phần không nhỏ giúp các doanh nhân thành đạt trong công việc.
 
 Cho dù đang ở giữa thời buổi kinh tế khó khăn nhưng chẳng thể ngăn nổi cách mà các đại gia bạo chi, thậm chí có những người còn sẵn sàng bỏ ra số tiền lên đến cả trăm triệu cho những sự độc lạ của những chú chào mào quý hiếm này. Chắc chắn rằng quý độc giả cũng đang rất nóng lòng muốn biết tại sao những chú chim này lại trở thành niềm ao ước thầm của nhiều đại gia đến vậy. Cùng chúng tôi theo dõi trong bài viết dưới đây nhé.
 
-1.Top những chú chim chào mào hót hay được yêu thích nhất
+',N'1.Top những chú chim chào mào hót hay được yêu thích nhất
 1.1: Chào mào Huế
 
 Đến từ xứ Huế mộng mơ, mang trong mình giọng hót đặc trưng bởi vậy những chú chim xuất sắc luôn được các đại gia những người sành sỏi đi tìm. Đặc biệt giống chim này sở hữu một chất giọng cực độc theo giới chuyên môn gọi là giọng thổ to. Khi cất tiếng hót thì tiếng nào ra tiếng đó mỗi lần cất giọng lên là ra liền 6, 7 âm. Chính vì sự đặc biệt của giống chim chào mào quý này đòi hỏi người chơi phải rất sành sỏi, lồng phải được thiết kế tỉ mỉ hơn so với lồng chim thông thường. Sở dĩ rất nhiều người yêu thích loài chào mào này bởi khả năng thi đấu của nó rất tốt, nếu tuyển được một chú chào mào Huế chất lượng và được chăm sóc bởi những người sảnh sỏi nó có thể mang về cho chủ nhận những chiến thằng đầy thuyết phục trong các cuộc thi lớn.
@@ -1584,7 +1650,7 @@ Ngoài những loài chim chào mào trên những chú chim đạt đến sự 
 2. Cách lựa chọn và nuôi chào mào hót hay
 Nếu bạn không phải là một người mạnh về tài chính bạn vẫn hoàn toàn có thể tự nuôi dưỡng được một chú chào mào hót hay để phục vụ cho thú chơi của mình với đầy đủ cảm giác và đẩy đủ sự phấn khích nhất. Nhưng chắc chắn rằng để có thể sở hữu được một chú chim chào mào hót hay thì trong quá trình nuôi dưỡng cũng như chọn lựa cũng phải trải qua những công đoạn vô cùng cầu kì phức tạp.
 
-Chúng tôi tin rằng với tình yêu đặc biệt với loài chim này với những thao tác chăm chút tỉ mỉ cẩn trọng cùng với những kinh nghiệm nuôi chim chào mào hót hay mà chúng tôi sẽ cùng bạn khám phá ở dưới đây. Chắc chắn bạn sẽ giúp cho những chú chim yêu quý của mình có thể phát huy được tất cả khả năng để có được một giọng ca đặc biệt
+Chúng tôi tin rằng với tình yêu đặc biệt với loài chim này với những thao tác chăm chút tỉ mỉ cẩn trọng cùng với những bird farming experience chào mào hót hay mà chúng tôi sẽ cùng bạn khám phá ở dưới đây. Chắc chắn bạn sẽ giúp cho những chú chim yêu quý của mình có thể phát huy được tất cả khả năng để có được một giọng ca đặc biệt
 
 2.1. Kinh nghiệm lựa chọn chào mào hót hay
 Ngoại hình cũng là một trong những tiêu chí quan trọng để người chơi chim có thể lựa chọn ra được một chú chim chào mào hót hay. Theo kinh nghiệm của những tay chơi lão luyện trong nghề chia sẻ lại thì tất cả những tiêu chí về ngoại hình đều ảnh hưởng trực tiếp đến chất giọng của một chú chim. Chính vì vậy việc lựa chọn những chú chim đáp ứng về tiêu chuẩn ngoại hình chắc chắn sẽ là yếu tố tiên quyết mà bạn cần phải chỉnh chu. Để lựa chọn được một chú chim chào mào hót hay bạn cần phải tỉ mỉ với rất nhiều những tiêu chí khác nhau:
@@ -1630,10 +1696,10 @@ Việc đem chim đi tập luyện thường xuyên không chỉ giúp cho chào
 
 Chúng tôi tin chắc rằng tất cả những điều này sẽ chẳng còn là vấn đề khi bạn sở hữu được một chú chim chào mào với giọng hót hay. Vào mỗi sớm mai thức dậy, bạn được nghe những âm thanh thánh thót được phát ra từ chính những chú chim mà mình dày công chăm bẵm thì còn gì tuyệt vời hơn nữa. Chúc bạn luôn vui và thành công với niềm đam mê của mình.
 '),
-	( 'a66a0292d3af450e99bd42136898c36b' , N'Chế độ dinh dưỡng cho chim chào mào đấu hót' , GETDATE() , N'kinh nghiệm nuôi chim' , 
-N'Như chúng ta đã biết, hiện nay thú vui chơi chim chào mào đặc biệt nở rộ trong những năm gần đây. Đây là dòng chim dễ nuôi, thức ăn chủ yếu là hoa quả, trái cây, đôi lúc là một ít cám thôi cũng đủ sống rồi. Thế nhưng để chăm ra một em chào mào căng lửa thì đã khó, nuôi ra một chú chào mào để đấu hót còn khó hơn bội phần. Thông qua bài viết này, Chú Gióng sẽ gửi đến bạn đọc cách nuôi chào mào thi đấu một cách đơn giản và dễ dàng nhất.
+	( 'a66a0292d3af450e99bd42136898c36b' , '76FA6E278CE75EB33427682E6C0C360D', N'Diet for singing crested birds' , GETDATE() , N'bird farming experience' , 
+N'Như chúng ta đã biết, hiện nay thú vui chơi chim chào mào đặc biệt nở rộ trong những năm gần đây. Đây là dòng chim dễ nuôi, thức ăn chủ yếu là hoa quả, trái cây, đôi lúc là một ít cám thôi cũng đủ sống rồi. Thế nhưng để chăm ra một em chào mào căng lửa thì đã khó, nuôi ra một chú chào mào để đấu hót còn khó hơn bội phần. Thông qua bài viết này, Chú Gióng sẽ gửi đến bạn đọc cách nuôi chào mào thi đấu một cách đơn giản và dễ dàng nhất.',
 
-1. Thức ăn chính
+N'1. Thức ăn chính
 Đối với chào mào, đây là loại chim không quá cầu kì trong nhu cầu dinh dưỡng, tuy nhiên chúng ta cũng cần phải đảm bảo nguồn cung cấp bổ sung vi chất dinh dưỡng mỗi ngày. Cám chim là một trong số các loại thực phẩm chính cho chim chào mào hiện nay đang được nhiều người sử dụng, phần vì tính cơ động và đảm bảo được nguồn cung cấp dinh dưỡng hằng ngày của chúng. Mặt khác, ta có thể trộn cám với một số thành phần bên ngoài để tăng lượng dinh dưỡng và khẩu vị như: trứng vịt, trứng gà, thịt rắn mối, thịt bò, tôm tươi…
 
 2. Thức ăn bổ sung
@@ -1645,10 +1711,10 @@ Nước uống sạch là đủ rồi, không cần phải đun sôi để ngu�
 Ngoài ra để chú chim của bạn khỏe mạnh mỗi ngày thì cần phải bổ sung chất vi chất dinh dưỡng - vô thuốc nữa. Tuy nhiên đây là con dao hai lưỡi, khi sử dụng thuốc phải hết sức cẩn thận và theo dõi sát sao bầy chim, phải hiểu thật rõ thì mới làm tránh những trường hợp đáng tiếc xảy ra.
 
 Như vậy là chúng ta vừa điểm qua chế độ dinh dưỡng cho chim chào mào đấu hót, thiết nghĩ đây là những điều căn bản và cần thiết cho độc giả để tìm hiểu về cách nuôi chào mào thi đấu. Nuôi chim cảnh không chỉ giúp không gian gia đình thêm vui vẻ rộn ràng, khiến người nuôi chim giải tỏa căng thẳng sau những giờ làm việc mệt mỏi mà còn là một thú chơi hái ra tiền. Chúc các bạn thành công.'),
-	( '0aa6e189009d5d7cf2a981e8387fff4d' , N'Kỹ thuật nuôi chim chào mào sinh sản và chăm sóc chào mào đẻ tốt nhất' , GETDATE() , N'kinh nghiệm nuôi chim' , 
-N'Để phục vụ cho mục đích kinh doanh chim cảnh từ thú vui của chính bản thân mình và đã thành công, đó là áp dụng kỹ thuật nuôi chim chào mào sinh sản . Nếu như bạn muốn nuôi chim để sinh sản không phải để kinh doanh mà chị để phục vụ cho thú chơi của mình thì cũng hoàn toàn có thể. Nuôi chim chào mào sinh sản cũng không phải là điều gì đó quá khó nhưng cũng cần phải tuân theo một số những bước cơ bản để giúp những bạn đang có ý định có thể nắm bắt được những bước tốt nhất thì ở trong bài viết ngày hôm nay Chú Gióng sẽ giới thiệu đến các bạn những kỹ thuật nuôi chim chào mào đẻ tốt nhất.
+	( '0aa6e189009d5d7cf2a981e8387fff4d' , 'B7B7A82190F83DF905868B2C1A45CC9B', N'The best breeding techniques for breeding crested birds and taking care of them' , GETDATE() , N'bird farming experience' , 
+N'Để phục vụ cho mục đích kinh doanh chim cảnh từ thú vui của chính bản thân mình và đã thành công, đó là áp dụng kỹ thuật nuôi chim chào mào sinh sản . Nếu như bạn muốn nuôi chim để sinh sản không phải để kinh doanh mà chị để phục vụ cho thú chơi của mình thì cũng hoàn toàn có thể. Nuôi chim chào mào sinh sản cũng không phải là điều gì đó quá khó nhưng cũng cần phải tuân theo một số những bước cơ bản để giúp những bạn đang có ý định có thể nắm bắt được những bước tốt nhất thì ở trong bài viết ngày hôm nay Chú Gióng sẽ giới thiệu đến các bạn những kỹ thuật nuôi chim chào mào đẻ tốt nhất.',
 
-Kỹ thuật nuôi chim chào mào sinh sản 
+N'Kỹ thuật nuôi chim chào mào sinh sản 
 1. Cần phải chọn và nuôi chim bố mẹ tốt 
 
 Trong cách chọn lựa một chú chim chào mào đẹp thì chúng tôi đã có rất nhiều bài viết bạn có thể tham khảo các bài viết này ở trên chuyên mục khác đây là một trong những bước quan trọng trong Kỹ thuật nuôi chim chào mào sinh sản. Điều quan trọng không kém trong việc nuôi chào mào sinh sản là chế độ dinh dưỡng cho bố mẹ của chúng. Điều này rất quan trọng điều này sẽ giúp cho những chú chim khỏe mạnh và chuẩn bị được cho quá trình giao phối của chim được tốt nhất. Còn những chú chim mẹ thì ngoài thức ăn bình thường bạn bổ xung thêm cám chuyên dụng cho chào mào sinh sản được bán trên thị trường. Nói chúng chế độ dinh dưỡng thì không có nhiều điều phải bàn cãi. 
@@ -1665,10 +1731,10 @@ Khi giai đoạn những chú chim chào mào non bắt đầu học hót và tr
 
 Trên đây là tất cả những kỹ thuật nuôi chim chào mào sinh sản mà chúng tôi mang đến cho bạn. Hi vọng rằng bạn sẽ tuân thủ theo những kỹ thuật này để cho những chú chim của bạn có thể phát triển một cách đầy đủ nhất chúc bạn sẽ thuận lợi hơn cho việc kinh doanh hoặc là có thể sở hữu được cho mình những chú chim chào mào chất lượng phục vụ cho thú chơi của bạn sau này. Nếu như bạn thành công thì đừng quên chia sẻ với chúng tôi để những người khác có thể áp dụng bạn nhé. Hãy ghé thăm Chú Gióng thường xuyên để cập nhật cho mình những thông tin bổ ích nhé.
 '),
-	( '3f37126f037169bb080a309c88524d38' , N'Cách lựa chọn chim chào mào đẹp nhất hiện nay' , GETDATE() , N'cách chọn chim' , 
-N'Khi việc chơi chào mào đã trở nên quá phổ biến thì người chơi lại muốn hướng đến một yêu cầu mới, khắt khe hơn. Do đó cách chọn chim chào mào đẹp nhất là một trong những tiêu chí hàng đầu mà những người yệu chim cảnh quan tâm nhất. Để giúp bạn có được một chú chim chào mào đẹp, thì hôm nay Chú Gióng xin chia sẻ với các bạn những cách lựa chọn chim chào mào đẹp nhất:
+	( '3f37126f037169bb080a309c88524d38' , 'AB8EF54222AF80947BD5BCBA22C8C8C5', N'How to choose the most beautiful crested bird today' , GETDATE() , N'cách chọn chim' , 
+N'Khi việc chơi chào mào đã trở nên quá phổ biến thì người chơi lại muốn hướng đến một yêu cầu mới, khắt khe hơn. Do đó cách chọn chim chào mào đẹp nhất là một trong những tiêu chí hàng đầu mà những người yệu chim cảnh quan tâm nhất. Để giúp bạn có được một chú chim chào mào đẹp, thì hôm nay Chú Gióng xin chia sẻ với các bạn những cách lựa chọn chim chào mào đẹp nhất:',
 
-Cách lựa chọn chim chào mào đẹp nhất hiện nay
+N'Cách lựa chọn chim chào mào đẹp nhất hiện nay
 Để có thể lựa được một chú chim chào mào đẹp là điều mà bất cứ ai cũng có thể làm được. Tuy nhiên việc này lại đòi hỏi một sự tỉ mỉ và cẩn trọng một chú chào mào đẹp là phải kết hợp được tất cả các yếu tố khác nhau trên ngoại hình
 
 1: Đầu và mào
@@ -1705,11 +1771,11 @@ Khi lựa chọn một chú chào mào đẹp theo cánh chim không được ch
 Cũng giống như bất kỳ loại động vật nào khác mà ngay cả con người chúng ta cũng vậy nếu như muốn di chuyển nhanh nhẹn thanh thoát được thì bắt buộc phải có một đôi chân khỏe. Còn về tiêu chí lựa chọn chào mào đẹp theo chân những chú chim chào mào nào sở hữu một đôi chân cao thì rất nhanh nhẹn và linh hoạt .Tuy nhiên những chú chim sở hữu được một đôi chân cao cao này thì không phải lúc nào chúng ta có thể tìm được. Chưa kể đến những chú chào mào bổi thì việc huấn luyện những chú chim này cũng rất khó khăn bởi như bạn biết để nuôi được một chú chim bổi cho đến khi chúng thuần và có thể đưa ra trường thi đấu được cũng phải mất 3 đến 4 năm
 
 Vậy ở trong bài viết trên Chúng tôi đã mách cho bạn cách chọn chim chào mào đẹp theo đúng tiêu chí của những người am hiểu về chim cảnh. Với những cách lựa chọn trên, Chú Gióng hi vọng sẽ giúp bạn chọn được một chú chim chào mào thật đẹp, bên cạnh đó giúp các bạn có thêm kinh nghiệm chăm sóc chúng. Cảm ơn các bạn đã quam tâm theo dõi bài viết.'),
-	( '0251849dac885e1123e573388a937b6d' , N'Cách chăm chào mào bổi tốt nhất' , GETDATE() , N'kinh nghiệm nuôi chim' , 
+	( '0251849dac885e1123e573388a937b6d' , '64947A9C9DDEBF65E48B683464B7FBC3', N'The best way to greet the crested worm' , GETDATE() , N'bird farming experience' , 
 	N'Cách chăm chào mào bổi luôn được sự quan tâm rất lớn từ thế giới những người yêu chim. Bởi đơn giản đây là dòng chim khó nuôi, cần sự tinh tế và kinh nghiệm lâu năm của người chăm sóc. Chim chào mào bổi sau khi huấn luyện xong nếu thành công bạn sẽ có những chú chim tuyệt vời nhất, vời hình thế vóc dáng lực lượng, oai phong và giọng hót hàng ngày cực nịnh người.
-	Nhưng ngược lại nếu bạn bỏ qua và không quan tâm đến khoảng thời gian này chúng sẽ nhanh chóng xuống dốc, thậm chí là chết dễ dàng. Hãy cùng chúng tôi tìm hiểu Cách chăm chào mào bổi tốt nhất dưới đây và rút ra bài học cho bản thân mình nhé!
+	Nhưng ngược lại nếu bạn bỏ qua và không quan tâm đến khoảng thời gian này chúng sẽ nhanh chóng xuống dốc, thậm chí là chết dễ dàng. Hãy cùng chúng tôi tìm hiểu Cách chăm chào mào bổi tốt nhất dưới đây và rút ra bài học cho bản thân mình nhé!',
 
-Chào mào bổi là gì?
+N'Chào mào bổi là gì?
 Những chú chim chào mào này đã khá già và đã sống ở ngoài thiên nhiên một khoảng thời gian dài, thậm chí là có con lớn rồi nhưng được con người bắt về thuần dưỡng, chăm sóc nó thành công được gọi là chim chào mào bổi. Các loại chim chào mào bổi này cần khá nhiều công sức của người nuôi vì cần thời gian chăm sóc,huấ luyện chúng hàng ngày mới cho kết quả cao. Loài này cực kì khó thuần dưỡng, nhưng khi đã thuần hóa được chúng để mang đi thi cực kì tuyệt vời vì chúng đã được thiên nhiên khắc nghiệt đào tạo để có được một tinh thần thép.
 
 Cách chăm chào mào bổi 
@@ -1719,11 +1785,11 @@ Chim chào mào cần lượng thức ăn khôn nhiều nhưng liên tục. Bạ
 
 Thời gian đầu chim chào mào bổi hơi nhát nên bạn đừng quá lo lắng nếu chúng khôn hót, hoặc không nhanh nhẹn như bình thường. Sau khoảng 1 tháng chim sẽ bắt đầu dạn dĩ dần.
 Cách chăm chào mào bổi  cần người chủ rất khéo léo vì cần nâng niu, cất lồng chim khi nào. vì vậy bạn hãy nhớ một vài quy tắc đơn giản trên nhé. Ngoài ra, khi chim đã dạn hãy để chim nơi yên tĩnh, it người qua lại để chúng tự do hót. Chúc bạn có những phút giây thoải mái nhất.'),
-	( 'b17fbe0d73b2ebacedfb6ac1b284767c' , N'Tổng hợp các loài chim cảnh đẹp mà dân chơi yêu thích' , GETDATE() , N'Top loài chim' , 
+	( 'b17fbe0d73b2ebacedfb6ac1b284767c' , 'DEE0822E0D723293B16ABCFE332C8C51', N'Collection of beautiful ornamental birds that people love' , GETDATE() , N'top birds' , 
 N'Trong giới chim cảnh người ta thường đồn đại và chia sẽ với nhau một số loại chim cảnh đẹp, hót hay và phổ biến tại Việt Nam. Nếu không sở hữu ngoại hình bắt mắt thì chắc hẵn loài chim này sẽ có giọng hót thanh thót, làm say đắm lòng người . Bạn đã biết những loài chim được yêu thích nhất là những loài nào chưa? nếu chưa thì hãy theo dõi cùng chúng tôi trong bài Viết dưới đây nhé.
 
-Những loài chim cảnh quý mà dân chơi yêu thích
-1. Chim Sơn Ca
+Những loài chim cảnh quý mà dân chơi yêu thích',
+N'1. Chim Sơn Ca
 
 Được giới sành chim ưu ái dành cho cái tên danh ca trong rừng thẳm  người ta yêu thích loài chim cảnh hót hay này bởi giọng ca cao vút và trong trẻo của chúng. Ngoài ra chúng cũng sở hữu một thân hình nhỏ nhắn đáng yêu với màu nâu đặc trưng. Nhưng nếu những chú chim này được nuôi dưỡng một cách cẩn thận và khoa học nhất chúng sẽ có được màu lông vàng óng rất bắt mắt. Chim sơn ca không đòi hỏi người nuôi có quá nhiều kinh nghiệm bởi chúng không kén ăn. Nếu có một khoảng không gian vừa đủ rộng bạn sẽ được chiêm ngưỡng màn vũ đạo vừa bay vừa nhào lộn và hót rất thú vị 
 2. Chim chích chòe 
@@ -1756,11 +1822,11 @@ Sở hữu ngoại hình không khác là mấy so với chú chi sâu thông th
 
 Đối với những loài chim đã nêu trên, mỗi loài đều có điểm riêng biệt của chúng khi có loài mang diện mạo hoàn hảo, thế nhưng lại có loài lại có được giọng hót say đắm. Và cũng chính bởi những đặc điểm này đã khiến cho những chú chim cảnh đẹp luôn được các dân chơi yêu mến và săn lùng. 
 '),
-	( 'adc8a1de829b5aca8cd6f8a94b4dbf0d' , N'Chia sẻ cách nuôi chim họa mi bổi' , GETDATE() , N'kinh nghiệm nuôi chim' , 
+	( 'adc8a1de829b5aca8cd6f8a94b4dbf0d' , '15F5C2BCEC0BC8554F7F105AA6528C51', N'Share how to raise nightingale' , GETDATE() , N'bird farming experience' , 
 	N'Chim họa mi nổi tiếng là loài chim khó thuần, đặc biệt đối với họa mi bổi thì việc thuần hóa chúng là một việc khó khăn đòi hỏi tính kiên trì và thời gian. Nhưng nếu như bạn thành công thì chắc chắn rằng kết qua sẽ khiến bạn cảm thấy vô cùng hài lòng. Dưới đây xin chia sẻ với bạn cách nuôi chim họa mi bổi, đặc biệt lưu ý với loại chim này bạn cần nhiều thời gian và không thể đốt cháy giai đoạn được. 
-	Chim họa mi bổi sống quen với môi trường hoang dã
+	Chim họa mi bổi sống quen với môi trường hoang dã',
 
-Trước tiên, chim họa mi bổi là những chú chim mới được đưa từ rừng về, chúng đã có một thời gian dài sinh sống và trưởng thành với môi trường tự do của rừng núi. Chúng chưa bao giờ tiếp xúc với con người, vì vậy khi mới được đưa về, chim họa mi bổi rất hoảng sợ và nhút nhát. Bạn phải rất cẩn thận khi nuôi chim họa mi bổi.
+N'Trước tiên, chim họa mi bổi là những chú chim mới được đưa từ rừng về, chúng đã có một thời gian dài sinh sống và trưởng thành với môi trường tự do của rừng núi. Chúng chưa bao giờ tiếp xúc với con người, vì vậy khi mới được đưa về, chim họa mi bổi rất hoảng sợ và nhút nhát. Bạn phải rất cẩn thận khi nuôi chim họa mi bổi.
 
 Bước đầu sau khi đưa chim về bạn chuẩn bị chiếc lồng phù hợp để thuần hóa chim họa mi bổi. Chiếc lồng này chỉ nên nhỏ nhắn vừa để cho chim có thể xoay người, có thể sử dụng loại lồng thổ dân tộc hoặc mẫu lồng giả côn minh size 30 -32-34. Vì như đã nói ở trên, chim bổi rất hoảng loạn và sợ hãi, dùng lồng kích thước nhỏ để hạn chế chim nhảy loạn xạ, gây toác mỏ, gãy cánh hoặc có thể tử vong. Kinh nghiệm được chia sẻ là : ở giai đoạn đầu này, người nuôi nên phủ áo lồng và treo chim ở nơi yên tĩnh hạn chế tiếp xúc với con người. Tùy theo tính cách của từng con chim bạn có thể để hé lồng ít hay nhiều.
 
@@ -1780,10 +1846,10 @@ Trong thời gian sau khi chim đã dạn, người nuôi vẫn nên trùm lồn
 
 Tóm lại, việc chăm sóc và thuần một chú chim họa mi bổi rất vất vả và người nuôi mất rất nhiều thời gian theo đó là sự tỉ mỉ và kiên trì. Nếu bạn là một người thật tâm huyết với chú chim của mình, nhất định khi trải qua một thời gian chăn sóc thì chú họa mi sẽ cất cao tiếng hót mỗi ngày. Tuy sẽ mất thời gian dài từ 6 – 8 tháng, cũng có thể là một năm tùy từng con chim, nhưng cuối cùng bạn sẽ thực sự cảm nhận được sự thú vị trong quá trình thuần hóa chim họa mi và hạnh phúc khi được thưởng thức tiếng chim hót mỗi ngày.
 '),
-	( '48981d702b321f55a52652da71155e67' , N'Tuân thủ những cách chăm sóc họa mi căng lửa' , GETDATE() , N'kinh nghiệm nuôi chim' , 
-	N'Việc nuôi dưỡng và chăm sóc chim họa mi luôn giữ được phong độ là một điều tuy đơn giản nhưng không phải ai cũng có thể làm được vì đây là công việc nhẹ nhàng nhưng cần sự tỉ mỉ và kiên trì cao. Bài viết này xin bổ xung những cách chăm sóc chim họa mi căng lửa để bạn đọc tham khảo và áp dụng.
+	( '48981d702b321f55a52652da71155e67' , '7A07BA85FEBCA8A149A01893F84A2AB8', N'Adhere to the ways to take care of flaming eyelashes' , GETDATE() , N'bird farming experience' , 
+	N'Việc nuôi dưỡng và chăm sóc chim họa mi luôn giữ được phong độ là một điều tuy đơn giản nhưng không phải ai cũng có thể làm được vì đây là công việc nhẹ nhàng nhưng cần sự tỉ mỉ và kiên trì cao. Bài viết này xin bổ xung những cách chăm sóc chim họa mi căng lửa để bạn đọc tham khảo và áp dụng.',
 
-	Với những người nuôi chim họa mi, gặp phải trường hợp chim lên lửa, xuống lửa thất thường, ngày thì nghe hót rất nhiều, ngày thì không nghe thấy chim hót lần nào… đó là việc hết sức bình thường khi người nuôi chim họa mi không có các kĩ năng và chưa đủ kinh nghiệm giữ lửa cho họa mi. Những điều ảnh hưởng lớn nhất tới tạo lửa và giữ lửa cho chim mà bạn cần lưu ý như : môi trường sống, chế độ dinh dưỡng, cách chăm sóc..
+	N'Với những người nuôi chim họa mi, gặp phải trường hợp chim lên lửa, xuống lửa thất thường, ngày thì nghe hót rất nhiều, ngày thì không nghe thấy chim hót lần nào… đó là việc hết sức bình thường khi người nuôi chim họa mi không có các kĩ năng và chưa đủ kinh nghiệm giữ lửa cho họa mi. Những điều ảnh hưởng lớn nhất tới tạo lửa và giữ lửa cho chim mà bạn cần lưu ý như : môi trường sống, chế độ dinh dưỡng, cách chăm sóc..
 
 	Đầu tiên khi mới mang chim họa mi về, nó thường lạ người, lạ môi trường sống, thức ăn và thói quen được chăm sóc nên bao giờ cũng sợ hãi và xuống lửa; dù cho là chim mộc hay chim đã thuần hóa, chúng sẽ thường bỏ hót sau một vài ngày được nuôi dưỡng. Vì thế, bạn cũng không nên sớm bỏ cuộc mà hãy áp dụng những cách nuôi chim họa mi căng lửa sau :
 
@@ -1801,11 +1867,11 @@ Một vài điều về những thay đổi theo mùa của chim họa mi bạn 
 
 Chúc bạn sẽ đúc rút được nhiều cách chăm sóc họa mi căng lửa trong quá trình nuôi chim đầy thú vị của mình!
 '),
-	( '309d3c8fc90b2cf25bf851f62e428ec7' , N'Kĩ thuật và những cách nuôi chim họa mi hót nhiều' , GETDATE() , N'kinh nghiệm nuôi chim' , N'
+	( '309d3c8fc90b2cf25bf851f62e428ec7' , '1BAC1B56627B5894B16E885461AC366E', N'Techniques and ways of raising nightingales that sing a lot' , GETDATE() , N'bird farming experience' , N'
 	Hiện nay trào lưu nuôi chim được lan rộng mạnh mẻ, hiển nhiên những kinh nghiệm mà các tay chơi lão luyện làm như thế nào để chim hót nhiều cũng đã được truyền lại. 
-	Tuy nhiên, hôm nay hãy để chúng tôi bật mí những “bí kíp” dưới đây để thuần hóa chim họa mi được thành công hơn nhé!
+	Tuy nhiên, hôm nay hãy để chúng tôi bật mí những “bí kíp” dưới đây để thuần hóa chim họa mi được thành công hơn nhé!',
 	
-	Tiếng hát của chim họa mi được công nhận như những tiếng vang vọng của thiên nhiên. Những danh ca nổi tiếng thường được ví như “họa mi”. Loài họa mi là chim rừng, sống chủ yếu ở các nước khu vực Đông Nam Á, đặc biệt là tại các vùng núi cao của Trung Quốc và Việt Nam như Lạng Sơn, Sơn La, Lai Châu.
+	N'Tiếng hát của chim họa mi được công nhận như những tiếng vang vọng của thiên nhiên. Những danh ca nổi tiếng thường được ví như “họa mi”. Loài họa mi là chim rừng, sống chủ yếu ở các nước khu vực Đông Nam Á, đặc biệt là tại các vùng núi cao của Trung Quốc và Việt Nam như Lạng Sơn, Sơn La, Lai Châu.
 
 Chọn mua chim họa mi
 Điều kiện đầu tiên của việc nuôi được một chú chim họa mi hót nhiều là bạn phải chọn được chim họa mi giống tốt , thứ hai là tới cách chăm họa mi hót. Người nuôi có thể đăng kí các đặc điểm sau của chim họa mi :
@@ -1822,12 +1888,12 @@ Kĩ năng để có một con chim họa mi hót giọng thánh thót và nhiề
 Ngoài ra việc tắm nắng, tắm nước cho chim cũng là một việc quan trọng và không được quên vệ sinh lồng chim sạch sẽ.
 Trên đây là những chia sẻ về kinh nghiệm cách chăm sóc chim họa mi hót , bạn tham khảo và làm theo để nuôi chim thành công, lúc nào cũng được thưởng thức tiếng chim họa mi quanh nhà bạn.
 	'),
-	( 'e9dd9c14ec255e2700d76c05c70d0236' , N'Kỹ thuật thuần hóa chim họa mi mộc' , GETDATE() , N'kinh nghiệm nuôi chim' , N'
+	( 'e9dd9c14ec255e2700d76c05c70d0236' , 'D9608C097B4AC716401B25D55D657DF5', N'The technique of taming the nightingale' , GETDATE() , N'bird farming experience' , N'
 	Loài chim họa mi không những hót hay mà nhờ bản tính dữ tợn, hung hăng mà chim họa mi còn dùng để chiến đấu. Vậy việc thuần hóa một con chim họa mi "mộc" mới bắt về từ rừng thật sự không hề dơn giản. 
 
-Sau khi đem chim mộc về phủ kín áo lồng để mở chữ A hoặc rộng hơn cũng không sau, để chỗ tối quay ra chỗ có ánh sáng và có người đi lại, việc này sẽ giúp  cho chú chim nhát thấy tự tin hơn ai khi nhìn không thấy ai. Sau 2,3 ngày cho chim ra chỗ sáng hơn, nếu thấy chim đứng không nhảy lung tung thì bạn đã thành công.
+Sau khi đem chim mộc về phủ kín áo lồng để mở chữ A hoặc rộng hơn cũng không sau, để chỗ tối quay ra chỗ có ánh sáng và có người đi lại, việc này sẽ giúp  cho chú chim nhát thấy tự tin hơn ai khi nhìn không thấy ai. Sau 2,3 ngày cho chim ra chỗ sáng hơn, nếu thấy chim đứng không nhảy lung tung thì bạn đã thành công.',
 
-Thức ăn đổi đầy cóng, cho chim ăn cám đừng cho ăn nhiều mồi tươi vì khi cho ăn mồi tươi chim họa mi mộc sẽ không ăn cám, ăn thức ăn tươi sẽ dễ gây bệnh đường ruột. Chú họa mi nào càng dạn bao nhiêu thì dễ dàng thuần bấy nhiêu. Ngoài sự chăm sóc cẩn thận về thức ăn cần phải thay nước và vệ sinh lồng thường xuyên. Muốn tắm cho chim thì phải cẩn thận vì có thể sẽ làm chim bị hoảng nên tốt nhất nếu không chắc rằng chim có hoảng hay không thì không tắm, nó sẽ tự vẫy nước trong cóng để tắm.
+N'Thức ăn đổi đầy cóng, cho chim ăn cám đừng cho ăn nhiều mồi tươi vì khi cho ăn mồi tươi chim họa mi mộc sẽ không ăn cám, ăn thức ăn tươi sẽ dễ gây bệnh đường ruột. Chú họa mi nào càng dạn bao nhiêu thì dễ dàng thuần bấy nhiêu. Ngoài sự chăm sóc cẩn thận về thức ăn cần phải thay nước và vệ sinh lồng thường xuyên. Muốn tắm cho chim thì phải cẩn thận vì có thể sẽ làm chim bị hoảng nên tốt nhất nếu không chắc rằng chim có hoảng hay không thì không tắm, nó sẽ tự vẫy nước trong cóng để tắm.
 
 Chim mộc thường rất nhút nhát chúng quen với không gian rộng rãi nên khi cho vào lồng chúng sẽ bị tù túng, nhảy loạn xạ chưa quen. Mỗi lần thấy bóng người là chúng nhảy nhót điên loạn, đâm đầu vào nan lồng chảy cả máu đầu, gãy duôi, xã cánh,…Nhiều khi chăm sóc chim là vậy nhưng chúng chẳng chịu ăn thế là chết, thật tội nghiệp và cũng tiếc cho công sức chăm chim. Giai đọan này là một giai đoạn khó khăn, nếu bạn vẫn không thể thuần hóa được họa mi mộc tốt nhất nên chọn chim đã được thuần hóa tương đối, biết ăn cám và cất tiếng hót rồi.
 
@@ -1865,10 +1931,10 @@ Cách chăm sóc chinh họa mi và thuần hóa chúng cần phải kiên nhẫ
 Hy vọng qua bài viết này bạn có thể có thêm kinh nghiệm để chăm sóc chim họa mi và thuần hóa chúng. 
 
 	'),
-	( '553acd22fd496a02446c6258b3ba027e' , N'Cách chăm sóc chim chào mào thay lông chuẩn kỹ thuật nhất' , GETDATE() , N'kinh nghiệm nuôi chim' , N'
-	Khi những chiếc lông đầu tiên rớt xuống báo hiệu những chú chào mào đáng yêu của bạn sắp trút bỏ một bộ lông cũ kĩ trên người để khoác một bộ lông hoàn hảo hơn trước. Lúc này cách chăm sóc chim chào mào thay lông đòi hỏi phải cầu kì và chính xác hơn rất nhiều. Để giúp các bạn có được những cách chăm sóc chim khoa học nhất mời các bạn theo dõi bài viết dưới đây của chúng tôi
+	( '553acd22fd496a02446c6258b3ba027e' , '530A0ABFDEDF30ECFBE3E6618FB2CF48', N'How to take care of crested birds with the most technical standards' , GETDATE() , N'bird farming experience' , N'
+	Khi những chiếc lông đầu tiên rớt xuống báo hiệu những chú chào mào đáng yêu của bạn sắp trút bỏ một bộ lông cũ kĩ trên người để khoác một bộ lông hoàn hảo hơn trước. Lúc này cách chăm sóc chim chào mào thay lông đòi hỏi phải cầu kì và chính xác hơn rất nhiều. Để giúp các bạn có được những cách chăm sóc chim khoa học nhất mời các bạn theo dõi bài viết dưới đây của chúng tôi',
 
-Cách chăm sóc chim chào mào thay lông
+N'Cách chăm sóc chim chào mào thay lông
 
 1. Chế độ dinh dưỡng
 
@@ -1888,10 +1954,10 @@ Những chú chim bổi được nuôi dưỡng trong tự nhiên sau khi thuầ
 
 Hi vọng rằng với những cách chăm sóc chim chào mào thay lông trong bài viết trên sẽ giúp cho anh em có thể giúp cho những chú chim quý của mình có được một bộ lông tốt nhất. Chúc anh em nghệ nhân thành công và sở hữu được chú chim đẹp nhất
 '),
-	( 'd6d001e31f4065bbe402bc2eac44ca22' , N'Những kinh nghiệm vàng trong cách nuôi chào mào bổi thành mồi' , GETDATE() , N'kinh nghiệm nuôi chim' , N'
-	Một khi chú chào mào bổi chất lượng được huấn luyện thành công thì chắn chắc rằng sẽ là một đối thú đáng gờm và bản lĩnh trong các trường, hội thi chim. Chính vì vậy nhưng chú chim này nhận được rất nhiều sự quan tâm của các cao thủ lão làng cũng như những người chơi mới muốn thử sức. Cách nuôi chào mào bổi thành mồi không khó đòi hỏi chủ nhân của chúng phải thành thục những bước dưới đây
+	( 'd6d001e31f4065bbe402bc2eac44ca22' , 'F0757015A9AF8FD8C5E01EC4C4C82D3D', N'Golden experiences in how to raise crested crested scorpions into bait' , GETDATE() , N'bird farming experience' , N'
+	Một khi chú chào mào bổi chất lượng được huấn luyện thành công thì chắn chắc rằng sẽ là một đối thú đáng gờm và bản lĩnh trong các trường, hội thi chim. Chính vì vậy nhưng chú chim này nhận được rất nhiều sự quan tâm của các cao thủ lão làng cũng như những người chơi mới muốn thử sức. Cách nuôi chào mào bổi thành mồi không khó đòi hỏi chủ nhân của chúng phải thành thục những bước dưới đây',
 
-Cách nuôi chào mào bổi thành mồi
+N'Cách nuôi chào mào bổi thành mồi
 Chào mào bổi cũng có con này con nọ không phải con nào cũng có thể sở hữu được một chất giọng hoàn hảo. Nếu bạn may mắn sở hữu được một chú bổi ngon lành chắc chắn rằng khi vào đấu trường chúng sẽ thể hiện được bản lĩnh thực sự của mình. 
 
 1. Cách tập cho chào mào bổi dạn.

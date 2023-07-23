@@ -26,9 +26,9 @@
                 </div>
             </div>
 
-            <form class="d-flex justify-content-center needs-validation" action="<c:url value="/register"/>" method="post" 
+            <form enctype="multipart/form-data" class="d-flex justify-content-center needs-validation" action="<c:url value="/register"/>" method="post" 
                   novalidate >
-                <div class="card w-50 active">
+                <div class="card w-50 active needs-validation" novalidate>
                     <div class="card-header">
                         <h3 class="text-center">Step 1: Enter your Personal Information</h3>
                     </div>
@@ -44,7 +44,7 @@
                                         <div class="upload-img">
                                             <div class="change-photo-btn">
                                                 <span><i class="fa fa-upload"></i> Upload Photo</span>
-                                                <input type="file" class="upload" />
+                                                <input name="user-image" id="user-image" type="file" class="upload"/>
                                             </div>
                                             <small class="form-text text-muted">Allowed JPG, GIF or PNG. Max size of 2MB</small>
                                         </div>
@@ -54,7 +54,7 @@
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label>Full Name</label>
-                                    <input type="text" name="fullName" class="form-control" placeholder="Richard" />
+                                    <input type="text" name="fullName" required class="form-control" placeholder="Richard" />
                                 </div>
                             </div>
 
@@ -63,7 +63,7 @@
                                     <label>Date of Birth</label>
 
                                     <input type="date" name="dob" required class="form-control" />
-        <div class="invalid-feedback"></div>
+                                    <div class="invalid-feedback"></div>
 
                                 </div>
                             </div>
@@ -105,7 +105,7 @@
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input type="password" name="password" class="form-control" placeholder="" required minlength="8" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" />
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="" required minlength="8" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" />
                                     <div class="col-auto mt-2 p-0">
                                         <span id="passwordHelpInline" class="text-muted"> Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters </span>
                                     </div>
@@ -114,7 +114,7 @@
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label>Confirm Password</label>
-                                    <input type="password" name="repeat-password" class="form-control" placeholder="" />
+                                    <input type="password" name="repeat-password" id="confirm-password" class="form-control" required placeholder="" />
                                 </div>
                             </div>
                         </div>
@@ -140,7 +140,7 @@
                                         <div class="upload-img">
                                             <div class="change-photo-btn">
                                                 <span><i class="fa fa-upload"></i> Upload Photo</span>
-                                                <input type="file" class="upload" />
+                                                <input name="bird-image" id="bird-image" type="file" class="upload" />
                                             </div>
                                             <small class="form-text text-muted">Allowed JPG, GIF or PNG. Max size of 2MB</small>
                                         </div>
@@ -150,33 +150,33 @@
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label>Bird Name</label>
-                                    <input type="text" name="bird-full-name" class="form-control" placeholder="Richard" />
+                                    <input type="text" required name="bird-full-name" class="form-control" placeholder="Richard" />
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label>Microchip/Band</label>
-                                    <input name="band_chip" type="text" class="form-control" placeholder="" />
+                                    <input name="band_chip" value=" " type="text" class="form-control" placeholder="" />
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label>Breed</label>
-                                    <input name="breed" type="text" class="form-control" placeholder="" />
+                                    <input name="breed" required type="text" class="form-control" placeholder="" />
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label>Hatching date</label>
                                     <div class="cal-icon">
-                                        <input name="hatching-date" type="date" class="form-control" />
+                                        <input value=" " name="hatching-date" type="date" class="form-control" />
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label>Gender</label>
-                                    <select name="bird-gender" class="form-control select">
+                                    <select required name="bird-gender" class="form-control select">
                                         <option>Male</option>
                                         <option>Female</option>
                                         <option>Others</option>
@@ -187,7 +187,7 @@
                                 <div class="form-group">
                                     <label>Weight</label>
                                     <div class="input-group mb-3">
-                                        <input type="text" name="bird-weight" class="form-control" />
+                                        <input required  type="text" name="bird-weight" class="form-control" />
                                         <span class="input-group-text">Gram</span>
                                     </div>
                                 </div>
@@ -197,7 +197,7 @@
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label>Feather color</label>
-                                    <input type="text" name="feather-color" class="form-control" placeholder="" />
+                                    <input required type="text" name="feather-color" class="form-control" placeholder="" />
                                 </div>
                             </div>
                         </div>
@@ -272,27 +272,40 @@
         }
     </script>
     <script>
-    // Custom JavaScript validation
+        // date of birth validation
+        
     (function () {
-        'use strict';
+            'use strict';
 
-        // Retrieve the input element and add event listener
-        var dobInput = document.querySelector('input[name="dob"]');
-        dobInput.addEventListener('input', validateDateOfBirth);
+            // Retrieve the input element and add event listener
+            var dobInput = document.querySelector('input[name="dob"]');
+            dobInput.addEventListener('input', validateDateOfBirth);
 
-        function validateDateOfBirth() {
-            var selectedDate = new Date(dobInput.value);
-            var currentDate = new Date();
-            var minimumDate = new Date(currentDate.getFullYear() - 13, currentDate.getMonth(), currentDate.getDate());
+            function validateDateOfBirth() {
+                var selectedDate = new Date(dobInput.value);
+                var currentDate = new Date();
+                var minimumDate = new Date(currentDate.getFullYear() - 13, currentDate.getMonth(), currentDate.getDate());
 
-            if (selectedDate > minimumDate) {
-                dobInput.setCustomValidity("You must be at least 13 years old.");
-            } else {
-                dobInput.setCustomValidity('');
+                if (selectedDate > minimumDate) {
+                    dobInput.setCustomValidity("You must be at least 13 years old.");
+                } else {
+                    dobInput.setCustomValidity('');
+                }
             }
-        }
-    })();
-</script>
+        })();
+        
+        
+        //validate confirm password
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+    var password = document.getElementById('password').value;
+    var confirmPassword = document.getElementById('confirm-password').value;
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      event.preventDefault(); // Prevent form submission
+    }
+  });
+    </script>
     <!-- /Script -->
 </body>
 </html>

@@ -8,40 +8,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Doctris - Doctor Appointment Booking System</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Premium Bootstrap 4 Landing Page Template" />
-        <meta name="keywords" content="Appointment, Booking, System, Dashboard, Health" />
-        <meta name="author" content="Shreethemes" />
-        <meta name="email" content="support@shreethemes.in" />
-        <meta name="website" content="admin-home-page.html" />
-        <meta name="Version" content="v1.2.0" />
-        <!-- favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico.png" />
-        <!-- Bootstrap -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-            />
-        <!-- Select2 -->
-        <link href="assets/css/select2.min.css" rel="stylesheet" />
-        <!-- simplebar -->
-        <link href="assets/css/simplebar.css" rel="stylesheet" type="text/css" />
-        <!-- SLIDER -->
-        <link href="assets/css/tiny-slider.css" rel="stylesheet" />
-        <!-- Icons -->
-        <link href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/remixicon.css" rel="stylesheet" type="text/css" />
-        <link href="https://unicons.iconscout.com/release/v3.0.6/css/line.css" rel="stylesheet" />
-        <!-- Css -->
-        <link href="assets/css/style.min.css" rel="stylesheet" type="text/css" id="theme-opt" />
-    </head>
+    <jsp:include page="../Admin/head-admin.jsp"/>
     <body>
         <jsp:include page="../Admin/loader.jsp"/>
 
@@ -52,19 +19,7 @@
 
             <!-- Start Page Content -->
             <main class="page-content bg-light">
-                <div class="top-header">
-                    <div class="header-bar d-flex justify-content-between border-bottom">
-                        <div class="d-flex align-items-center">
-                            <a href="#" class="logo-icon">
-                                <img src="assets/images/logo-icon.png" height="30" class="small" alt />
-                                <span class="big">
-                                    <img src="assets/images/logo-dark.png" height="24" class="logo-light-mode" alt />
-                                    <img src="assets/images/logo-light.png" height="24" class="logo-dark-mode" alt />
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <jsp:include page="../Admin/admin-dropdown-menu.jsp"/>
 
                 <div class="container-fluid">
                     <div class="layout-specing">
@@ -75,9 +30,9 @@
                         <div class="card bg-white rounded shadow overflow-hidden mt-4 border-0">
                             <div class="p-5 bg-primary bg-gradient"></div>
                             <div class="avatar-profile d-flex margin-nagative mt-n5 position-relative ps-3">
-                                <img src="assets/images/doctors/01.jpg" class="rounded-circle shadow-md avatar avatar-medium" alt />
+                                <img src="<c:url value="/images/doctors/${doctor.image.imageURLName}"/>" class="rounded-circle shadow-md avatar avatar-medium" alt />
                                 <div class="mt-4 ms-3 pt-3">
-                                    <h5 class="mt-3 mb-1">${doctor.doctor}</h5>
+                                    <h5 class="mt-3 mb-1">${doctor.fullName}</h5> 
                                     <p class="text-muted mb-0">Doctor</p>
                                 </div>
                             </div>
@@ -109,136 +64,127 @@
 
                                         <div class="tab-content mt-2" id="pills-tabContent">											
                                             <div class="tab-pane fade" id="pills-timetable" role="tabpanel" aria-labelledby="timetable-tab">
-                                                <div class="row">
-                                                    <div class="col-lg-4 col-md-12">
-                                                        <div class="card border-0 p-3 rounded shadow">
-                                                            <ul class="list-unstyled mb-0">
-                                                                <li class="d-flex justify-content-between mt-2">
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-                                                                        <p class="text-muted mb-0"><i class="ri-time-fill text-primary align-middle h5 mb-0"></i> Monday</p>
-                                                                    </div>
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-
-                                                                        <div class="text-primary mb-0 d-flex align-items-center">
-                                                                            <span class="m-2 text-dark">Time:</span>
-                                                                            <div class="flex-grow-1">
-                                                                                <select class="form-control time-during select2input" name="time2">
-                                                                                    <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
-                                                                                    <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-                                                                                    <option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
-                                                                                    <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>																			
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                </li>
-                                                                <li class="d-flex justify-content-between mt-2">
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-                                                                        <p class="text-muted mb-0"><i class="ri-time-fill text-primary align-middle h5 mb-0"></i>Tuesday</p>
-                                                                    </div>
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-
-                                                                        <div class="text-primary mb-0 d-flex align-items-center">
-                                                                            <span class="m-2 text-dark">Time:</span>
-                                                                            <div class="flex-grow-1">
-                                                                                <select class="form-control time-during select2input" name="time2">
-                                                                                    <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
-                                                                                    <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-                                                                                    <option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
-                                                                                    <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>																			
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                </li>
-                                                            </ul>
+                                                <div class="card booking-schedule schedule-widget" style="width: 82rem">
+                                                    <!-- Schedule Header -->
+                                                    <div class="schedule-header">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <!-- Day Slot -->
+                                                                <div class="day-slot">
+                                                                    <ul>
+                                                                        <li>
+                                                                            <span>Mon</span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <span>Tue</span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <span>Wed</span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <span>Thu</span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <span>Fri</span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <span>Sat</span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <span>Sun</span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <!-- /Day Slot -->
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <!--end col-->
+                                                    <!-- /Schedule Header -->
 
-                                                    <div class="col-lg-4 col-md-12">
-                                                        <div class="card border-0 p-3 rounded shadow">
-                                                            <ul class="list-unstyled mb-0">
-                                                                <li class="d-flex justify-content-between mt-2">
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-                                                                        <p class="text-muted mb-0"><i class="ri-time-fill text-primary align-middle h5 mb-0"></i>Wednesday</p>
-                                                                    </div>
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-
-                                                                        <div class="text-primary mb-0 d-flex align-items-center">
-                                                                            <span class="m-2 text-dark">Time:</span>
-                                                                            <div class="flex-grow-1">
-                                                                                <select class="form-control time-during select2input" name="time2">
-                                                                                    <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
-                                                                                    <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-                                                                                    <option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
-                                                                                    <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>																			
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                </li>
-                                                                <li class="d-flex justify-content-between mt-2">
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-                                                                        <p class="text-muted mb-0"><i class="ri-time-fill text-primary align-middle h5 mb-0"></i>Thursday</p>
-                                                                    </div>
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-
-                                                                        <div class="text-primary mb-0 d-flex align-items-center">
-                                                                            <span class="m-2 text-dark">Time:</span>
-                                                                            <div class="flex-grow-1">
-                                                                                <select class="form-control time-during select2input" name="time2">
-                                                                                    <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
-                                                                                    <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-                                                                                    <option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
-                                                                                    <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>																			
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                </li>
-                                                            </ul>
+                                                    <!-- Schedule Content -->
+                                                    <div class="schedule-cont">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <!-- Time Slot -->
+                                                                <div class="time-slot">
+                                                                    <ul class="clearfix">
+                                                                        <li>
+                                                                            <a class="timing"><span>7:00</span></a>
+                                                                            <a class="timing"><span>8:00</span></a>
+                                                                            <a class="timing"><span>9:00</span></a>
+                                                                            <a class="timing"><span>10:00</span></a>
+                                                                            <a class="timing"><span>13:00</span></a>
+                                                                            <a class="timing"><span>14:00</span></a>
+                                                                            <a class="timing"><span>15:00</span></a>
+                                                                            <a class="timing"><span>16:00</span></a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="timing"><span>7:00</span></a>
+                                                                            <a class="timing"><span>8:00</span></a>
+                                                                            <a class="timing"><span>9:00</span></a>
+                                                                            <a class="timing"><span>10:00</span></a>
+                                                                            <a class="timing"><span>13:00</span></a>
+                                                                            <a class="timing"><span>14:00</span></a>
+                                                                            <a class="timing"><span>15:00</span></a>
+                                                                            <a class="timing"><span>16:00</span></a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="timing"><span>7:00</span></a>
+                                                                            <a class="timing"><span>8:00</span></a>
+                                                                            <a class="timing"><span>9:00</span></a>
+                                                                            <a class="timing"><span>10:00</span></a>
+                                                                            <a class="timing"><span>13:00</span></a>
+                                                                            <a class="timing"><span>14:00</span></a>
+                                                                            <a class="timing"><span>15:00</span></a>
+                                                                            <a class="timing"><span>16:00</span></a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="timing"><span>7:00</span></a>
+                                                                            <a class="timing"><span>8:00</span></a>
+                                                                            <a class="timing"><span>9:00</span></a>
+                                                                            <a class="timing"><span>10:00</span></a>
+                                                                            <a class="timing"><span>13:00</span></a>
+                                                                            <a class="timing"><span>14:00</span></a>
+                                                                            <a class="timing"><span>15:00</span></a>
+                                                                            <a class="timing"><span>16:00</span></a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="timing"><span>7:00</span></a>
+                                                                            <a class="timing"><span>8:00</span></a>
+                                                                            <a class="timing"><span>9:00</span></a>
+                                                                            <a class="timing"><span>10:00</span></a>
+                                                                            <a class="timing"><span>13:00</span></a>
+                                                                            <a class="timing"><span>14:00</span></a>
+                                                                            <a class="timing"><span>15:00</span></a>
+                                                                            <a class="timing"><span>16:00</span></a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="timing"><span>7:00</span></a>
+                                                                            <a class="timing"><span>8:00</span></a>
+                                                                            <a class="timing"><span>9:00</span></a>
+                                                                            <a class="timing"><span>10:00</span></a>
+                                                                            <a class="timing"><span>13:00</span></a>
+                                                                            <a class="timing"><span>14:00</span></a>
+                                                                            <a class="timing"><span>15:00</span></a>
+                                                                            <a class="timing"><span>16:00</span></a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="timing"><span>7:00</span></a>
+                                                                            <a class="timing"><span>8:00</span></a>
+                                                                            <a class="timing"><span>9:00</span></a>
+                                                                            <a class="timing"><span>10:00</span></a>
+                                                                            <a class="timing"><span>13:00</span></a>
+                                                                            <a class="timing"><span>14:00</span></a>
+                                                                            <a class="timing"><span>15:00</span></a>
+                                                                            <a class="timing"><span>16:00</span></a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <!-- /Time Slot -->
+                                                            </div>
                                                         </div>
                                                     </div>
-
-                                                    <div class="col-lg-4 col-md-12">
-                                                        <div class="card border-0 p-3 rounded shadow">
-                                                            <ul class="list-unstyled mb-0">
-                                                                <li class="d-flex justify-content-between mt-2">
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-                                                                        <p class="text-muted mb-0"><i class="ri-time-fill text-primary align-middle h5 mb-0"></i>Friday</p>
-                                                                    </div>
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-
-                                                                        <div class="text-primary mb-0 d-flex align-items-center">
-                                                                            <span class="m-2 text-dark">Time:</span>
-                                                                            <div class="flex-grow-1">
-                                                                                <select class="form-control time-during select2input" name="time2">
-                                                                                    <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
-                                                                                    <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-                                                                                    <option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
-                                                                                    <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>																			
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                </li>
-                                                                <li class="d-flex justify-content-between mt-2">
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-                                                                        <p class="text-muted mb-0"><i class="ri-time-fill text-primary align-middle h5 mb-0"></i>Saturday</p>
-                                                                    </div>
-                                                                    <div class="text-primary mb-0 d-flex align-items-center">
-
-                                                                        <div class="text-primary mb-0 d-flex align-items-center">
-                                                                            <span class="m-2 text-dark">Time:</span>
-                                                                            <div class="flex-grow-1">
-                                                                                <select class="form-control time-during select2input" name="time2">
-                                                                                    <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
-                                                                                    <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-                                                                                    <option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
-                                                                                    <option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>																			
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                                    <!-- /Schedule Content -->
                                                 </div>
                                                 <div class="col-sm-12" style="margin-top: 1rem;">
                                                     <input type="submit" class="rounded btn btn-primary" value="Save" />
@@ -259,15 +205,12 @@
                                                             <div class="p-4">
                                                                 <div class="row align-items-center">
                                                                     <div class="col-lg-2 col-md-4">
-                                                                        <img src="assets/images/doctors/01.jpg" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt />
+                                                                        <img src="<c:url value="/images/doctors/${doctor.image.imageURLName}"/>" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt />
                                                                     </div>
-                                                                    <!--end col-->
+                                                                    <!-- này là avatar của doctor-->
 
                                                                     <div class="col-lg-5 col-md-8 text-center text-md-start mt-4 mt-sm-0">
-                                                                        <h6 class>Upload your picture</h6>
-                                                                        <p class="text-muted mb-0">
-                                                                            For best results, use an image at least 256px by 256px in either .jpg or .png format
-                                                                        </p>
+                                                                        <h6>Upload your picture</h6>
                                                                     </div>
                                                                     <!--end col-->
 
@@ -279,28 +222,20 @@
                                                                 </div>
                                                                 <!--end row-->
 
-                                                                <form class="mt-4">
+                                                                <form class="mt-4" method='POST' action="<c:url value="/Admin/Doctors/Update/Info?doctorID=${doctor.userID}"/>">
                                                                     <div class="row">
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
                                                                                 <label class="form-label">Full Name</label>
-                                                                                <input name="name" id="name" type="text" class="form-control" value="${user.fullName}"/>
-                                                                            </div>
-                                                                        </div>
-                                                                        <!--end col-->
-                                                                        
-                                                                        <div class="col-md-6">
-                                                                            <div class="mb-3">
-                                                                                <label class="form-label">Username</label>
-                                                                                <input name="name" id="name2" type="text" class="form-control" value="${user.userName}"/>
+                                                                                <div class="form-control">${doctor.fullName}</div>
                                                                             </div>
                                                                         </div>
                                                                         <!--end col-->
 
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
-                                                                                <label class="form-label">Staff Email</label>
-                                                                                <input name="email" id="email" type="email" class="form-control" value="${user.email}" />
+                                                                                <label class="form-label">Email</label>
+                                                                                <div class="form-control">${doctor.email}</div>
                                                                             </div>
                                                                         </div>
                                                                         <!--end col-->
@@ -308,7 +243,7 @@
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
                                                                                 <label class="form-label">Phone</label>
-                                                                                <input name="number" id="number" type="text" class="form-control"  value="${user.phoneNumber}"/>
+                                                                                <div class="form-control">${doctor.phoneNumber}</div>
                                                                             </div>
                                                                         </div>
                                                                         <!--end col-->
@@ -316,17 +251,7 @@
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
                                                                                 <label class="form-label">Gender</label>
-                                                                                <select class="form-control time-during">
-                                                                                    <option value="">Male</option>
-                                                                                    <option value="">Female</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="col-md-6">
-                                                                            <div class="mb-3">
-                                                                                <label class="form-label">Date of Birth</label>
-                                                                                <input name="date" id="number" type="date" class="form-control" value="${appointment.bird.customer.dob}"/>
+                                                                                <div class="form-control">${doctor.gender}</div>
                                                                             </div>
                                                                         </div>
 
@@ -340,7 +265,66 @@
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
                                                                                 <label class="form-label">Academic Title</label>
-                                                                                <input name="date" id="text" type="text" class="form-control" value="${doctor.academicTitle}"/>								
+                                                                                <input name="academic-title" id="text" type="text" class="form-control" value="${doctor.academicTitle}"/>								
+                                                                            </div>
+                                                                        </div>
+                                                                            
+                                                                        <div class="col-md-6">
+                                                                            <div class="mb-3">
+                                                                                <label class="form-label">Year of experience</label>
+                                                                                <input name="years-of-experience" id="text" type="text" class="form-control" value="${doctor.yearsOfExperience}"/>								
+                                                                            </div>
+                                                                        </div>
+                                                                            
+                                                                        <div class="col-md-6">
+                                                                            <div class="mb-3">
+                                                                                <label class="form-label">Doctor Age</label>
+                                                                                <input name="age" id="text" type="text" class="form-control" value="${doctor.docAge}"/>								
+                                                                            </div>
+                                                                        </div>
+                                                                            
+                                                                        <div class="col-md-6">
+                                                                            <div class="mb-3">
+                                                                                <label class="form-label">Specialty</label>
+                                                                                <select class="form-control" name="specialityID" type="select">
+                                                                                    ${doctor.speciality.specialityName}
+                                                                                    <option value="4a30b3f33f96b639ab20dce9f0b8b8db" 
+                                                                                        <c:if test="${doctor.speciality.specialityID.equals('4a30b3f33f96b639ab20dce9f0b8b8db')}">
+                                                                                            selected
+                                                                                        </c:if>>
+                                                                                        image analysation
+                                                                                    </option>
+                                                                                    <option value="52f6743e4719de9a35e1e2e1c09d6d52" 
+                                                                                        <c:if test="${doctor.speciality.specialityID.equals('52f6743e4719de9a35e1e2e1c09d6d52')}">
+                                                                                            selected
+                                                                                        </c:if>>
+                                                                                        surgery
+                                                                                    </option>
+                                                                                    <option value="7e2dc1364e2e1bdc9efc1669a17a9e45" 
+                                                                                        <c:if test="${doctor.speciality.specialityID.equals('7e2dc1364e2e1bdc9efc1669a17a9e45')}">
+                                                                                            selected
+                                                                                        </c:if>>
+                                                                                        beautify
+                                                                                    </option>
+                                                                                    <option value="8c15dfb7f4f3d4789ed0c043b1512e34" 
+                                                                                        <c:if test="${doctor.speciality.specialityID.equals('8c15dfb7f4f3d4789ed0c043b1512e34')}">
+                                                                                            selected
+                                                                                        </c:if>>
+                                                                                        resuscitation
+                                                                                    </option>
+                                                                                    <option value="bfiwafjnbeaffaiuwhfa9fhawfa56565" 
+                                                                                        <c:if test="${doctor.speciality.specialityID.equals('bfiwafjnbeaffaiuwhfa9fhawfa56565')}">
+                                                                                            selected
+                                                                                        </c:if>>
+                                                                                        genetics
+                                                                                    </option>
+                                                                                    <option value="e6157a31d2c5e20dc446f4f42fc0d40f" 
+                                                                                        <c:if test="${doctor.speciality.specialityID.equals('e6157a31d2c5e20dc446f4f42fc0d40f')}">
+                                                                                            selected
+                                                                                        </c:if>>
+                                                                                        general
+                                                                                    </option>
+                                                                                </select>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -348,7 +332,7 @@
 
                                                                     <div class="row">
                                                                         <div class="col-sm-12">
-                                                                            <input type="submit" id="submit" name="send" class="btn btn-primary" value="Save changes" />
+                                                                            <input type="submit" class="btn btn-primary" value="Save changes" />
                                                                         </div>
                                                                     </div>
                                                                     <!--end row-->
@@ -361,51 +345,22 @@
 
                                                     <div class="col-lg-6">
                                                         <div class="rounded shadow mt-4">
-                                                            <div class="p-4 border-bottom">
-                                                                <h6 class="mb-0">Reset password:</h6>
-                                                            </div>
-
-                                                            <div class="p-4">
-                                                                <form>
-                                                                    <div class="row">
-
-                                                                        <div class="col-lg-12">
-                                                                            <div class="mb-3">
-                                                                                <label class="form-label">New password :</label>
-                                                                                <input type="password" class="form-control" placeholder="New password" required />
-                                                                            </div>
-                                                                        </div>
-                                                                        <!--end col-->
-
-                                                                        <div class="col-lg-12">
-                                                                            <div class="mb-3">
-                                                                                <label class="form-label">Re-type New password :</label>
-                                                                                <input type="password" class="form-control" placeholder="Re-type New password" required />
-                                                                            </div>
-                                                                        </div>
-                                                                        <!--end col-->
-
-                                                                        <div class="col-lg-12 mt-2 mb-0">
-                                                                            <button class="btn btn-primary">Save password</button>
-                                                                        </div>
-                                                                        <!--end col-->
-                                                                    </div>
-                                                                    <!--end row-->
-                                                                </form>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="rounded shadow mt-4">
                                                             <div class="p-4">
                                                                 <div class="p-4 border-bottom">
                                                                     <h5 class="mb-0 text-danger">Account disable:</h5>
                                                                 </div>
 
                                                                 <div class="p-4">
-                                                                    <h6 class="mb-0 fw-normal">Do you want to delete the account? Please press below "Delete" button</h6>
+                                                                    <h6 class="mb-0 fw-normal">If you want to ban/active this account, press the button Ban/Active below </h6>
                                                                     <div class="mt-4">
-                                                                        <button class="btn btn-danger">Delete Account</button>
-                                                                        <button class="btn btn-primary">Ban</button>
+                                                                        <c:choose>
+                                                                            <c:when test="${user.status_}">
+                                                                                <button class="btn btn-primary">Ban</button>
+                                                                            </c:when>
+                                                                            <c:when test="${!user.status_}">
+                                                                                <button class="btn btn-primary">Active</button>
+                                                                            </c:when>
+                                                                        </c:choose>
                                                                     </div>
                                                                     <!--end col-->
                                                                 </div>
@@ -455,9 +410,16 @@
             <!--End page-content" -->
         </div>
         <!-- page-wrapper -->
-
+        <script>
+            var timingElements = document.getElementsByClassName("timing");
+            for (var i = 0; i < timingElements.length; i++) {
+                timingElements[i].addEventListener("click", function() {
+                    this.classList.toggle("selected");
+                });
+            }
+        </script>
         <!-- Script -->
-        <jsp:include page="../Common/script.jsp"/>
+        <jsp:include page="../Admin/script-admin.jsp"/>
         <!-- /Script -->
     </body>
 </html>

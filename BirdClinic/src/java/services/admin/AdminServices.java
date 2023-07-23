@@ -5,6 +5,7 @@
  */
 package services.admin;
 
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
@@ -30,11 +31,11 @@ public interface AdminServices extends GeneralServices {
 
     boolean changeDoctorTimeslots(Map<String, String[]> args) throws SQLException, AccountDoesNotExistException;
 
-    CustomerDTO createCustomer(Map<String, String[]> args) throws AccountAlreadyExistsException, SQLException;
+    CustomerDTO createCustomer(Map<String, String[]> args, InputStream file) throws AccountAlreadyExistsException, SQLException;
 
-    DoctorDTO createDoctor(Map<String, String[]> args) throws AccountAlreadyExistsException, SQLException;
+    DoctorDTO createDoctor(Map<String, String[]> args, InputStream file) throws AccountAlreadyExistsException, SQLException;
 
-    UserDTO createStaffAdmin(Map<String, String[]> args) throws AccountAlreadyExistsException, SQLException;
+    UserDTO createStaffAdmin(Map<String, String[]> args, InputStream file) throws AccountAlreadyExistsException, SQLException;
 
     List<AppointmentDTO> getAllAppointments() throws SQLException, AppointmentDoesNotExistException;
 
@@ -42,11 +43,11 @@ public interface AdminServices extends GeneralServices {
 
 //    List<BigDecimal> getAllRatingsFromDoctor() throws SQLException, AccountDoesNotExistException;
 
-    List<Service_DTO> getAllServices() throws SQLException, ServiceDoesNotExistException;
-
     List<UserDTO> getAllUsers() throws SQLException, AccountDoesNotExistException;
 
     boolean toggleAccountStatus(String userID) throws AccountDoesNotExistException, SQLException;
     
     List<UserDTO> getUsersByFilter(String filter) throws SQLException, AccountDoesNotExistException;
+    
+    Map<DoctorDTO, BigDecimal> getAllRatingsFromDoctor() throws SQLException;
 }

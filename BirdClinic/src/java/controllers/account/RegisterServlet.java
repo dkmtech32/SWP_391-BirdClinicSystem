@@ -6,13 +6,17 @@
 package controllers.account;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import models.bird.BirdAlreadyExistsException;
 import models.bird.BirdDTO;
 import models.users.customer.CustomerDTO;
@@ -25,6 +29,7 @@ import services.general.PasswordsNotEqualException;
  *
  * @author Admin
  */
+@MultipartConfig
 public class RegisterServlet extends HttpServlet {
 
     /**
@@ -55,20 +60,35 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String url = "/Common/login";
         HttpSession session = request.getSession(true);
         GeneralServices accountService = (GeneralServices) session.getAttribute("service");
-        Map<String, String[]> args = request.getParameterMap();
-        
+        Map<String, String[]> params = request.getParameterMap();
+        Map<String, String[]> args = new HashMap<>(params);
+        Part userImage = request.getPart("user-image");
+        Part birdImage = request.getPart("bird-image");
+        InputStream userIS = null;
+        InputStream birdIS = null;
+        String path = request.getServletContext().getInitParameter("PATH");
         try {
-            CustomerDTO customer = accountService.createAccount(args);
+            if (userImage != null && userImage.getSize()>0L) {
+                userIS = userImage.getInputStream();
+                args.put("filename", new String[]{userImage.getSubmittedFileName()});
+                args.put("path", new String[]{path + "\\customer\\"});
+            }
+            CustomerDTO customer = accountService.createAccount(args, userIS);
             if (customer != null) {
-                BirdDTO bird = accountService.createBird(args, customer);
+                if (birdImage != null && birdImage.getSize()>0L) {
+                    birdIS = birdImage.getInputStream();
+                    args.put("filename", new String[]{birdImage.getSubmittedFileName()});
+                    args.put("path", new String[]{path + "\\bird\\"});
+                }
+                BirdDTO bird = accountService.createBird(args, customer, birdIS);
                 if (bird != null) {
                     accountService.register(customer, bird);
                 }
             }
-            url = "/Common/login";
         } catch (AccountAlreadyExistsException ex) {
             ex.printStackTrace();
         } catch (PasswordsNotEqualException ex) {

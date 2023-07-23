@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.feedback.FeedbackDTO;
+import models.users.UserDTO;
 import models.users.doctor.DoctorDTO;
 import services.general.AccountDoesNotExistException;
 import services.general.GeneralServices;
@@ -45,6 +46,11 @@ public class ViewDoctorInfoServlet extends HttpServlet {
         
         try {
             GeneralServices service = (GeneralServices) session.getAttribute("service");
+            UserDTO user = service.getCurrentUser();
+            if (user.getUserRole().equals("admin")) {
+                url = "/Admin/dr-profile.jsp";
+            }
+            
             DoctorDTO doctor = service.getDoctorInfo(userID);
             List<FeedbackDTO> feedbacks = service.getDoctorFeedbacks(doctor.getUserID());
             BigDecimal ratings = service.getDoctorRatings(feedbacks);

@@ -8,8 +8,6 @@ package controllers.account;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -42,7 +40,7 @@ public class IntroServlet extends HttpServlet {
         
         try {
             List<BlogDTO> blogs = accountService.viewIntroBlogs();
-            request.setAttribute("intro-blogs", blogs);
+            request.setAttribute("blogs", blogs);
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {

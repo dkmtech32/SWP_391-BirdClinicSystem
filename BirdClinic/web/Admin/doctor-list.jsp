@@ -73,7 +73,7 @@
                                         >
                                         <a href="#" class="d-flex align-items-center justify-content-between py-2">
                                             <div class="d-inline-flex position-relative overflow-hidden">
-                                                <img src="../assets/images/client/02.jpg" class="avatar avatar-md-sm rounded-circle shadow" alt />
+                                                <img src="../assets/images/customer/02.jpg" class="avatar avatar-md-sm rounded-circle shadow" alt />
                                                 <small class="text-dark mb-0 d-block text-truncat ms-3"
                                                        >You received a new email from <b>Janalia</b> <small class="text-muted fw-normal d-inline-block">1 hour ago</small></small
                                                 >
@@ -82,7 +82,7 @@
 
                                         <a href="#" class="d-flex align-items-center justify-content-between py-2 border-top">
                                             <div class="d-inline-flex position-relative overflow-hidden">
-                                                <img src="../assets/images/client/Codepen.svg" class="avatar avatar-md-sm rounded-circle shadow" alt />
+                                                <img src="../assets/images/customer/Codepen.svg" class="avatar avatar-md-sm rounded-circle shadow" alt />
                                                 <small class="text-dark mb-0 d-block text-truncat ms-3"
                                                        >You received a new email from <b>codepen</b> <small class="text-muted fw-normal d-inline-block">4 hour ago</small></small
                                                 >
@@ -91,7 +91,7 @@
 
                                         <a href="#" class="d-flex align-items-center justify-content-between py-2 border-top">
                                             <div class="d-inline-flex position-relative overflow-hidden">
-                                                <img src="../assets/images/client/03.jpg" class="avatar avatar-md-sm rounded-circle shadow" alt />
+                                                <img src="../assets/images/customer/03.jpg" class="avatar avatar-md-sm rounded-circle shadow" alt />
                                                 <small class="text-dark mb-0 d-block text-truncat ms-3"
                                                        >You received a new email from <b>Cristina</b> <small class="text-muted fw-normal d-inline-block">5 hour ago</small></small
                                                 >
@@ -100,7 +100,7 @@
 
                                         <a href="#" class="d-flex align-items-center justify-content-between py-2 border-top">
                                             <div class="d-inline-flex position-relative overflow-hidden">
-                                                <img src="../assets/images/client/dribbble.svg" class="avatar avatar-md-sm rounded-circle shadow" alt />
+                                                <img src="../assets/images/customer/dribbble.svg" class="avatar avatar-md-sm rounded-circle shadow" alt />
                                                 <small class="text-dark mb-0 d-block text-truncat ms-3"
                                                        >You received a new email from <b>Dribbble</b> <small class="text-muted fw-normal d-inline-block">24 hour ago</small></small
                                                 >
@@ -109,7 +109,7 @@
 
                                         <a href="#" class="d-flex align-items-center justify-content-between py-2 border-top">
                                             <div class="d-inline-flex position-relative overflow-hidden">
-                                                <img src="../assets/images/client/06.jpg" class="avatar avatar-md-sm rounded-circle shadow" alt />
+                                                <img src="../assets/images/customer/06.jpg" class="avatar avatar-md-sm rounded-circle shadow" alt />
                                                 <small class="text-dark mb-0 d-block text-truncat ms-3"
                                                        >You received a new email from <b>Donald Aghori</b>
                                                     <small class="text-muted fw-normal d-inline-block">1 day ago</small></small
@@ -119,7 +119,7 @@
 
                                         <a href="#" class="d-flex align-items-center justify-content-between py-2 border-top">
                                             <div class="d-inline-flex position-relative overflow-hidden">
-                                                <img src="../assets/images/client/07.jpg" class="avatar avatar-md-sm rounded-circle shadow" alt />
+                                                <img src="../assets/images/customer/07.jpg" class="avatar avatar-md-sm rounded-circle shadow" alt />
                                                 <small class="text-dark mb-0 d-block text-truncat ms-3"
                                                        >You received a new email from <b>Calvin</b> <small class="text-muted fw-normal d-inline-block">2 day ago</small></small
                                                 >
@@ -404,7 +404,7 @@
                     </div>
                     <div class="modal-body p-3 pt-4">
                         <div class="d-flex align-items-center">
-                            <img src="../assets/images/client/01.jpg" class="avatar avatar-small rounded-pill" alt />
+                            <img src="../assets/images/customer/01.jpg" class="avatar avatar-small rounded-pill" alt />
                             <h5 class="mb-0 ms-3">Howard Tanner</h5>
                         </div>
                         <ul class="list-unstyled mb-0 d-md-flex justify-content-between mt-4">
@@ -452,6 +452,6 @@
         <!-- Profile End -->
         <!-- Modal end -->
 
-        <jsp:include page="../Common/script.jsp"/>
+        <jsp:include page="../Admin/script-admin.jsp"/>
     </body>
 </html>

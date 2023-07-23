@@ -5,33 +5,29 @@
  */
 package services.admin;
 
+import java.io.InputStream;
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import models.appointment.AppointmentDTO;
 import models.exceptions.NoSuchRecordExists;
 import models.exceptions.RecordAlreadyExists;
 import models.feedback.FeedbackDTO;
 import models.images.ImageDTO;
-import models.service_.Service_DTO;
 import models.speciality.SpecialityDTO;
 import models.users.UserDTO;
 import models.users.UserDTOImpl;
 import models.users.customer.CustomerDTO;
-import models.users.customer.CustomerDTOImpl;
 import models.users.doctor.DoctorDTO;
 import models.users.doctor.DoctorDTOImpl;
 import services.general.AccountAlreadyExistsException;
 import services.general.AccountDoesNotExistException;
 import services.general.AppointmentDoesNotExistException;
 import services.general.GeneralServicesImpl;
-import services.staff.ServiceDoesNotExistException;
+import services.general.ImageAlreadyExistsException;
 import utils.Utils;
 
 /**
@@ -49,7 +45,7 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
     }
 
     @Override
-    public DoctorDTO createDoctor(Map<String, String[]> args)
+    public DoctorDTO createDoctor(Map<String, String[]> args, InputStream file)
             throws AccountAlreadyExistsException, SQLException {
         //assumption: args have all key-value pairs
         DoctorDTO result = null;
@@ -59,18 +55,29 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
         String academicTitle = args.get("academic-title")[0];
         String degree = args.get("degree")[0];
         String gender = args.get("gender")[0];
+        String fullName = args.get("full-name")[0];
         int docAge = Integer.parseInt(args.get("doctor-age")[0]);
         String specialityID = args.get("specialityID")[0];
         int yOE = Integer.parseInt(args.get("years-of-experience")[0]);
         String phoneNumber = args.get("phone-number")[0];
+        String filetype = Utils.getFromMap(args, "filetype", ".jpg");
+        String path = Utils.getFromMap(args, "path", "");
 
         try {
-            ImageDTO image = imageDAO.readImage("whfnhfn3ga98h943ghjanfueafa92rhf");
+            
             SpecialityDTO speciality = specialityDAO.readSpeciality(specialityID);
             String rPassword = Utils.hash(password);
             String userID = Utils.hash(email + username + String.valueOf(System.currentTimeMillis()));
             result = new DoctorDTOImpl();
             result.setUserID(userID);
+            ImageDTO image = null;
+            if (file != null) {
+                String imageURLName = userID + filetype;
+                image = addImage(file, path, imageURLName);
+            } else {
+                image = imageDAO.readImage("whfnhfn3ga98h943ghjanfueafa92rhf");
+            }
+            result.setFullName(fullName);
             result.setEmail(email);
             result.setUserName(username);
             result.setUserPassword(rPassword);
@@ -89,7 +96,7 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
 
             doctorDAO.insertDoctor(result);
 
-        } catch (RecordAlreadyExists ex) {
+        } catch (RecordAlreadyExists | ImageAlreadyExistsException ex) {
             throw new AccountAlreadyExistsException(ex.getMessage());
         } catch (NoSuchRecordExists ex) {
             throw new SQLException(ex.getMessage());
@@ -99,58 +106,27 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
     }
 
     @Override
-    public CustomerDTO createCustomer(Map<String, String[]> args)
+    public CustomerDTO createCustomer(Map<String, String[]> args, InputStream file)
             throws AccountAlreadyExistsException, SQLException {
         CustomerDTO result = null;
-        String username = args.get("username")[0];
-        String password = args.get("password")[0];
-        String email = args.get("email")[0];
-        String role = args.get("role")[0];
-        String phoneNumber = args.get("phone-number")[0];
-        String gender = args.get("gender")[0];
-        String address = args.get("customer-address")[0];
-        Date dob = Date.valueOf(args.get("dob")[0]);
-
-        try {
-
-            String rPassword = Utils.hash(password);
-            String userID = Utils.hash(email + username);
-            result = new CustomerDTOImpl();
-            result.setUserID(userID);
-            result.setEmail(email);
-            result.setUserName(username);
-            result.setUserPassword(rPassword);
-            result.setGender(gender);
-            result.setUserRole(role);
-            ImageDTO image = imageDAO.readImage("whfnhfn3ga98h943ghjanfueafa92rhf");
-            result.setImage(image);
-            result.setStatus_(true);
-            result.setPhoneNumber(phoneNumber);
-            result.setCustomerAddress(address);
-            result.setDob(dob);
-
-            customerDAO.insertCustomer(result);
-
-        } catch (RecordAlreadyExists ex) {
-            throw new AccountAlreadyExistsException(ex.getMessage());
-        } catch (NoSuchRecordExists ex) {
-            throw new SQLException(ex.getMessage());
-        }
 
         return result;
     }
 
     @Override
-    public UserDTO createStaffAdmin(Map<String, String[]> args)
+    public UserDTO createStaffAdmin(Map<String, String[]> args, InputStream file)
             throws AccountAlreadyExistsException, SQLException {
         //assumption: args have all 4 key-value pairs
         UserDTO result = null;
         String username = args.get("username")[0];
         String password = args.get("password")[0];
         String email = args.get("email")[0];
-        String role = args.get("role")[0];
+        String role = args.get("userRole")[0];
         String phoneNumber = args.get("phone-number")[0];
+        String fullName = args.get("full-name")[0];
         String gender = args.get("gender")[0];
+        String filetype = Utils.getFromMap(args, "filetype", ".jpg");
+        String path = Utils.getFromMap(args, "path", "");
 
         try {
 
@@ -163,14 +139,21 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
             result.setUserPassword(rPassword);
             result.setGender(gender);
             result.setUserRole(role);
-            ImageDTO image = imageDAO.readImage("whfnhfn3ga98h943ghjanfueafa92rhf");
+            result.setFullName(fullName);
+            ImageDTO image = null;
+            if (file != null) {
+                String imageURLName = userID + filetype;
+                image = addImage(file, path, imageURLName);
+            } else {
+                image = imageDAO.readImage("whfnhfn3ga98h943ghjanfueafa92rhf");
+            }
             result.setImage(image);
             result.setStatus_(true);
             result.setPhoneNumber(phoneNumber);
 
             userDAO.insertUser(result);
 
-        } catch (RecordAlreadyExists ex) {
+        } catch (RecordAlreadyExists | ImageAlreadyExistsException ex) {
             throw new AccountAlreadyExistsException(ex.getMessage());
         } catch (NoSuchRecordExists ex) {
             throw new SQLException(ex.getMessage());
@@ -200,14 +183,13 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
 
         try {
             String doctorID = args.get("doctorID")[0];
-            String academicTitle = args.get("academic-title")[0];
-            String degree = args.get("degree")[0];
-            int docAge = Integer.parseInt(args.get("doctor-age")[0]);
-            String specialityID = args.get("specialityID")[0];
-            int yOE = Integer.parseInt(args.get("years-of-experience")[0]);
-            SpecialityDTO speciality = specialityDAO.readSpeciality(specialityID);
-
             DoctorDTO doctor = doctorDAO.readDoctor(doctorID);
+            String academicTitle = Utils.getFromMap(args, "academic-title", doctor.getAcademicTitle());
+            String degree = Utils.getFromMap(args, "degree", doctor.getDegree());
+            int docAge = Integer.parseInt(Utils.getFromMap(args, "age", String.valueOf(doctor.getDocAge())));
+            String specialityID = Utils.getFromMap(args, "specialityID", doctor.getAcademicTitle());
+            int yOE = Integer.parseInt(Utils.getFromMap(args, "years-of-experience", String.valueOf(doctor.getYearsOfExperience())));
+            SpecialityDTO speciality = specialityDAO.readSpeciality(specialityID);
             doctor.setAcademicTitle(academicTitle);
             doctor.setDegree(degree);
             doctor.setDocAge(docAge);
@@ -242,7 +224,7 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
         return result;
     }
 
-//    @Override
+    @Override
     public Map<DoctorDTO, BigDecimal> getAllRatingsFromDoctor() throws SQLException {
         Map<DoctorDTO, List<BigDecimal>> ratingsMap = new HashMap<>();
         Map<DoctorDTO, BigDecimal> averageRatings = null;
@@ -332,16 +314,5 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
         return result;
     }
 
-    @Override
-    public List<Service_DTO> getAllServices() throws SQLException, ServiceDoesNotExistException {
-        List<Service_DTO> result = null;
-
-        try {
-            result = serviceDAO.readAllService_();
-        } catch (NoSuchRecordExists ex) {
-            throw new ServiceDoesNotExistException(ex.getMessage());
-        }
-
-        return result;
-    }
+    
 }

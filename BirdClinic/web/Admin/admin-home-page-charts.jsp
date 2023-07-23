@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html>
     <jsp:include page="../Common/head-admin.jsp"/>
+
     <body>
         <!-- Main Wrapper -->
 
@@ -18,17 +19,6 @@
             <jsp:include page="../Admin/sidebar.jsp"/>
             <!-- sidebar-wrapper  -->
 
-            <!-- Start Page Content -->
-<!--            <div class="search-bar p-0 d-none d-lg-block ms-2">
-                <div id="search" class="menu-search mb-0">
-                    <form role="search" method="get" id="searchform" class="searchform">
-                        <div>
-                            <input type="text" class="form-control border rounded-pill" name="s" id="s" placeholder="Search Keywords..." />
-                            <input type="submit" id="searchsubmit" value="Search" />
-                        </div>
-                    </form>
-                </div>
-            </div>-->
             <main class="page-content bg-light">
                 <div class="top-header">
                     <div class="header-bar d-flex justify-content-between border-bottom">
@@ -72,7 +62,7 @@
                                            ><span class="mb-0 d-inline-block me-1"><i class="uil uil-setting align-middle h6"></i></span> Profile Settings</a
                                         >
                                         <div class="dropdown-divider border-top"></div>
-                                        <a class="dropdown-item text-dark" href="../Common/index.jsp"
+                                        <a class="dropdown-item text-dark" href="../intro"
                                            ><span class="mb-0 d-inline-block me-1"><i class="uil uil-sign-out-alt align-middle h6"></i></span> Logout</a
                                         >
                                     </div>

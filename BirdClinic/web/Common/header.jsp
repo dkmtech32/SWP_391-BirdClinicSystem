@@ -16,9 +16,7 @@
     <c:when test="${sessionScope.service.currentUser.userRole == 'staff'}">
         <jsp:include page="../Common/header-staff.jsp"/>
     </c:when>
-    <c:when test="${sessionScope.service.currentUser.userRole == 'admin'}">
-        <jsp:include page="../Common/header-admin.jsp"/>
-    </c:when>
+   
     <c:otherwise>
         <jsp:include page="../Common/header-guest.jsp"/>
     </c:otherwise>

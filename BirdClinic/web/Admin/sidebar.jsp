@@ -20,19 +20,15 @@
 
             <ul class="sidebar-menu pt-3">
                 <li>
-                    <a href="index.html"><i class="uil uil-dashboard me-2 d-inline-block"></i>Dashboard</a>
-                </li>
-                <li>
-                    <a href="appointment.html"><i class="uil uil-stethoscope me-2 d-inline-block"></i>Appointment</a>
+                    <a href="<c:url value="/Admin/Accounts"/>"><i class="uil uil-dashboard me-2 d-inline-block"></i>Dashboard</a>
                 </li>
 
                 <li class="sidebar-dropdown">
                     <a href="javascript:void(0)"><i class="uil fa-solid fa-user-doctor me-2 d-inline-block"></i>Doctors</a>
                     <div class="sidebar-submenu">
                         <ul>
-                            <li><a href="doctor-list.jsp">Doctors List</a></li>
-                            <li><a href="add-doctor.jsp">Add Doctor</a></li>
-                            <li><a href="dr-profile.jsp">Doctor Profile</a></li>
+                            <li><a href="<c:url value="/Admin/Accounts/Create?userRole=doctor"/>">Add Doctor</a></li>
+                             
                         </ul>
                     </div>
                 </li>
@@ -41,9 +37,8 @@
                     <a href="javascript:void(0)"><i class="uil uil-user me-2 d-inline-block"></i>Staffs</a>
                     <div class="sidebar-submenu">
                         <ul>
-                            <li><a href="staff-list.jsp">Staffs List</a></li>
-                            <li><a href="add-staff.jsp">Add Staff</a></li>
-                            <li><a href="staff-profile.jsp">Staffs Profile</a></li>
+                            <li><a href="<c:url value="/Admin/Accounts/Create?userRole=staff"/>">Add Staff</a></li>
+                            
                         </ul>
                     </div>
                 </li>

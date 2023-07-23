@@ -12,18 +12,24 @@
         <div class="card">
             <div class="card-body">
                 <!-- Profile Settings Form -->
-                <form method='POST' action="<c:url value='/Customer/Dashboard/Birds/Insert'/>">
+                <form method='POST' action="<c:url value='/Customer/Dashboard/Birds/Insert'/>" enctype="multipart/form-data">
                     <div class="row form-row">
                         <div class="col-12 col-md-12">
                             <div class="form-group">
                                 <div class="change-avatar">
-                                    <div class="profile-img">
-                                        <img src="assets/img/bird/bird-1.webp" alt="Bird Image" />
+<!--                                    <div class="profile-img">
+                                         Add this image element after the existing profile image 
+                                    </div>-->
+                                    <!-- Add this container to display the selected bird image -->
+                                    <div id="bird-image-preview-container">
+                                        <img id="bird-image-preview" alt="Selected Bird Image" style="max-width: 200px; margin-top: 10px; display: none;">
                                     </div>
+
                                     <div class="upload-img">
                                         <div class="change-photo-btn">
                                             <span><i class="fa fa-upload"></i> Upload Photo</span>
-                                            <input type="file" class="upload" />
+                                            <!-- Add an onchange attribute to the input file element -->
+                                            <input name="bird-image" id="bird-image" type="file" class="upload" onchange="previewImage(event)" />
                                         </div>
                                         <small class="form-text text-muted">Allowed JPG, GIF or PNG. Max size of 2MB</small>
                                     </div>
@@ -69,7 +75,7 @@
                                 <input type="number" class="form-control" name="bird-weight" placeholder="Enter weight in grams" step="0.1" value="" required />
                             </div>
                         </div>
-                        
+
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Color</label>
@@ -93,4 +99,36 @@
             </div>
         </div>
     </div>
+    <script>
+  function previewImage() {
+    var input = document.getElementById("bird-image");
+    var container = document.getElementById("bird-image-preview-container");
+
+    // Remove any existing preview image
+    var existingPreview = document.getElementById("bird-image-preview");
+    if (existingPreview) {
+      container.removeChild(existingPreview);
+    }
+
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        var previewImage = document.createElement("img");
+        previewImage.id = "bird-image-preview";
+        previewImage.src = e.target.result;
+        previewImage.alt = "Selected Bird Image";
+        previewImage.style.maxWidth = "200px";
+        previewImage.style.marginTop = "10px";
+
+        // Append the preview image to the container
+        container.appendChild(previewImage);
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+</script>
+
+
 </html>

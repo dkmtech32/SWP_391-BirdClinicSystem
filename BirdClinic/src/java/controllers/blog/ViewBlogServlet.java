@@ -7,6 +7,7 @@ package controllers.blog;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,11 +37,13 @@ public class ViewBlogServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(true);
         GeneralServices accountService = (GeneralServices) session.getAttribute("service");
-        String url = "/Common/blog.jsp";
+        String url = "/Common/blog-detail.jsp";
         String blogID = request.getParameter("blogID");
 
         try {
             BlogDTO blog = accountService.viewBlog(blogID);
+            List<BlogDTO> blogs = accountService.viewIntroBlogs();
+            request.setAttribute("blogs", blogs);
             request.setAttribute("blog", blog);
         } catch (SQLException ex) {
             ex.printStackTrace();

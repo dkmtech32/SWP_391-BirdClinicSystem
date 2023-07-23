@@ -17,7 +17,7 @@
                 var servicePrice = $(this).children('option:selected').data('service-price');
 
                 // Update the service fee text
-                $('#serviceFee').text(servicePrice);
+                $('#serviceFee').text("$"+servicePrice);
             });
 
             // Handle initial selection
@@ -75,7 +75,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-md-6">
+                                                <div class="col-12 col-md-12">
                                                     <div class="form-group">
                                                         <label>Address</label>
                                                         <div class="form-control">${service.currentUser.customerAddress}</div>
@@ -173,7 +173,7 @@
 
                                             <div class="booking-doc-info">
                                                 <a href="doctor-profile.jsp" class="booking-doc-img">
-                                                    <img src="../assets/images/doctors/${doctor.image.imageURLName}" alt="User Image" />
+                                                    <img src="../images/doctors/${doctor.image.imageURLName}" alt="User Image" />
                                                 </a>
                                                 <div class="booking-info">
                                                     <h4><a href="doctor-profile.jsp">${doctor.fullName}</a></h4>
@@ -192,7 +192,7 @@
                                                 <div class="booking-info">
                                                     <h4><a href="doctor-profile.html">BirdLover Clinic</a></h4>                                          
                                                     <div class="clinic-details">
-                                                        <p class="doc-location"><i class="fas fa-map-marker-alt"></i> Long Bien, Hanoi</p>
+                                                        <p class="doc-location"><i class="fas fa-map-marker-alt"></i> District 1, Ho Chi Minh City</p>
                                                     </div>
                                                 </div>
                                             </div>

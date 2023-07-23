@@ -5,6 +5,8 @@
  */
 package services.customer;
 
+import java.io.InputStream;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +25,7 @@ import services.general.GeneralServices;
  */
 public interface CustomerServices extends GeneralServices {
 
-    boolean addBird(Map<String, String[]> args) throws BirdAlreadyExistsException, SQLException;
+    boolean addBird(Map<String, String[]> args, InputStream file) throws BirdAlreadyExistsException, SQLException;
 
     boolean bookAppointment(Map<String, String> args) throws AppointmentAlreadyExistsException, SQLException;
 
@@ -31,7 +33,7 @@ public interface CustomerServices extends GeneralServices {
 
     List<BirdDTO> getCustomerBirds() throws SQLException;
 
-    boolean updateBird(Map<String, String[]> args) throws BirdDoesNotExistException, SQLException;
+    boolean updateBird(Map<String, String[]> args, InputStream file) throws BirdDoesNotExistException, SQLException;
 
     boolean cancelAppointment(String appointmentID, String reason)
             throws SQLException, AppointmentDoesNotExistException;
@@ -39,4 +41,6 @@ public interface CustomerServices extends GeneralServices {
     boolean addFeedback(Map<String, String[]> args) throws AppointmentDoesNotExistException, SQLException;
     
     List<DoctorDTO> getDoctorBySpeciality(String specialityID) throws DoctorDoesNotExistException, SQLException;
+    
+    Map<DoctorDTO, BigDecimal> getAllRatingsFromDoctor() throws SQLException;
 }

@@ -38,7 +38,7 @@ public class ViewAllBlogsServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(true);
         GeneralServices accountService = (GeneralServices) session.getAttribute("service");
-        String url = "/Common/blog-list.jsp";
+        String url = "/Common/blogs.jsp";
 
         try {
             List<BlogDTO> blogs = accountService.viewAllBlog();
