@@ -46,7 +46,7 @@
                                                     <td>
                                                         <h2 class="table-avatar">
                                                             <a href="" class="avatar avatar-sm mr-2">
-                                                                <img class="avatar-img rounded-circle" src="<c:url value="/assets/images/bird/${bird.image.imageURLName}"/>" alt="User Image" />
+                                                                <img class="avatar-img rounded-circle" src="<c:url value="/images/bird/${bird.image.imageURLName}"/>" alt="User Image" />
                                                             </a>
                                                             <a href="">${bird.birdFullname}</a>
                                                         </h2>
@@ -58,6 +58,7 @@
                                                     <td>${bird.band_Chip}</td>
                                                     <td class="text-right">
                                                         <div class="table-action">
+                                                            <a href="<c:url value='/Customer/Dashboard/Birds/update?birdID=${bird.birdID}'/>" class="btn btn-sm bg-info-light"> <i class="fa-solid fa-gear"></i> Edit </a>
                                                             <a href="<c:url value='/View/Bird?birdID=${bird.birdID}'/>" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                             <a href="<c:url value='/Customer/Dashboard/Birds/Delete?birdID=${bird.birdID}'/>" onclick="confirmDelete()" class="btn btn-sm bg-danger-light"> <i class="fa-solid fa-trash"></i> Remove </a>
                                                         </div>

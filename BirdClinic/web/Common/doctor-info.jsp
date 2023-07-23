@@ -29,7 +29,7 @@
                             <div class="doctor-widget">
                                 <div class="doc-info-left">
                                     <div class="doctor-img">
-                                        <img src="<c:url value="/assets/images/doctors/${requestScope.doctor.image.imageURLName}"/>" class="img-fluid" alt="${requestScope.doctor.userName}" />
+                                        <img src="<c:url value="/images/doctors/${requestScope.doctor.image.imageURLName}"/>" class="img-fluid" alt="${requestScope.doctor.userName}" />
                                     </div>
                                     <div class="doc-info-cont">
                                         <h4 class="doc-name">${requestScope.doctor.fullName}</h4>

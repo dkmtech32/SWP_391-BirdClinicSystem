@@ -22,12 +22,15 @@
                 <div class="d-flex flex-column text-center mb-5">
                     <h4 class="text-secondary mb-3">Bird Blog</h4>
                     <h1 class="display-4 m-0"><span class="text-primary">Updates</span> From Blog</h1>
+                    <c:if test="${sessionScope.service.currentUser.userRole=='staff'}">
+                        <a class="font-weight-bold btn btn-primary" href="<c:url value="/Staff/Blog/Write"/>">Add Blog</a>
+                    </c:if>
                 </div>
                 <div class="row pb-3">
                     <c:forEach var="card" items="${blogs}">
                         <div class="col-lg-4 mb-4">
                             <div class="card border rounded mb-2" style="min-height: 450px">
-                                <img class="card-img-top" src="<c:url value="/assets/images/blog/${card.thumbnail.imageURLName}"/>" style="height: 200px; object-fit: cover" />
+                                <img class="card-img-top" src="<c:url value="/images/blog/${card.thumbnail.imageURLName}"/>" style="height: 200px; object-fit: cover" />
                                 <div class="card-body p-3" style="background-color: #eaeaea ">
                                     <h4 class="card-title h5">${card.title}</h4>
                                     <div class=" m-3">
@@ -39,9 +42,12 @@
                                        -webkit-box-orient: vertical;
                                        white-space: normal;">${card.description}</p>
                                     <a class="font-weight-bold" href="<c:url value="/Blog?blogID=${card.blogID}"/>">Read More</a>
+                                    <c:if test="${sessionScope.service.currentUser.userRole=='staff'}">
+                                        <a class="font-weight-bold float-right" href="<c:url value="/Blog/Update?blogID=${card.blogID}"/>">Edit</a>
+                                    </c:if>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </c:forEach>
                 </div>

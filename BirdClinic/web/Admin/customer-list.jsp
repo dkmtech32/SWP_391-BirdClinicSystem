@@ -67,7 +67,7 @@
                                                                 <div class="p-4">
                                                                     <div class="row align-items-center">
                                                                         <div class="col-lg-2 col-md-4">
-                                                                            <img src="<c:url value="/assets/images/customer/${customer.image.imageURLName}"/>" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt/>
+                                                                            <img src="<c:url value="/images/customer/${customer.image.imageURLName}"/>" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt/>
                                                                         </div>
                                                                         <!--end col-->
 
@@ -195,7 +195,7 @@
                                                                                 <a href="" class="text-dark">
                                                                                     <div class="d-flex align-items-center">
                                                                                         <img
-                                                                                            src="<c:url value="/assets/images/bird/${bird.image.imageURLName}"/>"
+                                                                                            src="<c:url value="/images/bird/${bird.image.imageURLName}"/>"
                                                                                             class="avatar avatar-md-sm rounded-circle shadow"
                                                                                             alt
                                                                                             />

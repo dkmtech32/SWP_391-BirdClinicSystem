@@ -47,7 +47,7 @@
                                                         <td>
                                                             <h2 class="table-avatar">
                                                                 <a href="<c:url value="/View/Doctor?userID=${appointment.doctor.userID}"/>" class="avatar avatar-sm mr-2">
-                                                                    <img class="avatar-img rounded-circle" src="<c:url value="/assets/images/doctors/${appointment.doctor.image.imageURLName}"/>" alt="User Image" />
+                                                                    <img class="avatar-img rounded-circle" src="<c:url value="/images/doctors/${appointment.doctor.image.imageURLName}"/>" alt="User Image" />
                                                                 </a>
                                                                 <a href="<c:url value="/View/Doctor?userID=${appointment.doctor.userID}"/>">${appointment.doctor.fullName} <span style="text-transform: capitalize">${appointment.doctor.speciality.specialityName}</span></a> 
                                                             </h2>
@@ -68,7 +68,7 @@
                                                     <td>
                                                         <h2 class="table-avatar">
                                                             <a href="<c:url value="/View/Bird?birdID=${appointment.bird.birdID}"/>" class="avatar avatar-sm mr-2"
-                                                               ><img class="avatar-img rounded-circle" src="../assets/images/bird/${appointment.bird.image.imageURLName}" alt="User Image"
+                                                               ><img class="avatar-img rounded-circle" src="../images/bird/${appointment.bird.image.imageURLName}" alt="User Image"
                                                                   /></a>
                                                             <a href="<c:url value="/View/Bird?birdID=${appointment.bird.birdID}"/>">${appointment.bird.birdFullname}</a>
                                                         </h2>

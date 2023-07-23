@@ -65,7 +65,7 @@
                                             <div class="doc-img">   
                                                 <a href="doctor-profile.jsp?doctorID=${doctor.userID}">
                                                     <img class="img-fluid" alt="User Image"
-                                                         src="../assets/images/doctors/${doctor.image.imageURLName}" style="height: 200px; object-fit: cover" />
+                                                         src="../images/doctors/${doctor.image.imageURLName}" style="height: 200px; object-fit: cover" />
                                                 </a>
                                                 <a href="javascript:void(0)" class="fav-btn">
                                                     <i class="far fa-bookmark"></i>

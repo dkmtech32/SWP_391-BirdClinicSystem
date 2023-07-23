@@ -13,55 +13,56 @@
             <div class="card-body">
                 <!-- Profile Settings Form -->
                 <div class="rounded shadow mt-4">
-                   <nav class="user-tabs mb-4">
-                    <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab">Personal Information</a>
-                        </li>
-                        
-                    </ul>
-                </nav>
+                    <nav class="user-tabs mb-4">
+                        <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab">Personal Information</a>
+                            </li>
+
+                        </ul>
+                    </nav>
 
                     <div class="p-4">
-                        <div class="row align-items-center">
-                            <div class="col-lg-2 col-md-4">
-                                <c:choose>
-                                    <c:when test="${sessionScope.service.currentUser.userRole =='customer'}">
-                                        <img src="../assets/images/customer/${sessionScope.service.currentUser.image.imageURLName}"
-                                             class="avatar avatar-md-md rounded-pill shadow mx-auto d-block"
-                                             alt />
-                                    </c:when>
+                        <form class="" accept-charset="utf-8" method='POST' action="<c:url value="/Update/Profile"/>" enctype="multipart/form-data">
+                            <input value="${sessionScope.service.currentUser.userRole}" name="userRole" hidden="hidden"/>
+                            <div class="row align-items-center">
+                                <div class="col-lg-2 col-md-4">
+                                    <c:choose>
+                                        <c:when test="${sessionScope.service.currentUser.userRole =='customer'}">
+                                            <img src="<c:url value="/images/customer/${sessionScope.service.currentUser.image.imageURLName}"/>"
+                                                 class="avatar avatar-md-md rounded-pill shadow mx-auto d-block"
+                                                 alt />
+                                        </c:when>
                                         <c:when test="${sessionScope.service.currentUser.userRole =='staff'}">
-                                        <img src="../assets/images/${sessionScope.service.currentUser.image.imageURLName}"
-                                             class="avatar avatar-md-md rounded-pill shadow mx-auto d-block"
-                                             alt />
-                                    </c:when>
+                                            <img src="<c:url value="/images/${sessionScope.service.currentUser.image.imageURLName}"/>"
+                                                 class="avatar avatar-md-md rounded-pill shadow mx-auto d-block"
+                                                 alt />
+                                        </c:when>
                                         <c:when test="${sessionScope.service.currentUser.userRole =='doctor'}">
-                                            <img src="../assets/images/doctors/${sessionScope.service.currentUser.image.imageURLName}"
-                                             class="avatar avatar-md-md rounded-pill shadow mx-auto d-block"
-                                             alt />
-                                    </c:when>
+                                            <img src="<c:url value="/images/doctors/${sessionScope.service.currentUser.image.imageURLName}"/>"
+                                                 class="avatar avatar-md-md rounded-pill shadow mx-auto d-block"
+                                                 alt />
+                                        </c:when>
 
-                                </c:choose>
+                                    </c:choose>
+                                </div>
+                                <!--end col-->
+
+                                <div class="col-lg-5 col-md-8 text-center text-md-start mt-4 mt-sm-0">
+                                    <h6 class>Upload your picture</h6>
+                                    <p class="text-muted mb-0">For best results, use an image at least 256px
+                                        by 256px in either .jpg or .png format</p>
+                                </div>
+                                <!--end col-->
+
+                                <div class="col-lg-5 col-md-12 text-lg-end text-center mt-4 mt-lg-0">
+                                    <input name="user-image" id="user-image" type="file" class="upload" />
+                                </div>
+                                <!--end col-->
                             </div>
-                            <!--end col-->
+                            <!--end row-->
 
-                            <div class="col-lg-5 col-md-8 text-center text-md-start mt-4 mt-sm-0">
-                                <h6 class>Upload your picture</h6>
-                                <p class="text-muted mb-0">For best results, use an image at least 256px
-                                    by 256px in either .jpg or .png format</p>
-                            </div>
-                            <!--end col-->
 
-                            <div class="col-lg-5 col-md-12 text-lg-end text-center mt-4 mt-lg-0">
-                                <a href="#" class="btn btn-primary">Upload</a>
-                                <a href="#" class="btn btn-soft-primary ms-2">Remove</a>
-                            </div>
-                            <!--end col-->
-                        </div>
-                        <!--end row-->
-
-                        <form class="mt-4" accept-charset="utf-8" method='POST' action="<c:url value="/Update/Profile"/>">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">

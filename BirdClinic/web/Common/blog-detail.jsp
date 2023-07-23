@@ -35,10 +35,10 @@
                                 </div>
                             </div>
                             <div class="mb-5">
-                                <img class="img-fluid w-100 mb-4" src="<c:url value="/assets/images/blog/${detail.thumbnail.imageURLName}"/>" alt="Image" />
+                                <img class="img-fluid w-100 mb-4" src="<c:url value="/images/blog/${detail.thumbnail.imageURLName}"/>" alt="Image" />
                                 <p class="mr-3 mb-3 text-muted" style="text-indent: 3rem">${detail.description}</p>
                                 <p style="text-indent: 3rem">
-                                    ${detail.blogContent}}
+                                    ${detail.blogContent}
                                 </p>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                             <c:forEach items="${blogs}" var="blog">
                                 <div class="col-lg-12 mb-4">
                                     <div class="card flex-row border rounded mb-2" >
-                                        <img class="card-img-top" src="<c:url value="/assets/images/blog/${blog.thumbnail.imageURLName}"/>" style="width: 40%; object-fit: cover" />
+                                        <img class="card-img-top" src="<c:url value="/images/blog/${blog.thumbnail.imageURLName}"/>" style="width: 40%; object-fit: cover" />
                                         <div class="card-body bg-light p-4">
                                             <h4 class="card-title h5">${blog.title}</h4>
                                             <div class="d-flex mb-3">

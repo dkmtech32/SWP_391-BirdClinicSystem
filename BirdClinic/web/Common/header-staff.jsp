@@ -37,7 +37,9 @@
                     <li>
                         <a href="<c:url value="/intro"/>">Home</a>
                     </li>
-                    
+                    <li>
+                        <a href="<c:url value='/Blog/All' />">Blogs</a>
+                    </li>
                     <li>
                         <a href="<c:url value="/Dashboard/Appointments?filter=processing"/>">Dashboard</a>
                     </li>
@@ -66,13 +68,13 @@
                 <li class="nav-item dropdown has-arrow logged-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <span class="user-img">
-                            <img class="rounded-circle" src="<c:url value="/assets/images/${sessionScope.service.currentUser.image.imageURLName}"/>" width="31" alt="${sessionScope.service.currentUser.fullName}" />
+                            <img class="rounded-circle" src="<c:url value="/images/${sessionScope.service.currentUser.image.imageURLName}"/>" width="31" alt="${sessionScope.service.currentUser.fullName}" />
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="user-header">
                             <div class="avatar avatar-sm">
-                                <img src="<c:url value="/assets/images/${sessionScope.service.currentUser.image.imageURLName}"/>" alt="User Image" class="avatar-img rounded-circle" />
+                                <img src="<c:url value="/images/${sessionScope.service.currentUser.image.imageURLName}"/>" alt="User Image" class="avatar-img rounded-circle" />
                             </div>
                             <div class="user-text">
                                 <h6>${sessionScope.service.currentUser.fullName}</h6>
