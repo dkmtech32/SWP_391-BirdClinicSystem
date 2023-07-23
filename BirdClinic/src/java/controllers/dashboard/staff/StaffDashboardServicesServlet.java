@@ -8,14 +8,13 @@ package controllers.dashboard.staff;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.service_.Service_DTO;
+import models.speciality.SpecialityDTO;
 import services.staff.ServiceDoesNotExistException;
 import services.staff.StaffServices;
 
@@ -41,9 +40,10 @@ public class StaffDashboardServicesServlet extends HttpServlet {
         String url = "/Staff/dashboard-staff-service.jsp";
         try {
             StaffServices service = (StaffServices) session.getAttribute("service");
-            String specialityID = request.getParameter("specialityID");
-            List<Service_DTO> services = service.getService_BySpeciality(specialityID);
+            List<Service_DTO> services = service.getAllServices();
+            List<SpecialityDTO> specs = service.getSpecialities();
             request.setAttribute("services", services);
+            request.setAttribute("specialities", specs);
         } catch (SQLException ex) {
             ex.printStackTrace();
         } catch (ServiceDoesNotExistException ex) {

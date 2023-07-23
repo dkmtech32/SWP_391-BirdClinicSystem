@@ -6,6 +6,7 @@
 package services.customer;
 
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
@@ -40,4 +41,6 @@ public interface CustomerServices extends GeneralServices {
     boolean addFeedback(Map<String, String[]> args) throws AppointmentDoesNotExistException, SQLException;
     
     List<DoctorDTO> getDoctorBySpeciality(String specialityID) throws DoctorDoesNotExistException, SQLException;
+    
+    Map<DoctorDTO, BigDecimal> getAllRatingsFromDoctor() throws SQLException;
 }

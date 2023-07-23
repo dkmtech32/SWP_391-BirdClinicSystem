@@ -48,4 +48,6 @@ public interface StaffServices extends GeneralServices {
     List<Service_DTO> getService_BySpeciality(String specialityID) throws SQLException, ServiceDoesNotExistException;
 
     boolean addService(Map<String, String[]> args) throws ServiceAlreadyExistsException, SQLException;
+
+    List<Service_DTO> getAllServices() throws SQLException, ServiceDoesNotExistException;
 }

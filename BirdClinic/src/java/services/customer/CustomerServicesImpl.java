@@ -10,7 +10,9 @@ import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import models.appointment.AppointmentAlreadyExistsException;
@@ -394,5 +396,43 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
         }
 
         return docs;
+    }
+    
+    @Override
+    public Map<DoctorDTO, BigDecimal> getAllRatingsFromDoctor() throws SQLException {
+        Map<DoctorDTO, List<BigDecimal>> ratingsMap = new HashMap<>();
+        Map<DoctorDTO, BigDecimal> averageRatings = null;
+        try {
+            List<FeedbackDTO> feedbackList = feedbackDAO.readAllFeedback();
+
+            // Calculate sum of ratings for each doctor
+            for (FeedbackDTO feedback : feedbackList) {
+                DoctorDTO doctor = feedback.getAppointment().getDoctor();
+                BigDecimal rating = feedback.getRating();
+
+                List<BigDecimal> ratings = ratingsMap.getOrDefault(doctor, new ArrayList<>());
+                ratings.add(rating);
+                ratingsMap.put(doctor, ratings);
+            }
+
+            averageRatings = new HashMap<>();
+            // Calculate average ratings for each doctor
+            for (Map.Entry<DoctorDTO, List<BigDecimal>> entry : ratingsMap.entrySet()) {
+                DoctorDTO doctor = entry.getKey();
+                List<BigDecimal> ratings = entry.getValue();
+
+                BigDecimal sum = BigDecimal.ZERO;
+                for (BigDecimal rating : ratings) {
+                    sum = sum.add(rating);
+                }
+
+                BigDecimal average = sum.divide(new BigDecimal(ratings.size()), 2, BigDecimal.ROUND_HALF_UP);
+                averageRatings.put(doctor, average);
+            }
+        } catch (NoSuchRecordExists ex) {
+            throw new SQLException(ex.getMessage());
+        }
+
+        return averageRatings;
     }
 }
