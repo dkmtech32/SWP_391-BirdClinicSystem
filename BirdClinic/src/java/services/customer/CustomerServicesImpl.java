@@ -200,7 +200,6 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
             BirdDTO bird = new BirdDTOImpl();
 
             CustomerDTO customer = (CustomerDTO) this.currentUser;
-            ImageDTO image = imageDAO.readImage("05b5b4345d8ac2f73ece3df15be03230"); //default
 
             String birdFullname = args.get("bird-full-name")[0];
             String birdGender = args.get("bird-gender")[0];
@@ -209,8 +208,17 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
             float birdWeight = Float.parseFloat(args.get("bird-weight")[0]) / 1000;
             Date hatchingDate = Date.valueOf(args.get("hatching-date")[0]);
             String featherColor = args.get("feather-color")[0];
-
-            bird.setBirdID(Utils.hash(customer.getUserID() + image.getImageID() + String.valueOf(System.currentTimeMillis())));
+            String filetype = Utils.getFromMap(args, "filetype", ".jpg");
+            String path = Utils.getFromMap(args, "path", "");
+            ImageDTO image = null;
+            String birdID = Utils.hash(customer.getUserID() + birdFullname + String.valueOf(System.currentTimeMillis()));
+            bird.setBirdID(birdID);
+            if (file != null) {
+                String imageURLName = birdID + filetype;
+                image = addImage(file, path, imageURLName);
+            } else {
+                image = imageDAO.readImage("whfnhfn3ga98h943ghjanfueafa92rhf");
+            }
 
             bird.setCustomer(customer);
             bird.setImage(image);
@@ -233,7 +241,7 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
             result = insertResult > 0;
         } catch (NoSuchRecordExists ex) {
             throw new SQLException(ex.getMessage());
-        } catch (RecordAlreadyExists ex) {
+        } catch (RecordAlreadyExists | ImageAlreadyExistsException ex) {
             throw new BirdAlreadyExistsException(ex.getMessage());
         }
 
@@ -280,7 +288,7 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
 
             bird.setCustomer(customer);
             if (file != null) {
-                String imageURLName = bird.getBirdID()+ filetype;
+                String imageURLName = bird.getBirdID() + filetype;
                 ImageDTO image = addImage(file, path, imageURLName);
                 bird.setImage(image);
             }

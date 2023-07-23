@@ -175,6 +175,10 @@
         <servlet-class>controllers.dashboard.staff.StaffDashboardAppointmentsUpdateServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>StaffDashboardServicesInsertServlet</servlet-name>
+        <servlet-class>controllers.dashboard.staff.StaffDashboardAppointmentsInsertServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>StaffDashboardServicesServlet</servlet-name>
         <servlet-class>controllers.dashboard.staff.StaffDashboardServicesServlet</servlet-class>
     </servlet>
@@ -359,6 +363,10 @@
         <url-pattern>/Staff/Dashboard/Services/Update</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>StaffDashboardServicesInsertServlet</servlet-name>
+        <url-pattern>/Staff/Dashboard/Services/Insert</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
@@ -404,7 +412,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ImageController</servlet-name>
-        <url-pattern>/images/*</url-pattern>
+        <url-pattern>/image/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>IntroServlet</servlet-name>

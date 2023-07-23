@@ -6,13 +6,16 @@
 package controllers.blog;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import models.blog.BlogDTO;
 import services.staff.BlogAlreadyExistsException;
 import services.staff.StaffServices;
@@ -53,12 +56,21 @@ public class WriteBlogServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
 
-        Map<String, String[]> args = request.getParameterMap();
+        Map<String, String[]> params = request.getParameterMap();
+        Map<String, String[]> args = new HashMap<>(params);
+        Part userImage = request.getPart("blog-image");
+        String path = request.getServletContext().getInitParameter("PATH");
+        InputStream blogIS = null;
         String blogID = "";
 
         try {
+            if (userImage != null && userImage.getSize()>0L) {
+                blogIS = userImage.getInputStream();
+                args.put("filename", new String[]{userImage.getSubmittedFileName()});
+                args.put("path", new String[]{path + "\\blog\\"});
+            }
             StaffServices service = (StaffServices) session.getAttribute("service");
-            BlogDTO blog = service.addBlog(args);
+            BlogDTO blog = service.addBlog(args, blogIS);
             blogID = blog.getBlogID();
 
         } catch (BlogAlreadyExistsException ex) {

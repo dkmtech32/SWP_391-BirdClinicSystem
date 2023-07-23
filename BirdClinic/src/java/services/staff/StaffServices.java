@@ -5,6 +5,7 @@
  */
 package services.staff;
 
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
@@ -38,9 +39,9 @@ public interface StaffServices extends GeneralServices {
 
     List<FeedbackDTO> getCustomerFeedbacks(String customerID) throws SQLException;
 
-    BlogDTO addBlog(Map<String, String[]> args) throws BlogAlreadyExistsException, SQLException;
+    BlogDTO addBlog(Map<String, String[]> args, InputStream file) throws BlogAlreadyExistsException, SQLException;
 
-    BlogDTO editBlog(Map<String, String[]> args) throws BlogDoesNotExistException, SQLException;
+    BlogDTO editBlog(Map<String, String[]> args, InputStream file) throws BlogDoesNotExistException, SQLException;
 
     Map<String, List<DoctorDTO>> getDoctorBySpeciality() throws SQLException;
 

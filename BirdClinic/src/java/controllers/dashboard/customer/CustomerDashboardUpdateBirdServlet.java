@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import models.bird.BirdDTO;
 import services.customer.CustomerServices;
 import services.general.BirdDoesNotExistException;
 
@@ -39,11 +40,24 @@ public class CustomerDashboardUpdateBirdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        HttpSession session = request.getSession();
+        String birdID = request.getParameter("birdID");
+        CustomerServices service = (CustomerServices) session.getAttribute("service");
         String url = "/Customer/update-bird.jsp";
-
-        request.setAttribute("url", url);
-        request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);
+        try {
+            BirdDTO bird = service.viewBird(birdID);
+            request.setAttribute("bird", bird);
+        } catch (BirdDoesNotExistException ex) {
+            ex.printStackTrace();
+            request.setAttribute("error-message", "Bird does not exist. Please try again.");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            request.setAttribute("error-message", "Something went wrong. Please try again.");
+        } finally {
+            request.setAttribute("url", url);
+            request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);
+        }
+        
     }
 
     /**

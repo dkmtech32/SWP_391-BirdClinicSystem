@@ -5,6 +5,7 @@
  */
 package services.staff;
 
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -18,6 +19,7 @@ import models.blog.BlogDTOImpl;
 import models.exceptions.NoSuchRecordExists;
 import models.exceptions.RecordAlreadyExists;
 import models.feedback.FeedbackDTO;
+import models.images.ImageDTO;
 import models.service_.Service_DTO;
 import models.service_.Service_DTOImpl;
 import models.speciality.NoSuchSpecialityExistsException;
@@ -28,6 +30,7 @@ import services.general.AccountDoesNotExistException;
 import services.general.AppointmentDoesNotExistException;
 import services.general.BlogDoesNotExistException;
 import services.general.GeneralServicesImpl;
+import services.general.ImageAlreadyExistsException;
 import utils.Utils;
 
 /**
@@ -230,13 +233,15 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
     }
 
     @Override
-    public BlogDTO addBlog(Map<String, String[]> args) throws BlogAlreadyExistsException, SQLException {
+    public BlogDTO addBlog(Map<String, String[]> args, InputStream file) throws BlogAlreadyExistsException, SQLException {
 
         String title = Utils.getFromMap(args, "blog-title", "");
         String content = Utils.getFromMap(args, "blog-content", "");
         String author = currentUser.getFullName();
         String description = Utils.getFromMap(args, "_description", "");
         String category = Utils.getFromMap(args, "category", "");
+        String filetype = Utils.getFromMap(args, "filetype", ".jpg");
+        String path = Utils.getFromMap(args, "path", "");
         Timestamp uploadTime = new Timestamp(System.currentTimeMillis());
         String blogID = Utils.hash(title + author + category + uploadTime.toString());
 
@@ -249,8 +254,16 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
             blog.setDescription(description);
             blog.setCategory(category);
             blog.setUploadDatetime(uploadTime);
+            ImageDTO image = null;
+            if (file != null) {
+                String imageURLName = blogID + filetype;
+                image = addImage(file, path, imageURLName);
+            } else {
+                image = imageDAO.readImage("00DB5DAF82D7F818D6AB6A466AF7BEE4");
+            }
+            blog.setThumbnail(image);
             blogDAO.insertBlog(blog);
-        } catch (RecordAlreadyExists ex) {
+        } catch (RecordAlreadyExists | NoSuchRecordExists | ImageAlreadyExistsException ex) {
             throw new BlogAlreadyExistsException(ex.getMessage());
         }
 
@@ -258,12 +271,14 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
     }
 
     @Override
-    public BlogDTO editBlog(Map<String, String[]> args) throws BlogDoesNotExistException, SQLException {
+    public BlogDTO editBlog(Map<String, String[]> args, InputStream file) throws BlogDoesNotExistException, SQLException {
         String title = Utils.getFromMap(args, "blog-title", "");
         String content = Utils.getFromMap(args, "blog-content", "");
         String description = Utils.getFromMap(args, "_description", "");
         String category = Utils.getFromMap(args, "category", "");
         String blogID = Utils.getFromMap(args, "blogID", "");
+        String filetype = Utils.getFromMap(args, "filetype", ".jpg");
+        String path = Utils.getFromMap(args, "path", "");
 
         BlogDTO blog = null;
 
@@ -274,9 +289,16 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
             blog.setTitle(title);
             blog.setCategory(category);
             blog.setDescription(description);
-
+            ImageDTO image = null;
+            if (file != null) {
+                String imageURLName = blogID + filetype;
+                image = addImage(file, path, imageURLName);
+            } else {
+                image = imageDAO.readImage("00DB5DAF82D7F818D6AB6A466AF7BEE4");
+            }
+            blog.setThumbnail(image);
             blogDAO.updateBlog(blog);
-        } catch (NoSuchRecordExists ex) {
+        } catch (NoSuchRecordExists | ImageAlreadyExistsException ex) {
             throw new BlogDoesNotExistException(ex.getMessage());
         }
 

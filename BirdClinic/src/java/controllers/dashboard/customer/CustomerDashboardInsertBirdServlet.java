@@ -67,7 +67,7 @@ public class CustomerDashboardInsertBirdServlet extends HttpServlet {
         InputStream birdIS = null;
         String path = request.getServletContext().getInitParameter("PATH");
         try {
-            if (birdImg != null) {
+            if (birdImg != null && birdImg.getSize()>0L) {
                 birdIS = birdImg.getInputStream();
                 args.put("filename", new String[]{birdImg.getSubmittedFileName()});
                 args.put("path", new String[]{path + "\\bird\\"});

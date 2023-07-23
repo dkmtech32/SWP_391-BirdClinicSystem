@@ -30,6 +30,7 @@ import services.general.AccountAlreadyExistsException;
 import services.general.AccountDoesNotExistException;
 import services.general.AppointmentDoesNotExistException;
 import services.general.GeneralServicesImpl;
+import services.general.ImageAlreadyExistsException;
 import services.staff.ServiceDoesNotExistException;
 import utils.Utils;
 
@@ -63,14 +64,23 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
         String specialityID = args.get("specialityID")[0];
         int yOE = Integer.parseInt(args.get("years-of-experience")[0]);
         String phoneNumber = args.get("phone-number")[0];
+        String filetype = Utils.getFromMap(args, "filetype", ".jpg");
+        String path = Utils.getFromMap(args, "path", "");
 
         try {
-            ImageDTO image = imageDAO.readImage("whfnhfn3ga98h943ghjanfueafa92rhf");
+            
             SpecialityDTO speciality = specialityDAO.readSpeciality(specialityID);
             String rPassword = Utils.hash(password);
             String userID = Utils.hash(email + username + String.valueOf(System.currentTimeMillis()));
             result = new DoctorDTOImpl();
             result.setUserID(userID);
+            ImageDTO image = null;
+            if (file != null) {
+                String imageURLName = userID + filetype;
+                image = addImage(file, path, imageURLName);
+            } else {
+                image = imageDAO.readImage("whfnhfn3ga98h943ghjanfueafa92rhf");
+            }
             result.setFullName(fullName);
             result.setEmail(email);
             result.setUserName(username);
@@ -90,7 +100,7 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
 
             doctorDAO.insertDoctor(result);
 
-        } catch (RecordAlreadyExists ex) {
+        } catch (RecordAlreadyExists | ImageAlreadyExistsException ex) {
             throw new AccountAlreadyExistsException(ex.getMessage());
         } catch (NoSuchRecordExists ex) {
             throw new SQLException(ex.getMessage());
@@ -103,43 +113,6 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
     public CustomerDTO createCustomer(Map<String, String[]> args, InputStream file)
             throws AccountAlreadyExistsException, SQLException {
         CustomerDTO result = null;
-        String username = args.get("username")[0];
-        String password = args.get("password")[0];
-        String email = args.get("email")[0];
-        String role = args.get("role")[0];
-        String phoneNumber = args.get("phone-number")[0];
-        String gender = args.get("gender")[0];
-        String address = args.get("customer-address")[0];
-        String fullName = args.get("full-name")[0];
-        Date dob = Date.valueOf(args.get("dob")[0]);
-
-        try {
-
-            String rPassword = Utils.hash(password);
-            String userID = Utils.hash(email + username);
-            result = new CustomerDTOImpl();
-            result.setFullName(fullName);
-            result.setUserID(userID);
-            result.setEmail(email);
-            result.setUserName(username);
-            result.setUserPassword(rPassword);
-            result.setGender(gender);
-            result.setUserRole(role);
-            ImageDTO image = imageDAO.readImage("whfnhfn3ga98h943ghjanfueafa92rhf");
-            result.setImage(image);
-            result.setStatus_(true);
-            result.setPhoneNumber(phoneNumber);
-
-            result.setCustomerAddress(address);
-            result.setDob(dob);
-
-            customerDAO.insertCustomer(result);
-
-        } catch (RecordAlreadyExists ex) {
-            throw new AccountAlreadyExistsException(ex.getMessage());
-        } catch (NoSuchRecordExists ex) {
-            throw new SQLException(ex.getMessage());
-        }
 
         return result;
     }
@@ -156,6 +129,8 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
         String phoneNumber = args.get("phone-number")[0];
         String fullName = args.get("full-name")[0];
         String gender = args.get("gender")[0];
+        String filetype = Utils.getFromMap(args, "filetype", ".jpg");
+        String path = Utils.getFromMap(args, "path", "");
 
         try {
 
@@ -169,14 +144,20 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
             result.setGender(gender);
             result.setUserRole(role);
             result.setFullName(fullName);
-            ImageDTO image = imageDAO.readImage("whfnhfn3ga98h943ghjanfueafa92rhf");
+            ImageDTO image = null;
+            if (file != null) {
+                String imageURLName = userID + filetype;
+                image = addImage(file, path, imageURLName);
+            } else {
+                image = imageDAO.readImage("whfnhfn3ga98h943ghjanfueafa92rhf");
+            }
             result.setImage(image);
             result.setStatus_(true);
             result.setPhoneNumber(phoneNumber);
 
             userDAO.insertUser(result);
 
-        } catch (RecordAlreadyExists ex) {
+        } catch (RecordAlreadyExists | ImageAlreadyExistsException ex) {
             throw new AccountAlreadyExistsException(ex.getMessage());
         } catch (NoSuchRecordExists ex) {
             throw new SQLException(ex.getMessage());
