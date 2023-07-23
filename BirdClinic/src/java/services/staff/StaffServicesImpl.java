@@ -23,6 +23,7 @@ import models.images.ImageDTO;
 import models.service_.Service_DTO;
 import models.service_.Service_DTOImpl;
 import models.speciality.NoSuchSpecialityExistsException;
+import models.speciality.SpecialityDTO;
 import models.users.UserDTO;
 import models.users.doctor.DoctorDTO;
 import services.doctor.DoctorDoesNotExistException;
@@ -180,7 +181,6 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
         try {
             Service_DTO service = serviceDAO.readService_(serviceID);
             service.setServicePrice(price);
-            service.setServiceName(serviceName);
             result = serviceDAO.updateService(service) > 0;
         } catch (NoSuchRecordExists ex) {
             throw new ServiceDoesNotExistException(ex.getMessage());
@@ -337,4 +337,30 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
 
         return doctorBySpeciality;
     }
+    
+    @Override
+    public List<Service_DTO> getAllServices() throws SQLException, ServiceDoesNotExistException {
+        List<Service_DTO> result = null;
+
+        try {
+            result = serviceDAO.readAllService_();
+        } catch (NoSuchRecordExists ex) {
+            throw new ServiceDoesNotExistException(ex.getMessage());
+        }
+
+        return result;
+    }
+    
+//    @Override
+//    public List<SpecialityDTO> getAllSpecialities() throws SQLException {
+//        List<SpecialityDTO> result = null;
+//
+//        try {
+//            result = specialityDAO.readAllSpecialities();
+//        } catch (NoSuchRecordExists ex) {
+//            throw new SQLException(ex.getMessage());
+//        }
+//
+//        return result;
+//    }
 }

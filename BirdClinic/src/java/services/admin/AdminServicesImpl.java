@@ -7,7 +7,6 @@ package services.admin;
 
 import java.io.InputStream;
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,12 +17,10 @@ import models.exceptions.NoSuchRecordExists;
 import models.exceptions.RecordAlreadyExists;
 import models.feedback.FeedbackDTO;
 import models.images.ImageDTO;
-import models.service_.Service_DTO;
 import models.speciality.SpecialityDTO;
 import models.users.UserDTO;
 import models.users.UserDTOImpl;
 import models.users.customer.CustomerDTO;
-import models.users.customer.CustomerDTOImpl;
 import models.users.doctor.DoctorDTO;
 import models.users.doctor.DoctorDTOImpl;
 import services.general.AccountAlreadyExistsException;
@@ -31,7 +28,6 @@ import services.general.AccountDoesNotExistException;
 import services.general.AppointmentDoesNotExistException;
 import services.general.GeneralServicesImpl;
 import services.general.ImageAlreadyExistsException;
-import services.staff.ServiceDoesNotExistException;
 import utils.Utils;
 
 /**
@@ -228,7 +224,7 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
         return result;
     }
 
-//    @Override
+    @Override
     public Map<DoctorDTO, BigDecimal> getAllRatingsFromDoctor() throws SQLException {
         Map<DoctorDTO, List<BigDecimal>> ratingsMap = new HashMap<>();
         Map<DoctorDTO, BigDecimal> averageRatings = null;
@@ -318,16 +314,5 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
         return result;
     }
 
-    @Override
-    public List<Service_DTO> getAllServices() throws SQLException, ServiceDoesNotExistException {
-        List<Service_DTO> result = null;
-
-        try {
-            result = serviceDAO.readAllService_();
-        } catch (NoSuchRecordExists ex) {
-            throw new ServiceDoesNotExistException(ex.getMessage());
-        }
-
-        return result;
-    }
+    
 }

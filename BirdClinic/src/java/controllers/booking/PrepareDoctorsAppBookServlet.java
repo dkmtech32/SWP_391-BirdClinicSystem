@@ -6,8 +6,10 @@
 package controllers.booking;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.speciality.SpecialityDTO;
 import models.users.doctor.DoctorDTO;
-import services.general.GeneralServices;
+import services.customer.CustomerServices;
 
 /**
  *
@@ -45,13 +47,15 @@ public class PrepareDoctorsAppBookServlet extends HttpServlet {
             throws ServletException, IOException {
         String url = "/Common/index.jsp";
         HttpSession session = request.getSession();
-        GeneralServices services = (GeneralServices) session.getAttribute("service");
+        CustomerServices services = (CustomerServices) session.getAttribute("service");
         
         try {
             List<DoctorDTO> doctors = services.getAllDoctors();
             request.setAttribute("doctors", doctors);
             List<SpecialityDTO> specs = services.getSpecialities();
             request.setAttribute("specs",specs);
+            Map<DoctorDTO, BigDecimal> feedbacks = services.getAllRatingsFromDoctor();
+            request.setAttribute("ratings", feedbacks);
             url = "/Customer/booking-list.jsp";
         } catch (SQLException ex) {
             ex.printStackTrace();
