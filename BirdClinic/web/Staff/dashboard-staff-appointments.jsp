@@ -160,9 +160,9 @@
                                                         </td>
                                                     </c:if>
 
-                                                    <td  class="text-right">
+                                      <%--              <td  class="text-right">
                                                         <button class="btn btn-sm btn-info" onclick="showServiceAndDoctorInfo('${appointment.service_.serviceName}', '${appointment.doctor.fullName}')">View Info</button>
-                                                    </td>
+                                                    </td>--%>
 
 
                                                     <c:if test="${appointment.appStatus.equals('check-in')}">
@@ -197,7 +197,7 @@
     </div>
 </div>
 <!-- Add this modal markup at the end of your JSP file -->
-<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+<!--<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -205,14 +205,14 @@
 
             </div>
             <div class="modal-body">
-                <!-- Placeholder elements to display service and doctor information -->
+                 Placeholder elements to display service and doctor information 
                 <div id="serviceInfo"></div>
                 <div id="doctorInfo"></div>
             </div>
 
         </div>
     </div>
-</div>
+</div>-->
 
 <script>
     function updateFormAction() {
