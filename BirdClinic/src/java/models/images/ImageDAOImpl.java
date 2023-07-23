@@ -5,6 +5,12 @@
  */
 package models.images;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -205,5 +211,27 @@ public class ImageDAOImpl implements ImageDAO {
         }
 
         return images;
+    }
+    
+    @Override
+    public String saveFileToDisk(InputStream fileContent, String path, String filename) throws IOException {
+        File file = new File(path, filename);
+        file.createNewFile();
+        
+        Files.copy(fileContent, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        fileContent.close();
+        return filename;
+    }
+    
+    @Override
+    public boolean deleteFileFromDisk(String path, String filename) throws IOException {
+        File file = new File(path, filename);
+        return file.delete();
+    }
+    
+    @Override
+    public Path readImageFromDisk(String path, String filename) throws IOException {
+        File file = new File(path, filename);
+        return file.toPath();
     }
 }

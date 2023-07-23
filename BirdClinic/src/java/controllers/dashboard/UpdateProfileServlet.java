@@ -6,13 +6,16 @@
 package controllers.dashboard;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.Map;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import services.general.AccountAlreadyExistsException;
 import services.general.GeneralServices;
 
@@ -20,6 +23,7 @@ import services.general.GeneralServices;
  *
  * @author Admin
  */
+@MultipartConfig
 public class UpdateProfileServlet extends HttpServlet {
 
     /**
@@ -58,10 +62,29 @@ public class UpdateProfileServlet extends HttpServlet {
         String url = "/Common/dashboard-profile-setting.jsp";
         HttpSession session = request.getSession();
         GeneralServices service = (GeneralServices) session.getAttribute("service");
-        Map<String, String[]> params = request.getParameterMap();
-
+        Map<String, String[]> args = request.getParameterMap();
+        Part userImage = request.getPart("user-image");
+        InputStream userIS = null;
+        String path = request.getServletContext().getInitParameter("PATH");
         try {
-            service.updateAccount(params);
+            if (userImage != null) {
+                userIS = userImage.getInputStream();
+                args.put("filename", new String[]{userImage.getSubmittedFileName()});
+                String role = request.getParameter("userRole");
+                switch (role) {
+                    case "customer":
+                        args.put("path", new String[]{path + "\\customer\\"});
+                        break;
+                    case "doctor":
+                        args.put("path", new String[]{path + "\\doctor\\"});
+                        break;
+                    case "admin":
+                    case "staff":
+                        args.put("path", new String[]{path + "\\staff_admin\\"});
+                        break;
+                }
+            }
+            service.updateAccount(args, userIS);
         } catch (AccountAlreadyExistsException ex) {
             ex.printStackTrace();
             request.setAttribute("error-message", "Email or username is already in use. Please try again.");

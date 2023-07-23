@@ -7,15 +7,12 @@ package controllers.image;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 /**
  *
@@ -39,7 +36,9 @@ public class ImageServlet extends HttpServlet {
         String filename = pathInfo.substring(pathInfo.lastIndexOf("/") + 1);
 
         String path = this.getServletContext().getInitParameter("PATH");
-        File file = new File(path + "\\" + request.getPathInfo(), filename);
+        String filepath = path + request.getPathInfo().replace("/", "\\");
+        File file = new File(filepath, filename);
+        boolean test = file.canRead();
 
         response.setHeader("Content-Type", getServletContext().getMimeType(filename));
         response.setHeader("Content-Length", String.valueOf(file.length()));

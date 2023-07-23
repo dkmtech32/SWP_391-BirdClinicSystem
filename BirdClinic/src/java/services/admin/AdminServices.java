@@ -5,6 +5,7 @@
  */
 package services.admin;
 
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
@@ -30,11 +31,11 @@ public interface AdminServices extends GeneralServices {
 
     boolean changeDoctorTimeslots(Map<String, String[]> args) throws SQLException, AccountDoesNotExistException;
 
-    CustomerDTO createCustomer(Map<String, String[]> args) throws AccountAlreadyExistsException, SQLException;
+    CustomerDTO createCustomer(Map<String, String[]> args, InputStream file) throws AccountAlreadyExistsException, SQLException;
 
-    DoctorDTO createDoctor(Map<String, String[]> args) throws AccountAlreadyExistsException, SQLException;
+    DoctorDTO createDoctor(Map<String, String[]> args, InputStream file) throws AccountAlreadyExistsException, SQLException;
 
-    UserDTO createStaffAdmin(Map<String, String[]> args) throws AccountAlreadyExistsException, SQLException;
+    UserDTO createStaffAdmin(Map<String, String[]> args, InputStream file) throws AccountAlreadyExistsException, SQLException;
 
     List<AppointmentDTO> getAllAppointments() throws SQLException, AppointmentDoesNotExistException;
 

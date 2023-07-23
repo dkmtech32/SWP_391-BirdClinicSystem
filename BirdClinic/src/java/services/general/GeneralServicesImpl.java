@@ -5,6 +5,8 @@
  */
 package services.general;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.Date;
@@ -35,6 +37,7 @@ import models.feedback.FeedbackDTO;
 import models.images.ImageDAO;
 import models.images.ImageDAOImpl;
 import models.images.ImageDTO;
+import models.images.ImageDTOImpl;
 import models.medicalRecord.MedicalRecordDAO;
 import models.medicalRecord.MedicalRecordDAOImpl;
 import models.medicalRecord.MedicalRecordDTO;
@@ -126,7 +129,7 @@ public class GeneralServicesImpl implements GeneralServices {
     }
 
     @Override
-    public CustomerDTO createAccount(Map<String, String[]> args)
+    public CustomerDTO createAccount(Map<String, String[]> args, InputStream file)
             throws AccountAlreadyExistsException, PasswordsNotEqualException, PasswordNotStrongException, SQLException {
         //assumption: args have all 4 key-value pairs
         String username = Utils.getFromMap(args, "username", "");
@@ -139,7 +142,8 @@ public class GeneralServicesImpl implements GeneralServices {
         String address = Utils.getFromMap(args, "address", "");
         Date dob = Date.valueOf(Utils.getFromMap(args, "dob", ""));
         String phone = Utils.getFromMap(args, "phone", "");
-
+        String filetype = Utils.getFromMap(args, "filetype", ".jpg");
+        String path = Utils.getFromMap(args, "path", "");
         CustomerDTO result = null;
 
         try {
@@ -164,7 +168,13 @@ public class GeneralServicesImpl implements GeneralServices {
             customer.setUserPassword(rPassword);
             customer.setGender(gender);
             customer.setUserRole("customer"); //only allow customer registration - other accs must be done by admin
-            ImageDTO image = imageDAO.readImage("whfnhfn3ga98h943ghjanfueafa92rhf"); //default image
+            ImageDTO image = null;
+            if (file != null) {
+                String imageURLName = userID + filetype;
+                image = addImage(file, path, imageURLName);
+            } else {
+                image = imageDAO.readImage("whfnhfn3ga98h943ghjanfueafa92rhf");
+            }
             customer.setImage(image);
             customer.setStatus_(true); //default
 
@@ -177,20 +187,21 @@ public class GeneralServicesImpl implements GeneralServices {
         } catch (NoSuchRecordExists ex) {
             //no image -> db error
             throw new SQLException(ex.getMessage());
+        } catch (ImageAlreadyExistsException ex) {
+            throw new SQLException(ex.getMessage());
         }
 
         return result;
     }
 
     @Override
-    public BirdDTO createBird(Map<String, String[]> args, CustomerDTO customer) throws BirdAlreadyExistsException, SQLException {
+    public BirdDTO createBird(Map<String, String[]> args, CustomerDTO customer, InputStream file) throws BirdAlreadyExistsException, SQLException {
         BirdDTO result = null;
 
         try {
             BirdDTO bird = new BirdDTOImpl();
 
-            ImageDTO image = imageDAO.readImage("05b5b4345d8ac2f73ece3df15be03230"); //default
-
+//            ImageDTO image = imageDAO.readImage("05b5b4345d8ac2f73ece3df15be03230"); //default
             String birdFullname = args.get("bird-full-name")[0];
             String birdGender = args.get("bird-gender")[0];
             String breed = args.get("breed")[0];
@@ -198,8 +209,18 @@ public class GeneralServicesImpl implements GeneralServices {
             float birdWeight = Float.parseFloat(args.get("bird-weight")[0]) / 1000;
             Date hatchingDate = Date.valueOf(args.get("hatching-date")[0]);
             String featherColor = args.get("feather-color")[0];
+            String filetype = Utils.getFromMap(args, "filetype", ".jpg");
+            String path = Utils.getFromMap(args, "path", "");
+            String birdID = Utils.hash(customer.getUserID() + String.valueOf(System.currentTimeMillis()));
+            ImageDTO image = null;
+            if (file != null) {
+                String imageURLName = birdID + filetype;
+                image = addImage(file, path, imageURLName);
+            } else {
+                image = imageDAO.readImage("whfnhfn3ga98h943ghjanfueafa92rhf");
+            }
 
-            bird.setBirdID(Utils.hash(customer.getUserID() + image.getImageID() + String.valueOf(System.currentTimeMillis())));
+            bird.setBirdID(birdID);
 
             bird.setCustomer(customer);
             bird.setImage(image);
@@ -215,6 +236,8 @@ public class GeneralServicesImpl implements GeneralServices {
             bird.setHatchingDate(hatchingDate);
             bird.setFeatherColor(featherColor);
             result = bird;
+        } catch (ImageAlreadyExistsException ex) {
+            throw new SQLException(ex.getMessage());
         } catch (NoSuchRecordExists ex) {
             throw new SQLException(ex.getMessage());
         }
@@ -311,7 +334,7 @@ public class GeneralServicesImpl implements GeneralServices {
 
         return medicalRecord;
     }
-    
+
     @Override
     public List<MedicalRecordDTO> viewMedicalRecordOfBird(String birdID) throws SQLException {
         List<MedicalRecordDTO> medicalRecord = null;
@@ -470,7 +493,7 @@ public class GeneralServicesImpl implements GeneralServices {
     }
 
     @Override
-    public boolean updateAccount(Map<String, String[]> args)
+    public boolean updateAccount(Map<String, String[]> args, InputStream file)
             throws AccountAlreadyExistsException, SQLException {
         boolean result = false;
         //assume all args are in place
@@ -479,6 +502,8 @@ public class GeneralServicesImpl implements GeneralServices {
         String email = Utils.getFromMap(args, "email", currentUser.getUserName());
         String gender = Utils.getFromMap(args, "gender", currentUser.getUserName());
         String phoneNumber = Utils.getFromMap(args, "phone-number", currentUser.getPhoneNumber());
+        String filetype = Utils.getFromMap(args, "filetype", ".jpg");
+        String path = Utils.getFromMap(args, "path", "");
         try {
             if (!username.equals(currentUser.getUserName()) && !email.equals(currentUser.getEmail()) && userDAO.readUserByEmailUserName(email, username) != null) {
                 throw new AccountAlreadyExistsException();
@@ -490,10 +515,15 @@ public class GeneralServicesImpl implements GeneralServices {
             user.setGender(gender);
             user.setFullName(fullName);
             user.setPhoneNumber(phoneNumber);
+            if (file != null) {
+                String imageURLName = user.getUserID() + filetype;
+                ImageDTO image = addImage(file, path, imageURLName);
+                user.setImage(image);
+            }
 
             result = userDAO.updateUser(user) > 0;
             currentUser.copyUser(user);
-        } catch (NoSuchRecordExists ex) {
+        } catch (NoSuchRecordExists | ImageAlreadyExistsException ex) {
             //check if it's image problems
             if (ex.getMessage().contains("Image")) {
                 throw new SQLException(ex.getMessage());
@@ -570,7 +600,9 @@ public class GeneralServicesImpl implements GeneralServices {
     @Override
     public BigDecimal getDoctorRatings(List<FeedbackDTO> feedbacks) throws SQLException {
         BigDecimal ratings = BigDecimal.ZERO;
-        if (feedbacks == null) return ratings;
+        if (feedbacks == null) {
+            return ratings;
+        }
         for (FeedbackDTO feedback : feedbacks) {
             ratings = feedback.getRating().add(ratings);
         }
@@ -681,7 +713,7 @@ public class GeneralServicesImpl implements GeneralServices {
                 Date today = new Date(System.currentTimeMillis());
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTime(today);
-                calendar.add(Calendar.DATE, 7);
+                calendar.add(Calendar.DATE, 8);
                 Date nextWeek = new Date(calendar.getTime().getTime());
                 result = appointmentDAO.readAppointmentByDate(today, nextWeek);
             } else {
@@ -719,5 +751,29 @@ public class GeneralServicesImpl implements GeneralServices {
         }
 
         return apps;
+    }
+
+    protected ImageDTO addImage(InputStream file, String path, String filename)
+            throws SQLException, ImageAlreadyExistsException {
+        ImageDTO image = null;
+        try {
+            String name = imageDAO.saveFileToDisk(file, path, filename);
+            if (name != null && !name.trim().equals("")) {
+                ImageDTO testImg = new ImageDTOImpl();
+                String imageID = Utils.hash(path + name);
+                testImg.setImageID(imageID);
+                testImg.setImageURLName(name);
+                try {
+                    imageDAO.deleteImage(imageID);
+                } catch (NoSuchRecordExists ex) {
+                } finally {
+                    imageDAO.insertImage(testImg);
+                }
+                image = testImg;
+            }
+        } catch (RecordAlreadyExists | IOException ex) {
+            throw new ImageAlreadyExistsException(ex.getMessage());
+        }
+        return image;
     }
 }

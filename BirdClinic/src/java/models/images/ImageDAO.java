@@ -5,7 +5,10 @@
  */
 package models.images;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
+import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.List;
 import models.exceptions.NoSuchRecordExists;
@@ -27,4 +30,9 @@ public interface ImageDAO extends Serializable {
 
     int updateImage(ImageDTO image) throws NoSuchRecordExists, SQLException;
 
+    String saveFileToDisk(InputStream fileContent, String path, String filename) throws IOException;
+    
+    boolean deleteFileFromDisk(String path, String filename) throws IOException;
+    
+    Path readImageFromDisk(String path, String filename) throws IOException;
 }
