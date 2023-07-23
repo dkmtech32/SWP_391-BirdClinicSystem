@@ -150,9 +150,9 @@ public class GeneralServicesImpl implements GeneralServices {
             if (!uPassword.equals(cPassword)) {
                 throw new PasswordsNotEqualException();
             }
-//            if (Utils.checkPassword(uPassword)) {
-//                throw new PasswordNotStrongException();
-//            }
+            if (Utils.checkPassword(uPassword)) {
+                throw new PasswordNotStrongException();
+            }
 
             if (userDAO.readUserByEmailUserName(email, username) != null) {
                 throw new AccountAlreadyExistsException();
@@ -211,7 +211,7 @@ public class GeneralServicesImpl implements GeneralServices {
             String featherColor = args.get("feather-color")[0];
             String filetype = Utils.getFromMap(args, "filetype", ".jpg");
             String path = Utils.getFromMap(args, "path", "");
-            String birdID = Utils.hash(customer.getUserID() + String.valueOf(System.currentTimeMillis()));
+            String birdID = Utils.hash(customer.getUserID() + birdFullname + String.valueOf(System.currentTimeMillis()));
             ImageDTO image = null;
             if (file != null) {
                 String imageURLName = birdID + filetype;

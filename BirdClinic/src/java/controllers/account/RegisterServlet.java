@@ -72,14 +72,14 @@ public class RegisterServlet extends HttpServlet {
         InputStream birdIS = null;
         String path = request.getServletContext().getInitParameter("PATH");
         try {
-            if (userImage != null) {
+            if (userImage != null && userImage.getSize()>0L) {
                 userIS = userImage.getInputStream();
                 args.put("filename", new String[]{userImage.getSubmittedFileName()});
                 args.put("path", new String[]{path + "\\customer\\"});
             }
             CustomerDTO customer = accountService.createAccount(args, userIS);
             if (customer != null) {
-                if (birdImage != null) {
+                if (birdImage != null && birdImage.getSize()>0L) {
                     birdIS = birdImage.getInputStream();
                     args.put("filename", new String[]{birdImage.getSubmittedFileName()});
                     args.put("path", new String[]{path + "\\bird\\"});
