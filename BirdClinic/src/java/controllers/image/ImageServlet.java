@@ -36,9 +36,8 @@ public class ImageServlet extends HttpServlet {
         String filename = pathInfo.substring(pathInfo.lastIndexOf("/") + 1);
 
         String path = this.getServletContext().getInitParameter("PATH");
-        String filepath = path + request.getPathInfo().replace("/", "\\");
+        String filepath = path + request.getPathInfo().split(filename)[0].replace("/", "\\");
         File file = new File(filepath, filename);
-        boolean test = file.canRead();
 
         response.setHeader("Content-Type", getServletContext().getMimeType(filename));
         response.setHeader("Content-Length", String.valueOf(file.length()));
