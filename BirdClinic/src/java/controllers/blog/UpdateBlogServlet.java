@@ -35,7 +35,7 @@ public class UpdateBlogServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "/Staff/blog-update.jsp";
+        String url = "/Staff/update-blog.jsp";
         String blogID = request.getParameter("blogID");
         HttpSession session = request.getSession();
         try {

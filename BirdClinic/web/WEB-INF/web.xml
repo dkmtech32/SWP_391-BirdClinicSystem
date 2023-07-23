@@ -108,7 +108,7 @@
         <servlet-name>UpdateProfileServlet</servlet-name>
         <servlet-class>controllers.dashboard.UpdateProfileServlet</servlet-class>
         <multipart-config>
-            <location>\\D:\\work\\FPT\\2023_Summer\\SWP391\\BirdClinic\\BirdClinic\\web\\assets\\images\\</location>
+            <location>\\D:\\Courses\\sem5\\SWP_391-BirdClinicSystem-Anh-Minh\\BirdClinic\\web\\assets\\images\\</location>
             <max-file-size>20848820</max-file-size>
             <max-request-size>418018841</max-request-size>
             <file-size-threshold>1048576</file-size-threshold>
@@ -126,7 +126,7 @@
         <servlet-name>CustomerDashboardUpdateBirdServlet</servlet-name>
         <servlet-class>controllers.dashboard.customer.CustomerDashboardUpdateBirdServlet</servlet-class>
         <multipart-config>
-            <location>\\D:\\work\\FPT\\2023_Summer\\SWP391\\BirdClinic\\BirdClinic\\web\\assets\\images\\</location>
+            <location>\\D:\\Courses\\sem5\\SWP_391-BirdClinicSystem-Anh-Minh\\BirdClinic\\web\\assets\\images\\</location>
             <max-file-size>20848820</max-file-size>
             <max-request-size>418018841</max-request-size>
             <file-size-threshold>1048576</file-size-threshold>
@@ -136,7 +136,7 @@
         <servlet-name>CustomerDashboardInsertBirdServlet</servlet-name>
         <servlet-class>controllers.dashboard.customer.CustomerDashboardInsertBirdServlet</servlet-class>
         <multipart-config>
-            <location>\\D:\\work\\FPT\\2023_Summer\\SWP391\\BirdClinic\\BirdClinic\\web\\assets\\images\\</location>
+            <location>\\D:\\Courses\\sem5\\SWP_391-BirdClinicSystem-Anh-Minh\\BirdClinic\\web\\assets\\images\\</location>
             <max-file-size>20848820</max-file-size>
             <max-request-size>418018841</max-request-size>
             <file-size-threshold>1048576</file-size-threshold>
@@ -186,7 +186,7 @@
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>controllers.account.RegisterServlet</servlet-class>
         <multipart-config>
-            <location>\\D:\\work\\FPT\\2023_Summer\\SWP391\\BirdClinic\\BirdClinic\\web\\assets\\images\\</location>
+            <location>\\D:\\Courses\\sem5\\SWP_391-BirdClinicSystem-Anh-Minh\\BirdClinic\\web\\assets\\images\\</location>
             <max-file-size>20848820</max-file-size>
             <max-request-size>418018841</max-request-size>
             <file-size-threshold>1048576</file-size-threshold>
@@ -224,7 +224,7 @@
         <servlet-name>AdminAccountsCreateServlet</servlet-name>
         <servlet-class>controllers.dashboard.admin.AdminAccountsCreateServlet</servlet-class>
         <multipart-config>
-            <location>\\D:\\work\\FPT\\2023_Summer\\SWP391\\BirdClinic\\BirdClinic\\web\\assets\\images\\</location>
+            <location>\\D:\\Courses\\sem5\\SWP_391-BirdClinicSystem-Anh-Minh\\BirdClinic\\web\\assets\\images\\</location>
             <max-file-size>20848820</max-file-size>
             <max-request-size>418018841</max-request-size>
             <file-size-threshold>1048576</file-size-threshold>

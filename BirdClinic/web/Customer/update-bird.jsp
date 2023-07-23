@@ -12,7 +12,7 @@
         <div class="card">
             <div class="card-body">
                 <!-- Profile Settings Form -->
-                <form method='POST' action="<c:url value='/Customer/Dashboard/Birds/Insert'/>" enctype="multipart/form-data">
+                <form method='POST' action="<c:url value='/Customer/Dashboard/Birds/update'/>" enctype="multipart/form-data">
                     <div class="row form-row">
                         <div class="col-12 col-md-12">
                             <div class="form-group">
@@ -47,7 +47,7 @@
                             <div class="form-group">
                                 <label>Hatching Date</label>
                                 <div class="">
-                                    <input type="date" class="form-control " name='hatching-date' required/>
+                                    <input type="date" class="form-control " name='hatching-date' />
                                 </div>
                             </div>
                         </div>
@@ -55,14 +55,14 @@
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Breed</label>
-                                <input type="text" class="form-control" name='breed' required/>
+                                <input type="text" class="form-control" name='breed' />
                             </div>
                         </div>
 
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Sex</label>
-                                <select class="form-control" name='bird-gender' required>
+                                <select class="form-control" name='bird-gender' >
                                     <option value='male'>Male</option>
                                     <option value='female'>Female</option>
                                 </select>
@@ -72,21 +72,21 @@
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Weight (in grams)</label>
-                                <input type="number" class="form-control" name="bird-weight" placeholder="Enter weight in grams" step="0.1" value="" required />
+                                <input type="number" class="form-control" name="bird-weight" placeholder="Enter weight in grams" step="0.1" value=""  />
                             </div>
                         </div>
 
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Color</label>
-                                <input type="text" class="form-control" name='feather-color' required />
+                                <input type="text" class="form-control" name='feather-color'  />
                             </div>
                         </div>
 
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Band/Microchip ID</label>
-                                <input type="text" class="form-control" name="band_chip" value="" required/>
+                                <input type="text" class="form-control" name="band_chip" value="" />
                             </div>
                         </div>
 
