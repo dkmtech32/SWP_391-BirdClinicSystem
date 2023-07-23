@@ -22,6 +22,9 @@
                 <div class="d-flex flex-column text-center mb-5">
                     <h4 class="text-secondary mb-3">Bird Blog</h4>
                     <h1 class="display-4 m-0"><span class="text-primary">Updates</span> From Blog</h1>
+                    <c:if test="${sessionScope.service.currentUser.userRole=='staff'}">
+                        <a class="font-weight-bold btn btn-primary" href="<c:url value="/Staff/Blog/Write"/>">Add Blog</a>
+                    </c:if>
                 </div>
                 <div class="row pb-3">
                     <c:forEach var="card" items="${blogs}">
@@ -44,7 +47,7 @@
                                     </c:if>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </c:forEach>
                 </div>

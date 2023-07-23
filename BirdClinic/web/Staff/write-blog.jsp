@@ -22,12 +22,22 @@
                     <h4 class="text-secondary mb-3">Bird Blog</h4>
                     <h1 class="display-4 m-0"><span class="text-primary">Write</span> new Blog</h1>
                 </div>
-                <form class="row flex-column" id="editorForm" action="<c:url value="/Staff/Blog/Write"/>" method="post">
+                <form class="row flex-column" id="editorForm" action="<c:url value="/Staff/Blog/Write"/>" method="post" enctype="multipart/form-data">
                     <div class="row">
-                        <div class="mb-5 form-group col-md-2" >
-                            <label for="thumbnail">Thumbnail</label>
-                            <input class="form-control-file" type="file" id="thumbnail"/>
-                        </div>
+<!--                        <div class="mb-5 form-group col-md-2" >
+                            <div id="bird-image-preview-container">
+                                <img id="bird-image-preview" alt="Blog Image" style="max-width: 200px; margin-top: 10px; display: none;">
+                            </div>
+
+                            <div class="upload-img">
+                                <div class="change-photo-btn">                           
+                                    <label for="thumbnail"><i class="fa fa-upload"></i>Thumbnail</label>
+                                     Add an onchange attribute to the input file element 
+                                    <input class="form-control-file upload" type="file" id="thumbnail" name="blog-image" onchange="previewImage(event)"/>
+                                </div>
+                            </div>
+
+                        </div>-->
                         <div class="mb-5 form-group col-md-7" >
                             <label for="title">Title</label>
                             <input class="form-control" type="text" id="title" name="blog-title"/>
@@ -93,6 +103,34 @@
                     .catch(error => {
                         console.error(error);
                     });
+            function previewImage() {
+                var input = document.getElementById("thumbnail");
+                var container = document.getElementById("bird-image-preview-container");
+
+                // Remove any existing preview image
+                var existingPreview = document.getElementById("bird-image-preview");
+                if (existingPreview) {
+                    container.removeChild(existingPreview);
+                }
+
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        var previewImage = document.createElement("img");
+                        previewImage.id = "bird-image-preview";
+                        previewImage.src = e.target.result;
+                        previewImage.alt = "Selected Bird Image";
+                        previewImage.style.maxWidth = "200px";
+                        previewImage.style.marginTop = "10px";
+
+                        // Append the preview image to the container
+                        container.appendChild(previewImage);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
         </script>
 
 

@@ -38,7 +38,7 @@
                                 <img class="img-fluid w-100 mb-4" src="<c:url value="/images/blog/${detail.thumbnail.imageURLName}"/>" alt="Image" />
                                 <p class="mr-3 mb-3 text-muted" style="text-indent: 3rem">${detail.description}</p>
                                 <p style="text-indent: 3rem">
-                                    ${detail.blogContent}}
+                                    ${detail.blogContent}
                                 </p>
                             </div>
                         </div>

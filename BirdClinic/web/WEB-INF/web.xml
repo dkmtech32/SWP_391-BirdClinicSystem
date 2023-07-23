@@ -412,7 +412,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ImageController</servlet-name>
-        <url-pattern>/image/*</url-pattern>
+        <url-pattern>/images/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>IntroServlet</servlet-name>

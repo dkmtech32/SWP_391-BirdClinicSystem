@@ -94,8 +94,8 @@ public class BlogDAOImpl implements BlogDAO {
             stm.setTimestamp(3, blog.getUploadDatetime());
             stm.setString(4, blog.getCategory());
             stm.setString(5, blog.getBlogContent());
-            stm.setString(6, blog.getDescription());
-            stm.setString(7, blog.getThumbnail().getImageID());
+            stm.setString(7, blog.getDescription());
+            stm.setString(6, blog.getThumbnail().getImageID());
             result = stm.executeUpdate();
             if (result == 0) {
                 throw new BlogAlreadyExistsException();
