@@ -33,6 +33,10 @@
                                     </select>
                                 </form>
                             </li>
+                            <li class="nav-item">
+                                <input class="nav-link" type="text" id="searchInput" placeholder="Search by customer name" onkeyup="filterTable()" />
+
+                            </li>
                         </ul>
                         <!-- /Appointment Tab -->
 
@@ -217,7 +221,27 @@
             console.log("hidden" + appID);
             document.getElementById("hidden" + appID).value = selectedValue;
         }
-       
+        
+        function filterTable() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = toLowerCaseNonAccentVietnamese(input.value); // Convert the search input to lowercase without accents
+            table = document.querySelector(".table.table-hover.table-center");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0]; // Assuming the customer name is in the first column
+                if (td) {
+                    txtValue = toLowerCaseNonAccentVietnamese(td.textContent || td.innerText); // Convert the customer name to lowercase without accents
+                    if (txtValue.indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
 
     </script>
 </html>

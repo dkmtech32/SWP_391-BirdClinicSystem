@@ -151,7 +151,7 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
         String username = args.get("username")[0];
         String password = args.get("password")[0];
         String email = args.get("email")[0];
-        String role = args.get("role")[0];
+        String role = args.get("userRole")[0];
         String phoneNumber = args.get("phone-number")[0];
         String fullName = args.get("full-name")[0];
         String gender = args.get("gender")[0];
