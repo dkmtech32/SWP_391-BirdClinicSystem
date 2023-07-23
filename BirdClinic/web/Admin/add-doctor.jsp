@@ -191,7 +191,7 @@
 
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <input type="submit" id="submit" name="send" class="btn btn-primary" value="Save changes" />
+                                                <input type="submit" id="submit" name="send" class="btn btn-primary" value="Create" />
                                             </div>
                                             <!--end col-->
                                         </div>
@@ -201,14 +201,8 @@
                             </div>
                             <!--end row-->
 
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <input type="submit" id="submit" name="send" class="btn btn-primary" value="Save changes" />
-                                </div>
-                                <!--end col-->
-                            </div>
+                            
                             <!--end row-->
-                            </form>
                         </div>
                     </div>
                     <!--end col-->

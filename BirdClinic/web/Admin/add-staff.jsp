@@ -32,7 +32,7 @@
                                 <div class="card border-0 p-4 rounded shadow">
                                     <div class="row align-items-center">
                                         <div class="col-lg-2 col-md-4">
-                                            <img src="assets/images/client/02.jpg" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt />
+                                            <img src="assets/images/customer/02.jpg" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt />
                                         </div>
                                         <!--end col-->
 
@@ -49,12 +49,13 @@
                                     </div>
                                     <!--end row-->
 
-                                    <form class="mt-4">
+                                    <form class="mt-4" method="POST" action="<c:url value="/Admin/Accounts/Create"/>">
+                                        <input value="staff" name="userRole" hidden="hidden"/>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Full Name</label>
-                                                    <input name="full-name" id="name" type="text" class="form-control"/>
+                                                    <input name="full-name" id="name" type="text" class="form-control" required/>
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -62,7 +63,7 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">User Name</label>
-                                                    <input name="username" id="name2" type="text" class="form-control"/>
+                                                    <input name="username" id="name2" type="text" class="form-control" required/>
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -70,7 +71,7 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Email</label>
-                                                    <input name="email" id="email" type="email" class="form-control"/>
+                                                    <input name="email" id="email" type="email" class="form-control" required/>
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -78,38 +79,31 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Phone</label>
-                                                    <input name="phone-number" id="number" type="text" class="form-control"/>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Password</label>
-                                                    <input name="password" id="number" type="text" class="form-control"/>
+                                                    <input name="phone-number" id="number" type="text" class="form-control" required/>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label name="gender" class="form-label">Gender</label>
-                                                    <select class="form-control time-during">
-                                                        <option value="">Male</option>
-                                                        <option value="">Female</option>
-                                                    </select>
+                                                    <label class="form-label">Password</label>
+                                                    <input name="password" id="text" type="password" class="form-control" required/>
                                                 </div>
                                             </div>
-                                        </div>
-                                        
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label class="form-label">Role</label>
-                                                <input name="role" id="number" type="text" class="form-control"/>
+
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label  class="form-label">Gender</label>
+                                                    <select name="gender" class="form-control time-during" required>
+                                                        <option value="male">Male</option>
+                                                        <option value="female">Female</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
 
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <input type="submit" id="submit" name="send" class="btn btn-primary" value="Save changes" />
+                                                <input type="submit" id="submit" name="send" class="btn btn-primary" value="Create" />
                                             </div>
                                         </div>
                                         <!--end row-->

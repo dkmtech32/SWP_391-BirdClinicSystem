@@ -141,7 +141,7 @@
                                                                                         </a>
                                                                                     </c:when>
                                                                                     <c:when test="${!isLate}">
-                                                                                        <a class="timing-occupied">
+                                                                                        <a class="timing-occupied" style="opacity: 0">
                                                                                             <span>${timeslot.timeSlot}</span> 
                                                                                         </a>
                                                                                     </c:when>
