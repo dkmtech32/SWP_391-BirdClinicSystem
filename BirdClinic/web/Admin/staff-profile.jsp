@@ -79,7 +79,7 @@
                         <div class="card bg-white rounded shadow overflow-hidden mt-4 border-0">
                             <div class="p-5 bg-primary bg-gradient"></div>
                             <div class="avatar-profile d-flex margin-nagative mt-n5 position-relative ps-3">
-                                <img src="assets/images/client/02.jpg" class="rounded-circle shadow-md avatar avatar-medium" alt />
+                                <img src="assets/images/customer/02.jpg" class="rounded-circle shadow-md avatar avatar-medium" alt />
                                 <div class="mt-4 ms-3 pt-3">
                                     <h5 class="mt-3 mb-1">Mrs.Kim</h5>
                                     <p class="text-muted mb-0">Staff</p>
@@ -102,7 +102,7 @@
                                                             <div class="p-4">
                                                                 <div class="row align-items-center">
                                                                     <div class="col-lg-2 col-md-4">
-                                                                        <img src="assets/images/client/02.jpg" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt />
+                                                                        <img src="assets/images/customer/02.jpg" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt />
                                                                     </div>
                                                                     <!--end col-->
 

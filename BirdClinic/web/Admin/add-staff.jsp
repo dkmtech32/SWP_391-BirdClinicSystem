@@ -32,7 +32,7 @@
                                 <div class="card border-0 p-4 rounded shadow">
                                     <div class="row align-items-center">
                                         <div class="col-lg-2 col-md-4">
-                                            <img src="assets/images/client/02.jpg" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt />
+                                            <img src="assets/images/customer/02.jpg" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt />
                                         </div>
                                         <!--end col-->
 

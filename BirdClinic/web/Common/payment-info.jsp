@@ -24,9 +24,9 @@
                     <c:set var="totalMedPrice" value="0" />
                     <c:forEach var="med" items="${recordMedicines}">
                         <c:set var="medPrice" value="${med.quantity * med.medicine.medicinePrice}" />
-                        <c:set var="totalMedPrice" value="${totalPrice + medPrice}" />
+                        <c:set var="totalMedPrice" value="${totalMedPrice + medPrice}" />
                     </c:forEach>
-                    <c:set var="totalPrice" value="${appointment.service_.servicePrice + totalMedPrice + 10 }"/>
+                    <c:set var="totalPrice" value="${appointment.service_.servicePrice + totalMedPrice+10}"/>
                    <span class="total-cost-in-appointments-details">$${totalMedPrice}</span>
 
                 </li>

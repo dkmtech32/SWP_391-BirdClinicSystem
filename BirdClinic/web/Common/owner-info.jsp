@@ -18,7 +18,7 @@
                             <div class="form-group">
                                 <div class="change-avatar">
                                     <div class="profile-img">
-                                        <img src="<c:url value='/assets/images/client/${appointment.bird.customer.image.imageURLName}'/>" alt="User Image" />
+                                        <img src="<c:url value='/assets/images/customer/${appointment.bird.customer.image.imageURLName}'/>" alt="User Image" />
                                     </div>
                                 </div>
                             </div>

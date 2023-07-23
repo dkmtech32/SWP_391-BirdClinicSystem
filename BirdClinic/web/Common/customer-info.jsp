@@ -31,7 +31,7 @@
                                         <div class="form-group">
                                             <div class="change-avatar">
                                                 <div class="profile-img">
-                                                    <img src="<c:url value='../assets/images/client/${requestScope.customer.image.imageURLName}'/>" alt="User Image" />
+                                                    <img src="<c:url value='../assets/images/customer/${requestScope.customer.image.imageURLName}'/>" alt="User Image" />
                                                 </div>
                                             </div>
                                         </div>

@@ -130,7 +130,7 @@
                                                                                 <c:when test="${user.userRole=='customer'}" >
                                                                                     <h2 class="table-avatar">
                                                                                         <a href="<c:url value="/View/Customer?userID=${user.userID}"/>" class="avatar avatar-sm mr-2">
-                                                                                            <img class="avatar-img rounded-circle" style="object-fit: cover; width: 4rem; height: 4rem;" src="<c:url value="/assets/images/client/${user.image.imageURLName}"/>" alt="User Image" />
+                                                                                            <img class="avatar-img rounded-circle" style="object-fit: cover; width: 4rem; height: 4rem;" src="<c:url value="/assets/images/customer/${user.image.imageURLName}"/>" alt="User Image" />
                                                                                         </a>
                                                                                     </h2>
                                                                                 </c:when>

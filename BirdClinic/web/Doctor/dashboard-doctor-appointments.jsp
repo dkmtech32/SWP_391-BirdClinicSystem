@@ -48,7 +48,7 @@
                                                         <td>
                                                             <h2 class="table-avatar">
                                                                 <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
-                                                                    <img class="avatar-img rounded-circle" src="<c:url value="/assets/images/client/${appointment.bird.customer.image.imageURLName}"/>" alt="User Image" />
+                                                                    <img class="avatar-img rounded-circle" src="<c:url value="/assets/images/customer/${appointment.bird.customer.image.imageURLName}"/>" alt="User Image" />
                                                                 </a>
                                                                 <a href="doctor-profile.jsp">${appointment.bird.customer.fullName} </a> 
                                                             </h2>

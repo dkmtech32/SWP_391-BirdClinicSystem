@@ -57,8 +57,8 @@
                                                         <th>Rating</th>
                                                         </c:if>
                                                     <th></th>
-                                                     <th></th>
-                                                      <th></th>
+                                                    <th></th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -69,7 +69,7 @@
                                                         <td>
                                                             <h2 class="table-avatar">
                                                                 <a href="<c:url value="/View/Customer?userID=${appointment.bird.customer.userID}"/>" class="avatar avatar-sm mr-2">
-                                                                    <img class="avatar-img rounded-circle" src="<c:url value="/assets/images/client/${appointment.bird.customer.image.imageURLName}"/>" alt="User Image" />
+                                                                    <img class="avatar-img rounded-circle" src="<c:url value="/assets/images/customer/${appointment.bird.customer.image.imageURLName}"/>" alt="User Image" />
                                                                 </a>
                                                                 <a href="<c:url value="/View/Customer?userID=${appointment.bird.customer.userID}"/>">${appointment.bird.customer.fullName} </a> 
                                                             </h2>
@@ -160,16 +160,8 @@
                                                         <c:if test="${appointment.appStatus.equals('check-in')}">
 
                                                             <td class="text-right">
-                                                                <form action="<c:url value="/Dashboard/Appointments/updateApp"/>" name="docForm" method="get">
-                                                                    <input type="hidden" id="hidden${appointment.payment}" name="payment" <c:if test="${not empty appointment.payment}"> value="${appointment.payment}"</c:if> required>
-                                                                        <input type="hidden"  name="action" value="update">
-                                                                        <input type="hidden"  name="filter" value="complete">
-                                                                        <input type="hidden" class="appID" name="appointmentID" value="${appointment.appointmentID}">
-                                                                    <button class=" btn btn-sm bg-success-light" type="submit">
-                                                                        <i class="fa fa-check"></i>
-                                                                        Check-out
-                                                                    </button>
-                                                                </form>
+                                                                <%--   --%>
+                                                                <a class="btn btn-primary" href="<c:url value="/View/Appointment?appointmentID=${appointment.appointmentID}"/>" ><i class="fa fa-check"></i> Checkout</a>
                                                             </td>
                                                         </c:if>
 
@@ -225,12 +217,7 @@
             console.log("hidden" + appID);
             document.getElementById("hidden" + appID).value = selectedValue;
         }
-        function changePaymentSelection(selectElement) {
-            var selectedValue = selectElement.value;
-            var payment = selectElement.id;
-            console.log("hidden" + payment);
-            document.getElementById("hidden" + payment).value = selectedValue;
-        }
+       
 
     </script>
 </html>
