@@ -8,6 +8,7 @@ package controllers.dashboard.customer;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -60,7 +61,8 @@ public class CustomerDashboardInsertBirdServlet extends HttpServlet {
         String url = "/Dashboard/Birds";
         HttpSession session = request.getSession();
         CustomerServices service = (CustomerServices) session.getAttribute("service");
-        Map<String, String[]> args = request.getParameterMap();
+        Map<String, String[]> params = request.getParameterMap();
+        Map<String, String[]> args = new HashMap<>(params);
         Part birdImg = request.getPart("bird-image");
         InputStream birdIS = null;
         String path = request.getServletContext().getInitParameter("PATH");

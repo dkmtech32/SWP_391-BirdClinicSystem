@@ -8,6 +8,7 @@ package controllers.dashboard.admin;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -70,7 +71,8 @@ public class AdminAccountsCreateServlet extends HttpServlet {
         try {
 
             AdminServices admin = (AdminServices) session.getAttribute("service");
-            Map<String, String[]> args = request.getParameterMap();
+            Map<String, String[]> params = request.getParameterMap();
+            Map<String, String[]> args = new HashMap<>(params);
             if (userImage != null) {
                 userIS = userImage.getInputStream();
                 args.put("filename", new String[]{userImage.getSubmittedFileName()});
