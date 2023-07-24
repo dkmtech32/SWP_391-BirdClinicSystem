@@ -43,7 +43,7 @@
                                                 <td>${service.serviceName}</td>
                                                 <td>
 
-                                                    <input type="text" name="servicePrice" value="${service.servicePrice}" id="${service.serviceID}" onchange="changePrice(this)"/>
+                                                    <input type="number" name="servicePrice" value="${service.servicePrice}" id="${service.serviceID}" onchange="changePrice(this)"/>
 
                                                 </td>
                                                 <td>${service.speciality.specialityName}</td>
@@ -51,7 +51,7 @@
                                                     <div class="table-action">
                                                         <form  action="<c:url value="/Staff/Dashboard/Services/Update"/>" name="serviceForm" method="post">
                                                             <input type="hidden" name="serviceID" value="${service.serviceID}" />
-                                                            <input type="" name="servicePrice" id="hidden${service.serviceID}" value="${service.servicePrice}" required />
+                                                            <input type="hidden" name="service-price" id="hidden${service.serviceID}" value="${service.servicePrice}" required />
                                                             <button class=" btn btn-sm bg-success-light" type="submit">
                                                                 <i class="fa-solid fa-pen-to-square"></i>
                                                                 Edit
