@@ -34,4 +34,6 @@ public interface Service_DAO extends Serializable {
     
     int insertService(Service_DTO service) 
             throws RecordAlreadyExists, SQLException;
+    
+    int deleteService(String serviceID) throws NoSuchRecordExists, SQLException;
 }
