@@ -47,6 +47,10 @@ public class Service_DAOImpl implements Service_DAO {
     private static final String INSERT_SERVICE
             = "INSERT INTO Service_ (serviceID, specialityID, serviceName, servicePrice) "
             + "VALUES (?, ?, ?, ?)";
+    
+    private static final String DELETE_SERVICE
+            = "DELETE FROM Service_ "
+            + "WHERE serviceID = ?";
 
     private final SpecialityDAO specialityDAO;
 
@@ -287,5 +291,32 @@ public class Service_DAOImpl implements Service_DAO {
         }
 
         return rowsAffected;
+    }
+    
+    @Override
+    public int deleteService(String serviceID) throws NoSuchRecordExists, SQLException {
+        int result = 0;
+        Connection con = null;
+        PreparedStatement stm = null;
+        
+        try {
+            con = DBUtils.getConnection();
+            stm = con.prepareStatement(DELETE_SERVICE);
+            stm.setString(1, serviceID);
+            
+            result = stm.executeUpdate();
+            if (result <= 0) {
+                throw new NoSuchService_ExistsException();
+            }
+        } finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+        
+        return result;
     }
 }

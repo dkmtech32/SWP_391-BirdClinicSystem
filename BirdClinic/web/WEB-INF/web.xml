@@ -262,6 +262,10 @@
         <servlet-name>ImageController</servlet-name>
         <servlet-class>controllers.image.ImageServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StaffDashboardServicesDeleteServlet</servlet-name>
+        <servlet-class>controllers.dashboard.staff.StaffDashboardServicesDeleteServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Common/login</url-pattern>
@@ -429,6 +433,10 @@
     <servlet-mapping>
         <servlet-name>IntroServlet</servlet-name>
         <url-pattern>/intro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaffDashboardServicesDeleteServlet</servlet-name>
+        <url-pattern>/Staff/Dashboard/Services/Delete</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

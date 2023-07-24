@@ -351,16 +351,16 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
         return result;
     }
     
-//    @Override
-//    public List<SpecialityDTO> getAllSpecialities() throws SQLException {
-//        List<SpecialityDTO> result = null;
-//
-//        try {
-//            result = specialityDAO.readAllSpecialities();
-//        } catch (NoSuchRecordExists ex) {
-//            throw new SQLException(ex.getMessage());
-//        }
-//
-//        return result;
-//    }
+    @Override
+    public boolean deleteService(String serviceID) throws SQLException, ServiceDoesNotExistException {
+        boolean result = false;
+        
+        try {
+            result = serviceDAO.deleteService(serviceID) > 0;
+        } catch (NoSuchRecordExists ex) {
+            throw new ServiceDoesNotExistException(ex.getMessage());
+        }
+        
+        return result;
+    }
 }

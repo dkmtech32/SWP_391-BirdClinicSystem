@@ -7,30 +7,20 @@ package controllers.dashboard.staff;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import services.staff.ServiceAlreadyExistsException;
+import services.staff.ServiceDoesNotExistException;
 import services.staff.StaffServices;
 
 /**
  *
  * @author Admin
  */
-public class StaffDashboardServicesInsertServlet extends HttpServlet {
+public class StaffDashboardServicesDeleteServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -42,7 +32,7 @@ public class StaffDashboardServicesInsertServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/Dashboard/Services").forward(request, response);
+        response.sendRedirect("/Dashboard/Services");
     }
 
     /**
@@ -59,12 +49,12 @@ public class StaffDashboardServicesInsertServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         String url = "/Dashboard/Services";
-        Map<String, String[]> args = request.getParameterMap();
-
+        String serviceID = request.getParameter("serviceID");
+        
         try {
             StaffServices service = (StaffServices) session.getAttribute("service");
-            service.addService(args);
-        } catch (ServiceAlreadyExistsException ex) {
+            service.deleteService(serviceID);
+        } catch (ServiceDoesNotExistException ex) {
             ex.printStackTrace();
         } catch (SQLException ex) {
             ex.printStackTrace();
