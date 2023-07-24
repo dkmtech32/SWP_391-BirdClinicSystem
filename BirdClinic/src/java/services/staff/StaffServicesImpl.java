@@ -7,13 +7,18 @@ package services.staff;
 
 import java.io.InputStream;
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import models.appointment.AppointmentAlreadyExistsException;
 import models.appointment.AppointmentDTO;
+import models.appointment.AppointmentDTOImpl;
 import models.blog.BlogDTO;
 import models.blog.BlogDTOImpl;
 import models.exceptions.NoSuchRecordExists;
@@ -23,7 +28,7 @@ import models.images.ImageDTO;
 import models.service_.Service_DTO;
 import models.service_.Service_DTOImpl;
 import models.speciality.NoSuchSpecialityExistsException;
-import models.speciality.SpecialityDTO;
+import models.timeslot.TimeslotDTO;
 import models.users.UserDTO;
 import models.users.doctor.DoctorDTO;
 import services.doctor.DoctorDoesNotExistException;
@@ -337,7 +342,7 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
 
         return doctorBySpeciality;
     }
-    
+
     @Override
     public List<Service_DTO> getAllServices() throws SQLException, ServiceDoesNotExistException {
         List<Service_DTO> result = null;
@@ -350,17 +355,58 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
 
         return result;
     }
-    
+
     @Override
     public boolean deleteService(String serviceID) throws SQLException, ServiceDoesNotExistException {
         boolean result = false;
-        
+
         try {
             result = serviceDAO.deleteService(serviceID) > 0;
         } catch (NoSuchRecordExists ex) {
             throw new ServiceDoesNotExistException(ex.getMessage());
         }
-        
+
+        return result;
+    }
+
+    public boolean bookReexamination(Map<String, String[]> args) throws SQLException, AppointmentAlreadyExistsException {
+        boolean result = false;
+
+        try {
+            String birdID = args.get("birdID")[0];
+            String notes = args.get("notes")[0];
+            String timeslotID = args.get("timeslotID")[0];
+            String service_ID = args.get("serviceID")[0];
+            String appDate = args.get("appDate")[0];
+            String doctorID = args.get("doctorID")[0];
+            
+            AppointmentDTO app = new AppointmentDTOImpl();
+            app.setAppointmentID(Utils.hash(birdID + service_ID + timeslotID + String.valueOf(System.currentTimeMillis())));
+            app.setBird(birdDAO.readBird(birdID));
+            TimeslotDTO timeslot = timeslotDAO.readTimeSlot(timeslotID);
+            app.setTimeslot(timeslot);
+            DoctorDTO doc = null;
+            if (doctorID != null) {
+                doc = doctorDAO.readDoctor(doctorID);
+            }
+            app.setDoctor(doc);
+            app.setPayment(null);
+            Service_DTO service = serviceDAO.readService_(service_ID);
+            app.setService_(service);
+            app.setNotes(notes);
+
+            Date date = Date.valueOf(appDate);
+            long milliseconds = date.getTime() + timeslot.getTimeSlot().getTime();
+            app.setAppTime(new Date(milliseconds));
+
+            result = appointmentDAO.insertAppointment(app) > 0;
+        } catch (NoSuchRecordExists ex) {
+            //impossible unless account/timeslot/service doesn't exist in db -> SQLException
+            throw new SQLException(ex.getMessage());
+        } catch (RecordAlreadyExists ex) {
+            throw new AppointmentAlreadyExistsException();
+        }
+
         return result;
     }
 }

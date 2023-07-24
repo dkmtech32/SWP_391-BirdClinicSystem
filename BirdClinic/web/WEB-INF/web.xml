@@ -4,6 +4,18 @@
         <param-name>PATH</param-name>
         <param-value>D:\Courses\sem5\SWP_391-BirdClinicSystem-Anh-Minh\BirdClinic\web\assets\images</param-value>
     </context-param>
+    <context-param>
+        <param-name>EMAIL-NAME</param-name>
+        <param-value>amonk041103@gmail.com</param-value>
+    </context-param>
+    <context-param>
+        <param-name>EMAIL-PASSWORD</param-name>
+        <param-value>anhmonkdv041103</param-value>
+    </context-param>
+    <context-param>
+        <param-name>PATH</param-name>
+        <param-value>D:\work\FPT\2023_Summer\SWP391\BirdClinic\BirdClinic\web\assets\images</param-value>
+    </context-param>
     <filter>
         <filter-name>AuthenticationFilter</filter-name>
         <filter-class>controllers.filters.AuthenticationFilter</filter-class>

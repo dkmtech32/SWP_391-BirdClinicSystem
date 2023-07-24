@@ -69,7 +69,7 @@ public class UpdateProfileServlet extends HttpServlet {
         InputStream userIS = null;
         String path = request.getServletContext().getInitParameter("PATH");
         try {
-            if (userImage != null) {
+            if (userImage != null && userImage.getSize()>0L) {
                 userIS = userImage.getInputStream();
                 args.put("filename", new String[]{userImage.getSubmittedFileName()});
                 String role = request.getParameter("userRole");

@@ -150,9 +150,9 @@ public class GeneralServicesImpl implements GeneralServices {
             if (!uPassword.equals(cPassword)) {
                 throw new PasswordsNotEqualException();
             }
-            if (Utils.checkPassword(uPassword)) {
-                throw new PasswordNotStrongException();
-            }
+//            if (Utils.checkPassword(uPassword)) {
+//                throw new PasswordNotStrongException();
+//            }
 
             if (userDAO.readUserByEmailUserName(email, username) != null) {
                 throw new AccountAlreadyExistsException();
