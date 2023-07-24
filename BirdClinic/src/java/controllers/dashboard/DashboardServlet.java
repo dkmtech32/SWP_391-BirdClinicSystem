@@ -33,7 +33,7 @@ public class DashboardServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
 
-        String forwardURL = request.getServletPath() + request.getPathInfo() + "?" + request.getQueryString();
+        String forwardURL = request.getServletPath() + request.getPathInfo();
         if (request.getQueryString() != null && !request.getQueryString().trim().equals("")) {
             forwardURL = request.getServletPath() + request.getPathInfo() + "?" + request.getQueryString();
         }

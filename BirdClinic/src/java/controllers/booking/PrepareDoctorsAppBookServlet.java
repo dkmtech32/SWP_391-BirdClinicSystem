@@ -54,8 +54,8 @@ public class PrepareDoctorsAppBookServlet extends HttpServlet {
             request.setAttribute("doctors", doctors);
             List<SpecialityDTO> specs = services.getSpecialities();
             request.setAttribute("specs",specs);
-            Map<DoctorDTO, BigDecimal> feedbacks = services.getAllRatingsFromDoctor();
-            request.setAttribute("ratings", feedbacks);
+//            Map<DoctorDTO, BigDecimal> feedbacks = services.getAllRatingsFromDoctor();
+//            request.setAttribute("ratings", feedbacks);
             url = "/Customer/booking-list.jsp";
         } catch (SQLException ex) {
             ex.printStackTrace();
