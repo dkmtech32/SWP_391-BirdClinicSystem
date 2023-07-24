@@ -40,16 +40,26 @@
                                     <tbody>
                                         <c:forEach var="service" items="${services}">
                                             <tr>
-                                                <td class="text-right">${service.serviceName}</td>
-                                                <td class="text-right">$ ${service.servicePrice}</td>
-                                                <td class="text-right">${service.speciality.specialityName}</td>
+                                                <td>${service.serviceName}</td>
+                                                <td>
 
+                                                    <input type="text" name="servicePrice" value="${service.servicePrice}" id="${service.serviceID}" onchange="changePrice(this)"/>
+
+                                                </td>
+                                                <td>${service.speciality.specialityName}</td>
                                                 <td class="text-right">
                                                     <div class="table-action">
-                                                        <a href="<c:url value="/Staff/Dashboard/Services/Update?serviceID=${service.serviceID}"/>" class="btn btn-sm bg-info-light"> <i class="far fa-gear"></i> Edit </a>
+                                                        <form  action="<c:url value="/Staff/Dashboard/Services/Update"/>" name="serviceForm" method="post">
+                                                            <input type="hidden" name="serviceID" value="${service.serviceID}" />
+                                                            <input type="" name="servicePrice" id="hidden${service.serviceID}" value="${service.servicePrice}" required />
+                                                            <button class=" btn btn-sm bg-success-light" type="submit">
+                                                                <i class="fa-solid fa-pen-to-square"></i>
+                                                                Edit
+                                                            </button>
+                                                        </form>
+
                                                     </div>
                                                 </td>
-
                                             </tr>
                                         </c:forEach>
                                     </tbody>
@@ -60,8 +70,19 @@
                 </div>
                 <!-- /Appointment Tab -->
 
+
             </div>
             <!-- Tab Content -->
         </div>
     </div>
 </div>
+<script>
+   function changePrice(selectElement) {
+        var selectedValue = selectElement.value;
+        var serviceID = selectElement.id;
+        console.log("hidden" + serviceID);
+        console.log(document.getElementById("hidden"+serviceID).value);
+        document.getElementById("hidden"+serviceID).value = selectedValue;
+    }
+</script>
+
