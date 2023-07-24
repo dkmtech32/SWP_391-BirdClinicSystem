@@ -53,9 +53,9 @@
                                                     <th>Service</th>
                                                     <th>Status</th>
                                                     <th>Doctor</th>
-                                                    <c:if test="${param.filter.equals('check-in')}">
+                                               <%--     <c:if test="${param.filter.equals('check-in')}">
                                                     <th>Payment Method</th>
-                                                    </c:if>
+                                                    </c:if>--%>
                                                     <c:if test="${param.filter.equals('complete')}">
                                                     <th>Rating</th>
                                                     </c:if>
@@ -120,7 +120,7 @@
                                                             </h2>
                                                         </c:if>                                                            
                                                     </td>
-                                                    <c:if test="${param.filter.equals('check-in')}">
+                                              <%--      <c:if test="${param.filter.equals('check-in')}">
                                                         <td>
                                                             <select style="width:200px; max-width: 200px; white-space: nowrap;
                                                                     overflow: hidden;" id="${appointment.payment}" class="form-select" name="payment" onchange="changePaymentSelection(this)" required>
@@ -130,7 +130,7 @@
                                                                 <option value="credit card">Credit Card</option>
                                                             </select>  
                                                         </td>
-                                                    </c:if>
+                                                    </c:if> --%>
                                                     <td class="text-right">
                                                         <div class="table-action">
                                                             <a href="<c:url value="/View/Appointment?appointmentID=${appointment.appointmentID}"/>" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>

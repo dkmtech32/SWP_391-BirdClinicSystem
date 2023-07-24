@@ -62,7 +62,7 @@ public class StaffDashboardServicesUpdateServlet extends HttpServlet {
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
-            request.getRequestDispatcher("/Dashboard/Services").forward(request, response);
+            request.getRequestDispatcher("/Staff/Dashboard/Service").forward(request, response);
         }
     }
 

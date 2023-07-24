@@ -49,28 +49,36 @@
                                 <div class="dashboard-widget">
                                     <nav class="dashboard-menu">
                                         <ul>
-                                            <li class="active">
+                                            <li >
                                                 <c:if test="${service.currentUser.userRole!='staff'}">
-                                                   <a href="<c:url value="/Dashboard/Appointments"/>">
-                                                    <i class="fas fa-columns"></i>
-                                                    <span>Dashboard</span>
-                                                </a> 
+                                                    <a href="<c:url value="/Dashboard/Appointments"/>">
+                                                        <i class="fas fa-columns"></i>
+                                                        <span>Dashboard</span>
+                                                    </a> 
                                                 </c:if>
                                                 <c:if test="${service.currentUser.userRole=='staff'}">
-                                                   <a href="<c:url value="/Dashboard/Appointments?filter=processing"/>">
-                                                    <i class="fas fa-columns"></i>
-                                                    <span>Dashboard</span>
-                                                </a> 
+                                                    <a href="<c:url value="/Dashboard/Appointments?filter=processing"/>">
+                                                        <i class="fas fa-columns"></i>
+                                                        <span>Dashboard</span>
+                                                    </a> 
                                                 </c:if>
-                                                
+
                                             </li>
+                                            <c:if test="${service.currentUser.userRole=='staff'}">
+                                                <li>
+                                                <a href="<c:url value="/Staff/Dashboard/Service"/>">
+                                                    <i class="fa-solid fa-hand"></i>
+                                                    <span>Manage service</span>
+                                                </a>
+                                            </li>
+                                            </c:if>
                                             <li>
                                                 <a href="<c:url value="/Update/Profile"/>">
                                                     <i class="fas fa-user-cog"></i>
                                                     <span>Profile Settings</span>
                                                 </a>
                                             </li>
-                                            
+
                                             <c:if test="${service.currentUser.userRole=='customer'}">
 
                                                 <li>
@@ -80,7 +88,7 @@
                                                     </a>
                                                 </li>
                                             </c:if>
-                                                
+
                                             <li>
                                                 <a href="<c:url value="/Dashboard/Update/Password"/>">
                                                     <i class="fas fa-lock"></i>
