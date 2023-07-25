@@ -54,7 +54,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="../Customer/booking-list.jsp" class="btn btn-lg btn-primary px-4">Book Now</a>
+                    <a href="<c:url value="/Common/login"/>" class="btn btn-lg btn-primary px-4">Book Now</a>
                     <!-- <a class="nav-link header-login" href="login.jsp">login / Signup </a> -->
                 </li>
                 <li class="nav-item">

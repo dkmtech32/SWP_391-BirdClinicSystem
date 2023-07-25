@@ -1388,7 +1388,7 @@ VALUES
     ('e199d87ca6943ccf8cdac4bbaa6f3010', '507e4c66da1ccd4fcf621069065494bc'),
     ('13acd6206f7ff75bb7ad6214972a64eb', '517d8993ec9bcdb8c33fc50ea7ec5da8'),
     ('3346307894a7f1171217efbb64d92ddc', '291129122c3e6bbbd76a76b428f2809a');
-
+    
 INSERT INTO MedicalRecord (medicalRecordID, appointmentID, recordTime, diagnosis, treatmentDays, doctorNotes)
 VALUES
 	('3b153a85daab45c693cdd0e1f02631c9' , 'a6a837e5d05e57e160dea29c335f30d0', '2023-01-02', N'không phát hiện bất thường', 3, ''),
@@ -1531,498 +1531,927 @@ VALUES
 
 INSERT INTO Blog (blogID, imageID, title, uploadDatetime, category, _description , blogContent)
 VALUES
-	( '36c8417c829ea8b07014eb3ca7946fb0', '6EF02AE8CD5103C4C74B8CAAF1471D90', N'Valuable experiences when raising blue worms', GETDATE(), N'bird farming experience', N'In addition to being known as a bird
-beneficial to human life. Blue worm is also known as an ornamental bird. Although raising blue worms is not difficult, it also requires the owner to be careful
-meticulous feat.<br>
-But if you are a person who has a special affection for these birds, it is not a problem. To help you gain more experience in caring
-These lovely birds invite you to follow our article below.<br>',
-	N'1. Valuable experiences when raising blueworms<br>
-1.1 What do green worms eat<br>
-Just hearing the name, we can guess what this lovely pet bird likes to eat, right? They can eat worms that exist in nature because this is a main food for them to survive. However, in captivity, in addition to feeding the worms in the wild. Then you need to supplement them with some other food such as ant eggs, or bran. These foods can give them a reasonable diet so that they can develop to the fullest extent.<br>
+	( '36c8417c829ea8b07014eb3ca7946fb0', '6EF02AE8CD5103C4C74B8CAAF1471D90', N'Stylish and Social, Winter Waxwings Provide a Wonderful ID Challenge', GETDATE()
+	, N'how to distinguish', 
+	N'Bohemian and Cedar Waxwings look very similar and are more likely to intermingle in the colder months. Here’s how to tell them apart.',
 
-1.2. Breeding cages for blue worms
-It is best to choose a bamboo cage with a moderate height because, as we all know, the size of blue worms is quite small, so if you do not choose a reasonable cage, it will be difficult to give them the most comfortable life. Inside the cage, you should put a tray of bran (the type of bran that you often buy at bird stores) and a tray of dry worms to ensure the amount of food for them. In addition, a must-have condition is water. If you live in urban areas, tap water should be treated to reduce chlorine. Although this bird''s favorite food is worms, the worms that we buy at stores cannot be of the same quality as the worms that they get in nature, so we must limit and feed them a specific amount, do not abuse it will make their health unstable<br>
+	N'<p>When you hear a chorus of high-pitched&nbsp;<em>see!</em>&nbsp;notes overhead, expect a good time: A rambunctious flock of waxwings is on its way. Highly social birds that appear to have no sense of personal space, North America&rsquo;s two waxwing species&mdash;Bohemian and Cedar&mdash;also look very similar.&nbsp;Telling these elegant birds apart makes for an excellent ID challenge.</p>
 
-1.3 How to raise baby blue-headed worm<br>
-When you catch young blue-headed worms, the care process is a bit more complicated. You have to take time to feed them because at this time they can''t eat by themselves like other adult birds. But this is also considered one of the greatest stages of birdwatchers. Because it will be a glue to make your feelings and these birds connected. At this stage, the best food for young birds is locusts. Don''t forget to give them water too. Young birds eat many times a day, so be careful if you don''t want them to faint from hunger.<br>
+<p>During the breeding season, location can provide an initial gut check. Cedar Waxwings are predominant throughout the northern continental United States and southern Canada, inhabiting open areas or forest edges. Bohemian Waxwings are found mostly in boreal forests and muskeg in Alaska and western Canada, with some records in the northwestern United States, too.</p>
 
-After a period of more than 1 month, these birds have enough feathers and wings, eating and flying they can all be active. Your care is also not so hard as before. That''s why now you just need to prepare enough food for them, remember to regularly interact with them so that they are not shy<br>
+<p>But the species overlap in parts of their ranges, and that common ground grows during the winter, when both rove far and wide in search of food. Because of their fruit-heavy diet, you&rsquo;re not likely to find either species at a bird feeder, but you might encounter them at any fruiting tree in their range, even ornamental trees in yards and parking lots.</p>
 
-1.4 ways to raise green worms when they are newly caught<br>
-Many people share that they cannot keep the worms that they trap. Actually, nothing is too difficult. First you need to cover a cage and leave it for a period of 2 days. Remember that you must prepare enough food for them. Pay attention to the amount of food if you see that the food you prepare in the feathers is reduced, it means that they are willing to eat and they will definitely live. Leave it there for about 2 days and then slowly remove the cage, remember this stage.<br>
+<p>During the winter months, Cedar Waxwings range further south than Bohemians on average, showing up throughout southern Canada, the continental United States, Mexico, and sometimes Central America. While Bohemian Waxwings are generally scarce and irregular south of the Canadian border, they can become locally numerous in the northern Rocky Mountains east to northern Minnesota. In years when food is scarce, they may wander southward along the Rockies or into the Midwest, New York, New England, and rarely even further south. These southward-straying Bohemians sometimes join up with flocks of the more common Cedars.</p>
 
-You should only open a little to let them get used to it, even many children will destroy, fly around leading to bleeding, but don''t worry. After a few days, you open the cage a little more and then turn the cage to go in all directions. Occasionally head to a place with a lot of people passing by. They will be scared and jump around and even wreak havoc, but surely after a while they will get used to it and will return to being a gentle and docile bird.<br>
+<p>When you come across a flock with both species, size might be the most obvious differentiator. Cedar Waxwings are smaller, similar in size to a large sparrow. Bohemians are nearly an inch longer and twice as heavy; in flight, they may give the impression of a European Starling. However, size can also deceive. A Cedar Waxwing may look larger when flying solo or when fluffed up against the cold.</p>
 
-The next step is to feed the birds. You need to prepare 3 cues. 1 to set up the water to bend 2 again to divide the ratio of worms and bran to mix together. At first they won''t sing, but after a few weeks, once you get used to life in the cage, you can completely listen to the blue worms singing.<br>
+<p>Certain plumage characteristics offer diagnostic identification points, too. Bohemians take on a cooler gray tone overall with a red-orange face, while Cedars appear sandy or tan. Bohemians also have more intricate patterning on their wings, with more white marks and a yellow streak running down their primary wing feathers. Finally, and perhaps most tellingly, Bohemians have rust-colored undertail coverts&mdash;the feathers that meet the tail on the bird&rsquo;s underside&mdash;while Cedars&rsquo; undertail coverts are white.&nbsp;</p>
 
-2. bird farming experience green worm spawn<br>
-To be able to help you give birth to your own baby worms to maximize your enjoyment. We also bring you how to raise blue worms so this is one of the techniques that many people have used and been very successful. <br>
+<p><img src="https://media.audubon.org/bohemian-waxwing_silver-leapers_flickr-cc-by-2.0.jpg" /></p>
 
-2.1 Cages and locations for blue worms to lay<br>
-- Basically, choosing a bird cage to raise blue worms is not too different from that of raising blue worms against the roots. When choosing a cage, you should also choose a cage with a moderate distance between the spokes, and the size of the cage does not need to be too high so that they can operate most comfortably without withdrawing.<br>
+<ul>
+	<li>Red-orange face</li>
+	<li>Larger overall, with a cool gray tone</li>
+	<li>White marks and yellow stripe on wing</li>
+	<li>Rust-colored undertail coverts</li>
+</ul>
 
-However, you must especially note that when raising blueworms, the choice of the location of the cage as well as the protection of the heart is one of the extremely important factors. With their instincts, they will be very sensitive to their surroundings. Basically, you have to cover it up meticulously to make them feel the most secure. The positions to cover the cage are almost all you only need to hide from the door to facilitate feeding as well as for them to bathe and heat, the top of the cage should also be covered by 50%.<br>
-- About the placement of the cage you need to consider in the time they mate and lay only when they feel it''s a safe spot do they start spawning. So in the way of raising blue worms, it is not exaggerated to say that this is one of the decisive criteria for the success of breeding blue worms if the cage location is arranged in the most scientific way, it is not too far away to welcome the baby birds born.<br>
+<p>Bohemian Waxwing. Photo:&nbsp;<a >Silver Leapers</a>/Flickr (CC BY 2.0)</p>
 
-2.2 How to arrange cages for blue worms to lay<br>
-Because it is a cage designed specifically for laying worms, so in the outer cage as well as the food trough, there is a slight difference in the layout in the lap, which is that you should leave a basket so that the worms can nest. And don''t forget to give them some straw so they can build and line the nest. In addition, in the way of hanging bird cages for nesting birds, the most ideal location must be out of the wind, not to be too strong, but not so tilted because if you mean it, you can cause the eggs to fall out.<br>
+<p><img src="http://imageshack.com/a/img923/3241/QUI3kz.jpg" /></p>
 
-According to long-time bird breeders, if you stay at the place where the bird cage is hanging, it is a location with trees, it will be very suitable to help the birds be more confident in breeding.<br>
+<ul>
+	<li>Smaller overall, with a tan or sandy tone</li>
+	<li>Wings lack white and yellow markings</li>
+	<li>White undertail coverts</li>
+</ul>
 
-2.3 How to choose blue worms for pairing<br>
-About how to choose blueworms for pairing and breeding, you also need to consider it. Priority is given to selecting blue worms that have been in captivity for a while because they are used to the captive environment by this time, so it is not too difficult if successful pairing is also the time when they will proceed to reproduce.<br>
+<p>Cedar Waxwing. Photo: Jonathan Nikkila/Audubon Photography Awards</p>
 
-In addition, to be able to pair up for blue worms to reproduce, bird owners can completely use a bird trapped in the forest. Birds trapped in the forest will bring extremely wonderful qualities. However, the time it takes to raise blueworms to breed for these birds is considered to be quite long, so it requires bird owners to have a perseverance.<br>
+<p>The sexes look similar in both species, but male Cedar and Bohemian Waxwings both tend to have more extensive black in their chins than the females do. Males also have bigger waxy red tips&mdash;yes, it&#39;s actually a waxy secretion&mdash;on their feathers than females, on average. Note that both features can be difficult to discern in the field. Meanwhile, juveniles of both species are grayer and streaky, and don&rsquo;t take on their signature wingtips until they mature. It&rsquo;s not totally clear what the wax wings are for, but older birds have more of them, so it&rsquo;s possible that they signal the health, age, and social status of birds to other members of the flock.</p>
 
-Another way of pairing blueworms that breed differently than many people apply is to catch a whole pair in the wild for these birds, it only takes time for them to get used to the new environment, and their pairing and breeding will definitely be successful.<br>
+<p>The two birds sound similar and occasionally identical, but with practice you can usually differentiate them by voice. Cedar Waxwings make extremely high-pitched whistles and trills, which can sound almost insectlike. Bohemian Waxwings generally make a more guttural rattling trill, like a wet metal whistle.&nbsp;</p>
 
-2.4 Food for blue worms to breed<br>
-Basically the food for breeding blueworms also includes fresh lips and bran. First of all about fresh bait, it is clear that this is definitely one of the necessary foods to help birds get the most nutrients. As for bird bran, you should choose bird feeds specifically for breeding birds. The nutritional ingredients in these brans will also ensure that the birds can be born from good eggs. In addition, if you have a separate recipe, you can completely make the bran yourself to give them the most complete.<br>
+<p>As the winter approaches and migratory birds head south, the potential for a waxwing sighting provides a source of excitement and motivation to go out birding in the cold. Hopefully you&rsquo;ll be rewarded this winter with opportunities to see and study both waxwing species, enjoy their antics, and gain a deeper appreciation of these charismatic birds.</p>
+')
 
-During incubation, you should not disturb them. At this time you should also prepare them with an abundant amount of food because when they see that the amount of food is enough for them to nourish them. They will be more confident to be able to focus on incubating the eggs. Absolutely do not let any kind of dangerous object near their nest or it will make them panic and ready to leave the nest.<br>
 
-2.5 Separation of young worms<br>
-At first, you almost don''t need to worry about anything but providing them with adequate nutrition and food to feed them because being in the nursing stage of blue worms is one of the stages that makes them feel tired as well as exhausted a lot of energy. Therefore, the amount of food at this time must also be increased as well as more fresh foods should be added so that they can recover their energy.<br>
+,   ( '40f3cc38ef656d749d2e2a368b59711e', 'A5B46B0BE55F8F58150695E37716B424', N'Favorite Female Bird Shots',  GETDATE(), N'Bird Shots',
+	N'Marvel at the beauty and ingenuity of 14 birds that often get overlooked.',
 
-In a period of 2 weeks you should separate the birds after the baby and can take care of them and feed them. When you take care of the little worms, their parents restore their health to prepare for the next spawning. So coming here is basically a successful way to breed blue worms and you will definitely feel very happy with the results that you can achieve.<br>
+	N'<p>Female birds continue to delight and inspire us. From the subtle beauty of a Spruce Grouse hen to the bold russet patches on a Red-necked Phalarope, the female birds featured in this gallery captured the eyes and imaginations of photographers from across North America who entered the female bird category of the&nbsp;<a </a>.</p>
 
-Hopefully, with the deep blue-headed bird farming experiences we bring to you, it will contribute to bringing you the most valuable experiences. In addition, we also bring you experiences to raise green worms. Don''t forget to visit Chu Giong every day to update more information as well as deep green bird farming experience. Wish you success in taking care of the blue worm to achieve the highest quality. See you in the next post.')
-,( '40f3cc38ef656d749d2e2a368b59711e', 'A5B46B0BE55F8F58150695E37716B424', N'The most accurate way to distinguish deep blue birds with roofs',  GETDATE(), N'distinguish birds',
-	N'Distinguishing blue worms is difficult because they are quite similar, because their dragons are not complete, so you only need to look at the island a few times and compare. Do not stare at one animal, looking at it for a long time will cause a phenomenon of dizziness, in the end, each child is the same, so it is impossible to distinguish. Please follow the following article well to identify the blue worm with the most accurate roof.<br>
+<p>Launched in 2021 to call attention to some of the most overlooked birds in the world, the female bird category challenges photographers to focus their cameras and attention on the sex that is too often ignored. Although these shots didn&#39;t take any of the top prizes&mdash;you can see all of the winners&nbsp;<a>here</a>&mdash;we couldn&#39;t help but share these equally inspiring images. You can also find more amazing photography from this year&#39;s competition in our annual&nbsp;<a>Top 100</a>&nbsp;review.&nbsp;</p>
 
-', N'How to distinguish the most standard blue worm bird<br>
-1. Distinguish deep blue head passing drum, roof.<br>
+<p>If after perusing the below gallery you find yourself inspired to pick up a camera and photograph avians on your own, our&nbsp;<a>photography section</a>&nbsp;has&nbsp;everything you need to get started, including&nbsp;<a>tips and how-to&#39;s</a>&nbsp;and Audubon&#39;s&nbsp;<a>ethical guidelines</a>&nbsp;for wildlife photography. Then get out there&nbsp;and start documenting your favorite winged&nbsp;subjects&mdash;male<em>&nbsp;and</em>&nbsp;female.&nbsp;</p>
 
-With flying worms, distinguishing birds is not the simplest thing, especially for those who do not have too much experience. The reason this is so difficult is because when birds are moving, they are perfecting their plumage. You can tell the blue worm from the roof by looking at the border of the feathers on the front of the chest. If a bird has a dark black chest and two tail feathers that are longer than elsewhere, it''s a male. In contrast, the blue worms, the feathers on the chest border will be much lighter without 2 strands like the male bird.<br>
-2. Deeply distinguish the green head of the drum, the roof<br>
+<h3>Northern Cardinal by Nicole Land (above)</h3>
 
-It is not too difficult to distinguish blue worms from male and female because they have acquired the most complete plumage. At this time, distinguishing male and female birds no longer makes it difficult for you. Whether you are a seasoned professional birder or a beginner, it is easier than ever to recognize. There are 2 very important characteristics and if you want to know correctly, you must pay attention.<br>
-- Feathers: You notice the 2 feathers in front of the bird''s neck, if the birds are dark black, it is definitely a male bird. As for the female birds, their plumage is very light in color. Not too difficult, right?<br>
+<p><strong>Location:&nbsp;</strong>Cotulla, Texas<br />
+<strong>Behind the Shot:</strong>&nbsp;I was taking a photography workshop and exploring different camera bodies and lenses when I took this photograph. While using the Canon R5 (600mm lens) in shutter mode, we focused on the common birds in front of us&mdash;which happened to be a beautiful female Northern Cardinal bathing at the bird blind. Bath time is a great opportunity to practice photography skills like the importance of shutter speeds versus aperture settings. This&nbsp;cardinal saw me shooting and didn&rsquo;t seem to care. The bath was way more important, so I was able to get many shots of various bathing poses.&nbsp;<br />
+<strong>Female ID tip:&nbsp;</strong>Female Northern Cardinals are readily identifiable with their gorgeous beige and subtle red plumage.&nbsp;</p>
 
-- Mop tail: This is a feature that can give an accuracy rate of 99.9%. Because birds with reed tails are completely empty. You pay close attention to the tail of the bird, the male birds often have 2 tail feathers in the middle, and the characteristics of these feathers are always much longer than the rest of the feathers. The blue worms are different if they don''t have these 2 strands, if they do, the survival rate is also very low<br>
+<h3>Belted Kingfisher by Jerry amEnde</h3>
+
+<p><img alt="From a large snag crossing the frame to the right, a female Belted Kingfisher launches into the air leftward with its wings outstretched. The bird’s heavy bill, spiky crest, and chunky head and body are in profile, its rusty breast stripe on full display." src="https://media.audubon.org/2023-07/2_Web_Aud_APA-2023_Belted-Kingfisher_A1_25981-0_Photo-Jerry-amEnde.jpg?width=2400&amp;auto=webp&amp;quality=90&amp;fit=bounds&amp;disable=upscale&amp;blur=200" /></p>
+
+<p>Belted Kingfisher.&nbsp;Photo:&nbsp;Jerry amEnde/Audubon Photography Awards</p>
+
+<p><strong>Location:&nbsp;</strong>Bombay Hook National Wildlife Refuge, Delaware<br />
+<strong>Behind the Shot:&nbsp;</strong>Belted Kingfishers are one of the most skittish birds to photograph. As soon as you get out of the car, they are almost sure to fly away. Therefore, the technique I&rsquo;ve developed to photograph them is to find a favorite perch that the birds regularly return to, park a respectful distance away, and wait while using the car as a blind. I found one such perch at Bombay Hook National Wildlife Refuge and shot several images of this female. Then, suddenly, she flew off the perch, and I was able to catch a photo of her in lovely morning light.<br />
+<strong>Female ID Tip:&nbsp;</strong>In Belted Kingfishers, the&nbsp;reddish patches on the chest and sides are only present in females.</p>
+
+<h3>Costa&#39;s Hummingbird by Melissa Harnish</h3>
+
+<p><img alt="A green and brown female Costa’s Hummingbird, wings still and extended forward, hovers in the middle of the frame as it uses its long beak to feed from bright orange flowers that are in focus in the forefront and blurry in the background. " src="https://media.audubon.org/2023-07/3_Web_Aud_APA-2023_Female-Costa%27s-Hummingbird_Mexican-Bird-of-Paradise_A1_25960-1_Photo-Melissa-Harnish.jpg?width=2400&amp;auto=webp&amp;quality=90&amp;fit=bounds&amp;disable=upscale&amp;blur=200" /></p>
+
+<p>Costa&#39;s Hummingbird.&nbsp;Photo:&nbsp;Melissa Harnish/Audubon Photography Awards</p>
+
+<p><strong>Location:</strong>&nbsp;Oro Valley, Arizona<br />
+<strong>Behind the Shot:&nbsp;</strong>Photographing hummingbirds has always been an obsession of mine. There is something about the detail of their tiny feathers and straw-like tongues that fascinates me. On this particular morning, I had gone outside my home, coffee in hand, when I noticed this female Costa&rsquo;s Hummingbird flitting from flower to flower. There was something about her simple green iridescent feathers against the bright orange flowers of the Mexican Bird of Paradise that compelled me to grab my camera. Little did I know that capturing this image would occupy my time for several hours; every time I raised my camera to click the shutter, she would dart away, leaving me to patiently wait for her return. After several hours, I finally got the shot.&nbsp;&nbsp;<br />
+<strong>Female ID tip:&nbsp;</strong>Female Costa&rsquo;s Hummingbirds are overall green and gray, and lack the male&#39;s bright magenta-purple gorget and head feathers.&nbsp;</p>
+
+<h3>Pine Grosbeak by Yan Zhang</h3>
+
+<p><img alt="Against a blurred green and red background a creamy-gray female Pine Grosbeak hangs upside down from a single branch feeding on its red berries in the center of the frame. The bird’s yellowish cap and cheeks give away the bird’s sex. " src="https://media.audubon.org/2023-07/4_Web_Aud_APA-2023_Pine-grosbeak-_Crabapple-tree_A1_24631-1_Photo-Yan-Zhang.jpg?width=2400&amp;auto=webp&amp;quality=90&amp;fit=bounds&amp;disable=upscale&amp;blur=200" /></p>
+
+<p>Pine Grosbeak.&nbsp;Photo:&nbsp;Yan Zhang/Audubon Photography Awards</p>
+
+<p><strong>Location:</strong>&nbsp;Pickering, Ontario, Canada<br />
+<strong>Behind the Shot:&nbsp;</strong>Pine Grosbeaks are a magnificent winter bird, but they are fairly uncommon in Southern Ontario, as they breed in Northern Canada and the western high mountain areas across North America. This image was taken during an &ldquo;irruption year,&rdquo; when Pine Grosbeaks fly south in search of food. Photographing this female was really challenging because the birds were shy and so busy eating the berries on the trees. Fortunately, after flying away, they came back within an hour, and I captured this image using a 600mm lens to keep my distance.<br />
+<strong>Female ID Tip:</strong>&nbsp;Female Pine Grosbeak can be identified by their gray and yellow feathers; males are pinkish red.</p>
+
+<h3>Gambel&#39;s Quail by Jen Shepherd</h3>
+
+<p><img alt="A gray female Gambel’s Quail, its back toward the camera, looks to the left as its black head plume pokes forward like an avian fascinator. Bright pink flower petals surround the bird and contrast with the brown stony ground. " src="https://media.audubon.org/2023-07/5_Web_Aud_APA-2023_Gambel%27s-Quail_A1_22557-2_Photo-Jen-Shepherd_0.jpg?width=2400&amp;auto=webp&amp;quality=90&amp;fit=bounds&amp;disable=upscale&amp;blur=200" /></p>
+
+<p>Gambel&#39;s Quail.&nbsp;Photo:&nbsp;Jen Shepherd/Audubon Photography Awards</p>
+
+<p><strong>Location:</strong>&nbsp;Scottsdale, Arizona<br />
+<strong>Behind the Shot:&nbsp;</strong>In January, my two daughters and I spent a week in gorgeous Scottsdale for our winter vacation. Back in the 1990s l lived in the desert and loved every moment. As a lifelong photographer, I hoped to take some wildlife images on this trip and packed my Sony Alpha 7 IV with a 200-600mm lens. Before sunrise, I decided to hike up a small ridge to see what animals might be waking up. I spotted a group of birds skittering about but couldn&rsquo;t identify them because it was still too dark. Soon, though, it was bright enough for me to see that they were Gambel&rsquo;s Quail. This female paused near some rose petals, so I crouched down as low as I could and began photographing. I waited patiently until she turned her head slightly and then snapped the shutter. One second later the group ambled away.&nbsp;<br />
+<strong>Female ID Tip:&nbsp;</strong>The lighter brown feathers and short plume indicate a female Gambel&rsquo;s Quail; males have black facial feathers and a much more prominent, curled plume.</p>
+
+<h3>Wood Duck by Tammy Kokjohn</h3>
+
+<p><img alt="A brown and white female Wood Duck sits on the ground with two chicks, its iridescent blue-purple feathers visible just above the grass line. One chick stands on the mom’s back, rubbing its head against her check, its mouth barely open." src="https://media.audubon.org/2023-07/6a_Web_Aud_APA-2023_Wood-Duck-hen_A0_24549-1_Photo-Tammy-Kokjohn.jpg?width=2400&amp;auto=webp&amp;quality=90&amp;fit=bounds&amp;disable=upscale&amp;blur=200" /></p>
+
+<p>Wood Ducks.&nbsp;Photo:&nbsp;Tammy Kokjohn/Audubon Photography Awards</p>
+
+<p><strong>Location:</strong>&nbsp;Santee, California<br />
+<strong>Behind the Shot:&nbsp;</strong>Every spring I return to one of my favorite local lakes to see the newly hatched Wood Duck ducklings. One April morning I quickly spotted a Wood Duck hen with ducklings in the distance. I found a soft patch of grass some distance away to sit; maintaining a respectful distance is crucial in allowing adults and their ducklings to not feel threatened and for me to witness their true behavior. When I first spotted this family, they were foraging along the shoreline, nibbling the freshly sprouted grasses. Soon the hen herded her babies together and guided them up the slope to lay in the patch of grass for nap time.&nbsp;As they began to relax, one little duckling curled up close to the mother, and a second hopped on her back, sharing what looked to me like an expression of love. These adorable baby ducklings melted my heart.&nbsp;<br />
+<strong>ID Tip:</strong>&nbsp;Female Wood Ducks look like a much more understated version of the male. They have the same backswept crest and stately shape, but where the males are boldly plumed the females sport delicate beige and iridescent blue-purple. Females also sport a strong white eye ring.&nbsp;</p>
+
+<h3>American Kestrel by Robert Kaplan</h3>
+
+<p><img alt="Against a blurry brown background an American Kestrel appears to hang in mid-air, its streaked underside facing the viewer, striped wings outstretched, and heavily barred tail fanned out. In its beak is a large red insect it just caught. " src="https://media.audubon.org/2023-07/6b_Web_Aud_APA-2023_American-Kestrel_A1_25457-0_Photo-Robert-Kaplan.jpg?width=2400&amp;auto=webp&amp;quality=90&amp;fit=bounds&amp;disable=upscale&amp;blur=200" /></p>
+
+<p>American Kestrel.&nbsp;Photo:&nbsp;Robert Kaplan/Audubon Photography Awards</p>
+
+<p><strong>Location:</strong>&nbsp;Brooklyn, New York<br />
+<strong>Behind the Shot:&nbsp;</strong>Kestrels have always been one of my favorite birds to photograph&mdash;small, colorful, and very photogenic. For the last several years there have been one or two locations around New York where kestrels reliably feed on voles and insects. One of those places is at Floyd Bennett Field in Brooklyn. The challenge in capturing this shot was making an educated guess to which of the available perches the kestrel was going to land on. I positioned myself with the sun at my back and tracked the flight of the bird as it approached a nearby perch. When he flew off it and went to the ground in search of food, I was prepared, capturing the bird&#39;s return flight and the bug in its beak. I was gratified to see later that I had also captured, in my experience, a unique wing position. In documenting this behavior, I hope the public will see the beauty and ferociousness in North America&#39;s littlest falcon.<br />
+<strong>Female ID Tip:</strong>&nbsp;Female American Kestrels have a number of plumage differences from males, but the most visible one in this photo is the dark barring along each tail feather. Male American Kestrel tail feathers are entirely red with a black tip.</p>
+
+<h3>Bushtit by Ethan Cleveland</h3>
+
+<p><img alt=" A gray, puffed up Bushtit, its tail pointing skyward, perches in the center of the frame on a thin brown branch that extends forward and off the right side of the image. A mix of in-focus and blurry branches make up the background and foreground. " src="https://media.audubon.org/2023-07/7_Web_Aud_APA-2023_Bushtit_Y0_25809-2_Photo-Ethan-Cleveland.jpg?width=2400&amp;auto=webp&amp;quality=90&amp;fit=bounds&amp;disable=upscale&amp;blur=200" /></p>
+
+<p>Bushtit.&nbsp;Photo:&nbsp;Ethan Cleveland/Audubon Photography Awards</p>
+
+<p><strong>Location:&nbsp;</strong>Denver, Colorado<br />
+<strong>Behind the Shot:&nbsp;</strong>Early one morning I stepped out on my back deck to watch the small flock of Bushtits I saw patrolling my bird feeder. I pulled out my Nikon D3200 and a 300mm F4 lens that my grandpa had lended me and started taking some experimental shots of the birds. I was enjoying identifying the different eyes of the males and the females when I noticed one particular yellow-eyed female edging confidently along a twig toward where I was crouching, intent on the bird feeder. I raised my camera, carefully placed my focus point on the bird&#39;s eye, adjusted my shutter speed to 1/1000 of a second, and was lucky enough to achieve this sharp image!<br />
+<strong>Female ID Tip:&nbsp;</strong>Female Bushtits are easy to identify once you know what to look for: Unlike males and juveniles, which have dark brown irises, female Bushtits have light yellowish-olive eyes.</p>
+
+<h3>Black-throated Blue Warbler by ML Strahlendorff</h3>
+
+<p><img alt="An olive-colored female Black-throated Blue Warbler curiously peaks around a rock at a blurry Black-and-White Warbler bathing in the foreground. The water the bird is bathing in runs from the right of the image to the left and off the rock. " src="https://media.audubon.org/2023-07/8_Web_Aud_APA-2023_Black-throated-Blue-Warbler_A0_25905-3_Photo-ML-Strahlendorff.jpg?width=2400&amp;auto=webp&amp;quality=90&amp;fit=bounds&amp;disable=upscale&amp;blur=200" /></p>
+
+<p>Black-throated Blue Warbler and Black-and-white Warbler.&nbsp;Photo:&nbsp;ML Strahlendorff/Audubon Photography Awards</p>
+
+<p><strong>Location:</strong>&nbsp;Metuchen, New Jersey<br />
+<strong>Behind the Shot:&nbsp;</strong>About 10 years ago I started turning what had been a conventional suburban yard into a chemical-free habitat garden filled with native plants and birdbaths. One of my great rewards has been the visits by migratory birds who stop to glean insects, eat seeds and berries, drink, and bathe. One of the most popular spots in the garden is this bubbler fountain constructed from rocks salvaged from a local excavation job. The large rock that serves as the platform has a natural, shallow depression just deep enough for small birds to safely splash. I had been watching the Black-and-white Warbler in the front when I saw the Black-throated Blue female peering out from behind the top rock, intently eying the Black-and-white and the spot it was enjoying.&nbsp;<br />
+<strong>Female ID Tip:</strong>&nbsp;Female Black-throated Blue Warblers look quite different from their male counterparts, but both sexes share one field mark that lets you know what species you&rsquo;re looking at: a small white patch on each wing. No other North American warbler has this handy plumage detail.</p>
+
+<h3>Yellow Warbler by Heather Mall</h3>
+
+<p><img alt="A highlighter-bright female Yellow Warbler with only black on its wings sits tall on a conifer branch to the right of the frame. The bird is surrounded by vibrant green needles and small brown pinecones. " src="https://media.audubon.org/2023-07/9_Web_Aud_APA-2023_Yellow-Warbler_A1_26651-1_Photo-Heather-Mall.jpg?width=2400&amp;auto=webp&amp;quality=90&amp;fit=bounds&amp;disable=upscale&amp;blur=200" /></p>
+
+<p>Yellow Warbler.&nbsp;Photo:&nbsp;Heather Mall/Audubon Photography Awards</p>
+
+<p><strong>Location:</strong>&nbsp;Richard Bong State Recreation Area, Wisconsin<br />
+<strong>Behind the Shot:</strong>&nbsp;We visited<strong>&nbsp;</strong>Richard Bong State Recreation Area in hopes of photographing Yellow-headed Blackbirds. While driving through, there were several birds we were hearing, but few we were seeing. It looked like it was going to start raining, so we parked our car at one of the stops and listened to the beautiful bird calls. I was looking out the car window with my camera when I noticed movement in the bushes in front of me. A female Yellow Warbler popped up and began foraging through the boughs. I was in awe of her beautiful plumage against the greenery and started taking photos. Looking back at my shots, I saw this one. It&#39;s one of my favorite images that I&rsquo;ve ever taken, and for me, it&#39;s a reminder that something small can impact your life in a big, beautiful way.<br />
+<strong>Female ID Tip:&nbsp;</strong>Female Yellow Warblers are bright pure yellow and lack the reddish chest streaks frequently seen on male Yellow Warblers.</p>
+
+<h3>&nbsp;Eastern Bluebird by Yan Zhang</h3>
+
+<p><img alt="A female Eastern Bluebird sits in the middle of the frame in profile and facing left, its softly colored blue back and rusty belly looking almost frosty. Surrounding the bird and filling the frame are branches and red berries covered in a layer of ice." src="https://media.audubon.org/2023-07/10a_Web_Aud_APA-2023_Eastern-bluebird_Crabapple-tree_A1_24675-0_Photo-Yan-Zhang_0.jpg?width=2400&amp;auto=webp&amp;quality=90&amp;fit=bounds&amp;disable=upscale&amp;blur=200" /></p>
+
+<p>Eastern Bluebird.&nbsp;Photo:&nbsp;Yan Zhang/Audubon Photography Awards</p>
+
+<p><strong>Location:&nbsp;</strong>Pickering, Ontario, Canada<br />
+<strong>Behind the Shot:&nbsp;</strong>After a day of freezing rain and a sudden drop in temperature,&nbsp;the trees and plants were completely covered in ice. Everything was frozen! For me, photography is about more than getting beautiful images; I prefer to learn about bird behavior and document it through my lens. So I went to see how the birds survived such a severe change in weather. Fortunately, I found this female Eastern Bluebird perched on the branch of a fruit tree.<br />
+<strong>Female ID Tip:</strong>&nbsp;Eastern Bluebird females like this one are generally lighter in color than their similarly marked male counterparts.</p>
+
+<h3>Red-necked Phalarope by Mike Diersing</h3>
+
+<p><img alt="A Red-necked Phalarope with its white belly and outstretched wings facing the viewer looks frozen in mid-air as it fills the center of the image. The bird’s beak is slightly open against a blurry brown, green, and blue background." src="https://media.audubon.org/2023-07/10b_Web_Aud_APA-2023_Red-necked-Phalarope_A1_26861-4_Photo-Mike-Diersing.jpg?width=975&amp;auto=webp&amp;quality=90&amp;fit=bounds&amp;disable=upscale&amp;blur=200" /></p>
+
+<p>Red-necked Phalarope.&nbsp;Photo:&nbsp;Mike Diersing/Audubon Photography Awards</p>
+
+<p><strong>Location:&nbsp;</strong>Nome, Alaska<br />
+<strong>Behind the Shot:&nbsp;</strong>Sitting at the edge of a pond in chest waders, I was looking to photograph grebes. Toward the center of the pond, just beyond some grasses, I saw a cluster of Red-necked Phalaropes foraging in their distinct zig-zag pattern. Then, out of the corner of my eye, I noticed a lone female phalarope in stunning full breeding plumage making a beeline toward the group. Thinking I was probably too late, I managed to acquire focus and get a sharp shot of her banking in a ventral pose, calling to announce, &quot;Hey folks, I&#39;m back!&quot; I was so thrilled to get a sharp flight shot that I overlooked the five or so gallons of ice-cold Alaskan pond water that came over the top of my waders!&nbsp;<br />
+<strong>Female ID Tip:</strong>&nbsp;Like the Belted Kingfisher, phalaropes are the rare North American species where the females are more colorful than the males. In this case, the bright red neck and dark facial feathers indicate that this bird is female.</p>
+
+<h2>Spruce Grouse by Mark Staples</h2>
+
+<p><img alt="Against a green blurry background the profile of a female Spruce Grouse’s head and body faces left and fills the frame. The bird’s eye and heavily patterned tan and brown plumage is crisply captured in this close-up. " src="https://media.audubon.org/2023-07/11_Web_Aud_APA-2023_Spruce-Grouse_A0_24635-2_Photo-Mark-Staples.jpg?width=975&amp;auto=webp&amp;quality=90&amp;fit=bounds&amp;disable=upscale&amp;blur=200" /></p>
+
+<p>Spruce Grouse.&nbsp;Photo:&nbsp;Mark Staples/Audubon Photography Awards</p>
+
+<p><strong>Location:&nbsp;</strong>Superior National Forest, Minnesota<br />
+<strong>Behind the Shot:&nbsp;</strong>While on a July hike in Superior National Forest, I noticed several young Spruce Grouse chicks had suddenly appeared among the undergrowth, calmly foraging along the hiking trail. They seemed totally unaffected by my accidental intrusion and continued to wander in all directions in search of food. As I reached for my camera, the mom hopped onto a nearby log to get a closer look at me. Before she returned to her brood, I was able to make an intimate portrait of the hen and her intricate feather pattern against a vibrant green backdrop. As both a birder and a conservationist, it was an incredible experience to watch this resident of the coniferous forest thrive in a protected habitat.<br />
+<strong>Female ID Tip:&nbsp;</strong>Female Spruce Grouse are overall speckled brown, while males&rsquo; heads and necks are mostly black.</p>
+
+<h3>Laysan Albatross by Hob Osterlund</h3>
+
+<p><img alt="The stark white heads and gray bodies of two female Laysan Albatrosses fill the frame as each bird faces the opposite way, their breasts touching and beaks crossed to create a heart shape against the blurry green background. " src="https://media.audubon.org/2023-07/12_Web_Aud_APA-2023_Laysan-Albatross_A1_24789-1_Photo-Hob-Osterlund.jpg?width=975&amp;auto=webp&amp;quality=90&amp;fit=bounds&amp;disable=upscale&amp;blur=200" /></p>
+
+<p>Laysan Albatross.&nbsp;Photo:&nbsp;Hob Osterlund/Audubon Photography Awards</p>
+
+<p><strong>Location</strong>: Kīlauea, Kaua&rsquo;i, Hawaii<br />
+<strong>Behind the Shot:&nbsp;</strong>Laysan Albatross, like all other albatross species, are known for affectionate behaviors with their mates and chicks. Unmated pairs can also be very demonstrative with each other, and so can mated pairs who happen to be taking the year off from nesting. These two females, a known mated pair that skipped the breeding season, met up at the edge of a field in a colony where they typically nest, away from the other birds, for a session of preening, snuggling, and napping. These displays are common among mōlī, as they are known in the Hawaiian language. Since it was a late winter afternoon, the sun&rsquo;s long rays put a spotlight on their bodies but kept the woods and the ravine behind them dark. I sat on the ground about 50 feet away and took a series of shots. The birds appeared oblivious to me.&nbsp;<br />
+<strong>Female ID Tip:</strong>&nbsp;Laysan Albatross males and females have very similar plumage, but males can be up to 25 percent more massive than females. Female-female pairs can be identified by the presence of two eggs in a single nest.&nbsp;</p>
+')
+
+
+,   ('ff9086582c62af630123c568ca5db776', '882BDE1798D4D1516641A2D190D58CAC', N'Apparently Magpies and Crows Are Using "Anti-Bird Spikes" to Make Their Nests', GETDATE(), N'interesting facts about birds',
+	N'Birds often incorporate human-made materials while nest building, but a new study shows European corvids are taking the idea to the extreme.',
+
+	N'<p>Humans have made the world less hospitable for birds in many ways. One obvious and intentional example of this can be found in towns and cities worldwide: anti-bird spikes. The pointy wires you might see attached to roofs, ledges, and light poles are meant to deter urban species like pigeons from landing, pooping, and even nesting where people don&rsquo;t want them to. But in an avian act of poetic justice, a handful of European birds have struck back.</p>
+
+<p>Apparently Carrion Crows and Eurasian Magpies are stealing and repurposing the spikes as a nest-building material. Nests featuring the deterrent were documented in&nbsp;<a>a study</a>&nbsp;published Tuesday in the Dutch journal&nbsp;<em>Deinsea</em>, an online periodical from the Natural History Museum Rotterdam.&nbsp;<br />
+<br />
+Many birds are known to use human-made elements in their nests. In fact, 176 different species have been documented nest building with synthetic materials, according to&nbsp;<a>another study</a>&nbsp;published this week in the journal&nbsp;<em>Philosophical Transactions of the Royal Society B</em>. Yet the birds in the Dutch study are exceptional for having taken something so purposefully built to minimize their presence and using it to rear the next generation.<br />
+<br />
+&ldquo;It feels very rebellious,&rdquo; says Auke-Florian Hiemstra, lead study author and a biologist researching animal architecture at the Naturalis Biodiversity Center in Leiden, Netherlands. Kevin McGowan, an ornithologist who studies corvid behavior at the Cornell Lab of Ornithology and wasn&rsquo;t involved in the new research, agrees. The behavior conveys a &ldquo;sort of a Bugs Bunny attitude,&rdquo; McGowan says&mdash;though he&nbsp;wasn&rsquo;t particularly surprised to see magpies or crows using the spikes in this way. As he explains, both are&nbsp;<a>smart species</a>&nbsp;and other studies have demonstrated corvids&rsquo; abilities to recognize the function and use of different materials.<br />
+<br />
+In the Tuesday publication, Hiemstra and his co-researchers describe three Eurasian Magpie nests and one Carrion Crow nest that heavily incorporated anti-bird spikes into their construction. These four nests were found between 2021 and 2023, each in a different European city: Rotterdam and Enschede in The Netherlands, Glasgow, Scotland, and Antwerp, Belgium. In addition, the researchers also came across one previously documented&nbsp;<a>2009 instance</a>&nbsp;of a Carrion Crow nest building with roost-deterrent wires&mdash;one of many other names for the spikes&mdash;in their literature review.</p>
+
+<p><img alt="" src="https://media.audubon.org/2023-07/Crow-nest%2C-Rotterdam-%28NL%29-photo-Kees-Moeliker.jpg?width=975&amp;auto=webp&amp;quality=90&amp;fit=bounds&amp;disable=upscale&amp;blur=200" /></p>
+
+<p>An unfinished Carrion Crow nest using anti-bird spikes in the collection of the Natural History Museum Rotterdam.&nbsp;Photo:&nbsp;Kees Moeliker</p>
+
+<p>When Cornelis Moeliker, director of the Natural History Museum Rotterdam and one of the study authors, saw the nests, he was &ldquo;totally baffled,&rdquo; he says. &ldquo;I&rsquo;ve been watching wildlife, and especially urban nature, for about half a century, and I&rsquo;ve never seen something like this. It&rsquo;s almost unbelievable that it actually happens&ndash;I mean, the sheer irony of it.&rdquo;</p>
+
+<h4>One of the recently discovered magpie nests includes about 1,500 visible metal spikes.</h4>
+
+<p>&nbsp;</p>
+
+<p>One of the recently discovered magpie nests now lives at the Leiden museum and includes about 1,500 visible metal spikes. &ldquo;It&rsquo;s quite solid,&rdquo; Hiemstra says, though still light enough to easily pick up. He describes the nest as &ldquo;magnificent and weird looking, but also so well-built and creative.&rdquo; The nest was first noticed by a patient looking out of his Antwerp hospital window in 2021. Soon after, Hiemstra received an email from the man imploring him to come see it.</p>
+
+<p>Meanwhile, in Rotterdam, maintenance workers had found an odd, unfinished crow&rsquo;s nest in a tree and contacted the local natural history museum. From there, the researchers teamed up and tracked down other similar nest observations by scouring the scientific literature, local news reports, and even social media posts.<br />
+<br />
+Based on the the scientists&#39; research, the two corvid species appear to use the anti-bird spikes in slightly different ways. For the crows, the spikes seem purely structural, a material used to fashion a solid foundation. In both crow nests, the wires were incorporated into the base&ndash;interwoven with the points facing inward, below where a softer nest cup would sit. But for the magpies, there was an additional layer of intrigue; not only were the birds using the spikes to build nests, but it&rsquo;s possible they were also employing the devices for their intended purpose&mdash;to ward off other birds. &ldquo;It&rsquo;s a very natural behavior,&rdquo; Hiemstra says. &ldquo;We think these spikes are for nest defense.&quot;<br />
+<br />
+Magpies fabricate domed nests that&nbsp;<a>often incorporate</a>&nbsp;<a>thorny branches</a>&nbsp;and bramble canes into their construction, explains the biologist. The building strategy is thought to help protect their nests from would-be interlopers. Usually, the birds use natural materials, but in at least a few cases, human-made components like knitting needles and barbed wire have been observed in magpie domes.</p>
+
+<p><img alt="" src="https://media.audubon.org/2023-07/Magpie-nest%2C-Partick-Scotland%2C-photo-Max-Crawford.jpg?width=975&amp;auto=webp&amp;quality=90&amp;fit=bounds&amp;disable=upscale&amp;blur=200" /></p>
+
+<p>Eurasian Magpie nest in Scotland with anti-bird spikes especially placed on top of the nest.&nbsp;Photo:&nbsp;Max Crawford</p>
+
+<p>It also appears that the birds specifically sought out the spikes. Two of the newly documented nests, collected by the researchers and brought back to the museum for preservation and display, still had sticky adhesive lingering on the hardware, implying that the animals tore the spikes off of buildings. Although magpies and crows haven&rsquo;t been documented doing this, other birds have. In 2019, a video of a Sulphur-Crested Cockatoo pulling a spiky strip from the ledge of a building in Australia was&nbsp;<a>widely shared</a>&nbsp;online. For the magpies and crows, the spikes are apparently valuable, Hiemstra notes. They must be &ldquo;worth putting in the extra effort.&rdquo;<br />
+<br />
+The idea that the birds could favor these spikes for nesting raises questions the study couldn&#39;t answer. Are they a necessary substitute, made in the absence of sufficient, thorny plants, or is this an adaptive choice? Do the synthetic spikes work better than the natural materials? Addressing those questions, Hiemstra says, would require many more data points and long-term study comparing the nest success of various breeding pairs.<br />
+<br />
+Even if the use of the spikes is simply urban adaptation at play, neither Hiemstra nor McGowan are convinced it&rsquo;s good for the corvids. Both scientists point out that anti-bird spikes can impale birds and other wildlife. Other research, too,&nbsp;<a>has demonstrated</a>&nbsp;that human-made materials in bird nests can cause injuries. In the crows&rsquo; nest, now at the Rotterdam museum, the researchers found a piece of another bird deterrent: anti-bird netting, often placed over garden plots. The netting is known to be dangerous for animals, who often end up entangled in it. To see it in a nest is similarly worrying, notes Moeliker.<br />
+<br />
+For Hiemstra, while the new discoveries are fascinating and inherently humorous, they also highlight a broader issue: the unfortunate prevalence of anti-bird spikes in the first place. &ldquo;I just think it&rsquo;s kind of sad to keep fighting against nature, instead of embracing it as being part of the city.&rdquo;&nbsp;</p>
+
+<div class="bootstrapiso notranslate" data-original-title="" id="mttContainer" style="transform:translate(320px, 267px)" title="">&nbsp;</div>
+')
+
+
+,	( '9b5aefbcffbf716f526dda302be5cdef' , '3C2E0D1CFC3BC009465195E4B5AEC73F', N'Last Gasp for Sandhill Cranes—Act Now!' , GETDATE() , N'protect bird' ,
+	N'As you’ll remember, Kentucky’s Department of Fish and Wildlife Resources unanimously passed its sandhill crane hunting proposal. All eight hunters on the commission think it’s a good idea to shoot cranes in Kentucky. The proposal now goes to the U.S. Fish and Wildlife Service for final approval or denial. The public comment period on the Kentucky sandhill crane hunting proposal ends AUGUST 1 2011. Here are six top reasons to protest this hunt. You’ll find snail and email addresses at the bottom, where you can send your comments. Please act now. If you love the rolling purr of sandhill cranes, let the Feds hear your squawk NOW!',
+
+	N'<p><a ><img alt="" src="http://10000birds.com/wp-content/uploads/2011/07/julvickiecranes.jpg" style="height:611px; width:750px" /></a></p>
+
+<p>photo by Vickie Henderson</p>
+
+<p>&nbsp;<strong>Six Top Reasons to Protest Eastern Flyway Crane Hunting:</strong></p>
+
+<ol>
+	<li>Sandhill cranes have a very low recruitment rate. Our best studies show one in three pairs of nesting cranes successfully producing one fledgling. Remember, they were hunted nearly to extinction in the East before. Why put additional pressure on a recovering species?</li>
+	<li>Current methods of counting the Eastern flyway population are badly flawed, conducted on a volunteer basis and poorly coordinated. A good freezeup can send Central flyway birds into the Eastern flyway, bloating apparent numbers by tens of thousands, only to have them all disappear the next winter.</li>
+	<li>Sandhill cranes look a lot like endangered whooping cranes in questionable light, as at dawn and dusk, when they&rsquo;re most likely to be shot. The eastern population of migratory whooping cranes exists only because of the Herculean efforts of crane conservationists. Why allow hunters to shoot right into the middle of them? Recreational shooting claimed five of our one hundred precious Eastern whooping cranes in the past winter in states&nbsp;<em>without</em>&nbsp;crane seasons. Four were chicks, still clad in brown plumage. One was &ldquo;Superdad,&rdquo; one of the few successful breeding whooping cranes in the entire eastern population. A hunting season on sandhill cranes vastly increases the chance that collateral kill of endangered whooping cranes will occur. We&rsquo;ve only got 400 on the planet. Why increase the odds against them? (Look quickly at the picture at the bottom of this post to see how difficult it can be to discern which species a crane is.)</li>
+	<li>Eastern flyway breeding populations appear to be maxing out their available habitat, and are subject to abundant natural limitations such as ground predation by coyotes, foxes, raccoons and opossums. The handful of pairs that are attempting to nest in Ohio appear to winter in Tennessee. What if they&rsquo;re shot? Could Ohio lose its entire pioneer breeding population?</li>
+	<li>The demonstrated value of live cranes to ecotourism is immense. Vastly more people enjoy simply watching cranes than shooting them. Wildlife managers&rsquo; assertions that crane hunting outside refuges will concentrate the birds inside refuges, &ldquo;improving viewing opportunities for passive wildlife enthusiasts&rdquo; absurdly miss the point that concentrating birds on refuges isn&rsquo;t good for the birds, and insult the sensibilities of wildlife watchers.</li>
+	<li>The imposition of a hunting season on a widely-revered, charismatic, long-lived and visually compelling bird like a crane sets up an artificial and unnecessary friction between hunters and tens of thousands of wildlife watchers, for the benefit of a few hundred hunters in each state. How can that be worth doing for wildlife departments looking to cultivate support from nonconsumptive wildlife observers and enthusiasts? State game departments have a mandate to serve&nbsp;<em>all</em>&nbsp;the citizens of their state, not just the ones with guns.</li>
+</ol>
+
+<p><a ><img alt="" src="http://10000birds.com/wp-content/uploads/2011/07/Julcyndi.jpeg" style="height:480px; width:553px" /></a></p>
+
+<p>The public comment period on the Kentucky Department of Fish and Wildlife Resources sandhill crane hunting season proposal ends August 1, 2011.</p>
+')
+
+
+,	( 'b1fa395c5fa8c10d20990274f0e57a85' , '2B5FD6349E04AB0C1099C266B2A62704', N'Green Herons and their Groovy Necks' , GETDATE() , N'interesting facts about birds' ,
+	N'Back when we used to run the 10,000 Birds ID Clinic (as opposed to just answering lots of e-mails about bird identification!), we received an inquiry about a bird “about the size of a small duck, much bigger than a jay… a crest similar to a jay or a roadrunner and it has a remarkably long neck.” The querent included many other details about location, coloration, and what not but once I heard about that neck, one bird sprung immediately to mind… Green Heron! And wouldn’t you know it, I was right.',
+
+	N'<p>The&nbsp;<strong>Green Heron</strong>&nbsp;(<em>Butorides virescens</em>) is a spectacular species familiar to anyone who pays attention to the places where water meets land. There are so many impressive aspects to this handsome heron. One could dwell on how convoluted its family tree is&hellip; the&nbsp;<em>Butorides&nbsp;</em>complex, as it&rsquo;s called, is surprisingly complex. While&nbsp;<em>Butorides</em>&nbsp;spans the globe, it is either recognized as a single species called&nbsp;<strong>Green-backed Heron</strong>&nbsp;or as three distinct species, the aforementioned New World heron&nbsp;<em>B. virescens</em>&nbsp;along with the Old World&nbsp;<strong>Striated Heron</strong>&nbsp;(<em>B. striatus</em>) and the slate-gray&nbsp;<strong>Lava Heron</strong>&nbsp;(<em>B. sundevalli</em>) of the Galapagos. In either case, green herons are silly with subspecies, which may themselves eventually be recognized as full species.</p>
+
+<p>If taxonomy isn&rsquo;t your bag, you may be impressed to learn that these striking herons are&nbsp;<a >among the few tool-using birds</a>, employing a variety of baits and lures like crusts of bread, insects, and feathers and then lurking motionless in wait for prey to attack the bait.</p>
+
+<p>Still, for me, it&rsquo;s all about the neck&hellip;</p>
+
+<p><a ><img alt="Green Heron neck" src="http://10000birds.com/wp-content/uploads/2008/08/green-heron-neck.jpg" style="height:350px; width:600px" title="Green Heron neck" /></a></p>
+
+<p>Corey&rsquo;s recent post recounting&nbsp;<a >Jamaica Bay in June</a>&nbsp;includes a sweet shot of a heron sipping sinuously while perched in hanging branches. Watching green herons deploy that impossible neck is always a shock, but never more so than that first time one sees it since this bird usually adopts a hunched, short-necked profile. Here is a green heron (of the subspecies&nbsp;<em>B. virescens bahamensis</em>&nbsp;if you&rsquo;re keeping track) in its usual stance:</p>
+
+<p><a ><img alt="" src="http://10000birds.com/wp-content/uploads/2008/06/greenheronslack.jpg" style="height:366px; width:600px" title="Green Heron at rest" /></a></p>
+
+<p>Here is the same bird at full extension:</p>
+
+<p><a ><img alt="" src="http://10000birds.com/wp-content/uploads/2008/06/greenheronstretch.jpg" style="height:418px; width:600px" title="Green Heron stretching" /></a></p>
+
+<p>Pretty cool, huh? That is a lot of neck! The combination of pine green and rust red isn&rsquo;t bad either. Let&rsquo;s do that again&hellip;</p>
+
+<p><a ><img alt="" src="http://10000birds.com/wp-content/uploads/2008/06/Green-Heron-short-neck.jpg" style="height:400px; width:600px" title="Green Heron in short neck stance by Corey Finger" /></a><br />
+Short</p>
+
+<p><a ><img alt="" src="http://10000birds.com/wp-content/uploads/2008/06/Green-Heron-long-neck.jpg" style="height:400px; width:600px" title="Green Heron in long neck stance by Corey Finger" /></a><br />
+Long</p>
+
+<p>As I said, the green heron is hardly rare. No matter where you live, you stand a decent chance of spotting one fishing along a fresh- or saltwater bank, particularly in summer.</p>
+
+<p><img alt="" src="http://10000birds.com/wp-content/uploads/2011/09/fall-Green-Heron.jpg" style="height:1200px; width:600px" title="Green Heron by Corey Finger, who seems way too into these birds!" /></p>
+
+<p><strong>If you manage to catch a great photo of a green heron doing something impressive with its neck, or if you already have such a shot, I invite you to share it with me (mike AT 10000birds DOT com) and I&rsquo;ll add it to this post</strong>. The world needs a gallery devoted to green herons and their groovy necks, wouldn&rsquo;t you agree?</p>
+
+<p><a ><img alt="" src="http://10000birds.com/wp-content/uploads/2008/06/greenherondown1.jpg" style="height:687px; width:499px" title="Green Heron fishing" /></a><br />
+<a >Klaus</a>&nbsp;rose to the occasion with this Green Heron fishing</p>
+
+<p><a ><img alt="" src="http://10000birds.com/wp-content/uploads/2008/06/greenheron_miller.jpg" style="height:662px; width:499px" title="Green Heron waiting" /></a><br />
+<a >Liza Lee</a>&lsquo;s heron is waiting to pounce</p>
+')
+
+
+,	( 'db635b18aeddd06818d3eaee86183bab' , '5010DD042DF3EC8733B0CD78AAFD4E5C', N'Do Birds Have Penises?' , GETDATE() , N'interesting facts about birds' , 
+	N'Most of us have heard the song, “Birds Do It, Bees Do It” but have you every really thought about how a bird fits tab A into slot B? Let’s look at the equipment.',
+
+	N'<p>Most birds do not have a penis. Most birds have a little lump called a cloaca. During the breeding season when hormones are flowing the cloaca swells and birds can get a cloacal protuberance.</p>
+
+<p><a ><img alt="" src="http://10000birds.com/wp-content/uploads/2012/04/cloaca-e1335204890300.jpg" style="height:411px; width:600px" /></a><br />
+Above, a bird bander blows on a&nbsp;<strong>Tufted Titmouse</strong>&nbsp;belly and note the spot below the bare patch&ndash;that&rsquo;s a cloaca. Both sexes have the cloaca, so for most birds sex literally is about bumping uglies. They do not have lengthy love making periods, but fast 1 to 3 second copulations that can happen hundreds of times a day. With birds, it&rsquo;s generally not about quality, it&rsquo;s about quantity.</p>
+
+<p>However, for a few species, things gets&hellip;weird. For example, the&nbsp;<strong>Red-billed Buffalo Weaver</strong>&nbsp;has a pseudo-penis, not quite a cloaca, not quite a penis. He will rub this against the female&rsquo;s genitalia for 10 to 20 seconds and this is supposed to increase the chances that his sperm will stay.</p>
+
+<p><a ><img alt="" src="http://10000birds.com/wp-content/uploads/2012/04/602px-Jurong_Southern_Cassowary-e1335205812850.jpg" style="height:765px; width:600px" /></a></p>
+
+<p><strong>Cassowary</strong>&nbsp;photo by&nbsp;<a  title="User:Uspn">Bj&oslash;rn Christian T&oslash;rrissen</a>&nbsp;via Wikipedia. Beneath that comical exterior lies a super freak of Rick James proportions.</p>
+
+<p>Cassowaries give the Buffalo Weaver a run for his money as both sexes have a penis and clitoris. But the freakiness doesn&rsquo;t end there. Both male and female birds have a phallus but it&rsquo;s not connected to reproductive tissue in either bird. When the male Cassowary inserts what looks like a penis into the female, the semen ejaculates from the cloaca from the base, not the tip.</p>
+
+<p><a ><img alt="" src="http://10000birds.com/wp-content/uploads/2012/04/Blue-winged-Teal.jpg" style="height:450px; width:600px" /></a></p>
+
+<p>All looks quiet and cute for this the&nbsp;<strong>Blue-winged Teal</strong>&nbsp;pair, but what kinky escapades could they be capable of?</p>
+
+<p>But the bird that takes genitalia to a whole new level is the duck. Some people get upset when they see several males gang up on one female (or in some cases a young male) but underneath the feathers of both sexes is a sexual arms race of epic proportions that&rsquo;s been waging for thousands of years. It may look like the males are harming the females but they have their own arsenal of weaponry that James Bond (the spy, not the ornithologist) would envy.</p>
+
+<p>Male ducks have an actual penis, but it&rsquo;s not an ordinary penis, it&rsquo;s an explosive spiral penis and in some cases it&rsquo;s spiny (not necessarily for her pleasure). By bird standards it&rsquo;s huge and some species go the extra mile like the&nbsp;<strong>Argentinian Lake Duck</strong>&nbsp;with its over 16 inch long member (when stretched out,&nbsp;<a >is a little longer than the duck itself</a>).</p>
+
+<p>So, why would a male duck need such a crazy appendage that works at lightning speed to mate with a female? Hens can have a vagina that has multiple compartments and dead ends, kind of like a labyrinth only without Muppets and David Bowie. By closing off certain pockets, she can control where the ballistic spiral penis deposits the semen. Some studies even suggest that most of the forced copulation by males<a >&nbsp;results in their deposits going no where</a>. Like any healthy bird, she wants to make sure that she gets the best of the best when that appendage fertilizes her eggs.</p>
+
+<p>Considering how it is so different from the cloacas other birds use to make eggs, researchers have been fascinated and wanted to know more.&nbsp;<a >And if you have to have a graduate project, why not make it on explosive penises</a>?</p>
+')
+
+
+,	( 'a66a0292d3af450e99bd42136898c36b' , '76FA6E278CE75EB33427682E6C0C360D', N'Domestic or Manky Mallards' , GETDATE() , N'Others bird' , 
+	N'Years ago, Charlie Moores coined the colorful term “manky mallard” to describe the motley menagerie of feral and domestic mallards (If you’re wondering, manky means many things in British parlance from dirty and disgusting to inferior and worthless.) Here at 10,000 Birds, we’ve always celebrated odd ducks, which means manky mallards feel right at home!',
+	N'<p>How varied are the forms of&nbsp;<em>Anas platyrhynchos</em>? You&rsquo;d be surprised. You might first consider the&nbsp;<a >mallard complex</a>&nbsp;and the unseemly hullabaloo of&nbsp;<a >hybrid mallards</a>. However, the&nbsp;<a >malleability of the mallard gene</a>&nbsp;really shines through the&nbsp;dazzling diversity of domestic mallards&hellip;</p>
+
+<p><img alt="" src="http://10000birds.com/wp-content/uploads/2011/02/mankymallard-2.jpg" style="height:400px; width:600px" title="Manky Mallard by Corey Finger" /></p>
+
+<h2>What are the different breeds of domestic duck?</h2>
+
+<p><strong>ABACOT RANGER</strong><br />
+Abacot Ranger or Streicher ducks are often referred to as hooded rangers because of the buff feathering of the hen&rsquo;s head. The ranger drake sports a brown cowl as well as a dappled chestnut chest. Both have white bodies.</p>
+
+<p><strong>ANCONA</strong><br />
+Ancona ducks are among the mankiest of the domestic ducks with mottled monochromatic plumage. Anconas forage actively despite their flightlessness.</p>
+
+<p><strong>AYLESBURY</strong><br />
+The Aylesbury duck was the original white farm duck of Europe, before the Pekin toppled it from its lofty perch. Aylesbury birds are pure white with orange legs, but distinguished from Pekins by their pink bills.</p>
+
+<p><strong>BUFF ORPINGTON</strong>&nbsp;or&nbsp;<strong>BUFF</strong><br />
+Buff Orpington ducks are drab ducks named for the&nbsp;<a  title="What color is buff?">buffy</a>&nbsp;coloration of the females. The male has a brown hood and buff body.&nbsp;Buff Orpington also describes a breed of barnyard chicken.</p>
+
+<p><img alt="" src="http://10000birds.com/wp-content/uploads/2011/02/bufforpington.jpg" style="height:409px; width:600px" title="Buff Orpington by Miles Groth" /><br />
+female Buff Orpington in&nbsp;Salida, CO &copy; Miles Groth</p>
+
+<p><img alt="" src="http://10000birds.com/wp-content/uploads/2011/02/abacotswedishganky.jpg" style="height:443px; width:600px" title="Manky mixed flock by Jay Richmond" /><br />
+Probable Buff Orpington hen flanked by a&nbsp;<strong><a >Ganky Goose</a></strong>&nbsp;and Duclair drake<br />
+Manky mixed flock in NY &copy; Jay Richmond</p>
+
+<p><strong>CALL</strong><br />
+Call ducks are quite compact, smaller than any other domestic and wild mallards. Thanks to their modest proportions, these mini-mallards are better flyers than other mankies.</p>
+
+<p><strong>CAYUGA</strong><br />
+The Cayuga duck takes the striking metallic green plumage of a wild mallard drake&rsquo;s cowl and wears it from tip to tail. In fact, Cayuga males and females both flaunt this dramatic feathering. Interestingly, the entire breed of black ducks, as Cayugas are called, can be traced to a single pair raised in Duchess County, NY.</p>
+
+<p><a ><img alt="Crested Cayuga Duck © Lisette Lebaillif" src="http://10000birds.com/wp-content/uploads/crestedcayugaduck-630x425.jpg" style="height:425px; width:630px" /></a>Crested Cayuga from Dallas/Ft. Worth&nbsp;&copy; Lisette Lebaillif</p>
+
+<p><strong>DUCLAIR</strong><br />
+Duclair ducks are classic manky Mallards with green heads, white bibs, and solid brown, black, or even blue-gray bodies. The distinction between Duclairs and the rarer Pommeranians is lost on me.</p>
+
+<p><img alt="" src="http://10000birds.com/wp-content/uploads/2011/02/brownieandgreenie.jpg" style="height:387px; width:600px" title="Brownie and Greenie - Happy Ducks - by Bonnie Shulman" /><br />
+Brownie and Greenie, probably an Abacot Ranger and a Duclair &copy;&nbsp;<a >Bonnie Shulman</a></p>
+
+<p><strong>INDIAN RUNNERS</strong>&nbsp;or&nbsp;<strong>RUNNERS</strong><br />
+Indian Runners appear attenuated, as if someone stretched a regular duck on a rack. These upright feathered bowling pins come in a variety of colors.</p>
+
+<p><a ><img alt="Indian Runners © Lisette Lebaillif" src="http://10000birds.com/wp-content/uploads/indianrunners-630x366.jpg" style="height:366px; width:630px" /></a>Indian Runners&nbsp;&copy; Lisette Lebaillif</p>
+
+<p><img alt="" src="http://10000birds.com/wp-content/uploads/2011/02/blackindianrunner.jpg" style="height:381px; width:600px" title="Black Indian Runner by Karen" /></p>
+
+<p>These lovelies look like Black Indian Runner x Cayuga. Photo &copy; Karen Davis</p>
+
+<p><strong>KHAKI CAMPBELL</strong><br />
+Khaki Campbell ducks, named for both their primary color and the original breeder, bear a superficial resemblance to wild Mallards. However, their oddly-shaped, heavy bodies and drab plumage give them away. Females have distinctive dark heads and bills.</p>
+
+<p><img alt="" src="http://10000birds.com/wp-content/uploads/2011/02/khakicambellhen.jpg" style="height:395px; width:600px" title="Khaki Cambell hen by Jay Richmond" /><br />
+Khaki Campbell Hen in Central Park &copy; Jay Richmond</p>
+
+<p><strong>MAGPIE</strong><br />
+Magpie ducks , much like actual&nbsp;<a >magpies</a>, make the scene in brilliant black and white, although variations exisit. Magpies are distinguished from Anconas by their more predictable patterning, which includes a smart black tonsure. Magpie ducks don&rsquo;t bulk up as much as many domestic breeds do.</p>
+
+<p><img alt="" src="http://10000birds.com/wp-content/uploads/2011/02/magpieduck.jpg" style="height:450px; width:600px" title="Magpie duck by Meredith Matthews" /><br />
+Magpie duck &copy; Meredith Matthews</p>
+
+<p><strong>PEKIN DUCKS</strong><br />
+Pekin ducks embody exactly what most people envision as the classic domesticated duck. These barnyard beauties have large pure white bodies with orange bills and feet.</p>
+
+<p><strong>ROUEN</strong><br />
+Rouens look a lot like Mallards stuffed with more Mallards, which is to say they are much heavier than their wild kin. In fact, most Rouens can barely fly</p>
+
+<p><a ><img alt="" src="http://10000birds.com/wp-content/uploads/2011/02/mallardswildandrouen1.jpg" style="width:600px" title="Mallards wild and Rouen by Mia McPherson" /></a><br />
+This photo &copy; Mia McPherson of&nbsp;<a >on the wing photography</a>&nbsp;(used with permission) shows how a Rouen differs subtly from a wild Mallard: look for overall beefiness, a sloping forehead, and almost perfect plumage!</p>
+
+<p><strong>SAXONY</strong><br />
+Saxony duck drakes look like large, faded wild Mallards but the females and young are far more fetching in their fawn-colored plumage with white facial markings.</p>
+
+<p><a ><img alt="Sexy Saxony Duck by Mike Fuller" src="http://10000birds.com/wp-content/uploads/2013/02/saxonyhen1.jpg" style="height:452px; width:630px" /></a><a >Sexy Saxony hen</a>&nbsp;from&nbsp;the Grantham Canal at West Bridgford, Nottingham&nbsp;&copy; Mike Fuller</p>
+
+<p><img alt="" src="http://10000birds.com/wp-content/uploads/2011/02/saxonymallard.jpg" style="height:440px; width:600px" title="Saxony hen by Corey Finger" /><br />
+Looks like a Saxony hen &copy; Corey Finger</p>
+')
+
+
+,	( '0aa6e189009d5d7cf2a981e8387fff4d' , 'B7B7A82190F83DF905868B2C1A45CC9B', N'What the Owl Knows: The New Science of the World’s Most Enigmatic Birds: A Book Review' , GETDATE() , N'interesting facts about birds' , 
+	N'How much do you know about owls? This is not a rhetorical question, think about it. I have been fortunate to come across many owls in my birding life, sometimes because I was looking for them, sometimes happily by chance. I''ve observed nesting owls, baby owls, owls eating small rodents, owls coughing up their pellets, a Great Horned Owl flying silently past me, a large Gray Owl sitting still on a pole as a boy approaches, a pair of Owls barking duet in the early evening outside my northern Australian hut as I brush my teeth.
+',
+
+	N'<p>I&rsquo;m sure many of you have had similar experiences. But what do we know beyond these commonly seen and heard behaviors? And how much do we know about why and how they behave this way? Jennifer Ackerman points out in the introduction to&nbsp;<strong><em>What the Owl Knows: The New Science of the World&rsquo;s Most Enigmatic Birds</em></strong>, that we don&rsquo;t know much, but that very soon we may know a lot more.</p>
+
+<p>Ackerman&rsquo;s new book is about owls and owl research&ndash;the knowledge recently and currently being discovered through DNA analysis, new-tech tracking and monitoring, and old-fashioned fieldwork under the auspices of organizations like the Global Owl Project and the Owl Research Institute. It&rsquo;s also about human-owl interaction on an individual level and a wider sociocultural level, and ultimately how we can use all this for habitat and bird conservation. I&rsquo;m wondering as I write if you are shaking your head, uneasy that all these FACTS will interfere with your love of observing owls, an experience that easily borders on the mystical for some of us. I don&rsquo;t think so. Jennifer Ackerman brings a sense of curiosity and wonder to her material, whether she&rsquo;s interviewing evolutionary ecologist Christopher Clark about the mechanics of an owl&rsquo;s silent flight or looking for Northern Pygmy Owl nests in Montana with a team from the Owl Research Institute. She excels at bringing together complicated strands of a scientific question and its answers, but is first and last a storyteller.&nbsp;<em>What the Owl Knows: The New Science of the World&rsquo;s Most Enigmatic Birds&nbsp;</em>is a joyous, fascinating read.</p>
+
+<p><a ><img alt="" src="https://www.10000birds.com/wp-content/uploads/ackerman.page-14-and-15.1000-630x460.jpg" style="height:460px; width:630px" /></a><em>&copy; 2023, Jennifer Ackerman; page 14 photograph &ldquo;courtesy of Ambika Angela Bone&rdquo;; page 15 photograph &ldquo;courtesy of Matt Poole.&rdquo;</em></p>
+
+<p>Writing about owls means writing about roughly 250 species (I counted 245 on the 2022 Clements spreadsheet, but I might have missed a few, and we all know that each classification system is different). The species are taxonomically divided into two families: Tytonidae, Barn-Owls, and Strigidae, Owls, encompassed in one order, Strigiformes. When you look at Clements latest taxonomic spreadsheet, you get a sense of the depth of their relationships to each other and the world. Owls live and migrate from Arctic circumpolar to Colorado prairie to South American rainforest to Southeast Asian islands, Galapagos islands, Canary islands&ndash;many many islands&ndash;to coastal Australia and onward. Their common names reflect their size, appearance, residence, and sometimes their sound, ranging from the simple to the eponymous: Little Owl, Powerful Owl, Pharaoh Eagle-Owl, Cloud-Forest Pygmy-Owl, Pearl-spotted Owlet,&nbsp; Morepork, Christmas Island Boobook, Blakiston&rsquo;s Fish-Owl. Owl numbers and names expand when you look at subspecies: at least 29 Barn Owl subspecies, 16 Burrowing Owl subspecies, 13 Little Owl subspecies, to name the most outstanding. As the names and habitats imply, not all owl species are alike, in behavior, adaptation, relationship to humans, and in how humans perceive them. The range of differences is partly what makes this book so captivating, and also must have been both challenging and intriguing to Ackerman.</p>
+
+<p><em>What the Owl Knows</em>&nbsp;is organized into nine chapters: introduction, adaptation (including vision and flight), research and researchers, vocalization, courtship and breeding, roosting and migration, cognition, and two chapters on owls and humans&ndash;captive owls (not zoos, educational owls) and owls in our cultural history. There is also an afterward on conservation, though it&rsquo;s not clear why this isn&rsquo;t a tenth chapter. The chapters on courtship and breeding and roosting and migration are the longest, which isn&rsquo;t surprising. These are behaviors that are most likely to vary across species and topics that make for compelling stories. But there really isn&rsquo;t a chapter that doesn&rsquo;t offer a good story. Ackerman understands how to set a scene, fill it with charismatic real-life characters, and top it off with magic&ndash;the hoot of a distant Great Gray Owl, a Burrowing Owl evading capture, an old barn sheltering young Barn Owls, a tree full of Long-eared Owls in the middle of a small town in northern Serbia.</p>
+
+<p>Two figures that show up in almost every chapter are David Johnson, director of the Global Owl Project, and Derek Holt, founder and president of the Owl Research Institute, both of whom are involved in so many projects you wonder if they&rsquo;ve mastered the art of slowing down time. Johnson is collecting myths about owls from cultures around the world and is also presiding over a 12-year Burrowing Owl Project that seeks to collect DNA samples, vocalizations, morphological data and map locations for every Burrowing Owl subspecies the world over. Holt and his staff, several of which are also &lsquo;characters&rsquo; in the book, do hard-core field work, finding owls, owl nests, documenting them and working with concerned and unconcerned organizations to inform public policy decision-making. Holt also travels up to Utqiavik, Alaska every June, and has been for over 30 years, to study Snowy Owls and Brown Lemmings. There&rsquo;s also people like Steve Hiro, a retired heart surgeon who volunteers with ORI and has focused on studying the Northern Pygmy Owl;&nbsp; Marjorn Savelsberg, a talented musician who had to give up a professional career when she developed heart disease and who now spends her nights recording Eurasian Eagle Owls in a quarry in the Netherlands; and Gail Buhl of the Raptor Center at the University of Minnesota, who trains rehabilitated captive owls.</p>
+
+<p>&ldquo;Well, that&rsquo;s great,&rdquo; you may be saying, &ldquo;but what does that have to do with owls? I want to read about owls, not people.&rdquo; It is all about the owls. From Holt we learn, amongst many things, his theory about why adult male Snowy Owls are white (hint, it&rsquo;s about what the female Snowy Owl thinks). From Hiro, we learn how Northern Pygmy Owls are &ldquo;rule breakers,&rdquo; not incubating eggs till all are hatched and then raising owlets that mature at the same rate even though the eggs were laid asynchronously (as most owl eggs are). From Savelsberg, we get insight into the mating behavior of Eurasian Eagle Owls, toppling set ideas about owl monogamy; her work has also laid the groundwork for using auditory technology and analysis for other owl studies. From Gail Buhl, we get a point-by-point speech on owl behavior, including how to recognize if an owl is disturbed and afraid. It&rsquo;s a lecture that should be reprinted and posted to every birding social media site.</p>
+
+<p>Johnson&rsquo;s work on cultural folklore is an important element in &ldquo;Half-Bird, Half-Spirit: Owls and the Human Imagination,&rdquo; the chapter examining how we, humans as a group, have looked at owls as symbols of both darkness and light. In some ways, this is a puzzling chapter. It&rsquo;s a huge subject, especially when you start looking at owl symbolism as it appears in art. Humans were drawing owls 36,000 years ago, as Ackerman points out! Ackerman interviews Robyn Fleming, a research librarian at the Metropolitan Museum of Art in New York City, who is documenting every owl-related artwork in the museum&rsquo;s halls and storerooms, so far identifying 550 pieces. The tip of the iceberg when it coming to counting every artwork in the world that depicts owls, but a fair representation of the diverse ways artists and artisans have painted, sculpted, etched, and drawn them across countries and cultures.</p>
+
+<p>Johnson&rsquo;s team has interviewed people about their thoughts and feelings about owls in 26 countries, amassing 6,000 interviews. There is good reason for the interviews, beyond simply amassing information, and this becomes clear in the final chapter, the Afterward, about conservation. Owls are in danger from the usual threats&ndash;habitat destruction, climate change, human intrusion. They are also threatened by cultural beliefs that lead to killing them because they&rsquo;re seen as harbingers of death and bad luck. They are also hunted. People and organizations in Nepal, Zambia, and South Africa have sought to change cultural attitudes, having the most success with school children. Ackerman skirts around a related problem, the trade in owls in markets in southeast Asia and Japan, an outgrowth of Harry Potter mania. It would have been interesting to know more about this gray area&ndash;I&rsquo;m thinking of writer Jon Dunn who poked into South American markets in search of hummingbird artifacts in&nbsp;<em>The Glitter in the Green</em>&ndash;but I can see where this is one direction the author would not want to take.</p>
+
+<p>Black-and-white photographs are scattered throughout the book, illustrating stories, research finds, and artwork (see above). If any bird lends itself to the beauty of black-and-white photographs, it&rsquo;s owls, but I&rsquo;m happy there is also an eight-page color insert displaying 23 photographs of live owls and artwork owls. Color helps show the subtle gorgeous variabilities of different species&rsquo; gray-brown-black-white plumage (particularly notable in a page featuring side-by-side portraits of four totally different species by Brad Wilson, a professional photographer who specializes in dramatic animal portraits) and gives an immediacy to action shots. Photo credits are given in the back of the book; photographers include researchers interviewed in the book as well as birder photographers and professional photographers from around the world&ndash; Matt, Poole, Jeff Grotte, Ceda Vuckovic (who 10,000 Birds readers might know from Dragan&rsquo;s posts), Melissa Groo, There are some stunning images here and Ackerman thanks them graciously in her Acknowledgements.</p>
+
+<p>The &ldquo;Further Reading&rdquo; chapter lists, chapter-by-chapter, books and articles&ndash;scholarly and popular, mostly scholarly&ndash;that I assume were Ackerman&rsquo;s sources of information. The citations are impeccable aside from a practice of listing first name initials before the surname. I just wish there was some kind of footnoting or other indication in the text to help the reader go from fact to source. If you didn&rsquo;t carefully read the table of contents or browse through the book (which you can&rsquo;t easily if you&rsquo;re reading a digital version), you wouldn&rsquo;t even know these sources were there till you were finished with the text, and then you&rsquo;d have to go back and try to match the fact or theory with the source. It&rsquo;s a lot of work. I also would have liked more information about where to find some of the resources described in the text but not listed in &ldquo;Further Reading,&rdquo; for example, the &ldquo;interactive web presentation of vocal individuality in owl species&rdquo; developed by ecologist Pavel Linhart and his colleagues (p. 95). It sounds like fun, but I can&rsquo;t find it anywhere. The Index, the other essential back-of-the-book section, is very well done and useful once you realize that owls are listed by their whole common name (i.e., &lsquo;Powerful Owl&rsquo; is under P). Most of the people interviewed and quoted are listed, illustrations are indicated in italics, and cross-references are smartly employed.</p>
+
+<p>Jennifer Ackerman is one of my favorite bird authors. Her previous books include&nbsp;<a ><em>The Bird Way: A New Look at How Bird Talk, Work, Play, Parent, and Think</em></a>&nbsp;(Penguin, 2020),&nbsp;<em>The Genius of Birds</em>&nbsp;(Penguin, 2016), and&nbsp;<em>Birds by the Shore</em>&nbsp;(Penguin Press, 2019; originally published in 1995 as&nbsp;<em>Notes from the Shore</em>&nbsp;by Viking Penguin); she&rsquo;s written many articles and essays, and can be heard on&nbsp;<a >NPR</a>, the&nbsp;<a >ABA Podcast</a>, and, I&rsquo;m sure, others. In addition to telling stories, she brilliantly evokes sense of place and immediacy of experience. Here is a favorite paragraph from a field trip to a forested mountain north of Charlo, Montana in the company of an ORI team:</p>
+
+<p>This is beautiful Great Gray territory. On the forest floor are small shrubs of snowberry and Mountain Spray, bright patches of spring beauty, and Sagebrush Buttercup. Lichens known as Old-Man&rsquo;s Beard droop from the pines. Sprigs of Wolf Lichen spring from the Douglas firs, a gorgeous, almost iridescent lime green. Wolf Lichen is rich in toxic vulpinic acid and in the old days was boiled up with meat and used to poison wolves. Though it&rsquo;s dry terrain and hunting might be hard here, there are good nesting sites, cool and shady, with some impressive snags rising thirty or forty feet, with bowls large enough to accommodate the massive belly of a brooding female Great Gray. Le Fay [an ORI intern] circles them to spot feathers or pellets. (p. 137)</p>
+
+<p>Though a writer by education and experience, she is knowledgeable about the scientific process and excels at interpreting scientific finding to the popular audience through a combination of on-site visits, interviews, and background research. The former must have been difficult for this book; conceived during the pandemic, Ackerman still managed to visit wildlife centers, banding stations, and field stations in the United States, South American, and Europe. I&rsquo;m wondering if the subject of this book itself presented a challenge. Unlike some of her previous subjects&ndash;Ravens, Kea Parrots, Satin Bowerbirds&ndash;owls don&rsquo;t do much. They roost and hunt, at night (mostly) when we can&rsquo;t see them. I&rsquo;m impressed but not surprised that Ackerman was able to scratch the surface of the maybe wise, always inscrutable face of the owls of the Barn Owl and Owl families and find riches of behavioral diversity and intelligence. This is a great summer read. It is also a book that will inform and elevate one&rsquo;s encounters with owls, by design or by happenstance, and make you think carefully about how we, as humans, interact with them.</p>
+')
+
+
+,	( '3f37126f037169bb080a309c88524d38' , 'AB8EF54222AF80947BD5BCBA22C8C8C5', N'Pacific Black Ducks' , GETDATE() , N'Others bird' , 
+	N'Here in Broome we observe a good selection of ducks and the most prolific at the Broome Poo Ponds is usually the Plumed Whistling-Duck. One of our favourite ducks is the Pink-eared Duck. There are also Hardheads, Wandering Whistling-Ducks, Grey Teal, Australian Wood Ducks and the occasional influx of Freckled Ducks or an Australian Shoveler. The other duck species that we observe often is the Pacific Black Duck and this duck is one of the most versatile ducks in Australia and can be found in most places.',
+
+	N'<p><strong>Pacific Black Ducks</strong>&nbsp;lay up to 16 eggs and sometimes two clutches are raised in a year. However, not all of these ducklings will survive or we&rsquo;d be invaded with ducks! Many bird species have bred around Broome over recent months and the&nbsp;<strong>Pacific Black Ducks</strong>&nbsp;were no different. Every visit to the flooded Roebuck Plains we encountered a growing population of all bird species including the&nbsp;<strong>Pacific Black Ducks</strong>.</p>
+
+<p>In the header photo the light has captured the glossy green feathers in the secondary flight feathers. Some of the larger families of&nbsp;<strong>Pacific Black Ducks</strong>&nbsp;are already reduced in size and by the time the young ducklings look like the adults their numbers have diminished. The stripe around their eyes makes them quite a distinctive duck.</p>
+
+<p><img alt="" src="https://www.10000birds.com/wp-content/uploads/Pacific-Black-Ducks-1-1.jpg" style="height:473px; width:630px" /></p>
+
+<p>&nbsp;</p>
+
+<p><img alt="" src="https://www.10000birds.com/wp-content/uploads/Pacific-Black-Ducks-2-1.jpg" style="height:473px; width:630px" /></p>
+
+<p>&nbsp;</p>
+
+<p><img alt="" src="https://www.10000birds.com/wp-content/uploads/Pacific-Black-Ducks-4-2.jpg" style="height:473px; width:630px" /></p>
+
+<p>&nbsp;</p>
+
+<p><img alt="" src="https://www.10000birds.com/wp-content/uploads/Pacific-Black-Ducks-7.jpg" style="height:473px; width:630px" /></p>
+
+<p>&nbsp;</p>
+
+<p><img alt="" src="https://www.10000birds.com/wp-content/uploads/Pacific-Black-Ducks-8.jpg" style="height:473px; width:630px" /></p>
+
+<p>&nbsp;</p>
+
+<p><img alt="" src="https://www.10000birds.com/wp-content/uploads/Pacific-Black-Ducks-3-2.jpg" style="height:473px; width:630px" /></p>
+
+<p>&nbsp;</p>
+
+<p><img alt="" src="https://www.10000birds.com/wp-content/uploads/Pacific-Black-Ducks-5.jpg" style="height:473px; width:630px" /></p>
+
+<p>&nbsp;</p>
+
+<p><img alt="" src="https://www.10000birds.com/wp-content/uploads/Pacific-Black-Ducks-6.jpg" style="height:449px; width:630px" /></p>
+
+<p>&nbsp;</p>
+
+<p><img alt="" src="https://www.10000birds.com/wp-content/uploads/Pacific-Black-Duck.jpg" style="height:473px; width:630px" /></p>
+
+<p><strong>Pacific Black Ducks</strong></p>
+
+<p>One of the larger families of&nbsp;<strong>Pacific Black Ducks</strong>&nbsp;that we have observed this year appears to have been able to use the culvert under the highway as a place to hide from predators. Often we would see them swim under the highway and reappear on the other side. I am not sure if it was really what helped them be more successful, but it was a great escape route anyway!</p>
+')
+
+
+
+,	( '0251849dac885e1123e573388a937b6d' , '64947A9C9DDEBF65E48B683464B7FBC3', N'Migration of birds' , GETDATE() , N'interesting facts about birds' , 
+	N'Over the summer months, migration is almost at a standstill – at this time of year, breeding is the main focus with parent birds busily raising their offspring.',
+
+	N'<h3>Cuckoos</h3>
+
+<p>Cuckoos are an exception to this, leaving their young to be raised&nbsp;in the nests of other birds.&nbsp;Arriving&nbsp;in Britain and Ireland to breed&nbsp;from the end of April, the bulk of the population has reached our shores by mid May. By the end of June, sometimes only six or so weeks after arrival,&nbsp;many of these birds will have started their return journey to central Africa.&nbsp;Satellite tracking data, collected as part of our&nbsp;<a >Cuckoo Tracking Project</a>, have&nbsp;shown&nbsp;that there is some variation in the timing of individual birds&rsquo;&nbsp;departure, with some leaving 2&ndash;3 weeks before others.</p>
+
+<p>The data also show that birds take one of two main routes&nbsp;when migrating back to the Congo Basin. One course takes Cuckoos south-east of Britain and down through Italy before crossing the Mediterranean Sea;&nbsp;another takes a more westerly line through Spain and then across to north-west Africa. At the time of writing, at least two of this year&rsquo;s tagged Cuckoos appear to be heading for the westerly route, which is&nbsp;<a >associated with higher rates of mortality</a>.</p>
+
+<p>Follow the birds&nbsp;in real-time as they head towards their perilous Sahara crossing on the&nbsp;<a >Cuckoo Tracking Project map</a>.&nbsp;</p>
+
+<h3>Waders</h3>
+
+<p>The past couple of weeks have also seen waders begin to head south.&nbsp;<a >Green Sandpiper</a>&nbsp;and&nbsp;<a >Spotted Redshank</a>&nbsp;are typically the first species to start their migration&nbsp;after breeding in waterlogged wooded areas in northern Europe and across the arctic tundra respectively. Spotted Redshanks arriving in Britain and Ireland at this time of year are typically female birds; chick-rearing is left solely to the males, which remain behind to raise their offspring and so depart from the breeding grounds later.</p>
+
+<blockquote>Passage waders seen at this time of year are likely to be failed breeders, or immature birds which did not complete their migration to their breeding grounds.</blockquote>
+
+<p>Reports of both Green Sandpiper and Spotted Redshank have increased recently, and we can expect them to continue to do so until late August and into September as adult birds are followed by this year&rsquo;s young.&nbsp;</p>
+
+<p>The number of reports of other waders has also increased as&nbsp;<a >Ruff</a>,&nbsp;<a >Curlew</a>, and&nbsp;<a >Dunlin</a>&nbsp;start to pass through. These birds will mostly be failed breeders, or immature birds that never completed the full migration to their breeding grounds.</p>
+
+<h3>Seabirds</h3>
+
+<h2><a >corys_shearwater_neil_bowman.png</a></h2>
+
+<p><img alt="Cory''s Shearwater. Neil Bowman " src="https://www.bto.org/sites/default/files/corys_shearwater_neil_bowman.png" style="height:667px; width:1000px" title="Cory’s Shearwater. Neil Bowman " /></p>
+
+<p>Cory&rsquo;s Shearwater is the largest shearwater species in the world.</p>
+
+<p>The start of July saw the first hints of seabird passage, with a scattering of reports of both&nbsp;the larger shearwaters,&nbsp;<a >Cory&rsquo;s</a>&nbsp;and&nbsp;<a >Great Shearwater</a>. Neither of these species breeds in Britain and Ireland, but they do visit our waters as part of their migration.</p>
+
+<p>Cory&rsquo;s Shearwater breeds on many of the Atlantic islands, including the Azores and the Canaries. Between June and October, large gatherings of these shearwaters can build off south-western Britain. The exact origins of these birds are still unknown, but the large flocks can result in a large number of records from coastal locations in that area. So far this year the number of Cory&rsquo;s Shearwaters reported has been low, but it is still a little early in the season.</p>
+
+<p>In contrast, Great Shearwaters breed on islands in the southern hemisphere. At this time of year, these birds&nbsp;undertake a huge migration up the west coast of Africa and across to the eastern seaboard of the USA, then east to the waters of western and south-western Britain and Ireland. As for Cory&rsquo;s Shearwater, reports of Great Shearwater have been low but are likely to increase in the next month.</p>
+
+<h2><a >wilsons_petrel_birds_online.png</a></h2>
+
+<p><img alt="Wilson''s Petrel. Birds Online" src="https://www.bto.org/sites/default/files/wilsons_petrel_birds_online.png" style="height:667px; width:1000px" title="Wilson’s Petrel. Birds Online" /></p>
+
+<p>Wilson&rsquo;s Petrel has an almost mythical status among birdwatchers.</p>
+
+<p>One species that was fairly well reported from typical seawatching hotspots such as Pendeen and Porthgwarra (Cornwall) and Galley Head (County&nbsp;Cork) was&nbsp;<a >Wilson&rsquo;s Petrel</a>.</p>
+
+<p>Like Great Shearwater, Wilson&rsquo;s Petrel breeds in the southern hemisphere and migrates across the Equator to spend several months in the waters of the North Atlantic.&nbsp;Sightings of this seabird are&nbsp;much-prized by birdwatchers in Britain, and the species has an almost mythical status for many.</p>
+
+<p>Once, it was only possible to see this species from special boat trips from&nbsp;the Isles of Scilly, but in the past few years the number of annual records has increased and birds are even seen regularly from land. This year is no exception, with over 30 birds seen from watchpoints in south-western Britain and Ireland so far.</p>
+
+<h3>Swifts</h3>
+
+<p>You didn&rsquo;t need to head to Cornwall or southern Ireland to witness migration, though.</p>
+
+<blockquote>Screaming flocks of Swifts are a wonderful feature of birding at this time of year.&nbsp;</blockquote>
+
+<p>Late June and early July saw a steady increase in reports of&nbsp;<a >Swifts</a>. Screaming flocks of Swifts are a wonderful feature of birding at this time of year, as adults are joined by their young and groups merge&nbsp;and&nbsp;roam together before starting their southward migration.</p>
+
+<p>By the end of July, almost all of our breeding Swifts will have departed, and it will mostly be later breeding birds migrating through Britain and Ireland from more northerly populations that are seen in our skies.</p>
+
+<h3>Passerines</h3>
+
+<h2><a >sedge_warbler_graham_catley_bto.png</a></h2>
+
+<p><img alt="Sedge Warbler. Graham Catley / BTO" src="https://www.bto.org/sites/default/files/sedge_warbler_graham_catley_bto.png" style="height:667px; width:1000px" title="Sedge Warbler. Graham Catley / BTO" /></p>
+
+<p>Look out for young Sedge Warblers as they disperse from their hatching areas.</p>
+
+<p>Many of our summer migrants will have fledged their first broods and will be in the throes of nesting again. Some species may even raise three broods of young, as in the case of&nbsp;<a >House Martin</a>.</p>
+
+<p>Those young that have already fledged will begin to disperse away from the areas where they hatched and sometimes turn up far from their typical habitats. Species to look out for include&nbsp;<a >Sedge</a>&nbsp;and&nbsp;<a >Reed Warbler</a>,&nbsp;<a >Blackcap</a>&nbsp;(with the young having the same rusty cap as adult females),&nbsp;<a >Chiffchaff</a>,&nbsp;<a >Willow Warbler</a>, and&nbsp;<a >Whitethroat</a>.</p>
+
+<p>A few rarities were seen during the last month with the 13th&nbsp;<a >Pacific Swift</a>&nbsp;for Britain being found in Shetland. An adult&nbsp;<a >Roller</a>&nbsp;on the Isle of Wight would have proved a bigger hit with twitchers had it been found on the other side of the Solent.</p>
+
+<p>A brief&nbsp;<a >Marsh Sandpiper</a>&nbsp;in Kent was most welcome, as were a scattering of&nbsp;<a >Caspian Terns</a>&nbsp;including two groups of two in Norfolk and Northumberland.</p>
+
+<p><img alt="" src="https://www.bto.org/sites/default/files/styles/content_page_-_picture_introduction/public/house_martin_philip_croft_bto.png?itok=F6B3jwak" style="height:800px; width:1250px" /></p>
+
+<p>Philip Croft / BTO</p>
+
+<p>&nbsp;</p>
+
+<p>Some of our summer migrant birds will raise up to three broods each year, including House Martins.&nbsp;</p>
+
+<h2>Looking ahead</h2>
+
+<p><img alt="Yellow-legged Gull. Neil Calbrade / BTO" src="https://www.bto.org/sites/default/files/styles/400_wide/public/yellow-legged_gull_neil_calbrade_0.jpeg?itok=WfO8o8eP" title="Yellow-legged Gull. Neil Calbrade / BTO" /></p>
+
+<p>Juvenile Yellow-legged Gulls often show a pale head with a dark mask running through the eye; juvenile Herring Gulls have more streaking on the head.&nbsp;</p>
+
+<p>Late summer can be likened to late winter, in that the promise of migrant birds is just around the corner &ndash; but just as we see with spring migration in early March, in late July autumn migration can take a little while to get going. The next 3&ndash;4 weeks will follow a similar pattern to those just passed,&nbsp;with the main species migrating being waders and seabirds. However, it is also a good time of year to look out for gulls.&nbsp;</p>
+
+<p><a >Yellow-legged</a>&nbsp;and&nbsp;<a >Caspian Gulls</a>&nbsp;are close relatives of the Herring Gull. Towards the end of summer, numbers of both these species start to build, mainly in the south-east of Britain, as juvenile birds disperse from their hatching grounds. Although they can be tricky to tell apart from other large gulls, with a bit of practice it is possible to pick both species out from their commoner cousins.</p>
+
+<p>At the other end of the size scale,&nbsp;<a >Little Gull</a>&nbsp;is a regular passage migrant, and from late July flocks of these dainty birds can be found at both coastal and inland locations&nbsp;where they will hawk for insects over water. Flocks of gulls will often feast on swarms of emerging flying ants, and it is always worth checking these groups for Little Gulls. The adults&rsquo;&nbsp;pure white wing tips&nbsp;look almost translucent when seen from below and are a good distinguishing feature, together with the species&rsquo;&nbsp;smaller size.</p>
+
+<p><img alt="Pectoral Sandpiper. Edmund Fellowes / BTO" src="https://www.bto.org/sites/default/files/styles/400_wide/public/bto-2019-b11-edmund-fellowes-17302.jpg?itok=NWgF2n13" title="Pectoral Sandpiper. Edmund Fellowes / BTO" /></p>
+
+<p>The yellow legs and sharp demarcation of the streaking on the breast are helpful identification features for Pectoral Sandpiper.&nbsp;</p>
+
+<p>The number and range of wader species&nbsp;on the move will continue to build through July and into August, with&nbsp;<a >Common Sandpiper</a>,&nbsp;<a >Whimbrel</a>,&nbsp;<a >Greenshank</a>, and&nbsp;<a >Ruff</a>&nbsp;all beginning migration. Juvenile birds will pass through a little later than adults, their&nbsp;fresh plumage distinguishing them&nbsp;from adult birds in&nbsp;worn-out breeding plumage or even moulting into their winter dress. Scarcer species to look out for include&nbsp;<a >Red-necked Phalarope</a>,&nbsp;<a >Pectoral Sandpiper</a>, and&nbsp;<a >White-rumped Sandpiper</a>.</p>
+
+<p>If seabirds are your thing, then heading to the coast at this time of year can be rewarding with a range of species starting to turn up.&nbsp;<a >Balearic Shearwater</a>&nbsp;is a close relative of the more familiar&nbsp;<a >Manx Shearwater</a>, with its critically endangered population&nbsp;numbering a mere&nbsp;9,000&ndash;13,000 mature birds.</p>
+
+<p>Each summer, Balearic Shearwaters undertake&nbsp;a post-breeding migration, leaving the Mediterranean Sea and gathering in the North Atlantic. It is at this time of year that birds start to be recorded off the coast of southern Britain, and sites like Portland (Dorset),&nbsp;Strumble Head (Pembrokeshire), and Selsey Bill (West Sussex) are prime locations to look for them, especially during strong south-westerlies.</p>
 '),
-	( 'ff9086582c62af630123c568ca5db776', '882BDE1798D4D1516641A2D190D58CAC', N'Top 6 most intelligent talking birds in the world', GETDATE(), N'top birds', N'The special favor that nature gives to our lives is the talking birds. Because in addition to a very attractive beauty, they can also imitate human voices very accurately. Are you curious and want to know these intelligent birds? Follow our article below. Come to the top 6 most intelligent talking birds in the world.',
-N'Top smartest talking birds in the world.<br>
-1. Bird''s Nest.<br>
 
-Yen Phung is an extremely intelligent bird and has the ability to ignore human voices extremely well. As long as their owners spend a lot of time teaching them, they can remember a lot of words. They are also very gentle and friendly to people, especially possessing a very eye-catching colorful plumage, so they are often chosen to be house birds. According to experienced people, a male bird''s nest has the ability to imitate and pronounce more accurately than female parrots.<br>
-2. Canaries.<br>
 
-Among the ornamental birds that know how to connect, Yeng is the most appreciated for his ability to pronounce words correctly and unexpectedly. This bird is also very quick to talk, when caught up, they can talk all day without getting bored. They possess a blue-black coat color with a colored opening adorned with yellow striped feathers. This cane''s favorite food is insects and fruit. This is also a very popular ornamental bird in Vietnam<br>
-3. African Gray Parrot.<br>
 
-If you ask which is the most intelligent and talking bird in the world, surely no other ornamental bird can match the African gray parrot. They are endowed with an understanding and imitating human voices very well. In particular, they only stick with a single owner. Not only can they imitate the human voice, this African gray parrot is also so intelligent that when in the wild, they can imitate many different sounds to deceive their enemies.<br>
-4. Cockatoos<br>
+	( 'b17fbe0d73b2ebacedfb6ac1b284767c' , 'DEE0822E0D723293B16ABCFE332C8C51', N'Bird care guide' , GETDATE() , N'how to take care bird' , 
+	N'Owning a bird will be one of the most enjoyable and rewarding things you will ever do. To enjoy all the benefits of owning a bird, it is vital you take these steps to ensure they stay healthy and happy.',
+	N'<h2>HOUSING</h2>
 
-If trained properly, this parrot can speak human language very accurately. They can also mimic a wide variety of sounds. If they hear sounds with a constant frequency, they can repeat them very accurately. According to experience, there are some lovers of talking birds when teaching this cockatoo to maintain the same intonation as at the beginning, so they will be easier.<br>
-5. Indian Ring Parakeet<br>
+<p>Birds are housed in aviaries or cages. Aviaries are great for colony housing and are generally considered better for the health of birds, as they allow them to get more exercise. Smaller cages are acceptable but should be big enough for your bird to stretch their wings and fly fully extended from one side of the cage to the other.</p>
 
-Although it is not a common ornamental bird in our country, it must be affirmed that this is one of the most outstanding individuals in the parrot species. They are very intelligent and inquisitive, their ability to remember words is also very good when they can learn about 300 words. They can reproduce human voices when heard over and over again at the highest frequency. They can even speak human language when listening to music. This parrot is also quite popular in the world.<br>
+<p>Get advice on the cage you buy - avoid cheap, galvanized metal cages as birds may chew them and contract zinc poisoning. Your bird shouldn&rsquo;t be able to fit its head through the bars of the cage and it should be strong enough so your bird can&rsquo;t bend them (a cocky will easily chew through the bars of a budgie cage!).</p>
 
-6. Eclectus Parrot<br>
+<p>Cover the floor of the cage with sand grit, newspaper, or anything that is solid and can be removed for regular cleaning. You should clean the cage once a week with a pet safe disinfectant.</p>
 
-It seems that the parrot family is quite a part of the group of the most intelligent and talking birds in the world. The Eclectus Parrot is also one of the ornamental birds that has the ability to imitate human language quite well. They can imitate most things they hear in daily life and even pronounce them correctly. They are so smart that they can memorize and sing an entire song. As a playful, inquisitive bird, they don''t just imitate human voices. Any sound that makes them feel immediately attracted to them will sound very accurately.
-'),
-	( '9b5aefbcffbf716f526dda302be5cdef' , '3C2E0D1CFC3BC009465195E4B5AEC73F', N'What is the most important thing about raising nightingales?' , GETDATE() , N'bird farming experience' ,
-N'Thật sự thiếu sót nếu bạn đang nuôi chim họa mi mà không biết đến những điều cần đặc biệt lưu ý trong quá trình nuôi dưỡng chúng. Trong việc chuẩn bị, chọn lựa thức ăn đến vệ sinh lồng nhốt, chăm sóc chim non, vv… đều cần có những kinh nghiệm riêng, không phải ai cũng nắm rõ, cũng xuất phát từ tình cảm đặc biệt mà chúng tôi dành cho họa mi và với mong muốn sẽ mang đến cho mọi người những bí quyết nuôi chim họa mi quan trọng nhất. Tất tần tất những điều quan trọng nhất về việc nuôi chim này sẽ được chúng tôi gửi đến trong bài viết dưới đây',
+<p><img alt="colourful bird " src="https://images.ctfassets.net/mlpi10u03bra/1W8GICAq37ZWTXvvJxQjx3/4d5bbc07e009a5a26c8e1c8e0777043d/bird_cage_body_image.jpg" /></p>
 
-N'Những lưu ý quan trọng trong việc nuôi chim họa mi. 
-1. Về thức ăn dành cho chim họa mi.
+<h2>PERCHES</h2>
 
-Đúc kết kinh nghiệm từ những người nuôi chim họa mi trên khắp cả nước thức ăn dành cho chim họa mi đóng một vai trò không hề nhỏ quyết định đến ngoại hình, tính cách và giọng hót của chim. Vốn dĩ là một loài chim ở rừng núi họa mi tự nhiên ăn khá tạp chúng thích ăn côn trùng. Khi được thuần hóa và trở thành chim cảnh trong nhà thì chim được người nuôi cho ăn cám và giới chơi chim nói rằng nếu đã cho chim ăn cám thì mãi mãi chỉ cho chim ăn cám. Lượng thức ăn bên ngoài khác như thịt, trừng kiến...bổ xung khi chim cần đến dinh dưỡng cao hơn trong các giai đoạn phát triển. Ngoài ra chất lượng thức ăn dành cho họa mi cũng có những yêu cầu khắt khe. Gạo cho họa i ăn phải trắng, phải thơm ngon tuyệt đối không được mốc. Có như thế chim mới luôn khỏe mạnh. 
+<p>Most cages come with wooden or plastic dowel perches. These are generally too smooth and predispose your bird to overgrown nails and skin lesions of the feet. Ensure you add large diameter sticks and ensure that they&rsquo;re rough! Branches from fruit trees make great perches. It&rsquo;s also a good idea to have at least three different width perches in your bird&rsquo;s enclosure, to mimic its normal habitat.</p>
 
-2. Lồng nhốt cho chim họa mi :
+<h2>BATHING</h2>
 
-Khi nhốt chi họa mi trong lồng phải lựa chọn được lồng có độ cao cần thiết để phù hợp với dáng chim. Vì họa mi có kích thước cũng tương đối lớn so với những loài chim cảnh khác. Treo lồng cũng cần phải có những mẹo để chim mau chóng thích nghi được môi trường. Nên thay đổi vị trí treo lồng ở những nơi khác nhau để chị mạnh dạn hơn. Phải sử dụng áo lồng cho chim để tránh việc chim bị hoảng sợ. Chim họa mi là một loài chim rất dễ bị dị ứng nếu như lồng nuôi không đảm bảo được vệ sinh. Vị trí treo lồng cũng phải được lựa chọn chu đáo vì nếu như treo ở những nơi ẩm thấp có khói bụi, hay những nơi có nhiệt độ cao sẽ ảnh hưởng đến sức khỏe của chim. 
-3. Lưu ý đến việc tắm cho chim.
+<p>We all need to bathe and birds are no exception! Provide a bird bath with fresh, clean water or keep a water spray bottle handy and spray your bird down regularly. This will reduce feather dust and keep your bird&rsquo;s plumage healthy.</p>
 
-Chim rất cần được tắm nắng để bổ xung những vitamin thiết yếu cho bộ lông. Việc tắm nắng cho chim cũng đòi hỏi những kĩ thuật tỉ mỉ. Không nên để chim ở những nơi có ánh nắng quá gắt nên tắm nắng cho chim 1 ngày 1 lần. Tắm nước cũng vậy cũng rất cần thiết để chim vệ sinh bộ lông của mình giúp cho lông chim luôn được óng mượt. 
+<h2>AIR QUALITY AND DRAFTS</h2>
 
-4. Lưu ý đến cách phòng bệnh cho họa mi. 
-Y học thú y phát triển cũng đồng nghĩa với việc bạn sẽ dễ dàng hơn trong việc tìm thuốc cho chim họa mi. Nếu bạn lo ngại những bệnh thường gặp đe dọa đến sức khỏe của chim thì nên tìm những loại thuốc phòng bệnh để chim luôn có được tình trạng sức khỏe tốt nhất 
+<p>Aviaries and cages should not be placed in areas that are prone to dust, excessive tobacco smoke, or too close to a microwave. Cages should be kept away from drafts, such as open windows, doorways and air conditioning units, as your bird can catch a cold that may develop into life threatening pneumonia.</p>
 
-5. Nếu bạn là người mới chơi họa mi.
+<p>Aviaries should have a protected area where birds can escape cold, harsh conditions.</p>
 
-Lời khuyên mà chúng tôi dành cho bạn chính là nên lựa chọn những chú chim đã được nuôi dưỡng qua để trải nghiệm. Bởi nếu bạn chưa có 1 chút kinh nghiệm nào mà nuôi họa mi con ngay thì chắc chắn sẽ gặp rất nhiều khó khăn. Chim họa mi khi được thuần thân thiện là vậy nhưng mới thì rất sợ tiếp xúc với con người. Nó sẽ chẳng có được một tâm lý tốt nhất nếu như bạn chưa có nhiều kinh nghiệm. Hơn nữa việc nuôi chim từ nhỏ phải trải qua một quá trình dài. Nếu không được chăm sóc kĩ càng sẽ có rất nhiều tật lỗi và giọng ca cũng chẳng thể nào xếp vào hàng danh ca được.
+<h2>EXERCISE &amp; TOYS</h2>
 
-Hi vọng rằng những bí quyết nuôi chim hoạ mi mà chúng tôi sưu tầm từ những cao nhân chim cảnh sẽ phần nào giúp ích cho mọi người. Nhất là với những người đang mong muốn trở thành nghệ nhân, chỉ cần với tình yêu và phương pháo nuôi đúng kỹ thuật việc sỡ hữu một chú chim khỏe mạnh sẽ chẳng còn là vấn đề với các bạn. Hi vọng bài viết này sẽ giúp các bạn thành công trong việc nuôi một chú chim họa mi mà bạn yêu mến. Chúc các bạn may mắn'),
-	( 'b1fa395c5fa8c10d20990274f0e57a85' , '2B5FD6349E04AB0C1099C266B2A62704', N'Interesting facts about birds about the nightingale singing' , GETDATE() , N'Interesting facts about birds' ,
-	N'Bất kì một người nuôi chim nào cũng mong muốn được nghe thứ âm thanh tuyệt vời ấy nhất là vào mỗi buổi sáng. Thứ âm thanh mà loại chim này mang lại cho người nghe cảm giác thoải mái, thư giản sau một ngày làm việc. Ẩn sâu trong tiếng hót mê hoặc ấy là những câu chuyện được giới chơi chim truyền lại. Vậy câu chuyện đó là gì? Hãy cùng tìm hiểu Interesting facts about birds trong tiếng hót của chim hoạ mi.',
+<p>Tamed cage birds should be let out regularly, to maintain fitness and avoid becoming overweight. Toys (zinc free) are very important to alleviate boredom. Toys provide entertainment and mirrors are particularly good as your bird will think it has a mate. Shiny toys really capture the imagination of birds and toys that can be shredded are beneficial for stimulation so include some of these, too.</p>
 
-N' Nguồn gốc tiếng hót chim hoa mi qua câu truyện đầy thú vị.
-Từ thuở xa xưa, mọi loài trên thế gian đều được thượng đế ban tặng cho một đặc điểm riêng biệt. Với hoa hồng thì chẳng gì hấp dẫn hơn với vẻ đẹp hương sắc. Đại bàng thì được ưu ái với ngoại hình dũng mãnh, sự mạnh mẽ xé tan bầu trời, đến cây cỏ thôi cũng có những sức hút ma mị làm vương vấn xuyến sao loài người… Chỉ duy nhất chim họa mi là chẳng có gì cả. Loài chim này vốn dĩ rất tự tin khi phải khoác trên mình bộ lông nâu xám tẻ nhat. Càng tự ti hơn nữa khi giọng hót của chúng chỉ là những tiếng kêu khàn khàn chẳng mang nổi 1 âm sắc. Dù rất cố gắng bắt chước giọng hót của những loại chim khác nhưng kết quả chỉ là sự bất lực. Nó rất khao khát để có được một giọng hót hay, nó mong muốn điều đó một cách tha thiết và sẵn sàng đổi bằng chính mạng sống của bản thân mình.
+<h2>FEEDING</h2>
 
-Quá xấu hổ về bản thân, nó cất cánh bay đi trong sự vô vọng, càng bay nó càng thấy mọi thứ trên thế gian này đều đẹp ngoại trừ nó. Cứ như vậy nó mang theo nỗi lòng nặng trĩu nhưng rồi từ trên cao nó nhìn thấy một bông hoa rực rỡ nằm sâu trong thân cây xấu xí đầy gai. Vẻ đẹp cảu bông hoa đó đã khơi dậy cho nó một sức sống diệu kì. Chim họa mi lao xuống như một mũi tên bất chấp nguy hiểm chỉ với mong ước được chiêm ngưỡng vẻ đẹp đó. Những chiếc gái sắc nhọn đã khiến cho lồng ngực của nó bắt đầu rỉ máu. Dường như thời điểm đó đã lay động đến trái tim của nó, trong lúc đau đớn nhất chim họa mi cất tiếng hót. Tiếng hót ấy trong như nước chảy, ngân nga vút lên lan tỏa khắp đất trời, nó hót như chưa bao giờ được hót, hót đến khi những giọt máu cuối cùng rỉ xuống khiến nó chết vì kiệt sức. Và từ đó chim họa mi được biết tới là loài chim có chất giọng hay nhất trần gian.
+<p>Feeding can be very easy, as there&rsquo;s a variety of bird seed mixes readily available. PETstock offers a great range of quality seed and team members will ensure you get the right seed for your breed of bird.</p>
 
-Interesting facts about birds khác về tiếng hót chim họa mi
-Câu truyện thú vị đó dường như đã ăn sâu vào tiềm thức của những người đam mê chim chân chính và cũng 1 phần có thể lý giải được tại sao người ta lại yêu họa mi đến như thế.  Vốn dĩ là một loài chim rụt rè nhút nhát, chim họa mi chỉ cất cao tiếng hát khi nó cảm thấy có cảm hứng cảm thấy mọi thứ xung quanh nó đều tốt đẹp.
+<p>Ensure you provide fresh water and change your bird&rsquo;s seed daily.</p>
 
-điều thú vị về chim hoạ mi hót.
+<p>All birds should be offered fresh fruit and vegetables such as grated carrot, apples, broccoli and sprouts. Many more choices are available and it is best to consult a specific breed book to find the best greens for your bird. Birds are foragers by nature so it is best to offer a wide variety.</p>
 
-Chim hoạ mi hót dường như còn chất chứa bao nỗi niềm, những buổi trưa hè nắng chói chang hay những lúc oi bức khi trời dần chuyển về sáng. Phải tính tế lắm mới cảm nhận được tiếng hót sâu lắng trầm buồn của chúng, phải đồng cảm với loài chim này lắ mới có thể cảm nhận được giọng hót nho nhỏ, thình thoảng lại bọn ben chút vội vã, chút sôi nổi như những người tri kỉ đang tâm sự chuyện thế thái nhân tình. 
+<p>Cuttlefish should be constantly available as this is a great source of calcium and trace elements for your bird and important for beak health and shape.</p>
 
-Chim hoạ mi hót cũng là một dấu hiệu để con người có thể nhận biết về thời tiết. Nếu giữa đêm khoảng 3 giờ sáng bạn bị đánh thức bởi tiếng to vang thì chắc chắn ngày hôm đó sẽ có thay đổi về thời tiết. Còn khoảng 6,7 giờ sáng thấy chim hoa mi hót hay, hót nhiều thì chẳng còn gì tuyệt vời hơn bởi hôm ấy là một ngày đẹp trời. Thú vị hơn mỗi khi chăm bẵm chúng cho chúng ăn rồi lại được nghe chúng hót lúc bầy giờ người nuôi chim mới có thể cảm nhận hết được cái ân cái tình của loài chim này.
+<p>Grit is also essential for aiding the breakdown of seed in the gut. It is also important in breeding birds, to help form egg shell.</p>
 
-Nhìn chung, chim họa my có lối sống khá tình cảm, tuy khó nuôi nhưng nuôi chim hoạ mi hót và hót hay thì lại càng khó. Chính vì vậy hãy chỉ nuôi khi bạn có tình yêu bất tận với chúng, có sự thấu hiểu với chúng.'),
-	( 'db635b18aeddd06818d3eaee86183bab' , '5010DD042DF3EC8733B0CD78AAFD4E5C', N'Top 5 species of birds that greet and sing or are hunted by giants today' , GETDATE() , N'top birds' , 
-	N'Hiện nay thú vui sưu tầm và chăm sóc chim đang được các bạn trẻ và những doanh nhân thành đạt để mắt tới trong đó phải nói đến chim chào mào. Những chú chim chào mào hót hay thuộc hàng độc nhất vô nhị luôn được các đại gia săn đón và sẵn sàng chi với số tiền kết xù để sở hữu. Sở hữu chim hiếm còn thể hiện đẳng cấp của mình trong thú vui chơi chim và trong cuộc sống, góp phần không nhỏ giúp các doanh nhân thành đạt trong công việc.
+<p>Avian vitamin supplements are important and these are available in block or spray form.</p>
 
-Cho dù đang ở giữa thời buổi kinh tế khó khăn nhưng chẳng thể ngăn nổi cách mà các đại gia bạo chi, thậm chí có những người còn sẵn sàng bỏ ra số tiền lên đến cả trăm triệu cho những sự độc lạ của những chú chào mào quý hiếm này. Chắc chắn rằng quý độc giả cũng đang rất nóng lòng muốn biết tại sao những chú chim này lại trở thành niềm ao ước thầm của nhiều đại gia đến vậy. Cùng chúng tôi theo dõi trong bài viết dưới đây nhé.
+<h2>HANDLING</h2>
 
-',N'1.Top những chú chim chào mào hót hay được yêu thích nhất
-1.1: Chào mào Huế
+<p>Birds stress very easily, so let yours get used to you over several days. Sit by the cage without doing anything before building up to putting food through the bars and talking to your bird. Gradually open the cage door and put your hand in with food. Eventually your bird should step onto your finger.</p>
 
-Đến từ xứ Huế mộng mơ, mang trong mình giọng hót đặc trưng bởi vậy những chú chim xuất sắc luôn được các đại gia những người sành sỏi đi tìm. Đặc biệt giống chim này sở hữu một chất giọng cực độc theo giới chuyên môn gọi là giọng thổ to. Khi cất tiếng hót thì tiếng nào ra tiếng đó mỗi lần cất giọng lên là ra liền 6, 7 âm. Chính vì sự đặc biệt của giống chim chào mào quý này đòi hỏi người chơi phải rất sành sỏi, lồng phải được thiết kế tỉ mỉ hơn so với lồng chim thông thường. Sở dĩ rất nhiều người yêu thích loài chào mào này bởi khả năng thi đấu của nó rất tốt, nếu tuyển được một chú chào mào Huế chất lượng và được chăm sóc bởi những người sảnh sỏi nó có thể mang về cho chủ nhận những chiến thằng đầy thuyết phục trong các cuộc thi lớn.
+<p>If your bird is not tame and you must catch it, place a towel (for large parrots) or a handkerchief (for small parrots, finches and canaries) over it and move it quickly to where it needs to go.</p>
+')
 
-1.2: Chào mào Trung Mang
-Bất kì một người chơi chim sành sỏi nào cũng mong muốn sở hữu được một em Trung Mang, sở hữu cái độc đáo không đụng hàng của giống chim này. Thật may mắn khi những chú chim chào mào Trung mang được trời phú cho một chất giọng riêng biệt mà không một loài nào có thể có được. Mỗi khi những chú chào mào hay cất giọng vừa nhanh vừa uy lực trong giọng hót. Sau những giờ làm việc căng thẳng được thả hồn vào trong tiếng chim và nhâm nhi tách trà thư giãn chắc chắn rằng sẽ mang đến những giây phút yên bình và một sự bình an tĩnh lặng trong tâm hồn để nạp lại năng lượng cho những ngày làm việc mệt mỏi tiếp theo. Chính vì sự hiếm có, sự uy vũ trong ngoài hình, và tiếng hót độc lạ tất cả những điều trên có thể lý giải được tại sao đây cũng là giống chào mào được đại gia săn lùng và mong muốn được bổ xung 1 chú vào trong bộ sưu tập chim cảnh của mình.
 
-1.3: Chào mào bạch tạng
-Không thể bàn cãi về sự hiếm có khó tìm của nhưng chú chim chào mào biến đổi gien này được liệt vào hàng cực phẩm trong số các loài chim chào mào đắt tiền. Xét về khoa học mà nói những chú chim mang trên mình bộ lông trắng muốt là do cơ thể bị biến đổi gien hoặc chúng thiếu đi những sắc tố màu quan trọng nên toàn thân trở thành màu trắng. Tuy nhiên điều thú vị để những chú chim này xếp vào hàng đắt tiền là bởi trào lưu săn chào mào bạch tạng của giới chơi chim và đặc biệt là các đại gia lắm tiền nhiều của. Con nào lông càng trắng con nào ngoại hình càng độc cộng với dáng dấp chuẩn và giọng hát hay thì càng được tìm mua với giá trị khủng. Những đại gia sành sỏi về chim rất yêu thích những chú chim này. Một phần để chứng tỏ đẳng cấp, một phần là để thỏa mãn niềm đam mê của mình.
+,	( 'adc8a1de829b5aca8cd6f8a94b4dbf0d' , '15F5C2BCEC0BC8554F7F105AA6528C51', N'HOW TO TO TAKE CARE OF A BIRD: PET BIRD CARE TIPS' , GETDATE() , N'how to take care bird' , 
+	N'Found your dream house sit but wondering whether bird sitting is too much of a… birden? Or maybe you’re a future pet parent, waiting in the wings for an impeckable match to fly your way. Either way, it’s vital you know how to take care of a bird properly, starting with the basics. So here, let’s eggsplore some top tips on general pet bird care to get your feathered journey flying high.',
 
-1.4: Chào mào hồng y giáo chủ (chào mào lửa).
-Không biết giống chim chào mào đắt tiền này đến với chúng ta tự khi nào. Chỉ biết rằng đây là một loại chim được đại gia săn lùng và sẵn sàng bỏ ra một số tiền khổng lồ để mua nó. Có lẽ vẻ đẹp hoàn hảo đến từ những bộ cánh màu đỏ rực rỡ, bởi những chiếc mào đỏ trên đầu đã khiến cho những kẻ say chìm mê mệt. Những chú chim chào mào đắt đỏ này được ví như biểu tượng của sự may mắn, biểu tượng của sự tài lộc cho những ai sở hữu. Có lẽ cũng chính vì điều đó mà chúng được săn lùng với mong muốn mọi việc đều thuận lợi suôn sẻ. Chào mào hồng y giáo chủ cũng chính là một trong những món quà ý nghĩa được dùng để làm quà biếu.
+	N'<h2>Get the right bird cage</h2>
 
-11.5: Chào mào nữ hoàng
+<p>Once you&rsquo;ve taken the leap and decided to adopt a bird, the first thing you need to do before learning <strong>how to take care of a bird</strong> is to choose the right cage. When it comes to your bird&rsquo;s cage, bigger means better. The more space they&rsquo;ve got to move around in a large cage, the happier they&rsquo;ll be. And be sure to choose a rectangular cage so that your bird has somewhere to feel safe and cozy. If you&rsquo;re adopting more than one bird, the cage you choose will need to be even bigger - birds need their own space, just like us humans do.&nbsp;</p>
 
-Chim chào mào nữ hoàng được coi là chú chim nghìn năm mới gặp 1 lần
+<p>Once you&rsquo;ve chosen the right cage, consider its placement in your home - a key area of pet <strong>bird care</strong> is meeting their social needs. Birds are super social creatures, and won&rsquo;t be happy in an isolated room with no noise or distractions to keep them stimulated. Windows are best avoided not only because your feathered friend may get chilly, but also because it may provide a little <em>too </em>much stimulation, with the constant foot traffic from strangers causing nerves and anxiety.</p>
 
-Cũng giống như chào mào bạch tạng nhưng chim chào mào nữ hoàng được giới chơi chim rỉ tai nhau là loài chim trăm năm mới gặp 1 lần. Những chú chim này được ông trời khéo léo ban cho sự sắp xếp hài hòa trên cơ thể với bộ lông trắng từ từ yếm đến đầu, được tô điểm thêm một khoanh đỏ ở bên mắt tạo nên sự sang trọng đẳng cấp và quý phái. Tuy được các đại gia săn lùng những không phải ai cũng có duyên để mua được chú chim quý hiếm này đắt tiền này, thậm chí cũng có rất nhiều người có tiền nhưng cũng không thể mua được. Theo thông tin mà chúng tôi được biết thì hiện tại những chú chim chào mào nữ hoàng này có giá đến cả trăm triệu, thậm chí vài trăm triệu cũng có. Được sở hữu một chú chim hoàn hảo của tạo hóa chính là niềm ngưỡng mộ của chủ nhân sở hữu nó và là niềm ao ước thầm của bất kì một người đam mê chim cảnh nào
+<p>&nbsp;</p>
 
-Ngoài những loài chim chào mào trên những chú chim đạt đến sự hoàn mỹ về chất giọng, đạt đến độ xuất sắc trong dáng dấp cũng được các đại gia hết sức quan tâm chi số tiền lớn mua để thỏa mãn niềm đam mê chim cảnh để bổ xung vào bộ sưu tập trong thú chơi ngông của chính bản thân mình.
+<h2>Don&rsquo;t smoke around your bird</h2>
 
-2. Cách lựa chọn và nuôi chào mào hót hay
-Nếu bạn không phải là một người mạnh về tài chính bạn vẫn hoàn toàn có thể tự nuôi dưỡng được một chú chào mào hót hay để phục vụ cho thú chơi của mình với đầy đủ cảm giác và đẩy đủ sự phấn khích nhất. Nhưng chắc chắn rằng để có thể sở hữu được một chú chim chào mào hót hay thì trong quá trình nuôi dưỡng cũng như chọn lựa cũng phải trải qua những công đoạn vô cùng cầu kì phức tạp.
+<p>Rule 101 when learning <strong>how to take care of a bird</strong>: don&rsquo;t smoke around them. Deciding to smoke is of course a personal decision for us humans - a conscious one made with the facts we&rsquo;ve got in front of us. But when it comes to our feathered friends, the negative health impacts of smoking are too terrible to ignore. The tars, nicotine and hydrocarbons present in the cigarette smoke settle in their lungs and air sacs. What happens? Well it&#39;s the same for birds as it is for humans - causing a rise in blood pressure, reduced lung efficiency, damage to the heart (and lots more!). So while your feathered friend won&rsquo;t be smoking themselves, passive smoke is really damaging! If you&rsquo;re thinking about adopting, make sure that you&rsquo;ve got a strict no-smoking policy in your home.</p>
 
-Chúng tôi tin rằng với tình yêu đặc biệt với loài chim này với những thao tác chăm chút tỉ mỉ cẩn trọng cùng với những bird farming experience chào mào hót hay mà chúng tôi sẽ cùng bạn khám phá ở dưới đây. Chắc chắn bạn sẽ giúp cho những chú chim yêu quý của mình có thể phát huy được tất cả khả năng để có được một giọng ca đặc biệt
+<p><img alt="Parrot lovebird sitting on hand on blurred living room background" src="https://images.prismic.io/trustedhousesitters/f980c91f-1e2c-44ae-9ee3-01d6779c39cb_bird+care.jpg?auto=compress,format&amp;rect=0,0,1920,800&amp;w=1920&amp;h=800" style="height:800px; width:1920px" /></p>
 
-2.1. Kinh nghiệm lựa chọn chào mào hót hay
-Ngoại hình cũng là một trong những tiêu chí quan trọng để người chơi chim có thể lựa chọn ra được một chú chim chào mào hót hay. Theo kinh nghiệm của những tay chơi lão luyện trong nghề chia sẻ lại thì tất cả những tiêu chí về ngoại hình đều ảnh hưởng trực tiếp đến chất giọng của một chú chim. Chính vì vậy việc lựa chọn những chú chim đáp ứng về tiêu chuẩn ngoại hình chắc chắn sẽ là yếu tố tiên quyết mà bạn cần phải chỉnh chu. Để lựa chọn được một chú chim chào mào hót hay bạn cần phải tỉ mỉ với rất nhiều những tiêu chí khác nhau:
+<h2>Feeding your bird</h2>
 
-- Trong cách chọn chim chào mào hót hay thì có lẽ đầu và mào là một trong những yếu tố quan trọng mà những người chơi chim phải cực kỳ chú trọng. Thậm chí nó còn được đánh giá là một trong những tiêu chí không thể thiếu được đối với một chú chim chào mào hót hay.
+<p>Choosing the right food starts with knowing your feathered friend&rsquo;s breed inside-out, and it&rsquo;s a key area to be on top of when learning <strong>how to take care of a bird</strong>. Depending on the type of bird, some will be better suited to certain types of bird food - be it bagged, canned, dried or fresh, and their health depends on the right choices being made by pet parents to form a balanced diet.&nbsp;</p>
 
-Khi bắt đầu lựa chọn chim bạn phải chú ý quan sát thật tỉ mỉ và chọn ra những chú chim sở hữu một cái đầu to. Thông thường những chú chim chào mào sở hữu một cái đầu to đa phần là những chú chim rất có bản lĩnh rất gan dạ. 
+<p>If you&rsquo;re not sure what your bird can and can&rsquo;t eat, chat with your vet about the types of food suitable before welcoming your new buddy home. Many pet birds thrive off a diet of bird seed, pellets, crumbles and nuggets alongside fresh fruits and vegetables that are hydrating, tasty and fun to crunch on.&nbsp;</p>
 
-Tiếp đến bạn cần lựa chọn ra những chú chim sở hữu một trong 3 loại mào với độ ưu tiên là mào đinh, mào lân và mào cui. Đây đều là những loại mào được đánh giá rất cao không chỉ mang tới cho những chú chim chào mào một ngoài hình đẹp mà nó còn là biểu hiện của những yếu tố cần thiết khi chơi chim như bền bỉ, siêng hót. Và bạn cũng cần ưu tiên lựa chọn những chú chào mào sở hữu một gốc mào dày còn những chú mào có gốc mào mỏng vì nó ảnh hưởng tới ngoại hình và thường không bền chim.
+<p>Whichever food you go for, be sure to keep it high up in the cage (alongside water) to avoid any droppings landing in food bowls! And when it comes to choosing the right time to feed your bird, the most important thing is to be consistent. Make sure you put the food down at a regular time each day, providing more meals for birds with higher metabolisms. If you&rsquo;re bird sitting, ask the pet parents for a detailed rundown on exactly what to feed their feathered family members and when, and stick to it!</p>
 
-- Những yếu tố khác cũng ảnh hưởng đến tố chất của một chú chim chào mào hót hay đó chính trông chúng lúc nào cũng phải thật nhanh nhẹn lanh lợi thường xuyên nhảy nhót và hoạt bát. Ngoài ra bạn cũng nên lựa chọn những chú chim sở hữu cho mình một thân hình vừa phải không quá dài và cũng không quá ngắn. 
+<p>&nbsp;</p>
 
-- Những chú chim sở hữu một cặp ngực nở năng thì chắc chắn đó chính là những chú chim có phổi cực khỏe để từ đó có thể phát ra được những giọng hót to chắc khỏe và đanh thép. 
+<h2>Bird baths</h2>
 
-- Một chú chim chào mào hót hay thôi là chưa đủ mà một chú chim chào mào vừa hay vừa mau mỏ mới là một trong những tiêu chí được những người chơi chim yêu thích nhất. Chính vì vậy bạn nên lựa chọn một chú sở hữu được một cặp mỏ mỏng và ngắn chúng sẽ rất mau mồm và hót thường xuyên
+<p>If you&rsquo;ve ever been distracted by your garden birds bathing or even pigeons in the street (and trust us, we have), you&rsquo;ll know that birds LOVE water. And even better, these feathered cuties are capable of taking care of their own grooming - making<strong> bird care</strong> a whole lot simpler. They love to take a dip when it&rsquo;s warm outside, so prop your feathered friend safely outside with a cool water dish that&rsquo;s large enough for a refreshing bath. In the cooler months, mount a perch onto your shower wall with suction cups, giving your buddy the chance to groom in the comfort of a warm home.</p>
 
-- Ngoài ra những tiêu chí khác mà bạn cũng cần phải đặc biệt quan tâm đó chính là bộ lông mà chúng sở hữu phải thật mượt mà ép gọn vào thân không bị xù và tuyệt đối không bị chéo cánh. Tương tự như vậy phần lông đuôi cũng phải đảm bảo được tiêu chí gọn gàng dài, và xếp thành 1 cọng
+<p><img alt="Parrot bathing" src="https://images.prismic.io/trustedhousesitters/5cb158ad-4a9b-4e01-b369-ea2f23cbf462_How+to+care+for+a+bird.jpg?auto=compress,format&amp;rect=0,0,1920,800&amp;w=1920&amp;h=800" style="height:800px; width:1920px" /></p>
 
-2.2: Kinh nghiệm nuôi chào mào hót hay
-2.2.1. Cách nuôi dưỡng
+<h2>Sunlight</h2>
 
-Sau khi bạn đã lựa chọn được những chú chào mào đáp ứng đủ tiêu chuẩn về ngoại hình. Lúc này việc nuôi dưỡng cũng là một trong những yếu tố cực kì quan trọng để giúp cho những chú chào mào của bạn có thể  phát huy được hết khả năng của mình và cũng là một trong những yếu tố cần thiết để giúp cho những chú chim của bạn có đủ sức khỏe để có thể mang tới những giọng hót tuyệt vời. Nếu như cách lựa chọn một chú chim chào mào hót hay ở phân trên là dựa trên kinh nghiệm của bạn. Thì đối với cách nuôi dưỡng ngoài kinh nghiệm bạn cũng phải gửi gắm vào trong đó tất cả những tình cảm, phải đầu tư thời gian công sức cũng như có một tình yêu đặc biệt. Như vậy mới chính là một trong những yếu tố quan trọng nhất để bạn có cơ hội sở hữu được một chú chim chào mào hót hay.
+<p>When learning how to care for a bird, knowing their body clock (and helping to keep it regular) is vital. To keep your feathered family member happy, healthy and in a good sleeping rhythm, give them access to natural light in the day time, then balance this out with around ten hours of darkness every night. While this can&rsquo;t be achieved naturally in all countries, consider investing in a blackout cover or curtains to make sure your bird is getting the rest they need.</p>
 
-Thông thường những chú chim chào mào mà những người chơi chim bắt về đa phần là những chú chim chào mào bổi được bẫy ở ngoài thiên nhiên. Vì vậy đây là một trong những mốc thời gian vô cùng quan trọng đòi hỏi bạn phải có được những kinh nghiệm quý báu. Thời gian đầu khi chưa quen với cuộc sống gò bó trong lồng hẹp chúng sẽ rất dễ bị kích động thậm chí là tổn thương nếu như bạn không sử dụng áo lồng. Sau một thời gian khi chúng đã thích nghi được với môi trường bạn từ từ hé áo lồng để chúng quen dần với môi trường nuôi nhốt. Và từ từ mở áo lồng dần dần để chúng quen hơn. Mặc dù đó có là một chú chim xuất sắc nhưng đừng quá hiếu kì và tò mò mà lại gần nếu không bạn sẽ mất thêm rất nhiều thời gian để có thể thuần dưỡng được chúng. 
+<p>&nbsp;</p>
 
-Khoảng một thời gian, thông thường là từ 3 đến 5 tháng lúc này những chú chim đã bắt đầu quen dần với việc bị nhốt ở trong lồng hãy mở áo lồng ra để cho chúng có thể thích nghi dần với chỗ ở mới. Việc lại gần của bạn lúc này cũng phải cần thận và chỉ xuất hiện khi cần thiết. Hãy xuất hiện lúc chúng cảm thấy đói nhất vì lúc này sau khi thấy bạn mang thức ăn và nước uống nó sẽ cảm nhận được sự an toàn và cảm nhận được sự xuất hiện của bạn là để bổ xung thức ăn. Như vậy việc thuần dưỡng chim của bạn cũng đã bắt đầu có được sự thành công. Kiên trì thêm một khoảng thời gian nữa là bạn đã hoàn toàn thuần phục được.
+<h2>Exercise</h2>
 
-2.2.2 Chế độ dinh dưỡng
+<p>Making sure your feathered friend has time each week to spread their wings (literally) is super important for their health and happiness. Choose a safe space where your bird has no chance of flying away (which is of course super dangerous for domesticated birds!), or keep them on a harness if you need to. Alongside out-of-cage antics, invest in a few bird toys to keep them occupied and to allow for bonding time between you, those you live with and your pet bird - your feathered friends might enjoy a bell, perch, pine cones or rope. And as your buddy will spend most of their time on their perch, set a few at different heights and positions around the cage for variety.</p>
 
-Về dinh dưỡng để nuôi dưỡng được một chú chim chào mào hót hay không phải là một trong những vấn đề gì đó quá khó khăn.
+<p><img alt="Parrot playing with a bell" src="https://images.prismic.io/trustedhousesitters/ccf7417d-e8e0-4f2f-9b38-9011f924b6f0_Safe+for+birds.jpg?auto=compress,format&amp;rect=0,0,1920,800&amp;w=1920&amp;h=800" style="height:800px; width:1920px" /></p>
 
-Là một trong những loại chim sống hoàn toàn trong tự nhiên chính vì vậy mà thức ăn của chúng đến từ các loại trái cây và hoa quả. Và đây cũng là một trong những loại thức ăn chính mà bạn cần phải nuôi dưỡng ngay cả trong điều kiện nuôi nhốt. Hãy cố gắng lựa chọn những loại quả vừa mang lại dinh dưỡng và ổn định cho hệ tiêu hóa của chim mà lại giúp trình có thể hấp thụ được sắc tố màu tự nhiên nhất để giúp cho bộ lông của chúng có được một màu sắc hoàn hảo. Các loại trái cây bạn nên dừng ở thời điểm này đó chính là chuối, đu đủ, dâu tây, cam... bạn nên cho chúng ăn 1 tuần khoảng 3 lần và thay đổi để tránh nhàm chán.
+<h2>Hygiene</h2>
 
-Ngoài ra bạn cũng nên kết hợp thêm cho chúng ăn thêm các loại sâu khô, cào cào và châu chấu. Đây là những loại thức ăn được đánh giá rất cao với hàm lượng dinh dưỡng cao sẽ khiến cho những chú chim của bạn được sung nhất. Cào cào thì bạn cho ăn 1 tuần 3 - 4 lần mỗi lần một vài cong, và tuyệt đối không nên cho chúng ăn sâu khô vào trong giai đoạn trứng thay lông. Vì như vậy sẽ ảnh hưởng rất và khiến cho bộ lông của chúng mất đi sự thậm mĩ.
+<p>While your feathered friend is more than qualified to groom themselves, it&rsquo;s up to you as the pet parent or bird sitter to keep their cage clean. Keep something flat at the bottom of the cage so that cleaning droppings, food and feathers is simple. Replace food dishes daily and make sure no traces of soap are left behind. Also, be sure to find out if any products you use to clean the cage or areas of your home are safe for birds - unfortunately, many are toxic to them.</p>
 
-Cam chim là một trong những loại thức ăn vô cùng quan trọng để giúp cho những chú chào mào của bạn khỏe mạnh và hót hay nhất. Bạn hoàn toàn có thể lựa chọn các loài cảm được bán sẵn trên thị trường. Ngoài ra bạn cũng như cũng có thể học hỏi các công thức được chia sẻ để giúp cho những chú chim của mình có được một chế độ dinh dưỡng đầy đủ vào ổn định cho hệ tiêu hóa nhất.
+<h2>Social interaction</h2>
 
-2.2.3. Chế độ tập luyện
+<p>If you&rsquo;re pet sitting a bird or you&rsquo;re thinking about adopting one, it&rsquo;s vital you consider whether you&rsquo;ve got the time to socialize with your feathered friend. They&rsquo;re highly sociable animals, so need interaction, fun and attention to stay happy and healthy. Some birds are quicker learners than others, but have a go at playing games and teaching tricks to keep those birdy minds stimulated! Plus you can eat meals at the same time and pet them gently while handling for the ultimate quality time. If you&rsquo;ve got the space, screening of an area of your porch or garden is a great way to help your feathered friends feel like they&rsquo;re part of the fun from the safe confines of home.</p>
+')
 
-Ngoài ra chế độ tập luyện để giúp cho chào mào hót hay cũng là một trong những yếu tố vô cùng quan trọng. Để có thể tập giọng cho những chú chào mào của mình lúc này bạn tìm những người cùng đam mê để cho chú chim của mình được giao lưu. Hay cứ mạnh dạn để mang những chú chi của mình đến các trường chim để cho chú chim chào mào yêu quý của bạn có thể thỏa sức thể hiện. Lúc này chú chi của bạn không chỉ trình phát huy được tối đa trong giọng hót mà còn có thể có cơ hội học hỏi được những âm điệu mới giúp đa dạng và hoàn thiện hơn giọng hót của mình.
 
-Việc đem chim đi tập luyện thường xuyên không chỉ giúp cho chào mào hót hay mà còn giúp cho nó phấn khích và mau miệng nhất. Đây sẽ là một trong những yếu tố để giúp cho bạn có thể có được những giây phút bình an tĩnh lặng nhất để cân bằng lại cuộc sống sau những giờ học tập và làm việc mệt mỏi.
+,	( '48981d702b321f55a52652da71155e67' , '7A07BA85FEBCA8A149A01893F84A2AB8', N'Lessons from a mayfly' , GETDATE() , N'interesting facts about birds' , 
+	N'Recently I attended the Aldo Leopold Chapter of Trout Unlimited fundraiser. This chapter''s leadership was essential in enabling Groundswell Conservancy to purchase 40 acres on Dell Creek in Sauk County. The Dell Creek watershed has the chance to become a stronghold for wild brook trout and much of the 40 acres is excellent bird habitat in the form of healthy oak woods.',
 
-Chúng tôi tin chắc rằng tất cả những điều này sẽ chẳng còn là vấn đề khi bạn sở hữu được một chú chim chào mào với giọng hót hay. Vào mỗi sớm mai thức dậy, bạn được nghe những âm thanh thánh thót được phát ra từ chính những chú chim mà mình dày công chăm bẵm thì còn gì tuyệt vời hơn nữa. Chúc bạn luôn vui và thành công với niềm đam mê của mình.
-'),
-	( 'a66a0292d3af450e99bd42136898c36b' , '76FA6E278CE75EB33427682E6C0C360D', N'Diet for singing crested birds' , GETDATE() , N'bird farming experience' , 
-N'Như chúng ta đã biết, hiện nay thú vui chơi chim chào mào đặc biệt nở rộ trong những năm gần đây. Đây là dòng chim dễ nuôi, thức ăn chủ yếu là hoa quả, trái cây, đôi lúc là một ít cám thôi cũng đủ sống rồi. Thế nhưng để chăm ra một em chào mào căng lửa thì đã khó, nuôi ra một chú chào mào để đấu hót còn khó hơn bội phần. Thông qua bài viết này, Chú Gióng sẽ gửi đến bạn đọc cách nuôi chào mào thi đấu một cách đơn giản và dễ dàng nhất.',
+	N'<p>TU fundraisers, like those for many hunting and fishing organizations, consist of auctions and raffles, with a favorite being the bucket raffle.&nbsp;Lots of buckets paired with great prizes; attendees choose the prizes they want to win by putting their tickets in the appropriate buckets.</p>
 
-N'1. Thức ăn chính
-Đối với chào mào, đây là loại chim không quá cầu kì trong nhu cầu dinh dưỡng, tuy nhiên chúng ta cũng cần phải đảm bảo nguồn cung cấp bổ sung vi chất dinh dưỡng mỗi ngày. Cám chim là một trong số các loại thực phẩm chính cho chim chào mào hiện nay đang được nhiều người sử dụng, phần vì tính cơ động và đảm bảo được nguồn cung cấp dinh dưỡng hằng ngày của chúng. Mặt khác, ta có thể trộn cám với một số thành phần bên ngoài để tăng lượng dinh dưỡng và khẩu vị như: trứng vịt, trứng gà, thịt rắn mối, thịt bò, tôm tươi…
+<p><img alt="" src="https://images.squarespace-cdn.com/content/v1/55c0d7e5e4b05b835010c1f4/334586ca-e2d1-40f1-8c89-ef03e26438f7/9138000379_ccf76bc1f0_c.jpg" style="height:640px; width:800px" /></p>
 
-2. Thức ăn bổ sung
-Đối với chim chào mào, đây là nguồn năng lượng, nguồn thức ăn bổ sung không kém phần quan trọng. Chúng ta có thể kể đến như là trái cây,côn trùng, sâu quy…Đặc biệt trái cây chín là thức ăn ưa thích của chào mào, vì vậy người nào muốn học cách nuôi chim chào mào đấu thì không nên bỏ qua các bước tìm hiểu về loại thức ăn thơm ngon và giàu dinh dưỡng này. Có thể kể đến như là chuối, khoai lang, ổi, cà rốt… nói chung là các loại trái cây chín có vị ngọt. Tuy nhiên có ưu điểm là thế nhưng cũng phải hạn chế liều lượng thức ăn trong 1 tuần, bạn không muốn chú chim của mình ăn quá nhiều mà bị tiêu chảy đâu.
+<p>Mayfly, photo by <em>Aaron Carlson FCC</em></p>
 
-3. Nước uống
-Nước uống sạch là đủ rồi, không cần phải đun sôi để nguội gì cả, tuy nhiên nên sử dụng nước để trong lu hoặc chum, tránh sử dụng trực tiếp nước máy nhiều Clorua như hiện nay.
+<p>Since I don&#39;t tie flies and since TU chapters always have some highly skilled tyers&nbsp;donate some great collections, that&#39;s what I try to win: a truly lovely collection of flies by a member of the Leopold Chapter.&nbsp;I paused, though, when I realized most of the flies imitated the gorgeous mayflies that used to inhabit southern Wisconsin streams. You probably noticed that sad word, &quot;used.&quot; They don&#39;t anymore and I realized I&#39;d never use those flies. &nbsp;</p>
 
-Ngoài ra để chú chim của bạn khỏe mạnh mỗi ngày thì cần phải bổ sung chất vi chất dinh dưỡng - vô thuốc nữa. Tuy nhiên đây là con dao hai lưỡi, khi sử dụng thuốc phải hết sức cẩn thận và theo dõi sát sao bầy chim, phải hiểu thật rõ thì mới làm tránh những trường hợp đáng tiếc xảy ra.
+<p>A nearby bucket offered a prized bourbon as the prize.&nbsp;There went my tickets and I won!</p>
 
-Như vậy là chúng ta vừa điểm qua chế độ dinh dưỡng cho chim chào mào đấu hót, thiết nghĩ đây là những điều căn bản và cần thiết cho độc giả để tìm hiểu về cách nuôi chào mào thi đấu. Nuôi chim cảnh không chỉ giúp không gian gia đình thêm vui vẻ rộn ràng, khiến người nuôi chim giải tỏa căng thẳng sau những giờ làm việc mệt mỏi mà còn là một thú chơi hái ra tiền. Chúc các bạn thành công.'),
-	( '0aa6e189009d5d7cf2a981e8387fff4d' , 'B7B7A82190F83DF905868B2C1A45CC9B', N'The best breeding techniques for breeding crested birds and taking care of them' , GETDATE() , N'bird farming experience' , 
-N'Để phục vụ cho mục đích kinh doanh chim cảnh từ thú vui của chính bản thân mình và đã thành công, đó là áp dụng kỹ thuật nuôi chim chào mào sinh sản . Nếu như bạn muốn nuôi chim để sinh sản không phải để kinh doanh mà chị để phục vụ cho thú chơi của mình thì cũng hoàn toàn có thể. Nuôi chim chào mào sinh sản cũng không phải là điều gì đó quá khó nhưng cũng cần phải tuân theo một số những bước cơ bản để giúp những bạn đang có ý định có thể nắm bắt được những bước tốt nhất thì ở trong bài viết ngày hôm nay Chú Gióng sẽ giới thiệu đến các bạn những kỹ thuật nuôi chim chào mào đẻ tốt nhất.',
+<p>You&#39;re probably wondering by now, what is the connection between that whiskey and Cedar Waxwings? In <a target="_blank">my last blog</a>, a Cedar Waxwing, my favorite bird, is photographed eating a serviceberry.&nbsp;That&#39;s the characteristic pose of the fruit-loving beauty. I have a different favorite image of the Cedar Waxwing.&nbsp;For much of the summer, small flocks of Cedar Waxwings gather in trees along trout streams.&nbsp;They wait to feed on mayflies that have hatched from the stream and are flying into streamside vegetation before they return to the waters to mate and lay eggs.</p>
 
-N'Kỹ thuật nuôi chim chào mào sinh sản 
-1. Cần phải chọn và nuôi chim bố mẹ tốt 
+<p>The waxwings then fly with amazing agility as they hover, turn, and swoop to catch the mayflies. I fear this cherished and anticipated sight will become a memory.<strong><em>&nbsp;</em></strong></p>
 
-Trong cách chọn lựa một chú chim chào mào đẹp thì chúng tôi đã có rất nhiều bài viết bạn có thể tham khảo các bài viết này ở trên chuyên mục khác đây là một trong những bước quan trọng trong Kỹ thuật nuôi chim chào mào sinh sản. Điều quan trọng không kém trong việc nuôi chào mào sinh sản là chế độ dinh dưỡng cho bố mẹ của chúng. Điều này rất quan trọng điều này sẽ giúp cho những chú chim khỏe mạnh và chuẩn bị được cho quá trình giao phối của chim được tốt nhất. Còn những chú chim mẹ thì ngoài thức ăn bình thường bạn bổ xung thêm cám chuyên dụng cho chào mào sinh sản được bán trên thị trường. Nói chúng chế độ dinh dưỡng thì không có nhiều điều phải bàn cãi. 
-2. Chuẩn bị lồng cho chào mào
+<p><img alt="" src="https://images.squarespace-cdn.com/content/v1/55c0d7e5e4b05b835010c1f4/5b3fa83f-eef2-4de1-8f51-75d99f7dface/10797792626_4fa465b3b3_k.jpg" style="height:1365px; width:2048px" /></p>
 
-Lông chào mào sinh sản không giống như nuôi làm cảnh cần phải có không gian rộng rãi thông thường nên tối thiểu là từ 180 cm (chiều dài), 120 cm (chiều rộng), 150 cm (chiều cao). Có trang bị thêm cho chúng vật liệu để chúng có thể làm ổ. Thức ăn và nước uống cũng không được thiếu ở trong lồng nếu như chào mào thấy dinh dưỡng không đủ chúng sẽ thôi đẻ hoặc ăn trứng của mình 
+<p>Cedar Waxwing, <em>photo by Kelly Colgan Azar</em></p>
 
-Khi chim chào mào trưởng thành thì bạn cho chúng bắt cặp với nhau bạn lựa chọn một con trông và 1 con mái nhốt chung. Bạn nên để ý đến hành động của chúng nếu như bạn thấy một trong haichú chim  này không đồng ý với việc bắt cặp với những chú chim còn lại thì có thể tách ra kẻ chúng có thể khác nhau đến chết. Còn nếu như chúng có biểu hiện hòa hợp thì chứng tỏ chúng bắt gặp đã thành công bạn có thể chuyển sang bước tiếp theo. Những lúc mà chim chào mào  đã bắt gặp thành công thì trong lồng bắt buộc phải có những vật liệu để cho chúng làm tổ bạn đừng có qua lại nhiều kẻo trúng sợ ảnh hưởng đến tâm lý. Khi chim đã giao phối thành công thì chào mào cái bắt đầu đẻ trứng thông thường những chú chim chào mào sẽ để từ 2 đến 4 quả. Cả chim trống và mái lúc này sẽ thay nhau ấp trứng
-3. Giai đoạn chim đã nở con
+<p>Science is just beginning to quantify, document, and analyze what trout anglers in southern Wisconsin and elsewhere around the country have noticed for years; many species of mayflies have disappeared or vanished.&nbsp;Anglers and the myriad birds and bats that gathered at Black Earth Creek for the spectacular hatch of <em>Hexigenia limbata</em>, our largest mayfly, wait in vain or don&#39;t bother.&nbsp;You might remember old magazine covers or sporting art that showed trout leaping out of the water to catch a flying mayfly.&nbsp;That used to really happen (I saw it frequently and it was always a thrill) and the mayfly was probably the Hendrickson.&nbsp;It too is just about gone from southern Wisconsin streams.</p>
 
-Thông thường một chú chim con được ấp và nở ra trong khoảng từ 12 đến 14 ngày. Lúc này những chú chim mẹ sẽ thường xuyên khỏi tổ. Chúng sẽ đi tìm thức ăn vào những giờ buổi chiều hoặc là buổi sáng bạn phải đảm bảo thức ăn cho chúng lúc này trong lồng đầy đủ nhất sau khoảng thời gian thì những chú chim non đã bắt đầu mở và ra ngoài muốn những chú chim chào mào con có thể phát triển một cách nhanh chóng nhất thì ngoài  hoa quả gia bạn có thể bổ sung cho chúng thêm một số lượng côn trùng.  Bạn có thể đi mua sâu khô sau đó để vào lồng mẹ của chúng sẽ bón cho chúng. Lúc này bố mẹ chim chào mào đã trải qua một quá trình ấp trừng dài cho nên chúng tỏ ra yếu sức. Việc của bạn lúc này là sẽ phải bổ sung cho chúng một lượng thức ăn để chim hồi phục được nhanh nhất. Chim chào mào nuôi con chủ yếu phụ thuộc vào nước dãi cho nên càng cho ăn nhiều trái cây càng tốt sẽ giúp cho những chú chim non có thể có sức sức đề kháng từ nước dãi của bố mẹ. Đừng vì quá vui và háo hức  mà đến lồng chim của chúng xem thường xuyên nếu không chúng sẽ chẳng nuôi con nữa thậm chí sẽ cảm thấy lo lắng và khiến nên chúng con của chúng bị chết.
-4. Giai đoạn chào mào con chuyền cành :
-Khi giai đoạn những chú chim chào mào non bắt đầu học hót và truyền cành thì bạn phải bố trí trong lồng cầu để cho chim chào mào con có thể học được di chuyển một cách tốt nhất. Ở giai đoạn này bạn đừng nên cầm nắm hay xem sinh con quá nhiều nếu không sẽ  khiế chúng bị yếu xương. Lúc này thì chúng đã vận động tự học ăn cho nên thức ăn của bạn cũng phải tăng đầy đủ làm sao cho đủ cho cả đàn. 
+<p>We don&#39;t know with any certainty much about these losses.&nbsp;From a bird lover&#39;s perspective, I don&#39;t know how much harm the loss of such abundant, seasonal protein means to birds such as swallows and Cedar Waxwings that feed heavily on the hatches. Since some of the hatches occur in the late afternoon or early evening I&#39;m not even sure if we know which birds focused on those hatches. A friend has asked anglers on Black Earth Creek to participate in a survey on <em>Hexagenia limbata</em>. From the few and early reports I&#39;ve seen the results are discouraging.</p>
 
-Trên đây là tất cả những kỹ thuật nuôi chim chào mào sinh sản mà chúng tôi mang đến cho bạn. Hi vọng rằng bạn sẽ tuân thủ theo những kỹ thuật này để cho những chú chim của bạn có thể phát triển một cách đầy đủ nhất chúc bạn sẽ thuận lợi hơn cho việc kinh doanh hoặc là có thể sở hữu được cho mình những chú chim chào mào chất lượng phục vụ cho thú chơi của bạn sau này. Nếu như bạn thành công thì đừng quên chia sẻ với chúng tôi để những người khác có thể áp dụng bạn nhé. Hãy ghé thăm Chú Gióng thường xuyên để cập nhật cho mình những thông tin bổ ích nhé.
-'),
-	( '3f37126f037169bb080a309c88524d38' , 'AB8EF54222AF80947BD5BCBA22C8C8C5', N'How to choose the most beautiful crested bird today' , GETDATE() , N'cách chọn chim' , 
-N'Khi việc chơi chào mào đã trở nên quá phổ biến thì người chơi lại muốn hướng đến một yêu cầu mới, khắt khe hơn. Do đó cách chọn chim chào mào đẹp nhất là một trong những tiêu chí hàng đầu mà những người yệu chim cảnh quan tâm nhất. Để giúp bạn có được một chú chim chào mào đẹp, thì hôm nay Chú Gióng xin chia sẻ với các bạn những cách lựa chọn chim chào mào đẹp nhất:',
+<p>One signal for anglers around here that the hexagenia would be hatching would hover over one&#39;s lawn in the evening: lightening bugs, on everyone&#39;s Top Ten list of favorite insects. I just had the sad realization that I have not seen a single lightening bug this summer.&nbsp;And don&#39;t even ask about monarchs.&nbsp;We have a lot of work to do.</p>
 
-N'Cách lựa chọn chim chào mào đẹp nhất hiện nay
-Để có thể lựa được một chú chim chào mào đẹp là điều mà bất cứ ai cũng có thể làm được. Tuy nhiên việc này lại đòi hỏi một sự tỉ mỉ và cẩn trọng một chú chào mào đẹp là phải kết hợp được tất cả các yếu tố khác nhau trên ngoại hình
+<p>We also don&#39;t know why the flies are disappearing.&nbsp;The neonicotinoid pesticides which seem to be devastating many pollinator species are prime suspects.&nbsp;The Wisconsin DNR is beginning to research this possibility. The problems with these pesticides are many:&nbsp;they&#39;re highly toxic to a variety of insects, they persist, they easily move from plants and soil to the water, and they are everywhere one finds commercial agriculture. As of last year, just about all of the field corn and soybean seeds sold in Wisconsin were treated with neonics.&nbsp;For some of the key crops, the neonics have left the plants and entered the environment before they affected the targeted pests.&nbsp;As a result they did not improve farmers&#39; yields.</p>
 
-1: Đầu và mào
+<p>I have noted that my friends who fish the northern Wisconsin streams where commercial agriculture is much less prevalent or absent still witness the mayflies we no longer see.</p>
 
- Tất nhiên rồi nhưng chú chim chào mào được lựa chọn thì phải theo tiêu đầu điên là chiếc mào. Về cách lựa chọn mào  thì không ai giống ai nhưng heo ý kiến đánh giá của một số người đã có kinh nghiệm chơi chim lâu nắm thì bạn nên lựa chon những chú chim có gốc mào dày. Những chú chim này thường tỏ ra rất bản lĩnh và bền bỉ. Đầu chào mào thì cũng nên lựa chọn những con có chiếc đầu to, như vậy thì chúng sẽ khỏe mạnh và dữ dằn 
+<p><img alt="" src="https://images.squarespace-cdn.com/content/v1/55c0d7e5e4b05b835010c1f4/9bb8c4b8-aa32-4488-b26c-3439953aa6c8/25925751887_1001264699_h.jpg" style="height:894px; width:1437px" /></p>
 
+<p>American Kestrel eating a grasshopper, <em>photo by Gary Leavens FCC</em></p>
 
+<p>By the way, the problem probably extends beyond pollinators and aquatic insects.&nbsp;The New York Times published a long report on the decline of kestrels. Young kestrels aren&rsquo;t skilled enough to hunt the bigger prey of the adults (little birds and mammals, for example) and need easier prey.&nbsp;Grasshoppers might be a key food and they too are vulnerable to neonics.</p>
 
-2: Tách chim
+<p>From an advocacy perspective, the first course of action is to accelerate research.&nbsp;The real work will come if neonics should be subject to more thorough and careful regulation in order to protect bugs and birds.&nbsp;This might be our generation&#39;s version of the battle that conservationists waged against DDT. If so, we&#39;d better have the gumption and persistence they demonstrated.</p>
+')
+,	
 
-Tách chim chào mào chính là những chấm đỏ mặc dù điều này không ảnh hưởng quá nhiều đến khả năng hót của chim tuy nhiên phải là một điểm nhấn để giúp những chú chim của bạn trong bắt mắt hơn về ngoại hình. Một chú chim hót hay mà lại sở hữu tách đỏ đẹp nữa thì lại là điều tuyệt vời
 
-3: Mỏ chim
-Về tiêu chí này thì cũng không có một quy chuẩn chung nào cả bởi vì có những người thích những chú chim sở hữu những chất giọng uy lực đanh thép thì thường lựa chọn chi có mỏ dày nhưng có nhưng người khác thì lại lựa chọn những chú chim có mỏ mỏng với mong muốn lựa chọn được một chú chào mào mau miệng hót suốt ngày. Tuy nhiên không phải là những chú chim nào có đặc điểm nêu trên thì cũng sở hữu chất giọng như thế. Nhưng đa phân những chú chim này 80% là như vậy nên những người chơi chim đến lấy những tiêu chuẩn đó để làm thước đo tương đối
-
-4:  Cổ chim
-
-Về cổ chim  thì cũng khó để xác định rằng như thế nào là một chiếc cổ đẹp có những người yêu thích những chú chim có chiếc cổ gọn gàng nhưng có những người lại yêu thích những chú chim có cổ phình to hót. Những lúc này nhìn chúng rất da dáng. Về cách chọn này là tùy thuộc ở mỗi người nhưng bạn cũng cần phải lựa chọn những chú chim có chiếc cổ của cân đối với người. Để  khi nhìn tổng thể thì trông chúng sẽ được thanh thoát nhất. Điều này cũng tương tự khi chọn cổ chim bạn có thể lựa chọn chú chimnào có chiếc cổ với màu sắc trang nhã liền mạch với đầu là đẹp.
-
-
-
-6: Mình chim
-Về mình chim thì bạn lựa chọn những chú chim nào không quá to cũng không quá bé, chỉ cần chúng trông thon gọn và thanh thoát thì sẽ giúp cho những chú chim có thể di chuyển thanh thoát nhất.
-
-7: Cánh chim
-Khi lựa chọn một chú chào mào đẹp theo cánh chim không được chồng chéo lên nhau phải ôm gọn vào cơ thể nhưng lại không được dài quá đuôi. Những chú chim nào có sải cánh rộng nữa thì lại đẹp hơn nữa
-
-8: Đuôi chim
-
- Về tiêu chí này đã có rất nhiều tranh cãi có những người lại thích những chú chim có đuôi nhỏ nhưng có những người lại thích những chú chim có một chiếc đuôi to. Nhưng theo quan điểm của bản thân tôi rút ra từ những chú chim hay trong trường đấu thì nên lựa chọn những chú chim nào có đuôi ngắn thì càng tốt. Những chiếc lông đuôi phải xếp vào nhau đúng tuần tự chứ không phải là cái cụp cái xòe như vậy trông rất xấu
-
-9: Chân chim
-
-Cũng giống như bất kỳ loại động vật nào khác mà ngay cả con người chúng ta cũng vậy nếu như muốn di chuyển nhanh nhẹn thanh thoát được thì bắt buộc phải có một đôi chân khỏe. Còn về tiêu chí lựa chọn chào mào đẹp theo chân những chú chim chào mào nào sở hữu một đôi chân cao thì rất nhanh nhẹn và linh hoạt .Tuy nhiên những chú chim sở hữu được một đôi chân cao cao này thì không phải lúc nào chúng ta có thể tìm được. Chưa kể đến những chú chào mào bổi thì việc huấn luyện những chú chim này cũng rất khó khăn bởi như bạn biết để nuôi được một chú chim bổi cho đến khi chúng thuần và có thể đưa ra trường thi đấu được cũng phải mất 3 đến 4 năm
-
-Vậy ở trong bài viết trên Chúng tôi đã mách cho bạn cách chọn chim chào mào đẹp theo đúng tiêu chí của những người am hiểu về chim cảnh. Với những cách lựa chọn trên, Chú Gióng hi vọng sẽ giúp bạn chọn được một chú chim chào mào thật đẹp, bên cạnh đó giúp các bạn có thêm kinh nghiệm chăm sóc chúng. Cảm ơn các bạn đã quam tâm theo dõi bài viết.'),
-	( '0251849dac885e1123e573388a937b6d' , '64947A9C9DDEBF65E48B683464B7FBC3', N'The best way to greet the crested worm' , GETDATE() , N'bird farming experience' , 
-	N'Cách chăm chào mào bổi luôn được sự quan tâm rất lớn từ thế giới những người yêu chim. Bởi đơn giản đây là dòng chim khó nuôi, cần sự tinh tế và kinh nghiệm lâu năm của người chăm sóc. Chim chào mào bổi sau khi huấn luyện xong nếu thành công bạn sẽ có những chú chim tuyệt vời nhất, vời hình thế vóc dáng lực lượng, oai phong và giọng hót hàng ngày cực nịnh người.
-	Nhưng ngược lại nếu bạn bỏ qua và không quan tâm đến khoảng thời gian này chúng sẽ nhanh chóng xuống dốc, thậm chí là chết dễ dàng. Hãy cùng chúng tôi tìm hiểu Cách chăm chào mào bổi tốt nhất dưới đây và rút ra bài học cho bản thân mình nhé!',
-
-N'Chào mào bổi là gì?
-Những chú chim chào mào này đã khá già và đã sống ở ngoài thiên nhiên một khoảng thời gian dài, thậm chí là có con lớn rồi nhưng được con người bắt về thuần dưỡng, chăm sóc nó thành công được gọi là chim chào mào bổi. Các loại chim chào mào bổi này cần khá nhiều công sức của người nuôi vì cần thời gian chăm sóc,huấ luyện chúng hàng ngày mới cho kết quả cao. Loài này cực kì khó thuần dưỡng, nhưng khi đã thuần hóa được chúng để mang đi thi cực kì tuyệt vời vì chúng đã được thiên nhiên khắc nghiệt đào tạo để có được một tinh thần thép.
-
-Cách chăm chào mào bổi 
-Vì chim chào mào thường có cuộc sống khá thoải mái, chúng được sống trong môi trường cực phong phú với đủ cung bậc, có thể nhảy nhót, bay lượn hay làm bất gì mà chúng thích. Nhưng khi về với chủ nhân, phải sống trong lồng chật hẹp nên việc tinh tế trong cách nuôi chào mào bổi là rất cần thiết. Đầu tiên sau một khoảng thời gian tách lồng bạn nên treo lồng chim ở một nơi có nhiều người qua lại  để chim dạn dĩ hơn với con người nhưng không nên treo quá cao, hoặc khi trùm lồng bạn cũng đừng trùm kín quá phải để hé ra. 
-
-Chim chào mào cần lượng thức ăn khôn nhiều nhưng liên tục. Bạn nên để sắn chút đồ ăn, hòa quả trong lồng chim để chúng tùy thích nạp năng lượng cho mình mỗi khi cần. Hãy để chút hoa quả như chuối, đu đủ, xoài… trong lồng hoặc chút cám chim. Đặc biệt là nước rất quan trọng, lúc nào trong lồng chim cũng nên chó chút nước sạch để sẵn.
-
-Thời gian đầu chim chào mào bổi hơi nhát nên bạn đừng quá lo lắng nếu chúng khôn hót, hoặc không nhanh nhẹn như bình thường. Sau khoảng 1 tháng chim sẽ bắt đầu dạn dĩ dần.
-Cách chăm chào mào bổi  cần người chủ rất khéo léo vì cần nâng niu, cất lồng chim khi nào. vì vậy bạn hãy nhớ một vài quy tắc đơn giản trên nhé. Ngoài ra, khi chim đã dạn hãy để chim nơi yên tĩnh, it người qua lại để chúng tự do hót. Chúc bạn có những phút giây thoải mái nhất.'),
-	( 'b17fbe0d73b2ebacedfb6ac1b284767c' , 'DEE0822E0D723293B16ABCFE332C8C51', N'Collection of beautiful ornamental birds that people love' , GETDATE() , N'top birds' , 
-N'Trong giới chim cảnh người ta thường đồn đại và chia sẽ với nhau một số loại chim cảnh đẹp, hót hay và phổ biến tại Việt Nam. Nếu không sở hữu ngoại hình bắt mắt thì chắc hẵn loài chim này sẽ có giọng hót thanh thót, làm say đắm lòng người . Bạn đã biết những loài chim được yêu thích nhất là những loài nào chưa? nếu chưa thì hãy theo dõi cùng chúng tôi trong bài Viết dưới đây nhé.
-
-Những loài chim cảnh quý mà dân chơi yêu thích',
-N'1. Chim Sơn Ca
-
-Được giới sành chim ưu ái dành cho cái tên danh ca trong rừng thẳm  người ta yêu thích loài chim cảnh hót hay này bởi giọng ca cao vút và trong trẻo của chúng. Ngoài ra chúng cũng sở hữu một thân hình nhỏ nhắn đáng yêu với màu nâu đặc trưng. Nhưng nếu những chú chim này được nuôi dưỡng một cách cẩn thận và khoa học nhất chúng sẽ có được màu lông vàng óng rất bắt mắt. Chim sơn ca không đòi hỏi người nuôi có quá nhiều kinh nghiệm bởi chúng không kén ăn. Nếu có một khoảng không gian vừa đủ rộng bạn sẽ được chiêm ngưỡng màn vũ đạo vừa bay vừa nhào lộn và hót rất thú vị 
-2. Chim chích chòe 
-
-Sở hữu một giọng ca không thua kém bất kì một loài chim cảnh quý nào. Chúng chinh phục người nuôi bằng giọng hót mượt mà và trong trẻo. Tuy nhiên cũng chính bởi niềm đam mê ca hát của chúng nên thường luyện giọng vào buổi trưa và nửa đêm. Nên đôi khi sẽ gây ra phiền toái cho những người không thích bị phá giấc ngủ. Loài chim này cũng khá phổ biến và được nuôi rất nhiều tại Việt Nam
-
-3. Chim Họa Mi
-
-Mặc dù loài chim này sở hữu một ngoài hình không mấy ấn tượng bởi màu nâu cũ kĩ nhưng n gười ta biết đến giọng hát chim họa mi qua những câu truyện buồn mà người xưa để lại. Với tiếng ca sâu lắng nhưng chất chứa đầy tâm trạng của mình sẽ giúp cho người nghe có thể xua tan đi cảm giác mệt mỏi. Những chú họa mi có giọng hót đặc biệt hay luôn khiến những dân chơi thèm khát và muốn săn lùng
-
-4. Chim yến phụng
-
-Là một loài chim cảnh đẹp với hình dáng như những chú vẹ, đôi mắt tròn to sặc sỡ đầy màu sắc và bản tính hiền lành thân thiện đó là lý do mà những chú chim này đang rất được ưa chuộng và tìm mua. Loài chim này thường được nuôi theo từng cặp và rất thích bay nhảy nên trước khi nuôi bạn nên chuẩn bị một chiếc lộng có kích thước vừa đủ thể chúng có thể tự do bay lượn. 
-
-5. Chim Vàng Anh
-
-Với ngoại hình nhỏ nhắn dễ thương cùng với màu vàng tươi sáng của bộ lông và giọng họt thánh thót của mình, Chim Vàng anh được những người sành chim cảnh khá yêu thích. Chúng cũng rất dễ nuôi khi thức ăn của chúng là côn trùng và hoa quả rất dễ kiếm. 
-
-6. Chim Khướu
-
-Khướu cũng là một loài chim cảnh quý được nhiều người ưa chuộng. Chúng có thể bắt chước được tiếng của rất nhiều loài vật và bắt chước được cả tiếng con người nên những người sảnh chim luôn mong muốn có được một chú khướu thông mình. Chúng sỡ hữu một bộ lông xốp như bông rất đáng yêu
-
-7. Chim Chào Mào
-
-Nói đến những loài chim cảnh đẹp chắc chắn không thể nào không nhắc tới chào mào. Đây là loại chim được nuôi phổ biến nhất ở nước ta. Những chú chi chào mào đặc trưng thường có màu đen nhưng nếu may mắn bạn có thể sở hữu được một chú chim màu trắng hoặc nữ hoàng thì đó lại là cả 1 gia tài. Tiếng hót của chúng rất chắc và thánh thót chúng rất thích ăn hoa quả nên việc nuôi loài chim này cũng không tốn quá nhiều công sức. 
-
-8. Chim Khuyên
-
-Sở hữu ngoại hình không khác là mấy so với chú chi sâu thông thườn. Để nuôi được một chú chim khuyên đẹp không phải là điều dễ dàng gì. Nhưng chính sự khó khăn đòi hỏi đẳng cấp cao của những thợ chim cảnh nên chúng vấn được rất yêu thích và mong muốn chinh phục bằng được. Chim khuyên sở hữu một giọng hót vô cùn ấn tượng, tiếng hót trong trẻo của chúng có thể xua tan đi mệt mỏi mang đễn cho người nghe một khoảng không gian lắng đọng và sâu lắng trong tâm hồn. 
-
-Đối với những loài chim đã nêu trên, mỗi loài đều có điểm riêng biệt của chúng khi có loài mang diện mạo hoàn hảo, thế nhưng lại có loài lại có được giọng hót say đắm. Và cũng chính bởi những đặc điểm này đã khiến cho những chú chim cảnh đẹp luôn được các dân chơi yêu mến và săn lùng. 
-'),
-	( 'adc8a1de829b5aca8cd6f8a94b4dbf0d' , '15F5C2BCEC0BC8554F7F105AA6528C51', N'Share how to raise nightingale' , GETDATE() , N'bird farming experience' , 
-	N'Chim họa mi nổi tiếng là loài chim khó thuần, đặc biệt đối với họa mi bổi thì việc thuần hóa chúng là một việc khó khăn đòi hỏi tính kiên trì và thời gian. Nhưng nếu như bạn thành công thì chắc chắn rằng kết qua sẽ khiến bạn cảm thấy vô cùng hài lòng. Dưới đây xin chia sẻ với bạn cách nuôi chim họa mi bổi, đặc biệt lưu ý với loại chim này bạn cần nhiều thời gian và không thể đốt cháy giai đoạn được. 
-	Chim họa mi bổi sống quen với môi trường hoang dã',
-
-N'Trước tiên, chim họa mi bổi là những chú chim mới được đưa từ rừng về, chúng đã có một thời gian dài sinh sống và trưởng thành với môi trường tự do của rừng núi. Chúng chưa bao giờ tiếp xúc với con người, vì vậy khi mới được đưa về, chim họa mi bổi rất hoảng sợ và nhút nhát. Bạn phải rất cẩn thận khi nuôi chim họa mi bổi.
-
-Bước đầu sau khi đưa chim về bạn chuẩn bị chiếc lồng phù hợp để thuần hóa chim họa mi bổi. Chiếc lồng này chỉ nên nhỏ nhắn vừa để cho chim có thể xoay người, có thể sử dụng loại lồng thổ dân tộc hoặc mẫu lồng giả côn minh size 30 -32-34. Vì như đã nói ở trên, chim bổi rất hoảng loạn và sợ hãi, dùng lồng kích thước nhỏ để hạn chế chim nhảy loạn xạ, gây toác mỏ, gãy cánh hoặc có thể tử vong. Kinh nghiệm được chia sẻ là : ở giai đoạn đầu này, người nuôi nên phủ áo lồng và treo chim ở nơi yên tĩnh hạn chế tiếp xúc với con người. Tùy theo tính cách của từng con chim bạn có thể để hé lồng ít hay nhiều.
-
-Thêm vào đó là thức ăn cho chim, với cách nuôi họa mi bổi, bạn nên cho chim ăn những thức ăn tự nhiên vốn quen thuộc mà chúng hay ăn khi sống trong tự nhiên hoang dã như côn trùng, dế, sâu, cào cào.. bởi vì họa mi là giống ương ngạnh, chúng thà chịu đói chịu khát rồi chết chứ không chịu tới cóng để ăn tấm rang trộn trứng. Dần dần sau một thời gian người nuôi nên tập cho chim họa mi ăn cám, gạo hay trứng gà; Chỉ nên hé lồng nhỏ xíu đủ cho chim ăn và tập cho chúng quen với chủ, và thói quen khi chủ tới là chúng có thức ăn. Kiên trì khoảng 6 tháng tới 1 năm thì chim họa mi bổi sẽ dạn hơn.
-Tìm nơi vắng vẻ yên tĩnh để treo lồng chim
-
-Ngoài ra, bạn cũng có thể dùng một con chim họa mi mái đã được thuần để “ấp” chim đực hoặc ngược lại, để cho chim bổi bớt hoảng sợ trong giai đoạn đầu. Cách “ốp đực” rất đơn giản, bạn chỉ cần treo chim mái đã được thuần cạnh chim đực hay ngược lại, mở hé lồng chim để chúng nhìn thấy nhau. Theo độ hấp dẫn và thu hút của loài giống, sẽ khiến cho chim họa mi bổi quên hoảng sợ, nhanh được thuần và nhanh quen với cuộc sống trong lồng hơn. Tuy nhiên, bạn tuyệt đối không nên dùng chim họa mi đực đã được thuần với chim họa mi đực bổi bởi vì chim họa mi là loài có tính hiếu thắng, ganh đua và cạnh tranh nhau, phân chia địa bàn trong tự nhiên, vì thế dùng chim họa mi đực thuần bởi đực bổi sẽ bị phản tác dụng.
-
-Nếu như ở giai đoạn ban đầu, người chủ nuôi chỉ tiếp nước và thức ăn cho chim trong lồng nhỏ thì ở giai đoạn kế tiếp , khoảng từ 2 tới 3 tháng sau, bạn phải tập cho chim những thói quen và phản xạ khi chúng sống ở trong lồng lớn hơn. Chăm sóc chim họa mi bổi nên có lịch trình đều dặn hàng ngày, từ việc thay nước, cho ăn, mở áo lồng… sau một thời gian được chăm sóc như vậy sẽ tạo cho chim họa mi bổi những phản xạ có điều kiện phù hợp với môi trường sống mới trong lồng.
-Chuẩn bị một chiếc lồng nhỏ xinh khi thuần chim họa mi
-
-Ngoài việc cung cấp thức ăn đủ chất dinh dưỡng và tạo không gian yên tĩnh, người nuôi cũng nên chú ý cho chim tắm nắng và tắm nước.  Tắm nắng để cung cấp vitamin D và tạo bộ lông mượt mà ấp áp. Tắm nước là thói quen của chim họa mi trong tự nhiên, chúng rất cẩn thận và thử nước trước khi tắm, tuy nhiên chim họa mi tắm rất nhanh, chỉ với vài phút. Càng được tắm nhiều, bộ lông chim càng được mướt mát, tươi tắn, và sức khỏe của chim cũng khá hơn.
-
-Trong quá trình chăm sóc chim họa mi bổi, bạn nên hành động nhẹ nhàng, tỉ mỉ và kiên nhẫn. Có thể bạn sẽ thất bại trong những lần đầu thuần chim họa mi bổi nhưng qua một quá trình tự bản thân người nuôi sẽ rút ra được những kinh nghiệm về cách nuôi họa mi bổi.
-
-Trong thời gian sau khi chim đã dạn, người nuôi vẫn nên trùm lồng kín cho chim vào ban đêm. Dù chim họa mi là loại có sức khỏe và đề kháng tốt nhưng chúng vẫn dễ trúng gió lạnh dẫn tới tử vong.
-
-Tóm lại, việc chăm sóc và thuần một chú chim họa mi bổi rất vất vả và người nuôi mất rất nhiều thời gian theo đó là sự tỉ mỉ và kiên trì. Nếu bạn là một người thật tâm huyết với chú chim của mình, nhất định khi trải qua một thời gian chăn sóc thì chú họa mi sẽ cất cao tiếng hót mỗi ngày. Tuy sẽ mất thời gian dài từ 6 – 8 tháng, cũng có thể là một năm tùy từng con chim, nhưng cuối cùng bạn sẽ thực sự cảm nhận được sự thú vị trong quá trình thuần hóa chim họa mi và hạnh phúc khi được thưởng thức tiếng chim hót mỗi ngày.
-'),
-	( '48981d702b321f55a52652da71155e67' , '7A07BA85FEBCA8A149A01893F84A2AB8', N'Adhere to the ways to take care of flaming eyelashes' , GETDATE() , N'bird farming experience' , 
-	N'Việc nuôi dưỡng và chăm sóc chim họa mi luôn giữ được phong độ là một điều tuy đơn giản nhưng không phải ai cũng có thể làm được vì đây là công việc nhẹ nhàng nhưng cần sự tỉ mỉ và kiên trì cao. Bài viết này xin bổ xung những cách chăm sóc chim họa mi căng lửa để bạn đọc tham khảo và áp dụng.',
-
-	N'Với những người nuôi chim họa mi, gặp phải trường hợp chim lên lửa, xuống lửa thất thường, ngày thì nghe hót rất nhiều, ngày thì không nghe thấy chim hót lần nào… đó là việc hết sức bình thường khi người nuôi chim họa mi không có các kĩ năng và chưa đủ kinh nghiệm giữ lửa cho họa mi. Những điều ảnh hưởng lớn nhất tới tạo lửa và giữ lửa cho chim mà bạn cần lưu ý như : môi trường sống, chế độ dinh dưỡng, cách chăm sóc..
-
-	Đầu tiên khi mới mang chim họa mi về, nó thường lạ người, lạ môi trường sống, thức ăn và thói quen được chăm sóc nên bao giờ cũng sợ hãi và xuống lửa; dù cho là chim mộc hay chim đã thuần hóa, chúng sẽ thường bỏ hót sau một vài ngày được nuôi dưỡng. Vì thế, bạn cũng không nên sớm bỏ cuộc mà hãy áp dụng những cách nuôi chim họa mi căng lửa sau :
-
-Duy trì chế độ ăn đầy đủ dinh dưỡng và ổn định cho chim : nên tập cho chim họa mi những chế độ ăn dinh dưỡng theo những công thức nhất định và tránh thay đổi thức ăn cho chim quá đột ngột. Công thức thường được áp dụng cho chim họa mi là  : gạo và trứng gà ngon. Nhất thiết phải làm khoáng hoặc mua khoáng chất cho chim ăn để chim có đủ nguyên tố vi lượng trong quá trình sống và hoạt động, chống bênh tật.. Tất nhiên, tùy từng giai đoạn phát triển của chim họa mi mà người nuôi cho ăn những thức ăn phù hợp. Thêm nữa, trong từng giai đoạn và thời điểm, bạn phải biết chim thiếu chất gì (vitamin và khoáng chất) và thừa gì để điều chỉnh và bổ sung cho kịp thời, hợp lý. Điều đặc biệt để nuôi chim họa mi căng lửa là bạn nên bổ sung hàng ngày thức ăn như : cào cào, sâu tươi cho chim, có thể là trứng kiến, cá con, tôm tép, thịt bò vụn...
-Chú ý vệ sinh lồng chim thường xuyên : dọn rửa lồng chuồng thật sạch, tuyệt đối không để phân chim, giấy lót lưu cữu trong lồng ngày nọ qua ngày kia rất mất vệ sinh cho cả chim và người. Tuyệt đối không làm cách gọi là “ủ chim” vì động tác này rất mất vệ sinh và phản lại tập tính sinh hoạt của loài chim, về mùa nắng nóng có thể làm chết chim vì ngột ngạt.
-Thường xuyên tắm nước và tắm nắng cho chim theo lịch trình đều đặn để loại bỏ kí sinh trùng và làm ấm bộ lông chim : người nuôi có thể áp dụng chế độ tắm nước cho chim họa mi mỗi ngày một lần và vào lúc nhiệt độ môi trường cao nhất trong ngày, thường thì là từ 13h tới 15h hàng ngày. Vào những ngày trời lạnh với nhiệt độ từ 10 độ C bạn vẫn có thể cho chim tắm bình thường, tuy nhiên việc tắm chim phải được tiến hành ở nơi khuất gió pha nước hơi âm ấm cho chim tắm. Những lúc có nắng phải tranh thủ cho chim tắm nắng 30 đến 45 phút trong mùa đông là vừa. Sáng mùa hè tắm nắng cho chim khoảng 20 phút vào lúc 8h00 hoặc 8h30 là tốt nhất.
-Bạn nên chọn nơi treo lồng chim là những nơi khuất, yên tĩnh và vắng bóng người qua lại, tuyệt đối không nên để những nơi mèo, chó có thể để ý tới hay tránh những người lớn cầm que gậy, chổi lau nhà, trẻ em.. để gây ồn ào và làm cho chim họa mi sợ hãi, hoảng loạn và xuống lửa. Sau một thời gian khi chim họa mi đã quen dần với môi trường , bạn có thể áp dụng cách thay đổi nơi treo lồng chim, để tập cho chim dạn hơn.
-Ngoài ra, khi di chuyển lồng chim, bạn nhất thiết phải có áo trùm lồng, khăn vải trùm lồng.
-Thêm vào đó, để chăm sóc cho họa mi căng lửa, người nuôi nên nuôi kèm với chim mái, đặc biệt với chim họa mi, điều này có tác dụng rất lớn. Những chuyên gia nuôi chim họa mi thường dùng chim mái để thúc chim trống căng lửa theo từng thời điểm thích hợp.
-Khi chim họa mi giã lồng, bạn có thể mồi cho chim hót bằng các CD thu âm chim trống hoặc chim mái đầu đàn, cách chăm sóc họa mi căng lửa này thường xuyên được sử dụng và mang lại hiệu quả cao.
-
-Một vài điều về những thay đổi theo mùa của chim họa mi bạn nên chú ý như : vào đầu mùa thu chim họa mi thường thay lông nên chúng bị xuống lửa và giảm sút thể lực . Người nuôi thấy họa mi của mình có những dấu hiệu trên khi vào mùa : rụng lông, ít hót .. thì nên bổ xung khoáng chất và dinh dưỡng trong thức ăn của chim. Quá trình thay lông của chim thường kéo dài từ 50 tới 60 ngày vào mùa thu và thêm khoảng 30 ngày vào mùa hè.
-
-Đây là quá trình rất bình thường nên bạn cũng không cần quá bận tâm mà chỉ cần chú ý bổ sung dinh dưỡng đầy đủ cho chúng. Sau khi trải qua quá trình thay lông và chăm sóc kỹ lưỡng, chim họa mi sẽ lên lửa và hót nhiều hơn.
-
-Chúc bạn sẽ đúc rút được nhiều cách chăm sóc họa mi căng lửa trong quá trình nuôi chim đầy thú vị của mình!
-'),
-	( '309d3c8fc90b2cf25bf851f62e428ec7' , '1BAC1B56627B5894B16E885461AC366E', N'Techniques and ways of raising nightingales that sing a lot' , GETDATE() , N'bird farming experience' , N'
-	Hiện nay trào lưu nuôi chim được lan rộng mạnh mẻ, hiển nhiên những kinh nghiệm mà các tay chơi lão luyện làm như thế nào để chim hót nhiều cũng đã được truyền lại. 
-	Tuy nhiên, hôm nay hãy để chúng tôi bật mí những “bí kíp” dưới đây để thuần hóa chim họa mi được thành công hơn nhé!',
+( '309d3c8fc90b2cf25bf851f62e428ec7' , '1BAC1B56627B5894B16E885461AC366E', N'A better future for local bird conservation' , GETDATE() , N'protect bird' ,
+	N'Birds are the heart of our organization’s mission, and they always will be. Protecting and restoring habitats, reducing dangers to our feathered friends in urban areas, and creating spaces to share in the joy of nature together are essential. Conservation is a big project, bigger than any one person. We need all the support, from all the people who care, to build a better future for the birds we love.',
 	
-	N'Tiếng hát của chim họa mi được công nhận như những tiếng vang vọng của thiên nhiên. Những danh ca nổi tiếng thường được ví như “họa mi”. Loài họa mi là chim rừng, sống chủ yếu ở các nước khu vực Đông Nam Á, đặc biệt là tại các vùng núi cao của Trung Quốc và Việt Nam như Lạng Sơn, Sơn La, Lai Châu.
+	N'<p>Honestly, birds are really special&mdash;they bring joy to so many people and bring so many people into the conservation community. Whether it&rsquo;s as simple as seeing a Northern Cardinal that reminds you of a loved one, or as grand as witnessing the incredible spectacle of Sandhill Crane migration through the Platte River, everyone has a bird story. If birds are such a natural entry point, how bird conservation organizations (like ours) conduct themselves&mdash;even what they call themselves&mdash;affects <em>who</em> in the community feels welcome to engage in this critical effort. It is vital that we both create pathways and eliminate barriers so that anyone who cares enough about birds to seek out and join our shared work feels like they belong.</p>
 
-Chọn mua chim họa mi
-Điều kiện đầu tiên của việc nuôi được một chú chim họa mi hót nhiều là bạn phải chọn được chim họa mi giống tốt , thứ hai là tới cách chăm họa mi hót. Người nuôi có thể đăng kí các đặc điểm sau của chim họa mi :
+<p><img alt="" src="https://images.squarespace-cdn.com/content/v1/55c0d7e5e4b05b835010c1f4/98198d97-31b6-41e6-86ed-c8b8f72c505b/51156816032_1aa7b180be_4k.jpg" style="height:2615px; width:4095px" /></p>
 
-Mắt :  bạn chọn những chú chim họa mi có đôi mắt long lanh, mắt to nhưng con ngươi nhỏ và có phản ứng nhạy bén với những tác nhân chung quanh, da quanh mắt mỏng, màu sắc của mắt tươi, đuôi mắt có vệt lông nhỏ màu trắng kéo dài ra sau ót. Nên chọn con có chấm đen ở đồng tử nhỏ hơn những con khác. Từ đồng tử lóe ra 4 tia mắt, nên chọn tia càng to, càng rõ, càng dày càng tốt. Nếu có kinh nghiệm, những người chơi chim thường quan sát kĩ xa nhãn (nhãn cầu) của chim họa mi thuộc loại nào : kim xa nhãn, thiết xa nhãn, ngân xa nhãn, huy xa nhãn.
-Thử phản ứng của chim : bạn thử bằng cách dùng ngón trỏ nhẹ nhàng vẽ hình tròn hoặc hình chữ thập để đánh giá phản ứng của chim. Có hai trường hợp sau : nếu đó là chim nuôi chưa thuộc thì phản ứng của nó là nhảy loạn xạ trong lồng tìm lối thoát thân. Còn chim thuần thuộc thì nó cứ đứng yên trên cần đậu, đôi mắt và chiếc đầu của nó di chuyễn theo hướng ngón tay vẽ hình của bạn, chứng tỏ chim có cá tính mạnh, bạo dạn, tự tin và phản xạ nhạy bén.
-Ngoài ra, bạn cũng phải chọn lồng phù hợp với chim họa mi. Kích cỡ lồng phù hợp  : đường kính đáy lồng khoảng 50 phân và khoảng 70 nan hoa. Lồng tre hay lồng mây đều có thể dùng được. Tạo không gian trong lồng để chim có một môi trường sống lý tưởng giúp phát huy tiếng hát của chúng
+<p>We must make it absolutely clear that our organization welcomes everyone&mdash;those already involved in bird conservation, and those that could be. That&rsquo;s why we&rsquo;re making a crucial change.</p>
 
-2. Cách nuôi chim họa mi hót nhiều
-Họa mi là loài chim rất nhát, bởi vậy cách chăm sóc chim họa mi hót hay cũng phải tỉ mỉ và kì công hơn nhiều loài chim cảnh khác. Bước đầu, người nuôi nên để chim tránh tiếp xúc với người lạ trong khoảng một tới hai tuần, trừ lúc cho chúng ăn; cách làm như sau : trùm áo hay vải vào lồng và để nơi ít tiếng ồn, người nuôi cho chim họa mi làm quen và tiếp xúc dần với môi trường xung quanh, nên làm từ từ và kiên trì. Thường thì trong khoảng nửa năm chim sẽ dạn với người.
-Dinh dưỡng cho chim họa mi là một trong những yếu tố quan trọng để tạo nên giọng hót của chim. Thức ăn của chúng rất đơn giản : chỉ cần gạo, trứng và cào cào ; chim họa mi ăn rất ít, một  ngày chúng ăn chỉ khoảng một thìa thức ăn. Muốn cho chim hót sung thì bạn nên cho chúng ăn cào cào, vài ba chục con mỗi ngày. Một điều lưu ý là chế độ thức ăn của chim họa mi phải ổn định, bạn không nên thay đổi thức ăn của chúng đột ngột . Khi nuôi nhốt trong lồng ta tập cho chung ăn thức ăn riêng. Và chim đã quen với một loại thức ăn nào đó thì ta nên cho chim ăn mãi thức ăn đó. Tất nhiên tùy vào từng giai đoạn sinh trưởng của chim mà có sự thay đổi thành phần thức ăn. Nhưng nhất thiết không nên thay đổi thức ăn đột ngột, vì họa mi rất dễ “dị ứng” trước mùi vị thức ăn lạ nên dễ bị suy và thường dẫn đến việc thay lông.
+<p>This past week, our members received a letter in the mail with an important announcement.<em> </em>After rigorous deliberation and thorough discussion, Madison Audubon&rsquo;s board of directors voted unanimously to drop the &ldquo;Audubon&rdquo; name and identify a process to seek a new name for the organization.&nbsp;</p>
 
-Kĩ năng để có một con chim họa mi hót giọng thánh thót và nhiều giọng, bạn nên cho chim họa mi của mình đi dượt, một chú chim già rừng thường có giọng hót rất cao và trong, mang cái hồn của thiên nhiên núi rừng. Dù cho chim họa mi bạn nuôi là chim mộc mới mang từ rừng về, bạn cũng nên mang đi dượt chim, bằng cách trùm áo lồng thật kín để chúng nghe ngóng những con chim khác để bắt giọng. Nếu không đi dượt chim, bạn nên mua các băng đĩa thu âm tiếng hót của họa mi trống hót hay, hót nhiều về để chim bạn nuôi tập giọng. Trong trường hợp muốn tập cho chim hót khỏe và hay cần bỏ hết áo lồng, treo chim lên cao, yên tĩnh chim hót rất hay và nhiều giọng. 
-Ngoài ra việc tắm nắng, tắm nước cho chim cũng là một việc quan trọng và không được quên vệ sinh lồng chim sạch sẽ.
-Trên đây là những chia sẻ về kinh nghiệm cách chăm sóc chim họa mi hót , bạn tham khảo và làm theo để nuôi chim thành công, lúc nào cũng được thưởng thức tiếng chim họa mi quanh nhà bạn.
-	'),
-	( 'e9dd9c14ec255e2700d76c05c70d0236' , 'D9608C097B4AC716401B25D55D657DF5', N'The technique of taming the nightingale' , GETDATE() , N'bird farming experience' , N'
-	Loài chim họa mi không những hót hay mà nhờ bản tính dữ tợn, hung hăng mà chim họa mi còn dùng để chiến đấu. Vậy việc thuần hóa một con chim họa mi "mộc" mới bắt về từ rừng thật sự không hề dơn giản. 
+<p>Ultimately, Audubon&#39;s racist history creates a painful legacy for many in our community and also severely limits our ability to carry out our mission inclusively, meaningfully, and sustainably. A name change simply allows more people to enjoy, participate in, and improve our work together to conserve birds and habitat.</p>
 
-Sau khi đem chim mộc về phủ kín áo lồng để mở chữ A hoặc rộng hơn cũng không sau, để chỗ tối quay ra chỗ có ánh sáng và có người đi lại, việc này sẽ giúp  cho chú chim nhát thấy tự tin hơn ai khi nhìn không thấy ai. Sau 2,3 ngày cho chim ra chỗ sáng hơn, nếu thấy chim đứng không nhảy lung tung thì bạn đã thành công.',
-
-N'Thức ăn đổi đầy cóng, cho chim ăn cám đừng cho ăn nhiều mồi tươi vì khi cho ăn mồi tươi chim họa mi mộc sẽ không ăn cám, ăn thức ăn tươi sẽ dễ gây bệnh đường ruột. Chú họa mi nào càng dạn bao nhiêu thì dễ dàng thuần bấy nhiêu. Ngoài sự chăm sóc cẩn thận về thức ăn cần phải thay nước và vệ sinh lồng thường xuyên. Muốn tắm cho chim thì phải cẩn thận vì có thể sẽ làm chim bị hoảng nên tốt nhất nếu không chắc rằng chim có hoảng hay không thì không tắm, nó sẽ tự vẫy nước trong cóng để tắm.
-
-Chim mộc thường rất nhút nhát chúng quen với không gian rộng rãi nên khi cho vào lồng chúng sẽ bị tù túng, nhảy loạn xạ chưa quen. Mỗi lần thấy bóng người là chúng nhảy nhót điên loạn, đâm đầu vào nan lồng chảy cả máu đầu, gãy duôi, xã cánh,…Nhiều khi chăm sóc chim là vậy nhưng chúng chẳng chịu ăn thế là chết, thật tội nghiệp và cũng tiếc cho công sức chăm chim. Giai đọan này là một giai đoạn khó khăn, nếu bạn vẫn không thể thuần hóa được họa mi mộc tốt nhất nên chọn chim đã được thuần hóa tương đối, biết ăn cám và cất tiếng hót rồi.
-
-“ chọn mặt gửi vàng” một con chim đá đủ chuẩn
-Phần đầu: phải to nhưng to chưa chắc đã tốt nhé , nên chọn đầu hơi bằng, gần ngang với mỏ chim vì chin có cái đầu này thường lanh lẹ, vừa lì lơn là một tuyển thủ né đòn mau lẹ.
-Phần mỏ: mỏi dài vừa phải, chót mỏ hơi khum như mỏ sẻ, chiếc mỏ này sẽ mổ đau và cắn mạnh đối thủ.
-Phần chân: phải to khỏe, không bị thương tật, bàn chân to
-Phần thân: lớn con, dài đòn, vóc dáng oai phong
-Đuôi dài và dày, để duy trì cân bằng và khi bay lên đáp xuống lách lái được dễ hơn.
-
-Sau khi chọn ngoại hình xong phải chọn tới tài năng và kỹ thuật thiên bẩm. Mỗi con chim họa mi thường có thế đá khác nhau:
-
-Có con thì đá độc hiểm
-Con thì to lớn mà đá địch thủ ko đau
-Có con ra đòn nhanh, dứt khoát, có con lại rề rà chậm chạp
-Có con lì đòn, đá đến sướt đầu mẻ trán vẫn hung hăng đá tiếp
-Có con nhát chưa đá mà đã muốn thua….
-Bằng những kỹ năng chuyên môn, kinh nghiệm nuôi và chăm sóc chim  họa mi mộc mà họ biết chim hay hay chim dở. Đôi khi người mua chim tính toán rất kỹ lưỡng mới quyết định mua vì một con chim ngoài vóc dáng theo chuẩn còn phải sử dụng toàn bộ cơ thể kết hợp nhuần nhuyễn đá mới hữu hiệu.
-
-Theo kinh nghiệm của giới chơi chim nên chọn chim ở vùng Lạng Sơn, Móng Cái mới có chim dữ sau khi mua về thì người ta sẽ chăm sóc, huấn luyện chúng. Đối với chim đá cần hạn chế cho chúng hót, chúng không hót mới đá sung.
-
-2.Cách thuần chim  họa mi
-
-Chim mua mang về không bao giờ có được một chú chim ưng ý cả: hoặc chúng không hót, hoặc thân hình tả tơi, hoặc nhảy loạn xạ,… Nếu như kiên nhẫn chăm sóc thì không sớm thì muộn bạn sẽ sở hữu chú chim hót hay đá giỏi và công sức chăm sóc bỏ ra không bị phí hoài. Trong quá trình chăm sóc sự  ân cần, chu đáo, nhẹ nhàng sẽ giúp thuần hóa chim dễ dàng hơn. Nếu bạn thật sự thích loài chim này, vô cùng ngưỡng mộ chúng vậy thì công sức chăm sóc bỏ ra không hề phí hoài bạn sẽ nhận được kết quả tuyệt vời khi chú chim cất cao giọng hót, trổ tài, khoe sắc sẽ khiến bạn hạnh phúc hơn.
-
-3. Huấn luyện chim họa mi chiến đấu
-Thông thường áp dụng phương pháp thuần hóa chim họa mi mộc thường mất khoảng từ 4 đến 6 tháng trường hợp chim khó thuần chắc phải tới một năm hoặc hơn. Trong quá trình chăm chim người ta thường đưa chim đi dượt. Người chơi chim cảnh sẽ đem chim họa mi đến để họa mi quen với chim lạ, điều này sẽ rất hay vì chim có thể tập dượt để hót hay hơn, hăng hái hơn, sung độ hơn.
-
-Tại thời điểm thích hợp đem chim đi sổ, chính thức cho chim đá với chim lạ để quen với trận chiến, cho chim học hỏi và có kinh nghiệm đấu đá. Tuần này cho đá với chim này tuần sau lại với chim khác, thời gian sổ chim  nên ngắn lại để dưỡng sức cho thi đấu thực sự, tránh được thương tích không đáng có. Trước khi đưa chim đi đá 1 tuần không tắm cho chim và cũng không nên đưa đi sổ. Chim họa mi đã đá xong dù thắng hay bại đều xơ xơ xác xác thảm hại vô cùng và thời gian phục hồi là rất lâu.
-
-Chim họa mi thay lông xong thường hót suốt ngày, nếu để 2 chú chim gần nhau bạn sẽ có một dàn đồng ca rất hay.
-
-Cách chăm sóc chinh họa mi và thuần hóa chúng cần phải kiên nhẫn , một người nuôi chim có kinh nghiệm sẽ huấn luyện được những chú chim đá hay.
-
-Hy vọng qua bài viết này bạn có thể có thêm kinh nghiệm để chăm sóc chim họa mi và thuần hóa chúng. 
-
-	'),
-	( '553acd22fd496a02446c6258b3ba027e' , '530A0ABFDEDF30ECFBE3E6618FB2CF48', N'How to take care of crested birds with the most technical standards' , GETDATE() , N'bird farming experience' , N'
-	Khi những chiếc lông đầu tiên rớt xuống báo hiệu những chú chào mào đáng yêu của bạn sắp trút bỏ một bộ lông cũ kĩ trên người để khoác một bộ lông hoàn hảo hơn trước. Lúc này cách chăm sóc chim chào mào thay lông đòi hỏi phải cầu kì và chính xác hơn rất nhiều. Để giúp các bạn có được những cách chăm sóc chim khoa học nhất mời các bạn theo dõi bài viết dưới đây của chúng tôi',
-
-N'Cách chăm sóc chim chào mào thay lông
-
-1. Chế độ dinh dưỡng
-
-Nhưng chú chim chào mào thay lông có những biểu hiện rất rõ ràng và chắc chắn rằng bất kì một người yêu chim nào cũng có thể nắm được trong lúc này chúng rất cần được bổ xung thêm các loại thức ăn tươi như cào cào, ở giai đoạn này không nên chó chúng ăn sâu khô nhé vì sâu khô sẽ khiến cho bộ lông của chúng quăn và rất xấu. 
-
-Bạn có thể cho chúng ăn thêm lạc rang xay nhỏ ra rồi trộn vào cám để những chất béo này sẽ kích thích lông cho chúng mọc nhanh và mượt. Về trái cây thì lựa chọn những loại có tính mát và có sắc tố màu tự nhiên như cam, dưa hấu hay đủ đủ và thay đổi loại hàng ngày để chim có thể hấp thu được các sắc tố màu này tự nhiên nhất. Đây là cách mà các nghệ nhân thường áp dụng và cho một kết quả khá tốt
-
-2. Cách tắm
-
-Cho những chú chim chào mào tắm nắng hoặc tắm nước là một trong những bước không thể thiếu được trong cách chăm sóc chi chào mào thay lông. Mỗi 1 ngày bạn cho chúng tắm nắng nhẹ để kích thích cho những chiếc lông mới mọc nhanh và tắm nước để những chiếc lông cũ nhanh rụng. 
-
-3. Môi trướng sống
-
-Thông thường 1 chú chim chào mào thay lông hoàn chỉn trong khoảng tối đa 3 tháng thậm chí làcó thể sớm hơn tuy vào đặc điểm từng chú chim. Môi trường sống cũng khá quan trọng đối với chúng. Nếu như bạn không giữ được sự ổn định đôi khi chúng còn đột ngột ngừng việc thay lông. Điều này khiến chúng phải mất thêm 1 khoảng thời gian dài nữa rất bất tiện.
-
-Những chú chim bổi được nuôi dưỡng trong tự nhiên sau khi thuần thì đa phần thay lông rất đúng mùa nhưng đối với những chú chim được nuôi dưỡng trong lồng lâu năm thì việc thay lông phụ thuộc khá nhiều vào chế dinh dưỡng cũng như môi trường sống của chúng. Nên khi chăm sóc loài chim này bạn tuyệt đối hạn chế thay đổi môi trường hoặc hạn chế thay đổi thức ăn đột ngột của chúng. Những chú chim thay lông không đúng mùa thường luôn ở trong thể trạng mệt mỏi, lông mới mọc lên cũng không được đep và chim cũng bớt sung.
-
-Hi vọng rằng với những cách chăm sóc chim chào mào thay lông trong bài viết trên sẽ giúp cho anh em có thể giúp cho những chú chim quý của mình có được một bộ lông tốt nhất. Chúc anh em nghệ nhân thành công và sở hữu được chú chim đẹp nhất
-'),
-	( 'd6d001e31f4065bbe402bc2eac44ca22' , 'F0757015A9AF8FD8C5E01EC4C4C82D3D', N'Golden experiences in how to raise crested crested scorpions into bait' , GETDATE() , N'bird farming experience' , N'
-	Một khi chú chào mào bổi chất lượng được huấn luyện thành công thì chắn chắc rằng sẽ là một đối thú đáng gờm và bản lĩnh trong các trường, hội thi chim. Chính vì vậy nhưng chú chim này nhận được rất nhiều sự quan tâm của các cao thủ lão làng cũng như những người chơi mới muốn thử sức. Cách nuôi chào mào bổi thành mồi không khó đòi hỏi chủ nhân của chúng phải thành thục những bước dưới đây',
-
-N'Cách nuôi chào mào bổi thành mồi
-Chào mào bổi cũng có con này con nọ không phải con nào cũng có thể sở hữu được một chất giọng hoàn hảo. Nếu bạn may mắn sở hữu được một chú bổi ngon lành chắc chắn rằng khi vào đấu trường chúng sẽ thể hiện được bản lĩnh thực sự của mình. 
-
-1. Cách tập cho chào mào bổi dạn.
-
-Khi bạn đã sở hữu được một chú chào mào bổi chất lượng thì đầu tiên bạn phải huấn luyện chúng để chúng có thể quên đi cuộc sống ngoài thiên nhiên rộng lớn. Để chúng dạn người hơn và làm quen với cuộc sống ở trong lồng. Muốn chào mào dạn nên treo chim ở những nơi có nhiều người qua lại nhưng áo lồng phải được mở từ từ. Không nên vội vàng nếu không những chú chim này sẽ sợ hài.
-
-2. Tập cho chào mào bổi ăn 
-
-Khi mới được bắt những chú chim chào mào bổi sẽ khó làm quen với các loại thức ăn như cám nên giai đoạn đầu bạn nên cho chúng ăn hoa quả + với những chú chào cào. Bạn có thể nhốt chung những chú chào mào bổi cũng với những chú chim mái để chúng được dạn dĩ hơn và cũng học được cách ăn cám tắm rửa của những chú chim này. Khi chim đã dạn hơn thì bạn chuyển chúng đến các vị trí khác nhau để chúng có thể thích nghi với nhiều môi trường. Sau đó khoảng 1 thời gian sau bạn đã có thể cho chim đi dợt rồi.
+<p>Our mission remains the same: we will continue to focus on bird conservation, habitat protection, youth education, and community engagement. We&nbsp;look forward to having a name that truly celebrates <em>that</em>.</p>
+')
 
 
 
-Bạn cứ tiếp tục cho đến khi chim bổi đã được thuần, thuần đễn mức có người đến chún cũng không sở hãi trổ lồng nữa thì bạn mang chúng đi cùng những chú chim mồi khác để chúng có thể làm quen dần với tiếng hót của những chú chim mồi thành thục.
+,	( 'e9dd9c14ec255e2700d76c05c70d0236' , 'D9608C097B4AC716401B25D55D657DF5', N'Beauty and Guilt' , GETDATE() , N'Bird shots' , 
+	N'The Milwaukee Journal Sentinel revealed yesterday what southern Wisconsin birders have known for several days.  The Lake Michigan shoreline in Milwaukee is hosting a male Mandarin Duck, arguably the world''s most spectacular and beautiful duck.',
 
-Ở quá trình luyện tập bạn cần đặt lồng chim gần với chim mồi khác nhưng tuyết đối phủ kín chỉ để chúng và chim mồi thấy nhau, cứ lặp đi lặp lại công việc này rồi sẽ có một ngày chú chim bổi của bạn sẽ dạn dỉ hơn và trở thành chim mồi. Nhưng những lần dầu bạn không nên cho chúng gặp những đối thủ chào mào già đời quá nếu không chúng sẽ sợ vì chưa quen. Cứ lặp đi lặp lại một khoảng thời gian những chú chim bổi này sẽ trở thành những chú chim mồi thuần thục.
+	N'<p>If you don&#39;t want to drive to Milwaukee and join dozens of other birders, check out the photos below. WOW, WOW, WOW.</p>
 
-Với cách nuôi chào mào bổi thành mồi mà chúng tôi đề cập đến trong bài viết trên hi vọng sẽ giúp ích được cho anh chị em có thể thuần hóa được một chú bổi với tỷ lệ thành công cao nhất.
+<p><img alt="" src="https://images.squarespace-cdn.com/content/v1/55c0d7e5e4b05b835010c1f4/a338563c-4011-4ae5-98cc-0a3611cd9c66/45767824741_e67cfba391_c.jpg" style="height:558px; width:800px" /></p>
 
+<p><em>Mandarin Duck photo by Andy Reago &amp; Chrissy McClarren</em></p>
+
+<p><img alt="" src="https://images.squarespace-cdn.com/content/v1/55c0d7e5e4b05b835010c1f4/5d032e6e-2c81-4749-93c7-d87043e44a10/51882267308_55eacebfab_c.jpg" style="height:551px; width:800px" /></p>
+
+<p><em>Mandrin Duck preening photo by Andy Reago &amp; Chrissy McClarren</em></p>
+
+<p><img alt="" src="https://images.squarespace-cdn.com/content/v1/55c0d7e5e4b05b835010c1f4/bea8364c-20e2-428d-b495-6f96a3346c26/4396449810_3dc59908a4_c.jpg" style="height:531px; width:800px" /></p>
+
+<p><em>Mandarin Duck at the zoo in Basel, Switzerland, photo by Tambako The Jaguar FCC</em></p>
+
+<p>I&#39;m feeling a bit guilty about all this, mostly because of my initial response.&nbsp;Which was, &ldquo;This is so cool, so neat, what a bird, what a looker, we are SO lucky.&rdquo; Then, the next reflection and guilt.&nbsp;Gee, the bird is not supposed to be here. Is it an escapee that doesn&#39;t have a chance to survive?&nbsp;Does it pose any threat to native species?&nbsp;Shouldn&#39;t I be saving my admiration for our native species, all too many of which are endangered, threatened, or declining?</p>
+
+<p>I can rest assured on some counts.&nbsp;Mandarin Ducks do not appear to pose any threat to native species of waterfowl.&nbsp;Escapees from public or private collections seem to have a decent chance to survive. In several places in the continental United States, Mandarin Ducks have established feral, self-sustaining populations, again without apparent harm to other wildlife.</p>
+
+<p>At the basis of my guilt is the strong part beauty plays in my appreciation and support of wildlife&mdash;too strong perhaps? Back to fish (of course).&nbsp;The tiger trout, a hybrid of brown and brook trout, is one of Wisconsin&#39;s striking. It combines the vivid colors and pattern of brook and brown trout in spectacular fashion.&nbsp;But it&#39;s not supposed to be here.&nbsp;Brown trout are an exotic, some&nbsp;would say invasive species; in many streams, they wholly or substantially replace the native brook trout. Nevertheless, I was delighted when I caught my first and only tiger trout two years ago and my fishing friends and I are always tickled to learn of someone catching one.&nbsp;They are extremely rare in Wisconsin and are not bred or stocked here.</p>
+
+<p>Birds and fish.&nbsp;I think House Finches are cute and lovely and I&#39;m always happy to see them in the yard. Pink salmon, a startling fish in its spawning colors and body shape and another exotic, has established itself in Lake Michigan and I&#39;d love to catch one.&nbsp;Sorry to confess, I find starlings handsome fellows.</p>
+
+<p><img alt="" src="https://images.squarespace-cdn.com/content/v1/55c0d7e5e4b05b835010c1f4/51b6c967-1acf-441c-9f6e-9aa64785a093/House+Finch+KCA.jpg" style="height:1016px; width:1533px" /></p>
+
+<p><em>House Finch photo by Kelly Colgan Azar</em></p>
+
+<p><img alt="" src="https://images.squarespace-cdn.com/content/v1/55c0d7e5e4b05b835010c1f4/191861c2-c568-49f5-a45b-65dd7aa50d5e/8692726913_ec2f438817_c.jpg" style="height:600px; width:800px" /></p>
+
+<p><em>Pink salmon photo by Kimberly Holzer/Waterkeeper Alliance Inc. FCC</em></p>
+
+<p><img alt="" src="https://images.squarespace-cdn.com/content/v1/55c0d7e5e4b05b835010c1f4/847b8b0c-9cc8-421d-9393-3de0774baf5b/33721607850_6601875d9b_c.jpg" style="height:533px; width:799px" /></p>
+
+<p><em>European Starling photo by Mick Thompson</em></p>
+
+<p>While I don&#39;t know that many of you are starling fans, I suspect my affinity for lovely creatures is widely shared. <strong>Thank goodness because that emotion is one of the building blocks of our concern for and care of wildlife.</strong>&nbsp;We are as emotional as we are rational.&nbsp;A conservation ethic needs an emotional foundation as much as a rational one.&nbsp;Madison Audubon members would not donate time and money to our birds, their habitat, and their fellow creatures if they did not love them. The beauty of those creatures and their homes nourishes that love.</p>
+
+<p>Enjoy the Mandarin in person or in photographs. Let&#39;s embrace him as one of the colorful and happy surprises Nature can offer, even during dreary January. &nbsp;</p>
+
+<p>Thanks for your care of the natural beauty that surrounds us and take care,<br />
+<em>Topf Wells, Madison Audubon advocacy committee</em></p>
+
+<p>&nbsp;</p>
+
+<h3>ADDITIONAL NOTE FROM THE AUTHOR:</h3>
+
+<p>Though I reference&nbsp;bird species that are not native to Wisconsin,&nbsp;my reflection on how nature can be incredibly beautiful and inspire conservation is not a form of advocacy for these species. While appreciating a bird&rsquo;s plumage exemplifies how our attraction to beauty supports our conservation ethic, it&rsquo;s not the only support. Appreciating and understanding how creatures function in a healthy or not so healthy environment are also part of that ethic&rsquo;s foundation.&nbsp;</p>
+
+<p>In some cases, invasive or exotic species can cause serious harm to native wildlife populations. Thinking about them closely, in addition to perhaps marvelling at their beauty, can lead to a better understanding of the complexity of our current natural world, and what it needs to be healthier. We need to better protect native species of all sorts&mdash;I know from battling invasive honeysuckle, buckthorn, reed canary grass, and even starlings for a couple of years at the kestrel boxes I was monitoring. But scientists also acknowledge that many invasive species are here to stay&mdash;we need to better understand their impact to evaluate what options we have for managing them.&nbsp;</p>
+')
+
+
+,	( '553acd22fd496a02446c6258b3ba027e' , '530A0ABFDEDF30ECFBE3E6618FB2CF48', N'How To Choose The Right Kind Of Bird Feeder' , GETDATE() , N'how to take care bird' , 
+	N'The ideal bird feeder is sturdy enough to withstand winter weather and squirrels, tight enough to keep seeds dry, easy to assemble and, most important of all, easy to keep clean.',
+
+	N'<h3>Tray Or Platform Feeders</h3>
+
+<p><img alt="house finches at a platform feeder" src="https://www.allaboutbirds.org/news/wp-content/uploads/2015/05/platform_feeder.jpg" style="height:204px; width:552px" /></p>
+
+<p>House Finches at a platform feeder.&nbsp;<em>Photo by Susan Spear/Cornell Lab.</em></p>
+
+<p>Trays attract the widest variety of seed-eating feeder birds, including pigeons, starlings, and House Sparrows, but also grosbeaks and native sparrows. Tray feeders offer no protection against rain and snow; without excellent drainage, seeds may become wet enough to sprout, and wet seeds may also foster fungal and bacterial growth. Bird droppings can quickly soil the seed in tray feeders. The best tray feeders have a screened, rather than solid, bottom to promote complete drainage; at the very least, tray feeders should have several drainage holes. Even with drainage, the bottom should be removable for fairly frequent hosing. Offer only enough seed in tray feeders for birds to finish every day or two, and shake out the bottom every time you add new seeds.</p>
+
+<p>Unless constructed with an effective squirrel baffle on the pole or suspension chain, tray feeders are an open invitation to squirrels and chipmunks.</p>
+
+<p>Tray feeders placed near the ground are most likely to attract ground-feeding birds such as juncos, doves, jays, blackbirds, and sparrows (along with squirrels, deer, raccoons, and other critters). Tray feeders can also be mounted on deck railings, posts, or stumps, or can be suspended. Some models have a roof to provide some protection from the weather.</p>
+
+<p><a >Back to Top</a></p>
+
+<h3>Hopper Or &ldquo;House&rdquo; Feeders</h3>
+
+<p><img alt="gray-crowned rosy-finch at hopper feeder" src="https://www.allaboutbirds.org/news/wp-content/uploads/2015/05/rosy_finch.jpg" style="height:191px; width:300px" /></p>
+
+<p><em>Gray-crowned Rosy-Finch by&nbsp;<a >Ron McCluskey</a>.</em></p>
+
+<p>This kind of feeder protects seeds fairly well against the weather and bird droppings, but if the seed within the hopper does get wet, bacteria and fungus can thrive. Hopper feeders are attractive to most feeder birds, including finches, jays, cardinals, buntings, grosbeaks, sparrows, chickadees, and titmice; they&rsquo;re also squirrel magnets. Many hoppers can hold enough seed to last for several days, which can make them very convenient for people, but dangerous for birds if the seed within is allowed to get wet. Most hopper feeders are much harder to clean than tray feeders. Hopper feeders can be mounted on a pole or suspended. Again, a squirrel baffle is important if you don&rsquo;t want to feed them.</p>
+
+<p><a >Back to Top</a></p>
+
+<h3>Window Feeders</h3>
+
+<p>Small plastic feeders affixed to window glass with suction cups, and platform feeders hooked into window frames, attract finches, chickadees, titmice, and some sparrows. They afford us wonderful, close-up views of birds, and their placement makes them the safest of all feeder types for preventing window collisions. Because many birds feed while standing on the seeds in window feeders, the food risks becoming soiled, so the seed in these feeders should be changed daily and the feeders kept very clean. Fortunately, for most window designs these are the easiest of all feeders to access for filling and cleaning.</p>
+
+<p><a >Back to Top</a></p>
+
+<h3>Tube Feeders</h3>
+
+<p><img alt="pine siskin at tube feeder" src="https://www.allaboutbirds.org/news/wp-content/uploads/2015/05/pine_siskin.jpg" style="height:270px; width:235px" /></p>
+
+<p><em>Pine Siskin by&nbsp;<a >Barnmom</a>.</em></p>
+
+<p>Hollow tubes keep seed fairly clean and dry and, if they have metal feeding ports, may be somewhat squirrel resistant (though squirrels often chew through the end caps or the plastic tube itself). Depending on the size of the perches under the feeding ports, you may attract small birds such as sparrows, grosbeaks, chickadees, titmice, and finches while excluding larger species such as grackles and jays. Styles with perches above the feeding ports are designed for seed-eating birds that can feed hanging upside down, such as goldfinches and chickadees, while dissuading others. Depending on the size of the feeding ports, you can offer tiny nyjer seeds or larger seeds.</p>
+
+<p>Unfortunately, the seed-containing tube on most tube feeders extends an inch or more below the bottom-most feeding ports. Seed that collects here may become a breeding ground for mold and bacteria. It&rsquo;s best to block the bottom of the tube below the bottom feeding ports. Some tube feeders are huge, accommodating a dozen or more birds at a time. But these are best used only during times when many birds are using them. During periods when only a handful of birds use these feeders, use smaller models so the seed is used up fairly frequently.</p>
+
+<p>When adding new seed to tube feeders, always empty the old seed out first.</p>
+')
+,	( 'd6d001e31f4065bbe402bc2eac44ca22' , 'F0757015A9AF8FD8C5E01EC4C4C82D3D', N'' , GETDATE() , N'' , 
+	N'The ideal bird feeder is sturdy enough to withstand winter weather and squirrels, tight enough to keep seeds dry, easy to assemble and, most important of all, easy to keep clean.<br>
+
+To attract the greatest variety of birds to your yard, provide several different feeder types offering a variety of foods. You’ll find that some species are more likely to use one kind of feeder over another.',
+
+	N'<h3>Tray Or Platform Feeders</h3>
+
+<p><img alt="house finches at a platform feeder" src="https://www.allaboutbirds.org/news/wp-content/uploads/2015/05/platform_feeder.jpg" style="height:204px; width:552px" /></p>
+
+<p>House Finches at a platform feeder.&nbsp;<em>Photo by Susan Spear/Cornell Lab.</em></p>
+
+<p>Trays attract the widest variety of seed-eating feeder birds, including pigeons, starlings, and House Sparrows, but also grosbeaks and native sparrows. Tray feeders offer no protection against rain and snow; without excellent drainage, seeds may become wet enough to sprout, and wet seeds may also foster fungal and bacterial growth. Bird droppings can quickly soil the seed in tray feeders. The best tray feeders have a screened, rather than solid, bottom to promote complete drainage; at the very least, tray feeders should have several drainage holes. Even with drainage, the bottom should be removable for fairly frequent hosing. Offer only enough seed in tray feeders for birds to finish every day or two, and shake out the bottom every time you add new seeds.</p>
+
+<p>Unless constructed with an effective squirrel baffle on the pole or suspension chain, tray feeders are an open invitation to squirrels and chipmunks.</p>
+
+<p>Tray feeders placed near the ground are most likely to attract ground-feeding birds such as juncos, doves, jays, blackbirds, and sparrows (along with squirrels, deer, raccoons, and other critters). Tray feeders can also be mounted on deck railings, posts, or stumps, or can be suspended. Some models have a roof to provide some protection from the weather.</p>
+
+<p><a >Back to Top</a></p>
+
+<h3>Hopper Or &ldquo;House&rdquo; Feeders</h3>
+
+<p><img alt="gray-crowned rosy-finch at hopper feeder" src="https://www.allaboutbirds.org/news/wp-content/uploads/2015/05/rosy_finch.jpg" style="height:191px; width:300px" /></p>
+
+<p><em>Gray-crowned Rosy-Finch by&nbsp;<a >Ron McCluskey</a>.</em></p>
+
+<p>This kind of feeder protects seeds fairly well against the weather and bird droppings, but if the seed within the hopper does get wet, bacteria and fungus can thrive. Hopper feeders are attractive to most feeder birds, including finches, jays, cardinals, buntings, grosbeaks, sparrows, chickadees, and titmice; they&rsquo;re also squirrel magnets. Many hoppers can hold enough seed to last for several days, which can make them very convenient for people, but dangerous for birds if the seed within is allowed to get wet. Most hopper feeders are much harder to clean than tray feeders. Hopper feeders can be mounted on a pole or suspended. Again, a squirrel baffle is important if you don&rsquo;t want to feed them.</p>
+
+<p><a >Back to Top</a></p>
+
+<h3>Window Feeders</h3>
+
+<p>Small plastic feeders affixed to window glass with suction cups, and platform feeders hooked into window frames, attract finches, chickadees, titmice, and some sparrows. They afford us wonderful, close-up views of birds, and their placement makes them the safest of all feeder types for preventing window collisions. Because many birds feed while standing on the seeds in window feeders, the food risks becoming soiled, so the seed in these feeders should be changed daily and the feeders kept very clean. Fortunately, for most window designs these are the easiest of all feeders to access for filling and cleaning.</p>
+
+<p><a >Back to Top</a></p>
+
+<h3>Tube Feeders</h3>
+
+<p><img alt="pine siskin at tube feeder" src="https://www.allaboutbirds.org/news/wp-content/uploads/2015/05/pine_siskin.jpg" style="height:270px; width:235px" /></p>
+
+<p><em>Pine Siskin by&nbsp;<a >Barnmom</a>.</em></p>
+
+<p>Hollow tubes keep seed fairly clean and dry and, if they have metal feeding ports, may be somewhat squirrel resistant (though squirrels often chew through the end caps or the plastic tube itself). Depending on the size of the perches under the feeding ports, you may attract small birds such as sparrows, grosbeaks, chickadees, titmice, and finches while excluding larger species such as grackles and jays. Styles with perches above the feeding ports are designed for seed-eating birds that can feed hanging upside down, such as goldfinches and chickadees, while dissuading others. Depending on the size of the feeding ports, you can offer tiny nyjer seeds or larger seeds.</p>
+
+<p>Unfortunately, the seed-containing tube on most tube feeders extends an inch or more below the bottom-most feeding ports. Seed that collects here may become a breeding ground for mold and bacteria. It&rsquo;s best to block the bottom of the tube below the bottom feeding ports. Some tube feeders are huge, accommodating a dozen or more birds at a time. But these are best used only during times when many birds are using them. During periods when only a handful of birds use these feeders, use smaller models so the seed is used up fairly frequently.</p>
+
+<p>When adding new seed to tube feeders, always empty the old seed out first.</p>
 ');
 
 
 
 
+	
+
+	
 
