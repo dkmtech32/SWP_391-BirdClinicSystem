@@ -20,6 +20,7 @@ import models.medicalRecord.MedicalRecordDTOImpl;
 import models.medicine.MedicineDTO;
 import models.recordMedicine.RecordMedicineDTO;
 import models.recordMedicine.RecordMedicineDTOImpl;
+import models.service_.Service_DTO;
 import models.users.UserDTO;
 import models.users.doctor.DoctorDTO;
 import services.general.AppointmentDoesNotExistException;
@@ -170,6 +171,19 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
 
         try {
             apps = medicineDAO.readAllMedicines();
+        } catch (NoSuchRecordExists ex) {
+            throw new SQLException(ex.getMessage());
+        }
+
+        return apps;
+    }
+    
+    @Override
+    public List<Service_DTO> getSelfServices() throws SQLException {
+        List<Service_DTO> apps = null;
+
+        try {
+            apps = serviceDAO.readServiceBySpeciality(((DoctorDTO)this.getCurrentUser()).getSpeciality().getSpecialityID());
         } catch (NoSuchRecordExists ex) {
             throw new SQLException(ex.getMessage());
         }

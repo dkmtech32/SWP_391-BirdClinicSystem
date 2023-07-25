@@ -18,6 +18,7 @@ import models.users.doctor.DoctorDTO;
  * @author Admin
  */
 public class AppointmentDTOImpl implements AppointmentDTO {
+
     private String appointmentID;
     private BirdDTO bird;
     private DoctorDTO doctor;
@@ -78,18 +79,20 @@ public class AppointmentDTOImpl implements AppointmentDTO {
 
     @Override
     public void setService_(Service_DTO service_) {
-        if (this.service_==null) {
+        if (this.service_ == null) {
             this.service_ = new ArrayList<>();
         }
         this.service_.add(service_);
     }
-    
+
     @Override
     public void setAllService(List<Service_DTO> service_) {
-        if (this.service_==null) {
+        if (this.service_ == null) {
             this.service_ = new ArrayList<>();
         }
-        this.service_.addAll(service_);
+        if (this.service_.indexOf(service_) == -1) {
+            this.service_.addAll(service_);
+        }
     }
 
     @Override
@@ -131,15 +134,17 @@ public class AppointmentDTOImpl implements AppointmentDTO {
     public void setAppStatus(String appStatus) {
         this.appStatus = appStatus;
     }
-    
+
     @Override
     public int compareTo(Object o) {
         int result = 0;
         if (o instanceof AppointmentDTO) {
             AppointmentDTO obj = (AppointmentDTO) o;
-            
+
             result = appTime.compareTo(obj.getAppTime());
-            if (result == 0) result = timeslot.compareTo(obj.getTimeslot());
+            if (result == 0) {
+                result = timeslot.compareTo(obj.getTimeslot());
+            }
         }
         return result;
     }
