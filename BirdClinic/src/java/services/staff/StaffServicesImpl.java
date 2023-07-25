@@ -14,8 +14,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import models.appointment.AppointmentAlreadyExistsException;
 import models.appointment.AppointmentDTO;
 import models.appointment.AppointmentDTOImpl;
@@ -99,7 +97,7 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
 
         try {
             if (appointment.getDoctor() == null) {
-                result = doctorDAO.readDoctorsBySpeciality(appointment.getService_().getSpeciality().getSpecialityID());
+                result = doctorDAO.readDoctorsBySpeciality(appointment.getService_().get(0).getSpeciality().getSpecialityID());
             }
         } catch (NoSuchRecordExists ex) {
             if (ex.getMessage().toLowerCase().contains("doctor")) {

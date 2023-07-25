@@ -7,6 +7,7 @@ package models.appointment;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 import models.bird.BirdDTO;
 import models.service_.Service_DTO;
 import models.timeslot.TimeslotDTO;
@@ -32,7 +33,7 @@ public interface AppointmentDTO extends Serializable, Comparable {
 
     String getPayment();
 
-    Service_DTO getService_();
+    List<Service_DTO> getService_();
 
     TimeslotDTO getTimeslot();
 
@@ -53,5 +54,7 @@ public interface AppointmentDTO extends Serializable, Comparable {
     void setService_(Service_DTO service_);
 
     void setTimeslot(TimeslotDTO timeslot);
+    
+    void setAllService(List<Service_DTO> service_);
     
 }

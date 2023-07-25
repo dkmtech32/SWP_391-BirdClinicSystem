@@ -66,7 +66,11 @@
                                                             </h2>
                                                         </td>
                                                         <td>${appointment.bird.breed}</td>
-                                                        <td>${appointment.service_.serviceName}</td>
+                                                        <td>
+                                                            <c:forEach var="service" items="${appointment.service_}" >
+                                                                ${service.serviceName} <br/>
+                                                            </c:forEach>
+                                                        </td>
 
                                                         <td class="text-right">
                                                             <div class="table-action">

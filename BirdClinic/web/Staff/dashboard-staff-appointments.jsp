@@ -83,7 +83,10 @@
 
                                                     <td style="width:150px; max-width: 150px; white-space: nowrap;
                                                         overflow: hidden;
-                                                        text-overflow: ellipsis">${appointment.service_.serviceName}
+                                                        text-overflow: ellipsis">
+                                                        <c:forEach var="service" items="${appointment.service_}" >
+                                                            ${service.serviceName} <br/>
+                                                        </c:forEach>
                                                     </td>
                                                     <c:choose>
                                                         <c:when test="${appointment.appStatus =='processing'}">
