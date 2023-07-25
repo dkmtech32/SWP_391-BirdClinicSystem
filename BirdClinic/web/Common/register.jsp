@@ -177,9 +177,8 @@
                                 <div class="form-group">
                                     <label>Gender</label>
                                     <select required name="bird-gender" class="form-control select">
-                                        <option>Male</option>
-                                        <option>Female</option>
-                                        <option>Others</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
                                     </select>
                                 </div>
                             </div>
