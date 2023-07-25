@@ -62,7 +62,6 @@
                                                         </h2>
                                                     </td>
                                                 </c:if>
-
                                                 <td>${appointment.appTime}<span class="d-block text-info">${appointment.timeslot.timeSlot}</span></td>
                                                 <td>
                                                     <h2 class="table-avatar">
@@ -102,11 +101,10 @@
                                                                 <i class="fa fa-times"></i> Cancel 
                                                             </a>
                                                         </c:if>
-                                                        <!--                                                                                    <a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>-->
+                                                        <!--<a href="javascript:void(0);" class="btn btn-sm bg-primary-light"> <i class="fas fa-print"></i> Print </a>-->
                                                         <a href="<c:url value="/View/Appointment?appointmentID=${appointment.appointmentID}"/>" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
                                                     </div>
                                                 </td>
-
                                             </tr>
                                         </c:forEach>
                                     </tbody>

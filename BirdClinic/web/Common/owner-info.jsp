@@ -62,8 +62,17 @@
                     <c:if test="${sessionScope.service.currentUser.userRole=='staff' && appointment.appStatus=='complete'}">
                         <form class="row" style="justify-content: center;">
                             <label>Re-examination</label>
-                            <select name="serviceID"></select>
-                            <select name="doctorID"></select>
+                            <select name="serviceID">
+                                <option value="">-</option>
+                                <c:forEach var="service" items="${services}">
+                                    <option value="${service.serviceID}">${service.serviceName}</option>
+                                </c:forEach>
+                            </select>
+                            <select name="doctorID">
+                               <c:forEach var="doc" items="${doctors}">
+                                    <option value="">-</option>
+                                </c:forEach>
+                            </select>
                             <button class="btn btn-primary" type="submit" >Retake</button>
                         </form>
                     </c:if>

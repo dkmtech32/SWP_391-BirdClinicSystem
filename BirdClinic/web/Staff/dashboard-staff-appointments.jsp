@@ -53,25 +53,13 @@
                                                     <th>Service</th>
                                                     <th>Status</th>
                                                     <th>Doctor</th>
-                                                    <%--     <c:if test="${param.filter.equals('check-in')}">
-                                                         <th>Payment Method</th>
-                                                         </c:if>--%>
-
-                                                <th></th>
-                                                    <c:if test="${param.filter.equals('processing')}">
                                                     <th></th>
-                                                    </c:if>
-                                                    <c:if test="${param.filter.equals('processing')||param.filter.equals('confirm')}">
-                                                    <th></th>
-                                                    </c:if>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
+                                                </tr>
+                                            </thead>
+                                            <tbody>
                                             <c:forEach var="appointment" items="${requestScope.appointments}">
-
                                                 <tr>
-                                                    <td>
+                                                    <td >
                                                         <h2 class="table-avatar">
                                                             <a href="<c:url value="/View/Customer?userID=${appointment.bird.customer.userID}"/>" class="avatar avatar-sm mr-2">
                                                                 <img class="avatar-img rounded-circle" src="<c:url value="/images/customer/${appointment.bird.customer.image.imageURLName}"/>" alt="User Image" />
@@ -81,9 +69,7 @@
                                                     </td>
                                                     <td>${appointment.appTime}<span class="d-block text-info">${appointment.timeslot.timeSlot}</span></td>
 
-                                                    <td style="width:150px; max-width: 150px; white-space: nowrap;
-                                                        overflow: hidden;
-                                                        text-overflow: ellipsis">
+                                                    <td >
                                                         <c:forEach var="service" items="${appointment.service_}" >
                                                             ${service.serviceName} <br/>
                                                         </c:forEach>
@@ -106,7 +92,7 @@
                                                         </c:when>
                                                     </c:choose>
 
-                                                    <td >
+                                                    <td>
                                                         <c:if test="${appointment.appStatus =='processing'||appointment.appStatus =='confirm' }">
                                                             <select style="width: 200px; max-width: 200px" id="${appointment.appointmentID}" class="form-select" name="doctorID" onchange="changeDoctorSelection(this)">
                                                                 <option value="">--</option>
@@ -123,7 +109,33 @@
                                                                 <a style="width:100px; max-width: 100px; white-space: nowrap;
                                                                    overflow: hidden;" href="doctor-profile.jsp">${appointment.doctor.fullName} <span>${doctor.speciality.specialityName}</span></a> 
                                                             </h2>
-                                                        </c:if>                                                            
+                                                        </c:if>   
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <div class="table-action">
+                                                            <a href="<c:url value="/View/Appointment?appointmentID=${appointment.appointmentID}"/>" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                            <c:if test="${appointment.appStatus.equals('processing')}">
+                                                                <form class="btn" action="<c:url value="/Dashboard/Appointments/updateApp"/>" name="docForm" method="get">
+                                                                    <input type="hidden" id="hidden${appointment.appointmentID}" name="doctorID" <c:if test="${not empty appointment.doctor}"> value="${appointment.doctor.userID}"</c:if> required>
+                                                                        <input type="hidden"  name="action" value="update">
+                                                                        <input type="hidden"  name="filter" value="confirm">
+                                                                        <input type="hidden" class="appID" name="appointmentID" value="${appointment.appointmentID}">
+                                                                    <button class=" btn btn-sm bg-success-light" type="submit">
+                                                                        <i class="fa fa-check"></i>
+                                                                        Confirm
+                                                                    </button>
+                                                                </form>
+                                                                <a href="<c:url value="/Dashboard/Appointments/updateApp?appointmentID=${appointment.appointmentID}&action=cancel"/>" class="btn btn-sm bg-danger-light"> <i class="fa fa-times"></i> Cancel </a>
+
+                                                            </c:if>
+                                                            <c:if test="${appointment.appStatus.equals('check-in')}">
+                                                                <a class="btn btn-primary" href="<c:url value="/View/Appointment?appointmentID=${appointment.appointmentID}"/>" ><i class="fa fa-check"></i> Checkout</a>
+
+                                                            </c:if>
+                                                            <c:if test="${appointment.appStatus.equals('confirm')}">
+                                                                <a href="<c:url value="/Dashboard/Appointments/updateApp?appointmentID=${appointment.appointmentID}&action=update&filter=check-in"/>" class="btn btn-sm bg-warning-light"> <i class="fa fa-check"></i> Check-in </a>
+                                                            </c:if>
+                                                        </div>
                                                     </td>
                                                     <%--      <c:if test="${param.filter.equals('check-in')}">
                                                               <td>
@@ -137,55 +149,9 @@
                                                               </td>
                                                           </c:if> --%>
 
-                                                    <td class="text-right">
-                                                        <div class="table-action">
-                                                            <a href="<c:url value="/View/Appointment?appointmentID=${appointment.appointmentID}"/>" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                        </div>
-                                                    </td>
-
-                                                    <c:if test="${appointment.appStatus.equals('processing')}">
-
-                                                        <td class="text-right">
-                                                            <div class="table-action">
-                                                                <form  action="<c:url value="/Dashboard/Appointments/updateApp"/>" name="docForm" method="get">
-                                                                    <input type="hidden" id="hidden${appointment.appointmentID}" name="doctorID" <c:if test="${not empty appointment.doctor}"> value="${appointment.doctor.userID}"</c:if> required>
-                                                                        <input type="hidden"  name="action" value="update">
-                                                                        <input type="hidden"  name="filter" value="confirm">
-                                                                        <input type="hidden" class="appID" name="appointmentID" value="${appointment.appointmentID}">
-                                                                    <button class=" btn btn-sm bg-success-light" type="submit">
-                                                                        <i class="fa fa-check"></i>
-                                                                        Confirm
-                                                                    </button>
-                                                                </form>
-                                                            </div>
-                                                        </td>
-                                                        <td class="text-right">
-                                                            <div class="table-action">
-                                                                <a href="<c:url value="/Dashboard/Appointments/updateApp?appointmentID=${appointment.appointmentID}&action=cancel"/>" class="btn btn-sm bg-danger-light"> <i class="fa fa-times"></i> Cancel </a>
-                                                            </div>
-                                                        </td>
-                                                    </c:if>
-
                                                     <%--              <td  class="text-right">
                                                                       <button class="btn btn-sm btn-info" onclick="showServiceAndDoctorInfo('${appointment.service_.serviceName}', '${appointment.doctor.fullName}')">View Info</button>
                                                                   </td>--%>
-
-
-                                                    <c:if test="${appointment.appStatus.equals('check-in')}">
-
-                                                        <td class="text-right">
-                                                            <%--   --%>
-                                                            <a class="btn btn-primary" href="<c:url value="/View/Appointment?appointmentID=${appointment.appointmentID}"/>" ><i class="fa fa-check"></i> Checkout</a>
-                                                        </td>
-                                                    </c:if>
-
-                                                    <c:if test="${appointment.appStatus.equals('confirm')}">
-                                                        <td class="text-right">
-                                                            <div class="table-action">
-                                                                <a href="<c:url value="/Dashboard/Appointments/updateApp?appointmentID=${appointment.appointmentID}&action=update&filter=check-in"/>" class="btn btn-sm bg-warning-light"> <i class="fa fa-check"></i> Check-in </a>
-                                                            </div>
-                                                        </td>
-                                                    </c:if>
                                                 </tr>
                                             </c:forEach>
                                         </tbody>
