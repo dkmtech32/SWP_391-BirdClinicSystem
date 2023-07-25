@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.List;
 import models.exceptions.NoSuchRecordExists;
 import models.exceptions.RecordAlreadyExists;
+import models.service_.Service_DTO;
 
 /**
  *
@@ -54,4 +55,8 @@ public interface AppointmentDAO extends Serializable {
     int updateAppointment(AppointmentDTO appointment) throws NoSuchRecordExists, SQLException;
 
     int updateAppointmentStatus(String appointmentID, String status) throws NoSuchRecordExists, SQLException;
+    
+    int deleteService(String appointmentID) throws SQLException;
+    
+    int addService(List<Service_DTO> services, String appointmentID) throws SQLException;
 }

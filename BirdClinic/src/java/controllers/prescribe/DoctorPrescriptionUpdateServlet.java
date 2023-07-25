@@ -16,10 +16,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.medicalRecord.MedicalRecordDTO;
 import models.recordMedicine.RecordMedicineDTO;
+import models.service_.Service_DTO;
 import services.doctor.DoctorServices;
 import services.doctor.MedicalRecordAlreadyExistsException;
 import services.doctor.MedicineDoesNotExistException;
 import services.general.AppointmentDoesNotExistException;
+import services.staff.ServiceDoesNotExistException;
 
 /**
  *
@@ -47,14 +49,26 @@ public class DoctorPrescriptionUpdateServlet extends HttpServlet {
             DoctorServices service = (DoctorServices) session.getAttribute("service");
             MedicalRecordDTO medRec = (MedicalRecordDTO) session.getAttribute("medicalRecord");
             List<RecordMedicineDTO> recMed = (List<RecordMedicineDTO>) session.getAttribute("prescription");
+            List<Service_DTO> services = (List<Service_DTO>) session.getAttribute("services");
+            String action = request.getParameter("action");
             Map<String, String[]> args = request.getParameterMap();
-            
+
             //delete
-            service.updatePrescription(args, medRec, recMed);
-            session.setAttribute("prescription", recMed);
+            switch (action) {
+                case "delete":
+                    service.updatePrescription(args, medRec, recMed);
+                    session.setAttribute("prescription", recMed);
+                    break;
+                case "deleteService":
+                    String serviceID = request.getParameter("serviceID");
+                    service.updateServices(services, serviceID, "delete");
+                    session.setAttribute("services", services);
+            }
         } catch (MedicineDoesNotExistException ex) {
             ex.printStackTrace();
         } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ServiceDoesNotExistException ex) {
             ex.printStackTrace();
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
@@ -81,13 +95,14 @@ public class DoctorPrescriptionUpdateServlet extends HttpServlet {
             MedicalRecordDTO medRec = (MedicalRecordDTO) session.getAttribute("medicalRecord");
             List<RecordMedicineDTO> recMed = (List<RecordMedicineDTO>) session.getAttribute("prescription");
             String action = request.getParameter("action");
+            List<Service_DTO> services = (List<Service_DTO>) session.getAttribute("services");
             Map<String, String[]> args = request.getParameterMap();
 
             switch (action) {
 
                 case "submit":
                     medRec = service.updateRecord(args, medRec);
-                    if (service.prescribe(medRec, recMed)) {
+                    if (service.prescribe(medRec, recMed, services)) {
                         session.removeAttribute("medicalRecord");
                         if (recMed != null) {
                             session.removeAttribute("prescription");
@@ -99,6 +114,11 @@ public class DoctorPrescriptionUpdateServlet extends HttpServlet {
                 case "add":
                     recMed = service.updatePrescription(args, medRec, recMed);
                     session.setAttribute("prescription", recMed);
+                    break;
+                case "addService":
+                    String serviceID = request.getParameter("serviceID");
+                    service.updateServices(services, serviceID, "add");
+                    session.setAttribute("services", services);
                     break;
             }
 
@@ -114,6 +134,9 @@ public class DoctorPrescriptionUpdateServlet extends HttpServlet {
         } catch (MedicineDoesNotExistException ex) {
             ex.printStackTrace();
             request.setAttribute("error-message", "Medicine does not exist. Please try again.");
+        } catch (ServiceDoesNotExistException ex) {
+            ex.printStackTrace();
+            request.setAttribute("error-message", "Service does not exist. Please try again.");
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

@@ -129,6 +129,8 @@ public class CustomerServicesImpl extends GeneralServicesImpl implements Custome
                 calendar.add(Calendar.DATE, 7);
                 Date nextWeek = new Date(calendar.getTime().getTime());
                 apps = super.filterAppointmentsByDate(appointmentDAO.readAppointmentByCustomer(customerID), today, nextWeek);
+            } else if (filter.equals("all")) {
+                apps = appointmentDAO.readAppointmentByCustomer(customerID);
             } else {
                 apps = super.filterAppointmentsByStatus(appointmentDAO.readAppointmentByCustomer(customerID), filter);
             }

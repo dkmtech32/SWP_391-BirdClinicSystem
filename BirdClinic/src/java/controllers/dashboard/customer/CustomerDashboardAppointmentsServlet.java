@@ -39,8 +39,8 @@ public class CustomerDashboardAppointmentsServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String url = "/Customer/dashboard-customer-appointments.jsp";
         String filter = request.getParameter("filter");
-        if (filter == null || filter.trim().equals("")) {
-            filter = "upcoming";
+        if (filter == null) {
+            filter = "all";
         }
         try {
             CustomerServices service = (CustomerServices) session.getAttribute("service");

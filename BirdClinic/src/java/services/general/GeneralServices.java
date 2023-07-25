@@ -25,6 +25,7 @@ import models.timeslot.TimeslotDTO;
 import models.users.UserDTO;
 import models.users.customer.CustomerDTO;
 import models.users.doctor.DoctorDTO;
+import services.staff.ServiceDoesNotExistException;
 
 /**
  *

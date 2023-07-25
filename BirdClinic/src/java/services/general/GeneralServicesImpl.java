@@ -65,6 +65,7 @@ import models.users.customer.CustomerDTOImpl;
 import models.users.doctor.DoctorDAO;
 import models.users.doctor.DoctorDAOImpl;
 import models.users.doctor.DoctorDTO;
+import services.staff.ServiceDoesNotExistException;
 import utils.Utils;
 
 /**
@@ -677,32 +678,7 @@ public class GeneralServicesImpl implements GeneralServices {
 
         return blog;
     }
-
-    protected List<AppointmentDTO> filterAppointmentsByStatus(List<AppointmentDTO> appointments, String status) {
-        List<AppointmentDTO> filteredAppointments = new ArrayList<>();
-
-        appointments.stream().filter((appointment)
-                -> (appointment.getAppStatus().equals(status))).forEachOrdered((appointment)
-                -> {
-            filteredAppointments.add(appointment);
-        });
-
-        return filteredAppointments;
-    }
-
-    protected List<AppointmentDTO> filterAppointmentsByDate(List<AppointmentDTO> appointments, Date startDate, Date endDate) {
-        List<AppointmentDTO> filteredAppointments = new ArrayList<>();
-
-        appointments.forEach((appointment) -> {
-            Date appTime = appointment.getAppTime();
-            if ((appTime.after(startDate) || appTime.equals(startDate)) && (appTime.before(endDate) || appTime.equals(endDate))) {
-                filteredAppointments.add(appointment);
-            }
-        });
-
-        return filteredAppointments;
-    }
-
+    
     @Override
     public List<AppointmentDTO> getAppointmentsByFilter(String filter)
             throws SQLException {
@@ -775,5 +751,30 @@ public class GeneralServicesImpl implements GeneralServices {
             throw new ImageAlreadyExistsException(ex.getMessage());
         }
         return image;
+    }
+
+    protected List<AppointmentDTO> filterAppointmentsByStatus(List<AppointmentDTO> appointments, String status) {
+        List<AppointmentDTO> filteredAppointments = new ArrayList<>();
+
+        appointments.stream().filter((appointment)
+                -> (appointment.getAppStatus().equals(status))).forEachOrdered((appointment)
+                -> {
+            filteredAppointments.add(appointment);
+        });
+
+        return filteredAppointments;
+    }
+
+    protected List<AppointmentDTO> filterAppointmentsByDate(List<AppointmentDTO> appointments, Date startDate, Date endDate) {
+        List<AppointmentDTO> filteredAppointments = new ArrayList<>();
+
+        appointments.forEach((appointment) -> {
+            Date appTime = appointment.getAppTime();
+            if ((appTime.after(startDate) || appTime.equals(startDate)) && (appTime.before(endDate) || appTime.equals(endDate))) {
+                filteredAppointments.add(appointment);
+            }
+        });
+
+        return filteredAppointments;
     }
 }

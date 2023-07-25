@@ -141,9 +141,9 @@ public class AppointmentDTOImpl implements AppointmentDTO {
         if (o instanceof AppointmentDTO) {
             AppointmentDTO obj = (AppointmentDTO) o;
 
-            result = appTime.compareTo(obj.getAppTime());
+            result = - appTime.compareTo(obj.getAppTime());
             if (result == 0) {
-                result = timeslot.compareTo(obj.getTimeslot());
+                result = - timeslot.compareTo(obj.getTimeslot());
             }
         }
         return result;

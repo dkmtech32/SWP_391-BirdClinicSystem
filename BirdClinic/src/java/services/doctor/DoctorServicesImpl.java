@@ -25,6 +25,7 @@ import models.users.UserDTO;
 import models.users.doctor.DoctorDTO;
 import services.general.AppointmentDoesNotExistException;
 import services.general.GeneralServicesImpl;
+import services.staff.ServiceDoesNotExistException;
 import utils.Utils;
 
 /**
@@ -123,7 +124,25 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
     }
 
     @Override
-    public boolean prescribe(MedicalRecordDTO medRec, List<RecordMedicineDTO> recMeds)
+    public void updateServices(List<Service_DTO> services, String serviceID, String action)
+            throws ServiceDoesNotExistException, SQLException {
+        try {
+            Service_DTO service = serviceDAO.readService_(serviceID);
+            switch (action) {
+                case "add":
+                    services.add(service);
+                    break;
+                case "delete":
+                    services.remove(service);
+                    break;
+            }
+        } catch (NoSuchRecordExists ex) {
+            throw new ServiceDoesNotExistException(ex.getMessage());
+        }
+    }
+
+    @Override
+    public boolean prescribe(MedicalRecordDTO medRec, List<RecordMedicineDTO> recMeds, List<Service_DTO> services)
             throws MedicalRecordAlreadyExistsException, SQLException {
         boolean result = false;
 
@@ -135,7 +154,14 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
                     result = recordMedicineDAO.insertMultipleRecordMedicine(recMeds) > 0;
                 }
             }
-        } catch (RecordAlreadyExists ex) {
+
+            if (!services.equals(medRec.getAppointment().getService_())) {
+                appointmentDAO.deleteService(medRec.getAppointment().getAppointmentID());
+                appointmentDAO.addService(services, medRec.getAppointment().getAppointmentID());
+            }
+            
+            appointmentDAO.updateAppointmentStatus(medRec.getAppointment().getAppointmentID(), "prescibed");
+        } catch (RecordAlreadyExists | NoSuchRecordExists ex) {
             throw new MedicalRecordAlreadyExistsException(ex.getMessage());
         }
 
@@ -164,7 +190,7 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
         }
         return apps;
     }
-    
+
     @Override
     public List<MedicineDTO> getAllMedicine() throws SQLException {
         List<MedicineDTO> apps = null;
@@ -177,13 +203,13 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
 
         return apps;
     }
-    
+
     @Override
     public List<Service_DTO> getSelfServices() throws SQLException {
         List<Service_DTO> apps = null;
 
         try {
-            apps = serviceDAO.readServiceBySpeciality(((DoctorDTO)this.getCurrentUser()).getSpeciality().getSpecialityID());
+            apps = serviceDAO.readServiceBySpeciality(((DoctorDTO) this.getCurrentUser()).getSpeciality().getSpecialityID());
         } catch (NoSuchRecordExists ex) {
             throw new SQLException(ex.getMessage());
         }

@@ -153,7 +153,7 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
                 case "confirm":
                     newStatus = "check-in";
                     break;
-                case "check-in":
+                case "prescribed":
                     if (appointment.getPayment() == null || appointment.getPayment().trim().equals("")) {
                         throw new AppointmentDoesNotExistException("Payment has not been set");
                     }
@@ -377,7 +377,7 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
             String service_ID = args.get("serviceID")[0];
             String appDate = args.get("appDate")[0];
             String doctorID = args.get("doctorID")[0];
-            
+
             AppointmentDTO app = new AppointmentDTOImpl();
             app.setAppointmentID(Utils.hash(birdID + service_ID + timeslotID + String.valueOf(System.currentTimeMillis())));
             app.setBird(birdDAO.readBird(birdID));
