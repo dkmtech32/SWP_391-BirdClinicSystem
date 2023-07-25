@@ -43,7 +43,6 @@
                             <c:if test="${not empty requestScope.feedback}">
                                 <jsp:include page="../Common/owner-feedback.jsp"/>  
                             </c:if>
-                            <!-- chỉ hiện khi user đưa feedback rồi-->
                            
                                 <jsp:include page="../Common/payment-info.jsp"/>
                             

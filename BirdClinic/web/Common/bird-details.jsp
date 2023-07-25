@@ -116,7 +116,11 @@
 
                                                                         <td class="text-center">${app.appTime}</td>
 
-                                                                        <td class="text-center">${app.service_.serviceName}</td>
+                                                                        <td class="text-center">
+                                                                            <c:forEach var="service" items="${app.service_}" >
+                                                                                ${service.serviceName} <br/>
+                                                                            </c:forEach>
+                                                                        </td>
 
                                                                         <td class="text-center">${app.doctor.fullName}</td>
 
@@ -167,7 +171,7 @@
                                                                     <th class="text-center">Treatment days</th>
 
                                                                     <th class="text-center">Doctor's note</th>
-                                                                    
+
                                                                     <th class="text-center">Date</th>
 
                                                                 </tr>
