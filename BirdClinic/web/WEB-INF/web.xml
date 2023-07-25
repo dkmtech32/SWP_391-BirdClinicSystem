@@ -12,10 +12,10 @@
         <param-name>EMAIL-PASSWORD</param-name>
         <param-value>anhmonkdv041103</param-value>
     </context-param>
-    <context-param>
+<!--    <context-param>
         <param-name>PATH</param-name>
         <param-value>D:\work\FPT\2023_Summer\SWP391\BirdClinic\BirdClinic\web\assets\images</param-value>
-    </context-param>
+    </context-param>-->
     <filter>
         <filter-name>AuthenticationFilter</filter-name>
         <filter-class>controllers.filters.AuthenticationFilter</filter-class>
