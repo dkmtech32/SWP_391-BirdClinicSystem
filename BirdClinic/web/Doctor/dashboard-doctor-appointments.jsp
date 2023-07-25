@@ -17,32 +17,35 @@
                 <div class="appointment-tab">
                     <!-- Appointment Tab -->
                     <nav class="user-tabs mb-4">
-                    <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab">Upcoming</a>
-                        </li>
-                    </ul>
-                </nav>
-                    <!-- /Appointment Tab -->
+                        <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+                            <li class="nav-item">
+                                <a class="nav-link <c:if test="${param.filter.equals('check-in')}">active</c:if> " href="<c:url value="/Dashboard/Appointments?filter=check-in"/>" >Checked-in</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link <c:if test="${param.filter.equals('complete')}">active</c:if> "  href="<c:url value="/Dashboard/Appointments?filter=complete"/>" >Completed</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <!-- /Appointment Tab -->
 
-                    <div class="tab-content">
-                        <!-- Upcoming Appointment Tab -->
-                        <div class="tab-pane show active" id="upcoming-appointments">
-                            <div class="card card-table mb-0">
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-hover table-center mb-0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Customer Name</th>
-                                                    <th>Appointment Date</th>
-                                                    <th>Bird Name</th>
-                                                    <th>Bird Breed</th>
-                                                    <th class="text-center">Service</th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                        <div class="tab-content">
+                            <!-- Upcoming Appointment Tab -->
+                            <div class="tab-pane show active" id="upcoming-appointments">
+                                <div class="card card-table mb-0">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover table-center mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Customer Name</th>
+                                                        <th>Appointment Date</th>
+                                                        <th>Bird Name</th>
+                                                        <th>Bird Breed</th>
+                                                        <th class="text-center">Service</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
                                                 <c:forEach var="appointment" items="${requestScope.appointments}">
                                                     <tr>
                                                         <td>
@@ -68,7 +71,9 @@
                                                         <td class="text-right">
                                                             <div class="table-action">
                                                                 <a href="<c:url value="/View/Appointment?appointmentID=${appointment.appointmentID}"/>" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
-                                                                <a href="<c:url value='/Doctor/Prescription?appointmentID=${appointment.appointmentID}&new=new'/>" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
+                                                                <c:if test="${appointment.appStatus=='check-in'}">
+                                                                      <a href="<c:url value='/Doctor/Prescription?appointmentID=${appointment.appointmentID}&new=new'/>" class="btn btn-sm bg-info-light"> <i class="fa fa-flask"></i> Prescribe </a>
+                                                                </c:if>
                                                             </div>
                                                         </td>
 

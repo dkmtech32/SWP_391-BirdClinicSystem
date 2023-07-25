@@ -29,7 +29,7 @@
                                 <div class="form-control">${appointment.bird.customer.fullName}</div>
                             </div>
                         </div>
-                        
+
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Date of Birth</label>
@@ -56,9 +56,17 @@
                                 <div class="form-control">${appointment.bird.customer.phoneNumber}</div> 
                             </div>
                         </div>
-                            
-                           
+
+
                     </div>
+                    <c:if test="${sessionScope.service.currentUser.userRole=='staff' && appointment.appStatus=='complete'}">
+                        <form class="row" style="justify-content: center;">
+                            <label>Re-examination</label>
+                            <select name="serviceID"></select>
+                            <select name="doctorID"></select>
+                            <button class="btn btn-primary" type="submit" >Retake</button>
+                        </form>
+                    </c:if>
                 </div>
             </div>
         </div>
