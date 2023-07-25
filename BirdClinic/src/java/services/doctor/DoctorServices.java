@@ -14,20 +14,24 @@ import models.recordMedicine.RecordMedicineDTO;
 import models.service_.Service_DTO;
 import services.general.AppointmentDoesNotExistException;
 import services.general.GeneralServices;
+import services.staff.ServiceDoesNotExistException;
 
 /**
  *
  * @author Admin
  */
-public interface DoctorServices extends GeneralServices{
+public interface DoctorServices extends GeneralServices {
 
-    boolean prescribe(MedicalRecordDTO medRec, List<RecordMedicineDTO> recMeds) throws MedicalRecordAlreadyExistsException, SQLException;
+    boolean prescribe(MedicalRecordDTO medRec, List<RecordMedicineDTO> recMeds, List<Service_DTO> services) throws MedicalRecordAlreadyExistsException, SQLException;
 
     List<RecordMedicineDTO> updatePrescription(Map<String, String[]> args, MedicalRecordDTO medRec, List<RecordMedicineDTO> prescription) throws MedicineDoesNotExistException, SQLException;
 
     MedicalRecordDTO updateRecord(Map<String, String[]> args, MedicalRecordDTO medicalRecord) throws AppointmentDoesNotExistException, SQLException;
-    
+
     List<MedicineDTO> getAllMedicine() throws SQLException;
-    
+
     List<Service_DTO> getSelfServices() throws SQLException;
+
+    void updateServices(List<Service_DTO> services, String serviceID, String action)
+            throws ServiceDoesNotExistException, SQLException;
 }

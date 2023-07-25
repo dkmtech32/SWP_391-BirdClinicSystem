@@ -37,7 +37,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     private static final String READ_APPOINTMENT_BY_STATUS
             = "SELECT appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus "
             + "FROM Appointment "
-            + "WHERE appStatus = ?;";
+            + "WHERE appStatus like ?;";
     private static final String READ_APPOINTMENT_BY_BIRD
             = "SELECT appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus "
             + "FROM Appointment "
@@ -49,7 +49,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     private static final String READ_APPOINTMENT_BY_DOCTIME
             = "SELECT appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus "
             + "FROM Appointment "
-            + "WHERE doctorID = ? AND timeSlotID = ? and appTime=? and appStatus!='cancelled';";
+            + "WHERE doctorID = ? AND timeSlotID = ? and appTime=? and appStatus!='cancelled' and appStatus!='complete';";
     private static final String READ_APPOINTMENT_BY_TIMESLOT
             = "SELECT appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus "
             + "FROM Appointment "
@@ -203,7 +203,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
         try {
             con = DBUtils.getConnection();
             stm = con.prepareStatement(READ_APPOINTMENT_BY_STATUS);
-            stm.setString(1, status);
+            stm.setString(1, "%" + status + "%");
             rs = stm.executeQuery();
 
             while (rs.next()) {
@@ -791,10 +791,11 @@ public class AppointmentDAOImpl implements AppointmentDAO {
         return serviceList;
     }
 
-    private int addService(List<Service_DTO> services, String appointmentID) throws SQLException {
+    @Override
+    public int addService(List<Service_DTO> services, String appointmentID) throws SQLException {
         Connection con = null;
         PreparedStatement stm = null;
-        int result = 0;
+        int result = 0; 
 
         try {
             con = DBUtils.getConnection();
@@ -816,7 +817,8 @@ public class AppointmentDAOImpl implements AppointmentDAO {
         return result;
     }
 
-    private int deleteService(String appointmentID) throws SQLException {
+    @Override
+    public int deleteService(String appointmentID) throws SQLException {
         Connection con = null;
         PreparedStatement stm = null;
         int result = 0;

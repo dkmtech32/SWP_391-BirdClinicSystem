@@ -41,12 +41,12 @@ public class StaffDashboardAppointmentsServlet extends HttpServlet {
         try {
             StaffServices service = (StaffServices) session.getAttribute("service");
             String filter = request.getParameter("filter");
-            if (filter == null || filter.trim().equals("")) {
-                filter = "processing";
+            if (filter == null) {
+                filter = "";
             }
             List<AppointmentDTO> apps = service.getAppointmentsByFilter(filter);
             Map<String, List<DoctorDTO>> doctorSpecialities = null;
-            if (filter.equals("processing") || filter.equals("upcoming")|| filter.equals("confirm")) {
+            if (filter.equals("processing") || filter.equals("upcoming") || filter.equals("confirm")) {
                 doctorSpecialities = service.getDoctorBySpeciality();
             }
 

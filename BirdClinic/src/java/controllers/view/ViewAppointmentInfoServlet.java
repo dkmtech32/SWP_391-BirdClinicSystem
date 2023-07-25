@@ -17,6 +17,9 @@ import models.appointment.AppointmentDTO;
 import models.feedback.FeedbackDTO;
 import models.medicalRecord.MedicalRecordDTO;
 import models.recordMedicine.RecordMedicineDTO;
+import models.service_.Service_DTO;
+import models.users.doctor.DoctorDTO;
+import services.general.AccountDoesNotExistException;
 import services.general.AppointmentDoesNotExistException;
 import services.general.GeneralServices;
 
@@ -56,6 +59,13 @@ public class ViewAppointmentInfoServlet extends HttpServlet {
             request.setAttribute("medicalRecord", medRec);
             request.setAttribute("recordMedicines", recMed);
             request.setAttribute("feedback", feedback);
+            
+            if (service.getCurrentUser().getUserRole().equals("staff")) {
+                List<DoctorDTO> doctors = service.getAllDoctors();
+                List<Service_DTO> services = service.getServices("");
+                request.setAttribute("doctors", doctors);
+                request.setAttribute("services", services);
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
             request.setAttribute("error-message", "Something is wrong. Please try again.");
@@ -63,6 +73,10 @@ public class ViewAppointmentInfoServlet extends HttpServlet {
             ex.printStackTrace();
             url = request.getRequestURI().substring(request.getContextPath().length() - 1);
             request.setAttribute("error-message", "Appointment does not exist. Please try again");
+        } catch (AccountDoesNotExistException ex) {
+            ex.printStackTrace();
+            url = request.getRequestURI().substring(request.getContextPath().length() - 1);
+            request.setAttribute("error-message", "Account does not exist. Please try again");
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
