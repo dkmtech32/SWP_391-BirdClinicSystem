@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.medicalRecord.MedicalRecordDTO;
 import models.medicine.MedicineDTO;
+import models.service_.Service_DTO;
 import services.doctor.DoctorServices;
 import services.general.AppointmentDoesNotExistException;
 
@@ -39,16 +40,17 @@ public class DoctorPrescriptionServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         String url = "/Doctor/add-prescription.jsp";
-        String a = request.getParameter("new");
+        String newPrescription = request.getParameter("new");
         try {
             DoctorServices service = (DoctorServices) session.getAttribute("service");
             Map<String, String[]> args = request.getParameterMap();
-            if (a!=null) {
+            if (newPrescription!=null) {
                 session.removeAttribute("medicalRecord");
             }
             
             MedicalRecordDTO medRec = (MedicalRecordDTO) session.getAttribute("medicalRecord");
             List<MedicineDTO> medicines = (List<MedicineDTO>) session.getAttribute("medicines");
+            List<Service_DTO> services = (List<Service_DTO>) session.getAttribute("services");
             if (medRec == null) {
                 medRec = service.updateRecord(args, medRec);
                 session.setAttribute("medicalRecord", medRec);
@@ -57,6 +59,11 @@ public class DoctorPrescriptionServlet extends HttpServlet {
                 medicines = service.getAllMedicine();
                 session.setAttribute("medicines", medicines);
             }
+            if (services == null) {
+                services = medRec.getAppointment().getService_();
+                session.setAttribute("services", services);
+            }
+            session.setAttribute("service_list", service.getSelfServices());
         } catch (AppointmentDoesNotExistException ex) {
             ex.printStackTrace();
             request.setAttribute("error-message", "Appointment does not exist. Please try again.");

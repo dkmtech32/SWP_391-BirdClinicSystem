@@ -11,6 +11,7 @@ import java.util.Map;
 import models.medicalRecord.MedicalRecordDTO;
 import models.medicine.MedicineDTO;
 import models.recordMedicine.RecordMedicineDTO;
+import models.service_.Service_DTO;
 import services.general.AppointmentDoesNotExistException;
 import services.general.GeneralServices;
 
@@ -27,4 +28,6 @@ public interface DoctorServices extends GeneralServices{
     MedicalRecordDTO updateRecord(Map<String, String[]> args, MedicalRecordDTO medicalRecord) throws AppointmentDoesNotExistException, SQLException;
     
     List<MedicineDTO> getAllMedicine() throws SQLException;
+    
+    List<Service_DTO> getSelfServices() throws SQLException;
 }
