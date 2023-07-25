@@ -17,12 +17,12 @@
                 <div class="appointment-tab">
                     <!-- Appointment Tab -->
                     <nav class="user-tabs mb-4">
-                    <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab">Upcoming</a>
-                        </li>
-                    </ul>
-                </nav>
+                        <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab">Upcoming</a>
+                            </li>
+                        </ul>
+                    </nav>
                     <!-- /Appointment Tab -->
 
                     <div class="tab-content">
@@ -63,7 +63,11 @@
                                                             </h2>
                                                         </td>
                                                         <td>${appointment.bird.breed}</td>
-                                                        <td>${appointment.service_.serviceName}</td>
+                                                        <td>
+                                                            <c:forEach var="service" items="${appointment.service_}" >
+                                                                ${service.serviceName} <br/>
+                                                            </c:forEach>
+                                                        </td>
 
                                                         <td class="text-right">
                                                             <div class="table-action">

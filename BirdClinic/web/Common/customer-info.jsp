@@ -97,7 +97,11 @@
                                                             <a href="<c:url value="/View/Bird?birdID=${appointment.bird.birdID}"/>">${appointment.bird.birdFullname}</a>
                                                         </h2>
                                                     </td>
-                                                    <td>${appointment.service_.serviceName}</td>
+                                                    <td>
+                                                        <c:forEach var="service" items="${appointment.service_}" >
+                                                            ${service.serviceName} <br/>
+                                                        </c:forEach>
+                                                    </td>
                                                     <c:choose>
                                                         <c:when test="${appointment.appStatus =='processing'}">
                                                             <td><span class="badge badge-pill bg-warning-light">Processing</span></td>

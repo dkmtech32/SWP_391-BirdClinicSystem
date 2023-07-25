@@ -25,7 +25,11 @@
                 <tr >
                     <td>${appointment.appTime}</td>
                     <td>${appointment.timeslot.timeSlot}</td>
-                    <td>${appointment.service_.serviceName}</td>
+                    <td>
+                        <c:forEach var="service" items="${appointment.service_}" >
+                            ${service.serviceName} <br/>
+                        </c:forEach>
+                    </td>
                     <td style="word-wrap: break-word; max-width: 300px;">${appointment.notes}</td> <!-- chưa có -->
                     <td>${medicalRecord.diagnosis}</td>
                     <td style="word-wrap: break-word; max-width: 300px;">${medicalRecord.doctorNotes}</td>  <!-- chưa có -->                    

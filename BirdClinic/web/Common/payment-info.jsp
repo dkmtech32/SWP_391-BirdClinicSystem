@@ -18,7 +18,13 @@
         </div>
         <div class="booking-item-wrap-in-appointments-details">
             <ul class="booking-fee-in-appointments-details">
-                <li>Service Fee <span class="total-cost-in-appointments-details">$${appointment.service_.servicePrice}</span></li>
+                <li>Service Fee 
+                    <c:set var="totalServicePrice" value="0" />
+                    <c:forEach var="service" items="${appointment.service_}" >
+                        <c:set var="totalServicePrice" value="${totalServicePrice + service.servicePrice}" />
+                    </c:forEach>
+                    <span class="total-cost-in-appointments-details">$${totalServicePrice}</span>
+                </li>
                 <li>Booking Fee <span class="total-cost-in-appointments-details">$10</span></li>
                 <li>Medicine Fee 
                     <c:set var="totalMedPrice" value="0" />
@@ -26,8 +32,8 @@
                         <c:set var="medPrice" value="${med.quantity * med.medicine.medicinePrice}" />
                         <c:set var="totalMedPrice" value="${totalMedPrice + medPrice}" />
                     </c:forEach>
-                    <c:set var="totalPrice" value="${appointment.service_.servicePrice + totalMedPrice+10}"/>
-                   <span class="total-cost-in-appointments-details">$${totalMedPrice}</span>
+                    <c:set var="totalPrice" value="${totalServicePrice + totalMedPrice + 10}"/>
+                    <span class="total-cost-in-appointments-details">$${totalMedPrice}</span>
 
                 </li>
 
@@ -37,7 +43,7 @@
                     <li>
                         <span>Total</span>
                         <span class="total-cost-in-appointments-details">$${totalPrice}</span>
-                        
+
                     </li>
                 </ul>
             </div>

@@ -6,6 +6,8 @@
 package models.appointment;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import models.bird.BirdDTO;
 import models.service_.Service_DTO;
 import models.timeslot.TimeslotDTO;
@@ -20,25 +22,13 @@ public class AppointmentDTOImpl implements AppointmentDTO {
     private BirdDTO bird;
     private DoctorDTO doctor;
     private TimeslotDTO timeslot;
-    private Service_DTO service_;
+    private List<Service_DTO> service_;
     private Date appTime;
     private String notes;
     private String payment;
     private String appStatus;
 
     public AppointmentDTOImpl() {
-    }
-
-    public AppointmentDTOImpl(String appointmentID, BirdDTO bird, DoctorDTO doctor, TimeslotDTO timeslot, Service_DTO service_, Date appTime, String notes, String payment, String appStatus) {
-        this.appointmentID = appointmentID;
-        this.bird = bird;
-        this.doctor = doctor;
-        this.timeslot = timeslot;
-        this.service_ = service_;
-        this.appTime = appTime;
-        this.notes = notes;
-        this.payment = payment;
-        this.appStatus = appStatus;
     }
 
     @Override
@@ -82,13 +72,24 @@ public class AppointmentDTOImpl implements AppointmentDTO {
     }
 
     @Override
-    public Service_DTO getService_() {
+    public List<Service_DTO> getService_() {
         return service_;
     }
 
     @Override
     public void setService_(Service_DTO service_) {
-        this.service_ = service_;
+        if (this.service_==null) {
+            this.service_ = new ArrayList<>();
+        }
+        this.service_.add(service_);
+    }
+    
+    @Override
+    public void setAllService(List<Service_DTO> service_) {
+        if (this.service_==null) {
+            this.service_ = new ArrayList<>();
+        }
+        this.service_.addAll(service_);
     }
 
     @Override
