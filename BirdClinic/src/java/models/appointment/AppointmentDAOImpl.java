@@ -9,8 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import utils.DBUtils;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import models.bird.BirdDAO;
 import models.users.doctor.DoctorDAO;
 import models.timeslot.TimeslotDAO;
