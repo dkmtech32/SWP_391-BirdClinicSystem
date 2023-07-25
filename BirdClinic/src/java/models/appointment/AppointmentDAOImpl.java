@@ -113,7 +113,6 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                     appointment.setDoctor(null);
                 }
                 appointment.setTimeslot(timeslotDAO.readTimeSlot(rs.getString("timeslotID")));
-                appointment.setAllService(this.getService(appointmentID));
                 appointment.setAppTime(rs.getDate("appTime"));
                 appointment.setNotes(rs.getString("notes"));
                 appointment.setPayment(rs.getString("payment"));
