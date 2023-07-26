@@ -8,7 +8,6 @@ package models.doctorTimeslot;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 import models.exceptions.NoSuchRecordExists;
 import models.exceptions.RecordAlreadyExists;
 import models.timeslot.TimeslotDTO;

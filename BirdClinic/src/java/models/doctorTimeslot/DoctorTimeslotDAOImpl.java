@@ -209,6 +209,7 @@ public class DoctorTimeslotDAOImpl implements DoctorTimeslotDAO {
         return result;
     }
 
+    @Override
     public int insertMultipleDoctorTimeslots(String doctorID, String[] timeslotIDs)
             throws SQLException, RecordAlreadyExists {
         Connection con = null;
@@ -273,9 +274,7 @@ public class DoctorTimeslotDAOImpl implements DoctorTimeslotDAO {
                 for (int i = 0; i < 7; i++) {
                     Collections.sort(timeslotsByWeekday.get(i));
                 }
-            } else {
-                throw new DoctorNotInTimeslotException();
-            }
+            } 
         } finally {
             if (rs != null) {
                 rs.close();
