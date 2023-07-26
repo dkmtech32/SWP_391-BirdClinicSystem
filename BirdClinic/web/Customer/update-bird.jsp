@@ -17,10 +17,6 @@
                         <div class="col-12 col-md-12">
                             <div class="form-group">
                                 <div class="change-avatar">
-<!--                                    <div class="profile-img">
-                                         Add this image element after the existing profile image 
-                                    </div>-->
-                                    <!-- Add this container to display the selected bird image -->
                                     <div id="bird-image-preview-container">
                                         <img id="bird-image-preview" alt="Selected Bird Image" src="<c:url value="/images/bird/${bird.image.imageURLName}"/>" style="width: 100px; height: 100px; margin-top: 10px; margin-right: 1rem; border-radius: 50%">
                                     </div>
