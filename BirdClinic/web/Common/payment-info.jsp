@@ -32,7 +32,6 @@
                             <c:set var="medPrice" value="${med.quantity * med.medicine.medicinePrice}" />
                             <c:set var="totalMedPrice" value="${totalMedPrice + medPrice}" />
                         </c:forEach>
-                        <c:set var="totalPrice" value="${totalServicePrice + totalMedPrice + 10}"/>
                         <span class="total-cost-in-appointments-details">$${totalMedPrice}</span>
 
                     </li>
@@ -42,6 +41,10 @@
                     <ul class="booking-total-list-in-appointments-details">
                         <li>
                             <span>Total</span>
+                            <c:set scope="request" var="totalPrice" value="${totalServicePrice + totalMedPrice + 10}"/>
+                   <%--         <c:if test="${appointment.totalPrice==0  ||appointment.totalPrice==null}"> 
+                                
+                            </c:if> --%>
                             <span class="total-cost-in-appointments-details">$${totalPrice}</span>
 
                         </li>

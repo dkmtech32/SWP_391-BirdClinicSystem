@@ -50,7 +50,7 @@
                                 <jsp:include page="../Common/payment-info.jsp"/> 
                             </div>
                         </div>
-                        <c:if test="${requestScope.appointment.appStatus=='check-in' && sessionScope.service.currentUser.userRole=='staff'}">
+                        <c:if test="${requestScope.appointment.appStatus=='prescribed' && sessionScope.service.currentUser.userRole=='staff'}">
 
 
                             <select style="width:200px; max-width: 200px; white-space: nowrap;
@@ -63,6 +63,7 @@
 
 
                             <form action="<c:url value="/Dashboard/Appointments/updateApp"/>" name="docForm" method="get">
+                                <input style="display: none" name="totalPrice" value="${totalPrice}" />
                                 <input type="hidden" id="hidden${appointment.payment}" name="payment" <c:if test="${not empty appointment.payment}"> value="${appointment.payment}"</c:if> required>
                                     <input type="hidden"  name="action" value="update">
                                     <input type="hidden"  name="filter" value="complete">

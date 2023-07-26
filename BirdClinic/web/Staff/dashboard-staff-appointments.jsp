@@ -118,7 +118,9 @@
                                                     </td>
                                                     <td class="text-right">
                                                         <div class="table-action">
-                                                            <a href="<c:url value="/View/Appointment?appointmentID=${appointment.appointmentID}"/>" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                            <c:if test="${appointment.appStatus !='prescribed'}">
+                                                                <a href="<c:url value="/View/Appointment?appointmentID=${appointment.appointmentID}"/>" class="btn btn-sm bg-info-light"> <i class="far fa-eye"></i> View </a>
+                                                            </c:if>
                                                             <c:if test="${appointment.appStatus.equals('processing')}">
                                                                 <form class="btn" action="<c:url value="/Dashboard/Appointments/updateApp"/>" name="docForm" method="get">
                                                                     <input type="hidden" id="hidden${appointment.appointmentID}" name="doctorID" <c:if test="${not empty appointment.doctor}"> value="${appointment.doctor.userID}"</c:if> required>
@@ -133,7 +135,7 @@
                                                                 <a href="<c:url value="/Dashboard/Appointments/updateApp?appointmentID=${appointment.appointmentID}&action=cancel"/>" class="btn btn-sm bg-danger-light"> <i class="fa fa-times"></i> Cancel </a>
 
                                                             </c:if>
-                                                            <c:if test="${appointment.appStatus.equals('check-in')}">
+                                                            <c:if test="${appointment.appStatus.equals('prescribed')}">
                                                                 <a class="btn btn-primary" href="<c:url value="/View/Appointment?appointmentID=${appointment.appointmentID}"/>" ><i class="fa fa-check"></i> Checkout</a>
 
                                                             </c:if>
