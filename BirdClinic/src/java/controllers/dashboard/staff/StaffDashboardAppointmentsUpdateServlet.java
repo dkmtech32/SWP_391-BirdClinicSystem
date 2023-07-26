@@ -6,6 +6,7 @@
 package controllers.dashboard.staff;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -48,11 +49,17 @@ public class StaffDashboardAppointmentsUpdateServlet extends HttpServlet {
                 case "update":
                     String doctorID = request.getParameter("doctorID");
                     String payment = request.getParameter("payment");
+                    String price = request.getParameter("totalPrice");
+
                     if (doctorID != null) {
                         service.updateAppointmentDoctor(appointmentID, doctorID);
                     }
                     if (payment != null) {
                         service.updateAppointmentPayment(appointmentID, payment);
+                    }
+                    if (price != null) {
+                        double totalPrice = Double.valueOf(price);
+                        service.updateAppointmentPrice(appointmentID, BigDecimal.valueOf(totalPrice));
                     }
                     service.updateAppointment(appointmentID);
                     break;
@@ -66,7 +73,7 @@ public class StaffDashboardAppointmentsUpdateServlet extends HttpServlet {
         } finally {
             request.getRequestDispatcher("/Dashboard/Appointments").forward(request, response);
         }
-        
+
     }
 
     /**

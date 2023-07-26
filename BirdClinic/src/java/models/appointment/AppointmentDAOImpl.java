@@ -1,5 +1,6 @@
 package models.appointment;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -28,34 +29,34 @@ public class AppointmentDAOImpl implements AppointmentDAO {
     private final TimeslotDAO timeslotDAO;
 
     private static final String READ_APPOINTMENT
-            = "SELECT appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus "
+            = "SELECT appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus, totalPrice "
             + "FROM Appointment "
             + "WHERE appointmentID = ?;";
     private static final String READ_ALL_APPOINTMENT
-            = "SELECT appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus "
+            = "SELECT appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus, totalPrice "
             + "FROM Appointment ";
     private static final String READ_APPOINTMENT_BY_STATUS
-            = "SELECT appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus "
+            = "SELECT appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus, totalPrice "
             + "FROM Appointment "
             + "WHERE appStatus like ?;";
     private static final String READ_APPOINTMENT_BY_BIRD
-            = "SELECT appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus "
+            = "SELECT appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus, totalPrice "
             + "FROM Appointment "
             + "WHERE birdID = ?;";
     private static final String READ_APPOINTMENT_BY_DOCTOR
-            = "SELECT appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus "
+            = "SELECT appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus, totalPrice "
             + "FROM Appointment "
             + "WHERE doctorID = ?;";
     private static final String READ_APPOINTMENT_BY_DOCTIME
-            = "SELECT appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus "
+            = "SELECT appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus, totalPrice "
             + "FROM Appointment "
             + "WHERE doctorID = ? AND timeSlotID = ? and appTime=? and appStatus!='cancelled' and appStatus!='complete';";
     private static final String READ_APPOINTMENT_BY_TIMESLOT
-            = "SELECT appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus "
+            = "SELECT appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus, totalPrice "
             + "FROM Appointment "
             + "WHERE timeSlotID = ?;";
     private static final String READ_APPOINTMENT_BY_DATE
-            = "SELECT appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus "
+            = "SELECT appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus, totalPrice "
             + "FROM Appointment "
             + "WHERE appTime between ? and ?";
     private static final String DELETE_APPOINTMENT
@@ -63,12 +64,12 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             + "WHERE appointmentID = ?";
     private static final String INSERT_APPOINTMENT
             = "INSERT INTO Appointment (appointmentID, birdID, doctorID, timeSlotID, "
-            + "appTime, notes, payment, appStatus) "
-            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+            + "appTime, notes, payment, appStatus, totalPrice) "
+            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
     private static final String UPDATE_APPOINTMENT
             = "UPDATE Appointment "
             + "SET birdID = ?, doctorID = ?, timeSlotID = ?, "
-            + "appTime = ?, notes = ?, payment = ?, appStatus = ? "
+            + "appTime = ?, notes = ?, payment = ?, appStatus = ?, totalPrice = ? "
             + "WHERE appointmentID = ?;";
     private static final String UPDATE_APPOINTMENT_STATUS
             = "UPDATE Appointment "
@@ -118,6 +119,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 appointment.setPayment(rs.getString("payment"));
                 appointment.setAppStatus(rs.getString("appStatus"));
                 appointment.setAllService(this.getService(appointmentID));
+                appointment.setTotalPrice(rs.getBigDecimal("totalPrice"));
             }
 
             if (appointment == null) {
@@ -168,6 +170,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 appointment.setNotes(rs.getString("notes"));
                 appointment.setPayment(rs.getString("payment"));
                 appointment.setAppStatus(rs.getString("appStatus"));
+                appointment.setTotalPrice(rs.getBigDecimal("totalPrice"));
 
                 if (appointmentList == null) {
                     appointmentList = new ArrayList<>();
@@ -221,6 +224,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 appointment.setNotes(rs.getString("notes"));
                 appointment.setPayment(rs.getString("payment"));
                 appointment.setAppStatus(status);
+                appointment.setTotalPrice(rs.getBigDecimal("totalPrice"));
 
                 if (appointmentList == null) {
                     appointmentList = new ArrayList<>();
@@ -271,6 +275,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 appointment.setNotes(rs.getString("notes"));
                 appointment.setPayment(rs.getString("payment"));
                 appointment.setAppStatus(rs.getString("appStatus"));
+                appointment.setTotalPrice(rs.getBigDecimal("totalPrice"));
                 if (appointmentList == null) {
                     appointmentList = new ArrayList<>();
                 }
@@ -325,6 +330,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                     appointment.setNotes(rs.getString("notes"));
                     appointment.setPayment(rs.getString("payment"));
                     appointment.setAppStatus(rs.getString("appStatus"));
+                appointment.setTotalPrice(rs.getBigDecimal("totalPrice"));
 
                     if (appointmentList == null) {
                         appointmentList = new ArrayList<>();
@@ -381,6 +387,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 appointment.setNotes(rs.getString("notes"));
                 appointment.setPayment(rs.getString("payment"));
                 appointment.setAppStatus(rs.getString("appStatus"));
+                appointment.setTotalPrice(rs.getBigDecimal("totalPrice"));
 
                 if (appointmentList == null) {
                     appointmentList = new ArrayList<>();
@@ -438,6 +445,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
                 appointment.setNotes(rs.getString("notes"));
                 appointment.setPayment(rs.getString("payment"));
                 appointment.setAppStatus(rs.getString("appStatus"));
+                appointment.setTotalPrice(rs.getBigDecimal("totalPrice"));
             }
         } finally {
             if (rs != null) {
@@ -504,6 +512,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             stm.setString(6, appointment.getNotes());
             stm.setString(7, appointment.getPayment());
             stm.setString(8, appointment.getAppStatus());
+            stm.setBigDecimal(9, appointment.getTotalPrice());
 
             rowsInserted = stm.executeUpdate();
 
@@ -547,7 +556,8 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             stm.setString(5, appointment.getNotes());
             stm.setString(6, appointment.getPayment());
             stm.setString(7, appointment.getAppStatus());
-            stm.setString(8, appointment.getAppointmentID());
+            stm.setBigDecimal(8, appointment.getTotalPrice());
+            stm.setString(9, appointment.getAppointmentID());
             rowsUpdated = stm.executeUpdate();
 
             if (rowsUpdated == 0) {
