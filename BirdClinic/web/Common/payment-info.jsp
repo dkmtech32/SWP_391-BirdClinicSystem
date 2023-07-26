@@ -13,7 +13,7 @@
             <div class="payment-method">
                 <h4>Payment Method</h4> 
                 <div class="form-control w-50" name="payment">
-                    <p>${appointment.payment}</p>
+                    <p style="padding-top: 0.4rem">${appointment.payment}</p>
                 </div>
             </div>
             <div class="booking-item-wrap-in-appointments-details">

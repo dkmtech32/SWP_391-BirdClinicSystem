@@ -24,11 +24,7 @@
                                         </div>
                                     </div>
                                 </div>
-                        <div class="row bird-information-boxes">
-                            <!--                <div class="col-12 col-md-6">
-                                                <p class="header">Bird's name</p>
-                                                <p class="information"></p>
-                                            </div>-->
+                        <div class="row bird-information-boxes" style="margin-left: 4.5rem">
                             <div class="col-12 col-md-6">
                                 <p class="title">Hatching Day: </p>
                                 <p class="information">${appointment.bird.hatchingDate}</p>

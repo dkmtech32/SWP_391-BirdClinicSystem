@@ -45,7 +45,7 @@
                                     </div>
                                     <!--end row-->
 
-                                    <form class="mt-4" method="POST" action="<c:url value="/Admin/Accounts/Create"/>">
+                                    <form class="mt-4" method="POST" action="<c:url value="/Admin/Accounts/Create"/>" enctype="multipart/form-data">
                                         <input value="staff" name="userRole" hidden="hidden"/>
                                         <div class="row">
                                             <div class="col-md-6">
