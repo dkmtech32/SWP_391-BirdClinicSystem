@@ -24,14 +24,19 @@
             <!-- Page Content -->
             <div class="content">
                 <div class="container-fluid">
-                    <div class="col-12 text-right mb-3">
+                    <c:if test="${appointment.appStatus=='complete'}">
+                        <div class="col-12 text-right mb-3">
                         <button class="btn btn-primary print-btn" onclick="printPage()">
                             <i class="fa fa-print"></i> Print
                         </button>
+                        <c:if test="${service.currentUser.userRole=='staff'}">
                         <button class="btn btn-secondary re-examination" data-toggle="modal" data-target="#formPopup">
                             Re-examination
                         </button>
+                        </c:if>
                     </div>
+                    </c:if>
+                    
                     <div class="row">
                         <!-- Profile Sidebar -->
                         <jsp:include page="../Common/bird-general-info.jsp"/>
