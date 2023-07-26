@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
+import models.appointment.AppointmentAlreadyExistsException;
 import models.appointment.AppointmentDTO;
 import models.blog.BlogDTO;
 import models.feedback.FeedbackDTO;
@@ -56,4 +57,6 @@ public interface StaffServices extends GeneralServices {
     List<Service_DTO> getAllServices() throws SQLException, ServiceDoesNotExistException;
 
     boolean deleteService(String serviceID) throws SQLException, ServiceDoesNotExistException;
+    
+    boolean bookReexamination(Map<String, String[]> args) throws SQLException, AppointmentAlreadyExistsException;
 }

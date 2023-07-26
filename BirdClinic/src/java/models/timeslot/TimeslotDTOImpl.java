@@ -87,10 +87,7 @@ public class TimeslotDTOImpl implements TimeslotDTO {
             return false;
         }
         final TimeslotDTOImpl other = (TimeslotDTOImpl) obj;
-        if (!Objects.equals(this.timeSlot, other.timeSlot)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.timeSlotID, other.timeSlotID);
     }
     
     

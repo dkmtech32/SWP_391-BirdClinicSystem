@@ -69,7 +69,7 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
 
             List<Date> daysInWeek = Utils.getDaysInWeek(currentDate);
             Date nextWeekWeekday = Utils.getNextWeekWeekday(currentDate);
-            if (true) { //TODO: test to see if nextMonday is x weeks ahead. (can only book x weeks in advance)
+            if (true) {
                 request.setAttribute("nextWeekday", nextWeekWeekday);
             }
             request.setAttribute("daysInWeek", daysInWeek);
