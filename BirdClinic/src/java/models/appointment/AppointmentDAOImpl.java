@@ -48,7 +48,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             + "FROM Appointment "
             + "WHERE doctorID = ?;";
     private static final String READ_APPOINTMENT_BY_DOCTIME
-            = "SELECT appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatu, totalPrices "
+            = "SELECT appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus, totalPrice "
             + "FROM Appointment "
             + "WHERE doctorID = ? AND timeSlotID = ? and appTime=? and appStatus!='cancelled' and appStatus!='complete';";
     private static final String READ_APPOINTMENT_BY_TIMESLOT

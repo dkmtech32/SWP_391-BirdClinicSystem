@@ -444,10 +444,6 @@
         <url-pattern>/Staff/Dashboard/Services/Delete</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>StaffDashboardReexaminationServlet</servlet-name>
-        <url-pattern>/Staff/Dashboard/Reexamination</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>PrepareReexaminationDatetimeServlet</servlet-name>
         <url-pattern>/Staff/prepareDatetime</url-pattern>
     </servlet-mapping>

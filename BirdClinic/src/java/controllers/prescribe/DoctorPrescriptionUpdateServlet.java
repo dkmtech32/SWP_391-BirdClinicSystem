@@ -108,6 +108,7 @@ public class DoctorPrescriptionUpdateServlet extends HttpServlet {
                             session.removeAttribute("prescription");
                         }
                         session.removeAttribute("medicines");
+                        session.removeAttribute("services");
                     }
                     url = "/View/Appointment?appointmentID=" + medRec.getAppointment().getAppointmentID();
                     break;
