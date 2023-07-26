@@ -41,7 +41,7 @@
                                         <small class="text-muted">${sessionScope.service.currentUser.userRole}</small>
                                     </div>
                                 </a>
-                                <a class="dropdown-item text-dark" href="<c:url value="/Admin/Charts"/>"
+                                <a class="dropdown-item text-dark" href="<c:url value="/Admin/Accounts"/>"
                                    ><span class="mb-0 d-inline-block me-1"><i class="uil uil-dashboard align-middle h6"></i></span> Dashboard</a
                                 >
 
