@@ -41,7 +41,7 @@
                         <a href="<c:url value='/Blog/All' />">Blogs</a>
                     </li>
                     <li>
-                        <a href="<c:url value="/Dashboard/Appointments?filter=processing"/>">Dashboard</a>
+                        <a href="<c:url value="/Dashboard/Appointments?filter=all"/>">Dashboard</a>
                     </li>
                     
                     <li>

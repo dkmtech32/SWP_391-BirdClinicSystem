@@ -42,7 +42,7 @@ public class StaffDashboardAppointmentsServlet extends HttpServlet {
             StaffServices service = (StaffServices) session.getAttribute("service");
             String filter = request.getParameter("filter");
             if (filter == null) {
-                filter = "";
+                filter = "processing";
             }
             List<AppointmentDTO> apps = service.getAppointmentsByFilter(filter);
             Map<String, List<DoctorDTO>> doctorSpecialities = null;

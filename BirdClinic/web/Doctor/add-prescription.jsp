@@ -157,7 +157,7 @@
 
                                         </div>							
                                         <!-- <div class="exist-customer">Existing Customer? <a href="#">Click here to login</a></div> -->
-                                        <button value="add" name="action" type="submit" class="btn btn-primary submit-btn">Add</button>
+                                        <button value="add" name="action" type="submit" class="btn btn-primary submit-btn">Add medicine</button>
                                     </div>
                                     <!-- /Medicine Information -->						
                                 </form>
@@ -196,40 +196,75 @@
                                         </table>
                                     </div>
                                 </div>
-                                <form action="<c:url value='/Doctor/Prescription/Update'/>" method="post">
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="form-group">
-                                                <label>Note</label>
-                                                <textarea class="form-control" name="doctor-notes" rows="4" placeholder="Note for bird" ></textarea>
-                                            </div>
-                                        </div>
 
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="form-group">													                                            
-                                                <label>Diagnosis</label>
-                                                <input class="form-control" name="diagnosis"/>                                       
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <form action="<c:url value='/Doctor/Prescription/Update'/>" method="post">
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Note</label>
+                                                    <textarea class="form-control" name="doctor-notes" rows="4" placeholder="Note for bird" ></textarea>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="form-group">
-                                                <label>Treatment days</label>
-                                                <input class="form-control" name="treatment-days" type="number"> 
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">													                                            
+                                                    <label>Diagnosis</label>
+                                                    <input class="form-control" name="diagnosis"/>                                       
+                                                </div>
                                             </div>
-                                        </div>
+
+                                            <div class="col-md-12 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Treatment days</label>
+                                                    <input class="form-control" name="treatment-days" type="number"> 
+                                                </div>
+                                            </div>
+                                            <button type="submit" name="action" value="submit" class="btn btn-dark d-flex justify-content-center mx-auto mt-2">
+                                                Submit
+                                            </button>
+                                        </form>
                                     </div>
-                                    <button type="submit" name="action" value="submit" class="btn btn-dark d-flex justify-content-center mx-auto mt-2">
-                                        Submit
-                                    </button>
-                                </form>
+                                    <div class="col-md-6">
+                                        <table class="table table-bordered" id="">
+                                            <thead>
+                                                <tr>
+                                                    <td>Service name</td>
+                                                    <td>Service price</td>
+                                                    <td></td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <c:forEach var="service" items="${sessionScope.services}">
+                                                    <tr>
+                                                        <td>${service.serviceName}</td>
+                                                        <td>$ ${service.servicePrice}</td>
+                                                        <td>                                                       
+                                                            <a href="<c:url value="/Doctor/Prescription/Update?action=deleteService&serviceID=${service.serviceID}"/>"  class="button button-small edit" > <i class="fa fa-trash"></i> </a>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </tbody>
+                                        </table>
+                                        <form action="<c:url value='/Doctor/Prescription/Update'/>" method="post">
+                                            <select name="serviceID">
+                                                <option value="">-</option>
+                                                <c:forEach var="service" items="${service_list}">
+                                                    <option value="${service.serviceID}">${service.serviceName}</option>
+                                                </c:forEach>
+                                            </select>
+                                            <button value="addService" name="action" class="btn btn-primary"> Add service</button>
+                                        </form>
+                                    </div>
+
+                                </div>
                             </div>
 
                         </div>
                     </div>
                 </div>     
 
-                
+
             </div>
 
             <!-- /Page Content -->
