@@ -25,8 +25,17 @@
                 <form class="row flex-column" id="editorForm" action="<c:url value="/Blog/Update"/>" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="mb-5 form-group col-md-2" >
-                            <label for="thumbnail">Thumbnail</label>
-                            <input class="form-control-file" type="file" id="thumbnail" value=""/>
+                            <div id="bird-image-preview-container" style="display: flex; justify-content: center;">
+                                <img id="bird-image-preview" alt="Blog Image" src="<c:url value="/images/blog/${blog.thumbnail.imageURLName}"/>" style="max-height: 250px; max-width: 200">
+                            </div>
+
+                            <div class="upload-img">
+                                <div class="change-photo-btn">                           
+                                    <label for="thumbnail"><i class="fa fa-upload"></i>Thumbnail</label>
+                                    <input class="form-control-file upload" type="file" id="thumbnail" name="blog-image" onchange="previewImage(event)"/>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="mb-5 form-group col-md-7" >
                             <label for="title">Title</label>
@@ -93,8 +102,39 @@
                     .catch(error => {
                         console.error(error);
                     });
-        </script>
 
+        </script>
+        <script>
+            function previewImage() {
+                var input = document.getElementById("thumbnail");
+                var container = document.getElementById("bird-image-preview-container");
+
+                // Remove any existing preview image
+                var existingPreview = document.getElementById("bird-image-preview");
+                if (existingPreview) {
+                    container.removeChild(existingPreview);
+                }
+
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        var previewImage = document.createElement("img");
+                        previewImage.id = "bird-image-preview";
+                        previewImage.src = e.target.result;
+                        previewImage.alt = "Selected Bird Image";
+                        previewImage.style.maxWidth = "200px";
+                        previewImage.style.maxHeight = "250px";
+                        previewImage.style.marginBottom = "10px";
+
+                        // Append the preview image to the container
+                        container.appendChild(previewImage);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        </script>
 
         <!-- Script -->
         <jsp:include page="../Common/script.jsp" />

@@ -106,7 +106,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form class="re-examination" style="justify-content: center;">
+                            <form class="re-examination" style="justify-content: center;" action="<c:url value="/Staff/prepareDatetime"/>">
                                 <div class="col-12 text-center">
                                     <label for="serviceSelect">Select a Service</label>
                                     <select class="form-control" id="serviceSelect" name="serviceID">
@@ -126,7 +126,7 @@
                                     </select>
                                 </div>
                                 <div class="col-12 text-center mt-2">
-                                    <input name="appID" style="display: none" value="${appointment.appointmentID}"/>
+                                    <input name="appointmentID" style="display: none" value="${appointment.appointmentID}"/>
                                     <button class="btn btn-primary" type="submit">Retake</button>
                                 </div>
                             </form>
