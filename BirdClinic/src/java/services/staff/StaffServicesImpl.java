@@ -89,6 +89,22 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
 
         return result;
     }
+    
+    @Override
+    public boolean updateAppointmentPrice(String appointmentID, BigDecimal totalPrice)
+            throws AppointmentDoesNotExistException, SQLException {
+        boolean result = false;
+
+        try {
+            AppointmentDTO appointment = appointmentDAO.readAppointment(appointmentID);
+            appointment.setTotalPrice(totalPrice);
+            result = appointmentDAO.updateAppointment(appointment) > 0;
+        } catch (NoSuchRecordExists ex) {
+            throw new AppointmentDoesNotExistException(ex.getMessage());
+        }
+
+        return result;
+    }
 
     @Override
     public List<DoctorDTO> checkDoctor(AppointmentDTO appointment)

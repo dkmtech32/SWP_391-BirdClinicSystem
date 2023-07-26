@@ -135,6 +135,7 @@ CREATE TABLE Appointment (
   notes NVARCHAR(200),
   payment NVARCHAR(20),
   appStatus VARCHAR(20) NOT NULL,
+  totalPrice DECIMAL(10, 2) NOT NULL,
   FOREIGN KEY (birdID) REFERENCES Bird(birdID),
   FOREIGN KEY (doctorID) REFERENCES Doctor(doctorID),
   FOREIGN KEY (timeSlotID) REFERENCES TimeSlot(timeSlotID),
@@ -167,12 +168,6 @@ CREATE TABLE MedicalRecord (
 ) ON [PRIMARY]
 GO
 
-CREATE TABLE RecordServices (
-  medicalRecordID CHAR(32) NOT NULL,
-  serviceID CHAR(32) NOT NULL,
-  FOREIGN KEY (medicalRecordID) REFERENCES MedicalRecord(medicalRecordID),
-  FOREIGN KEY (serviceID) REFERENCES service_(serviceID),
-)
 
 CREATE TABLE RecordMedicine (
   medicalRecordID CHAR(32) NOT NULL,
@@ -1299,50 +1294,50 @@ VALUES
 	('56a7207dd933fe09f539083edb711548' , '2b1850783245c06d0b782a4c9cd6a0a0' , 'ed1ed3634186fc66ee692da3ba98272f', N'Bệnh cầu trùng' , 'male' , N'sơn ca', 'bvcxzl' , 0.01 , N'DNA analysis' , N'Bầu trời' , '2021-05-01' , N'trắng-đen-vàng-đỏ'),
 	('6a045cdabdccb76073091f263cbf3e52' , 'eb70ed9c4c32afea8f482dc873be4f6a' , 'e47ccaddaa9e2cd4c25e84cae624b077', '' , 'female' , N'vàng Anh', 'vcxzlk' , 0.04 , N'Check behavior' , 'Stella' , '2021-06-01' , N'vàng-đen');
 
-INSERT INTO Appointment(appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus)
+INSERT INTO Appointment(appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus, totalPrice)
 VALUES
-	('a6a837e5d05e57e160dea29c335f30d0', '2bbb77362ead86434fd59f94b282eae1', 'ae114dac5897fbcfd25797bf4be08fd3', '85688ffa8d935b9da96e2a680aaa4e34', '2023-01-01', '', 'banking account', 'complete'),
-	('95b579fe61c622b5c50def9dccb66bdc', '507c2afab061a1c2cf1dee7142e557be', '9eae70b054be6eba305323d8c9106cfb', 'e2283b7f6695530a79793e3fe172155c', '2023-01-02', '', 'banking account', 'complete'),
-	('86ae960dc44eba248c481d76520846c3', '15d35bb9396992d02127345380e38d73', 'c8aa14ffb7da0912c84635aa2ee0bb62', '657be9bfb1eed80938b24e3b154863cb', '2023-01-03', '', 'cash', 'complete'),
-	('801b58e3d0b00f7f9f9eac80058f99f0', 'e9e0f3bcddc65940e089972ce4088e59', '21fc9daf44e2637d7972bd248c83577d', 'c789ff5a8a615b3cbd55b12d431c1a51', '2023-01-04', '', 'banking account', 'complete'),
-	('ca768c1b1876a2f286496e62666dfada', '2e4076dd7f277dc8f29b4cdb922052c0', 'ae114dac5897fbcfd25797bf4be08fd3', '3cd774fd522ed4a7b81dc2e3ed0373bd', '2023-01-05', '', 'banking account', 'complete'),
-	('0a7a30124b6b4f266459a6b69677152c', '27009754484e5b64300b05706c954565', '1c38dd30f9e415b3a34879be077381ce', '8accf3a256bcc4e7335afe49531eaac6', '2023-01-06', '', 'banking account', 'complete'),
-	('ebcf025d47ee19d929f6707029df09d0', '49f34170b6590fea6bce454059764c12', 'c8aa14ffb7da0912c84635aa2ee0bb62', 'b02c69a820861a57ac38b4282399335c', '2023-01-07', '', 'banking account', 'complete'),
-	('b7e4621ca7d7273ea67ba0b40992d189', '2e9d61c3330f9e10e3a0bc3fb8a4b4a2', 'dd0e3f50648088bfecc501f809a06ca8', '5c4960d3243606ca79b7692f8a4c9957', '2023-01-08', '', 'cash', 'complete'),
-	('35847b5a3a8de7e0af06281b1d889bcf', 'e939af928268bda5f11f7bf215d452eb', '9c6189a20beb35a93df963e3b48eb9b0', '71071e13d9c8cd2902737b7e39f32a5a', '2023-02-09', '', 'banking account', 'complete'),
-	('ca05b981160139795fbf616bfd5d491b', '43e02d9e3ce088b73229155e462e32d9', '0fe30e184ab12417ff175eb1c5386130', '68e185b8d481c5652842b42ef66b3210', '2023-02-10', '', 'cash', 'complete'),
-	('3967200752865b1bb65a63f386925d14', '00c38b52d5cdedc2667af4a83e346a85', 'ae114dac5897fbcfd25797bf4be08fd3', 'b02c69a820861a57ac38b4282399335c', '2023-02-11', '', 'banking account', 'cancelled'),
-	('943b4c67a61164d245ea5af7f3848a37', '1587900aee161437134c2e2479de5b64', '9eae70b054be6eba305323d8c9106cfb', '12bc604e930e56d53915a09b61bc459a', '2023-03-12', '', 'banking account', 'complete'),
-	('040c93cff9c0cc5cd6d008fb02e17b69', '277dd0cf43f2cc494be796373fd7bf2b', '21fc9daf44e2637d7972bd248c83577d', '5c9ba69a58918129f033a2c25e250584', '2023-03-13', '', 'cash', 'complete'),
-	('3841cd8942a581d2092ff1d3739fcebc', '08605ccab7ad051603412533c59e46c7', '01c1fa1b81297a2de21056f35303ad84', '7b84cc4412f9e9a4213a9f979be42063', '2023-03-14', '', 'banking account', 'complete'),
-	('4a160bb951e81bb14485ab90391d0c58', 'acdbf948aa576959e791abe5ec2f124d', '9eae70b054be6eba305323d8c9106cfb', '86fc882bb1aadc489464a8ecb5f43a30', '2023-03-15', '', 'banking account', 'complete'),
-	('0bb8e03d00ecc7642c5142de8f12a335', '4b4c133439471c8d694b5c3e47edb446', '21fc9daf44e2637d7972bd248c83577d', '85688ffa8d935b9da96e2a680aaa4e34', '2023-04-16', '', 'banking account', 'cancelled'),
-	('aeed52468a0d9880fa013c611816e897', '0d0dd3c14756ae8316e7054b205896c9', '1c38dd30f9e415b3a34879be077381ce', 'a54060a06aa0e97217726362a5b580d3', '2023-04-17', '', 'cash', 'complete'),
-	('cde92de8a056398e6a281dba87bdffb1', '861c51821e55ecad053b072323fac994', 'fe30e1ff175e10b1c538613084ab2417', '657be9bfb1eed80938b24e3b154863cb', '2023-04-18', '', 'banking account', 'complete'),
-	('6c3b331b0cde4d503944f2f16f979c93', '380965fe9f1584559ea8a90b9c8d680c', '62fe46dae9470f311d52973a6eeb6a1a', '0227321c75909512447393796f173788', '2023-04-19', '', 'cash', 'complete'),
-	('b6b447b56dbe005a626c4b5e3fdb97be', '17787dd14e0fda883a36016cada64123', '9c6189a20beb35a93df963e3b48eb9b0', '4db7ce38baceaddfc93e9bdcfe0a7f57', '2023-04-20', '', 'banking account', 'complete'),
-	('a61de36f81c0f699a8653863ea9e3d2f', 'd5ea83ec7f100a6803bd39e14c619299', '0fe30e184ab12417ff175eb1c5386130', 'a2855125bdc9e06b5313b3f827f07705', '2023-05-21', '', 'cash', 'complete'),
-	('47b601885ddc891de11eb62451a97b43', '25c448b0241244364f7653f08cb8aff6', 'ae114dac5897fbcfd25797bf4be08fd3', '1468c48caf3c8acd45c13732fa1c7797', '2023-05-22', '', 'banking account', 'complete'),
-	('2f7294ec43136a43ca696ad6f06e1635', 'bc0b9fe1f4df72fa1289f4437e6a3953', '21fc9daf44e2637d7972bd248c83577d', 'b02c69a820861a57ac38b4282399335c', '2023-05-23', '', 'cash', 'complete'),
-	('090f345a844fedfb9ca86ff69b59d969', '43aaf0240284fd15416b429bed0ef321', '21fc9daf44e2637d7972bd248c83577d', '86fc882bb1aadc489464a8ecb5f43a30', '2023-05-24', '', 'cash', 'complete'),
-	('d2601ee48263e69982e4dbd809c0358a', 'ca8406790940dec227193cc7dca16212', 'c8aa14ffb7da0912c84635aa2ee0bb62', '516ab8138f50bbbb0be18ceed38b6ad3', '2023-05-25', '', 'banking account', 'complete'),
-	('e221bebf131b7773da0045982e018fba', '752ee3ce65129a7bd54292accb28983e', '21fc9daf44e2637d7972bd248c83577d', 'a54060a06aa0e97217726362a5b580d3', '2023-06-26', '', 'cash', 'complete'),
-	('85c10fd22fe836139fd76fbaee831673', 'c91f8b119029caa4ec2046bcc5c69bb5', 'ae114dac5897fbcfd25797bf4be08fd3', '657be9bfb1eed80938b24e3b154863cb', '2023-06-27', '', 'banking account', 'complete'),
-	('7caa694dda6e1cf8c0993cf301c84bba', '16c5bd4d79c66e16042bee6bbf128c6f', '1c38dd30f9e415b3a34879be077381ce', '0227321c75909512447393796f173788', '2023-06-28', '', 'banking account', 'cancelled'),
-	('b7ad6a62013acd21497265b6f7ff74eb', '56a7207dd933fe09f539083edb711548', '01c1fa1b81297a2de21056f35303ad84', '92d969030097f06af642a4577606afe0', '2023-06-29', '', 'banking account', 'complete'),
-	('3427f117121dd0789b94a37ef63b64dc', '6a045cdabdccb76073091f263cbf3e52', 'dd0e3f50648088bfecc501f809a06ca8', '8e397cbb235075a9cb231b2c3b316011', '2023-06-30', '', 'banking account', 'complete'),
-	('b7ad6137ff75b214972a6acd6206f4eb', '16c5bd4d79c66e16042bee6bbf128c6f', '0fe30e184ab12417ff175eb1c5386130', 'b82fece225c99d7b1faa427866745620', '2023-07-02', '', 'banking account', 'complete'),
-	('f1174d213346307894a92d177efbb6dc', '752ee3ce65129a7bd54292accb28983e', '0fe30e184ab12417ff175eb1c5386130', '9eea7e14fbd37b455d69e7114399aa0a', '2023-07-03', '', 'banking account', 'complete'),
-	('81c0f699a861de36fea9e653863a3d2f', '25c448b0241244364f7653f08cb8aff6', 'ae114dac5897fbcfd25797bf4be08fd3', '0d5408947d23dd60557de6b616352275', '2023-08-01', '', 'cash', 'confirm'),
-	('985ddc8a97245147b60181de11eb6b43', 'd5ea83ec7f100a6803bd39e14c619299', '9eae70b054be6eba305323d8c9106cfb', '9436e53cce52225010e09858fc287123', '2023-08-02', '', 'banking account', 'confirm'),
-	('ec436f0ca64396ad2f6e16136a437295', 'ca8406790940dec227193cc7dca16212', '9c6189a20beb35a93df963e3b48eb9b0', '4db7ce38baceaddfc93e9bdcfe0a7f57', '2023-08-03', '', 'cash', 'confirm'),
-	('edf345a8f69ca86f0fb90944fb59d969', 'c91f8b119029caa4ec2046bcc5c69bb5', 'fe30e1ff175e10b1c538613084ab2417', '7be65563411c5ce7cd508f04c8a54ecb', '2023-08-04', '', 'cash', 'check-in'),
-	('e4c03e6998de4826309bd8d2601e258a', 'bc0b9fe1f4df72fa1289f4437e6a3953', '21fc9daf44e2637d7972bd248c83577d', 'b02c69a820861a57ac38b4282399335c', '2023-08-05', '', 'banking account', 'check-in'),
-	('13e25982e018f21bda01bebf077734ba', '6a045cdabdccb76073091f263cbf3e52', 'ae114dac5897fbcfd25797bf4be08fd3', '5a71a95534bbd12150558baa83f945de', '2023-08-06', '', 'cash', 'check-in'),
-	('d76836859ffbaee831c10fd22fe13673', '43aaf0240284fd15416b429bed0ef321', '9eae70b054be6eba305323d8c9106cfb', '4e4b39473c2dfc3e918ee79b1c28fc6f', '2023-08-07', '', 'banking account', 'processing'),
-	('e199d87ca6943ccf8cdac4bbaa6f3010', '56a7207dd933fe09f539083edb711548', '1c38dd30f9e415b3a34879be077381ce', '8e397cbb235075a9cb231b2c3b316011', '2023-09-01', '', 'banking account', 'processing'),
-	('13acd6206f7ff75bb7ad6214972a64eb', '16c5bd4d79c66e16042bee6bbf128c6f', '01c1fa1b81297a2de21056f35303ad84', '86fc882bb1aadc489464a8ecb5f43a30', '2023-09-02', '', 'cash', 'processing'),
-	('3346307894a7f1171217efbb64d92ddc' , '752ee3ce65129a7bd54292accb28983e' , '62fe46dae9470f311d52973a6eeb6a1a', 'a2855125bdc9e06b5313b3f827f07705' , '2023-09-03' , '' , 'banking account' , 'processing');
+	('a6a837e5d05e57e160dea29c335f30d0', '2bbb77362ead86434fd59f94b282eae1', 'ae114dac5897fbcfd25797bf4be08fd3', '85688ffa8d935b9da96e2a680aaa4e34', '2023-01-01', '', 'banking account', 'complete', 0),
+	('95b579fe61c622b5c50def9dccb66bdc', '507c2afab061a1c2cf1dee7142e557be', '9eae70b054be6eba305323d8c9106cfb', 'e2283b7f6695530a79793e3fe172155c', '2023-01-02', '', 'banking account', 'complete', 0),
+	('86ae960dc44eba248c481d76520846c3', '15d35bb9396992d02127345380e38d73', 'c8aa14ffb7da0912c84635aa2ee0bb62', '657be9bfb1eed80938b24e3b154863cb', '2023-01-03', '', 'cash', 'complete', 0),
+	('801b58e3d0b00f7f9f9eac80058f99f0', 'e9e0f3bcddc65940e089972ce4088e59', '21fc9daf44e2637d7972bd248c83577d', 'c789ff5a8a615b3cbd55b12d431c1a51', '2023-01-04', '', 'banking account', 'complete', 0),
+	('ca768c1b1876a2f286496e62666dfada', '2e4076dd7f277dc8f29b4cdb922052c0', 'ae114dac5897fbcfd25797bf4be08fd3', '3cd774fd522ed4a7b81dc2e3ed0373bd', '2023-01-05', '', 'banking account', 'complete', 0),
+	('0a7a30124b6b4f266459a6b69677152c', '27009754484e5b64300b05706c954565', '1c38dd30f9e415b3a34879be077381ce', '8accf3a256bcc4e7335afe49531eaac6', '2023-01-06', '', 'banking account', 'complete', 0),
+	('ebcf025d47ee19d929f6707029df09d0', '49f34170b6590fea6bce454059764c12', 'c8aa14ffb7da0912c84635aa2ee0bb62', 'b02c69a820861a57ac38b4282399335c', '2023-01-07', '', 'banking account', 'complete', 0),
+	('b7e4621ca7d7273ea67ba0b40992d189', '2e9d61c3330f9e10e3a0bc3fb8a4b4a2', 'dd0e3f50648088bfecc501f809a06ca8', '5c4960d3243606ca79b7692f8a4c9957', '2023-01-08', '', 'cash', 'complete', 0),
+	('35847b5a3a8de7e0af06281b1d889bcf', 'e939af928268bda5f11f7bf215d452eb', '9c6189a20beb35a93df963e3b48eb9b0', '71071e13d9c8cd2902737b7e39f32a5a', '2023-02-09', '', 'banking account', 'complete', 0),
+	('ca05b981160139795fbf616bfd5d491b', '43e02d9e3ce088b73229155e462e32d9', '0fe30e184ab12417ff175eb1c5386130', '68e185b8d481c5652842b42ef66b3210', '2023-02-10', '', 'cash', 'complete', 0),
+	('3967200752865b1bb65a63f386925d14', '00c38b52d5cdedc2667af4a83e346a85', 'ae114dac5897fbcfd25797bf4be08fd3', 'b02c69a820861a57ac38b4282399335c', '2023-02-11', '', 'banking account', 'cancelled', 0),
+	('943b4c67a61164d245ea5af7f3848a37', '1587900aee161437134c2e2479de5b64', '9eae70b054be6eba305323d8c9106cfb', '12bc604e930e56d53915a09b61bc459a', '2023-03-12', '', 'banking account', 'complete', 0),
+	('040c93cff9c0cc5cd6d008fb02e17b69', '277dd0cf43f2cc494be796373fd7bf2b', '21fc9daf44e2637d7972bd248c83577d', '5c9ba69a58918129f033a2c25e250584', '2023-03-13', '', 'cash', 'complete', 0),
+	('3841cd8942a581d2092ff1d3739fcebc', '08605ccab7ad051603412533c59e46c7', '01c1fa1b81297a2de21056f35303ad84', '7b84cc4412f9e9a4213a9f979be42063', '2023-03-14', '', 'banking account', 'complete', 0),
+	('4a160bb951e81bb14485ab90391d0c58', 'acdbf948aa576959e791abe5ec2f124d', '9eae70b054be6eba305323d8c9106cfb', '86fc882bb1aadc489464a8ecb5f43a30', '2023-03-15', '', 'banking account', 'complete', 0),
+	('0bb8e03d00ecc7642c5142de8f12a335', '4b4c133439471c8d694b5c3e47edb446', '21fc9daf44e2637d7972bd248c83577d', '85688ffa8d935b9da96e2a680aaa4e34', '2023-04-16', '', 'banking account', 'cancelled', 0),
+	('aeed52468a0d9880fa013c611816e897', '0d0dd3c14756ae8316e7054b205896c9', '1c38dd30f9e415b3a34879be077381ce', 'a54060a06aa0e97217726362a5b580d3', '2023-04-17', '', 'cash', 'complete', 0),
+	('cde92de8a056398e6a281dba87bdffb1', '861c51821e55ecad053b072323fac994', 'fe30e1ff175e10b1c538613084ab2417', '657be9bfb1eed80938b24e3b154863cb', '2023-04-18', '', 'banking account', 'complete', 0),
+	('6c3b331b0cde4d503944f2f16f979c93', '380965fe9f1584559ea8a90b9c8d680c', '62fe46dae9470f311d52973a6eeb6a1a', '0227321c75909512447393796f173788', '2023-04-19', '', 'cash', 'complete', 0),
+	('b6b447b56dbe005a626c4b5e3fdb97be', '17787dd14e0fda883a36016cada64123', '9c6189a20beb35a93df963e3b48eb9b0', '4db7ce38baceaddfc93e9bdcfe0a7f57', '2023-04-20', '', 'banking account', 'complete', 0),
+	('a61de36f81c0f699a8653863ea9e3d2f', 'd5ea83ec7f100a6803bd39e14c619299', '0fe30e184ab12417ff175eb1c5386130', 'a2855125bdc9e06b5313b3f827f07705', '2023-05-21', '', 'cash', 'complete', 0),
+	('47b601885ddc891de11eb62451a97b43', '25c448b0241244364f7653f08cb8aff6', 'ae114dac5897fbcfd25797bf4be08fd3', '1468c48caf3c8acd45c13732fa1c7797', '2023-05-22', '', 'banking account', 'complete', 0),
+	('2f7294ec43136a43ca696ad6f06e1635', 'bc0b9fe1f4df72fa1289f4437e6a3953', '21fc9daf44e2637d7972bd248c83577d', 'b02c69a820861a57ac38b4282399335c', '2023-05-23', '', 'cash', 'complete', 0),
+	('090f345a844fedfb9ca86ff69b59d969', '43aaf0240284fd15416b429bed0ef321', '21fc9daf44e2637d7972bd248c83577d', '86fc882bb1aadc489464a8ecb5f43a30', '2023-05-24', '', 'cash', 'complete', 0),
+	('d2601ee48263e69982e4dbd809c0358a', 'ca8406790940dec227193cc7dca16212', 'c8aa14ffb7da0912c84635aa2ee0bb62', '516ab8138f50bbbb0be18ceed38b6ad3', '2023-05-25', '', 'banking account', 'complete', 0),
+	('e221bebf131b7773da0045982e018fba', '752ee3ce65129a7bd54292accb28983e', '21fc9daf44e2637d7972bd248c83577d', 'a54060a06aa0e97217726362a5b580d3', '2023-06-26', '', 'cash', 'complete', 0),
+	('85c10fd22fe836139fd76fbaee831673', 'c91f8b119029caa4ec2046bcc5c69bb5', 'ae114dac5897fbcfd25797bf4be08fd3', '657be9bfb1eed80938b24e3b154863cb', '2023-06-27', '', 'banking account', 'complete', 0),
+	('7caa694dda6e1cf8c0993cf301c84bba', '16c5bd4d79c66e16042bee6bbf128c6f', '1c38dd30f9e415b3a34879be077381ce', '0227321c75909512447393796f173788', '2023-06-28', '', 'banking account', 'cancelled', 0),
+	('b7ad6a62013acd21497265b6f7ff74eb', '56a7207dd933fe09f539083edb711548', '01c1fa1b81297a2de21056f35303ad84', '92d969030097f06af642a4577606afe0', '2023-06-29', '', 'banking account', 'complete', 0),
+	('3427f117121dd0789b94a37ef63b64dc', '6a045cdabdccb76073091f263cbf3e52', 'dd0e3f50648088bfecc501f809a06ca8', '8e397cbb235075a9cb231b2c3b316011', '2023-06-30', '', 'banking account', 'complete', 0),
+	('b7ad6137ff75b214972a6acd6206f4eb', '16c5bd4d79c66e16042bee6bbf128c6f', '0fe30e184ab12417ff175eb1c5386130', 'b82fece225c99d7b1faa427866745620', '2023-07-02', '', 'banking account', 'complete', 0),
+	('f1174d213346307894a92d177efbb6dc', '752ee3ce65129a7bd54292accb28983e', '0fe30e184ab12417ff175eb1c5386130', '9eea7e14fbd37b455d69e7114399aa0a', '2023-07-03', '', 'banking account', 'complete', 0),
+	('81c0f699a861de36fea9e653863a3d2f', '25c448b0241244364f7653f08cb8aff6', 'ae114dac5897fbcfd25797bf4be08fd3', '0d5408947d23dd60557de6b616352275', '2023-08-01', '', 'cash', 'confirm', 0),
+	('985ddc8a97245147b60181de11eb6b43', 'd5ea83ec7f100a6803bd39e14c619299', '9eae70b054be6eba305323d8c9106cfb', '9436e53cce52225010e09858fc287123', '2023-08-02', '', 'banking account', 'confirm', 0),
+	('ec436f0ca64396ad2f6e16136a437295', 'ca8406790940dec227193cc7dca16212', '9c6189a20beb35a93df963e3b48eb9b0', '4db7ce38baceaddfc93e9bdcfe0a7f57', '2023-08-03', '', 'cash', 'confirm', 0),
+	('edf345a8f69ca86f0fb90944fb59d969', 'c91f8b119029caa4ec2046bcc5c69bb5', 'fe30e1ff175e10b1c538613084ab2417', '7be65563411c5ce7cd508f04c8a54ecb', '2023-08-04', '', 'cash', 'check-in', 0),
+	('e4c03e6998de4826309bd8d2601e258a', 'bc0b9fe1f4df72fa1289f4437e6a3953', '21fc9daf44e2637d7972bd248c83577d', 'b02c69a820861a57ac38b4282399335c', '2023-08-05', '', 'banking account', 'check-in', 0),
+	('13e25982e018f21bda01bebf077734ba', '6a045cdabdccb76073091f263cbf3e52', 'ae114dac5897fbcfd25797bf4be08fd3', '5a71a95534bbd12150558baa83f945de', '2023-08-06', '', 'cash', 'check-in', 0),
+	('d76836859ffbaee831c10fd22fe13673', '43aaf0240284fd15416b429bed0ef321', '9eae70b054be6eba305323d8c9106cfb', '4e4b39473c2dfc3e918ee79b1c28fc6f', '2023-08-07', '', 'banking account', 'processing', 0),
+	('e199d87ca6943ccf8cdac4bbaa6f3010', '56a7207dd933fe09f539083edb711548', '1c38dd30f9e415b3a34879be077381ce', '8e397cbb235075a9cb231b2c3b316011', '2023-09-01', '', 'banking account', 'processing', 0),
+	('13acd6206f7ff75bb7ad6214972a64eb', '16c5bd4d79c66e16042bee6bbf128c6f', '01c1fa1b81297a2de21056f35303ad84', '86fc882bb1aadc489464a8ecb5f43a30', '2023-09-02', '', 'cash', 'processing', 0),
+	('3346307894a7f1171217efbb64d92ddc' , '752ee3ce65129a7bd54292accb28983e' , '62fe46dae9470f311d52973a6eeb6a1a', 'a2855125bdc9e06b5313b3f827f07705' , '2023-09-03' , '' , 'banking account' , 'processing', 0);
 
 INSERT INTO AppointmentServices (appointmentID, serviceID)
 VALUES
@@ -1421,37 +1416,7 @@ VALUES
 	('6b0653af50c61fe6c3ab725522421692' , 'b7ad6137ff75b214972a6acd6206f4eb' , '2023-07-06' , N'xác định giới tính', 2, '' ),
 	('ffd4d1092d5e6de12dc9d4fe82c4029e' , 'f1174d213346307894a92d177efbb6dc' , '2023-07-07' , N'xác định giới tính', 2 , '' );
 
-INSERT INTO RecordServices (medicalRecordID, serviceID)
-VALUES
-	( '3b153a85daab45c693cdd0e1f02631c9', 'f8c17d469d7dfd4fa84eae659923536b'),
-	( '87599195136fd0440b341eed32d36c84', 'c739c1e62319f52411908f874c0698bf'),
-	( '4d0ac1b5e6f8e2e4ee256c4c2031b1d2', 'a074614583162a3d58b89c13699d70a1'),
-	( 'b356f8672801e4820bd72b17dbda7764' , 'cd9bfc9d6bb22a47f6dcdc2a5c99b2fd' ),
-	( 'a0540a74c856251ad819d931fee6b078' , '744722e0fb1eb8e7f4fc5c4682159800' ),
-	( '32fe2542e25434a1acde0f6edff2f0b4' , '84fbf5e32cfdb21cf48721cf849b0c20' ),
-	( '2f6c8e2ec915f490a91c6c7e888126f6' , '517d8993ec9bcdb8c33fc50ea7ec5da8' ),
-	( '21def0e373e1e8d57d1ab5f339726167' , '291129122c3e6bbbd76a76b428f2809a' ),
-	( 'ff398a2c8cdd28c7c9e31446c0e2a629' , '52b7bedca394c621f40a99d03a564341' ),
-	( '753906196d6e7bdd8f8d874efaacfa8d' , 'e41d8b0c31b65cc94f5eb4bbb7b76907' ),
-	( '4aa48bfce29088db4424a1b921e2be55' , 'f8c17d469d7dfd4fa84eae659923536b' ),
-	( '154aa8864b0445239a1c8cf636ce8164' , 'c739c1e62319f52411908f874c0698bf' ),
-	( 'b72e56f3705781fdfaa652dabbefd8b4' , 'a074614583162a3d58b89c13699d70a1' ),
-	( '96f71fd09596eeda17b234c2a87b783f' , 'cd9bfc9d6bb22a47f6dcdc2a5c99b2fd' ),
-	( 'de9aa8254527b52b336a60f9373740ea' , '84fbf5e32cfdb21cf48721cf849b0c20' ),
-	( '737cebac25159c2b8e46f50881a7abcb' , '517d8993ec9bcdb8c33fc50ea7ec5da8' ),
-	( '1450707c9e9a8ea70f8d341e19e5a9bb' , '291129122c3e6bbbd76a76b428f2809a' ),
-	( '321d5d0f522e1ba28bbb2243b6b18de8' , '52b7bedca394c621f40a99d03a564341' ),
-	( '008be4115afd1511f4cc2ae97c9834f0' , 'e41d8b0c31b65cc94f5eb4bbb7b76907' ),
-	( '3ff90b1c47898c6e576e8f109eba0bef' , '507e4c66da1ccd4fcf621069065494bc' ),
-	( '21879306649bc1429b0f6d9d57217356' , 'f8c17d469d7dfd4fa84eae659923536b' ),
-	( '56e00973cbc998b7ddce6cdc45b3cd25' , 'c739c1e62319f52411908f874c0698bf' ),
-	( '8c6abf5a30122f683a29871b67190785' , 'a074614583162a3d58b89c13699d70a1' ),
-	( '65a4f559051183b9a50cda6876422baa' , 'cd9bfc9d6bb22a47f6dcdc2a5c99b2fd' ),
-	( '5fe272ab8622289deb002353518c8941' , '744722e0fb1eb8e7f4fc5c4682159800' ),
-	( '5e6c49d4fffd4d10de12dc2de829029e' , '517d8993ec9bcdb8c33fc50ea7ec5da8' ),
-	( '52f50c616b0653a3fab725e6c2421692' , '291129122c3e6bbbd76a76b428f2809a' ),
-	( 'ffd4d1092d5e6de12dc9d4fe82c4029e' , 'e41d8b0c31b65cc94f5eb4bbb7b76907' ),
-	( '6b0653af50c61fe6c3ab725522421692' , 'e41d8b0c31b65cc94f5eb4bbb7b76907' );
+
 
 INSERT INTO RecordMedicine (medicalRecordID, medicineID, quantity, description_)
 VALUES
