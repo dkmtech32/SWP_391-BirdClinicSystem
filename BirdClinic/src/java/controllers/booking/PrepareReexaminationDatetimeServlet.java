@@ -6,11 +6,21 @@
 package controllers.booking;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import models.timeslot.TimeslotDTO;
+import services.general.AccountDoesNotExistException;
+import services.staff.StaffServices;
+import utils.Utils;
 
 /**
  *
@@ -30,17 +40,77 @@ public class PrepareReexaminationDatetimeServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet PrepareReexaminationDatetimeServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet PrepareReexaminationDatetimeServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String doctorID = request.getParameter("doctorID");
+        String currentWeekday = request.getParameter("currentWeekday");
+        String url = "/Common/index.jsp";
+        HttpSession session = request.getSession();
+        StaffServices service = (StaffServices) session.getAttribute("service");
+        
+        try {
+
+            request.setAttribute("doctor", service.getDoctorInfo(doctorID));
+
+            String[] weekdays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+            request.setAttribute("weekdays", weekdays);
+
+            Date currentDate = new Date(System.currentTimeMillis());
+            if (currentWeekday != null) {
+                Date date = Date.valueOf(currentWeekday.trim());
+                if (date.compareTo(currentDate) > 0) { // in the future
+                    currentDate = date;
+                    request.setAttribute("lastWeekday", Utils.getLastWeekWeekday(currentDate));
+                } else { //in the present
+                    int days = Utils.getDaysSinceStartOfWeek(currentDate);
+                    request.setAttribute("daysBeforeToday", days);
+                }
+            }
+
+            List<Date> daysInWeek = Utils.getDaysInWeek(currentDate);
+            Date nextWeekWeekday = Utils.getNextWeekWeekday(currentDate);
+            if (true) {
+                request.setAttribute("nextWeekday", nextWeekWeekday);
+            }
+            request.setAttribute("daysInWeek", daysInWeek);
+
+            if (doctorID == null) {
+                List<List<TimeslotDTO>> timeslots = service.getTimeslotsByWeekday(doctorID);
+                List<List<Map<TimeslotDTO, Boolean>>> timeslotLate = new ArrayList<>();
+                for (int i = 0; i < timeslots.size(); i++) {
+                    timeslotLate.add(new ArrayList<>());
+                    for (int j = 0; j < timeslots.get(i).size(); j++) {
+                        Map<TimeslotDTO, Boolean> map = new HashMap<>();
+                        TimeslotDTO timeslot = timeslots.get(i).get(j);
+                        boolean isFuture = daysInWeek.get(i).compareTo(new Date(System.currentTimeMillis())) > 0;
+                        map.put(timeslot, isFuture);
+                        timeslotLate.get(i).add(map);
+                    }
+                }
+                request.setAttribute("timeslots", timeslotLate);
+            } else {
+                List<List<TimeslotDTO>> timeslots = service.getTimeslotsByWeekday(doctorID);
+                List<List<Map<TimeslotDTO, Boolean>>> timeslotBusy = new ArrayList<>();
+                for (int i = 0; i < timeslots.size(); i++) {
+                    timeslotBusy.add(new ArrayList<>());
+                    for (int j = 0; j < timeslots.get(i).size(); j++) {
+                        Map<TimeslotDTO, Boolean> map = new HashMap<>();
+                        TimeslotDTO timeslot = timeslots.get(i).get(j);
+                        boolean isFuture = daysInWeek.get(i).compareTo(new Date(System.currentTimeMillis())) > 0;
+                        boolean isFree = service.isDoctorFree(doctorID, timeslot.getTimeSlotID(), daysInWeek.get(i));
+                        map.put(timeslot, isFuture && isFree);
+                        timeslotBusy.get(i).add(map);
+                    }
+                }
+                request.setAttribute("timeslots", timeslotBusy);
+            }
+
+            url = "/Staff/bookingDatetime.jsp";
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (AccountDoesNotExistException ex) {
+            ex.printStackTrace();
+            request.setAttribute("error-message", ex.toString());
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 

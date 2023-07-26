@@ -7,7 +7,10 @@ package controllers.dashboard.admin;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
@@ -19,6 +22,7 @@ import models.timeslot.TimeslotDTO;
 import models.users.doctor.DoctorDTO;
 import services.admin.AdminServices;
 import services.general.AccountDoesNotExistException;
+import utils.Utils;
 
 /**
  *
@@ -39,27 +43,40 @@ public class AdminDoctorsUpdateTimeslotServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        AdminServices admin = (AdminServices) session.getAttribute("service");
+        AdminServices service = (AdminServices) session.getAttribute("service");
         String doctorID = request.getParameter("doctorID");
         String url = "/View/Doctor?doctorID=" + doctorID;
-        
-        String[] weekdays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-        request.setAttribute("weekdays", weekdays);
+
         try {
-            DoctorDTO doctor = admin.getDoctorInfo(doctorID);
-            request.setAttribute("doctor", doctor);
-            
-            List<List<TimeslotDTO>> timeslots = admin.getTimeslotsByWeekday(doctorID);
-            request.setAttribute("doctorTimeslots", timeslots);
-            
-            List<List<TimeslotDTO>> timeslotsAll = admin.getTimeslotsByWeekday(null);
-            request.setAttribute("allTimeslots", timeslotsAll);
-            
-            url = "/Admin/update-doctor-timeslot.jsp";
+
+            request.setAttribute("doctor", service.getDoctorInfo(doctorID));
+
+            String[] weekdays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+            request.setAttribute("weekdays", weekdays);
+
+            List<List<TimeslotDTO>> allTimeslots = service.getTimeslotsByWeekday("");
+            List<List<TimeslotDTO>> doctorTimeslots = service.getTimeslotsByWeekday(doctorID);
+            List<List<Map<TimeslotDTO, Boolean>>> timeslotBusy = new ArrayList<>();
+            for (int i = 0; i < allTimeslots.size(); i++) {
+                timeslotBusy.add(new ArrayList<>());
+                for (int j = 0; j < allTimeslots.get(i).size(); j++) {
+                    Map<TimeslotDTO, Boolean> map = new HashMap<>();
+                    TimeslotDTO timeslot = allTimeslots.get(i).get(j);
+                    map.put(timeslot, doctorTimeslots.get(i).indexOf(timeslot)>=0);
+                    timeslotBusy.get(i).add(map);
+                }
+            }
+            request.setAttribute("timeslots", timeslotBusy);
+
+            url = "/Customer/bookingDatetime.jsp";
         } catch (SQLException ex) {
             ex.printStackTrace();
+            url = "/Customer/booking-list.jsp";
         } catch (AccountDoesNotExistException ex) {
+
             ex.printStackTrace();
+            request.setAttribute("error-message", ex.toString());
+            url = "/Customer/booking-list.jsp";
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

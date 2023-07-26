@@ -18,6 +18,7 @@ import models.exceptions.RecordAlreadyExists;
 import models.feedback.FeedbackDTO;
 import models.images.ImageDTO;
 import models.speciality.SpecialityDTO;
+import models.timeslot.TimeslotDTO;
 import models.users.UserDTO;
 import models.users.UserDTOImpl;
 import models.users.customer.CustomerDTO;
@@ -313,6 +314,4 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
 
         return result;
     }
-
-    
 }
