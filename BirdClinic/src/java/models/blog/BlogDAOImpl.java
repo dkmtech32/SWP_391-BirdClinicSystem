@@ -24,7 +24,7 @@ public class BlogDAOImpl implements BlogDAO {
             + "VALUES (?, ?, ?, ?, ?, ?, ?)";
     private static final String UPDATE_BLOG
             = "UPDATE Blog "
-            + "SET title = ?, category = ?, blogContent = ?, imageID = ?, _description = ?,  "
+            + "SET title = ?, category = ?, blogContent = ?, imageID = ?, _description = ?  "
             + "WHERE blogID = ?";
     private static final String READ_TOP_THREE_BLOGS
             = "SELECT TOP 3 blogID, title, uploadDatetime, category, blogContent, imageID, _description "
@@ -121,12 +121,11 @@ public class BlogDAOImpl implements BlogDAO {
             con = DBUtils.getConnection();
             stm = con.prepareStatement(UPDATE_BLOG);
             stm.setString(1, blog.getTitle());
-            stm.setTimestamp(2, blog.getUploadDatetime());
-            stm.setString(3, blog.getCategory());
-            stm.setString(4, blog.getBlogContent());
+            stm.setString(2, blog.getCategory());
+            stm.setString(3, blog.getBlogContent());
+            stm.setString(4, blog.getThumbnail().getImageID());
             stm.setString(5, blog.getDescription());
-            stm.setString(6, blog.getThumbnail().getImageID());
-            stm.setString(7, blog.getBlogID());
+            stm.setString(6, blog.getBlogID());
 
             rowsAffected = stm.executeUpdate();
 

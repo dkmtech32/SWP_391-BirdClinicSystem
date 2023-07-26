@@ -90,7 +90,7 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
 
         return result;
     }
-    
+
     @Override
     public boolean updateAppointmentPrice(String appointmentID, BigDecimal totalPrice)
             throws AppointmentDoesNotExistException, SQLException {
@@ -309,14 +309,11 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
             blog.setTitle(title);
             blog.setCategory(category);
             blog.setDescription(description);
-            ImageDTO image = null;
             if (file != null) {
                 String imageURLName = blogID + filetype;
-                image = addImage(file, path, imageURLName);
-            } else {
-                image = imageDAO.readImage("00DB5DAF82D7F818D6AB6A466AF7BEE4");
-            }
-            blog.setThumbnail(image);
+                ImageDTO image = addImage(file, path, imageURLName);
+                blog.setThumbnail(image);
+            } 
             blogDAO.updateBlog(blog);
         } catch (NoSuchRecordExists | ImageAlreadyExistsException ex) {
             throw new BlogDoesNotExistException(ex.getMessage());
@@ -394,12 +391,12 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
             String service_ID = args.get("serviceID")[0];
             String appDate = args.get("appDate")[0];
             String doctorID = args.get("doctorID")[0];
-            
+
             AppointmentDTO prevApp = appointmentDAO.readAppointment(appointmentID);
             AppointmentDTO app = new AppointmentDTOImpl();
-            
+
             BirdDTO bird = prevApp.getBird();
-            
+
             app.setAppointmentID(Utils.hash(bird.getBirdID() + service_ID + timeslotID + String.valueOf(System.currentTimeMillis())));
             app.setBird(bird);
             TimeslotDTO timeslot = timeslotDAO.readTimeSlot(timeslotID);

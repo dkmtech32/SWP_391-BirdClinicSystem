@@ -55,7 +55,7 @@
                         <textarea id="editor" class="editor" style="" name="blog-content" >${blog.blogContent}</textarea>
                     </div>
 
-
+                    <input type="text" hidden="hidden" name="blogID" value="${blog.blogID}"/>
                     <input class="btn btn-primary" type="submit" value="Submit" />
 
                 </form>
