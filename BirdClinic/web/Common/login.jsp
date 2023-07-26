@@ -40,9 +40,9 @@
                                                 <input name ="password" type="password" class="form-control floating" required/>
                                                 <label class="focus-label">Password</label>
                                             </div>
-                                            <div class="text-right">
+<!--                                            <div class="text-right">
                                                 <a class="forgot-link" href="forgot-password.jsp">Forgot Password ?</a>
-                                            </div>
+                                            </div>-->
                                             <button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Login</button>
                                             <div class="text-center dont-have">Don’t have an account? <a href="<c:url value="/Common/register.jsp"/>">Register</a></div>
                                         </form>
