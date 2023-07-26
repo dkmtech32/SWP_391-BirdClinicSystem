@@ -17,9 +17,9 @@
                         <div class="col-12 col-md-12">
                             <div class="form-group">
                                 <div class="change-avatar">
-<!--                                    <div class="profile-img">
-                                         Add this image element after the existing profile image 
-                                    </div>-->
+                                    <!--                                    <div class="profile-img">
+                                                                             Add this image element after the existing profile image 
+                                                                        </div>-->
                                     <!-- Add this container to display the selected bird image -->
                                     <div id="bird-image-preview-container">
                                         <img id="bird-image-preview" alt="Selected Bird Image" style="max-width: 200px; margin-top: 10px; display: none;">
@@ -100,35 +100,35 @@
         </div>
     </div>
     <script>
-  function previewImage() {
-    var input = document.getElementById("bird-image");
-    var container = document.getElementById("bird-image-preview-container");
+        function previewImage() {
+            var input = document.getElementById("bird-image");
+            var container = document.getElementById("bird-image-preview-container");
 
-    // Remove any existing preview image
-    var existingPreview = document.getElementById("bird-image-preview");
-    if (existingPreview) {
-      container.removeChild(existingPreview);
-    }
+            // Remove any existing preview image
+            var existingPreview = document.getElementById("bird-image-preview");
+            if (existingPreview) {
+                container.removeChild(existingPreview);
+            }
 
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
-      reader.onload = function(e) {
-        var previewImage = document.createElement("img");
-        previewImage.id = "bird-image-preview";
-        previewImage.src = e.target.result;
-        previewImage.alt = "Selected Bird Image";
-        previewImage.style.maxWidth = "200px";
-        previewImage.style.marginTop = "10px";
+                reader.onload = function (e) {
+                    var previewImage = document.createElement("img");
+                    previewImage.id = "bird-image-preview";
+                    previewImage.src = e.target.result;
+                    previewImage.alt = "Selected Bird Image";
+                    previewImage.style.maxWidth = "200px";
+                    previewImage.style.marginTop = "10px";
 
-        // Append the preview image to the container
-        container.appendChild(previewImage);
-      };
+                    // Append the preview image to the container
+                    container.appendChild(previewImage);
+                };
 
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
-</script>
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 
 
 </html>
