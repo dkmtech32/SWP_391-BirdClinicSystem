@@ -103,8 +103,9 @@
                                                                                     <c:forEach var="timeslotMap" items="${timeslotList}" varStatus="count">
                                                                                         <c:forEach var="entry" items="${timeslotMap}">
                                                                                             <c:set var="timeslot" value="${entry.key}" />
-                                                                                            <label class="timing">
-                                                                                                <input type="checkbox" name="timeslotID"   value="${timeslot.timeSlotID}" />
+                                                                                            <c:set var="exist" value="${entry.value}" />
+                                                                                            <label class="timing <c:if test="${exist}">selected</c:if>">
+                                                                                                <input type="checkbox" name="timeslotID" hidden <c:if test="${exist}">checked</c:if>  value="${timeslot.timeSlotID}" />
                                                                                                 <span>${timeslot.timeSlot}</span>
                                                                                             </label>
                                                                                         </c:forEach>
