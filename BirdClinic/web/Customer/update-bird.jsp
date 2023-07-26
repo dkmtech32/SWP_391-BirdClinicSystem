@@ -22,7 +22,7 @@
                                     </div>-->
                                     <!-- Add this container to display the selected bird image -->
                                     <div id="bird-image-preview-container">
-                                        <img id="bird-image-preview" alt="Selected Bird Image" style="max-width: 200px; margin-top: 10px; display: none;">
+                                        <img id="bird-image-preview" alt="Selected Bird Image" src="<c:url value="/images/bird/${bird.image.imageURLName}"/>" style="max-width: 200px; margin-top: 10px; ">
                                     </div>
 
                                     <div class="upload-img">
@@ -39,7 +39,8 @@
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Bird's Name</label>
-                                <input type="text" class="form-control" name='bird-full-name' required />
+                                <input type="text" class="form-control" name='bird-full-name' value="${bird.birdFullname}" required />
+                                <input type="text" style="display: none" name="birdID" value="${bird.birdID}"/>
                             </div>
                         </div>
 
@@ -47,7 +48,7 @@
                             <div class="form-group">
                                 <label>Hatching Date</label>
                                 <div class="">
-                                    <input type="date" class="form-control " name='hatching-date' />
+                                    <input type="date" class="form-control" name='hatching-date' value="${bird.hatchingDate}" />
                                 </div>
                             </div>
                         </div>
@@ -55,7 +56,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Breed</label>
-                                <input type="text" class="form-control" name='breed' />
+                                <input type="text" class="form-control" name='breed' value="${bird.breed}" />
                             </div>
                         </div>
 
@@ -63,8 +64,8 @@
                             <div class="form-group">
                                 <label>Sex</label>
                                 <select class="form-control" name='bird-gender' >
-                                    <option value='male'>Male</option>
-                                    <option value='female'>Female</option>
+                                    <option value='male' <c:if test="${bird.birdGender=='male'}">selected</c:if>>Male</option>
+                                    <option value='female'<c:if test="${bird.birdGender=='female'}">selected</c:if>>Female</option>
                                 </select>
                             </div>
                         </div>
@@ -72,21 +73,21 @@
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Weight (in grams)</label>
-                                <input type="number" class="form-control" name="bird-weight" placeholder="Enter weight in grams" step="0.1" value=""  />
+                                <input type="number" class="form-control" name="bird-weight" placeholder="Enter weight in grams" step="0.1" value="${bird.birdWeight}"  />
                             </div>
                         </div>
 
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Color</label>
-                                <input type="text" class="form-control" name='feather-color'  />
+                                <input type="text" class="form-control" name='feather-color' value="${bird.featherColor}" />
                             </div>
                         </div>
 
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Band/Microchip ID</label>
-                                <input type="text" class="form-control" name="band_chip" value="" />
+                                <input type="text" class="form-control" name="band_chip" value="${bird.band_Chip}" />
                             </div>
                         </div>
 

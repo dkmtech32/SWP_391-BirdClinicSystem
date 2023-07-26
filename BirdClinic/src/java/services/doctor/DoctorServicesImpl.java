@@ -160,7 +160,7 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
                 appointmentDAO.addService(services, medRec.getAppointment().getAppointmentID());
             }
             
-            appointmentDAO.updateAppointmentStatus(medRec.getAppointment().getAppointmentID(), "prescibed");
+            appointmentDAO.updateAppointmentStatus(medRec.getAppointment().getAppointmentID(), "prescribed");
         } catch (RecordAlreadyExists | NoSuchRecordExists ex) {
             throw new MedicalRecordAlreadyExistsException(ex.getMessage());
         }

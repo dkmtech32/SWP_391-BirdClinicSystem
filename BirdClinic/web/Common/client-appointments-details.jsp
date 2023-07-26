@@ -36,18 +36,21 @@
                             <jsp:include page="../Common/appointment-general-info.jsp"/>
                             <jsp:include page="../Common/appointment-medicine-list.jsp"/>                       
                         </div>
-                        <c:if test="${requestScope.appointment.bird.customer.userID.equals(sessionScope.service.currentUser.userID)&& empty requestScope.feedback && requestScope.appointment.appStatus.equals('complete')}">
-                            <jsp:include page="../Customer/give-feedback.jsp"/>
-                        </c:if>
-                        <div class="row">
-                            <c:if test="${not empty requestScope.feedback}">
-                                <jsp:include page="../Common/owner-feedback.jsp"/>  
-                            </c:if>
-                           
-                                <jsp:include page="../Common/payment-info.jsp"/>
-                            
+
+                        <div class="container-fluid mt-4">
+                            <div class="row">
+                                <c:if test="${requestScope.appointment.bird.customer.userID.equals(sessionScope.service.currentUser.userID)&& empty requestScope.feedback && requestScope.appointment.appStatus.equals('complete')}">
+                                    <jsp:include page="../Customer/give-feedback.jsp"/>
+                                </c:if>
+
+                                <c:if test="${not empty requestScope.feedback}">
+                                    <jsp:include page="../Common/owner-feedback.jsp"/>  
+                                </c:if>
+
+                                <jsp:include page="../Common/payment-info.jsp"/> 
+                            </div>
                         </div>
-                        <c:if test="${requestScope.appointment.appStatus=='check-in' && sessionScope.service.currentUser.userRole=='staff'}">
+                        <c:if test="${requestScope.appointment.appStatus=='prescribed' && sessionScope.service.currentUser.userRole=='staff'}">
 
 
                             <select style="width:200px; max-width: 200px; white-space: nowrap;
@@ -60,6 +63,7 @@
 
 
                             <form action="<c:url value="/Dashboard/Appointments/updateApp"/>" name="docForm" method="get">
+                                <input style="display: none" name="totalPrice" value="${totalPrice}" />
                                 <input type="hidden" id="hidden${appointment.payment}" name="payment" <c:if test="${not empty appointment.payment}"> value="${appointment.payment}"</c:if> required>
                                     <input type="hidden"  name="action" value="update">
                                     <input type="hidden"  name="filter" value="complete">

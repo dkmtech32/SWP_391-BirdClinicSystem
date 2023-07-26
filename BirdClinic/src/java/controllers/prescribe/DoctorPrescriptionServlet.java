@@ -63,7 +63,7 @@ public class DoctorPrescriptionServlet extends HttpServlet {
                 services = medRec.getAppointment().getService_();
                 session.setAttribute("services", services);
             }
-            session.setAttribute("service_list", service.getSelfServices());
+            request.setAttribute("service_list", service.getSelfServices());
         } catch (AppointmentDoesNotExistException ex) {
             ex.printStackTrace();
             request.setAttribute("error-message", "Appointment does not exist. Please try again.");
