@@ -1,0 +1,19 @@
+@media print {
+	/* Hide the button when printing */
+	button.print-btn,
+	button.re-examination {
+		display: none;
+	}
+
+	/* Hide certain elements from printing */
+	.dont-print,
+	header,
+	footer,
+	form.re-examination {
+		display: none;
+	}
+
+	#addressInput {
+		white-space: pre-wrap;
+	}
+}
