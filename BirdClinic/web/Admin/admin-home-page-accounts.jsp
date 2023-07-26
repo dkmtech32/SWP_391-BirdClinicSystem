@@ -22,16 +22,16 @@
 
                 <div class="container-fluid">
                     <div class="layout-specing">
-                        <nav class="user-tabs">
+<!--                        <nav class="user-tabs" style="margin-bottom: 2rem">
                             <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="admin-home-page-accounts.jsp">Accounts</a>
+                                    <a class="nav-link active" href="<c:url value="/Admin/Accounts"/>">Accounts</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="admin-home-page-charts.jsp">Statistics</a>
                                 </li>
                             </ul>
-                        </nav>
+                        </nav>-->
                         
                         <div class="chart-tab-container">
                             <div class="chart-tab">

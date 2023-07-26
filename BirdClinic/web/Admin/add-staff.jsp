@@ -31,21 +31,17 @@
                             <div class="col-lg-12 mt-4">
                                 <div class="card border-0 p-4 rounded shadow">
                                     <div class="row align-items-center">
-                                        <div class="col-lg-2 col-md-4">
-                                            <img src="assets/images/customer/02.jpg" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt />
+                                        <div style="padding-right: 0px; width: 5rem; margin-left: 2rem; margin-right: 2rem;">
+                                            <img src="assets/images/customer/02.jpg" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt style="width:100px; height: 100px;"/>
                                         </div>
                                         <!--end col-->
 
                                         <div class="col-lg-5 col-md-8 text-center text-md-start mt-4 mt-sm-0">
-                                            <h5 class>Upload your picture</h5>
-                                            <p class="text-muted mb-0">For best results, use an image at least 600px by 600px in either .jpg or .png format</p>
+                                            <h5 style="width: 200px">Upload your picture</h5>
+                                            <div class="col-lg-5 col-md-12 text-lg-end text-center mt-4 mt-lg-0" style="width: 30px">
+                                                <a href="#" class="btn btn-primary">Upload</a>
+                                            </div>
                                         </div>
-                                        <!--end col-->
-
-                                        <div class="col-lg-5 col-md-12 text-lg-end text-center mt-4 mt-lg-0">
-                                            <a href="#" class="btn btn-primary">Upload</a>
-                                        </div>
-                                        <!--end col-->
                                     </div>
                                     <!--end row-->
 
