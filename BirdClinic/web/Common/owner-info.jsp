@@ -74,7 +74,7 @@
                                     <option style="display: none" value="${doc.userID}" data-specialityid="${doc.speciality.specialityID}">${doc.fullName}</option>
                                 </c:forEach>
                             </select>
-                            <input name="appID" style="display: none" value="${appointment.appID}"/>
+                            <input name="appID" style="display: none" value="${appointment.appointmentID}"/>
                             <button class="btn btn-primary" type="submit">Retake</button>
                         </form>
                         <script>
