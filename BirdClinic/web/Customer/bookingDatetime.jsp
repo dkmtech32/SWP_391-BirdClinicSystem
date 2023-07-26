@@ -38,7 +38,90 @@
                                                     <img src="<c:url value="/images/doctors/${requestScope.doctor.image.imageURLName}"/>" alt="${requestScope.doctor.userName}" />
                                                 </a>
                                                 <div class="booking-info">
-                                                    <h4><a href="<c:url value="/View/Doctor?userID=${requestScope.doctor.userID}"/>">${requestScope.doctor.fullName}</a></h4>                                          
+                                                    <h4><a href="<c:url value="/View/Doctor?userID=${requestScope.doctor.userID}"/>">${requestScope.doctor.fullName}</a></h4> 
+                                                        <c:choose>
+                                                            <c:when test="${requestScope.ratings.floatValue() <=1}">
+                                                            <div class="rating">
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                            </div>
+                                                        </c:when>
+                                                        <c:when test="${requestScope.ratings.floatValue() > 1 && requestScope.ratings.floatValue() < 2}">
+                                                            <div class="rating">
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star-half-alt filled"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                            </div>
+                                                        </c:when>
+                                                        <c:when test="${requestScope.ratings.floatValue() == 2}">
+                                                            <div class="rating">
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                            </div>
+                                                        </c:when>
+                                                        <c:when test="${requestScope.ratings.floatValue() > 2 && requestScope.ratings.floatValue() < 3}">
+                                                            <div class="rating">
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star-half-alt filled"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                            </div>
+                                                        </c:when>
+                                                        <c:when test="${requestScope.ratings.floatValue() ==3}">
+                                                            <div class="rating">
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                            </div>
+                                                        </c:when>
+                                                        <c:when test="${requestScope.ratings.floatValue() > 3 && requestScope.ratings.floatValue() < 4}">
+                                                            <div class="rating">
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star-half-alt filled"></i>
+                                                                <i class="fas fa-star"></i>
+                                                            </div>
+                                                        </c:when>
+                                                        <c:when test="${requestScope.ratings.floatValue() == 4}">
+                                                            <div class="rating">
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star"></i>
+                                                            </div>
+                                                        </c:when>
+                                                        <c:when test="${requestScope.ratings.floatValue() > 4 && requestScope.ratings.floatValue() < 5}">
+                                                            <div class="rating">
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star-half-alt filled"></i>
+                                                                <i class="fas fa-star"></i>
+                                                            </div>
+                                                        </c:when>
+                                                        <c:when test="${requestScope.ratings.floatValue() == 5}">
+                                                            <div class="rating">
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star filled"></i>
+                                                            </div>
+                                                        </c:when>
+                                                    </c:choose>
                                                     <p class="text-muted mb-0"><i class="fa-regular fa-hourglass-half"></i> ${requestScope.doctor.yearsOfExperience} (years of EXP)</p>
                                                     <p class="text-muted mb-0" style="text-transform: capitalize">${requestScope.doctor.speciality.specialityName}</p>
                                                 </div>

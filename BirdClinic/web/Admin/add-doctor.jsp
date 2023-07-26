@@ -31,25 +31,26 @@
                         <div class="row">
                             <div class="col-lg-12 mt-4">
                                 <div class="card border-0 p-4 rounded shadow">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-2 col-md-4">
-                                            <img src="assets/images/doctors/01.jpg" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt />
-                                        </div>
-                                        <!--end col-->
-
-                                        <div class="col-lg-5 col-md-8 text-center text-md-start mt-4 mt-sm-0">
-                                            <h5>Upload your picture</h5>
-                                        </div>
-                                        <!--end col-->
-
-                                        <div class="col-lg-5 col-md-12 text-lg-end text-center mt-4 mt-lg-0">
-                                            <a href="#" class="btn btn-primary">Upload</a>
-                                        </div>
-                                        <!--end col-->
-                                    </div>
-                                    <!--end row-->
-
                                     <form class="mt-4" method="POST" action="<c:url value="/Admin/Accounts/Create"/>" enctype="multipart/form-data">
+                                        <div class="row align-items-center">
+                                            <div class="col-lg-2 col-md-4" id="bird-image-preview-container">
+                                                <img id="bird-image-preview" style="display: none" src="assets/images/doctors/01.jpg" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt />
+                                            </div>
+                                            <!--end col-->
+
+                                            <div class="upload-img">
+                                                <div class="change-photo-btn">
+                                                    <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                                    <!-- Add an onchange attribute to the input file element -->
+                                                    <input name="user-image" id="bird-image" type="file" class="upload" onchange="previewImage(event)" />
+                                                </div>
+                                                <small class="form-text text-muted">Allowed JPG, GIF or PNG. Max size of 2MB</small>
+                                            </div>
+                                            <!--end col-->
+                                        </div>
+                                        <!--end row-->
+
+
                                         <input value="doctor" name="userRole" hidden="hidden"/>
                                         <div class="row">
                                             <div class="col-md-6">
@@ -157,7 +158,7 @@
                             </div>
                             <!--end row-->
 
-                            
+
                             <!--end row-->
                         </div>
                     </div>
@@ -202,7 +203,7 @@
                 input.value = 26;
             }
         }
-        function validateYearOfExperienceQuantity(input){
+        function validateYearOfExperienceQuantity(input) {
             if (input.value < 1) {
                 input.value = 1;
             }
