@@ -158,7 +158,12 @@
                                                         <td>${service.serviceName}</td>
                                                         <td>$ ${service.servicePrice}</td>
                                                         <td>
-                                                            <a href="<c:url value='/Doctor/Prescription/Update?action=deleteService&serviceID=${service.serviceID}'/>" class="button button-small edit"> <i class="fa fa-trash"></i> </a>
+                                                            <c:if test="${sessionScope.services.size() != 1}">
+                                                                <a href="<c:url value='/Doctor/Prescription/Update?action=deleteService&serviceID=${service.serviceID}'/>" class="button button-small edit">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </a>
+                                                            </c:if>
+
                                                         </td>
                                                     </tr>
                                                 </c:forEach>

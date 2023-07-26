@@ -511,7 +511,7 @@ public class AppointmentDAOImpl implements AppointmentDAO {
             stm.setDate(5, appointment.getAppTime());
             stm.setString(6, appointment.getNotes());
             stm.setString(7, appointment.getPayment());
-            stm.setString(8, "confirm");
+            stm.setString(8, appointment.getAppStatus());
             stm.setBigDecimal(9, appointment.getTotalPrice());
 
             rowsInserted = stm.executeUpdate();
