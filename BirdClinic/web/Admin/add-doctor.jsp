@@ -34,7 +34,7 @@
                                     <form class="mt-4" method="POST" action="<c:url value="/Admin/Accounts/Create"/>" enctype="multipart/form-data">
                                         <div class="row align-items-center">
                                             <div class="col-lg-2 col-md-4" id="bird-image-preview-container">
-                                                <img id="bird-image-preview" style="display: none" src="assets/images/doctors/01.jpg" class="avatar avatar-md-md rounded-pill shadow mx-auto d-block" alt />
+                                                <img id="bird-image-preview" style="display: none"  class="avatar avatar-md-md rounded-pill shadow mx-auto " alt />
                                             </div>
                                             <!--end col-->
 
@@ -206,6 +206,34 @@
         function validateYearOfExperienceQuantity(input) {
             if (input.value < 1) {
                 input.value = 1;
+            }
+        }
+        function previewImage() {
+            var input = document.getElementById("bird-image");
+            var container = document.getElementById("bird-image-preview-container");
+
+            // Remove any existing preview image
+            var existingPreview = document.getElementById("bird-image-preview");
+            if (existingPreview) {
+                container.removeChild(existingPreview);
+            }
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    var previewImage = document.createElement("img");
+                    previewImage.id = "bird-image-preview";
+                    previewImage.src = e.target.result;
+                    previewImage.alt = "Selected Bird Image";
+                    previewImage.style.maxWidth = "200px";
+                    previewImage.style.marginTop = "10px";
+
+                    // Append the preview image to the container
+                    container.appendChild(previewImage);
+                };
+
+                reader.readAsDataURL(input.files[0]);
             }
         }
     </script>

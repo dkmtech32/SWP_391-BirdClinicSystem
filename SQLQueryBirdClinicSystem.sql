@@ -135,7 +135,7 @@ CREATE TABLE Appointment (
   notes NVARCHAR(200),
   payment NVARCHAR(20),
   appStatus VARCHAR(20) NOT NULL,
-  totalPrice DECIMAL(10, 2) NOT NULL,
+  totalPrice DECIMAL(10, 2),
   FOREIGN KEY (birdID) REFERENCES Bird(birdID),
   FOREIGN KEY (doctorID) REFERENCES Doctor(doctorID),
   FOREIGN KEY (timeSlotID) REFERENCES TimeSlot(timeSlotID),
@@ -147,7 +147,7 @@ CREATE TABLE Appointment (
 GO
 
 CREATE TABLE AppointmentServices (
-	appointmentID CHAR(32) NOT NULL,
+  appointmentID CHAR(32) NOT NULL,
   serviceID CHAR(32) NOT NULL,
   FOREIGN KEY (serviceID) REFERENCES Service_(serviceID),
   FOREIGN KEY (appointmentID) REFERENCES Appointment(appointmentID),
@@ -168,6 +168,12 @@ CREATE TABLE MedicalRecord (
 ) ON [PRIMARY]
 GO
 
+CREATE TABLE RecordServices (
+  medicalRecordID CHAR(32) NOT NULL,
+  serviceID CHAR(32) NOT NULL,
+  FOREIGN KEY (medicalRecordID) REFERENCES MedicalRecord(medicalRecordID),
+  FOREIGN KEY (serviceID) REFERENCES service_(serviceID),
+)
 
 CREATE TABLE RecordMedicine (
   medicalRecordID CHAR(32) NOT NULL,
@@ -258,6 +264,7 @@ VALUES
 	('fherajfhriuehfraufha94hf98fh93hf', 'bs9.png'),
 	('fnerajfha974fhy4973haf9ha49hf338', 'bs10.jpg'),
 	('0fe30e1ff175eb1c538613084ab12417', 'bs11.jpg'),
+	('4d5fg5df6gyd5f6g5f6g5df6gy5rf6gh', 'bs12.jpg'),
     ('fafnbuhfauhfweoufha8hfa9hfa48hf8', 'chimyen.png'),
     ('avewifbaiuwefnwajenfhiuahenf998f', 'chimcongxanh.jpg'),
 	('fewabf9qb439fufh9h438q9h34fq34t4', 'chimen.jpg'),
@@ -396,6 +403,7 @@ VALUES
 	('01c1fa1b81297a2de21056f35303ad84', 'fherajfhriuehfraufha94hf98fh93hf', 'kietnganhmin47', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Minh Anh Kiệt', '0556253524', 'male', 'kietnganhmin47@gmail.com', 'doctor', 'active' ),
 	('fe30e1ff175e10b1c538613084ab2417', 'fnerajfha974fhy4973haf9ha49hf338', 'thaodothithu64', '5f4dcc3b5aa765d61d8327deb882cf99', N'Đoàn Thị Thu Thảo', '0534719873', 'female', 'thaodothithu64@gmail.com', 'doctor', 'active' ),
 	('0fe30e184ab12417ff175eb1c5386130', '0fe30e1ff175eb1c538613084ab12417', 'dungdomanh57', '5f4dcc3b5aa765d61d8327deb882cf99', N'Đỗ Mạnh Dũng', '0512345946', 'male', 'dungdomanh57@gmail.com', 'doctor', 'active' ),
+	('t6fyt65rftvygt6f5tvyg65ftvgy6fhh', '4d5fg5df6gyd5f6g5f6g5df6gy5rf6gh', 'lankimdo657', '5f4dcc3b5aa765d61d8327deb882cf99', N'Đỗ Kim Lân', '0903373785', 'male', 'lankimdo657@gmail.com', 'doctor', 'active' ),
 	('hebrf38f7h348fb384fb38ybf38byfr3', 'f7384hfw34f38wb4fw38h4f03h43f93f', 'dongovan456qwer', '5f4dcc3b5aa765d61d8327deb882cf99', N'Ngô Văn Đô', '0512345469', 'male', 'dongovan456@gmail.com', 'staff', 'active' ),
 	('f7834yf8h3w9b93wfb943hf943f934hf', 'ngseriug908hg93h4g934nf34f938f4h', 'thaongthiphuong6969', '5f4dcc3b5aa765d61d8327deb882cf99', N'Nguyễn Thị Phương Thảo', '0705536741', 'female', 'thaongthiphuong6969@gmail.com', 'staff', 'active' );
 
@@ -441,21 +449,24 @@ VALUES
     ('8c15dfb7f4f3d4789ed0c043b1512e34', 'resuscitation'),
     ('4a30b3f33f96b639ab20dce9f0b8b8db', 'image analysation'),
     ('7e2dc1364e2e1bdc9efc1669a17a9e45', 'beautify'),
-	('bfiwafjnbeaffaiuwhfa9fhawfa56565', 'genetics');
+	('bfiwafjnbeaffaiuwhfa9fhawfa56565', 'genetics'),
+	('q3d45fgyuygf5d45f6bnu6ftvgbygdsd', 'Animal Nutrition');
+
 	
 INSERT INTO Doctor (doctorID,specialityID, docAge, academicTitle,degree,yearsOfExperience)
 VALUES
-	('ae114dac5897fbcfd25797bf4be08fd3' , 'e6157a31d2c5e20dc446f4f42fc0d40f' , 35 ,'','',10),
+	('ae114dac5897fbcfd25797bf4be08fd3' , 'e6157a31d2c5e20dc446f4f42fc0d40f' , 35 ,'','tiến sĩ',10),
 	('9eae70b054be6eba305323d8c9106cfb' , 'e6157a31d2c5e20dc446f4f42fc0d40f' , 37 ,'',N'thạc sĩ',12),
 	('c8aa14ffb7da0912c84635aa2ee0bb62' , '52f6743e4719de9a35e1e2e1c09d6d52' , 50 ,N'giáo sư',N'tiến sĩ',25),
-	('dd0e3f50648088bfecc501f809a06ca8' , '4a30b3f33f96b639ab20dce9f0b8b8db' , 30 , '' , '' , 5 ),
-	('62fe46dae9470f311d52973a6eeb6a1a' , '4a30b3f33f96b639ab20dce9f0b8b8db' , 35 , '' , '' , 10 ),
+	('dd0e3f50648088bfecc501f809a06ca8' , '4a30b3f33f96b639ab20dce9f0b8b8db' , 30 , '' , 'thạc sĩ' , 5 ),
+	('62fe46dae9470f311d52973a6eeb6a1a' , '4a30b3f33f96b639ab20dce9f0b8b8db' , 35 , '' , 'tiến sĩ' , 10 ),
 	('9c6189a20beb35a93df963e3b48eb9b0' , '7e2dc1364e2e1bdc9efc1669a17a9e45' , 40 , '' , N'thạc sĩ' , 15 ),
-	('1c38dd30f9e415b3a34879be077381ce' , '8c15dfb7f4f3d4789ed0c043b1512e34' , 45 , N'phó giáo sư' , N'thạc sĩ' , 20 ),
-	('21fc9daf44e2637d7972bd248c83577d' , 'e6157a31d2c5e20dc446f4f42fc0d40f' , 50 , N'phó giáo sư' , N'thạc sĩ' , 25 ),
+	('1c38dd30f9e415b3a34879be077381ce' , '8c15dfb7f4f3d4789ed0c043b1512e34' , 45 , N'phó giáo sư' , N'tiến sĩ' , 20 ),
+	('21fc9daf44e2637d7972bd248c83577d' , 'e6157a31d2c5e20dc446f4f42fc0d40f' , 50 , N'phó giáo sư' , N'tiến sĩ' , 25 ),
 	('01c1fa1b81297a2de21056f35303ad84' , '52f6743e4719de9a35e1e2e1c09d6d52' , 55 , N'giáo sư' , N'tiến sĩ' , 30 ),
 	('fe30e1ff175e10b1c538613084ab2417' , '52f6743e4719de9a35e1e2e1c09d6d52' , 46 , '' , N'tiến sĩ' , 19 ),
-	('0fe30e184ab12417ff175eb1c5386130' , 'bfiwafjnbeaffaiuwhfa9fhawfa56565' , 56 , N'giáo sư' , N'tiến sĩ' , 31 );
+	('0fe30e184ab12417ff175eb1c5386130' , 'bfiwafjnbeaffaiuwhfa9fhawfa56565' , 56 , N'giáo sư' , N'tiến sĩ' , 31 ),
+	('t6fyt65rftvygt6f5tvyg65ftvgy6fhh' , 'q3d45fgyuygf5d45f6bnu6ftvgbygdsd' , 42 , '' , N'tiến sĩ', 17);
 
 INSERT INTO TimeSlot (timeSlotID, timeSlot, day_)
 VALUES
@@ -631,23 +642,14 @@ FROM
     WHERE day_ = 'Saturday'
 ) AS subquery
 WHERE row_num <= 8
+
+
+
+
+
+
 UNION ALL
 SELECT doctorID, timeSlotID
-FROM
-(
-    -- Sunday
-    SELECT '9eae70b054be6eba305323d8c9106cfb' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
-    FROM TimeSlot
-    WHERE day_ = 'Sunday'
-) AS subquery
-WHERE row_num <= 8
-UNION ALL
-SELECT doctorID, timeSlotID
-
-
-
-
-
 FROM
 (
     -- Monday
@@ -695,24 +697,16 @@ FROM
     WHERE day_ = 'Saturday'
 ) AS subquery
 WHERE row_num <= 8
+
+
+
+
+
 UNION ALL
 SELECT doctorID, timeSlotID
 FROM
 (
-    -- Sunday
-    SELECT 'c8aa14ffb7da0912c84635aa2ee0bb62' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
-    FROM TimeSlot
-    WHERE day_ = 'Sunday'
-) AS subquery
-WHERE row_num <= 8
-UNION ALL
-SELECT doctorID, timeSlotID
-FROM
-(
-
-
-
-    -- Monday
+-- Monday
     SELECT 'dd0e3f50648088bfecc501f809a06ca8' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
     FROM TimeSlot
     WHERE day_ = 'Monday'
@@ -757,16 +751,10 @@ FROM
     WHERE day_ = 'Saturday'
 ) AS subquery
 WHERE row_num <= 8
-UNION ALL
-SELECT doctorID, timeSlotID
-FROM
-(
-    -- Sunday
-    SELECT 'dd0e3f50648088bfecc501f809a06ca8' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
-    FROM TimeSlot
-    WHERE day_ = 'Sunday'
-) AS subquery
-WHERE row_num <= 8
+
+
+
+
 
 
 
@@ -968,16 +956,7 @@ FROM
     WHERE day_ = 'Saturday'
 ) AS subquery
 WHERE row_num <= 8
-UNION ALL
-SELECT doctorID, timeSlotID
-FROM
-(
-    -- Sunday
-    SELECT '1c38dd30f9e415b3a34879be077381ce' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
-    FROM TimeSlot
-    WHERE day_ = 'Sunday'
-) AS subquery
-WHERE row_num <= 8
+
 
 
 
@@ -1171,6 +1150,16 @@ FROM
     WHERE day_ = 'Friday'
 ) AS subquery
 WHERE row_num <= 8
+UNION ALL
+SELECT doctorID, timeSlotID
+FROM
+(
+    -- Saturday
+    SELECT 'fe30e1ff175e10b1c538613084ab2417' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
+    FROM TimeSlot
+    WHERE day_ = 'Saturday'
+) AS subquery
+WHERE row_num <= 8
 
 
 
@@ -1221,6 +1210,56 @@ FROM
 (
     -- Friday
     SELECT '0fe30e184ab12417ff175eb1c5386130' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
+    FROM TimeSlot
+    WHERE day_ = 'Friday'
+) AS subquery
+WHERE row_num <= 8
+
+UNION ALL
+SELECT doctorID, timeSlotID
+FROM
+(
+    -- Monday
+    SELECT 't6fyt65rftvygt6f5tvyg65ftvgy6fhh' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
+    FROM TimeSlot
+    WHERE day_ = 'Monday'
+) AS subquery
+WHERE row_num <= 8
+UNION ALL
+SELECT doctorID, timeSlotID
+FROM
+(
+    -- Tuesday
+    SELECT 't6fyt65rftvygt6f5tvyg65ftvgy6fhh' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
+    FROM TimeSlot
+    WHERE day_ = 'Tuesday'
+) AS subquery
+WHERE row_num <= 8
+UNION ALL
+SELECT doctorID, timeSlotID
+FROM
+(    -- Wednesday
+    SELECT 't6fyt65rftvygt6f5tvyg65ftvgy6fhh' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
+    FROM TimeSlot
+    WHERE day_ = 'Wednesday'
+) AS subquery
+WHERE row_num <= 8
+UNION ALL
+SELECT doctorID, timeSlotID
+FROM
+(
+    -- Thursday
+    SELECT 't6fyt65rftvygt6f5tvyg65ftvgy6fhh' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
+    FROM TimeSlot
+    WHERE day_ = 'Thursday'
+) AS subquery
+WHERE row_num <= 8
+UNION ALL
+SELECT doctorID, timeSlotID
+FROM
+(
+    -- Friday
+    SELECT 't6fyt65rftvygt6f5tvyg65ftvgy6fhh' AS doctorID, timeSlotID, ROW_NUMBER() OVER (ORDER BY timeSlotID) AS row_num
     FROM TimeSlot
     WHERE day_ = 'Friday'
 ) AS subquery
@@ -1235,7 +1274,7 @@ VALUES
 	('5f7fb0d98491f5efdf52623a7d4839aa','Enrofloxacin','16.69', 'vial'),
 	('8e89704ade7f8e48da32ce2d6bb15054','Coccivet','23.55', 'vial'),
 	('7c7f0e401b7926cb956e1e798e7d6664','Aureomycin','16.35', 'tube'),
-	('2b1937a02cb1cc8255ecfeb8dc38c5d2','Cough','14.99', 'pill packet'),
+	('2b1937a02cb1cc8255ecfeb8dc38c5d2','D2 Remedy for Birds','23.00', 'pill packet'),
 	('589ff60828e99f431d7f07d8ef62baff','4 in 1 powder Generic','27.00', 'pill packet'),
 	('f9a7dfe69faaaf1f0c2dc348c0254d50','Medistatin','21.73', 'vial'),
 	('e365252333bf5bd19b86b828e64b0eb0','Psittavet','15.99', 'pill packet'),
@@ -1245,28 +1284,61 @@ VALUES
 	('5587ecc8c67f1ba9f77488eedc2d1164','Spectovet powder','45.95', 'pill'),
 	('9e9af1d637a369cdaf6bac028b8bd813','Terramycin Ointment','14.95', 'pill packet'),
 	('9faeec1795e05223ab80bf4d06971616','Tetrasol','13.95', 'pill'),
-	('976f58180ccfd7c80f492b1665fd003a','Triple C','28.00', 'pill');
+	('976f58180ccfd7c80f492b1665fd003a','Triple C','28.00', 'pill'),
+
+	('hsabfkhasbnafksdjflwuefghifug434 ','Coccivet','23.55', 'pill'),
+	('nscojdicjndjncdsncowinc992n9e444','Amoxicillin 10%','23.50', 'pill packet'),
+	('djfbvkjnbviuanfoiuefiu2hf9hf9839','Amoxicillin 25%','21.95', 'tube'),
+	('skskcdjvdjndfouhq9fhfqhf98hf9q2e','Anxiety Relief','27.99', 'vial'),
+	('jhnjuygresxdwswe4ert5ty7y7yu7yu7','Baytril 10%','35.95', 'pill'),
+	('ffbakjfbkjnflsjfaoh3f43fh43fhj4f','Baytril 2.5%','26.95', 'pill packet'),
+	('kdjbnalkjdnfawhefoaihofhi3o4fho3','BirdPen','39.95', 'pill'),
+	('afnaofhdofuhq93fh9fn93unf993fj39','Digestive Upsets','14.99', 'pill'),
+	('dadncadnclknofijf834u38fu3ffij44','Doxy-Tyl Powder Generic','33.50', 'pill'),
+	('mnbvcxcvbnbvcxcvbgretytrty654rrr','Doxyvet Liquid','11.99', 'pill'),
+	('lkjhgfdfghjiuytfvbnmngft65456546','Endocox Powder','26.95', 'tube'),
+	('f7gfq83fhqn9u93uvn3n94inv93vnvni','Enrofloxacin 10%','24.00', 'pill packet'),
+	('vndslvncnvsdnlckdmslkcmdfkfjpi04','Erythromycin','11.95', 'pill'),
+	('sdcsdcndslcnlkncokqsmxoqskmow999','ESB-3 Powder Generic','22.89', 'pill'),
+	('bntyju7k98ok7j6hy5tgerf3g4th5777','Fireworks','14.99', 'pill'),
+	('gthygbvfer4567ujhnbgvfer4t56ygrf','Furaltadone ','22.95', 'pill'),
+	('fgrth67j68k76j75h64g3g54h6545g3f','Generic Metronidazole','30.00', 'pill'),
+	('jfhwoeihfwoehfewifwwf28h032fj039','Ivermectin Solution','25.55', 'pill'),
+	('ncbxvfdsrtyruthfgdfsderw54678i6u','Joint Stress','14.99', 'pill packet'),
+	('xwmspxmwspckmdwockdocnejvn939939','Lewerstim','16.95', 'pill'),
+	('rhtyju76756y45t34t4f2g43g54hh4y5','Liver Rescue','14.99', 'pill'),
+	('bnbfrt56yuhgfe34r5tre345t6y7u78i','Medistatin','22.95', 'tube'),
+	('45678ijhbfr5678987654fghy654rfgg','Megabac-S','113.00', 'pill'),
+	('bvcnvmhtye678665rtgdgfw5t4657u6y','Nose Relief','27.99', 'vial'),
+	('bnbft67uhgfr567uhgfrt678ujhgfr55','Nystatin','34.00', 'pill'),
+	('hikjkiokmjkioijhgfr543er34rertt5','Pox Dry','15.95', 'tube'),
+	('nbfgety65544refgrety65u7yhrtg4y6','Psittavet','15.99', 'pill'),
+	('bnbvsdfwrt4354y6u75hyrterfwe23d3','Respiratory Soluble','39.95', 'pill'),
+	('nbvgtyhgfty7654edfghu876ytfcfdre','Ronidazole','10.49', 'vial'),
+	('vbcndsfwrtyui57654rffwer4356475u','Ronidazole 6%','28.95', 'pill'),
+	('vbnjiokjnhjutfdqdacdewfyuyghnhhn','Ronivet - S 12%','33.55', 'pill packet'),
+	('getry5u7utyh6t6yh6ytgvtgb6tfyhkk','Skin and Itch','14.99', 'vial');
 
 INSERT INTO Service_ (serviceID,specialityID,serviceName,servicePrice)
 VALUES
-	('f8c17d469d7dfd4fa84eae659923536b','e6157a31d2c5e20dc446f4f42fc0d40f','Health check and check',100.00),
-	('c739c1e62319f52411908f874c0698bf','e6157a31d2c5e20dc446f4f42fc0d40f','diagnostic test',101.00),
-	('a074614583162a3d58b89c13699d70a1','52f6743e4719de9a35e1e2e1c09d6d52','surgery',102.00),
-	('cd9bfc9d6bb22a47f6dcdc2a5c99b2fd','e6157a31d2c5e20dc446f4f42fc0d40f','Nutrition advice and advice',103.00),
-	('744722e0fb1eb8e7f4fc5c4682159800','e6157a31d2c5e20dc446f4f42fc0d40f','boarding service',104.00),
-	('84fbf5e32cfdb21cf48721cf849b0c20','8c15dfb7f4f3d4789ed0c043b1512e34','Urgent care and after-hours support',105.00),
-	('517d8993ec9bcdb8c33fc50ea7ec5da8','52f6743e4719de9a35e1e2e1c09d6d52','Microchip service and identification',106.00),
-	('291129122c3e6bbbd76a76b428f2809a','4a30b3f33f96b639ab20dce9f0b8b8db','Endoscopy and X-ray',107.00),
-	('52b7bedca394c621f40a99d03a564341','7e2dc1364e2e1bdc9efc1669a17a9e45','Poultry care service',108.00),
-	('e41d8b0c31b65cc94f5eb4bbb7b76907','bfiwafjnbeaffaiuwhfa9fhawfa56565','DNA sex and disease testing',109.00),
-	('507e4c66da1ccd4fcf621069065494bc','e6157a31d2c5e20dc446f4f42fc0d40f','vaccinated',110.00);
+	('f8c17d469d7dfd4fa84eae659923536b','e6157a31d2c5e20dc446f4f42fc0d40f','Health check',42.00),
+	('c739c1e62319f52411908f874c0698bf','e6157a31d2c5e20dc446f4f42fc0d40f','Diagnostic test',111.00),
+	('a074614583162a3d58b89c13699d70a1','52f6743e4719de9a35e1e2e1c09d6d52','Surgery',400.00),
+	('cd9bfc9d6bb22a47f6dcdc2a5c99b2fd','q3d45fgyuygf5d45f6bnu6ftvgbygdsd','Nutrition advice',75.00),
+	('744722e0fb1eb8e7f4fc5c4682159800','7e2dc1364e2e1bdc9efc1669a17a9e45','Take care service',25.00),
+	('84fbf5e32cfdb21cf48721cf849b0c20','8c15dfb7f4f3d4789ed0c043b1512e34','Urgent care',156.00),
+	('517d8993ec9bcdb8c33fc50ea7ec5da8','e6157a31d2c5e20dc446f4f42fc0d40f','Microchip service ',50.00),
+	('291129122c3e6bbbd76a76b428f2809a','4a30b3f33f96b639ab20dce9f0b8b8db','Endoscopy and X-ray',258.00),
+	('52b7bedca394c621f40a99d03a564341','7e2dc1364e2e1bdc9efc1669a17a9e45','Beautify',13.62),
+	('e41d8b0c31b65cc94f5eb4bbb7b76907','bfiwafjnbeaffaiuwhfa9fhawfa56565','DNA sex and identification',31.00),
+	('507e4c66da1ccd4fcf621069065494bc','e6157a31d2c5e20dc446f4f42fc0d40f','vaccination',142.00);
 
 INSERT INTO Bird(birdID, customerID,imageID, medicalHistory, birdGender, breed, band_chip, birdWeight, sexingMethod, birdFullname, hatchingDate, featherColor)
 VALUES
 	('2bbb77362ead86434fd59f94b282eae1' , '2c9320b8639fc9e1c784880bbecfdfa1' , 'fafnbuhfauhfweoufha8hfa9hfa48hf8', N'cảm cúm' ,'male','Apodidae', 'qwerty', 0.02,N'Observe shapes and colors', N'tom', '2019-01-01', N'đen'),
-	('507c2afab061a1c2cf1dee7142e557be' , '3ff56e23cc31e9c9a85bc037341a65ee' , 'avewifbaiuwefnwajenfhiuahenf998f', N'Bệnh viêm tuyến nhờn' ,'','Phasianidae', 'wertyu', 0.02, N'Check behavior', N'jerry', '2019-02-01', N'lam-lục'),
+	('507c2afab061a1c2cf1dee7142e557be' , '3ff56e23cc31e9c9a85bc037341a65ee' , 'avewifbaiuwefnwajenfhiuahenf998f', N'Bệnh viêm tuyến nhờn' ,'male','Phasianidae', 'wertyu', 0.02, N'Check behavior', N'jerry', '2019-02-01', N'lam-lục'),
 	('15d35bb9396992d02127345380e38d73' , '3ff5njfnijhfdsf8845bc037341a65ee' , 'fewabf9qb439fufh9h438q9h34fq34t4', '' ,'female','Én', 'ertyui', 0.03, N'Observe shapes and colors', N'Yến', '2019-03-01', N'đen'),
-	('e9e0f3bcddc65940e089972ce4088e59' , '82d5cf38dc655bd1722ac5d4d350bce3' , 'frheafiuewhf9hf983h3f4ha438f94f4', N'Bệnh cầu trùng' , 'rtyuio' , 'Phasianidae' , 'no' , 0.02 , N'Check behavior' , N'mít' , '2019-04-01' , N'vàng-đỏ-lam'),
+	('e9e0f3bcddc65940e089972ce4088e59' , '82d5cf38dc655bd1722ac5d4d350bce3' , 'frheafiuewhf9hf983h3f4ha438f94f4', N'Bệnh cầu trùng' , 'male' , 'Phasianidae' , 'no' , 0.02 , N'Check behavior' , N'mít' , '2019-04-01' , N'vàng-đỏ-lam'),
 	('2e4076dd7f277dc8f29b4cdb922052c0' , '1c4f04058f291642c159e27e1554ddf8' , '4rt43t5y56y465t4r3e24r435y65u76i', '' , 'male' , N'Sẻ', 'tyuiop' , 0.02 , N'Observe shapes and colors' , N'Leo' , '2019-05-01' , N'nâu'),
 	('27009754484e5b64300b05706c954565' , 'c0637bb4f3d7531d936f2686b9672a66' , 'efrgtrytuiykjhmngfbvdfewr4567898', 'Bệnh tiêu chảy' , 'male' , 'Finches', 'no' , 0.2 , N'Check behavior' , N'kitty' , '2019-06-01' , N'đỏ'),
 	('49f34170b6590fea6bce454059764c12' , '11eee90acf45377f4cc3ca0758f2bf30' , '48c967910f7eb39ea5f7b7602a3df9ea', '' , 'male' , 'Ciconiidae', 'uiopas' , 15 , N'Checking the spawning zone' , N'Milo' , '2019-07-01' , N'trắng-đen'),
@@ -1296,49 +1368,70 @@ VALUES
 
 INSERT INTO Appointment(appointmentID, birdID, doctorID, timeSlotID, appTime, notes, payment, appStatus, totalPrice)
 VALUES
-	('a6a837e5d05e57e160dea29c335f30d0', '2bbb77362ead86434fd59f94b282eae1', 'ae114dac5897fbcfd25797bf4be08fd3', '85688ffa8d935b9da96e2a680aaa4e34', '2023-01-01', '', 'banking account', 'complete', 0),
-	('95b579fe61c622b5c50def9dccb66bdc', '507c2afab061a1c2cf1dee7142e557be', '9eae70b054be6eba305323d8c9106cfb', 'e2283b7f6695530a79793e3fe172155c', '2023-01-02', '', 'banking account', 'complete', 0),
-	('86ae960dc44eba248c481d76520846c3', '15d35bb9396992d02127345380e38d73', 'c8aa14ffb7da0912c84635aa2ee0bb62', '657be9bfb1eed80938b24e3b154863cb', '2023-01-03', '', 'cash', 'complete', 0),
-	('801b58e3d0b00f7f9f9eac80058f99f0', 'e9e0f3bcddc65940e089972ce4088e59', '21fc9daf44e2637d7972bd248c83577d', 'c789ff5a8a615b3cbd55b12d431c1a51', '2023-01-04', '', 'banking account', 'complete', 0),
-	('ca768c1b1876a2f286496e62666dfada', '2e4076dd7f277dc8f29b4cdb922052c0', 'ae114dac5897fbcfd25797bf4be08fd3', '3cd774fd522ed4a7b81dc2e3ed0373bd', '2023-01-05', '', 'banking account', 'complete', 0),
-	('0a7a30124b6b4f266459a6b69677152c', '27009754484e5b64300b05706c954565', '1c38dd30f9e415b3a34879be077381ce', '8accf3a256bcc4e7335afe49531eaac6', '2023-01-06', '', 'banking account', 'complete', 0),
-	('ebcf025d47ee19d929f6707029df09d0', '49f34170b6590fea6bce454059764c12', 'c8aa14ffb7da0912c84635aa2ee0bb62', 'b02c69a820861a57ac38b4282399335c', '2023-01-07', '', 'banking account', 'complete', 0),
-	('b7e4621ca7d7273ea67ba0b40992d189', '2e9d61c3330f9e10e3a0bc3fb8a4b4a2', 'dd0e3f50648088bfecc501f809a06ca8', '5c4960d3243606ca79b7692f8a4c9957', '2023-01-08', '', 'cash', 'complete', 0),
-	('35847b5a3a8de7e0af06281b1d889bcf', 'e939af928268bda5f11f7bf215d452eb', '9c6189a20beb35a93df963e3b48eb9b0', '71071e13d9c8cd2902737b7e39f32a5a', '2023-02-09', '', 'banking account', 'complete', 0),
-	('ca05b981160139795fbf616bfd5d491b', '43e02d9e3ce088b73229155e462e32d9', '0fe30e184ab12417ff175eb1c5386130', '68e185b8d481c5652842b42ef66b3210', '2023-02-10', '', 'cash', 'complete', 0),
-	('3967200752865b1bb65a63f386925d14', '00c38b52d5cdedc2667af4a83e346a85', 'ae114dac5897fbcfd25797bf4be08fd3', 'b02c69a820861a57ac38b4282399335c', '2023-02-11', '', 'banking account', 'cancelled', 0),
-	('943b4c67a61164d245ea5af7f3848a37', '1587900aee161437134c2e2479de5b64', '9eae70b054be6eba305323d8c9106cfb', '12bc604e930e56d53915a09b61bc459a', '2023-03-12', '', 'banking account', 'complete', 0),
-	('040c93cff9c0cc5cd6d008fb02e17b69', '277dd0cf43f2cc494be796373fd7bf2b', '21fc9daf44e2637d7972bd248c83577d', '5c9ba69a58918129f033a2c25e250584', '2023-03-13', '', 'cash', 'complete', 0),
-	('3841cd8942a581d2092ff1d3739fcebc', '08605ccab7ad051603412533c59e46c7', '01c1fa1b81297a2de21056f35303ad84', '7b84cc4412f9e9a4213a9f979be42063', '2023-03-14', '', 'banking account', 'complete', 0),
-	('4a160bb951e81bb14485ab90391d0c58', 'acdbf948aa576959e791abe5ec2f124d', '9eae70b054be6eba305323d8c9106cfb', '86fc882bb1aadc489464a8ecb5f43a30', '2023-03-15', '', 'banking account', 'complete', 0),
-	('0bb8e03d00ecc7642c5142de8f12a335', '4b4c133439471c8d694b5c3e47edb446', '21fc9daf44e2637d7972bd248c83577d', '85688ffa8d935b9da96e2a680aaa4e34', '2023-04-16', '', 'banking account', 'cancelled', 0),
-	('aeed52468a0d9880fa013c611816e897', '0d0dd3c14756ae8316e7054b205896c9', '1c38dd30f9e415b3a34879be077381ce', 'a54060a06aa0e97217726362a5b580d3', '2023-04-17', '', 'cash', 'complete', 0),
-	('cde92de8a056398e6a281dba87bdffb1', '861c51821e55ecad053b072323fac994', 'fe30e1ff175e10b1c538613084ab2417', '657be9bfb1eed80938b24e3b154863cb', '2023-04-18', '', 'banking account', 'complete', 0),
-	('6c3b331b0cde4d503944f2f16f979c93', '380965fe9f1584559ea8a90b9c8d680c', '62fe46dae9470f311d52973a6eeb6a1a', '0227321c75909512447393796f173788', '2023-04-19', '', 'cash', 'complete', 0),
-	('b6b447b56dbe005a626c4b5e3fdb97be', '17787dd14e0fda883a36016cada64123', '9c6189a20beb35a93df963e3b48eb9b0', '4db7ce38baceaddfc93e9bdcfe0a7f57', '2023-04-20', '', 'banking account', 'complete', 0),
-	('a61de36f81c0f699a8653863ea9e3d2f', 'd5ea83ec7f100a6803bd39e14c619299', '0fe30e184ab12417ff175eb1c5386130', 'a2855125bdc9e06b5313b3f827f07705', '2023-05-21', '', 'cash', 'complete', 0),
-	('47b601885ddc891de11eb62451a97b43', '25c448b0241244364f7653f08cb8aff6', 'ae114dac5897fbcfd25797bf4be08fd3', '1468c48caf3c8acd45c13732fa1c7797', '2023-05-22', '', 'banking account', 'complete', 0),
-	('2f7294ec43136a43ca696ad6f06e1635', 'bc0b9fe1f4df72fa1289f4437e6a3953', '21fc9daf44e2637d7972bd248c83577d', 'b02c69a820861a57ac38b4282399335c', '2023-05-23', '', 'cash', 'complete', 0),
-	('090f345a844fedfb9ca86ff69b59d969', '43aaf0240284fd15416b429bed0ef321', '21fc9daf44e2637d7972bd248c83577d', '86fc882bb1aadc489464a8ecb5f43a30', '2023-05-24', '', 'cash', 'complete', 0),
-	('d2601ee48263e69982e4dbd809c0358a', 'ca8406790940dec227193cc7dca16212', 'c8aa14ffb7da0912c84635aa2ee0bb62', '516ab8138f50bbbb0be18ceed38b6ad3', '2023-05-25', '', 'banking account', 'complete', 0),
-	('e221bebf131b7773da0045982e018fba', '752ee3ce65129a7bd54292accb28983e', '21fc9daf44e2637d7972bd248c83577d', 'a54060a06aa0e97217726362a5b580d3', '2023-06-26', '', 'cash', 'complete', 0),
-	('85c10fd22fe836139fd76fbaee831673', 'c91f8b119029caa4ec2046bcc5c69bb5', 'ae114dac5897fbcfd25797bf4be08fd3', '657be9bfb1eed80938b24e3b154863cb', '2023-06-27', '', 'banking account', 'complete', 0),
-	('7caa694dda6e1cf8c0993cf301c84bba', '16c5bd4d79c66e16042bee6bbf128c6f', '1c38dd30f9e415b3a34879be077381ce', '0227321c75909512447393796f173788', '2023-06-28', '', 'banking account', 'cancelled', 0),
-	('b7ad6a62013acd21497265b6f7ff74eb', '56a7207dd933fe09f539083edb711548', '01c1fa1b81297a2de21056f35303ad84', '92d969030097f06af642a4577606afe0', '2023-06-29', '', 'banking account', 'complete', 0),
-	('3427f117121dd0789b94a37ef63b64dc', '6a045cdabdccb76073091f263cbf3e52', 'dd0e3f50648088bfecc501f809a06ca8', '8e397cbb235075a9cb231b2c3b316011', '2023-06-30', '', 'banking account', 'complete', 0),
-	('b7ad6137ff75b214972a6acd6206f4eb', '16c5bd4d79c66e16042bee6bbf128c6f', '0fe30e184ab12417ff175eb1c5386130', 'b82fece225c99d7b1faa427866745620', '2023-07-02', '', 'banking account', 'complete', 0),
-	('f1174d213346307894a92d177efbb6dc', '752ee3ce65129a7bd54292accb28983e', '0fe30e184ab12417ff175eb1c5386130', '9eea7e14fbd37b455d69e7114399aa0a', '2023-07-03', '', 'banking account', 'complete', 0),
-	('81c0f699a861de36fea9e653863a3d2f', '25c448b0241244364f7653f08cb8aff6', 'ae114dac5897fbcfd25797bf4be08fd3', '0d5408947d23dd60557de6b616352275', '2023-08-01', '', 'cash', 'confirm', 0),
-	('985ddc8a97245147b60181de11eb6b43', 'd5ea83ec7f100a6803bd39e14c619299', '9eae70b054be6eba305323d8c9106cfb', '9436e53cce52225010e09858fc287123', '2023-08-02', '', 'banking account', 'confirm', 0),
-	('ec436f0ca64396ad2f6e16136a437295', 'ca8406790940dec227193cc7dca16212', '9c6189a20beb35a93df963e3b48eb9b0', '4db7ce38baceaddfc93e9bdcfe0a7f57', '2023-08-03', '', 'cash', 'confirm', 0),
-	('edf345a8f69ca86f0fb90944fb59d969', 'c91f8b119029caa4ec2046bcc5c69bb5', 'fe30e1ff175e10b1c538613084ab2417', '7be65563411c5ce7cd508f04c8a54ecb', '2023-08-04', '', 'cash', 'check-in', 0),
-	('e4c03e6998de4826309bd8d2601e258a', 'bc0b9fe1f4df72fa1289f4437e6a3953', '21fc9daf44e2637d7972bd248c83577d', 'b02c69a820861a57ac38b4282399335c', '2023-08-05', '', 'banking account', 'check-in', 0),
-	('13e25982e018f21bda01bebf077734ba', '6a045cdabdccb76073091f263cbf3e52', 'ae114dac5897fbcfd25797bf4be08fd3', '5a71a95534bbd12150558baa83f945de', '2023-08-06', '', 'cash', 'check-in', 0),
-	('d76836859ffbaee831c10fd22fe13673', '43aaf0240284fd15416b429bed0ef321', '9eae70b054be6eba305323d8c9106cfb', '4e4b39473c2dfc3e918ee79b1c28fc6f', '2023-08-07', '', 'banking account', 'processing', 0),
-	('e199d87ca6943ccf8cdac4bbaa6f3010', '56a7207dd933fe09f539083edb711548', '1c38dd30f9e415b3a34879be077381ce', '8e397cbb235075a9cb231b2c3b316011', '2023-09-01', '', 'banking account', 'processing', 0),
-	('13acd6206f7ff75bb7ad6214972a64eb', '16c5bd4d79c66e16042bee6bbf128c6f', '01c1fa1b81297a2de21056f35303ad84', '86fc882bb1aadc489464a8ecb5f43a30', '2023-09-02', '', 'cash', 'processing', 0),
-	('3346307894a7f1171217efbb64d92ddc' , '752ee3ce65129a7bd54292accb28983e' , '62fe46dae9470f311d52973a6eeb6a1a', 'a2855125bdc9e06b5313b3f827f07705' , '2023-09-03' , '' , 'banking account' , 'processing', 0);
-
+	('a6a837e5d05e57e160dea29c335f30d0' , '2bbb77362ead86434fd59f94b282eae1' , 'ae114dac5897fbcfd25797bf4be08fd3', 'a54060a06aa0e97217726362a5b580d3' , '2023-01-01' , '', 'banking account', 'complete', 52.00),
+	('95b579fe61c622b5c50def9dccb66bdc' , '507c2afab061a1c2cf1dee7142e557be' , '9eae70b054be6eba305323d8c9106cfb', '657be9bfb1eed80938b24e3b154863cb' , '2023-01-02' , '',  'banking account', 'complete', 1158.15),
+	('86ae960dc44eba248c481d76520846c3' , '15d35bb9396992d02127345380e38d73' , 'c8aa14ffb7da0912c84635aa2ee0bb62', '86fc882bb1aadc489464a8ecb5f43a30' , '2023-01-03' , '',  'cash', 'complete', 2493.77),
+	('801b58e3d0b00f7f9f9eac80058f99f0' , 'e9e0f3bcddc65940e089972ce4088e59' , '21fc9daf44e2637d7972bd248c83577d', '0f6c341110df21c899097b659454e1ab' , '2023-01-04' , '' , 'banking account' , 'complete',	1204.12),
+	('ca768c1b1876a2f286496e62666dfada' , '2e4076dd7f277dc8f29b4cdb922052c0' , 'ae114dac5897fbcfd25797bf4be08fd3', '8accf3a256bcc4e7335afe49531eaac6' , '2023-01-05' , '' , 'banking account' , 'complete', 35.00),
+	('0a7a30124b6b4f266459a6b69677152c' , '27009754484e5b64300b05706c954565' , '1c38dd30f9e415b3a34879be077381ce', '718838b54bc5450a76c6a75576021dc3' , '2023-01-06' , '' , 'banking account' , 'complete', 221.80),
+	('ebcf025d47ee19d929f6707029df09d0' , '49f34170b6590fea6bce454059764c12' , 'c8aa14ffb7da0912c84635aa2ee0bb62', '1468c48caf3c8acd45c13732fa1c7797' , '2023-01-07' , '' , 'banking account' , 'complete', 60.00),
+	('b7e4621ca7d7273ea67ba0b40992d189' , '2e9d61c3330f9e10e3a0bc3fb8a4b4a2' , 'dd0e3f50648088bfecc501f809a06ca8', '5c9ba69a58918129f033a2c25e250584' , '2023-01-08' , '' , 'cash' , 'complete', 622.70),
+	('35847b5a3a8de7e0af06281b1d889bcf' , 'e939af928268bda5f11f7bf215d452eb' , '9c6189a20beb35a93df963e3b48eb9b0', '4940cc64f161f2caf8fb70416d0c41cc' , '2023-02-09' , '' , 'banking account' , 'complete', 23.62),
+	('ca05b981160139795fbf616bfd5d491b' , '43e02d9e3ce088b73229155e462e32d9' , '0fe30e184ab12417ff175eb1c5386130', 'e2283b7f6695530a79793e3fe172155c' , '2023-02-10' , '' , 'cash' , 'complete', 41.00),
+	('3967200752865b1bb65a63f386925d14' , '00c38b52d5cdedc2667af4a83e346a85' , 'ae114dac5897fbcfd25797bf4be08fd3', 'c397d73df0a2ad5dcb930bd8d26cc2f6' , '2023-02-11' , '' , 'banking account' , 'cancelled', NULL),
+	('943b4c67a61164d245ea5af7f3848a37' , '1587900aee161437134c2e2479de5b64' , '9eae70b054be6eba305323d8c9106cfb', '6ba12b34e7c18eff6380f8b22ae6211e' , '2023-03-12' , '' , 'banking account' , 'complete', 495.66),
+	('040c93cff9c0cc5cd6d008fb02e17b69' , '277dd0cf43f2cc494be796373fd7bf2b' , '21fc9daf44e2637d7972bd248c83577d', '657be9bfb1eed80938b24e3b154863cb' , '2023-03-13' , '' , 'cash' , 'complete', 986.62),
+	('3841cd8942a581d2092ff1d3739fcebc' , '08605ccab7ad051603412533c59e46c7' , '01c1fa1b81297a2de21056f35303ad84', 'c789ff5a8a615b3cbd55b12d431c1a51' , '2023-03-14' , '' , 'banking account' , 'complete', 1351.18),
+	('4a160bb951e81bb14485ab90391d0c58' , 'acdbf948aa576959e791abe5ec2f124d' , 't6fyt65rftvygt6f5tvyg65ftvgy6fhh', '71071e13d9c8cd2902737b7e39f32a5a' , '2023-03-15' , '' , 'banking account' , 'complete', 179.41),
+	('0bb8e03d00ecc7642c5142de8f12a335' , '4b4c133439471c8d694b5c3e47edb446' , '21fc9daf44e2637d7972bd248c83577d', '85688ffa8d935b9da96e2a680aaa4e34' , '2023-04-16' , '' , 'banking account' , 'cancelled', NULL),
+	('aeed52468a0d9880fa013c611816e897' , '0d0dd3c14756ae8316e7054b205896c9' , '1c38dd30f9e415b3a34879be077381ce', '657be9bfb1eed80938b24e3b154863cb' , '2023-04-17' , '' , 'cash' , 'complete', 1189.43),
+	('cde92de8a056398e6a281dba87bdffb1' , '861c51821e55ecad053b072323fac994' , 'fe30e1ff175e10b1c538613084ab2417', '0227321c75909512447393796f173788' , '2023-04-18' , '' , 'banking account' , 'complete', 60.00),
+	('6c3b331b0cde4d503944f2f16f979c93' , '380965fe9f1584559ea8a90b9c8d680c' , '62fe46dae9470f311d52973a6eeb6a1a', '516ab8138f50bbbb0be18ceed38b6ad3' , '2023-04-19' , '' , 'cash' , 'complete', 268.00),
+	('b6b447b56dbe005a626c4b5e3fdb97be' , '17787dd14e0fda883a36016cada64123' , '9c6189a20beb35a93df963e3b48eb9b0', '9d35c51b03f46f6edd9aaa81c4cfc3c4' , '2023-04-20' , '' , 'banking account' , 'complete', 23.62),
+	('a61de36f81c0f699a8653863ea9e3d2f' , 'd5ea83ec7f100a6803bd39e14c619299' , '0fe30e184ab12417ff175eb1c5386130', 'a54060a06aa0e97217726362a5b580d3' , '2023-05-21' , '' , 'cash' , 'complete', 41.00),
+	('47b601885ddc891de11eb62451a97b43' , '25c448b0241244364f7653f08cb8aff6' , 'ae114dac5897fbcfd25797bf4be08fd3', '3deb11e87f2a937320bc503ceff3bda0' , '2023-05-22' , '' , 'banking account' , 'complete', 152.00),
+	('2f7294ec43136a43ca696ad6f06e1635' , 'bc0b9fe1f4df72fa1289f4437e6a3953' , '9eae70b054be6eba305323d8c9106cfb', '9436e53cce52225010e09858fc287123' , '2023-05-23' , '' , 'cash' , 'complete', 1152.00),
+	('090f345a844fedfb9ca86ff69b59d969' , '43aaf0240284fd15416b429bed0ef321' , '21fc9daf44e2637d7972bd248c83577d', '3cd774fd522ed4a7b81dc2e3ed0373bd' , '2023-05-24' , '' , 'cash' , 'complete', 688.50),
+	('d2601ee48263e69982e4dbd809c0358a' , 'ca8406790940dec227193cc7dca16212' , 'c8aa14ffb7da0912c84635aa2ee0bb62', '8accf3a256bcc4e7335afe49531eaac6' , '2023-05-25' , '' , 'banking account' , 'complete', 1685.20),
+	('e221bebf131b7773da0045982e018fba' , '752ee3ce65129a7bd54292accb28983e' , 't6fyt65rftvygt6f5tvyg65ftvgy6fhh', 'b57c1f7068f9c8220f290b95b7183fc9' , '2023-06-26' , '' , 'cash' , 'complete', 441.52),
+	('85c10fd22fe836139fd76fbaee831673' , 'c91f8b119029caa4ec2046bcc5c69bb5' , 'ae114dac5897fbcfd25797bf4be08fd3', 'b82fece225c99d7b1faa427866745620' , '2023-06-27' , '' , 'banking account' , 'complete', 35.00),
+	('7caa694dda6e1cf8c0993cf301c84bba' , '16c5bd4d79c66e16042bee6bbf128c6f' , '1c38dd30f9e415b3a34879be077381ce', '0227321c75909512447393796f173788' , '2023-06-28' , '' , 'banking account' , 'cancelled', NULL),
+	('b7ad6a62013acd21497265b6f7ff74eb' , '56a7207dd933fe09f539083edb711548' , '01c1fa1b81297a2de21056f35303ad84', '8e397cbb235075a9cb231b2c3b316011' , '2023-06-29' , '' , 'banking account' , 'complete', 60.00),
+	('3427f117121dd0789b94a37ef63b64dc' , '6a045cdabdccb76073091f263cbf3e52' , 'dd0e3f50648088bfecc501f809a06ca8', '92d969030097f06af642a4577606afe0' , '2023-06-30' , '' , 'banking account' , 'complete', 268.00),
+	('b7ad6137ff75b214972a6acd6206f4eb' , '16c5bd4d79c66e16042bee6bbf128c6f' , '0fe30e184ab12417ff175eb1c5386130', '5c9ba69a58918129f033a2c25e250584' , '2023-07-02' , '' , 'banking account' , 'complete', 41.00),
+	('f1174d213346307894a92d177efbb6dc' , '752ee3ce65129a7bd54292accb28983e' , '0fe30e184ab12417ff175eb1c5386130', 'b312f680c0e4eac9c2a3bd9bf2260267' , '2023-07-03' , '' , 'banking account' , 'complete', 41.00),
+	('fbvwiebfewfgqiugfiwgfiyvefiyefue' , '507c2afab061a1c2cf1dee7142e557be' , 'ae114dac5897fbcfd25797bf4be08fd3', 'c789ff5a8a615b3cbd55b12d431c1a51' , '2023-07-04' , '' , 'banking account' , 'complete', 480.20),
+	('fabdskf8wg3fb87fgbq87fh87f387hf4' , 'e9e0f3bcddc65940e089972ce4088e59' , '9eae70b054be6eba305323d8c9106cfb', '516ab8138f50bbbb0be18ceed38b6ad3' , '2023-07-05' , '' , 'cash' , 'complete', 1685.30),
+	('ihsbgeyb87rwf80hwf8hf983hf837hf8' , '27009754484e5b64300b05706c954565' , 'c8aa14ffb7da0912c84635aa2ee0bb62', '7be65563411c5ce7cd508f04c8a54ecb' , '2023-07-06' , '' , 'cash' , 'complete', 2168.50),
+	('fiabfibvfaiwuyebfawe8fb8aa37fa77' , '43e02d9e3ce088b73229155e462e32d9' , 'dd0e3f50648088bfecc501f809a06ca8', '92d969030097f06af642a4577606afe0' , '2023-07-07' , '' , 'banking account' , 'complete', 268.00),
+	('frfhbafihfioahfewaufiuwefa7fhah2' , '2e9d61c3330f9e10e3a0bc3fb8a4b4a2' , '62fe46dae9470f311d52973a6eeb6a1a', 'ce26b41ff7120b6f14c47596d9cb96b0' , '2023-07-08' , '' , 'banking account' , 'complete', 691.76),
+	('foijdaofhdfouha9fhewafh8hf9f983h' , '49f34170b6590fea6bce454059764c12' , '9c6189a20beb35a93df963e3b48eb9b0', 'a54060a06aa0e97217726362a5b580d3' , '2023-07-09' , '' , 'cash' , 'complete', 23.62),
+	('8ajwijwefjao8a98a9fa9unfr9nr9238' , '15d35bb9396992d02127345380e38d73' , '1c38dd30f9e415b3a34879be077381ce', '7b84cc4412f9e9a4213a9f979be42063' , '2023-07-10' , '' , 'banking account' , 'complete', 1775.58),
+	('8ry98h23r923jd9h23f9b3fa8ufb8fuf' , '00c38b52d5cdedc2667af4a83e346a85' , 't6fyt65rftvygt6f5tvyg65ftvgy6fhh', '9eea7e14fbd37b455d69e7114399aa0a' , '2023-07-11' , '' , 'banking account' , 'complete', 176.80),
+	('fajwnfjdnfiduhfa9hf984f398334934' , '1587900aee161437134c2e2479de5b64' , '01c1fa1b81297a2de21056f35303ad84', '4db7ce38baceaddfc93e9bdcfe0a7f57' , '2023-07-12' , '' , 'banking account' , 'complete', 60.00),
+	('892809f2jf92n39f923fnh92hf9h9dn3' , '277dd0cf43f2cc494be796373fd7bf2b' , 'fe30e1ff175e10b1c538613084ab2417', '9d35c51b03f46f6edd9aaa81c4cfc3c4' , '2023-07-13' , '' , 'banking account' , 'complete', 2108.16),
+	('fafjndjfnaieufniudfnaewufha9f483' , '08605ccab7ad051603412533c59e46c7' , '0fe30e184ab12417ff175eb1c5386130', 'a54060a06aa0e97217726362a5b580d3' , '2023-07-14' , '' , 'cash' , 'complete', 41.00),
+	('9229jf2nfj92nf9e2fuefe2fn9en9ksn' , 'acdbf948aa576959e791abe5ec2f124d' , 'ae114dac5897fbcfd25797bf4be08fd3', 'e2283b7f6695530a79793e3fe172155c' , '2023-07-15' , '' , 'banking account' , 'complete', 35.00),
+	('ffjndiojf98f98f9jffi9j39f3f94394' , '4b4c133439471c8d694b5c3e47edb446' , '9eae70b054be6eba305323d8c9106cfb', '1468c48caf3c8acd45c13732fa1c7797' , '2023-07-16' , '' , 'banking account' , 'complete', 152.00),
+	('smxokwmxowmsxowncuecu2cun8328444' , '0d0dd3c14756ae8316e7054b205896c9' , 'c8aa14ffb7da0912c84635aa2ee0bb62', '9436e53cce52225010e09858fc287123' , '2023-07-17' , '' , 'banking account' , 'complete', 2185.05),
+	('98r923r9j3eifn92nu9rewidjf3uf93j' , '861c51821e55ecad053b072323fac994' , 'dd0e3f50648088bfecc501f809a06ca8', '0b0ac0d3db2f67dd2626c726e51b0612' , '2023-07-18' , '' , 'cash' , 'complete', 268.00),
+	('fofijewijfew9fn9uewfnue9ue2f9ef9' , '380965fe9f1584559ea8a90b9c8d680c' , '62fe46dae9470f311d52973a6eeb6a1a', '4db7ce38baceaddfc93e9bdcfe0a7f57' , '2023-07-19' , '' , 'banking account' , 'complete', 2859.88),
+	('ff8u929fjimd2f9n9fmunr94r8fu3nfu' , '17787dd14e0fda883a36016cada64123' , '9c6189a20beb35a93df963e3b48eb9b0', '8e397cbb235075a9cb231b2c3b316011' , '2023-07-20' , '' , 'banking account' , 'complete', 23.62),
+	('f9r2jr03imfnrviefn93uf3urfuruuur' , 'd5ea83ec7f100a6803bd39e14c619299' , '1c38dd30f9e415b3a34879be077381ce', '88549bf6059c27cd9bf49508373f6dad' , '2023-07-21' , '' , 'banking account' , 'complete', 2954.87),
+	('78439i4j5tjfkide8u34j5rkfidueree' , '25c448b0241244364f7653f08cb8aff6' , '21fc9daf44e2637d7972bd248c83577d', '35214a23d76865f60f6d837db69f87fd' , '2023-07-22' , '' , 'cash' , 'complete', 785.03),
+	('45678ikjhgfdertyhjnbvcdftyujmnbv' , 'bc0b9fe1f4df72fa1289f4437e6a3953' , '01c1fa1b81297a2de21056f35303ad84', '4e4b39473c2dfc3e918ee79b1c28fc6f' , '2023-07-23' , '' , 'banking account' , 'complete', 60.00),
+	('lkiuhjnbvcde45678765rtyjnbvcdrty' , '43aaf0240284fd15416b429bed0ef321' , 'fe30e1ff175e10b1c538613084ab2417', 'c397d73df0a2ad5dcb930bd8d26cc2f6' , '2023-07-24' , '' , '' , 'prescribed', NULL),
+	('81c0f699a861de36fea9e653863a3d2f' , '25c448b0241244364f7653f08cb8aff6' , 'ae114dac5897fbcfd25797bf4be08fd3', '0d5408947d23dd60557de6b616352275' , '2023-08-01' , '' , '' , 'check-in', NULL),
+	('985ddc8a97245147b60181de11eb6b43' , 'd5ea83ec7f100a6803bd39e14c619299' , '9eae70b054be6eba305323d8c9106cfb', '9436e53cce52225010e09858fc287123' , '2023-08-02' , '' , '' , 'check-in', NULL),
+	('ec436f0ca64396ad2f6e16136a437295' , 'ca8406790940dec227193cc7dca16212' , '9c6189a20beb35a93df963e3b48eb9b0', '4db7ce38baceaddfc93e9bdcfe0a7f57' , '2023-08-03' , '' , '' , 'check-in', NULL),
+	('edf345a8f69ca86f0fb90944fb59d969' , 'c91f8b119029caa4ec2046bcc5c69bb5' , 'fe30e1ff175e10b1c538613084ab2417', '7be65563411c5ce7cd508f04c8a54ecb' , '2023-08-04' , '' , '' , 'confirm', NULL),
+	('e4c03e6998de4826309bd8d2601e258a' , 'bc0b9fe1f4df72fa1289f4437e6a3953' , '21fc9daf44e2637d7972bd248c83577d', 'b02c69a820861a57ac38b4282399335c' , '2023-08-05' , '' , '' , 'confirm', NULL),
+	('13e25982e018f21bda01bebf077734ba' , '6a045cdabdccb76073091f263cbf3e52' , 'ae114dac5897fbcfd25797bf4be08fd3', '1468c48caf3c8acd45c13732fa1c7797' , '2023-08-06' , '' , '' , 'confirm', NULL),
+	('d76836859ffbaee831c10fd22fe13673' , '43aaf0240284fd15416b429bed0ef321' , '9eae70b054be6eba305323d8c9106cfb', '4e4b39473c2dfc3e918ee79b1c28fc6f' , '2023-08-07' , '' , '' , 'processing', NULL),
+	('e199d87ca6943ccf8cdac4bbaa6f3010' , '56a7207dd933fe09f539083edb711548' , '1c38dd30f9e415b3a34879be077381ce', '8e397cbb235075a9cb231b2c3b316011' , '2023-09-01' , '' , '' , 'processing', NULL),
+	('13acd6206f7ff75bb7ad6214972a64eb' , '16c5bd4d79c66e16042bee6bbf128c6f' , '21fc9daf44e2637d7972bd248c83577d', '92d969030097f06af642a4577606afe0' , '2023-09-02' , '' , '' , 'processing', NULL),
+	('3346307894a7f1171217efbb64d92ddc' , '752ee3ce65129a7bd54292accb28983e' , '62fe46dae9470f311d52973a6eeb6a1a', 'a2855125bdc9e06b5313b3f827f07705' , '2023-09-03' , '' , '' , 'processing', NULL);
+	
 INSERT INTO AppointmentServices (appointmentID, serviceID)
 VALUES
     ('a6a837e5d05e57e160dea29c335f30d0', 'f8c17d469d7dfd4fa84eae659923536b'),
@@ -1346,78 +1439,119 @@ VALUES
     ('86ae960dc44eba248c481d76520846c3', 'a074614583162a3d58b89c13699d70a1'),
     ('801b58e3d0b00f7f9f9eac80058f99f0', 'cd9bfc9d6bb22a47f6dcdc2a5c99b2fd'),
     ('ca768c1b1876a2f286496e62666dfada', '744722e0fb1eb8e7f4fc5c4682159800'),
-    ('0a7a30124b6b4f266459a6b69677152c', 'c739c1e62319f52411908f874c0698bf'),
-    ('ebcf025d47ee19d929f6707029df09d0', '744722e0fb1eb8e7f4fc5c4682159800'),
+    ('0a7a30124b6b4f266459a6b69677152c', '84fbf5e32cfdb21cf48721cf849b0c20'),
+    ('ebcf025d47ee19d929f6707029df09d0', '517d8993ec9bcdb8c33fc50ea7ec5da8'),
     ('b7e4621ca7d7273ea67ba0b40992d189', '291129122c3e6bbbd76a76b428f2809a'),
-    ('35847b5a3a8de7e0af06281b1d889bcf', 'f8c17d469d7dfd4fa84eae659923536b'),
-    ('ca05b981160139795fbf616bfd5d491b', 'c739c1e62319f52411908f874c0698bf'),
+    ('35847b5a3a8de7e0af06281b1d889bcf', '52b7bedca394c621f40a99d03a564341'),
+    ('ca05b981160139795fbf616bfd5d491b', 'e41d8b0c31b65cc94f5eb4bbb7b76907'),
     ('3967200752865b1bb65a63f386925d14', '507e4c66da1ccd4fcf621069065494bc'),
     ('943b4c67a61164d245ea5af7f3848a37', 'f8c17d469d7dfd4fa84eae659923536b'),
     ('040c93cff9c0cc5cd6d008fb02e17b69', 'c739c1e62319f52411908f874c0698bf'),
     ('3841cd8942a581d2092ff1d3739fcebc', 'a074614583162a3d58b89c13699d70a1'),
     ('4a160bb951e81bb14485ab90391d0c58', 'cd9bfc9d6bb22a47f6dcdc2a5c99b2fd'),
     ('0bb8e03d00ecc7642c5142de8f12a335', '744722e0fb1eb8e7f4fc5c4682159800'),
-    ('aeed52468a0d9880fa013c611816e897', 'e41d8b0c31b65cc94f5eb4bbb7b76907'),
-    ('cde92de8a056398e6a281dba87bdffb1', 'c739c1e62319f52411908f874c0698bf'),
+    ('aeed52468a0d9880fa013c611816e897', '84fbf5e32cfdb21cf48721cf849b0c20'),
+    ('cde92de8a056398e6a281dba87bdffb1', '517d8993ec9bcdb8c33fc50ea7ec5da8'),
     ('6c3b331b0cde4d503944f2f16f979c93', '291129122c3e6bbbd76a76b428f2809a'),
-    ('b6b447b56dbe005a626c4b5e3fdb97be', 'a074614583162a3d58b89c13699d70a1'),
+    ('b6b447b56dbe005a626c4b5e3fdb97be', '52b7bedca394c621f40a99d03a564341'),
     ('a61de36f81c0f699a8653863ea9e3d2f', 'e41d8b0c31b65cc94f5eb4bbb7b76907'),
-    ('47b601885ddc891de11eb62451a97b43', 'c739c1e62319f52411908f874c0698bf'),
-    ('2f7294ec43136a43ca696ad6f06e1635', '744722e0fb1eb8e7f4fc5c4682159800'),
-    ('090f345a844fedfb9ca86ff69b59d969', 'f8c17d469d7dfd4fa84eae659923536b'),
+    ('47b601885ddc891de11eb62451a97b43', '507e4c66da1ccd4fcf621069065494bc'),
+    ('2f7294ec43136a43ca696ad6f06e1635', 'f8c17d469d7dfd4fa84eae659923536b'),
+    ('090f345a844fedfb9ca86ff69b59d969', 'c739c1e62319f52411908f874c0698bf'),
     ('d2601ee48263e69982e4dbd809c0358a', 'a074614583162a3d58b89c13699d70a1'),
     ('e221bebf131b7773da0045982e018fba', 'cd9bfc9d6bb22a47f6dcdc2a5c99b2fd'),
     ('85c10fd22fe836139fd76fbaee831673', '744722e0fb1eb8e7f4fc5c4682159800'),
-    ('7caa694dda6e1cf8c0993cf301c84bba', '517d8993ec9bcdb8c33fc50ea7ec5da8'),
-    ('b7ad6a62013acd21497265b6f7ff74eb', '291129122c3e6bbbd76a76b428f2809a'),
-    ('3427f117121dd0789b94a37ef63b64dc', '517d8993ec9bcdb8c33fc50ea7ec5da8'),
+    ('7caa694dda6e1cf8c0993cf301c84bba', '84fbf5e32cfdb21cf48721cf849b0c20'),
+    ('b7ad6a62013acd21497265b6f7ff74eb', '517d8993ec9bcdb8c33fc50ea7ec5da8'),
+    ('3427f117121dd0789b94a37ef63b64dc', '291129122c3e6bbbd76a76b428f2809a'),
     ('b7ad6137ff75b214972a6acd6206f4eb', 'e41d8b0c31b65cc94f5eb4bbb7b76907'),
-    ('f1174d213346307894a92d177efbb6dc', '507e4c66da1ccd4fcf621069065494bc'),
-    ('81c0f699a861de36fea9e653863a3d2f', 'c739c1e62319f52411908f874c0698bf'),
+    ('f1174d213346307894a92d177efbb6dc', 'e41d8b0c31b65cc94f5eb4bbb7b76907'),
+	('fbvwiebfewfgqiugfiwgfiyvefiyefue', 'f8c17d469d7dfd4fa84eae659923536b'),
+	('fabdskf8wg3fb87fgbq87fh87f387hf4', 'c739c1e62319f52411908f874c0698bf'),
+	('ihsbgeyb87rwf80hwf8hf983hf837hf8', 'a074614583162a3d58b89c13699d70a1'),
+	('fiabfibvfaiwuyebfawe8fb8aa37fa77', '291129122c3e6bbbd76a76b428f2809a'),
+	('frfhbafihfioahfewaufiuwefa7fhah2', '291129122c3e6bbbd76a76b428f2809a'),
+	('foijdaofhdfouha9fhewafh8hf9f983h', '52b7bedca394c621f40a99d03a564341'),
+	('8ajwijwefjao8a98a9fa9unfr9nr9238', '84fbf5e32cfdb21cf48721cf849b0c20'),
+	('8ry98h23r923jd9h23f9b3fa8ufb8fuf', 'cd9bfc9d6bb22a47f6dcdc2a5c99b2fd'),
+	('fajwnfjdnfiduhfa9hf984f398334934', '517d8993ec9bcdb8c33fc50ea7ec5da8'),
+	('892809f2jf92n39f923fnh92hf9h9dn3', 'a074614583162a3d58b89c13699d70a1'),
+	('fafjndjfnaieufniudfnaewufha9f483', 'e41d8b0c31b65cc94f5eb4bbb7b76907'),
+	('9229jf2nfj92nf9e2fuefe2fn9en9ksn', '744722e0fb1eb8e7f4fc5c4682159800'),
+	('ffjndiojf98f98f9jffi9j39f3f94394', '507e4c66da1ccd4fcf621069065494bc'),
+	('smxokwmxowmsxowncuecu2cun8328444', 'a074614583162a3d58b89c13699d70a1'),
+	('98r923r9j3eifn92nu9rewidjf3uf93j', '291129122c3e6bbbd76a76b428f2809a'),
+	('fofijewijfew9fn9uewfnue9ue2f9ef9', '291129122c3e6bbbd76a76b428f2809a'),
+	('ff8u929fjimd2f9n9fmunr94r8fu3nfu', '52b7bedca394c621f40a99d03a564341'),
+	('f9r2jr03imfnrviefn93uf3urfuruuur', '84fbf5e32cfdb21cf48721cf849b0c20'),
+	('78439i4j5tjfkide8u34j5rkfidueree', 'f8c17d469d7dfd4fa84eae659923536b'),
+	('45678ikjhgfdertyhjnbvcdftyujmnbv', '517d8993ec9bcdb8c33fc50ea7ec5da8'),
+	('lkiuhjnbvcde45678765rtyjnbvcdrty', 'a074614583162a3d58b89c13699d70a1'),
+    ('81c0f699a861de36fea9e653863a3d2f', '507e4c66da1ccd4fcf621069065494bc'),
     ('985ddc8a97245147b60181de11eb6b43', '507e4c66da1ccd4fcf621069065494bc'),
-    ('ec436f0ca64396ad2f6e16136a437295', '744722e0fb1eb8e7f4fc5c4682159800'),
+    ('ec436f0ca64396ad2f6e16136a437295', '52b7bedca394c621f40a99d03a564341'),
     ('edf345a8f69ca86f0fb90944fb59d969', '517d8993ec9bcdb8c33fc50ea7ec5da8'),
     ('e4c03e6998de4826309bd8d2601e258a', 'c739c1e62319f52411908f874c0698bf'),
     ('13e25982e018f21bda01bebf077734ba', 'cd9bfc9d6bb22a47f6dcdc2a5c99b2fd'),
     ('d76836859ffbaee831c10fd22fe13673', '744722e0fb1eb8e7f4fc5c4682159800'),
-    ('e199d87ca6943ccf8cdac4bbaa6f3010', '507e4c66da1ccd4fcf621069065494bc'),
+    ('e199d87ca6943ccf8cdac4bbaa6f3010', '84fbf5e32cfdb21cf48721cf849b0c20'),
     ('13acd6206f7ff75bb7ad6214972a64eb', '517d8993ec9bcdb8c33fc50ea7ec5da8'),
     ('3346307894a7f1171217efbb64d92ddc', '291129122c3e6bbbd76a76b428f2809a');
-    
+	
 INSERT INTO MedicalRecord (medicalRecordID, appointmentID, recordTime, diagnosis, treatmentDays, doctorNotes)
 VALUES
-	('3b153a85daab45c693cdd0e1f02631c9' , 'a6a837e5d05e57e160dea29c335f30d0', '2023-01-02', N'không phát hiện bất thường', 3, ''),
-	('87599195136fd0440b341eed32d36c84' , '95b579fe61c622b5c50def9dccb66bdc', '2023-01-04', N'Thiếu hụt dinh dưỡng', 4, ''),
-	('4d0ac1b5e6f8e2e4ee256c4c2031b1d2' , '86ae960dc44eba248c481d76520846c3', '2023-01-04', N'chấn thương chân', 2 , ''),
-	('b356f8672801e4820bd72b17dbda7764' , '801b58e3d0b00f7f9f9eac80058f99f0' , '2023-01-05' , N'thiếu vitamin A' , 3, ''),
-	('a0540a74c856251ad819d931fee6b078' , 'ca768c1b1876a2f286496e62666dfada' , '2023-01-06' , N'nội trú', 1 , ''),
-	('32fe2542e25434a1acde0f6edff2f0b4' , '0a7a30124b6b4f266459a6b69677152c' , '2023-01-07' , N'gãy cánh', 2, ''),
-	('2f6c8e2ec915f490a91c6c7e888126f6' , 'ebcf025d47ee19d929f6707029df09d0' , '2023-01-08', N'gắn chip', 3, ''),
-	('21def0e373e1e8d57d1ab5f339726167' , 'b7e4621ca7d7273ea67ba0b40992d189' , '2023-01-09' , N'dị vật trong dạ dày', 1, ''),
-	('ff398a2c8cdd28c7c9e31446c0e2a629' , '35847b5a3a8de7e0af06281b1d889bcf' , '2023-02-10' , N'chăm sóc', 0 , '' ),
-	('753906196d6e7bdd8f8d874efaacfa8d' , 'ca05b981160139795fbf616bfd5d491b' , '2023-02-13' , N'xác định giới tính', 3, '' ),
-	('4aa48bfce29088db4424a1b921e2be55' , '943b4c67a61164d245ea5af7f3848a37' , '2023-03-13' , N'Bệnh cảm cúm', 0 , '' ),
-	('154aa8864b0445239a1c8cf636ce8164' , '040c93cff9c0cc5cd6d008fb02e17b69' , '2023-03-14' , N'Bệnh cầu trùng', 2, '' ),
+	('3b153a85daab45c693cdd0e1f02631c9' , 'a6a837e5d05e57e160dea29c335f30d0', '2023-01-02', N'không phát hiện bất thường', 0, ''),
+	('87599195136fd0440b341eed32d36c84' , '95b579fe61c622b5c50def9dccb66bdc', '2023-01-03', N'Thiếu hụt dinh dưỡng', 0, 'thiếu nhiều chất, cần nạp đủ chất dinh dưỡng'),
+	('4d0ac1b5e6f8e2e4ee256c4c2031b1d2' , '86ae960dc44eba248c481d76520846c3', '2023-01-04', N'chấn thương chân', 2 , 'không để chim đi lại nhiều'),
+	('b356f8672801e4820bd72b17dbda7764' , '801b58e3d0b00f7f9f9eac80058f99f0' , '2023-01-05' , N'thiếu vitamin A' , 1, 'bổ sung vitamin A'),
+	('a0540a74c856251ad819d931fee6b078' , 'ca768c1b1876a2f286496e62666dfada' , '2023-01-06' , N'chăm sóc trong ngày', 3 , ''),
+	('32fe2542e25434a1acde0f6edff2f0b4' , '0a7a30124b6b4f266459a6b69677152c' , '2023-01-07' , N'gãy cánh', 3, 'không để vết thương bị nhiễm trùng'),
+	('2f6c8e2ec915f490a91c6c7e888126f6' , 'ebcf025d47ee19d929f6707029df09d0' , '2023-01-09', N'gắn chip', 1, ''),
+	('21def0e373e1e8d57d1ab5f339726167' , 'b7e4621ca7d7273ea67ba0b40992d189' , '2023-01-09' , N'dị vật trong dạ dày', 2, 'cẩn thận khi cho chim ăn uống'),
+	('ff398a2c8cdd28c7c9e31446c0e2a629' , '35847b5a3a8de7e0af06281b1d889bcf' , '2023-02-10' , N'làm đẹp', 1 , '' ),
+	('753906196d6e7bdd8f8d874efaacfa8d' , 'ca05b981160139795fbf616bfd5d491b' , '2023-02-13' , N'không phát hiện bất thường', 1, '' ),
+	('4aa48bfce29088db4424a1b921e2be55' , '943b4c67a61164d245ea5af7f3848a37' , '2023-03-13' , N'Bệnh cảm cúm', 1 , 'cho chim ăn uống đầy đủ và uống thuốc đúng giờ' ),
+	('154aa8864b0445239a1c8cf636ce8164' , '040c93cff9c0cc5cd6d008fb02e17b69' , '2023-03-14' , N'Bệnh cầu trùng', 1, '' ),
 	('b72e56f3705781fdfaa652dabbefd8b4' , '3841cd8942a581d2092ff1d3739fcebc' , '2023-03-15' , N'chấn thương phần đầu', 3, '' ),
-	('96f71fd09596eeda17b234c2a87b783f' , '4a160bb951e81bb14485ab90391d0c58' , '2023-03-16' , N'thiếu vitamin D', 3, '' ),
-	('de9aa8254527b52b336a60f9373740ea' , 'aeed52468a0d9880fa013c611816e897' , '2023-04-18' , N'mỏ bị gãy', 2, '' ),
-	('737cebac25159c2b8e46f50881a7abcb' , 'cde92de8a056398e6a281dba87bdffb1' , '2023-04-19' , N'gắn chip', 3, '' ),
-	('1450707c9e9a8ea70f8d341e19e5a9bb' , '6c3b331b0cde4d503944f2f16f979c93' , '2023-04-20' , N'dị vật ở ngực', 2, ''),
-	('321d5d0f522e1ba28bbb2243b6b18de8' , 'b6b447b56dbe005a626c4b5e3fdb97be' , '2023-04-21' , N'chăm sóc', 3, '' ),
-	('008be4115afd1511f4cc2ae97c9834f0' , 'a61de36f81c0f699a8653863ea9e3d2f' , '2023-05-22' , N'xác định giới tính', 3, '' ),
-	('3ff90b1c47898c6e576e8f109eba0bef' , '47b601885ddc891de11eb62451a97b43' , '2023-05-23' , N'chích vaccine', 1 , '' ),
-	('21879306649bc1429b0f6d9d57217356' , '2f7294ec43136a43ca696ad6f06e1635' , '2023-05-24' , N'Bệnh béo phì', 3, '' ),
+	('96f71fd09596eeda17b234c2a87b783f' , '4a160bb951e81bb14485ab90391d0c58' , '2023-03-16' , N'thiếu vitamin D', 1, 'bổ sung vitamin D' ),
+	('de9aa8254527b52b336a60f9373740ea' , 'aeed52468a0d9880fa013c611816e897' , '2023-04-18' , N'mỏ bị gãy', 3, '' ),
+	('737cebac25159c2b8e46f50881a7abcb' , 'cde92de8a056398e6a281dba87bdffb1' , '2023-04-19' , N'gắn chip', 1, '' ),
+	('1450707c9e9a8ea70f8d341e19e5a9bb' , '6c3b331b0cde4d503944f2f16f979c93' , '2023-04-20' , N'dị vật ở ngực', 3, ''),
+	('321d5d0f522e1ba28bbb2243b6b18de8' , 'b6b447b56dbe005a626c4b5e3fdb97be' , '2023-04-21' , N'làm đẹp', 1, '' ),
+	('008be4115afd1511f4cc2ae97c9834f0' , 'a61de36f81c0f699a8653863ea9e3d2f' , '2023-05-22' , N'xác định giới tính', 1, '' ),
+	('3ff90b1c47898c6e576e8f109eba0bef' , '47b601885ddc891de11eb62451a97b43' , '2023-05-23' , N'tiêm vaccine', 0 , 'Cần theo dõi vật nuôi để kịp thời can thiệp các trường hợp phản ứng ,chim có thể bị sốc phản vệ. ' ),
+	('21879306649bc1429b0f6d9d57217356' , '2f7294ec43136a43ca696ad6f06e1635' , '2023-05-24' , N'Bệnh béo phì', 3, 'giảm phần ăn cho chim' ),
 	('56e00973cbc998b7ddce6cdc45b3cd25' , '090f345a844fedfb9ca86ff69b59d969' , '2023-05-25' , N'Bệnh mổ lông', 2 , '' ),
 	('8c6abf5a30122f683a29871b67190785' , 'd2601ee48263e69982e4dbd809c0358a' , '2023-05-26' , N'khối u ở chân', 5, '' ),
-	('65a4f559051183b9a50cda6876422baa' , 'e221bebf131b7773da0045982e018fba' , '2023-06-27' , N'thiếu vitamin E', 3, '' ),
-	('5fe272ab8622289deb002353518c8941' , '85c10fd22fe836139fd76fbaee831673' , '2023-06-28' , N'nội trú', 1, '' ),
-	('5e6c49d4fffd4d10de12dc2de829029e' , 'b7ad6a62013acd21497265b6f7ff74eb' , '2023-06-30' , N'xác định giới tính', 2 , '' ),
-	('52f50c616b0653a3fab725e6c2421692' , '3427f117121dd0789b94a37ef63b64dc' , '2023-07-01' , N'không phát hiện dị vật', 2, '' ),
-	('6b0653af50c61fe6c3ab725522421692' , 'b7ad6137ff75b214972a6acd6206f4eb' , '2023-07-06' , N'xác định giới tính', 2, '' ),
-	('ffd4d1092d5e6de12dc9d4fe82c4029e' , 'f1174d213346307894a92d177efbb6dc' , '2023-07-07' , N'xác định giới tính', 2 , '' );
+	('65a4f559051183b9a50cda6876422baa' , 'e221bebf131b7773da0045982e018fba' , '2023-06-27' , N'thiếu vitamin E', 1, 'bổ sung vitamin E' ),
+	('5fe272ab8622289deb002353518c8941' , '85c10fd22fe836139fd76fbaee831673' , '2023-06-28' , N'chăm sóc trong ngày', 5, '' ),
+	('5e6c49d4fffd4d10de12dc2de829029e' , 'b7ad6a62013acd21497265b6f7ff74eb' , '2023-06-30' , N'gắn chip', 1 , '' ),
+	('52f50c616b0653a3fab725e6c2421692' , '3427f117121dd0789b94a37ef63b64dc' , '2023-07-01' , N'không phát hiện dị vật', 0, '' ),
+	('6b0653af50c61fe6c3ab725522421692' , 'b7ad6137ff75b214972a6acd6206f4eb' , '2023-07-03' , N'xác định giới tính', 1 , '' ),
+	('ffd4d1092d5e6de12dc9d4fe82c4029e' , 'f1174d213346307894a92d177efbb6dc' , '2023-07-04' , N'xác định giới tính', 1 , '' ),
 
-
-
+	('jfbihwebdfaibwuhdoewaudouewdsdcs' , 'fbvwiebfewfgqiugfiwgfiyvefiyefue' , '2023-07-05' , N'cúm', 1 , 'chú ý đến sức khỏe của chim' ),
+	('78ijhgfre4567yhgvfde45tgfder5trr' , 'fabdskf8wg3fb87fgbq87fh87f387hf4' , '2023-07-06' , N'thủy đậu', 1 , '' ),
+	('98ujgfredsw23wasxcvghy567tfr56yu' , 'ihsbgeyb87rwf80hwf8hf983hf837hf8' , '2023-07-07' , N'chấn thương mắt', 3 , '' ),
+	('09ikmnji87yhnbgt654efdsew34567uh' , 'fiabfibvfaiwuyebfawe8fb8aa37fa77' , '2023-07-08' , N'không phát hiện dị thường', 0 , '' ),
+	('123432wsdfgy65433rtyikjngftgfdrr' , 'frfhbafihfioahfewaufiuwefa7fhah2' , '2023-07-09' , N'có đá trong dạ dày', 2 , '' ),
+	('mko098ijnbhuwsdfghjiuytr456ygfgg' , 'foijdaofhdfouha9fhewafh8hf9f983h' , '2023-07-10' , N'làm đẹp', 1 , '' ),
+	('876iuyuijhgbnmnbvfdfghgfghgfdfgh' , '8ajwijwefjao8a98a9fa9unfr9nr9238' , '2023-07-11' , N'Nôn mửa', 3 , 'chú ý đến khẩu phần ăn của chim' ),
+	('12343wsxdrtyhio98765678ujbvcfrty' , '8ry98h23r923jd9h23f9b3fa8ufb8fuf' , '2023-07-13' , N'thiếu protein', 1 , '' ),
+	('87uhgty765rtgvcdseyhgtyujnbftytg' , 'fajwnfjdnfiduhfa9hf984f398334934' , '2023-07-13' , N'gắn chip', 1 , '' ),
+	('0987uijnbgtyu876tyhbvfdty654erfe' , '892809f2jf92n39f923fnh92hf9h9dn3' , '2023-07-14' , N'cắt móng',	1 , '' ),
+	('097ujnbgt76rd12345rdfgh7ytr67yuu' , 'fafjndjfnaieufniudfnaewufha9f483' , '2023-07-17' , N'xác định giới tính', 2 , '' ),
+	('12wedc5rdx5tyhj09ijhbverfiuhg3er' , '9229jf2nfj92nf9e2fuefe2fn9en9ksn' , '2023-07-17' , N'chăm sóc trong ngày', 2 , '' ),
+	('okmnijhbygrdwdefthyujoijtygvwedf' , 'ffjndiojf98f98f9jffi9j39f3f94394' , '2023-07-17' , N'tiêm vaccine', 0 , 'Cần theo dõi vật nuôi để kịp thời can thiệp các trường hợp phản ứng ,chim có thể bị sốc phản vệ.' ),
+	('bbfenjoeijfnowekmfoiefn2epovng3u' , 'smxokwmxowmsxowncuecu2cun8328444' , '2023-07-19' , N'mổ mắt ', 2 , '' ),
+	('98io9uhju7yghutrfgyrfgy5rfghu6tg' , '98r923r9j3eifn92nu9rewidjf3uf93j' , '2023-07-19' , N'không phát hiện dị vật', 0 , '' ),
+	('nbtyhgftyhvfrtyhgfrtuhfr6ygr56y7' , 'fofijewijfew9fn9uewfnue9ue2f9ef9' , '2023-07-20' , N'dị vật trong dạ dày không thể tiêu hóa', 4 , 'không nên để chim ăn linh tinh' ),
+	('okiokjuiokjuytrt54e32wse3wsdedff' , 'ff8u929fjimd2f9n9fmunr94r8fu3nfu' , '2023-07-21' , N'làm đẹp', 1 , '' ),
+	('zwasxesxwsxesxxwesxertbygbyygggg' , 'f9r2jr03imfnrviefn93uf3urfuruuur' , '2023-07-22' , N'tiêu chảy nặng', 5 , 'chú ý đến khẩu phần ăn của chim' ),
+	('5vbyhbygbngybtyfvbrdfvvrdcfverdc' , '78439i4j5tjfkide8u34j5rkfidueree' , '2023-07-23' , N'khó thở, thở khò khè', 1 , '' ),
+	('67tyg87tgb65rv456rf56rf56r5r5rrr' , '45678ikjhgfdertyhjnbvcdftyujmnbv' , '2023-07-24' , N'gắn chip', 1 , '' ),
+	('ryfhdsiuwayehaf8a7iewuyrh8fiwaer' , 'lkiuhjnbvcde45678765rtyjnbvcdrty' , '2023-07-25' , N'cắt chân', 3 , '' );
+ 
 INSERT INTO RecordMedicine (medicalRecordID, medicineID, quantity, description_)
 VALUES
 ('87599195136fd0440b341eed32d36c84', '1a27a82eb264532c271baf05c7a6e10d', 9 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
@@ -1460,7 +1594,43 @@ VALUES
 ('8c6abf5a30122f683a29871b67190785', '9faeec1795e05223ab80bf4d06971616', 8 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
 ('8c6abf5a30122f683a29871b67190785', '9e9af1d637a369cdaf6bac028b8bd813', 8 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
 ('65a4f559051183b9a50cda6876422baa', '2b1937a02cb1cc8255ecfeb8dc38c5d2', 6 , N'sáng: 1, trưa: 0, chiều: 1, tối: 0'),
-('65a4f559051183b9a50cda6876422baa', '5f7fb0d98491f5efdf52623a7d4839aa', 8 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0');
+('65a4f559051183b9a50cda6876422baa', '5f7fb0d98491f5efdf52623a7d4839aa', 8 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0'),
+('jfbihwebdfaibwuhdoewaudouewdsdcs', 'nscojdicjndjncdsncowinc992n9e444', 12 , N'sáng: 1, trưa: 0, chiều: 1, tối: 0' ),
+('jfbihwebdfaibwuhdoewaudouewdsdcs', 'hsabfkhasbnafksdjflwuefghifug434', 4 , N'sáng: 1, trưa: 0, chiều: 1, tối: 1' ),
+('78ijhgfre4567yhgvfde45tgfder5trr', 'ffbakjfbkjnflsjfaoh3f43fh43fhj4f', 12 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0' ),
+('78ijhgfre4567yhgvfde45tgfder5trr', 'jhnjuygresxdwswe4ert5ty7y7yu7yu7', 20 , N'sáng: 1, trưa: , chiều: 1, tối: 0' ),
+('78ijhgfre4567yhgvfde45tgfder5trr', 'skskcdjvdjndfouhq9fhfqhf98hf9q2e', 10 , N'sáng: 1, trưa: 0, chiều: 0, tối: 0' ),
+('98ujgfredsw23wasxcvghy567tfr56yu', 'kdjbnalkjdnfawhefoaihofhi3o4fho3', 8 , N'sáng: 1, trưa: 0, chiều: 0, tối: 0' ),
+('98ujgfredsw23wasxcvghy567tfr56yu', 'afnaofhdofuhq93fh9fn93unf993fj39', 10 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0' ),
+('98ujgfredsw23wasxcvghy567tfr56yu', 'dadncadnclknofijf834u38fu3ffij44', 14 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0' ),
+('123432wsdfgy65433rtyikjngftgfdrr', 'lkjhgfdfghjiuytfvbnmngft65456546', 4 , N'sáng: 1, trưa: 0, chiều: 1, tối: 0' ),
+('123432wsdfgy65433rtyikjngftgfdrr', 'mnbvcxcvbnbvcxcvbgretytrty654rrr', 4 , N'sáng: 1, trưa: 0, chiều: 1, tối: 0' ),
+('876iuyuijhgbnmnbvfdfghgfghgfdfgh', 'f7gfq83fhqn9u93uvn3n94inv93vnvni', 20 , N'sáng: 1, trưa: 0, chiều: 1, tối: 1' ),
+('876iuyuijhgbnmnbvfdfghgfghgfdfgh', 'vndslvncnvsdnlckdmslkcmdfkfjpi04', 16 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0' ),
+('876iuyuijhgbnmnbvfdfghgfghgfdfgh', 'sdcsdcndslcnlkncokqsmxoqskmow999', 14 , N'sáng: 1, trưa: 0, chiều: 1, tối: 0' ),
+('876iuyuijhgbnmnbvfdfghgfghgfdfgh', 'bntyju7k98ok7j6hy5tgerf3g4th5777', 8 , N'sáng: 1, trưa: 0, chiều: 0, tối: 0' ),
+('12343wsxdrtyhio98765678ujbvcfrty', 'gthygbvfer4567ujhnbgvfer4t56ygrf', 4 , N'sáng: 1, trưa: 0, chiều: 0, tối: 0' ),
+('0987uijnbgtyu876tyhbvfdty654erfe', 'ncbxvfdsrtyruthfgdfsderw54678i6u', 9, N'sáng: 1, trưa: 0, chiều: 1, tối: 0' ),
+('0987uijnbgtyu876tyhbvfdty654erfe', 'jfhwoeihfwoehfewifwwf28h032fj039', 15 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0' ),
+('0987uijnbgtyu876tyhbvfdty654erfe', 'fgrth67j68k76j75h64g3g54h6545g3f', 12 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0' ),
+('bbfenjoeijfnowekmfoiefn2epovng3u', 'bnbfrt56yuhgfe34r5tre345t6y7u78i', 20 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0' ),
+('bbfenjoeijfnowekmfoiefn2epovng3u', 'rhtyju76756y45t34t4f2g43g54hh4y5', 15, N'sáng: 1, trưa: 0, chiều: 1, tối: 0' ),
+('bbfenjoeijfnowekmfoiefn2epovng3u', 'xwmspxmwspckmdwockdocnejvn939939', 16, N'sáng: 1, trưa: 1, chiều: 0, tối: 1' ),
+('nbtyhgftyhvfrtyhgfrtuhfr6ygr56y7', 'bnbft67uhgfr567uhgfrt678ujhgfr55', 24 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0' ),
+('nbtyhgftyhvfrtyhgfrtuhfr6ygr56y7', 'bvcnvmhtye678665rtgdgfw5t4657u6y', 12 , N'sáng: 1, trưa: 0, chiều: 1, tối: 0' ),
+('nbtyhgftyhvfrtyhgfrtuhfr6ygr56y7', '45678ijhbfr5678987654fghy654rfgg', 8 , N'sáng: 1, trưa: 0, chiều: 0, tối: 0' ),
+('zwasxesxwsxesxxwesxertbygbyygggg', 'vbcndsfwrtyui57654rffwer4356475u', 30 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0' ),
+('zwasxesxwsxesxxwesxertbygbyygggg', 'nbvgtyhgfty7654edfghu876ytfcfdre', 20 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0' ),
+('zwasxesxwsxesxxwesxertbygbyygggg', 'bnbvsdfwrt4354y6u75hyrterfwe23d3', 15 , N'sáng: 1, trưa: 0, chiều: 1, tối: 1' ),
+('zwasxesxwsxesxxwesxertbygbyygggg', 'nbfgety65544refgrety65u7yhrtg4y6', 18 , N'sáng: 0, trưa: 0, chiều: 1, tối: 1' ),
+('zwasxesxwsxesxxwesxertbygbyygggg', 'hikjkiokmjkioijhgfr543er34rertt5', 10 , N'sáng: 0, trưa: 0, chiều: 1, tối: 0' ),
+('5vbyhbygbngybtyfvbrdfvvrdcfverdc', 'c69f4b52c792233f31e11393012e5e19', 8 , N'sáng: 1, trưa: 0, chiều: 1, tối: 0' ),
+('5vbyhbygbngybtyfvbrdfvvrdcfverdc', 'getry5u7utyh6t6yh6ytgvtgb6tfyhkk', 8 , N'sáng: 1, trưa: 0, chiều: 1, tối: 0' ),
+('5vbyhbygbngybtyfvbrdfvvrdcfverdc', 'vbnjiokjnhjutfdqdacdewfyuyghnhhn', 5 , N'sáng: 1, trưa: 0, chiều: 0, tối: 1' ),
+('ryfhdsiuwayehaf8a7iewuyrh8fiwaer', 'vndslvncnvsdnlckdmslkcmdfkfjpi04', 10 , N'sáng: 1, trưa: 1, chiều: 1, tối: 0' ),
+('ryfhdsiuwayehaf8a7iewuyrh8fiwaer', 'jhnjuygresxdwswe4ert5ty7y7yu7yu7', 12, N'sáng: 1, trưa: 0, chiều: 1, tối: 1' ),
+('ryfhdsiuwayehaf8a7iewuyrh8fiwaer', '124b0999a2e3a37b30f8b4d4196d5666', 8, N'sáng: 1, trưa: 0, chiều: 1, tối: 0' ),
+('ryfhdsiuwayehaf8a7iewuyrh8fiwaer', 'e365252333bf5bd19b86b828e64b0eb0', 14, N'sáng: 1, trưa: 1, chiều: 1, tối: 0' ); 
 
 INSERT INTO Feedback (feedbackID, appointmentID, feedbackContent, title, feedbackTime, rating)	
 VALUES
@@ -1478,7 +1648,7 @@ VALUES
 	( 'bfbc8861190e55a089b0c4afc1c41a07' , '040c93cff9c0cc5cd6d008fb02e17b69' , N'Phòng khám duy trì thực hành giá cả minh bạch. Họ cung cấp giải thích chi tiết về các chi phí liên quan, đảm bảo không có bất ngờ hoặc phí ẩn.' , 'Định giá minh bạch' , GETDATE(), 5 ),
 	( '4dcb301699e281d9eda42ee915f8c91d' , '3841cd8942a581d2092ff1d3739fcebc' , N'Các quy trình theo dõi hiệu quả của phòng khám đã gây ấn tượng với tôi. Họ nhanh chóng lên lịch cho bất kỳ cuộc hẹn tiếp theo cần thiết nào và đảm bảo sự chăm sóc liên tục.' , N'Quy trình theo dõi hiệu quả' , GETDATE(), 5 ),
 	( '3f8c2d5acfcad832c564afe05fdc4dd2' , '4a160bb951e81bb14485ab90391d0c58' , N'Phòng khám này tích hợp công nghệ hiện đại vào thực hành của họ. Từ hồ sơ y tế điện tử đến các công cụ chẩn đoán tiên tiến, cam kết đổi mới của họ là điều hiển nhiên.' , N'Tích Hợp Công Nghệ Hiện Đại' , GETDATE(), 5 ),
-	( '02025191b401a33ee5d5dbf672b0d9cd' , 'aeed52468a0d9880fa013c611816e897' , N'Phòng khám đặt trọng tâm mạnh mẽ vào lời khuyên dành cho chim. Họ cung cấp cho tôi những thông tin có giá trị về tình trạng của chim, giúp tôi đưa ra những quyết định sáng suốt về sức khỏe của chim.' , N'Chú trọng vào lời khuyên chăm sóc chim' , GETDATE(), 5),
+	( '02025191b401a33ee5d5dbf672b0d9cd' , 'aeed52468a0d9880fa013c611816e897' , N'Phòng khám đặt trọng tâm mạnh mẽ vào lời khuyên dành cho chim. Họ cung cấp cho tôi những thông tin có giá trị về tình trạng của chim, giúp tôi đưa ra những quyết định sáng suốt về sức khỏe của chim.' , N'Chú trọng vào lời khuyên làm đẹp' , GETDATE(), 5),
 	( 'f31300a92d53523f7c9e63f082429559' , 'cde92de8a056398e6a281dba87bdffb1' , N'Vị trí thuận tiện của phòng khám làm cho nó dễ dàng tiếp cận. Vị trí gần với phương tiện giao thông công cộng và nhiều lựa chọn đỗ xe là một sự thuận tiện tuyệt vời.' , N'Vị trí thuận tiện' , GETDATE(), 5 ),
 	( '021c8752a33aa45ffaabbc24b9718c65' , '6c3b331b0cde4d503944f2f16f979c93' , N'Phòng khám nuôi dưỡng một môi trường tôn trọng và không phán xét. Các nhân viên đối xử với mọi người một cách đàng hoàng và tôn trọng, tạo ra một không gian an toàn cho chim.' , N'Môi trường tôn trọng và không phán xét' , GETDATE(), 4.5 ),
 	( '2b72c3de10429d9be2c5b7f6fb799eb7' , 'b6b447b56dbe005a626c4b5e3fdb97be' , N'Phòng khám cung cấp hỗ trợ theo dõi toàn diện. Họ đã chủ động trong việc đảm bảo sự tiến bộ của chim và giải quyết mọi vấn đề sau điều trị.' , N'Hỗ trợ theo dõi toàn diện' , GETDATE(), 5),
@@ -1492,12 +1662,33 @@ VALUES
 	( 'd968f7543b03fafc1e2c306edbe73cd5' , 'b7ad6a62013acd21497265b6f7ff74eb' , N'Tôi đánh giá cao cách tiếp cận toàn diện của phòng khám đối với sức khỏe. Họ nhấn mạnh các biện pháp phòng ngừa, khuyến nghị về lối sống và các liệu pháp bổ sung bên cạnh các phương pháp điều trị y tế truyền thống.' , N'Phương pháp tiếp cận toàn diện đối với sức khỏe' , GETDATE(), 5 ),
 	( 'bc049c5b9cc23a7252cd02aaef7d6571' , '3427f117121dd0789b94a37ef63b64dc' , N'Phòng khám này thể hiện cam kết cải tiến liên tục. Họ tích cực tìm kiếm phản hồi từ khách hàng để nâng cao dịch vụ của họ và trải nghiệm tổng thể của khách hàng và chim.' , N'Cam kết cải tiến liên tục' , GETDATE(), 4.5),
 	( '1c693b7b7f4f3967d56242710d4a6925' , 'b7ad6137ff75b214972a6acd6206f4eb' , N'Các nhân viên điều dưỡng tại phòng khám này được đào tạo bài bản và chu đáo. Họ đã cung cấp dịch vụ chăm sóc tuyệt vời và luôn sẵn sàng giải quyết bất kỳ mối lo ngại nào.' , N'Nhân viên điều dưỡng được đào tạo bài bản' , GETDATE(), 4 ),
-	( '4b9e4136b9380ce6264eba99e7cbecaa' , 'f1174d213346307894a92d177efbb6dc' , N'Dịch vụ chăm sóc hậu phẫu của phòng khám thật đặc biệt. Các nhân viên cung cấp các hướng dẫn rõ ràng về chăm sóc sau điều trị và sẵn sàng giải đáp mọi thắc mắc hoặc lo lắng.' , N'Chăm sóc hỗ trợ sau thủ thuật' , GETDATE(), 4.5 );
+	( '4b9e4136b9380ce6264eba99e7cbecaa' , 'f1174d213346307894a92d177efbb6dc' , N'Dịch vụ chăm sóc hậu phẫu của phòng khám thật đặc biệt. Các nhân viên cung cấp các hướng dẫn rõ ràng về chăm sóc sau điều trị và sẵn sàng giải đáp mọi thắc mắc hoặc lo lắng.' , N'Chăm sóc hỗ trợ sau thủ thuật' , GETDATE(), 4.5 ),
 
+	( 'ffdd5d149613f6b608c52ed5ebf4c55c' , 'fbvwiebfewfgqiugfiwgfiyvefiyefue' , N'Phòng khám này cung cấp các dịch vụ y tế rất tốt, đầy đủ các loại dịch vụ cần thiết.' , N'Dịch vụ Y tế tốt' , GETDATE(), 4.5 ),
+	( '6hbdgdgrgffdd5d149613fd5ebf4c55c' , 'fabdskf8wg3fb87fgbq87fh87f387hf4' , N'Các nhân viên ở đây rất nhiệt tính giúp đỡ tôi.' , N'Thái độ của nhân viên' , GETDATE(), 4 ),
+	( '6by57tjuyhrtgt54y6t13fd5ebf4c55c' , 'ihsbgeyb87rwf80hwf8hf983hf837hf8' , N'Cơ sở vật chất khá tốt mặc dù còn nhiều điểm còn cần cải thiện thêm' , N'cơ sở vật chất' , GETDATE(), 3.5 ),
+	( '6b608c587u6ygrrghetgegwrwfr4c55c' , 'fiabfibvfaiwuyebfawe8fb8aa37fa77' , N'Thủ tục ở đây rất hiệu quả và nhanh chóng.' , N'thủ tục' , GETDATE(), 4.5 ),
+	( 'gsfdfsffrrrgd5d149613fd5ebf4c55c' , 'frfhbafihfioahfewaufiuwefa7fhah2' , N'Có lẻ tôi không được chào đón ở đây, bác sĩ lẫn nhân viên đều có thái độ không tốt với khách hàng.' , N'Dịch vụ Y tế tạm được' , GETDATE(), 3 ),
+	( '5g608c52effdd5dhu76tyrtg54y6htrr' , 'foijdaofhdfouha9fhewafh8hf9f983h' , N'Các bác sĩ khám bệnh cho chim rất tận tâm và tận tụy.' , N'Bác sĩ' , GETDATE(), 5 ),
+	( '6b608c52effrte7y4uh4g3g4f34rf3fc' , '8ajwijwefjao8a98a9fa9unfr9nr9238' , N'Giá dịch vụ ở đây quá đắt đỏ, thuốc thì có lẻ bình ổn hơn.' , N'Giá dịch vụ' , GETDATE(), 3 ),
+	( 'sghj65h6hdd5d14etgerefd5ebf4c55c' , '8ry98h23r923jd9h23f9b3fa8ufb8fuf' , N'Tiền thuốc có lẻ hơi cao so với các phòng khám khác.' , N'Tiền thuốc' , GETDATE(), 3.5 ),
+	( '54y6h52effdd5d14rgerwf4f43f33444' , 'fajwnfjdnfiduhfa9hf984f398334934' , N'Giá dịch vụ và thuốc không quá mắc, chất lượng tốt.' , N'giá dịch vụ, thuốc và chất lượng' , GETDATE(), 5 ),
+	( 'y65uygegrt54y6h49ergrfrwfefec55c' , '892809f2jf92n39f923fnh92hf9h9dn3' , N'Hôm nay tôi đã gặp một nhân viên không tôn trọng tôi, có lẽ anh ấy kỳ thị người đồng tính.' , N'Thái độ của nhân viên' , GETDATE(), 2 ),
+	( 't546y5uythggert35465uyhrtegt5555' , 'fafjndjfnaieufniudfnaewufha9f483' , N'Thủ tục rường rà, không thống nhất, mất thời gian nhưng lại có các bác sĩ rất tận tâm.' , N'thủ tục' , GETDATE(), 3.5 ),
+	( '798uyhgtrt5y6htgrft56yhtgrfrt5gg' , '9229jf2nfj92nf9e2fuefe2fn9en9ksn' , N'Các bác sĩ ở đây chữa bệnh rất mát tay, tay nghề rất tốt.' , N'kỹ năng bác sĩ' , GETDATE(), 4.5 ),
+	( '0987hnbrgehryjytrfsfyetgregtgtgt' , 'ffjndiojf98f98f9jffi9j39f3f94394' , N'Phòng khám này cung cấp các dịch vụ y tế tạm được, chỉ phục vụ cho các nhu cầu y tế, không có quá nhiều dịch vụ.' , N'Dịch vụ Y tế tạm được' , GETDATE(), 3 ),
+	( 'r4354675ijhgert54y65u77uyergre55' , 'smxokwmxowmsxowncuecu2cun8328444' , N'Không chỉ có các bác sĩ mà những nhân viên ở đây đều rất nhiệt tình và tận tụy.' , N'Thái độ của bác sĩ và nhân viên' , GETDATE(), 5 ),
+	( '567i8kuythngerfwt54y65ujtyhgerty' , '98r923r9j3eifn92nu9rewidjf3uf93j' , N'Bác sĩ ở đây mặc dù tay nghề giỏi nhưng thái độ không được tốt lắm.' , N'Thái độ của bác sĩ' , GETDATE(), 3 ),
+	( '9i87uyhgbrt5y6uyhgtrt5y6hfrrt56y' , 'fofijewijfew9fn9uewfnue9ue2f9ef9' , N'Bác sĩ không được nhiệt huyết cho lắm nhưng lại có kỹ năng và kiến thức tốt.' , N'Thái độ của bác sĩ' , GETDATE(), 4 ),
+	( '797uyetgsghtreu5674ey5w434wagret' , 'ff8u929fjimd2f9n9fmunr94r8fu3nfu' , N'Một phòng khám được trang bị tốt phải có các thiết bị và dụng cụ y tế cần thiết để chẩn đoán và điều trị các tình trạng bệnh lý khác nhau.' , N'Trang thiết bị y tế' , GETDATE(), 4.5 ),
+	( '9878675ytgbgetyujthyrgteyjthngte' , 'f9r2jr03imfnrviefn93uf3urfuruuur' , N'Bên ngoài phòng khám không được sạch sẽ cho lắm.' , N'phòng khám' , GETDATE(), 4 ),
+	( '987uyhngbfvert5y6u7jyhtgrfe4t5yh' , '78439i4j5tjfkide8u34j5rkfidueree' , N'Phòng khám không được sạch sẽ cho lắm, cần người quét dọn .' , N'Phòng khám' , GETDATE(), 3.5 ),
+	( '12456ujnfbfertyu8765thgbfr56yggg' , '45678ikjhgfdertyhjnbvcdftyujmnbv' , N'Nhà thuốc có đầy đủ hàng hóa là điều cần thiết để cung cấp thuốc điều trị kịp thời cho vật nuôi.' , N'Nhà thuốc' , GETDATE(), 5 );
+	
 INSERT INTO Blog (blogID, imageID, title, uploadDatetime, category, _description , blogContent)
 VALUES
 	( '36c8417c829ea8b07014eb3ca7946fb0', '6EF02AE8CD5103C4C74B8CAAF1471D90', N'Stylish and Social, Winter Waxwings Provide a Wonderful ID Challenge', GETDATE()
-	, N'how to distinguish', 
+	, N'distinguish', 
 	N'Bohemian and Cedar Waxwings look very similar and are more likely to intermingle in the colder months. Here’s how to tell them apart.',
 
 	N'<p>When you hear a chorus of high-pitched&nbsp;<em>see!</em>&nbsp;notes overhead, expect a good time: A rambunctious flock of waxwings is on its way. Highly social birds that appear to have no sense of personal space, North America&rsquo;s two waxwing species&mdash;Bohemian and Cedar&mdash;also look very similar.&nbsp;Telling these elegant birds apart makes for an excellent ID challenge.</p>
@@ -1688,7 +1879,7 @@ VALUES
 ')
 
 
-,   ('ff9086582c62af630123c568ca5db776', '882BDE1798D4D1516641A2D190D58CAC', N'Apparently Magpies and Crows Are Using "Anti-Bird Spikes" to Make Their Nests', GETDATE(), N'interesting facts about birds',
+,   ('ff9086582c62af630123c568ca5db776', '882BDE1798D4D1516641A2D190D58CAC', N'Apparently Magpies and Crows Are Using "Anti-Bird Spikes" to Make Their Nests', GETDATE(), N'interesting facts',
 	N'Birds often incorporate human-made materials while nest building, but a new study shows European corvids are taking the idea to the extreme.',
 
 	N'<p>Humans have made the world less hospitable for birds in many ways. One obvious and intentional example of this can be found in towns and cities worldwide: anti-bird spikes. The pointy wires you might see attached to roofs, ledges, and light poles are meant to deter urban species like pigeons from landing, pooping, and even nesting where people don&rsquo;t want them to. But in an avian act of poetic justice, a handful of European birds have struck back.</p>
@@ -1759,7 +1950,7 @@ For Hiemstra, while the new discoveries are fascinating and inherently humorous,
 ')
 
 
-,	( 'b1fa395c5fa8c10d20990274f0e57a85' , '2B5FD6349E04AB0C1099C266B2A62704', N'Green Herons and their Groovy Necks' , GETDATE() , N'interesting facts about birds' ,
+,	( 'b1fa395c5fa8c10d20990274f0e57a85' , '2B5FD6349E04AB0C1099C266B2A62704', N'Green Herons and their Groovy Necks' , GETDATE() , N'interesting facts' ,
 	N'Back when we used to run the 10,000 Birds ID Clinic (as opposed to just answering lots of e-mails about bird identification!), we received an inquiry about a bird “about the size of a small duck, much bigger than a jay… a crest similar to a jay or a roadrunner and it has a remarkably long neck.” The querent included many other details about location, coloration, and what not but once I heard about that neck, one bird sprung immediately to mind… Green Heron! And wouldn’t you know it, I was right.',
 
 	N'<p>The&nbsp;<strong>Green Heron</strong>&nbsp;(<em>Butorides virescens</em>) is a spectacular species familiar to anyone who pays attention to the places where water meets land. There are so many impressive aspects to this handsome heron. One could dwell on how convoluted its family tree is&hellip; the&nbsp;<em>Butorides&nbsp;</em>complex, as it&rsquo;s called, is surprisingly complex. While&nbsp;<em>Butorides</em>&nbsp;spans the globe, it is either recognized as a single species called&nbsp;<strong>Green-backed Heron</strong>&nbsp;or as three distinct species, the aforementioned New World heron&nbsp;<em>B. virescens</em>&nbsp;along with the Old World&nbsp;<strong>Striated Heron</strong>&nbsp;(<em>B. striatus</em>) and the slate-gray&nbsp;<strong>Lava Heron</strong>&nbsp;(<em>B. sundevalli</em>) of the Galapagos. In either case, green herons are silly with subspecies, which may themselves eventually be recognized as full species.</p>
@@ -1800,7 +1991,7 @@ Long</p>
 ')
 
 
-,	( 'db635b18aeddd06818d3eaee86183bab' , '5010DD042DF3EC8733B0CD78AAFD4E5C', N'Do Birds Have Penises?' , GETDATE() , N'interesting facts about birds' , 
+,	( 'db635b18aeddd06818d3eaee86183bab' , '5010DD042DF3EC8733B0CD78AAFD4E5C', N'Do Birds Have Penises?' , GETDATE() , N'interesting facts' , 
 	N'Most of us have heard the song, “Birds Do It, Bees Do It” but have you every really thought about how a bird fits tab A into slot B? Let’s look at the equipment.',
 
 	N'<p>Most birds do not have a penis. Most birds have a little lump called a cloaca. During the breeding season when hormones are flowing the cloaca swells and birds can get a cloacal protuberance.</p>
@@ -1911,7 +2102,7 @@ Looks like a Saxony hen &copy; Corey Finger</p>
 ')
 
 
-,	( '0aa6e189009d5d7cf2a981e8387fff4d' , 'B7B7A82190F83DF905868B2C1A45CC9B', N'What the Owl Knows: The New Science of the World’s Most Enigmatic Birds: A Book Review' , GETDATE() , N'interesting facts about birds' , 
+,	( '0aa6e189009d5d7cf2a981e8387fff4d' , 'B7B7A82190F83DF905868B2C1A45CC9B', N'What the Owl Knows: The New Science of the World’s Most Enigmatic Birds: A Book Review' , GETDATE() , N'interesting facts' , 
 	N'How much do you know about owls? This is not a rhetorical question, think about it. I have been fortunate to come across many owls in my birding life, sometimes because I was looking for them, sometimes happily by chance. I''ve observed nesting owls, baby owls, owls eating small rodents, owls coughing up their pellets, a Great Horned Owl flying silently past me, a large Gray Owl sitting still on a pole as a boy approaches, a pair of Owls barking duet in the early evening outside my northern Australian hut as I brush my teeth.
 ',
 
@@ -1993,7 +2184,7 @@ Looks like a Saxony hen &copy; Corey Finger</p>
 
 
 
-,	( '0251849dac885e1123e573388a937b6d' , '64947A9C9DDEBF65E48B683464B7FBC3', N'Migration of birds' , GETDATE() , N'interesting facts about birds' , 
+,	( '0251849dac885e1123e573388a937b6d' , '64947A9C9DDEBF65E48B683464B7FBC3', N'Migration of birds' , GETDATE() , N'interesting facts' , 
 	N'Over the summer months, migration is almost at a standstill – at this time of year, breeding is the main focus with parent birds busily raising their offspring.',
 
 	N'<h3>Cuckoos</h3>
@@ -2099,7 +2290,7 @@ Looks like a Saxony hen &copy; Corey Finger</p>
 
 
 
-	( 'b17fbe0d73b2ebacedfb6ac1b284767c' , 'DEE0822E0D723293B16ABCFE332C8C51', N'Bird care guide' , GETDATE() , N'how to take care bird' , 
+	( 'b17fbe0d73b2ebacedfb6ac1b284767c' , 'DEE0822E0D723293B16ABCFE332C8C51', N'Bird care guide' , GETDATE() , N'take care of bird' , 
 	N'Owning a bird will be one of the most enjoyable and rewarding things you will ever do. To enjoy all the benefits of owning a bird, it is vital you take these steps to ensure they stay healthy and happy.',
 	N'<h2>HOUSING</h2>
 
@@ -2151,7 +2342,7 @@ Looks like a Saxony hen &copy; Corey Finger</p>
 ')
 
 
-,	( 'adc8a1de829b5aca8cd6f8a94b4dbf0d' , '15F5C2BCEC0BC8554F7F105AA6528C51', N'HOW TO TO TAKE CARE OF A BIRD: PET BIRD CARE TIPS' , GETDATE() , N'how to take care bird' , 
+,	( 'adc8a1de829b5aca8cd6f8a94b4dbf0d' , '15F5C2BCEC0BC8554F7F105AA6528C51', N'HOW TO TO TAKE CARE OF A BIRD: PET BIRD CARE TIPS' , GETDATE() , N'take care of bird' , 
 	N'Found your dream house sit but wondering whether bird sitting is too much of a… birden? Or maybe you’re a future pet parent, waiting in the wings for an impeckable match to fly your way. Either way, it’s vital you know how to take care of a bird properly, starting with the basics. So here, let’s eggsplore some top tips on general pet bird care to get your feathered journey flying high.',
 
 	N'<h2>Get the right bird cage</h2>
@@ -2206,7 +2397,7 @@ Looks like a Saxony hen &copy; Corey Finger</p>
 ')
 
 
-,	( '48981d702b321f55a52652da71155e67' , '7A07BA85FEBCA8A149A01893F84A2AB8', N'Lessons from a mayfly' , GETDATE() , N'interesting facts about birds' , 
+,	( '48981d702b321f55a52652da71155e67' , '7A07BA85FEBCA8A149A01893F84A2AB8', N'Lessons from a mayfly' , GETDATE() , N'interesting facts' , 
 	N'Recently I attended the Aldo Leopold Chapter of Trout Unlimited fundraiser. This chapter''s leadership was essential in enabling Groundswell Conservancy to purchase 40 acres on Dell Creek in Sauk County. The Dell Creek watershed has the chance to become a stronghold for wild brook trout and much of the 40 acres is excellent bird habitat in the form of healthy oak woods.',
 
 	N'<p>TU fundraisers, like those for many hunting and fishing organizations, consist of auctions and raffles, with a favorite being the bucket raffle.&nbsp;Lots of buckets paired with great prizes; attendees choose the prizes they want to win by putting their tickets in the appropriate buckets.</p>
@@ -2320,7 +2511,7 @@ Looks like a Saxony hen &copy; Corey Finger</p>
 ')
 
 
-,	( '553acd22fd496a02446c6258b3ba027e' , '530A0ABFDEDF30ECFBE3E6618FB2CF48', N'How To Choose The Right Kind Of Bird Feeder' , GETDATE() , N'how to take care bird' , 
+,	( '553acd22fd496a02446c6258b3ba027e' , '530A0ABFDEDF30ECFBE3E6618FB2CF48', N'How To Choose The Right Kind Of Bird Feeder' , GETDATE() , N'take care of bird' , 
 	N'The ideal bird feeder is sturdy enough to withstand winter weather and squirrels, tight enough to keep seeds dry, easy to assemble and, most important of all, easy to keep clean.',
 
 	N'<h3>Tray Or Platform Feeders</h3>
@@ -2365,7 +2556,7 @@ Looks like a Saxony hen &copy; Corey Finger</p>
 
 <p>When adding new seed to tube feeders, always empty the old seed out first.</p>
 ')
-,	( 'd6d001e31f4065bbe402bc2eac44ca22' , 'F0757015A9AF8FD8C5E01EC4C4C82D3D', N'' , GETDATE() , N'' , 
+,	( 'd6d001e31f4065bbe402bc2eac44ca22' , 'F0757015A9AF8FD8C5E01EC4C4C82D3D', N'How To Choose The Right Kind Of Bird Feeder' , GETDATE() , N'take care of bird' , 
 	N'The ideal bird feeder is sturdy enough to withstand winter weather and squirrels, tight enough to keep seeds dry, easy to assemble and, most important of all, easy to keep clean.<br>
 
 To attract the greatest variety of birds to your yard, provide several different feeder types offering a variety of foods. You’ll find that some species are more likely to use one kind of feeder over another.',
@@ -2415,8 +2606,6 @@ To attract the greatest variety of birds to your yard, provide several different
 
 
 
-
-	
 
 	
 
