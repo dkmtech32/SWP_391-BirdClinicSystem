@@ -414,7 +414,8 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
             Date date = Date.valueOf(appDate);
             long milliseconds = date.getTime() + timeslot.getTimeSlot().getTime();
             app.setAppTime(new Date(milliseconds));
-
+            app.setAppStatus("confirm");
+            
             result = appointmentDAO.insertAppointment(app) > 0;
         } catch (NoSuchRecordExists ex) {
             //impossible unless account/timeslot/service doesn't exist in db -> SQLException

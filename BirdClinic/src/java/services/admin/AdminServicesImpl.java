@@ -211,7 +211,7 @@ public class AdminServicesImpl extends GeneralServicesImpl implements AdminServi
 
         try {
             String doctorID = args.get("doctorID")[0];
-            String[] timeslots = args.get("timeslots");
+            String[] timeslots = args.get("timeslotID");
 
             doctorTimeslotDAO.dropDoctor(doctorID);
             doctorTimeslotDAO.insertMultipleDoctorTimeslots(doctorID, timeslots);

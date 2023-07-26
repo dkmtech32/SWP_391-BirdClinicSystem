@@ -44,9 +44,9 @@ public class AdminDoctorsUpdateTimeslotServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         AdminServices service = (AdminServices) session.getAttribute("service");
-        String doctorID = request.getParameter("doctorID");
+        String doctorID = request.getParameter("userID");
 
-        String url = "/View/Doctor?doctorID=" + doctorID;
+        String url = "/View/Doctor?userID=" + doctorID;
 
         try {
 
@@ -69,15 +69,13 @@ public class AdminDoctorsUpdateTimeslotServlet extends HttpServlet {
             }
             request.setAttribute("timeslots", timeslotBusy);
 
-            url = "/Customer/bookingDatetime.jsp";
+            url = "/Admin/update-doctor-timeslot.jsp";
         } catch (SQLException ex) {
             ex.printStackTrace();
-            url = "/Customer/booking-list.jsp";
         } catch (AccountDoesNotExistException ex) {
 
             ex.printStackTrace();
             request.setAttribute("error-message", ex.toString());
-            url = "/Customer/booking-list.jsp";
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
@@ -97,7 +95,7 @@ public class AdminDoctorsUpdateTimeslotServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         String doctorID = request.getParameter("doctorID");
-        String url = "/View/Doctor?doctorID=" + doctorID;
+        String url = "/View/Doctor?userID=" + doctorID;
         try {
             AdminServices admin = (AdminServices) session.getAttribute("service");
             Map<String, String[]> args = request.getParameterMap();
