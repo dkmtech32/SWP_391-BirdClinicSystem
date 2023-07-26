@@ -71,7 +71,7 @@ public class TimeslotDTOImpl implements TimeslotDTO {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 83 * hash + Objects.hashCode(this.timeSlotID);
+        hash = 59 * hash + Objects.hashCode(this.timeSlotID);
         return hash;
     }
 

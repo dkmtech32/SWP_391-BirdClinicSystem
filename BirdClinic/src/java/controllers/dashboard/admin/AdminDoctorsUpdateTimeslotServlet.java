@@ -45,6 +45,7 @@ public class AdminDoctorsUpdateTimeslotServlet extends HttpServlet {
         HttpSession session = request.getSession();
         AdminServices service = (AdminServices) session.getAttribute("service");
         String doctorID = request.getParameter("doctorID");
+
         String url = "/View/Doctor?doctorID=" + doctorID;
 
         try {
