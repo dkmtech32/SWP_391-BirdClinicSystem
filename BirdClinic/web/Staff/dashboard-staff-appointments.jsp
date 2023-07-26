@@ -29,6 +29,8 @@
                                 <option value="check-in" <c:if test="${param.filter.equals('check-in')}">selected</c:if>>Checked-in</option>
                                 <option value="cancelled" <c:if test="${param.filter.equals('cancelled')}">selected</c:if>>Canceled</option>
                                 <option value="complete" <c:if test="${param.filter.equals('complete')}">selected</c:if>>Completed</option>
+                                <option value="prescribed" <c:if test="${param.filter.equals('prescribed')}">selected</c:if>>Prescribed</option>
+
                                 </select>
                             </form>
                         </li>
@@ -89,6 +91,9 @@
                                                         </c:when>
                                                         <c:when test="${appointment.appStatus =='cancelled'}">
                                                             <td><span class="badge badge-pill bg-danger-light">Canceled</span></td>
+                                                        </c:when>
+                                                        <c:when test="${appointment.appStatus =='prescribed'}">
+                                                            <td><span class="badge badge-pill bg-danger-light">Prescribed</span></td>
                                                         </c:when>
                                                     </c:choose>
 

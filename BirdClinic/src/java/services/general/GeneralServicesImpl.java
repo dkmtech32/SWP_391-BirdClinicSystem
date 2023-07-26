@@ -678,7 +678,7 @@ public class GeneralServicesImpl implements GeneralServices {
 
         return blog;
     }
-    
+
     @Override
     public List<AppointmentDTO> getAppointmentsByFilter(String filter)
             throws SQLException {
@@ -699,7 +699,9 @@ public class GeneralServicesImpl implements GeneralServices {
         } catch (NoSuchRecordExists ex) {
             result = null;
         }
-        Collections.sort(result);
+        if (result != null) {
+            Collections.sort(result);
+        }
         return result;
     }
 
