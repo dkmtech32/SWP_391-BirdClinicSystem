@@ -6,6 +6,7 @@
 package models.timeslot;
 
 import java.sql.Time;
+import java.util.Objects;
 
 /**
  *
@@ -66,4 +67,31 @@ public class TimeslotDTOImpl implements TimeslotDTO {
         
         return this.getTimeSlot().compareTo(obj.getTimeSlot());
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 59 * hash + Objects.hashCode(this.timeSlotID);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TimeslotDTOImpl other = (TimeslotDTOImpl) obj;
+        if (!Objects.equals(this.timeSlot, other.timeSlot)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }

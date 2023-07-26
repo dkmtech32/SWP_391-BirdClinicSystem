@@ -40,7 +40,7 @@ public class AdminDoctorsUpdateTimeslotServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         AdminServices admin = (AdminServices) session.getAttribute("service");
-        String doctorID = request.getParameter("doctorID");
+        String doctorID = request.getParameter("userID");
         String url = "/View/Doctor?doctorID=" + doctorID;
         
         String[] weekdays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
