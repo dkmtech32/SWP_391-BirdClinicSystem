@@ -5,6 +5,7 @@
  */
 package models.appointment;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +29,10 @@ public class AppointmentDTOImpl implements AppointmentDTO {
     private String notes;
     private String payment;
     private String appStatus;
+    private BigDecimal totalPrice;
 
     public AppointmentDTOImpl() {
+        totalPrice = BigDecimal.ZERO;
     }
 
     @Override
@@ -135,6 +138,16 @@ public class AppointmentDTOImpl implements AppointmentDTO {
         this.appStatus = appStatus;
     }
 
+    @Override
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
+    }
+
+    @Override
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+    
     @Override
     public int compareTo(Object o) {
         int result = 0;

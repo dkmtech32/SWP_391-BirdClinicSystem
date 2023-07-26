@@ -30,7 +30,7 @@
                         <div class="card bg-white rounded shadow overflow-hidden mt-4 border-0">
                             <div class="p-5 bg-primary bg-gradient"></div>
                             <div class="avatar-profile d-flex margin-nagative mt-n5 position-relative ps-3">
-                                <img src="<c:url value="/images/doctors/${doctor.image.imageURLName}"/>" class="rounded-circle shadow-md avatar avatar-medium" alt />
+                                <img src="<c:url value="/images/doctors/${doctor.image.imageURLName}"/>" class="rounded-circle shadow-md avatar avatar-medium" alt style="margin-left: 1rem; margin-right: 0.8rem;"/>
                                 <div class="mt-4 ms-3 pt-3">
                                     <h5 class="mt-3 mb-1">${doctor.fullName}</h5> 
                                     <p class="text-muted mb-0">Doctor</p>

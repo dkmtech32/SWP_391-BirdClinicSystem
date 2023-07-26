@@ -6,6 +6,7 @@
 package models.service_;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 import models.speciality.SpecialityDTO;
 
 /**
@@ -66,6 +67,31 @@ public class Service_DTOImpl implements Service_DTO {
     @Override
     public void setServicePrice(BigDecimal servicePrice) {
         this.servicePrice = servicePrice;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.serviceID);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Service_DTOImpl other = (Service_DTOImpl) obj;
+        if (!Objects.equals(this.serviceID, other.serviceID)) {
+            return false;
+        }
+        return true;
     }
     
     

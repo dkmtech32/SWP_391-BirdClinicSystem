@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+
     <context-param>
-        <param-name>PATH</param-name>
-        <param-value>D:\Courses\sem5\SWP_391-BirdClinicSystem-Anh-Minh\BirdClinic\web\assets\images</param-value>
-    </context-param>
-    <context-param>
-        <param-name>EMAIL-NAME</param-name>
-        <param-value>amonk041103@gmail.com</param-value>
-    </context-param>
-    <context-param>
-        <param-name>EMAIL-PASSWORD</param-name>
-        <param-value>anhmonkdv041103</param-value>
-    </context-param>
-<!--    <context-param>
         <param-name>PATH</param-name>
         <param-value>D:\work\FPT\2023_Summer\SWP391\BirdClinic\BirdClinic\web\assets\images</param-value>
-    </context-param>-->
+    </context-param>
     <filter>
         <filter-name>AuthenticationFilter</filter-name>
         <filter-class>controllers.filters.AuthenticationFilter</filter-class>
@@ -120,7 +109,7 @@
         <servlet-name>UpdateProfileServlet</servlet-name>
         <servlet-class>controllers.dashboard.UpdateProfileServlet</servlet-class>
         <multipart-config>
-            <location>\\D:\\Courses\\sem5\\SWP_391-BirdClinicSystem-Anh-Minh\\BirdClinic\\web\\assets\\images\\</location>
+            <location>\\D:\\work\\FPT\\2023_Summer\\SWP391\\BirdClinic\\BirdClinic\\web\\assets\\images\\</location>
             <max-file-size>20848820</max-file-size>
             <max-request-size>418018841</max-request-size>
             <file-size-threshold>1048576</file-size-threshold>
@@ -138,7 +127,7 @@
         <servlet-name>CustomerDashboardUpdateBirdServlet</servlet-name>
         <servlet-class>controllers.dashboard.customer.CustomerDashboardUpdateBirdServlet</servlet-class>
         <multipart-config>
-            <location>\\D:\\Courses\\sem5\\SWP_391-BirdClinicSystem-Anh-Minh\\BirdClinic\\web\\assets\\images\\</location>
+            <location>\\D:\\work\\FPT\\2023_Summer\\SWP391\\BirdClinic\\BirdClinic\\web\\assets\\images\\</location>
             <max-file-size>20848820</max-file-size>
             <max-request-size>418018841</max-request-size>
             <file-size-threshold>1048576</file-size-threshold>
@@ -148,7 +137,7 @@
         <servlet-name>CustomerDashboardInsertBirdServlet</servlet-name>
         <servlet-class>controllers.dashboard.customer.CustomerDashboardInsertBirdServlet</servlet-class>
         <multipart-config>
-            <location>\\D:\\Courses\\sem5\\SWP_391-BirdClinicSystem-Anh-Minh\\BirdClinic\\web\\assets\\images\\</location>
+            <location>\\D:\\work\\FPT\\2023_Summer\\SWP391\\BirdClinic\\BirdClinic\\web\\assets\\images\\</location>
             <max-file-size>20848820</max-file-size>
             <max-request-size>418018841</max-request-size>
             <file-size-threshold>1048576</file-size-threshold>
@@ -202,7 +191,7 @@
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>controllers.account.RegisterServlet</servlet-class>
         <multipart-config>
-            <location>\\D:\\Courses\\sem5\\SWP_391-BirdClinicSystem-Anh-Minh\\BirdClinic\\web\\assets\\images\\</location>
+            <location>\\D:\\work\\FPT\\2023_Summer\\SWP391\\BirdClinic\\BirdClinic\\web\\assets\\images\\</location>
             <max-file-size>20848820</max-file-size>
             <max-request-size>418018841</max-request-size>
             <file-size-threshold>1048576</file-size-threshold>
@@ -224,7 +213,7 @@
         <servlet-name>UpdateBlogServlet</servlet-name>
         <servlet-class>controllers.blog.UpdateBlogServlet</servlet-class>
         <multipart-config>
-            <location>\\D:\\Courses\\sem5\\SWP_391-BirdClinicSystem-Anh-Minh\\BirdClinic\\web\\assets\\images\\</location>
+            <location>\\D:\\work\\FPT\\2023_Summer\\SWP391\\BirdClinic\\BirdClinic\\web\\assets\\images\\</location>
             <max-file-size>20848820</max-file-size>
             <max-request-size>418018841</max-request-size>
             <file-size-threshold>1048576</file-size-threshold>
@@ -234,7 +223,7 @@
         <servlet-name>WriteBlogServlet</servlet-name>
         <servlet-class>controllers.blog.WriteBlogServlet</servlet-class>
         <multipart-config>
-            <location>\\D:\\Courses\\sem5\\SWP_391-BirdClinicSystem-Anh-Minh\\BirdClinic\\web\\assets\\images\\</location>
+            <location>\\D:\\work\\FPT\\2023_Summer\\SWP391\\BirdClinic\\BirdClinic\\web\\assets\\images\\</location>
             <max-file-size>20848820</max-file-size>
             <max-request-size>418018841</max-request-size>
             <file-size-threshold>1048576</file-size-threshold>
@@ -252,7 +241,7 @@
         <servlet-name>AdminAccountsCreateServlet</servlet-name>
         <servlet-class>controllers.dashboard.admin.AdminAccountsCreateServlet</servlet-class>
         <multipart-config>
-            <location>\\D:\\Courses\\sem5\\SWP_391-BirdClinicSystem-Anh-Minh\\BirdClinic\\web\\assets\\images\\</location>
+            <location>\\D:\\work\\FPT\\2023_Summer\\SWP391\\BirdClinic\\BirdClinic\\web\\assets\\images\\</location>
             <max-file-size>20848820</max-file-size>
             <max-request-size>418018841</max-request-size>
             <file-size-threshold>1048576</file-size-threshold>
@@ -277,6 +266,10 @@
     <servlet>
         <servlet-name>StaffDashboardServicesDeleteServlet</servlet-name>
         <servlet-class>controllers.dashboard.staff.StaffDashboardServicesDeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PrepareReexaminationDatetimeServlet</servlet-name>
+        <servlet-class>controllers.booking.PrepareReexaminationDatetimeServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -449,6 +442,10 @@
     <servlet-mapping>
         <servlet-name>StaffDashboardServicesDeleteServlet</servlet-name>
         <url-pattern>/Staff/Dashboard/Services/Delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PrepareReexaminationDatetimeServlet</servlet-name>
+        <url-pattern>/Staff/prepareDatetime</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

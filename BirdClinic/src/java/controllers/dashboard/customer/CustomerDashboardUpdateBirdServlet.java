@@ -73,7 +73,7 @@ public class CustomerDashboardUpdateBirdServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "/Customer/update-bird.jsp";
+        String url = "/Dashboard/Birds/update";
         HttpSession session = request.getSession();
         CustomerServices service = (CustomerServices) session.getAttribute("service");
         Map<String, String[]> params = request.getParameterMap();
@@ -88,6 +88,7 @@ public class CustomerDashboardUpdateBirdServlet extends HttpServlet {
                 args.put("path", new String[]{path + "\\bird\\"});
             }
             service.updateBird(args, birdIS);
+            url = "/Dashboard/Birds";
         } catch (BirdDoesNotExistException ex) {
             ex.printStackTrace();
             request.setAttribute("error-message", "Bird does not exist. Please try again.");
@@ -95,8 +96,7 @@ public class CustomerDashboardUpdateBirdServlet extends HttpServlet {
             ex.printStackTrace();
             request.setAttribute("error-message", "Something went wrong. Please try again.");
         } finally {
-            request.setAttribute("url", url);
-            request.getRequestDispatcher("/Common/dashboard.jsp").forward(request, response);
+            response.sendRedirect(request.getContextPath() + url);
         }
     }
 
