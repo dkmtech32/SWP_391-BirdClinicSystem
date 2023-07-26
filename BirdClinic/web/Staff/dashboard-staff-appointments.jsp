@@ -140,25 +140,21 @@
 
                                                             </c:if>
                                                             <c:if test="${appointment.appStatus.equals('confirm')}">
-                                                                <a href="<c:url value="/Dashboard/Appointments/updateApp?appointmentID=${appointment.appointmentID}&action=update&filter=check-in"/>" class="btn btn-sm bg-warning-light"> <i class="fa fa-check"></i> Check-in </a>
+                                                                <form class="btn" action="<c:url value="/Dashboard/Appointments/updateApp"/>" name="docForm" method="get">
+                                                                    <input type="hidden" id="hidden${appointment.appointmentID}" name="doctorID" <c:if test="${not empty appointment.doctor}"> value="${appointment.doctor.userID}"</c:if> required>
+                                                                        <input type="hidden"  name="action" value="update">
+                                                                        <input type="hidden"  name="filter" value="check-in">
+                                                                        <input type="hidden" class="appID" name="appointmentID" value="${appointment.appointmentID}">
+                                                                    <button class=" btn btn-sm bg-warning-light" type="submit">
+                                                                        <i class="fa fa-check"></i>
+                                                                         Check-in
+                                                                    </button>
+                                                                </form>
+                                               <%--                 <a href="<c:url value="/Dashboard/Appointments/updateApp?appointmentID=${appointment.appointmentID}&action=update&filter=check-in"/>" class="btn btn-sm bg-warning-light"> <i class="fa fa-check"></i> Check-in </a>--%>
                                                             </c:if>
                                                         </div>
                                                     </td>
-                                                    <%--      <c:if test="${param.filter.equals('check-in')}">
-                                                              <td>
-                                                                  <select style="width:200px; max-width: 200px; white-space: nowrap;
-                                                                          overflow: hidden;" id="${appointment.payment}" class="form-select" name="payment" onchange="changePaymentSelection(this)" required>
-                                                                      <option value="">--</option>
-                                                                      <option value="cash">Cash</option>
-                                                                      <option value="banking account">Banking</option>
-                                                                      <option value="credit card">Credit Card</option>
-                                                                  </select>  
-                                                              </td>
-                                                          </c:if> --%>
-
-                                                    <%--              <td  class="text-right">
-                                                                      <button class="btn btn-sm btn-info" onclick="showServiceAndDoctorInfo('${appointment.service_.serviceName}', '${appointment.doctor.fullName}')">View Info</button>
-                                                                  </td>--%>
+                                                   
                                                 </tr>
                                             </c:forEach>
                                         </tbody>

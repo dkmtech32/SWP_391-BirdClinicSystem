@@ -50,10 +50,10 @@
                                                     <tr>
                                                         <td>
                                                             <h2 class="table-avatar">
-                                                                <a href="doctor-profile.jsp" class="avatar avatar-sm mr-2">
+                                                                <a href="<c:url value="/View/Customer?userID=${appointment.bird.customer.userID}"/>" class="avatar avatar-sm mr-2">
                                                                     <img class="avatar-img rounded-circle" src="<c:url value="/images/customer/${appointment.bird.customer.image.imageURLName}"/>" alt="User Image" />
                                                                 </a>
-                                                                <a href="doctor-profile.jsp">${appointment.bird.customer.fullName} </a> 
+                                                                <a href="<c:url value="/View/Customer?userID=${appointment.bird.customer.userID}"/>">${appointment.bird.customer.fullName} </a> 
                                                             </h2>
                                                         </td>
                                                         <td>${appointment.appTime}<span class="d-block text-info">${appointment.timeslot.timeSlot}</span></td>
