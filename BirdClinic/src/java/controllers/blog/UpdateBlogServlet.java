@@ -73,7 +73,7 @@ public class UpdateBlogServlet extends HttpServlet {
         Part userImage = request.getPart("blog-image");
         String path = request.getServletContext().getInitParameter("PATH");
         InputStream blogIS = null;
-        String blogID = "";
+        String blogID = request.getParameter("blogID");
 
         try {
             if (userImage != null && userImage.getSize()>0L) {

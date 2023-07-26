@@ -48,8 +48,6 @@ public class PrepareReexaminationDatetimeServlet extends HttpServlet {
         
         try {
 
-            request.setAttribute("doctor", service.getDoctorInfo(doctorID));
-
             String[] weekdays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
             request.setAttribute("weekdays", weekdays);
 
