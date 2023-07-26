@@ -258,23 +258,24 @@ public class DoctorTimeslotDAOImpl implements DoctorTimeslotDAO {
             while (rs.next()) {
                 timeslotIDs.add(rs.getString("timeSlotID"));
             }
+            timeslotsByWeekday = new ArrayList<>();
+            List<TimeslotDTO> timeslots = timeslotDAO.readListOfTimeslot(timeslotIDs);
+            List<String> weekdays = timeslotDAO.readWeekdays();
 
-            if (!timeslotIDs.isEmpty()) {
-                List<TimeslotDTO> timeslots = timeslotDAO.readListOfTimeslot(timeslotIDs);
-                List<String> weekdays = timeslotDAO.readWeekdays();
-                timeslotsByWeekday = new ArrayList<>();
-                for (int i = 0; i < 7; i++) {
-                    timeslotsByWeekday.add(new ArrayList<>());
-                }
+            for (int i = 0; i < 7; i++) {
+                timeslotsByWeekday.add(new ArrayList<>());
+            }
 
+            if (timeslots != null) {
                 for (TimeslotDTO timeslot : timeslots) {
                     timeslotsByWeekday.get(weekdays.indexOf(timeslot.getDay_())).add(timeslot);
                 }
+            }
 
-                for (int i = 0; i < 7; i++) {
-                    Collections.sort(timeslotsByWeekday.get(i));
-                }
-            } 
+            for (int i = 0; i < 7; i++) {
+                Collections.sort(timeslotsByWeekday.get(i));
+            }
+
         } finally {
             if (rs != null) {
                 rs.close();
