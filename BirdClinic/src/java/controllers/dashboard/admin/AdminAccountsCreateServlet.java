@@ -79,13 +79,13 @@ public class AdminAccountsCreateServlet extends HttpServlet {
             }
             switch (role) {
                 case "doctor":
-                    args.put("path", new String[]{path + "\\doctor\\"});
+                    args.put("path", new String[]{path + "\\doctors\\"});
                     admin.createDoctor(args, userIS);
                     break;
                 case "admin":
                 case "staff":
                     args.put("path", new String[]{path + "\\staff_admin\\"});
-                    admin.createDoctor(args, userIS);
+                    admin.createStaffAdmin(args, userIS);
                     break;
             }
             url = "/Admin/Accounts";
