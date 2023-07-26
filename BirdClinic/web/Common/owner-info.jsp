@@ -62,19 +62,48 @@
                     <c:if test="${sessionScope.service.currentUser.userRole=='staff' && appointment.appStatus=='complete'}">
                         <form class="row" style="justify-content: center;">
                             <label>Re-examination</label>
-                            <select name="serviceID">
+                            <select name="serviceID" id="serviceSelect">
                                 <option value="">-</option>
                                 <c:forEach var="service" items="${services}">
-                                    <option value="${service.serviceID}">${service.serviceName}</option>
+                                    <option value="${service.serviceID}" id="${service.speciality.specialityID}">${service.serviceName}</option>
                                 </c:forEach>
                             </select>
-                            <select name="doctorID">
-                               <c:forEach var="doc" items="${doctors}">
-                                    <option value="">-</option>
+                            <select name="doctorID" id="doctorSelect" >
+                                <option value="" style="display: none">-</option>
+                                <c:forEach var="doc" items="${doctors}">
+                                    <option style="display: none" value="${doc.userID}" data-specialityid="${doc.speciality.specialityID}">${doc.fullName}</option>
                                 </c:forEach>
                             </select>
-                            <button class="btn btn-primary" type="submit" >Retake</button>
+                            <input name="appID" style="display: none" value="${appointment.appID}"/>
+                            <button class="btn btn-primary" type="submit">Retake</button>
                         </form>
+                        <script>
+                            const serviceSelect = document.getElementById('serviceSelect');
+                            const doctorSelect = document.getElementById('doctorSelect');
+                            const allDoctors = Array.from(doctorSelect.options);
+
+                            serviceSelect.addEventListener('change', (event) => {
+                                const selectedSpecialityID = event.target.selectedOptions[0].id;
+                                if (!selectedSpecialityID) {
+                                    // If no service is selected, disable the doctor select element
+                                    doctorSelect.disabled = true;
+                                    // Reset doctor selection to the default option
+                                    doctorSelect.value = '';
+                                } else {
+                                    // Enable the doctor select element
+                                    doctorSelect.disabled = false;
+                                    // Filter doctors based on the selected service's specialityID
+                                    allDoctors.forEach(option => {
+                                        const doctorSpecialityID = option.getAttribute('data-specialityid');
+                                        if (doctorSpecialityID === selectedSpecialityID) {
+                                            option.style.display = 'block';
+                                        } else {
+                                            option.style.display = 'none';
+                                        }
+                                    });
+                                }
+                            });
+                        </script>
                     </c:if>
                 </div>
             </div>
