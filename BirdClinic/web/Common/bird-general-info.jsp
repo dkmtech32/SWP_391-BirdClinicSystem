@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <div class="col-md-6 col-lg-5 col-xl-4" >
+        <div class="col-md-6 col-lg-5 col-xl-5" >
             <div class="card">
                 <div class="card-body">
                     <div class="row bird-info">
