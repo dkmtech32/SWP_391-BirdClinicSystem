@@ -70,60 +70,60 @@
 
                                         <div class="tab-content mt-2" id="pills-tabContent">											
                                             <div class="tab-pane fade show active" id="pills-timetable" aria-labelledby="timetable-tab">
-                                                    <div class="card booking-schedule schedule-widget" style="width: 82rem">
-                                                        <!-- Schedule Header -->
-                                                        <div class="schedule-header">
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <!-- Day Slot -->
-                                                                    <div class="day-slot">
-                                                                        <ul>
-                                                                            <c:forEach var="day" varStatus="index" items="${weekdays}">
-                                                                                <li>
-                                                                                    <span>${day}</span>
-                                                                                </li>
-                                                                            </c:forEach>
-                                                                        </ul>
-                                                                    </div>
-                                                                    <!-- /Day Slot -->
+                                                <div class="card booking-schedule schedule-widget" style="width: 82rem">
+                                                    <!-- Schedule Header -->
+                                                    <div class="schedule-header">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <!-- Day Slot -->
+                                                                <div class="day-slot">
+                                                                    <ul>
+                                                                        <c:forEach var="day" varStatus="index" items="${weekdays}">
+                                                                            <li>
+                                                                                <span>${day}</span>
+                                                                            </li>
+                                                                        </c:forEach>
+                                                                    </ul>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /Schedule Header -->
-
-                                                        <div class="schedule-cont">
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <!-- Time Slot -->
-                                                                    <div class="time-slot">
-                                                                        <form action="<c:url value="/Admin/Doctors/Update/Timeslot"/>" method="post">
-                                                                            <ul class="clearfix">
-                                                                                <c:forEach var="timeslotList" items="${timeslots}" varStatus="index">
-                                                                                    <li>
-                                                                                        <c:forEach var="timeslotMap" items="${timeslotList}" varStatus="count">
-                                                                                            <c:forEach var="entry" items="${timeslotMap}">
-                                                                                                <c:set var="timeslot" value="${entry.key}" />
-                                                                                                <label class="timing">
-                                                                                                    <input type="checkbox" name="timeslotID" value="${timeslot.timeSlotID}" />
-                                                                                                    <span>${timeslot.timeSlot}</span>
-                                                                                                </label>
-                                                                                            </c:forEach>
-                                                                                        </c:forEach>
-                                                                                    </li>
-                                                                                </c:forEach>
-                                                                            </ul>
-                                                                            <div class="col-sm-12" style="margin-top: 1rem;">
-                                                                                <input style="display: none" value="${doctor.userID}" name="doctorID" />
-                                                                                <input type="submit" class="rounded btn btn-primary" value="Save" />
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-                                                                    <!-- /Time Slot -->
-                                                                </div>
+                                                                <!-- /Day Slot -->
                                                             </div>
                                                         </div>
                                                     </div>
-                                                   
+                                                    <!-- /Schedule Header -->
+
+                                                    <div class="schedule-cont">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <!-- Time Slot -->
+                                                                <div class="time-slot">
+                                                                    <form action="<c:url value="/Admin/Doctors/Update/Timeslot"/>" method="post">
+                                                                        <ul class="clearfix">
+                                                                            <c:forEach var="timeslotList" items="${timeslots}" varStatus="index">
+                                                                                <li>
+                                                                                    <c:forEach var="timeslotMap" items="${timeslotList}" varStatus="count">
+                                                                                        <c:forEach var="entry" items="${timeslotMap}">
+                                                                                            <c:set var="timeslot" value="${entry.key}" />
+                                                                                            <label class="timing">
+                                                                                                <input type="checkbox" name="timeslotID"   value="${timeslot.timeSlotID}" />
+                                                                                                <span>${timeslot.timeSlot}</span>
+                                                                                            </label>
+                                                                                        </c:forEach>
+                                                                                    </c:forEach>
+                                                                                </li>
+                                                                            </c:forEach>
+                                                                        </ul>
+                                                                        <div class="col-sm-12" style="margin-top: 1rem;">
+                                                                            <input style="display: none" value="${doctor.userID}" name="doctorID" />
+                                                                            <input type="submit" class="rounded btn btn-primary" value="Save" />
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                                <!-- /Time Slot -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <!--end row-->
                                             </div>
                                             <!--end teb pane-->
@@ -169,13 +169,19 @@
         </div>
         <!-- page-wrapper -->
         <script>
-            var timingElements = document.getElementsByClassName("timing");
-            for (var i = 0; i < timingElements.length; i++) {
-                timingElements[i].addEventListener("click", function () {
-                    this.classList.toggle("selected");
-                });
+            // Function to handle the checkbox change event
+            function handleCheckboxChange(event) {
+                var timingElement = event.target.parentElement; // Parent of the checkbox (label with class "timing")
+                timingElement.classList.toggle("selected");
             }
+
+            // Attach event listeners to the checkboxes
+            var timingElements = document.querySelectorAll("input[type='checkbox']");
+            timingElements.forEach(function (checkbox) {
+                checkbox.addEventListener("change", handleCheckboxChange);
+            });
         </script>
+
         <!-- Script -->
         <jsp:include page="../Admin/script-admin.jsp"/>
         <!-- /Script -->
