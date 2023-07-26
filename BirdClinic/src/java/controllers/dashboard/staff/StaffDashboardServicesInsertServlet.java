@@ -58,7 +58,7 @@ public class StaffDashboardServicesInsertServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        String url = "/Dashboard/Services";
+        String url = "/Dashboard/Service";
         Map<String, String[]> args = request.getParameterMap();
 
         try {
