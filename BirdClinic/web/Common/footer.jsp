@@ -17,9 +17,11 @@
                 <div class="col-lg-3 col-md-6">
                     <!-- Footer Widget -->
                     <div class="footer-widget footer-about">
-                        <div class="footer-logo">
-                            <img src="<c:url value='/assets/img/logo.png'/>" alt="logo" />
-                        </div>
+                        <a href="#" class="footer-logo">
+                            <h1 className='mb-2'>
+                                <span class="text-primary">Bird</span><span class="text-white">Lover</span>
+                            </h1>
+                        </a>
                         <div class="footer-about-content">
                             <p>BirdLove Veterinary Clinic | Trusted Pet Hospital in HCMC Providing the Best Veterinary 
                                 Services and Top-notch Veterinary Team, a Reliable Place for Pet Check-ups and Treatment.</p>
@@ -46,8 +48,8 @@
                     </div>
                     <!-- /Footer Widget -->
                 </div>
-                        <div class="col-lg-3 col-md-6"></div>
-                        <div class="col-lg-3 col-md-6"></div>
+                <div class="col-lg-3 col-md-6"></div>
+                <div class="col-lg-3 col-md-6"></div>
 
                 <div class="col-lg-3 col-md-6">
                     <!-- Footer Widget -->
@@ -87,7 +89,7 @@
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 col-lg-6">
-                        
+
                     </div>
                     <div class="col-md-6 col-lg-6">
                         <!-- Copyright Menu -->
