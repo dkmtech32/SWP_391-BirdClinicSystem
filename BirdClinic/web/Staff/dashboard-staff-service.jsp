@@ -88,31 +88,33 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <!-- Add your form fields here for editing the service details -->
-                <div class="form-group">
-                    <label for="serviceName">Service Name</label>
-                    <input type="text" class="form-control" id="serviceName">
-                </div>
-                <div class="form-group">
-                    <label for="servicePrice">Service Price</label>
-                    <input type="number" class="form-control" id="servicePrice">
-                </div>
-                <div class="form-group">
-                    <label for="specialty">Specialty</label>
-                    <select class="form-control" id="specialty">
-                        <option value="">Select a specialty</option>
-                        <option value="option1">Option 1</option>
-                        <option value="option2">Option 2</option>
-                        <option value="option3">Option 3</option>
-                        
-                    </select>
-                </div>
+            <form action="<c:url value="/Staff/Dashboard/Services/Insert"/>" method="post">
+                <div class="modal-body">
+                    <!-- Add your form fields here for editing the service details -->
+                    <div class="form-group">
+                        <label for="serviceName">Service Name</label>
+                        <input type="text" class="form-control" name="service-name" id="serviceName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="servicePrice">Service Price</label>
+                        <input type="number" class="form-control" name="service-price" id="servicePrice" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="specialty">Specialty</label>
+                        <select class="form-control" id="specialty" name="specialityID" required>
+                            <option value="" selected disabled>Select a specialty</option>
+                            <c:forEach var="specialty" items="${specialities}">
+                                <option value="${specialty.specialityID}">${specialty.specialityName}</option>
+                            </c:forEach>
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save Changes</button>
-            </div>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

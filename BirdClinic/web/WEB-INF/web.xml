@@ -188,7 +188,7 @@
     </servlet>
     <servlet>
         <servlet-name>StaffDashboardServicesInsertServlet</servlet-name>
-        <servlet-class>controllers.dashboard.staff.StaffDashboardAppointmentsInsertServlet</servlet-class>
+        <servlet-class>controllers.dashboard.staff.StaffDashboardServicesInsertServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>StaffDashboardServicesServlet</servlet-name>
