@@ -22,7 +22,7 @@
                                                                         </div>-->
                                     <!-- Add this container to display the selected bird image -->
                                     <div id="bird-image-preview-container">
-                                        <img id="bird-image-preview" alt="Selected Bird Image" style="max-width: 200px; margin-top: 10px; display: none;">
+                                        <img id="bird-image-preview" alt="Selected Bird Image" style="width: 1500px; height: 150px; margin-top: 10px; margin-right: 1rem; display: none; border-radius: 50%">
                                     </div>
 
                                     <div class="upload-img">
@@ -72,7 +72,13 @@
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Weight (in grams)</label>
-                                <input type="number" class="form-control" name="bird-weight" placeholder="Enter weight in grams" step="0.1" value="" required />
+                                <input type="number" 
+                                       class="form-control"
+                                       name="bird-weight" 
+                                       placeholder="Enter weight in grams" 
+                                       step="10" value="200" required="required" 
+                                       onblur="validateQuantity(this)"
+                                       />
                             </div>
                         </div>
 
@@ -129,6 +135,14 @@
             }
         }
     </script>
-
+    <script>
+        function validateQuantity(input) {
+            if (input.value < 200) {
+                input.setCustomValidity("Weight must be 200 grams or more.");
+            } else {
+                input.setCustomValidity("");
+            }
+        }
+    </script>
 
 </html>
