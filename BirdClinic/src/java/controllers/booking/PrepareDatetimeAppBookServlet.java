@@ -6,6 +6,7 @@
 package controllers.booking;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.timeslot.TimeslotDTO;
+import models.users.doctor.DoctorDTO;
 import services.customer.CustomerServices;
 import services.general.AccountDoesNotExistException;
 import utils.Utils;
@@ -50,7 +52,12 @@ public class PrepareDatetimeAppBookServlet extends HttpServlet {
 
         try {
 
-            request.setAttribute("doctor", service.getDoctorInfo(doctorID));
+            DoctorDTO doctor = service.getDoctorInfo(doctorID);
+            request.setAttribute("doctor", doctor);
+            if (doctor!=null) {
+                BigDecimal rating = service.getDoctorRatings(service.getDoctorFeedbacks(doctorID));
+                request.setAttribute("rating", rating);
+            }
 
             String[] weekdays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
             request.setAttribute("weekdays", weekdays);

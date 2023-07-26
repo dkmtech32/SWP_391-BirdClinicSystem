@@ -22,7 +22,7 @@
                     <h4 class="text-secondary mb-3">Bird Blog</h4>
                     <h1 class="display-4 m-0"><span class="text-primary">Write</span> new Blog</h1>
                 </div>
-                <form class="row flex-column" id="editorForm" action="<c:url value="/Blog/Update"/>" method="post">
+                <form class="row flex-column" id="editorForm" action="<c:url value="/Blog/Update"/>" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="mb-5 form-group col-md-2" >
                             <label for="thumbnail">Thumbnail</label>
@@ -46,7 +46,7 @@
                         <textarea id="editor" class="editor" style="" name="blog-content" >${blog.blogContent}</textarea>
                     </div>
 
-
+                    <input type="text" hidden="hidden" name="blogID" value="${blog.blogID}"/>
                     <input class="btn btn-primary" type="submit" value="Submit" />
 
                 </form>
