@@ -145,19 +145,19 @@
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group card-label">
                                                     <label>Quantity</label>
-                                                    <input class="form-control" type="number" name="quantity" value="" />
+                                                    <input class="form-control" type="number" name="quantity" value="1" required="required" oninput="validateQuantity(this)" />
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group card-label">
                                                     <label>Dose</label>
-                                                    <input class="form-control" type="text" name="description" value="" />
+                                                    <input class="form-control" type="text" name="description" value="" required="required"/>
                                                 </div>
                                             </div>
 
                                         </div>							
                                         <!-- <div class="exist-customer">Existing Customer? <a href="#">Click here to login</a></div> -->
-                                        <button value="add" name="action" type="submit" class="btn btn-primary submit-btn">Add medicine</button>
+                                        <button value="add" name="action" type="submit" class="btn btn-primary submit-btn">Add</button>
                                     </div>
                                     <!-- /Medicine Information -->						
                                 </form>
@@ -185,7 +185,7 @@
                                                         <td data-field="description">${list.description_}</td>
                                                         <td>											
                                                             <a class="button button-small edit" 
-                                                               href="<c:url value="/Doctor/Prescription/Update?medicineID=${list.medicine.medicineID}&quantity=${-list.quantity}"/>" 
+                                                               href="<c:url value="/Doctor/Prescription/Update?medicineID=${list.medicine.medicineID}&quantity=${-list.quantity}&action=delete"/>" 
                                                                title="Delete" >
                                                                 <i class="fa fa-trash"></i>
                                                             </a>
@@ -196,7 +196,7 @@
                                         </table>
                                     </div>
                                 </div>
-
+                                <form action="<c:url value='/Doctor/Prescription/Update'/>" method="post">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <form action="<c:url value='/Doctor/Prescription/Update'/>" method="post">
@@ -210,16 +210,17 @@
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group">													                                            
                                                     <label>Diagnosis</label>
-                                                    <input class="form-control" name="diagnosis"/>                                       
+                                                <input class="form-control" name="diagnosis" required="required"/>                                       
                                                 </div>
                                             </div>
 
                                             <div class="col-md-12 col-sm-12">
                                                 <div class="form-group">
                                                     <label>Treatment days</label>
-                                                    <input class="form-control" name="treatment-days" type="number"> 
+                                                <input class="form-control" name="treatment-days" type="number" value="1" required="required" oninput="validateQuantity(this)" > 
                                                 </div>
                                             </div>
+                                    
                                             <button type="submit" name="action" value="submit" class="btn btn-dark d-flex justify-content-center mx-auto mt-2">
                                                 Submit
                                             </button>
@@ -281,6 +282,13 @@
             $(document).ready(function () {
                 $('.js-example-basic-single').select2();
             });
+        </script>
+        <script>
+            function validateQuantity(input) {
+                if (input.value < 1) {
+                    input.value = 1;
+                }
+            }
         </script>
         <!-- /Script -->
     </body>
