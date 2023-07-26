@@ -6,6 +6,7 @@
 package services.staff;
 
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +36,9 @@ public interface StaffServices extends GeneralServices {
 
     boolean updateAppointmentPayment(String appointmentID, String payment) throws AppointmentDoesNotExistException, SQLException;
 
+    boolean updateAppointmentPrice(String appointmentID, BigDecimal totalPrice)
+            throws AppointmentDoesNotExistException, SQLException;
+
     boolean updateService_(String serviceID, float servicePrice, String serviceName) throws ServiceDoesNotExistException, SQLException;
 
     List<FeedbackDTO> getCustomerFeedbacks(String customerID) throws SQLException;
@@ -50,6 +54,6 @@ public interface StaffServices extends GeneralServices {
     boolean addService(Map<String, String[]> args) throws ServiceAlreadyExistsException, SQLException;
 
     List<Service_DTO> getAllServices() throws SQLException, ServiceDoesNotExistException;
-    
+
     boolean deleteService(String serviceID) throws SQLException, ServiceDoesNotExistException;
 }

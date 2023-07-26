@@ -130,10 +130,13 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
             Service_DTO service = serviceDAO.readService_(serviceID);
             switch (action) {
                 case "add":
-                    services.add(service);
+                    if (services.indexOf(service) < 0) {
+                        services.add(service);
+                    }
                     break;
                 case "delete":
                     services.remove(service);
+
                     break;
             }
         } catch (NoSuchRecordExists ex) {
@@ -155,11 +158,9 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
                 }
             }
 
-            if (!services.equals(medRec.getAppointment().getService_())) {
-                appointmentDAO.deleteService(medRec.getAppointment().getAppointmentID());
-                appointmentDAO.addService(services, medRec.getAppointment().getAppointmentID());
-            }
-            
+            appointmentDAO.deleteService(medRec.getAppointment().getAppointmentID());
+            appointmentDAO.addService(services, medRec.getAppointment().getAppointmentID());
+
             appointmentDAO.updateAppointmentStatus(medRec.getAppointment().getAppointmentID(), "prescribed");
         } catch (RecordAlreadyExists | NoSuchRecordExists ex) {
             throw new MedicalRecordAlreadyExistsException(ex.getMessage());

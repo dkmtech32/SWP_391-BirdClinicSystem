@@ -6,6 +6,7 @@
 package models.appointment;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
 import models.bird.BirdDTO;
@@ -37,6 +38,10 @@ public interface AppointmentDTO extends Serializable, Comparable {
 
     TimeslotDTO getTimeslot();
 
+    BigDecimal getTotalPrice();
+
+    void setAllService(List<Service_DTO> service_);
+
     void setAppStatus(String appStatus);
 
     void setAppTime(Date appTime);
@@ -54,7 +59,7 @@ public interface AppointmentDTO extends Serializable, Comparable {
     void setService_(Service_DTO service_);
 
     void setTimeslot(TimeslotDTO timeslot);
-    
-    void setAllService(List<Service_DTO> service_);
+
+    void setTotalPrice(BigDecimal totalPrice);
     
 }
