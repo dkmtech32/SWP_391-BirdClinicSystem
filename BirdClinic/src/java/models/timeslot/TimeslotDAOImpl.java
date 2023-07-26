@@ -149,7 +149,9 @@ public class TimeslotDAOImpl implements TimeslotDAO {
             }
         }
 
-        Collections.sort(timeSlotList);
+        if (timeSlotList != null) {
+            Collections.sort(timeSlotList);
+        }
         return timeSlotList;
     }
 
