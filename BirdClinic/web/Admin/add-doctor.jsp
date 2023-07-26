@@ -55,7 +55,7 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Full Name</label>
-                                                    <input name="full-name" id="name" type="text" class="form-control"/>
+                                                    <input name="full-name" id="name" type="text" class="form-control" required/>
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -63,7 +63,7 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">User Name</label>
-                                                    <input name="username" id="name2" type="text" class="form-control"/>
+                                                    <input name="username" id="name2" type="text" class="form-control" required/>
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -71,7 +71,7 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Email</label>
-                                                    <input name="email" id="email" type="email" class="form-control"/>
+                                                    <input name="email" id="email" type="email" class="form-control" required/>
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -79,7 +79,7 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Phone</label>
-                                                    <input name="phone-number" id="number" type="text" class="form-control"/>
+                                                    <input name="phone-number" id="number" type="text" class="form-control" required/>
                                                 </div>
                                             </div>
                                             <!--end col-->
@@ -97,14 +97,14 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Password</label>
-                                                    <input name="password" id="text" type="password" class="form-control"/>
+                                                    <input name="password" id="text" type="password" class="form-control" required/>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Doctor Age</label>
-                                                    <input name="doctor-age" id="text" type="number" class="form-control"/>
+                                                    <input name="doctor-age" id="text" type="number" class="form-control" value="26" required="required" oninput="validateQuantity(this)" />
                                                 </div>
                                             </div>
 
@@ -125,21 +125,21 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Degree</label>
-                                                    <input name="degree" id="text" type="text" class="form-control"/>
+                                                    <input name="degree" id="text" type="text" class="form-control" required/>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Academic Title</label>
-                                                    <input name="academic-title" id="text" type="text" class="form-control"/>
+                                                    <input name="academic-title" id="text" type="text" class="form-control" required/>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Years of experience</label>
-                                                    <input name="years-of-experience" id="text" type="number" class="form-control"/>
+                                                    <input name="years-of-experience" id="text" type="number" class="form-control" value="1" required="required" oninput="validateYearOfExperienceQuantity(this)"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -196,4 +196,16 @@
         <jsp:include page="../Admin/script-admin.jsp"/>
         <!-- /Script -->
     </body>
+    <script>
+        function validateQuantity(input) {
+            if (input.value < 26) {
+                input.value = 26;
+            }
+        }
+        function validateYearOfExperienceQuantity(input){
+            if (input.value < 1) {
+                input.value = 1;
+            }
+        }
+    </script>
 </html>

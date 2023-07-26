@@ -33,11 +33,11 @@
                                         </div>
                                         <form action="<c:url value="/Common/login"/>" method="POST">
                                             <div class="form-group form-focus">
-                                                <input name ="username" class="form-control floating" />
+                                                <input name ="username" class="form-control floating" required/>
                                                 <label class="focus-label">User Name</label>
                                             </div>
                                             <div class="form-group form-focus">
-                                                <input name ="password" type="password" class="form-control floating" />
+                                                <input name ="password" type="password" class="form-control floating" required/>
                                                 <label class="focus-label">Password</label>
                                             </div>
                                             <div class="text-right">
