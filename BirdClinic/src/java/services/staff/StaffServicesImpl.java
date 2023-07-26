@@ -17,6 +17,7 @@ import java.util.Map;
 import models.appointment.AppointmentAlreadyExistsException;
 import models.appointment.AppointmentDTO;
 import models.appointment.AppointmentDTOImpl;
+import models.bird.BirdDTO;
 import models.blog.BlogDTO;
 import models.blog.BlogDTOImpl;
 import models.exceptions.NoSuchRecordExists;
@@ -383,20 +384,24 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
         return result;
     }
 
+    @Override
     public boolean bookReexamination(Map<String, String[]> args) throws SQLException, AppointmentAlreadyExistsException {
         boolean result = false;
 
         try {
-            String birdID = args.get("birdID")[0];
-            String notes = args.get("notes")[0];
+            String appointmentID = args.get("appointmentID")[0];
             String timeslotID = args.get("timeslotID")[0];
             String service_ID = args.get("serviceID")[0];
             String appDate = args.get("appDate")[0];
             String doctorID = args.get("doctorID")[0];
-
+            
+            AppointmentDTO prevApp = appointmentDAO.readAppointment(appointmentID);
             AppointmentDTO app = new AppointmentDTOImpl();
-            app.setAppointmentID(Utils.hash(birdID + service_ID + timeslotID + String.valueOf(System.currentTimeMillis())));
-            app.setBird(birdDAO.readBird(birdID));
+            
+            BirdDTO bird = prevApp.getBird();
+            
+            app.setAppointmentID(Utils.hash(bird.getBirdID() + service_ID + timeslotID + String.valueOf(System.currentTimeMillis())));
+            app.setBird(bird);
             TimeslotDTO timeslot = timeslotDAO.readTimeSlot(timeslotID);
             app.setTimeslot(timeslot);
             DoctorDTO doc = null;
@@ -407,7 +412,7 @@ public class StaffServicesImpl extends GeneralServicesImpl implements StaffServi
             app.setPayment(null);
             Service_DTO service = serviceDAO.readService_(service_ID);
             app.setService_(service);
-            app.setNotes(notes);
+            app.setNotes("Re-examination for " + prevApp.getAppTime().toString() + " appointment");
 
             Date date = Date.valueOf(appDate);
             long milliseconds = date.getTime() + timeslot.getTimeSlot().getTime();

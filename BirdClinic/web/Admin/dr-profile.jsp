@@ -46,7 +46,7 @@
                                             role="tablist"
                                             >
                                             <li class="nav-item">
-                                                <a class="nav-link rounded-0" data-bs-toggle="pill" href="#pills-settings">
+                                                <a class="nav-link rounded-0 active"href="<c:url value="/View/Doctor?userID=${doctor.userID}"/>">
                                                     <div class="text-center pt-1 pb-1">
                                                         <h4 class="title fw-normal mb-0">Profile</h4>
                                                     </div> 
@@ -54,7 +54,7 @@
                                             </li>
 
                                             <li class="nav-item">
-                                                <a class="nav-link rounded-0" data-bs-toggle="pill" href="#pills-timetable">
+                                                <a class="nav-link rounded-0" href="<c:url value="/Admin/Doctors/Update/Timeslot?userID=${doctor.userID}" />">
                                                     <div class="text-center pt-1 pb-1">
                                                         <h4 class="title fw-normal mb-0">Time Table</h4>
                                                     </div> 
@@ -63,137 +63,9 @@
                                         </ul>
 
                                         <div class="tab-content mt-2" id="pills-tabContent">											
-                                            <div class="tab-pane fade" id="pills-timetable" role="tabpanel" aria-labelledby="timetable-tab">
-                                                <div class="card booking-schedule schedule-widget" style="width: 82rem">
-                                                    <!-- Schedule Header -->
-                                                    <div class="schedule-header">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <!-- Day Slot -->
-                                                                <div class="day-slot">
-                                                                    <ul>
-                                                                        <li>
-                                                                            <span>Mon</span>
-                                                                        </li>
-                                                                        <li>
-                                                                            <span>Tue</span>
-                                                                        </li>
-                                                                        <li>
-                                                                            <span>Wed</span>
-                                                                        </li>
-                                                                        <li>
-                                                                            <span>Thu</span>
-                                                                        </li>
-                                                                        <li>
-                                                                            <span>Fri</span>
-                                                                        </li>
-                                                                        <li>
-                                                                            <span>Sat</span>
-                                                                        </li>
-                                                                        <li>
-                                                                            <span>Sun</span>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                                <!-- /Day Slot -->
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /Schedule Header -->
+                                            
 
-                                                    <!-- Schedule Content -->
-                                                    <div class="schedule-cont">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <!-- Time Slot -->
-                                                                <div class="time-slot">
-                                                                    <ul class="clearfix">
-                                                                        <li>
-                                                                            <a class="timing"><span>7:00</span></a>
-                                                                            <a class="timing"><span>8:00</span></a>
-                                                                            <a class="timing"><span>9:00</span></a>
-                                                                            <a class="timing"><span>10:00</span></a>
-                                                                            <a class="timing"><span>13:00</span></a>
-                                                                            <a class="timing"><span>14:00</span></a>
-                                                                            <a class="timing"><span>15:00</span></a>
-                                                                            <a class="timing"><span>16:00</span></a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="timing"><span>7:00</span></a>
-                                                                            <a class="timing"><span>8:00</span></a>
-                                                                            <a class="timing"><span>9:00</span></a>
-                                                                            <a class="timing"><span>10:00</span></a>
-                                                                            <a class="timing"><span>13:00</span></a>
-                                                                            <a class="timing"><span>14:00</span></a>
-                                                                            <a class="timing"><span>15:00</span></a>
-                                                                            <a class="timing"><span>16:00</span></a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="timing"><span>7:00</span></a>
-                                                                            <a class="timing"><span>8:00</span></a>
-                                                                            <a class="timing"><span>9:00</span></a>
-                                                                            <a class="timing"><span>10:00</span></a>
-                                                                            <a class="timing"><span>13:00</span></a>
-                                                                            <a class="timing"><span>14:00</span></a>
-                                                                            <a class="timing"><span>15:00</span></a>
-                                                                            <a class="timing"><span>16:00</span></a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="timing"><span>7:00</span></a>
-                                                                            <a class="timing"><span>8:00</span></a>
-                                                                            <a class="timing"><span>9:00</span></a>
-                                                                            <a class="timing"><span>10:00</span></a>
-                                                                            <a class="timing"><span>13:00</span></a>
-                                                                            <a class="timing"><span>14:00</span></a>
-                                                                            <a class="timing"><span>15:00</span></a>
-                                                                            <a class="timing"><span>16:00</span></a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="timing"><span>7:00</span></a>
-                                                                            <a class="timing"><span>8:00</span></a>
-                                                                            <a class="timing"><span>9:00</span></a>
-                                                                            <a class="timing"><span>10:00</span></a>
-                                                                            <a class="timing"><span>13:00</span></a>
-                                                                            <a class="timing"><span>14:00</span></a>
-                                                                            <a class="timing"><span>15:00</span></a>
-                                                                            <a class="timing"><span>16:00</span></a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="timing"><span>7:00</span></a>
-                                                                            <a class="timing"><span>8:00</span></a>
-                                                                            <a class="timing"><span>9:00</span></a>
-                                                                            <a class="timing"><span>10:00</span></a>
-                                                                            <a class="timing"><span>13:00</span></a>
-                                                                            <a class="timing"><span>14:00</span></a>
-                                                                            <a class="timing"><span>15:00</span></a>
-                                                                            <a class="timing"><span>16:00</span></a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="timing"><span>7:00</span></a>
-                                                                            <a class="timing"><span>8:00</span></a>
-                                                                            <a class="timing"><span>9:00</span></a>
-                                                                            <a class="timing"><span>10:00</span></a>
-                                                                            <a class="timing"><span>13:00</span></a>
-                                                                            <a class="timing"><span>14:00</span></a>
-                                                                            <a class="timing"><span>15:00</span></a>
-                                                                            <a class="timing"><span>16:00</span></a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                                <!-- /Time Slot -->
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- /Schedule Content -->
-                                                </div>
-                                                <div class="col-sm-12" style="margin-top: 1rem;">
-                                                    <input type="submit" class="rounded btn btn-primary" value="Save" />
-                                                </div>
-                                                <!--end row-->
-                                            </div>
-                                            <!--end teb pane-->
-
-                                            <div class="tab-pane fade show active" id="pills-settings" role="tabpanel" aria-labelledby="settings-tab">
+                                            <div class="tab-pane fade show active" id="pills-settings"  aria-labelledby="settings-tab">
                                                 <h5 class="mb-1">Settings</h5>
                                                 <div class="row">
                                                     <div class="col-lg-6">
@@ -410,14 +282,7 @@
             <!--End page-content" -->
         </div>
         <!-- page-wrapper -->
-        <script>
-            var timingElements = document.getElementsByClassName("timing");
-            for (var i = 0; i < timingElements.length; i++) {
-                timingElements[i].addEventListener("click", function() {
-                    this.classList.toggle("selected");
-                });
-            }
-        </script>
+       
         <!-- Script -->
         <jsp:include page="../Admin/script-admin.jsp"/>
         <!-- /Script -->
