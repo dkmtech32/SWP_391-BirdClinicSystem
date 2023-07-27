@@ -67,6 +67,7 @@ public class UpdateBlogServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
+        request.setCharacterEncoding("UTF-8");
 
         Map<String, String[]> params = request.getParameterMap();
         Map<String, String[]> args = new HashMap<>(params);

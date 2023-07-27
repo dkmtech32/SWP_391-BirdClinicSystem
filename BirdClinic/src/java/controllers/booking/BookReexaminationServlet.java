@@ -8,8 +8,6 @@ package controllers.booking;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,6 +34,7 @@ public class BookReexaminationServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String url = "/Dashboard/Appointments";
         HttpSession session = request.getSession();
         StaffServices service = (StaffServices) session.getAttribute("service");
