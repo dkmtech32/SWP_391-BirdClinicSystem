@@ -11,6 +11,8 @@
 <html>
     <div class="col-md-6">
         <h2>Owner's feedback</h2> <!-- chỉ hiện khi user đưa feedback rồi -->
+        <span>${feedback.feedbackTime.toString().split(' ')[0]}</span>
+
         <c:choose>
             <c:when test="${feedback.rating.floatValue() ==1}">
                 <div class="col-md-12 col-sm-12">
@@ -117,7 +119,6 @@
                 <div class="form-control" rows="4" placeholder="Owner's feedback"
                      style="word-wrap: break-word; height: 9rem">
                     ${feedback.feedbackContent}
-                    <span>${feedback.feedbackTime}</span>
                 </div>
             </div>
         </div>

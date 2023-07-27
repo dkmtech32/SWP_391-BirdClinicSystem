@@ -162,19 +162,19 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
             appointmentDAO.deleteService(medRec.getAppointment().getAppointmentID());
             appointmentDAO.addService(services, medRec.getAppointment().getAppointmentID());
 
-            BigDecimal totalPrice = BigDecimal.TEN;
-            if (recMeds != null && !recMeds.isEmpty()) {
-                for (RecordMedicineDTO recMed : recMeds) {
-                    totalPrice = totalPrice.add(recMed.getMedicine().getMedicinePrice().multiply(BigDecimal.valueOf(recMed.getQuantity())));
-                }
-            }
-            for (Service_DTO service : services) {
-                totalPrice = totalPrice.add(service.getServicePrice());
-            }
-
+//            BigDecimal totalPrice = BigDecimal.TEN;
+//            if (recMeds != null && !recMeds.isEmpty()) {
+//                for (RecordMedicineDTO recMed : recMeds) {
+//                    totalPrice = totalPrice.add(recMed.getMedicine().getMedicinePrice().multiply(BigDecimal.valueOf(recMed.getQuantity())));
+//                }
+//            }
+//            for (Service_DTO service : services) {
+//                totalPrice = totalPrice.add(service.getServicePrice());
+//            }
+//
             AppointmentDTO appointment = appointmentDAO.readAppointment(medRec.getAppointment().getAppointmentID());
             appointment.setAppStatus("prescribed");
-            appointment.setTotalPrice(totalPrice);
+//            appointment.setTotalPrice(totalPrice);
             appointmentDAO.updateAppointment(appointment);
         } catch (RecordAlreadyExists | NoSuchRecordExists ex) {
             throw new MedicalRecordAlreadyExistsException(ex.getMessage());
