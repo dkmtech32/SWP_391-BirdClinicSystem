@@ -105,7 +105,7 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Doctor Age</label>
-                                                    <input name="doctor-age" id="text" type="number" class="form-control" value="26" required="required" oninput="validateQuantity(this)" />
+                                                    <input name="doctor-age" id="text" type="number" class="form-control" value="26" required="required"  />
                                                 </div>
                                             </div>
 
@@ -140,7 +140,7 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label">Years of experience</label>
-                                                    <input name="years-of-experience" id="text" type="number" class="form-control" value="1" required="required" oninput="validateYearOfExperienceQuantity(this)"/>
+                                                    <input name="years-of-experience" id="text" type="number" class="form-control" value="1" required="required" />
                                                 </div>
                                             </div>
                                         </div>
@@ -198,16 +198,7 @@
         <!-- /Script -->
     </body>
     <script>
-        function validateQuantity(input) {
-            if (input.value < 26) {
-                input.value = 26;
-            }
-        }
-        function validateYearOfExperienceQuantity(input) {
-            if (input.value < 1) {
-                input.value = 1;
-            }
-        }
+        
         function previewImage() {
             var input = document.getElementById("bird-image");
             var container = document.getElementById("bird-image-preview-container");

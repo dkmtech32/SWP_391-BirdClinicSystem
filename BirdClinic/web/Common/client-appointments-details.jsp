@@ -76,7 +76,7 @@
                                                 </div>
                                             </div>
                                             <div class="booking-item-wrap-in-appointments-details">
-                                                <c:if test="${appointment.totalPrice==0}">
+                                                <c:if test="${not empty appointment.totalPrice && appointment.totalPrice.doubleValue() eq 0}">
                                                     <ul class="booking-fee-in-appointments-details">
                                                         <li>Service Fee 
                                                             <c:set var="totalServicePrice" value="0" />
@@ -105,10 +105,10 @@
                                                     <ul class="booking-total-list-in-appointments-details">
                                                         <li>
                                                             <span>Total </span>
-                                                            <c:if test="${appointment.totalPrice eq 0}">
+                                                            <c:if test="${not empty appointment.totalPrice && appointment.totalPrice.doubleValue() eq 0}">
                                                                 <span class="total-cost-in-appointments-details">$${totalPrice}</span>
                                                             </c:if>
-                                                            <c:if test="${appointment.totalPrice ne 0}">
+                                                            <c:if test="${empty appointment.totalPrice || appointment.totalPrice.doubleValue() ne 0}">
                                                                 <span class="total-cost-in-appointments-details">$ ${appointment.totalPrice}</span>
                                                             </c:if>
 
