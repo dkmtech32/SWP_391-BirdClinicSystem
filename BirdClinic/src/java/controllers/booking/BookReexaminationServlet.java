@@ -35,7 +35,7 @@ public class BookReexaminationServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        String url = "/Dashboard/Appointments";
+        String url = "/Dashboard/Appointments?filter=confirm";
         HttpSession session = request.getSession();
         StaffServices service = (StaffServices) session.getAttribute("service");
         Map<String, String[]> args = request.getParameterMap();

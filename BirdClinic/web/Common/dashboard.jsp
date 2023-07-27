@@ -29,7 +29,7 @@
                             <div class="profile-sidebar">
                                 <div class="widget-profile pro-widget-content">
                                     <div class="profile-info-widget">
-                                        <a href="#" class="booking-doc-img">
+                                        <a  class="booking-doc-img">
                                             <c:if test="${service.currentUser.userRole=='customer'}">
                                                 <img src="<c:url value='/images/customer/${service.currentUser.image.imageURLName}'/>" alt="User Image" />
                                             </c:if>

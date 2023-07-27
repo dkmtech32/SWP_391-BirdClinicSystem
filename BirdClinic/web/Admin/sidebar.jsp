@@ -12,9 +12,7 @@
         <div class="sidebar-content" data-simplebar style="height: calc(100% - 60px)">
             <div class="sidebar-brand">
                 <a href="<c:url value="/Admin/Accounts"/>">
-                    <!--<a href="index.html">-->
-                    <img src="../assets/images/logo-dark.png" height="24" class="logo-light-mode" alt />
-                    <img src="../assets/images/logo-light.png" height="24" class="logo-dark-mode" alt />
+                    <img src="<c:url value="/images/logo-dark.png"/>" height="24" class="logo-light-mode" alt />
                 </a>
             </div>
 
@@ -23,44 +21,23 @@
                     <a href="<c:url value="/Admin/Accounts"/>"><i class="uil uil-dashboard me-2 d-inline-block"></i>Dashboard</a>
                 </li>
 
-                <li class="sidebar-dropdown">
-                    <a href="javascript:void(0)"><i class="uil fa-solid fa-user-doctor me-2 d-inline-block"></i>Doctors</a>
-                    <div class="sidebar-submenu">
-                        <ul>
-                            <li><a href="<c:url value="/Admin/Accounts/Create?userRole=doctor"/>">Add Doctor</a></li>
-                             
-                        </ul>
-                    </div>
+                <li >
+                    <a href="<c:url value="/Admin/Accounts/Create?userRole=doctor"/>"><i class="uil fa-solid fa-user-doctor me-2 d-inline-block"></i>Add Doctor</a>                    <div class="sidebar-submenu">
+
                 </li>
 
-                <li class="sidebar-dropdown">
-                    <a href="javascript:void(0)"><i class="uil uil-user me-2 d-inline-block"></i>Staffs</a>
-                    <div class="sidebar-submenu">
-                        <ul>
-                            <li><a href="<c:url value="/Admin/Accounts/Create?userRole=staff"/>">Add Staff</a></li>
-                            
-                        </ul>
-                    </div>
+                <li >
+                    <a href="<c:url value="/Admin/Accounts/Create?userRole=staff"/>"><i class="uil uil-user me-2 d-inline-block"></i>Add Staff</a>
                 </li>
 
-                <li>
-                    <a href="customer-list.jsp"><i class="uil fa-solid fa-person me-2 d-inline-block"></i>Customers List</a>
-                </li>
-
-                <li>
-                    <a href="landing/index-two.html" target="_blank"><i class="uil uil-window me-2 d-inline-block"></i>Landing page</a>
-                </li>
+<!--                <li>
+                    <a href=""><i class="uil fa-solid fa-person me-2 d-inline-block"></i>Customers List</a>
+                </li>-->
             </ul>
             <!-- sidebar-menu  -->
         </div>
         <!-- sidebar-content  -->
-        <ul class="sidebar-footer list-unstyled mb-0">
-            <li class="list-inline-item mb-0 ms-1">
-                <a href="#" class="btn btn-icon btn-pills btn-soft-primary">
-                    <i class="uil uil-comment icons"></i>
-                </a>
-            </li>
-        </ul>
+        
     </nav>
     <!-- sidebar-wrapper  -->
 </html>

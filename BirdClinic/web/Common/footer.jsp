@@ -95,8 +95,8 @@
                         <!-- Copyright Menu -->
                         <div class="copyright-menu">
                             <ul class="policy-menu">
-                                <li><a href="term-condition.html">Terms and Conditions</a></li>
-                                <li><a href="privacy-policy.html">Policy</a></li>
+                                <li><a >Terms and Conditions</a></li>
+                                <li><a >Policy</a></li>
                             </ul>
                         </div>
                         <!-- /Copyright Menu -->

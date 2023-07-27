@@ -26,17 +26,17 @@
                 <div class="container-fluid">
                     <c:if test="${appointment.appStatus=='complete'}">
                         <div class="col-12 text-right mb-3">
-                        <button class="btn btn-primary print-btn" onclick="printPage()">
-                            <i class="fa fa-print"></i> Print
-                        </button>
-                        <c:if test="${service.currentUser.userRole=='staff'}">
-                        <button class="btn btn-secondary re-examination" data-toggle="modal" data-target="#formPopup">
-                            Re-examination
-                        </button>
-                        </c:if>
-                    </div>
+                            <button class="btn btn-primary print-btn" onclick="printPage()">
+                                <i class="fa fa-print"></i> Print
+                            </button>
+                            <c:if test="${service.currentUser.userRole=='staff'}">
+                                <button class="btn btn-secondary re-examination" data-toggle="modal" data-target="#formPopup">
+                                    Re-examination
+                                </button>
+                            </c:if>
+                        </div>
                     </c:if>
-                    
+
                     <div class="row">
                         <!-- Profile Sidebar -->
                         <jsp:include page="../Common/bird-general-info.jsp"/>
@@ -63,26 +63,77 @@
                                     <jsp:include page="../Common/owner-feedback.jsp"/>  
                                 </c:if>
 
-                                <jsp:include page="../Common/payment-info.jsp"/> 
+                                <div class="col-md-6 ">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h2>Payment</h2>
+                                            <div class="payment-method">
+                                                <h4>Payment Method</h4> 
+                                                <div class="form-control w-50" name="payment">
+                                                    <p style="padding-top: 0.4rem">${appointment.payment}</p>
+                                                </div>
+                                            </div>
+                                            <div class="booking-item-wrap-in-appointments-details">
+                                                <ul class="booking-fee-in-appointments-details">
+                                                    <li>Service Fee 
+                                                        <c:set var="totalServicePrice" value="0" />
+                                                        <c:forEach var="service" items="${appointment.service_}" >
+                                                            <c:set var="totalServicePrice" value="${totalServicePrice + service.servicePrice}" />
+                                                        </c:forEach>
+                                                        <span class="total-cost-in-appointments-details">$${totalServicePrice}</span>
+                                                    </li>                        
+                                                    <li>Booking Fee <span class="total-cost-in-appointments-details">$10</span></li>
+                                                    <li>Medicine Fee 
+                                                        <c:set var="totalMedPrice" value="0" />
+                                                        <c:forEach var="med" items="${recordMedicines}">
+                                                            <c:set var="medPrice" value="${med.quantity * med.medicine.medicinePrice}" />
+                                                            <c:set var="totalMedPrice" value="${totalMedPrice + medPrice}" />
+                                                        </c:forEach>
+                                                        <c:set var="totalPrice" value="${totalServicePrice + totalMedPrice + 10}"/>
+                                                        <span class="total-cost-in-appointments-details">$${totalMedPrice}</span>
+
+                                                    </li>
+
+                                                </ul>
+                                                <div class="booking-total-in-appointments-details">
+                                                    <ul class="booking-total-list-in-appointments-details">
+                                                        <li>
+                                                            <span>Total</span>
+                                                            <c:if test="${appointment.totalPrice==0 ||empty appointment.totalPrice}">
+                                                                <span class="total-cost-in-appointments-details">$${totalPrice}</span>
+                                                            </c:if>
+                                                            <c:if test="${appointment.totalPrice!=0 && not empty appointment.totalPrice}">
+                                                                <span class="total-cost-in-appointments-details">$ ${appointment.totalPrice}</span>
+                                                            </c:if>
+
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <c:if test="${requestScope.appointment.appStatus=='check-in' && sessionScope.service.currentUser.userRole=='staff'}">
+                        <c:if test="${requestScope.appointment.appStatus=='prescribed' && sessionScope.service.currentUser.userRole=='staff'}">
 
 
                             <select style="width:200px; max-width: 200px; white-space: nowrap;
                                     overflow: hidden;" id="${appointment.payment}" class="form-select" name="payment" onchange="changePaymentSelection(this)" required>
                                 <option value="">--</option>
-                                <option value="cash">Cash</option>
-                                <option value="banking account">Banking</option>
-                                <option value="credit card">Credit Card</option>
+                                <option value="Cash">Cash</option>
+                                <option value="Bank Transfer">Bank Transfer</option>
+                                <option value="Credit/Debit card">Credit/Debit card</option>
                             </select>  
 
 
                             <form action="<c:url value="/Dashboard/Appointments/updateApp"/>" name="docForm" method="get">
-                                <input type="hidden" id="hidden${appointment.payment}" name="payment" <c:if test="${not empty appointment.payment}"> value="${appointment.payment}"</c:if> required>
-                                    <input type="hidden"  name="action" value="update">
-                                    <input type="hidden"  name="filter" value="complete">
-                                    <input type="hidden" class="appID" name="appointmentID" value="${appointment.appointmentID}">
+                                <input type="hidden" id="hidden${appointment.payment}" name="payment" <c:if test="${not empty appointment.payment}"> value="${appointment.payment}"</c:if> required/>
+                                    <input type="hidden"  name="action" value="update"/>
+                                    <input type="hidden"  name="filter" value="complete"/>
+                                    <input type="hidden"  name="totalPrice" value="${totalPrice}"/>
+                                <input type="hidden" class="appID" name="appointmentID" value="${appointment.appointmentID}"/>
                                 <button class=" btn btn-sm bg-success-light" type="submit">
                                     <i class="fa fa-check"></i>
                                     Check-out
@@ -178,6 +229,12 @@
                     });
                 }
             });
+            var totalPrice = 0;
+            var medPrices = document.getElementsByName("medPrice");
+            for (var i = 0; i < medPrices.length; i++) {
+                totalPrice += parseInt(medPrices[i].textContent);
+            }
+            document.getElementById("medicineFee").textContent = totalPrice;
         </script>
         <jsp:include page="../Common/script.jsp"/>
 

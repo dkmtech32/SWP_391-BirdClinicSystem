@@ -67,7 +67,7 @@
                                                         <c:if test="${not empty requestScope.nextWeekday}">
                                                             <li class="right-arrow">
                                                                 <a href="
-                                                                   <c:url value="/Staff/prepareDatetime?currentWeekday=${requestScope.nextWeekday}">
+                                                                   <c:url value="/Staff/bookReexamination?currentWeekday=${requestScope.nextWeekday}">
                                                                        <c:param name="timeslotID" value="${timeslot.timeSlotID}" />
                                                                        <c:param name="appDate" value="${daysInWeek[index.index].toString().trim()}" />
                                                                        <c:param name="doctorID" value="${param.doctorID}" />
