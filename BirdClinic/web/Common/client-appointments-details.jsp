@@ -24,18 +24,20 @@
             <!-- Page Content -->
             <div class="content">
                 <div class="container-fluid">
-                    <c:if test="${appointment.appStatus=='complete'}">
-                        <div class="col-12 text-right mb-3">
+
+                    <div class="col-12 text-right mb-3">
+                        <c:if test="${appointment.appStatus=='complete'}">
                             <button class="btn btn-primary print-btn" onclick="printPage()">
                                 <i class="fa fa-print"></i> Print
                             </button>
-                            <c:if test="${service.currentUser.userRole=='staff'}">
-                                <button class="btn btn-secondary re-examination" data-toggle="modal" data-target="#formPopup">
-                                    Re-examination
-                                </button>
-                            </c:if>
-                        </div>
-                    </c:if>
+                        </c:if>
+
+                        <c:if test="${service.currentUser.userRole=='staff'&& (appointment.appStatus=='complete'||appointment.appStatus=='cancelled')}">
+                            <button class="btn btn-secondary re-examination" data-toggle="modal" data-target="#formPopup">
+                                Re-examination
+                            </button>
+                        </c:if>
+                    </div>
 
                     <div class="row">
                         <!-- Profile Sidebar -->
@@ -98,11 +100,11 @@
                                                 <div class="booking-total-in-appointments-details">
                                                     <ul class="booking-total-list-in-appointments-details">
                                                         <li>
-                                                            <span>Total</span>
-                                                            <c:if test="${appointment.totalPrice==0 ||empty appointment.totalPrice}">
+                                                            <span>Total </span>
+                                                            <c:if test="${appointment.totalPrice eq 0}">
                                                                 <span class="total-cost-in-appointments-details">$${totalPrice}</span>
                                                             </c:if>
-                                                            <c:if test="${appointment.totalPrice!=0 && not empty appointment.totalPrice}">
+                                                            <c:if test="${appointment.totalPrice ne 0}">
                                                                 <span class="total-cost-in-appointments-details">$ ${appointment.totalPrice}</span>
                                                             </c:if>
 
