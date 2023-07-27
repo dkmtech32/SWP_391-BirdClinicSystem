@@ -5,6 +5,7 @@
  */
 package services.doctor;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -161,7 +162,20 @@ public class DoctorServicesImpl extends GeneralServicesImpl implements DoctorSer
             appointmentDAO.deleteService(medRec.getAppointment().getAppointmentID());
             appointmentDAO.addService(services, medRec.getAppointment().getAppointmentID());
 
-            appointmentDAO.updateAppointmentStatus(medRec.getAppointment().getAppointmentID(), "prescribed");
+            BigDecimal totalPrice = BigDecimal.TEN;
+            if (recMeds != null && !recMeds.isEmpty()) {
+                for (RecordMedicineDTO recMed : recMeds) {
+                    totalPrice = totalPrice.add(recMed.getMedicine().getMedicinePrice().multiply(BigDecimal.valueOf(recMed.getQuantity())));
+                }
+            }
+            for (Service_DTO service : services) {
+                totalPrice = totalPrice.add(service.getServicePrice());
+            }
+
+            AppointmentDTO appointment = appointmentDAO.readAppointment(medRec.getAppointment().getAppointmentID());
+            appointment.setAppStatus("prescribed");
+            appointment.setTotalPrice(totalPrice);
+            appointmentDAO.updateAppointment(appointment);
         } catch (RecordAlreadyExists | NoSuchRecordExists ex) {
             throw new MedicalRecordAlreadyExistsException(ex.getMessage());
         }

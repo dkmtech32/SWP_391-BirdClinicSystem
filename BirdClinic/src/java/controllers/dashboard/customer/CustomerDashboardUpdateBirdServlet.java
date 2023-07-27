@@ -72,6 +72,7 @@ public class CustomerDashboardUpdateBirdServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
 
         String url = "/Dashboard/Birds/update";
         HttpSession session = request.getSession();

@@ -93,6 +93,9 @@
                                                     <c:when test="${appointment.appStatus =='cancelled'}">
                                                         <td><span class="badge badge-pill bg-danger-light">Canceled</span></td>
                                                     </c:when>
+                                                    <c:when test="${appointment.appStatus =='prescribed'}">
+                                                        <td><span class="badge badge-pill bg-danger-light">Prescribed</span></td>
+                                                    </c:when>
                                                 </c:choose>
                                                 <td class="text-right">
                                                     <div class="table-action">

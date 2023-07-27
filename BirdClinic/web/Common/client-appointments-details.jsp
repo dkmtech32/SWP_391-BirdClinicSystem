@@ -76,27 +76,31 @@
                                                 </div>
                                             </div>
                                             <div class="booking-item-wrap-in-appointments-details">
-                                                <ul class="booking-fee-in-appointments-details">
-                                                    <li>Service Fee 
-                                                        <c:set var="totalServicePrice" value="0" />
-                                                        <c:forEach var="service" items="${appointment.service_}" >
-                                                            <c:set var="totalServicePrice" value="${totalServicePrice + service.servicePrice}" />
-                                                        </c:forEach>
-                                                        <span class="total-cost-in-appointments-details">$${totalServicePrice}</span>
-                                                    </li>                        
-                                                    <li>Booking Fee <span class="total-cost-in-appointments-details">$10</span></li>
-                                                    <li>Medicine Fee 
-                                                        <c:set var="totalMedPrice" value="0" />
-                                                        <c:forEach var="med" items="${recordMedicines}">
-                                                            <c:set var="medPrice" value="${med.quantity * med.medicine.medicinePrice}" />
-                                                            <c:set var="totalMedPrice" value="${totalMedPrice + medPrice}" />
-                                                        </c:forEach>
-                                                        <c:set var="totalPrice" value="${totalServicePrice + totalMedPrice + 10}"/>
-                                                        <span class="total-cost-in-appointments-details">$${totalMedPrice}</span>
+                                                <c:if test="${appointment.totalPrice==0}">
+                                                    <ul class="booking-fee-in-appointments-details">
+                                                        <li>Service Fee 
+                                                            <c:set var="totalServicePrice" value="0" />
+                                                            <c:forEach var="service" items="${appointment.service_}" >
+                                                                <c:set var="totalServicePrice" value="${totalServicePrice + service.servicePrice}" />
+                                                            </c:forEach>
+                                                            <span class="total-cost-in-appointments-details">$${totalServicePrice}</span>
+                                                        </li>                        
+                                                        <li>Booking Fee <span class="total-cost-in-appointments-details">$10</span></li>
+                                                        <li>Medicine Fee 
+                                                            <c:set var="totalMedPrice" value="0" />
+                                                            <c:forEach var="med" items="${recordMedicines}">
+                                                                <c:set var="medPrice" value="${med.quantity * med.medicine.medicinePrice}" />
+                                                                <c:set var="totalMedPrice" value="${totalMedPrice + medPrice}" />
+                                                            </c:forEach>
+                                                            <c:set var="totalPrice" value="${totalServicePrice + totalMedPrice + 10}"/>
+                                                            <span class="total-cost-in-appointments-details">$${totalMedPrice}</span>
 
-                                                    </li>
+                                                        </li>
 
-                                                </ul>
+                                                    </ul>
+
+                                                </c:if>
+
                                                 <div class="booking-total-in-appointments-details">
                                                     <ul class="booking-total-list-in-appointments-details">
                                                         <li>
